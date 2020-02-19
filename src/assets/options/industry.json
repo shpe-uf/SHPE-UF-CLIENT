@@ -1,0 +1,202 @@
+[
+  {
+    "key": "Aeronautical/Aerospace/Aviation",
+    "value": "Aeronautical/Aerospace/Aviation",
+    "text": "Aeronautical/Aerospace/Aviation"
+  },
+  {
+    "key": "Agriculture",
+    "value": "Agriculture",
+    "text": "Agriculture"
+  },
+  {
+    "key": "Automotive",
+    "value": "Automotive",
+    "text": "Automotive"
+  },
+  {
+    "key": "Banking",
+    "value": "Banking",
+    "text": "Banking"
+  },
+  {
+    "key": "Biomedical",
+    "value": "Biomedical",
+    "text": "Biomedical"
+  },
+  {
+    "key": "Biotechnology",
+    "value": "Biotechnology",
+    "text": "Biotechnology"
+  },
+  {
+    "key": "Capital Goods/Machinery",
+    "value": "Capital Goods/Machinery",
+    "text": "Capital Goods/Machinery"
+  },
+  {
+    "key": "Chemical",
+    "value": "Chemical",
+    "text": "Chemical"
+  },
+  {
+    "key": "Computer Hardware",
+    "value": "Computer Hardware",
+    "text": "Computer Hardware"
+  },
+  {
+    "key": "Conglomerate",
+    "value": "Conglomerate",
+    "text": "Conglomerate"
+  },
+  {
+    "key": "Construction",
+    "value": "Construction",
+    "text": "Construction"
+  },
+  {
+    "key": "Consulting",
+    "value": "Consulting",
+    "text": "Consulting"
+  },
+  {
+    "key": "Consumer Goods",
+    "value": "Consumer Goods",
+    "text": "Consumer Goods"
+  },
+  {
+    "key": "Defense",
+    "value": "Defense",
+    "text": "Defense"
+  },
+  {
+    "key": "Electronics",
+    "value": "Electronics",
+    "text": "Electronics"
+  },
+  {
+    "key": "Energy",
+    "value": "Energy",
+    "text": "Energy"
+  },
+  {
+    "key": "Financial Services",
+    "value": "Financial Services",
+    "text": "Financial Services"
+  },
+  {
+    "key": "Food Processing",
+    "value": "Food Processing",
+    "text": "Food Processing"
+  },
+  {
+    "key": "Government",
+    "value": "Government",
+    "text": "Government"
+  },
+  {
+    "key": "Healthcare",
+    "value": "Healthcare",
+    "text": "Healthcare"
+  },
+  {
+    "key": "Hydraulics",
+    "value": "Hydraulics",
+    "text": "Hydraulics"
+  },
+  {
+    "key": "Hygiene/Sanitation",
+    "value": "Hygiene/Sanitation",
+    "text": "Hygiene/Sanitation"
+  },
+  {
+    "key": "Information Technology",
+    "value": "Information Technology",
+    "text": "Information Technology"
+  },
+  {
+    "key": "Insurance",
+    "value": "Insurance",
+    "text": "Insurance"
+  },
+  {
+    "key": "Law/Legal",
+    "value": "Law/Legal",
+    "text": "Law/Legal"
+  },
+  {
+    "key": "Manufacturing",
+    "value": "Manufacturing",
+    "text": "Manufacturing"
+  },
+  {
+    "key": "Materials",
+    "value": "Materials",
+    "text": "Materials"
+  },
+  {
+    "key": "Medical Supplies",
+    "value": "Medical Supplies",
+    "text": "Medical Supplies"
+  },
+  {
+    "key": "Pharmaceuticals",
+    "value": "Pharmaceuticals",
+    "text": "Pharmaceuticals"
+  },
+  {
+    "key": "Recruiting/Staffing",
+    "value": "Recruiting/Staffing",
+    "text": "Recruiting/Staffing"
+  },
+  {
+    "key": "Retail",
+    "value": "Retail",
+    "text": "Retail"
+  },
+  {
+    "key": "Safety",
+    "value": "Safety",
+    "text": "Safety"
+  },
+  {
+    "key": "Security",
+    "value": "Security",
+    "text": "Security"
+  },
+  {
+    "key": "Semiconductors",
+    "value": "Semiconductors",
+    "text": "Semiconductors"
+  },
+  {
+    "key": "Social Media",
+    "value": "Social Media",
+    "text": "Social Media"
+  },
+  {
+    "key": "Software Development",
+    "value": "Software Development",
+    "text": "Software Development"
+  },
+  {
+    "key": "Telecommunications",
+    "value": "Telecommunications",
+    "text": "Telecommunications"
+  },
+  {
+    "key": "Transportation",
+    "value": "Transportation",
+    "text": "Transportation"
+  },
+  {
+    "key": "Utilities",
+    "value": "Utilities",
+    "text": "Utilities"
+  },
+  {
+    "key": "Other",
+    "value": "Other",
+    "text": "Other"
+  }
+]

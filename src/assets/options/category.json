@@ -1,0 +1,57 @@
+[
+  {
+    "key": "",
+    "value": "",
+    "points": 0
+  },
+  {
+    "key": "General Body Meeting",
+    "value": "General Body Meeting",
+    "points": 1
+  },
+  {
+    "key": "Cabinet Meeting",
+    "value": "Cabinet Meeting",
+    "points": 1
+  },
+  {
+    "key": "Workshop",
+    "value": "Workshop",
+    "points": 1
+  },
+  {
+    "key": "Form/Survey",
+    "value": "Form/Survey",
+    "points": 1
+  },
+  {
+    "key": "Social",
+    "value": "Social",
+    "points": 1
+  },
+  {
+    "key": "Corporate Event",
+    "value": "Corporate Event",
+    "points": 2
+  },
+  {
+    "key": "Fundraising",
+    "value": "Fundraising",
+    "points": 3
+  },
+  {
+    "key": "Tabling",
+    "value": "Tabling",
+    "points": 3
+  },
+  {
+    "key": "Volunteering",
+    "value": "Volunteering",
+    "points": 4
+  },
+  {
+    "key": "Miscellaneous",
+    "value": "Miscellaneous",
+    "points": 0
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "key": "January",
+    "value": "Spring Semester"
+  },
+  {
+    "key": "February",
+    "value": "Spring Semester"
+  },
+  {
+    "key": "March",
+    "value": "Spring Semester"
+  },
+  {
+    "key": "April",
+    "value": "Spring Semester"
+  },
+  {
+    "key": "May",
+    "value": "Summer Semester"
+  },
+  {
+    "key": "June",
+    "value": "Summer Semester"
+  },
+  {
+    "key": "July",
+    "value": "Summer Semester"
+  },
+  {
+    "key": "August",
+    "value": "Fall Semester"
+  },
+  {
+    "key": "September",
+    "value": "Fall Semester"
+  },
+  {
+    "key": "October",
+    "value": "Fall Semester"
+  },
+  {
+    "key": "November",
+    "value": "Fall Semester"
+  },
+  {
+    "key": "December",
+    "value": "Fall Semester"
+  }
+]

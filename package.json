@@ -1,0 +1,52 @@
+{
+  "name": "client",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@apollo/react-hooks": "^3.0.1",
+    "apollo-cache-inmemory": "^1.6.3",
+    "apollo-client": "^2.6.4",
+    "apollo-link-context": "^1.0.18",
+    "apollo-link-http": "^1.5.15",
+    "google-palette": "^1.1.0",
+    "graphql": "^14.5.4",
+    "graphql-tag": "^2.10.1",
+    "image-data-uri": "^2.0.1",
+    "jwt-decode": "^2.2.0",
+    "koa-compose": "^4.1.0",
+    "mapbox-gl": "^1.7.0",
+    "moment": "^2.24.0",
+    "react": "^16.9.0",
+    "react-csv": "^1.1.1",
+    "react-dom": "^16.9.0",
+    "react-mapbox-gl": "^4.7.3",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "^3.4.0",
+    "react-toastify": "^5.4.0",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^0.88.2",
+    "victory": "^33.1.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "proxy": "http://localhost:5000",
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
