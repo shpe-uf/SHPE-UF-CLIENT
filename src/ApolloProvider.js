@@ -9,7 +9,7 @@ import { setContext } from "apollo-link-context";
 let port = process.env.PORT || 5000;
 
 const httpLink = createHttpLink({
-  uri: "https://apollo-shpe-uf.herokuapp.com/"
+  uri: "https://shpe-uf.herokuapp.com/"
 });
 
 const authLink = setContext(() => {
