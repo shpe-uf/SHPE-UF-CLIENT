@@ -12,4 +12,4 @@ Runs the client in development mode, on develop it uses localhost:5000 as server
 
 #Build scripts
 
-Build scripts are not included in this readme beacause the build is deployed on Netlify, which runs these for us
+Build scripts are not included in this readme beacause the build is deployed on Netlify, which runs these for us.
