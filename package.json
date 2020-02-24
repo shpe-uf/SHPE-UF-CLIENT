@@ -33,7 +33,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "https://shpe-uf.herokuapp.com/",
+  "proxy": "https://membershpeuf.netlify.com/",
   "eslintConfig": {
     "extends": "react-app"
   },
