@@ -25,6 +25,8 @@ import PointsBar from "../components/PointsBar";
 import UserEventsTable from "../components/UserEventsTable";
 import UserTasksTable from "../components/UserTasksTable";
 import TasksCards from "../components/TasksCards";
+import BookmarkedTasksCards from "../components/BookmarkedTasksCards";
+
 
 function Points() {
   const [activeItem, setActiveItem] = useState("Your Points");
@@ -220,13 +222,38 @@ function Points() {
             <Grid stackable>
               {user && user.message && user.message !== undefined && (
                 <Grid.Row>
-                  <Grid.Column>
+                  <Grid.Column width={16}>
                     <div className="ui warning message">
                       <p>{user.message}</p>
                     </div>
                   </Grid.Column>
                 </Grid.Row>
               )}
+              <Grid.Row>
+                <h4>Bookmarked Tasks</h4>
+              </Grid.Row>
+              <Grid.Row>
+                <Grid.Column>
+                  <Responsive {...Responsive.onlyComputer}>
+                    <Card.Group itemsPerRow={4}>
+                      <BookmarkedTasksCards user={user} />
+                    </Card.Group>
+                  </Responsive>
+                  <Responsive {...Responsive.onlyTablet}>
+                    <Card.Group itemsPerRow={2}>
+                      <BookmarkedTasksCards user={user} />
+                    </Card.Group>
+                  </Responsive>
+                  <Responsive {...Responsive.onlyMobile}>
+                    <Card.Group itemsPerRow={1}>
+                      <BookmarkedTasksCards user={user} />
+                    </Card.Group>
+                  </Responsive>
+                </Grid.Column>
+              </Grid.Row>
+              <Grid.Row>
+                <h4>Unbookmarked Tasks</h4>
+              </Grid.Row>
               <Grid.Row>
                 <Grid.Column>
                   <Responsive {...Responsive.onlyComputer}>
@@ -273,6 +300,10 @@ const FETCH_USER_QUERY = gql`
         points
       }
       tasks {
+        name
+        points
+      }
+      bookmarkedTasks {
         name
         points
       }
