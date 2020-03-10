@@ -151,6 +151,7 @@ function CorporationTable({ corporations }) {
                     <Table.Cell textAlign="center">
                       <Button
                         icon
+                        color="red"
                         onClick={()=>{
                           deleteCorporation(corporation);
                         }}
@@ -182,6 +183,12 @@ function CorporationTable({ corporations }) {
                     floated="left"
                     content="Close"
                     onClick={()=> closeModal("viewCorporation")}
+                  />
+                  <Button
+                    content="Edit Company"
+                    icon="text cursor"
+                    labelPosition="left"
+                    floated="right"
                   />
                   {/* <Button 
                     color="teal"
