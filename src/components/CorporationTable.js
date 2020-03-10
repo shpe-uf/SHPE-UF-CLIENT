@@ -54,7 +54,6 @@ function CorporationTable({ corporations }) {
       setCorporationInfo(corporationInfo);
     }
 
-    
 
     function deleteCorporation(corporationInfo) {
 
@@ -151,11 +150,12 @@ function CorporationTable({ corporations }) {
                     </Table.Cell>
                     <Table.Cell textAlign="center">
                       <Button
+                        icon
                         onClick={()=>{
                           deleteCorporation(corporation);
                         }}
                       >
-                        <Icon name="x" />
+                        <Icon name="x"/>
                       </Button>
                     </Table.Cell>
                   </Table.Row>
