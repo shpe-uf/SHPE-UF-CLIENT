@@ -119,7 +119,7 @@ function CorporateDatabase() {
             <Grid.Column>
               <Button
                 content="Add Corporation"
-                icon="pencil"
+                icon="add"
                 labelPosition="left"
                 onClick={() => openModal()}
                 floated="right"
