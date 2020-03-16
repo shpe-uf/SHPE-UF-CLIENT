@@ -61,6 +61,7 @@ function CorporateDatabase() {
     variables: values
   });
 
+
   function createCorporation() {
     addCorporation();
     closeModal();
