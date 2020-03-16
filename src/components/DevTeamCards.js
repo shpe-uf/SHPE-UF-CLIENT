@@ -23,8 +23,8 @@ function DevTeamCards() {
       />
       <Card
         fluid
-        image={cesar}
-        header="César González Peláez"
+        image={juan}
+        header="Juan Suhr"
         meta="Scrum Master"
         />
       <Card
@@ -61,12 +61,6 @@ function DevTeamCards() {
         fluid
         image={placeholder}
         header="Gabriel Rodriguez Torres"
-        meta="Developer"
-      />
-      <Card
-        fluid
-        image={juan}
-        header="Juan Suhr"
         meta="Developer"
       />
       <Card
