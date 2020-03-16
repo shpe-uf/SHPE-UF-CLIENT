@@ -78,10 +78,19 @@ function Title({ title, adminPath, shpeitoNetwork }) {
                       </Dropdown.Menu>
                     </Dropdown>
                   </div>
-                )}
+                )} 
 
                 {shpeitoNetwork && (
-                <DropdownMenu></DropdownMenu>
+                  <div className="text-white">
+                    <Link className="text-white" to="/admin">
+                      SHPEito Network
+                    </Link>
+                    <Icon
+                      style={{ marginLeft: 8, marginRight: 8 }}
+                      name="angle right"
+                    />
+                    <DropdownMenu title = "Major"></DropdownMenu>
+                  </div>
                 )}
               </Grid.Column>
             </Grid.Row>
