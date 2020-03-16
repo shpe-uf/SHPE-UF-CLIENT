@@ -221,17 +221,20 @@ function CorporationTable({ corporations }) {
           <h2>Edit Corporation</h2>
         </Modal.Header>
         <Modal.Content>
-          <Segment.Group className="segment-spacing">
-          <CorporationProfileForm
-            // errors = {errors}
-            corporation = {corporationInfo}
-            closeModal = {closeModal}
+        <Grid>
+            <Grid.Row>
+              <Grid.Column>
+              <CorporationProfileForm
+                // errors = {errors}
+                corporation = {corporationInfo}
+                closeModal = {closeModal}
 
-            // onSubmit = {onSubmit}
+              // onSubmit = {onSubmit}
 
-          />
-
-            </Segment.Group>
+            />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
         </Modal.Content>
       </Modal>
         </div>

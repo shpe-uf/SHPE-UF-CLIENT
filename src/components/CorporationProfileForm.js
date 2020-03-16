@@ -63,6 +63,7 @@ function CorporationProfileForm({corporation, closeModal}) {
         }
       ) {
         setErrors(false)
+        console.log(corporationData);
       },
       onError(err) {
         console.log(err);
@@ -340,7 +341,7 @@ function CorporationProfileForm({corporation, closeModal}) {
                     type="reset"
                     color="grey"
                     onClick={() => closeModal("editCorporation")}
-                  >
+                >
                     Cancel
                   </Button>
                 <Button type="submit" floated="right">
