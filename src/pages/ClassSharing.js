@@ -31,6 +31,7 @@ import Title from "../components/Title";
 import cesar from "../assets/images/team/2019-2020/cesar.png";
 import { findValuesAddedToEnums } from "graphql/utilities/findBreakingChanges";
 import MatchCards from "../components/MatchCards";
+import DropdownMenu from "../components/DropdownMenu";
 
 function ClassSharing() {
   var {
@@ -153,7 +154,7 @@ function ClassSharing() {
 
   return (
     <div className="body">
-      <Title title="Class Sharing" />
+      <Title title="Class Sharing" shpeitoNetwork />
       <Container>
         <Grid stackable verticalAlign="top">
           <Grid.Row>
