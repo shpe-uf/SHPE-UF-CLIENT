@@ -75,7 +75,7 @@ function CorporationProfileForm({corporation, closeModal}) {
     function modifyCorporationCallback(){
       editCorporation();
       closeModal("editCorporation");
-      window.location.reload();
+      // window.location.reload();
     }
 
       return(
@@ -379,7 +379,7 @@ const EDIT_CORPORATION = gql `
      editCorporationInput: {
       name: $name
       logo: $logo
-      slogan: $slogan
+      slogan:m $slogan
       majors: $majors
       industries: $industries
       overview: $overview

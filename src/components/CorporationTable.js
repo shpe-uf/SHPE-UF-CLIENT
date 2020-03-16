@@ -225,13 +225,9 @@ function CorporationTable({ corporations }) {
             <Grid.Row>
               <Grid.Column>
               <CorporationProfileForm
-                // errors = {errors}
                 corporation = {corporationInfo}
                 closeModal = {closeModal}
-
-              // onSubmit = {onSubmit}
-
-            />
+              />
             </Grid.Column>
           </Grid.Row>
         </Grid>
