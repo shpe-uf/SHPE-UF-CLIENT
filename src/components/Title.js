@@ -3,7 +3,7 @@ import { Grid, Container, Icon, Dropdown } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import DropdownMenu from "../components/DropdownMenu";
 
-function Title({ title, adminPath, shpeitoNetwork }) {
+function Title({ title, adminPath}) {
   return (
     <div style={{ paddingBottom: 16 }}>
       <div className="masthead masthead-application">
@@ -79,19 +79,6 @@ function Title({ title, adminPath, shpeitoNetwork }) {
                     </Dropdown>
                   </div>
                 )} 
-
-                {shpeitoNetwork && (
-                  <div className="text-white">
-                    <Link className="text-white" to="/admin">
-                      SHPEito Network
-                    </Link>
-                    <Icon
-                      style={{ marginLeft: 8, marginRight: 8 }}
-                      name="angle right"
-                    />
-                    <DropdownMenu title = "Major"></DropdownMenu>
-                  </div>
-                )}
               </Grid.Column>
             </Grid.Row>
           </Grid>

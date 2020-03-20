@@ -154,78 +154,13 @@ function ClassSharing() {
 
   return (
     <div className="body">
-      <Title title="Class Sharing" shpeitoNetwork />
+      <Title title="SHPEito Network" shpeitoNetwork />
       <Container>
+        
+        <DropdownMenu/>
+        
         <Grid stackable verticalAlign="top">
           <Grid.Row>
-            <Grid.Column width={5}>
-              <h2>My Schedule</h2>
-              <Button
-                content="Add Class"
-                icon="plus"
-                labelPosition="left"
-                onClick={() => openModal("addClass")}
-              />{" "}
-              {getClasses.length > 0 ? (
-                <Table selectable striped unstackable>
-                  <Table.Header>
-                    <Table.Row>
-                      <Table.HeaderCell width={8} textAlign="left">
-                        Course Code
-                      </Table.HeaderCell>
-                      <Table.HeaderCell />
-                    </Table.Row>
-                  </Table.Header>
-                  <Table.Body>
-                    {getClasses &&
-                      getClasses.map(classTemp => (
-                        <Table.Row>
-                          <Table.Cell
-                            textAlign="left"
-                            width={5}
-                            onClick={() => {
-                              getDisplayClass(classTemp.code);
-                              getClass({
-                                variables: {
-                                  code: classTemp.code
-                                }
-                              });
-                              getDisplayUsers(classUsers);
-                              openModal("displayClass");
-                            }}
-                            key={classTemp.code}
-                          >
-                            {classTemp.code}
-                          </Table.Cell>
-                          <Table.Cell width={3}>
-                            <Button
-                              size="mini"
-                              floated="right"
-                              color="red"
-                              onClick={() => {
-                                deleteClass({
-                                  variables: {
-                                    code: classTemp.code,
-                                    username
-                                  }
-                                });
-                                window.location.reload();
-                              }}
-                              icon="times"
-                            />
-                          </Table.Cell>
-                        </Table.Row>
-                      ))}
-                  </Table.Body>{" "}
-                </Table>
-              ) : (
-                <Segment placeholder compact>
-                  <Header icon textAlign="center">
-                    <p>It seems like there are no classes at this moment.</p>
-                  </Header>
-                </Segment>
-              )}{" "}
-            </Grid.Column>
             <Grid.Column width={11}>
               <h2>My Matches</h2>
               <p></p>
