@@ -78,7 +78,7 @@ function ClassSharing() {
       userId: id
     }
   });
-  console.log(id);
+  //console.log(id);
 
   if (data.getUser) {
     getClasses = data.getUser.classes;
@@ -96,7 +96,7 @@ function ClassSharing() {
     getMatches = dataM.getMatches;
   }
 
-  console.log(getMatches);
+  //console.log(getMatches);
 
   var classUsers = [];
   const [getClass, { data: getClassData, loading: loadingClass }] = useMutation(
