@@ -1,48 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import { Dropdown } from "semantic-ui-react";
 
-class DropdownMenu extends React.Component {
-  constructor(props) {
-    super(props);
-    //console.log("PROPS", this.state.title);
-    this.state = {
-      title: ""
-    };
-  }
-  render() {
+function DropdownMenu () {
+
+  var [title, setTitle] = useState("Major");
+
+
     return (
-      <Dropdown inline text={this.state.title}>
+      <Dropdown inline text= {title}>
         <Dropdown.Menu>
           <Dropdown.Item
             text="Major"
-            onClick={() => {
-              this.state.title = "TITLE";
+            onClick={() => { setTitle(title = "Major")
             }}
           />
           <Dropdown.Item
             text="Year"
-            onClick={() => console.log("Clicking YEAR")}
+            onClick={() => { setTitle(title = "Year")
+          }}
           />
           <Dropdown.Item
             text="Country of Origin"
-            onClick={() => console.log("Clicking COUNTRY OF ORIGIN")}
+            onClick={() => { setTitle(title = "Country of Origin")
+            }}
           />
           <Dropdown.Item
             text="Sex"
-            onClick={() => console.log("Clicking SEX")}
+            onClick={() => { setTitle(title = "Sex")
+            }}
           />
           <Dropdown.Item
             text="Ethnicity"
-            onClick={() => console.log("Clicking ETHNICITY")}
+            onClick={() => { setTitle(title = "Ethnicity")
+            }}
           />
           <Dropdown.Item
             text="Class Sharing"
-            onClick={() => console.log("Clicking CLASS SHARING")}
+            onClick={() => { setTitle(title = "Class Sharing")
+            }}
           />
         </Dropdown.Menu>
       </Dropdown>
     );
   }
-}
+
 
 export default DropdownMenu;
