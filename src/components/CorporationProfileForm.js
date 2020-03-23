@@ -6,8 +6,7 @@ import gql from "graphql-tag";
 import majorOptions from "../assets/options/major.json";
 import industryOptions from "../assets/options/industry.json";
 
-import { Grid, Image, Button, Icon, List, Modal, Form } from "semantic-ui-react";
-import { GraphQLSkipDirective } from "graphql";
+import { Image, Button, Form } from "semantic-ui-react";
 
 function CorporationProfileForm({corporation, closeModal}) {
   
@@ -44,38 +43,39 @@ function CorporationProfileForm({corporation, closeModal}) {
       businessModel: corporation.businessModel,
       newsLink: corporation.newsLink,
       applyLink: corporation.applyLink,
-      academia: corporation.academia,
-      govContractor: corporation.govContractor,
-      nonProfit: corporation.nonProfit,
-      visaSponsor: corporation.visaSponsor,
-      shpeSponsor: corporation.shpeSponsor,
-      industryPartnership: corporation.industryPartnership,
-      fallBBQ: corporation.fallBBQ,
-      springBBQ: corporation.springBBQ,
-      nationalConvention: corporation.nationalConvention
+      academia: corporation.academia.toString(),
+      govContractor: corporation.govContractor.toString(),
+      nonProfit: corporation.nonProfit.toString(),
+      visaSponsor: corporation.visaSponsor.toString(),
+      shpeSponsor: corporation.shpeSponsor.toString(),
+      industryPartnership: corporation.industryPartnership.toString(),
+      fallBBQ: corporation.fallBBQ.toString(),
+      springBBQ: corporation.springBBQ.toString(),
+      nationalConvention: corporation.nationalConvention.toString()
     })
-  
-    const [editCorporation, { loading }] = useMutation(EDIT_CORPORATION, {
+    
+
+    const [editCorporationProfile, { loading }] = useMutation(EDIT_CORPORATION, {
       update(
         _,
         {
-          data: { editedCorporation: corporationData }
+          data: { editCorporation: corporationData }
         }
       ) {
-        setErrors(false)
+        setErrors(false);
         console.log(corporationData);
       },
       onError(err) {
         console.log(err);
-        setErrors(err.graphQLErrors[0].extensions.exception.errors);
+        //setErrors(err.graphQLErrors[0].extensions.exception.errors);
       },
       variables: values
     });
   
     function modifyCorporationCallback(){
-      editCorporation();
+      editCorporationProfile();
       closeModal("editCorporation");
-      // window.location.reload();
+      window.location.reload();
     }
 
       return(
@@ -96,7 +96,6 @@ function CorporationProfileForm({corporation, closeModal}) {
         >
                 {logoFile === "" ? (
                   <Image
-                    fluid
                     rounded
                     size = "small"
                     src={corporation.logo}
@@ -140,7 +139,8 @@ function CorporationProfileForm({corporation, closeModal}) {
                 <Form.Group widths="equal">
                   <Form.Dropdown
                     label="Majors"
-                    value={values.majors}
+                    //value={values.majors}
+                    placeholder={values.majors}
                     fluid multiple selection 
                     options={majorOptions}
                     onChange={(param, data) => {
@@ -154,7 +154,7 @@ function CorporationProfileForm({corporation, closeModal}) {
                     fluid multiple selection 
                     value={values.industries}
                     options={industryOptions}
-                    onChange={(param, data) => {
+                    onChange={(param,data) => {
                       values.industries = data.value;
                     }}
                     error={errors.industries ? true : false}
@@ -349,59 +349,59 @@ function CorporationProfileForm({corporation, closeModal}) {
                 </Button>
               </Form>
         </>
-    );
+    )
 }
 
-const EDIT_CORPORATION = gql `
- mutation editCorporation(
-  $name: String!
-  $logo: String!
-  $slogan: String!
-  $majors: [String!]!
-  $industries: [String!]!
-  $overview: String!
-  $mission: String!
-  $goals: String!
-  $businessModel: String!
-  $newsLink: String!
-  $applyLink: String!
-  $academia: String!
-  $govContractor: String!
-  $nonProfit: String!
-  $visaSponsor: String!
-  $shpeSponsor: String!
-  $industryPartnership: String!
-  $fallBBQ: String!
-  $springBBQ: String!
-  $nationalConvention: String!
- ) {
-   editCorporation(
-     editCorporationInput: {
-      name: $name
-      logo: $logo
-      slogan:m $slogan
-      majors: $majors
-      industries: $industries
-      overview: $overview
-      mission: $mission
-      goals: $goals
-      businessModel: $businessModel
-      newsLink: $newsLink
-      applyLink: $applyLink
-      academia: $academia
-      govContractor: $govContractor
-      nonProfit: $nonProfit
-      visaSponsor: $visaSponsor
-      shpeSponsor: $shpeSponsor
-      industryPartnership: $industryPartnership
-      fallBBQ: $fallBBQ
-      springBBQ: $springBBQ
-      nationalConvention: $nationalConvention
-     }
-   ){
-     name
-   }
- }
-`
+const EDIT_CORPORATION = gql`
+  mutation editCorporation(
+    $name: String!
+    $logo: String!
+    $slogan: String!
+    $majors: [String!]!
+    $industries: [String!]!
+    $overview: String!
+    $mission: String!
+    $goals: String!
+    $businessModel: String!
+    $newsLink: String!
+    $applyLink: String!
+    $academia: String!
+    $govContractor: String!
+    $nonProfit: String!
+    $visaSponsor: String!
+    $shpeSponsor: String!
+    $industryPartnership: String!
+    $fallBBQ: String!
+    $springBBQ: String!
+    $nationalConvention: String!
+  ) {
+    editCorporation(
+      editCorporationInput: {
+        name: $name
+        logo: $logo
+        slogan: $slogan
+        majors: $majors
+        industries: $industries
+        overview: $overview
+        mission: $mission
+        goals: $goals
+        businessModel: $businessModel
+        newsLink: $newsLink
+        applyLink: $applyLink
+        academia: $academia
+        govContractor: $govContractor
+        nonProfit: $nonProfit
+        visaSponsor: $visaSponsor
+        shpeSponsor: $shpeSponsor
+        industryPartnership: $industryPartnership
+        fallBBQ: $fallBBQ
+        springBBQ: $springBBQ
+        nationalConvention: $nationalConvention
+      }
+    ) {
+      name
+    }
+  }
+`;
 
 export default CorporationProfileForm;

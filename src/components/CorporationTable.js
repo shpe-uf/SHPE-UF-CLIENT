@@ -8,13 +8,10 @@ import {
   Segment,
   Header,
   Modal,
-  Grid,
-  Form,
-  Image
+  Grid
 }from "semantic-ui-react";
 import gql from "graphql-tag";
 import { useMutation } from "@apollo/react-hooks";
-import { useForm } from "../util/hooks";
 
 import CorporationProfile from "../components/CorporationProfile";
 import CorporationProfileForm from "../components/CorporationProfileForm";
@@ -37,9 +34,9 @@ function CorporationTable({ corporations }) {
     setCorporationInfo(corporationInfo);
   }
   
-  function editCorporationUpdate(state) {
-    setEditCorporationModal(state);
-  }
+  // function editCorporationUpdate(state) {
+  //   setEditCorporationModal(state);
+  // }
 
 
   /**
