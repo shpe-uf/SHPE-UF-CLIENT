@@ -79,7 +79,6 @@ function ClassSharing() {
 
   if (data.getUser) {
     getClasses = data.getUser.classes;
-    //console.log(data.getUser.classes);
   }
 
   var { data: dataM, refetch } = useQuery(GET_MATCHES_QUERY, {
@@ -92,7 +91,6 @@ function ClassSharing() {
 
   if (dataM.getMatches) {
     getMatches = dataM.getMatches;
-    console.log(dataM.getMatches);
   }
 
   var classUsers = [];
