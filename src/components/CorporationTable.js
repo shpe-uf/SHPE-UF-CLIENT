@@ -77,7 +77,7 @@ function CorporationTable({ corporations }) {
       removeCorporation({
         variables: {name: corporationInfo.name}
       });
-      window.location.reload();
+      // window.location.reload();
     }
 
   return (

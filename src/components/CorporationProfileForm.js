@@ -10,6 +10,7 @@ import { Image, Button, Form } from "semantic-ui-react";
 
 function CorporationProfileForm({corporation, closeModal}) {
   
+    console.log(corporation);
     //State for error handling
     const [errors, setErrors] = useState({});
 
@@ -67,7 +68,7 @@ function CorporationProfileForm({corporation, closeModal}) {
       },
       onError(err) {
         console.log(err);
-        //setErrors(err.graphQLErrors[0].extensions.exception.errors);
+        setErrors(err.graphQLErrors[0].extensions.exception.errors);
       },
       variables: values
     });
@@ -75,7 +76,7 @@ function CorporationProfileForm({corporation, closeModal}) {
     function modifyCorporationCallback(){
       editCorporationProfile();
       closeModal("editCorporation");
-      window.location.reload();
+      // window.location.reload();
     }
 
       return(
@@ -104,7 +105,6 @@ function CorporationProfileForm({corporation, closeModal}) {
                   />
                 ) : (
                   <Image
-                    fluid
                     rounded
                     size = "small"
                     src={corporation.logo}
@@ -140,7 +140,6 @@ function CorporationProfileForm({corporation, closeModal}) {
                   <Form.Dropdown
                     label="Majors"
                     //value={values.majors}
-                    placeholder={values.majors}
                     fluid multiple selection 
                     options={majorOptions}
                     onChange={(param, data) => {
@@ -215,8 +214,8 @@ function CorporationProfileForm({corporation, closeModal}) {
                     <input
                       type="checkbox"
                       name="academia"
-                      defaultChecked={values.academia}
-                      value={values.academia === "true" ? false : true}
+                      defaultChecked={values.academia === "true" ? true : false}
+                      value={values.academia === "true" ? false : true }
                       onChange={onChange}
                     />
                     <label>
@@ -229,8 +228,8 @@ function CorporationProfileForm({corporation, closeModal}) {
                     <input
                       type="checkbox"
                       name="govContractor"
-                      defaultChecked={values.govContractor}
-                      value={values.govContractor === "true" ? false : true}
+                      defaultChecked={values.govContractor == "true" ? true : false}
+                      value={values.govContractor === "true" ? false : true }
                       onChange={onChange}
                     />
                     <label>
@@ -243,7 +242,7 @@ function CorporationProfileForm({corporation, closeModal}) {
                     <input
                       type="checkbox"
                       name="nonProfit"
-                      defaultChecked={values.nonProfit}
+                      defaultChecked={values.nonProfit === "true" ? true : false}
                       value={values.nonProfit === "true" ? false : true}
                       onChange={onChange}
                     />
@@ -257,7 +256,7 @@ function CorporationProfileForm({corporation, closeModal}) {
                     <input
                       type="checkbox"
                       name="visaSponsor"
-                      defaultChecked={values.visaSponsor}
+                      defaultChecked={values.visaSponsor === "true" ? true : false}
                       value={values.visaSponsor === "true" ? false : true}
                       onChange={onChange}
                     />
@@ -271,7 +270,7 @@ function CorporationProfileForm({corporation, closeModal}) {
                     <input
                       type="checkbox"
                       name="shpeSponsor"
-                      defaultChecked={values.shpeSponsor}
+                      defaultChecked={values.shpeSponsor === "true" ? true : false}
                       value={values.shpeSponsor === "true" ? false : true}
                       onChange={onChange}
                     />
@@ -285,8 +284,8 @@ function CorporationProfileForm({corporation, closeModal}) {
                     <input
                       type="checkbox"
                       name="industryPartnership"
-                      defaultChecked={values.industryPartnership}
-                      value={values.industryPartnership === "true" ? false : true}
+                      defaultChecked={values.industryPartnership === "true" ? true : false}
+                      value={values.industryPartnership === "true" ? false :true}
                       onChange={onChange}
                     />
                     <label>
@@ -299,8 +298,8 @@ function CorporationProfileForm({corporation, closeModal}) {
                     <input
                       type="checkbox"
                       name="fallBBQ"
-                      defaultChecked={values.fallBBQ}
-                      value={values.fallBBQ === "true" ? false : true}
+                      defaultChecked={values.fallBBQ === "true" ? true : false}
+                      value={values.fallBBQ === "true" ? false :true}
                       onChange={onChange}
                     />
                     <label>
@@ -313,7 +312,7 @@ function CorporationProfileForm({corporation, closeModal}) {
                     <input
                       type="checkbox"
                       name="springBBQ"
-                      defaultChecked={values.springBBQ}
+                      defaultChecked={values.springBBQ === "true" ? true : false}
                       value={values.springBBQ === "true" ? false : true}
                       onChange={onChange}
                     />
@@ -327,8 +326,7 @@ function CorporationProfileForm({corporation, closeModal}) {
                     <input
                       type="checkbox"
                       name="nationalConvention"
-                      defaultChecked={values.nationalConvention}
-                      defaultChecked={values.nationalConvention}
+                      defaultChecked={values.nationalConvention === "true" ? true : false}
                       value={values.nationalConvention === "true" ? false : true}
                       onChange={onChange}
                     />
