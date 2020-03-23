@@ -14,7 +14,7 @@ function DropdownMenu() {
   return (
     <Menu secondary>
       <Menu.Item>
-        <Dropdown item text={title}>
+        <Dropdown className='brand-name' item text={title}>
           <Dropdown.Menu>
             <Dropdown.Item
               text="Major"
@@ -77,12 +77,13 @@ function DropdownMenu() {
 
       <Menu.Menu position="right">
         <Menu.Item>
-          <Dropdown
+          <Dropdown 
+            className='background-dropdown'
             placeholder={searchTitle}
             item
             search
             options={options}
-            onClick={() => console.log("SET FILTER")}
+            onClose={() => console.log("SET FILTER")}
           />
         </Menu.Item>
       </Menu.Menu>

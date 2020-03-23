@@ -577,6 +577,23 @@ th {
   color: rgb(220, 42, 42);
 }
 
+.background-dropdown {
+  font-size: 2rem !important;
+  font-family: "heading-font" !important;
+  padding: 16px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: var(--primary) !important;
+  color: var(--white) !important;
+  
+}
+.default-text{
+  color: white;
+}
+.search{
+  color:white;
+}
+
 .fa-inbox,
 .fa-frown,
 .fa-exclamation-circle {
