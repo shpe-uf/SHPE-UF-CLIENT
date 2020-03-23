@@ -55,7 +55,7 @@ function App() {
 
   var permission = [];
 
-  if (data.getUser)
+  if (data && data.getUser)
   {
     permission = data.getUser.permission;
   }
