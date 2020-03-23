@@ -1,9 +1,6 @@
 import React, { useContext } from "react";
 import { Route, Redirect } from "react-router-dom";
-import { AuthContext } from "../context/auth";
-import jwtDecode from "jwt-decode";
-import gql from "graphql-tag";
-import { useQuery } from "@apollo/react-hooks";
+import Home from "../pages/public/Home";
 
 function AdminRoute({ component: Component, permission: permission, ...rest }) {
   console.log(permission);
@@ -11,7 +8,10 @@ function AdminRoute({ component: Component, permission: permission, ...rest }) {
     <Route
       {...rest}
       render={props =>
-        (permission === 'admin') ? <Component {...props}/> : <Redirect to="/" />
+        <>
+        {(permission === 'admin') ? <Component {...props}/> : <Route component={Home} />}
+        {(permission === 'user') && <Redirect to="/"/>}
+        </>
       }
     />
   )
