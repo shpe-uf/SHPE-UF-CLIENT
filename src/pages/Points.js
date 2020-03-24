@@ -8,7 +8,8 @@ import {
   Menu,
   Segment,
   Responsive,
-  Card
+  Card,
+  Divider
 } from "semantic-ui-react";
 
 import { ToastContainer, toast } from "react-toastify";
@@ -44,8 +45,6 @@ function Points() {
       userId: id
     }
   }).data.getUser;
-
-  console.log(user);
 
   const [redeemPointsModal, setRedeemPointsModal] = useState(false);
 
@@ -251,6 +250,7 @@ function Points() {
                   </Responsive>
                 </Grid.Column>
               </Grid.Row>
+              <h2></h2>
               <Grid.Row>
                 <h4>Unbookmarked Tasks</h4>
               </Grid.Row>
@@ -303,10 +303,7 @@ const FETCH_USER_QUERY = gql`
         name
         points
       }
-      bookmarkedTasks {
-        name
-        points
-      }
+      bookmarkedTasks
     }
   }
 `;
