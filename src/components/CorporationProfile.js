@@ -65,10 +65,6 @@ function CorporationProfile({corporation}) {
                   <List.Content>Attending Fall BBQ with Industry</List.Content>
                 </List.Item>
                 <List.Item>
-                  <List.Icon name={corporation.fallBBQ ? "check" : "cancel"} color={corporation.fallBBQ ? "green" : "red"}/>
-                  <List.Content>Attending Fall BBQ with Industry</List.Content>
-                </List.Item>
-                <List.Item>
                   <List.Icon name={corporation.springBBQ ? "check" : "cancel"} color={corporation.springBBQ ? "green" : "red"}/>
                   <List.Content>Attending Spring BBQ with Industry</List.Content>
                 </List.Item>
