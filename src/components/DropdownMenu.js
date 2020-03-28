@@ -10,11 +10,16 @@ function DropdownMenu() {
     { text: "Biomedical Engineering" }
   ]);
   var searchTitle = "Search " + title;
-  
+  function resultsName(resultsName) {
+    return (
+      //<Dropdown.Item text={resultsName.text}/>
+      console.log(resultsName.text)
+    );
+  }
   return (
     <Menu secondary>
       <Menu.Item>
-        <Dropdown className='brand-name' item text={title}>
+        <Dropdown className="brand-name" item text={title}>
           <Dropdown.Menu>
             <Dropdown.Item
               text="Major"
@@ -32,43 +37,35 @@ function DropdownMenu() {
               text="Year"
               onClick={() => {
                 setTitle((title = "Year"));
-                setOptions([
-                  { text: "1st Year" },
-                  { text: "2nd Year" }]);
+                setOptions([{ text: "1st Year" }, { text: "2nd Year" }]);
               }}
             />
             <Dropdown.Item
               text="Country of Origin"
               onClick={() => {
                 setTitle((title = "Country of Origin"));
-                setOptions([
-                  { text: "Cuba" },
-                  { text: "Venezuela" }]);
+                setOptions([{ text: "Cuba" }, { text: "Venezuela" }]);
               }}
             />
             <Dropdown.Item
               text="Sex"
               onClick={() => {
                 setTitle((title = "Sex"));
-                setOptions([
-                  { text: "Female" }, 
-                  { text: "Male" }]);
+                setOptions([{ text: "Female" }, { text: "Male" }]);
               }}
             />
             <Dropdown.Item
               text="Ethnicity"
               onClick={() => {
                 setTitle((title = "Ethnicity"));
-                setOptions([
-                  { text: "Hispanic/Latino" }]);
+                setOptions([{ text: "Hispanic/Latino" }]);
               }}
             />
             <Dropdown.Item
               text="Class Sharing"
               onClick={() => {
                 setTitle((title = "Class Sharing"));
-                setOptions([
-                  { text: "COP4600" }]);
+                setOptions([{ text: "COP4600" }]);
               }}
             />
           </Dropdown.Menu>
@@ -77,13 +74,13 @@ function DropdownMenu() {
 
       <Menu.Menu position="right">
         <Menu.Item>
-          <Dropdown 
-            className='background-dropdown'
+          <Dropdown
+            className="background-dropdown"
             placeholder={searchTitle}
             item
-            search
-            options={options}
-            onClose={() => console.log("SET FILTER")}
+            options={options.map(nameOfOption => (
+              <Dropdown.Item text={nameOfOption.text} onClick={()=> console.log(nameOfOption)}></Dropdown.Item>
+            ))}
           />
         </Menu.Item>
       </Menu.Menu>
