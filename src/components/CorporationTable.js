@@ -73,9 +73,10 @@ function CorporationTable({ corporations }) {
       }
     }
 
-    function deleteCorporation(corporationInfo) {  
+    function deleteCorporation(corporation) {  
+      console.log(corporation.id);
       removeCorporation({
-        variables: {name: corporationInfo.name}
+        variables: {id: corporation.id}
       });
       // window.location.reload();
     }
@@ -161,6 +162,7 @@ function CorporationTable({ corporations }) {
                         icon
                         color="red"
                         onClick={()=>{
+                          console.log(corporation);
                           deleteCorporation(corporation);
                         }}
                       >
@@ -237,11 +239,13 @@ function CorporationTable({ corporations }) {
 }
 
 const DELETE_CORPORATION = gql`
- mutation deleteCorporation(
-   $name: String!
+ mutation deleteCorporation (
+   $id: ID!
  ) {
-   deleteCorporation(
-    name: $name
+   deleteCorporation (
+     deleteCorporationInput: {
+      id: $id
+     }
    )
  }
 `;

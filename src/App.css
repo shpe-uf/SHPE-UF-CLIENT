@@ -158,7 +158,6 @@ h5 {
 .ui.inverted.menu {
   border-radius: 0px !important;
   box-shadow: none;
-  margin-bottom: 0px;
   background-color: var(--primary) !important;
   height: 64px;
 }
