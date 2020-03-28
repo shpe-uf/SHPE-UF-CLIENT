@@ -69,33 +69,31 @@ function ClassSharing() {
     username: username
   });
 
-  var getClasses = [];
-
-  //var { data } = 0
   var { data } = useQuery(FETCH_USER_QUERY, {
     variables: {
       userId: id
     }
   });
-  console.log(id);
+
+  var getClasses = [];
 
   if (data.getUser) {
     getClasses = data.getUser.classes;
+    //console.log(data.getUser.classes);
   }
 
-  var getMatches = [];
-
-  var { data: dataM } = useQuery(GET_MATCHES_QUERY, {
+  var { data: dataM, refetch } = useQuery(GET_MATCHES_QUERY, {
     variables: {
       username
     }
   });
 
+  var getMatches = [];
+
   if (dataM.getMatches) {
     getMatches = dataM.getMatches;
+    console.log(dataM.getMatches);
   }
-
-  console.log(getMatches);
 
   var classUsers = [];
   const [getClass, { data: getClassData, loading: loadingClass }] = useMutation(
@@ -137,8 +135,9 @@ function ClassSharing() {
     }
   });
 
-  function addClassCallback() {
-    createClass();
+  async function addClassCallback() {
+    await createClass();
+    refetch();
   }
 
   function getDisplayClass(classCode) {
@@ -201,14 +200,14 @@ function ClassSharing() {
                               size="mini"
                               floated="right"
                               color="red"
-                              onClick={() => {
-                                deleteClass({
+                              onClick={async () => {
+                                await deleteClass({
                                   variables: {
                                     code: classTemp.code,
                                     username
                                   }
                                 });
-                                window.location.reload();
+                                refetch();
                               }}
                               icon="times"
                             />
@@ -310,7 +309,6 @@ function ClassSharing() {
                       <Button
                         floated="right"
                         type="submit"
-                        onClick={() => window.location.reload()}
                       >
                         Add
                       </Button>
@@ -369,13 +367,15 @@ function ClassSharing() {
                   <Button
                     floated="right"
                     color="red"
-                    onClick={() =>
-                      deleteClass({
-                        variables: {
-                          code: displayClass,
-                          username
-                        }
-                      })
+                    onClick={async () => {
+                        await deleteClass({
+                          variables: {
+                            code: displayClass,
+                            username
+                          }
+                        });
+                        refetch();
+                      }
                     }
                   >
                     Remove Class
