@@ -57,8 +57,6 @@ function CorporationTable({ corporations }) {
     
 
     function deleteCorporation(corporationInfo) {
-
-      console.log(corporationInfo);
   
       removeCorporation({
         variables: {name: corporationInfo.name}

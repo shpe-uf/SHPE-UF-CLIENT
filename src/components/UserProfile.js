@@ -8,13 +8,6 @@ import gql from "graphql-tag";
 import placeholder from "../assets/images/placeholder.png";
 
 function UserProfile({ user }) {
-  // console.log(user);
-  // const [value, setValue] = useState(user.permission);
-  //
-  // var permissionChange = (e, { value }) => {
-  //   console.log(value);
-  //   console.log("change");
-  // }
 
   return (
 

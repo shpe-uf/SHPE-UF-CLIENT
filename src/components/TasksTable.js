@@ -88,7 +88,7 @@ function TasksTable({ tasks }) {
 
     onError(err) {
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
-      console.log(err);
+      console.log(errors);
     },
 
     variables: values

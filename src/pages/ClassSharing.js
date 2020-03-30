@@ -79,7 +79,6 @@ function ClassSharing() {
 
   if (data.getUser) {
     getClasses = data.getUser.classes;
-    //console.log(data.getUser.classes);
   }
 
   var { data: dataM, refetch } = useQuery(GET_MATCHES_QUERY, {
@@ -92,7 +91,6 @@ function ClassSharing() {
 
   if (dataM.getMatches) {
     getMatches = dataM.getMatches;
-    console.log(dataM.getMatches);
   }
 
   var classUsers = [];
@@ -119,8 +117,8 @@ function ClassSharing() {
       setAddClassModal(false);
     },
     onError(err) {
-      console.log(err);
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
+      console.log(errors);
     },
     variables: values
   });
