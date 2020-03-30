@@ -17,7 +17,8 @@ import CorporationProfile from "../components/CorporationProfile";
 import CorporationProfileForm from "../components/CorporationProfileForm";
 
 
-function CorporationTable({ corporations }) {
+function CorporationTable({ corporations, deleteCorporation }) {
+  console.log(corporations);
   /**
    * STATES
    */
@@ -25,25 +26,17 @@ function CorporationTable({ corporations }) {
   const [viewCorporationModal, setViewCorporationModal] = useState(false);
   const [editCorporationModal, setEditCorporationModal] = useState(false);
 
-
   //State to keep track of the current corporation selected
   const [corporationInfo, setCorporationInfo] = useState({});
 
   //Setter function to update the state with the selected corporation
-  function getCorporationInfo(corporationInfo) {
-    setCorporationInfo(corporationInfo);
-  }
+  // function getCorporationInfo(corporationInfo) {
+  //   setCorporationInfo(corporationInfo);
+  // }
   
   // function editCorporationUpdate(state) {
   //   setEditCorporationModal(state);
   // }
-
-
-  /**
-   * MUTATIONS
-   */
-  //Mutation for Removing Corporations
-  const [removeCorporation] = useMutation(DELETE_CORPORATION);
 
 
   /**
@@ -69,17 +62,17 @@ function CorporationTable({ corporations }) {
           setViewCorporationModal(false);
           break;
         case "editCorporation":
+          setCorporationInfo({});
           setEditCorporationModal(false);
       }
     }
 
-    function deleteCorporation(corporation) {  
-      console.log(corporation.id);
-      removeCorporation({
-        variables: {id: corporation.id}
-      });
-      // window.location.reload();
-    }
+    // function removeCorporation(corporation) {  
+    //   deleteCorporation({
+    //     variables: {id: corporation.id}
+    //   });
+    //   // window.location.reload();
+    // }
 
   return (
     <>
@@ -152,7 +145,7 @@ function CorporationTable({ corporations }) {
                       <Button
                         icon = "info"
                         onClick={()=> {
-                          getCorporationInfo(corporation);
+                          setCorporationInfo(corporation);
                           openModal("viewCorporation");
                         }}
                       />
@@ -162,8 +155,9 @@ function CorporationTable({ corporations }) {
                         icon
                         color="red"
                         onClick={()=>{
-                          console.log(corporation);
-                          deleteCorporation(corporation);
+                          deleteCorporation({
+                            variables: {id: corporation.id}
+                          });
                         }}
                       >
                         <Icon name="x"/>
@@ -200,7 +194,7 @@ function CorporationTable({ corporations }) {
                     icon="edit"
                     onClick={()=>{
                       closeModal("viewCorporation");
-                      getCorporationInfo(corporationInfo);
+                      setCorporationInfo(corporationInfo);
                       openModal("editCorporation");
                     }}
                   />
@@ -238,7 +232,7 @@ function CorporationTable({ corporations }) {
   )
 }
 
-const DELETE_CORPORATION = gql`
+const DELETE_CORPORATION_MUTATION = gql`
  mutation deleteCorporation (
    $id: ID!
  ) {
@@ -246,7 +240,28 @@ const DELETE_CORPORATION = gql`
      deleteCorporationInput: {
       id: $id
      }
-   )
+   ){
+    name
+    logo
+    slogan
+    majors
+    industries
+    overview
+    mission
+    goals
+    businessModel
+    newsLink
+    applyLink
+    academia
+    govContractor
+    nonProfit
+    visaSponsor
+    shpeSponsor
+    industryPartnership
+    fallBBQ
+    springBBQ
+    nationalConvention
+   }
  }
 `;
 

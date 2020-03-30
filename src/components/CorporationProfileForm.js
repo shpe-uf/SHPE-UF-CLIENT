@@ -9,10 +9,20 @@ import industryOptions from "../assets/options/industry.json";
 import { Image, Button, Form } from "semantic-ui-react";
 
 function CorporationProfileForm({corporation, closeModal}) {
-  
-    console.log(corporation);
+
+
+    console.log("CorporationProfileForm re-rendered");
     //State for error handling
     const [errors, setErrors] = useState({});
+
+    // State to keep track of majors and corporations so that they show up in real time when added 
+    // or removed from the form
+    const [majors, setMajors] = useState(corporation.majors);
+    const [industries, setIndustries] = useState(corporation.industries);
+
+    // console.log(industries);
+      // setMajors(corporation.majors);
+      // setIndustries(corporation.industries);
 
     //State for image handling
     var [logoFile, setLogoFile] = useState({});
@@ -64,7 +74,6 @@ function CorporationProfileForm({corporation, closeModal}) {
         }
       ) {
         setErrors(false);
-        console.log(corporationData);
       },
       onError(err) {
         console.log(err);
@@ -139,22 +148,26 @@ function CorporationProfileForm({corporation, closeModal}) {
                 <Form.Group widths="equal">
                   <Form.Dropdown
                     label="Majors"
-                    //value={values.majors}
+                    name="majors"
                     fluid multiple selection 
+                    value={majors}  //take display data from the state
                     options={majorOptions}
                     onChange={(param, data) => {
-                      values.majors = data.value;
+                      setMajors(data.value);      //update the majors state
+                      values.majors = data.value; //update the values with the current data
                     }}
                     error={errors.majors ? true : false}
                   >
                   </Form.Dropdown>
                   <Form.Dropdown
                     label="Industries"
+                    name="industries"
                     fluid multiple selection 
-                    value={values.industries}
+                    value={industries}  //take display data from the state
                     options={industryOptions}
-                    onChange={(param,data) => {
-                      values.industries = data.value;
+                    onChange={(param, data) => {
+                      setIndustries(data.value);      //update the industries state
+                      values.industries = data.value; //update the values with the current data
                     }}
                     error={errors.industries ? true : false}
                   />

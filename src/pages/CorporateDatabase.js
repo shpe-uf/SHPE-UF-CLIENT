@@ -20,7 +20,16 @@ function CorporateDatabase() {
   var [logoFile, setLogoFile] = useState({});
   var [originalLogo, setOriginalLogo] = useState({});
 
+  /**
+   * MUTATIONS
+   */
+  //Mutation for Removing Corporations
+  const [deleteCorporation] = useMutation(DELETE_CORPORATION_MUTATION);
+
+  //mutation for retrieving company array
   var corporations = useQuery(FETCH_CORPORATIONS_QUERY).data.getCorporations;
+
+
 
   const { onChange, onSubmit, values } = useForm(createCorporation, {
     name: "",
@@ -65,8 +74,9 @@ function CorporateDatabase() {
   function createCorporation() {
     addCorporation();
     closeModal();
-    window.location.reload();
+    // window.location.reload();
   }
+
 
   const openModal = () => {
     setAddCorporationModal(true);
@@ -129,7 +139,9 @@ function CorporateDatabase() {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column>
-              <CorporationTable corporations={corporations}/>
+              <CorporationTable 
+              corporations={corporations}
+              deleteCorporation={deleteCorporation}/>
             </Grid.Column>
           </Grid.Row>
         </Grid>
