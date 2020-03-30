@@ -1,14 +1,17 @@
 import React, { useContext } from "react";
 import { Route, Redirect } from "react-router-dom";
-import { AuthContext } from "../context/auth";
+import Home from "../pages/public/Home";
 
-function AdminRoute({ component: Component, ...rest }) {
-
+function AdminRoute({ component: Component, permission: permission, ...rest }) {
+  console.log(permission);
   return (
     <Route
       {...rest}
       render={props =>
-        (localStorage.getItem('permission') === 'admin') ? <Component {...props}/> : <Redirect to="/" />
+        <>
+        {(permission === 'admin') ? <Component {...props}/> : <Route component={Home} />}
+        {(permission === 'user') && <Redirect to="/"/>}
+        </>
       }
     />
   )
