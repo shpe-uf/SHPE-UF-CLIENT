@@ -232,38 +232,4 @@ function CorporationTable({ corporations, deleteCorporation }) {
   )
 }
 
-const DELETE_CORPORATION_MUTATION = gql`
- mutation deleteCorporation (
-   $id: ID!
- ) {
-   deleteCorporation (
-     deleteCorporationInput: {
-      id: $id
-     }
-   ){
-    name
-    logo
-    slogan
-    majors
-    industries
-    overview
-    mission
-    goals
-    businessModel
-    newsLink
-    applyLink
-    academia
-    govContractor
-    nonProfit
-    visaSponsor
-    shpeSponsor
-    industryPartnership
-    fallBBQ
-    springBBQ
-    nationalConvention
-   }
- }
-`;
-
-
 export default CorporationTable;
