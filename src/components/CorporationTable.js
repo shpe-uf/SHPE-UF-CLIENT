@@ -52,6 +52,8 @@ function CorporationTable({ corporations, deleteCorporation }) {
         case "editCorporation":
           setEditCorporationModal(true);
           break;
+        default:
+          break;
       }
     };
   
@@ -64,6 +66,9 @@ function CorporationTable({ corporations, deleteCorporation }) {
         case "editCorporation":
           setCorporationInfo({});
           setEditCorporationModal(false);
+          break;
+        default:
+          break;
       }
     }
 
