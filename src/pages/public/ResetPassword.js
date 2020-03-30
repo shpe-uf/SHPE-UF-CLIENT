@@ -16,7 +16,7 @@ function ResetPassword(props){
   });
 
 
-  const [reset, { loading }] = useMutation(RESET_PASSWORD, {
+  const [reset] = useMutation(RESET_PASSWORD, {
     onError(err) {
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
     },

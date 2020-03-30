@@ -2,8 +2,6 @@ import React, { useContext, useState } from "react";
 import {
   Segment,
   Card,
-  Image,
-  Message,
   Table,
   Header,
   Grid,
@@ -11,25 +9,15 @@ import {
   Button,
   Modal,
   Form,
-  Icon,
-  List,
-  Label,
-  Tab,
-  Placeholder,
-  ListItem,
-  GridColumn,
   Responsive
 } from "semantic-ui-react";
 import gql from "graphql-tag";
-import { useQuery, useMutation, useLazyQuery } from "@apollo/react-hooks";
+import { useQuery, useMutation } from "@apollo/react-hooks";
 
-import placeholder from "../assets/images/team/placeholder.png";
 import { useForm } from "../util/hooks";
 import { AuthContext } from "../context/auth";
 
 import Title from "../components/Title";
-import cesar from "../assets/images/team/2019-2020/cesar.png";
-import { findValuesAddedToEnums } from "graphql/utilities/findBreakingChanges";
 import MatchCards from "../components/MatchCards";
 
 function ClassSharing() {
@@ -94,7 +82,7 @@ function ClassSharing() {
   }
 
   var classUsers = [];
-  const [getClass, { data: getClassData, loading: loadingClass }] = useMutation(
+  const [getClass] = useMutation(
     GET_CLASS_QUERY,
     {
       update(_, { data: { getClass } }) {
@@ -145,8 +133,6 @@ function ClassSharing() {
   function getDisplayUsers(users) {
     setDisplayUsers(users);
   }
-
-  var filteredRes = [];
 
   return (
     <div className="body">

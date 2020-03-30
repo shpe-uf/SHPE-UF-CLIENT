@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import {
   Form,
   Button,
@@ -9,7 +9,6 @@ import {
 import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
-import { AuthContext } from "../../context/auth";
 import { useForm } from "../../util/hooks";
 import ModalBasic from "../../components/ModalBasic"
 
@@ -21,7 +20,6 @@ import ethnicityOptions from "../../assets/options/ethnicity.json";
 import sexOptions from "../../assets/options/sex.json";
 
 function Register(props) {
-  const context = useContext(AuthContext);
   const [errors, setErrors] = useState({});
   const [openModal, setOpenModal] = useState(false);
 

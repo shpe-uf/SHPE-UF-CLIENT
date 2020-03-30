@@ -142,7 +142,7 @@ function MenuBar() {
                         Corporate Database
                       </Dropdown.Item>
                       <Dropdown.Item as={Link} to="/classSharing">
-                        Corporate Database
+                        Class Sharing
                       </Dropdown.Item>
                       <Dropdown.Item as={Link} to="/alumnidirectory">
                         Alumni Directory

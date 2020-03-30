@@ -34,6 +34,8 @@ function CorporationTable({ corporations }) {
         case "editCorporation":
           setEditCorporationModal(true);
           break;
+        default:
+          break;
       }
     };
   
@@ -46,6 +48,9 @@ function CorporationTable({ corporations }) {
         case "editCorporation":
           setCorporationInfo({});
           setEditCorporationModal(false);
+          break;
+        default:
+          break;
       }
     }
 
@@ -64,10 +69,6 @@ function CorporationTable({ corporations }) {
 
       window.location.reload();
     }
-
-    // function editCorporationUpdate(state) {
-    //   setEditCorporationModal(state);
-    // }
 
   return (
     <>
