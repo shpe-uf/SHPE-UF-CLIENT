@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Dropdown, Menu } from "semantic-ui-react";
+import { Dropdown, Menu, Label, Icon } from "semantic-ui-react";
 
 function DropdownMenu() {
   var [title, setTitle] = useState("Major");
@@ -10,12 +10,6 @@ function DropdownMenu() {
     { text: "Biomedical Engineering" }
   ]);
   var searchTitle = "Search " + title;
-  function resultsName(resultsName) {
-    return (
-      //<Dropdown.Item text={resultsName.text}/>
-      console.log(resultsName.text)
-    );
-  }
   return (
     <Menu secondary>
       <Menu.Item>
@@ -72,6 +66,13 @@ function DropdownMenu() {
         </Dropdown>
       </Menu.Item>
 
+<Label onRemove={(event,data)=>{
+  
+}}>
+  HELLO
+  <Icon name='delete'/>
+</Label>
+
       <Menu.Menu position="right">
         <Menu.Item>
           <Dropdown
@@ -79,9 +80,9 @@ function DropdownMenu() {
             placeholder={searchTitle}
             item
             options={options.map(nameOfOption => (
-              <Dropdown.Item text={nameOfOption.text} onClick={()=> console.log(nameOfOption)}></Dropdown.Item>
-            ))}
-          />
+              <Dropdown.Item text={nameOfOption.text} onClick={()=> console.log(nameOfOption.text)}></Dropdown.Item>
+              ))}
+              />
         </Menu.Item>
       </Menu.Menu>
     </Menu>
