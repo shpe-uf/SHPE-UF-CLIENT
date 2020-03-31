@@ -36,13 +36,37 @@ import Statistics from "./pages/Statistics";
 import Corporations from "./pages/Corporations";
 import AlumniDirectory from "./pages/AlumniDirectory";
 import ClassSharing from "./pages/ClassSharing";
+import jwtDecode from "jwt-decode";
+import gql from "graphql-tag";
+import { useQuery } from "@apollo/react-hooks";
 
 function App() {
-  console.log(localStorage);
+<<<<<<< HEAD
+=======
+  var decodedToken = [];
+
+  if (localStorage.getItem("jwtToken")) {
+    decodedToken = jwtDecode(localStorage.getItem("jwtToken"));
+  }
+
+  var { data } = useQuery(FETCH_USER_QUERY, {
+    variables: {
+      userId: decodedToken.id
+    }
+  });
+
+  var permission = [];
+
+  if (data && data.getUser)
+  {
+    permission = data.getUser.permission;
+  }
+
+>>>>>>> 4b88d9eaa10a7ffb1c944cb06ca4123221daef1f
   return (
     <AuthProvider>
       <Router>
-        <MenuBar />
+        <MenuBar permission = {permission}/>
         <Switch>
           <Route exact path="/" component={Home} />
           <AuthRoute exact path="/login" component={Login} />
@@ -61,12 +85,12 @@ function App() {
           <UserRoute exact path="/points" component={Points} />
           <UserRoute exact path="/alumnidirectory" component={AlumniDirectory} />
           <UserRoute exact path="/classSharing" component={ClassSharing} />
-          <AdminRoute exact path="/admin" component={Admin} />
-          <AdminRoute exact path="/admin/events" component={Events} />
+          <AdminRoute exact path="/admin" component={Admin} permission={permission}/>
+          <AdminRoute exact path="/admin/events" component={Events} permission={permission}/>
           <UserRoute exact path="/admin/tasks" component={Tasks} />
-          <AdminRoute exact path="/admin/members" component={Members} />
-          <AdminRoute exact path="/admin/requests" component={Requests} />
-          <AdminRoute exact path="/admin/statistics" component={Statistics} />
+          <AdminRoute exact path="/admin/members" component={Members} permission={permission}/>
+          <AdminRoute exact path="/admin/requests" component={Requests} permission={permission}/>
+          <AdminRoute exact path="/admin/statistics" component={Statistics} permission={permission}/>
           <UserRoute exact path="/admin/corporatedatabase" component={CorporateDatabase} />
           <Route>
             <Redirect to="/"/>
@@ -77,5 +101,13 @@ function App() {
     </AuthProvider>
   );
 }
+
+const FETCH_USER_QUERY = gql`
+  query getUser($userId: ID!) {
+    getUser(userId: $userId) {
+      permission
+    }
+  }
+`;
 
 export default App;

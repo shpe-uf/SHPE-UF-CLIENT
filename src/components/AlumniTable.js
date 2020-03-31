@@ -66,7 +66,7 @@ function AlumniTable({ alumnis }) {
                     {alumni.location.city}, {alumni.location.state}
                   </Table.Cell>
                   <Table.Cell textAlign="center">
-                    <Button icon href={alumni.linkedin} target="_blank">
+                    <Button icon href={alumni.linkedin} target="_blank" rel="noopener noreferrer">
                       <Icon name="linkedin square" />
                     </Button>
                   </Table.Cell>
@@ -258,7 +258,7 @@ function AlumniTable({ alumnis }) {
                         </Table.Cell>
                         <Table.Cell>
                           {alumniProfile.email ? (
-                            <a href={alumniProfile.linkedin} target="_blank">Link</a>
+                            <a href={alumniProfile.linkedin} target="_blank" rel="noopener noreferrer">Link</a>
                           ) : (
                             <p>Loading</p>
                           )}

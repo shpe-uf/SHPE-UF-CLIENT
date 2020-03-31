@@ -1,20 +1,10 @@
-import React, { useState } from "react";
-import { Grid, Image, Table, Button, Dropdown, Form } from "semantic-ui-react";
+import React from "react";
+import { Grid, Image, Table } from "semantic-ui-react";
 import moment from "moment";
-
-import { useMutation } from "@apollo/react-hooks";
-import gql from "graphql-tag";
 
 import placeholder from "../assets/images/placeholder.png";
 
 function UserProfile({ user }) {
-  // console.log(user);
-  // const [value, setValue] = useState(user.permission);
-  //
-  // var permissionChange = (e, { value }) => {
-  //   console.log(value);
-  //   console.log("change");
-  // }
 
   return (
 

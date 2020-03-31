@@ -38,7 +38,6 @@ function RequestsTable({ requests }) {
     },
 
     onError(err) {
-      console.log(err);
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
       console.log(errors);
     }
@@ -66,8 +65,6 @@ function RequestsTable({ requests }) {
     },
 
     onError(err) {
-      console.log(err);
-      console.log("loggin errors");
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
     }
   });
