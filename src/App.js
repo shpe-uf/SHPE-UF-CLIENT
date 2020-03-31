@@ -38,7 +38,6 @@ import AlumniDirectory from "./pages/AlumniDirectory";
 import ClassSharing from "./pages/ClassSharing";
 
 function App() {
-  console.log(localStorage);
   return (
     <AuthProvider>
       <Router>
