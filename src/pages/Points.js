@@ -28,7 +28,6 @@ import UserTasksTable from "../components/UserTasksTable";
 import TasksCards from "../components/TasksCards";
 import BookmarkedTasksCards from "../components/BookmarkedTasksCards";
 
-
 function Points() {
   const [activeItem, setActiveItem] = useState("Your Points");
 
@@ -233,21 +232,7 @@ function Points() {
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column>
-                  <Responsive {...Responsive.onlyComputer}>
-                    <Card.Group itemsPerRow={4}>
-                      <BookmarkedTasksCards user={user} />
-                    </Card.Group>
-                  </Responsive>
-                  <Responsive {...Responsive.onlyTablet}>
-                    <Card.Group itemsPerRow={2}>
-                      <BookmarkedTasksCards user={user} />
-                    </Card.Group>
-                  </Responsive>
-                  <Responsive {...Responsive.onlyMobile}>
-                    <Card.Group itemsPerRow={1}>
-                      <BookmarkedTasksCards user={user} />
-                    </Card.Group>
-                  </Responsive>
+                  <BookmarkedTasksCards user={user} />
                 </Grid.Column>
               </Grid.Row>
               <h2></h2>
@@ -256,21 +241,7 @@ function Points() {
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column>
-                  <Responsive {...Responsive.onlyComputer}>
-                    <Card.Group itemsPerRow={4}>
-                      <TasksCards user={user} />
-                    </Card.Group>
-                  </Responsive>
-                  <Responsive {...Responsive.onlyTablet}>
-                    <Card.Group itemsPerRow={2}>
-                      <TasksCards user={user} />
-                    </Card.Group>
-                  </Responsive>
-                  <Responsive {...Responsive.onlyMobile}>
-                    <Card.Group itemsPerRow={1}>
-                      <TasksCards user={user} />
-                    </Card.Group>
-                  </Responsive>
+                  <TasksCards user={user} />
                 </Grid.Column>
               </Grid.Row>
             </Grid>

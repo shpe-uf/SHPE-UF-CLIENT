@@ -44,7 +44,7 @@ function TasksCards({ user }) {
           </Header>
         </Segment>
       ) : (
-        <Grid.Row centered="centered" style={{width:"100"}}>
+        <Grid.Row centered="centered">
           <Responsive {...Responsive.onlyComputer}>
             <Card.Group itemsPerRow={3}>
               <TaskCard user={user} />
