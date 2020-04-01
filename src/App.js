@@ -34,6 +34,7 @@ import Members from "./pages/Members";
 import Requests from "./pages/Requests";
 import Statistics from "./pages/Statistics";
 import Corporations from "./pages/Corporations";
+import Archives from "./pages/Archives";
 import AlumniDirectory from "./pages/AlumniDirectory";
 import ClassSharing from "./pages/ClassSharing";
 
@@ -67,6 +68,7 @@ function App() {
           <AdminRoute exact path="/admin/members" component={Members} />
           <AdminRoute exact path="/admin/requests" component={Requests} />
           <AdminRoute exact path="/admin/statistics" component={Statistics} />
+          <AdminRoute exact path="/admin/archives" component={Archives} />
           <UserRoute exact path="/admin/corporatedatabase" component={CorporateDatabase} />
           <Route>
             <Redirect to="/"/>
