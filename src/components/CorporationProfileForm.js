@@ -8,7 +8,7 @@ import industryOptions from "../assets/options/industry.json";
 
 import { Image, Button, Form } from "semantic-ui-react";
 
-function CorporationProfileForm({corporation, closeModal}) {
+function CorporationProfileForm({corporation, closeModal, refetch}) {
 
     //State for error handling
     const [errors, setErrors] = useState({});
@@ -79,6 +79,7 @@ function CorporationProfileForm({corporation, closeModal}) {
   
     function modifyCorporationCallback(){
       editCorporationProfile();
+      refetch();
       closeModal("editCorporation");
       // window.location.reload();
     }

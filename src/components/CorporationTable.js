@@ -15,7 +15,7 @@ import CorporationProfile from "../components/CorporationProfile";
 import CorporationProfileForm from "../components/CorporationProfileForm";
 
 
-function CorporationTable({ corporations, deleteCorporation }) {
+function CorporationTable({ corporations, deleteCorporation, refetch }) {
   /**
    * STATES
    */
@@ -36,9 +36,7 @@ function CorporationTable({ corporations, deleteCorporation }) {
   // }
 
 
-  /**
-   * MODALS
-   */
+  //#region MODALS
 
     //Corporation information modals
     const openModal = name => {
@@ -68,6 +66,72 @@ function CorporationTable({ corporations, deleteCorporation }) {
           break;
       }
     }
+
+    const viewModal = (
+      <Modal
+      open={viewCorporationModal}
+      size="large"
+      closeOnEscape={true}
+      closeOnDimmerClick={false}
+    >
+    <Modal.Header>
+      <h2>Company Profile</h2>
+    </Modal.Header>
+    <Modal.Content>
+      <Grid>
+        <Grid.Row>
+          <Grid.Column>
+          <CorporationProfile corporation={corporationInfo}/>
+            <Button 
+              color="teal"
+              floated="left"
+              content="Close"
+              onClick={()=> closeModal("viewCorporation")}
+            />
+            <Button 
+              floated="right"
+              content="Edit Company"
+              icon="edit"
+              onClick={()=>{
+                closeModal("viewCorporation");
+                setCorporationInfo(corporationInfo);
+                openModal("editCorporation");
+              }}
+            />
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+    </Modal.Content>
+    </Modal>
+    );
+
+    const editModal = (
+      <Modal
+      open={editCorporationModal}
+      size="small"
+      closeOnEscape={true}
+      closeOnDimmerClick={false}
+    >
+      <Modal.Header>
+        <h2>Edit Corporation</h2>
+      </Modal.Header>
+      <Modal.Content>
+      <Grid>
+          <Grid.Row>
+            <Grid.Column>
+            <CorporationProfileForm
+              corporation = {corporationInfo}
+              refetch = {refetch}
+              closeModal = {closeModal}
+            />
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+      </Modal.Content>
+    </Modal>
+    );
+
+  //#endregion
 
     // function removeCorporation(corporation) {  
     //   deleteCorporation({
@@ -169,66 +233,10 @@ function CorporationTable({ corporations, deleteCorporation }) {
                 ))}
             </Table.Body>
           </Table>
-
-          <Modal
-            open={viewCorporationModal}
-            size="large"
-            closeOnEscape={true}
-            closeOnDimmerClick={false}
-          >
-          <Modal.Header>
-            <h2>Company Profile</h2>
-          </Modal.Header>
-          <Modal.Content>
-            <Grid>
-              <Grid.Row>
-                <Grid.Column>
-                <CorporationProfile corporation={corporationInfo}/>
-                  <Button 
-                    color="teal"
-                    floated="left"
-                    content="Close"
-                    onClick={()=> closeModal("viewCorporation")}
-                  />
-                  <Button 
-                    floated="right"
-                    content="Edit Company"
-                    icon="edit"
-                    onClick={()=>{
-                      closeModal("viewCorporation");
-                      setCorporationInfo(corporationInfo);
-                      openModal("editCorporation");
-                    }}
-                  />
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-          </Modal.Content>
-          </Modal>
-
-      <Modal
-        open={editCorporationModal}
-        size="small"
-        closeOnEscape={true}
-        closeOnDimmerClick={false}
-      >
-        <Modal.Header>
-          <h2>Edit Corporation</h2>
-        </Modal.Header>
-        <Modal.Content>
-        <Grid>
-            <Grid.Row>
-              <Grid.Column>
-              <CorporationProfileForm
-                corporation = {corporationInfo}
-                closeModal = {closeModal}
-              />
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-        </Modal.Content>
-      </Modal>
+          {viewModal}
+          {editModal}
         </div>
+
       )}
     </>
   )
