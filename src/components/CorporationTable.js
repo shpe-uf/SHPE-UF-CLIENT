@@ -10,15 +10,12 @@ import {
   Modal,
   Grid
 }from "semantic-ui-react";
-import gql from "graphql-tag";
-import { useMutation } from "@apollo/react-hooks";
 
 import CorporationProfile from "../components/CorporationProfile";
 import CorporationProfileForm from "../components/CorporationProfileForm";
 
 
 function CorporationTable({ corporations, deleteCorporation }) {
-  console.log(corporations);
   /**
    * STATES
    */

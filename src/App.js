@@ -41,8 +41,6 @@ import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
 
 function App() {
-<<<<<<< HEAD
-=======
   var decodedToken = [];
 
   if (localStorage.getItem("jwtToken")) {
@@ -62,7 +60,6 @@ function App() {
     permission = data.getUser.permission;
   }
 
->>>>>>> 4b88d9eaa10a7ffb1c944cb06ca4123221daef1f
   return (
     <AuthProvider>
       <Router>

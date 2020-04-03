@@ -10,8 +10,6 @@ import { Image, Button, Form } from "semantic-ui-react";
 
 function CorporationProfileForm({corporation, closeModal}) {
 
-
-    console.log("CorporationProfileForm re-rendered");
     //State for error handling
     const [errors, setErrors] = useState({});
 
@@ -19,10 +17,6 @@ function CorporationProfileForm({corporation, closeModal}) {
     // or removed from the form
     const [majors, setMajors] = useState(corporation.majors);
     const [industries, setIndustries] = useState(corporation.industries);
-
-    // console.log(industries);
-      // setMajors(corporation.majors);
-      // setIndustries(corporation.industries);
 
     //State for image handling
     var [logoFile, setLogoFile] = useState({});
@@ -43,6 +37,7 @@ function CorporationProfileForm({corporation, closeModal}) {
     }
 
     const { onChange, onSubmit, values } = useForm(modifyCorporationCallback, {
+      id: corporation.id,
       name: corporation.name,
       logo: corporation.logo,
       slogan: corporation.slogan,
@@ -241,7 +236,7 @@ function CorporationProfileForm({corporation, closeModal}) {
                     <input
                       type="checkbox"
                       name="govContractor"
-                      defaultChecked={values.govContractor == "true" ? true : false}
+                      defaultChecked={values.govContractor === "true" ? true : false}
                       value={values.govContractor === "true" ? false : true }
                       onChange={onChange}
                     />
@@ -365,6 +360,7 @@ function CorporationProfileForm({corporation, closeModal}) {
 
 const EDIT_CORPORATION = gql`
   mutation editCorporation(
+    $id: ID!
     $name: String!
     $logo: String!
     $slogan: String!
@@ -388,6 +384,7 @@ const EDIT_CORPORATION = gql`
   ) {
     editCorporation(
       editCorporationInput: {
+        id: $id
         name: $name
         logo: $logo
         slogan: $slogan
