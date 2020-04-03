@@ -24,7 +24,16 @@ function CorporateDatabase() {
    * MUTATIONS
    */
   //Mutation for Removing Corporations
-  const [deleteCorporation] = useMutation(DELETE_CORPORATION_MUTATION);
+  const [deleteCorporation] = useMutation(DELETE_CORPORATION_MUTATION,{
+    update(
+      _,
+      {
+        data: {deleteCorporation: corporationData}
+      }
+    ){
+      corporations = corporationData;
+    }
+  });
 
   //mutation for retrieving company array
   var { data, refetch} = useQuery(FETCH_CORPORATIONS_QUERY);
@@ -386,6 +395,7 @@ function CorporateDatabase() {
     </Modal.Content>
   </Modal>
   );
+  //#endregion
 
   function logoSelectedHandler(event) {
     if (event.target.files.length > 0) {

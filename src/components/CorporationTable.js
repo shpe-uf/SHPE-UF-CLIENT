@@ -220,11 +220,18 @@ function CorporationTable({ corporations, deleteCorporation, refetch }) {
                       <Button
                         icon
                         color="red"
-                        onClick={()=>{
-                          deleteCorporation({
-                            variables: {id: corporation.id}
-                          });
-                        }}
+                        onClick={ 
+                          async ()=>{
+                            await deleteCorporation(
+                              {
+                                variables: {
+                                  id: corporation.id
+                                }
+                              }
+                            );
+                            refetch();
+                          }
+                        }
                       >
                         <Icon name="x"/>
                       </Button>
