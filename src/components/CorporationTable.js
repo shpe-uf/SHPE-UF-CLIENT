@@ -55,11 +55,9 @@ function CorporationTable({ corporations, deleteCorporation, refetch }) {
     const closeModal = name => {
       switch(name) {
         case "viewCorporation":
-          setCorporationInfo({});
           setViewCorporationModal(false);
           break;
         case "editCorporation":
-          setCorporationInfo({});
           setEditCorporationModal(false);
           break;
         default:

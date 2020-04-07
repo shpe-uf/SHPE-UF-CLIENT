@@ -77,8 +77,8 @@ function CorporationProfileForm({corporation, closeModal, refetch}) {
       variables: values
     });
   
-    function modifyCorporationCallback(){
-      editCorporationProfile();
+    async function modifyCorporationCallback(){
+      await editCorporationProfile();
       refetch();
       closeModal("editCorporation");
       // window.location.reload();

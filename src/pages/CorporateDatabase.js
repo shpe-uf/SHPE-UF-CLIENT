@@ -17,7 +17,10 @@ import placeholder from "../assets/images/placeholder.png";
 function CorporateDatabase() {
   const [errors, setErrors] = useState({});
   const [addCorporationModal, setAddCorporationModal] = useState(false);
-  const [displayCorporations, setDisplayCorporations] = useState([]);
+  // const [selectedCorporation, setSelectedCorporation] = useState({});
+  const [displayCorporations, setDisplayCorporations] = useState(false);
+
+  // const [displayCorporations, setDisplayCorporations] = useState([]);
   var [logoFile, setLogoFile] = useState({});
 
   /**
@@ -32,16 +35,19 @@ function CorporateDatabase() {
       }
     ){
       corporations = corporationData;
+      // setDisplayCorporations(true);
     }
   });
 
   //mutation for retrieving company array
-  var { data, refetch} = useQuery(FETCH_CORPORATIONS_QUERY);
+  var {data, refetch} = useQuery(FETCH_CORPORATIONS_QUERY);
+  var corporations = (data) ? data.getCorporations : [];
 
-  var corporations = [];
-  if (data) {
-    corporations = data.getCorporations;
-  }
+  // if (data) {
+  //   corporations = data.getCorporations;
+    // setDisplayCorporations({corporations});
+  // }
+
 
   const { onChange, onSubmit, values } = useForm(createCorporation, {
     name: "",
@@ -74,6 +80,7 @@ function CorporateDatabase() {
       }
     ) {
       corporations = corporationData;
+      // setDisplayCorporations(corporations);
       closeModal();
       setErrors(false)
     },
@@ -83,6 +90,7 @@ function CorporateDatabase() {
     },
     variables: values
   });
+
 
 
   async function createCorporation() {
