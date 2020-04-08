@@ -71,7 +71,6 @@ function CorporationProfileForm({corporation, closeModal, refetch}) {
         setErrors(false);
       },
       onError(err) {
-        console.log(err);
         setErrors(err.graphQLErrors[0].extensions.exception.errors);
       },
       variables: values
@@ -81,7 +80,6 @@ function CorporationProfileForm({corporation, closeModal, refetch}) {
       await editCorporationProfile();
       refetch();
       closeModal("editCorporation");
-      // window.location.reload();
     }
 
       return(

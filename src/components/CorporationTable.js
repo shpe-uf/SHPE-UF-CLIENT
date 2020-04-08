@@ -26,16 +26,6 @@ function CorporationTable({ corporations, deleteCorporation, refetch }) {
   //State to keep track of the current corporation selected
   const [corporationInfo, setCorporationInfo] = useState({});
 
-  //Setter function to update the state with the selected corporation
-  // function getCorporationInfo(corporationInfo) {
-  //   setCorporationInfo(corporationInfo);
-  // }
-  
-  // function editCorporationUpdate(state) {
-  //   setEditCorporationModal(state);
-  // }
-
-
   //#region MODALS
 
     //Corporation information modals
