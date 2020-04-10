@@ -6,7 +6,6 @@ import {
   Header,
   Grid,
   Card,
-  Button,
   Responsive
 } from "semantic-ui-react";
 
@@ -21,7 +20,7 @@ import BookmarkedTaskCard from "../components/BookmarkedTaskCard";
 
 import { FETCH_TASKS_QUERY } from "../util/graphql";
 
-function BookmarkedTasksCards({ user }) {
+function BookmarkedTasksCards({ user, refetch }) {
   const [unBookmarkTask] = useMutation(UNBOOKMARK_TASK_MUTATION);
 
   const [errors, setErrors] = useState({});
@@ -31,17 +30,16 @@ function BookmarkedTasksCards({ user }) {
 
   const bookmarkedTasks = [];
 
-  if (data && data.getTasks) {
-    var tasks = data.getTasks;
-    console.log("tasks: ", tasks);
-    var bookmarkedTaskNames = user.bookmarkedTasks;
-    console.log("bookmarked task names", bookmarkedTaskNames);
-    for (const [index, value] of bookmarkedTaskNames.entries()) {
-      console.log(index, value);
-      const task = tasks.find(element => element.name === value);
-      bookmarkedTasks.push(task);
-    }
+  var tasks = data.getTasks;
+  console.log("tasks: ", tasks);
+  var bookmarkedTaskNames = user.bookmarkedTasks;
+  // console.log("bookmarked task names", bookmarkedTaskNames);
+  for (const [index, value] of bookmarkedTaskNames.entries()) {
+    console.log("value", value);
+    const task = tasks.find((element) => element.name === value);
+    bookmarkedTasks.push(task);
   }
+
   console.log("bookmarked tasks", bookmarkedTasks);
 
   var {
@@ -82,17 +80,17 @@ function BookmarkedTasksCards({ user }) {
         <Grid.Row centered="centered">
           <Responsive {...Responsive.onlyComputer}>
             <Card.Group itemsPerRow={3}>
-            <BookmarkedTaskCard user={user} />
+              <BookmarkedTaskCard user={user} refetch={refetch} />
             </Card.Group>
           </Responsive>
           <Responsive {...Responsive.onlyTablet}>
             <Card.Group itemsPerRow={2}>
-            <BookmarkedTaskCard user={user} />
+              <BookmarkedTaskCard user={user} refetch={refetch} />
             </Card.Group>
           </Responsive>
           <Responsive {...Responsive.onlyMobile}>
             <Card.Group itemsPerRow={1}>
-            <BookmarkedTaskCard user={user} />
+              <BookmarkedTaskCard user={user} refetch={refetch} />
             </Card.Group>
           </Responsive>
         </Grid.Row>

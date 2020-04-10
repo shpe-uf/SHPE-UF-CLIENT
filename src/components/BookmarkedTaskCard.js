@@ -20,7 +20,7 @@ import { AuthContext } from "../context/auth";
 
 import { FETCH_TASKS_QUERY } from "../util/graphql";
 
-function BookmarkedTaskCard({ user }) {
+function BookmarkedTaskCard({ user, refetch}) {
   const [unBookmarkTask] = useMutation(UNBOOKMARK_TASK_MUTATION);
 
   const [errors, setErrors] = useState({});
@@ -89,6 +89,7 @@ function BookmarkedTaskCard({ user }) {
                         username: username
                       }
                     });
+                    refetch();
                   }}
                 >
                   Delete Bookmark

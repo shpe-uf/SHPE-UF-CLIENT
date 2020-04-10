@@ -7,7 +7,8 @@ import {
   Grid,
   Card,
   Button,
-  Responsive
+  Responsive,
+  Icon
 } from "semantic-ui-react";
 
 import { ToastContainer, toast } from "react-toastify";
@@ -20,16 +21,18 @@ import { AuthContext } from "../context/auth";
 
 import { FETCH_TASKS_QUERY } from "../util/graphql";
 
-function TaskCard({ user }) {
+
+function TaskCard({ user, refetch}) {
   const [bookmarkTask] = useMutation(BOOKMARK_TASK_MUTATION);
 
   const [errors, setErrors] = useState({});
 
   const { loading, data } = useQuery(FETCH_TASKS_QUERY);
-  const tasks = [];
 
-  if (data && data.getTasks) {
-    var allTasks = data.getTasks;
+  var allTasks = (data) ? data.getTasks : [];
+  var tasks = [];
+
+  if (allTasks) {
     var bookmarkedTaskNames = user.bookmarkedTasks;
     for (const [index, value] of allTasks.entries()) {
       console.log(index, value);
@@ -77,22 +80,21 @@ function TaskCard({ user }) {
                 </b>
               </div>
               <div style={{ float: "right", transform: "translateY(15%)" }}>
-                <Button
-                  fluid="fluid"
-                  basic="basic"
-                  color="blue"
+                <Button icon
+                  inverted color="blue"
                   floated="right"
-                  width="3"
-                  onClick={() => {
-                    bookmarkTask({
+                  size="big"
+                  onClick={async () => {
+                    await bookmarkTask({
                       variables: {
                         name: task.name,
                         username: username
                       }
                     });
+                    refetch();
                   }}
                 >
-                  Bookmark
+                <Icon name="bookmark outline"/>
                 </Button>
               </div>
             </Card.Content>
@@ -131,7 +133,9 @@ function TaskCard({ user }) {
 
 const BOOKMARK_TASK_MUTATION = gql`
   mutation bookmarkTask($name: String!, $username: String!) {
-    bookmarkTask(name: $name, username: $username) {
+    bookmarkTask(
+      bookmarkTaskInput: {name: $name, username: $username}
+    ) {
       bookmarkedTasks
     }
   }

@@ -5,7 +5,9 @@ import {
   Grid,
   Card,
   Button,
-  Responsive
+  Responsive,
+  Dimmer,
+  Loader
 } from "semantic-ui-react";
 
 import { ToastContainer, toast } from "react-toastify";
@@ -19,7 +21,7 @@ import TaskCard from "../components/TaskCard";
 
 import { FETCH_TASKS_QUERY } from "../util/graphql";
 
-function TasksCards({ user }) {
+function TasksCards({ user, refetch }) {
   const [errors, setErrors] = useState({});
   var tasks = useQuery(FETCH_TASKS_QUERY).data.getTasks;
 
@@ -45,17 +47,17 @@ function TasksCards({ user }) {
         <Grid.Row centered="centered">
           <Responsive {...Responsive.onlyComputer}>
             <Card.Group itemsPerRow={3}>
-              <TaskCard user={user} />
+              <TaskCard user={user} refetch={refetch}/>
             </Card.Group>
           </Responsive>
           <Responsive {...Responsive.onlyTablet}>
             <Card.Group itemsPerRow={2}>
-              <TaskCard user={user} />
+              <TaskCard user={user} refetch={refetch}/>
             </Card.Group>
           </Responsive>
           <Responsive {...Responsive.onlyMobile}>
             <Card.Group itemsPerRow={1}>
-              <TaskCard user={user} />
+              <TaskCard user={user} refetch={refetch}/>
             </Card.Group>
           </Responsive>
         </Grid.Row>

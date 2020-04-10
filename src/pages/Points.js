@@ -39,12 +39,14 @@ function Points() {
     user: { id, username }
   } = useContext(AuthContext);
 
-  var user = useQuery(FETCH_USER_QUERY, {
+  var {data, refetch} = useQuery(FETCH_USER_QUERY, {
     variables: {
       userId: id
     }
-  }).data.getUser;
-
+  });
+  if(data){
+    var user = data.getUser;
+  }
   const [redeemPointsModal, setRedeemPointsModal] = useState(false);
 
   const openModal = name => {
@@ -232,7 +234,7 @@ function Points() {
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column>
-                  <BookmarkedTasksCards user={user} />
+                  <BookmarkedTasksCards user={user} refetch={refetch} />
                 </Grid.Column>
               </Grid.Row>
               <h2></h2>
@@ -241,7 +243,7 @@ function Points() {
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column>
-                  <TasksCards user={user} />
+                  <TasksCards user={user} refetch={refetch}/>
                 </Grid.Column>
               </Grid.Row>
             </Grid>
