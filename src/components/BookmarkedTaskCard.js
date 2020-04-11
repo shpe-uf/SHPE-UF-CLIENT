@@ -1,13 +1,8 @@
 import React, { useContext, useState } from "react";
 import {
-  Dimmer,
-  Loader,
-  Segment,
-  Header,
-  Grid,
   Card,
   Button,
-  Responsive
+  Icon
 } from "semantic-ui-react";
 
 import { ToastContainer, toast } from "react-toastify";
@@ -29,14 +24,13 @@ function BookmarkedTaskCard({ user, refetch}) {
   console.log("test for data", data);
 
   const bookmarkedTasks = [];
-
-  if (data && data.getTasks) {
+  if (!loading) {
     var tasks = data.getTasks;
     console.log("tasks: ", tasks);
     var bookmarkedTaskNames = user.bookmarkedTasks;
-    console.log("bookmarked task names", bookmarkedTaskNames);
+    // console.log("bookmarked task names", bookmarkedTaskNames);
     for (const [index, value] of bookmarkedTaskNames.entries()) {
-      console.log(index, value);
+      console.log("value", value);
       const task = tasks.find(element => element.name === value);
       bookmarkedTasks.push(task);
     }
@@ -76,24 +70,22 @@ function BookmarkedTaskCard({ user, refetch}) {
                 </b>
               </div>
               <div style={{ float: "right", transform:"translateY(15%)"}}>
-                <Button
-                  fluid="fluid"
-                  basic="basic"
-                  color="blue"
-                  floated="right"
-                  width="3"
-                  onClick={() => {
-                    unBookmarkTask({
-                      variables: {
-                        name: task.name,
-                        username: username
-                      }
-                    });
-                    refetch();
-                  }}
-                >
-                  Delete Bookmark
-                </Button>
+              <Button icon
+                inverted color="blue"
+                floated="right"
+                size="big"
+                onClick={async () => {
+                  await unBookmarkTask({
+                    variables: {
+                      name: task.name,
+                      username: username
+                    }
+                  });
+                  refetch();
+                }}
+              >
+              <Icon name="bookmark"/>
+              </Button>
               </div>
             </Card.Content>
             <Card.Content>
@@ -131,7 +123,9 @@ function BookmarkedTaskCard({ user, refetch}) {
 
 const UNBOOKMARK_TASK_MUTATION = gql`
   mutation unBookmarkTask($name: String!, $username: String!) {
-    unBookmarkTask(name: $name, username: $username) {
+    unBookmarkTask(
+      unBookmarkTaskInput: {name: $name, username: $username}
+    ) {
       bookmarkedTasks
     }
   }

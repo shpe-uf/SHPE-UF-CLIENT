@@ -4,14 +4,13 @@ import {
   Header,
   Grid,
   Card,
-  Button,
   Responsive,
   Dimmer,
   Loader
 } from "semantic-ui-react";
 
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+// import { ToastContainer, toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";

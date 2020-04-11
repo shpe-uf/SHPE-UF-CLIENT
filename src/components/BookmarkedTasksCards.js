@@ -21,23 +21,22 @@ import BookmarkedTaskCard from "../components/BookmarkedTaskCard";
 import { FETCH_TASKS_QUERY } from "../util/graphql";
 
 function BookmarkedTasksCards({ user, refetch }) {
-  const [unBookmarkTask] = useMutation(UNBOOKMARK_TASK_MUTATION);
-
   const [errors, setErrors] = useState({});
 
   const { loading, data } = useQuery(FETCH_TASKS_QUERY);
   console.log("test for data", data);
 
   const bookmarkedTasks = [];
-
-  var tasks = data.getTasks;
-  console.log("tasks: ", tasks);
-  var bookmarkedTaskNames = user.bookmarkedTasks;
-  // console.log("bookmarked task names", bookmarkedTaskNames);
-  for (const [index, value] of bookmarkedTaskNames.entries()) {
-    console.log("value", value);
-    const task = tasks.find((element) => element.name === value);
-    bookmarkedTasks.push(task);
+  if (!loading) {
+    var tasks = data.getTasks;
+    console.log("tasks: ", tasks);
+    var bookmarkedTaskNames = user.bookmarkedTasks;
+    // console.log("bookmarked task names", bookmarkedTaskNames);
+    for (const [index, value] of bookmarkedTaskNames.entries()) {
+      console.log("value", value);
+      const task = tasks.find(element => element.name === value);
+      bookmarkedTasks.push(task);
+    }
   }
 
   console.log("bookmarked tasks", bookmarkedTasks);
@@ -45,22 +44,6 @@ function BookmarkedTasksCards({ user, refetch }) {
   var {
     user: { username }
   } = useContext(AuthContext);
-
-  const [redeemTasksPoints] = useMutation(REDEEM_TASK_POINTS_MUTATION, {
-    update(
-      _,
-      {
-        data: { redeemTasksPoints: userData }
-      }
-    ) {},
-
-    onError(err) {
-      toast.error(err.graphQLErrors[0].extensions.exception.errors.general, {
-        position: toast.POSITION.BOTTOM_CENTER
-      });
-      setErrors(err.graphQLErrors[0].extensions.exception.errors);
-    }
-  });
 
   return (
     <>
@@ -99,23 +82,5 @@ function BookmarkedTasksCards({ user, refetch }) {
   );
 }
 
-const REDEEM_TASK_POINTS_MUTATION = gql`
-  mutation redeemTasksPoints($name: String!, $username: String!) {
-    redeemTasksPoints(
-      redeemTasksPointsInput: { name: $name, username: $username }
-    ) {
-      firstName
-      lastName
-    }
-  }
-`;
-
-const UNBOOKMARK_TASK_MUTATION = gql`
-  mutation unBookmarkTask($name: String!, $username: String!) {
-    unBookmarkTask(name: $name, username: $username) {
-      bookmarkedTasks
-    }
-  }
-`;
 
 export default BookmarkedTasksCards;
