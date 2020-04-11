@@ -59,7 +59,7 @@ function Title({permission: permission}) {
             </Segment>
           </NavLink>
         </Grid.Column>}
-        {(permission.includes("super") || permission.includes("reinbursements")) &&
+        {(permission.includes("super") || permission.includes("reimbursements")) &&
         <Grid.Column>
           <NavLink to="/admin/">
             <Segment inverted color="blue" textAlign="center">
