@@ -67,6 +67,9 @@ function MenuBar({permission: permission}) {
                       <Dropdown.Item as={Link} to="/alumnidirectory">
                         Alumni Directory
                       </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="/reimbursementrequest">
+                        Reimbursements
+                      </Dropdown.Item>
                       <Dropdown.Divider />
                       <Dropdown.Item onClick={logout}>
                         <p className="logout">Logout</p>
