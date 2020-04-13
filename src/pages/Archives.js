@@ -7,7 +7,8 @@ import {
   Card,
   Tab,
   Segment,
-  Input
+  Input,
+  Table
 } from "semantic-ui-react";
 
 import Title from "../components/Title";
@@ -38,7 +39,20 @@ function Archives() {
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
-            <p>*membership status will be here*</p>
+            <Table striped selectable unstackable>
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell>Name</Table.HeaderCell>
+                  <Table.HeaderCell>Membership</Table.HeaderCell>
+                </Table.Row>
+              </Table.Header>
+              <Table.Body>
+                <Table.Row key={2}>
+                  <Table.Cell>Fulano Mengano</Table.Cell>
+                  <Table.Cell>User</Table.Cell>
+                </Table.Row>
+              </Table.Body>
+            </Table>
           </Grid.Row>
         </Grid>
       </Tab.Pane>
@@ -56,7 +70,20 @@ function Archives() {
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
-            <p>*List serv will be here*</p>
+            <Table striped selectable unstackable>
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell>Name</Table.HeaderCell>
+                  <Table.HeaderCell>ListServ</Table.HeaderCell>
+                </Table.Row>
+              </Table.Header>
+              <Table.Body>
+                <Table.Row key={2}>
+                  <Table.Cell>Fulano Mengano</Table.Cell>
+                  <Table.Cell>Yes</Table.Cell>
+                </Table.Row>
+              </Table.Body>
+            </Table>
           </Grid.Row>
         </Grid>
       </Tab.Pane>
@@ -74,7 +101,18 @@ function Archives() {
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
-            <h3>Cesar and Eddy, I guess</h3>
+            <Table striped selectable unstackable>
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell>Name</Table.HeaderCell>
+                </Table.Row>
+              </Table.Header>
+              <Table.Body>
+                <Table.Row key={1}>
+                  <Table.Cell>Eddy, unfortunately</Table.Cell>
+                </Table.Row>
+              </Table.Body>
+            </Table>
           </Grid.Row>
         </Grid>
       </Tab.Pane>
@@ -92,7 +130,18 @@ function Archives() {
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
-            <h3>*Alumni stuff will be here*</h3>
+            <Table striped selectable unstackable>
+              <Table.Header>
+                <Table.Row>
+                  <Table.HeaderCell>Name</Table.HeaderCell>
+                </Table.Row>
+              </Table.Header>
+              <Table.Body>
+                <Table.Row key={1}>
+                  <Table.Cell>Cesar, fortunately</Table.Cell>
+                </Table.Row>
+              </Table.Body>
+            </Table>
           </Grid.Row>
         </Grid>
       </Tab.Pane>
@@ -146,7 +195,7 @@ function Archives() {
           <h2>Confirm Deletion</h2>
         </Modal.Header>
         <Modal.Content>
-          <Grid>
+          <Grid columns="equal">
             <Grid.Row>
               <Grid.Column>
                 <p>This action cannot be undone, are you sure?</p>
@@ -154,11 +203,15 @@ function Archives() {
             </Grid.Row>
             <Grid.Row>
               <Grid.Column>
-                <p>
-                  Type "I am sure that I want to delete all databases" below to
-                  confirm
-                </p>
-                <Input focus placeholder="Type here..." />
+                <Grid.Row>
+                  <p>
+                    Type "I am sure that I want to delete all databases" below
+                    to confirm
+                  </p>
+                </Grid.Row>
+                <Grid.Row>
+                  <Input fluid focus placeholder="Type here..."/>
+                </Grid.Row>
               </Grid.Column>
             </Grid.Row>
             <Grid.Row columns={2}>
