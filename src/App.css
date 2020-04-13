@@ -504,6 +504,11 @@ h5 {
   color: var(--white);
 }
 
+.mobile-responsive {
+  padding-right: 3em !important;
+  padding-left: 0.5em !important;
+}
+
 .points-number {
   font-family: "digital-font" !important;
   font-size: 5rem !important;

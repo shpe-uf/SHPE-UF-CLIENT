@@ -66,9 +66,6 @@ function CorporationTable({ corporations, deleteCorporation, refetch }) {
       <h2>Company Profile</h2>
     </Modal.Header>
     <Modal.Content>
-      <Grid>
-        <Grid.Row>
-          <Grid.Column>
           <CorporationProfile corporation={corporationInfo}/>
             <Button 
               color="teal"
@@ -86,9 +83,6 @@ function CorporationTable({ corporations, deleteCorporation, refetch }) {
                 openModal("editCorporation");
               }}
             />
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
     </Modal.Content>
     </Modal>
     );
