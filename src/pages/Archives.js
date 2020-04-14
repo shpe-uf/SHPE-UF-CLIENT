@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import {
+  Button,
+  Checkbox,
   Container,
   Grid,
-  Button,
-  Modal,
-  Card,
-  Tab,
-  Segment,
   Input,
+  Modal,
+  Segment,
+  Tab,
   Table
 } from "semantic-ui-react";
 
@@ -152,7 +152,7 @@ function Archives() {
     menuItem: { content: "Danger Zone", icon: "warning sign" },
     render: () => (
       <Tab.Pane>
-        <Grid>
+        <Grid columns={2}>
           <Grid.Row>
             <h2>Delete All of the Databases</h2>
           </Grid.Row>
@@ -160,8 +160,17 @@ function Archives() {
             <p>
               By pressing the Wipe Databases button, you will permanently delete
               all the information in this website. Once deleted, there is no
-              coming back. Please be certain of the consequences.
+              coming back. Please make sure that you have downloaded every
+              database in the archives before deleting them.
             </p>
+            <Grid.Column>
+              <Checkbox label="I have downloaded the membership database" />
+              <Checkbox label="I have downloaded the ListServ database" />
+            </Grid.Column>
+            <Grid.Column>
+              <Checkbox label="I have downloaded the Graduating Seniors database" />
+              <Checkbox label="I have downloaded the Alumni database" />
+            </Grid.Column>
           </Grid.Row>
           <Grid.Row>
             <Button color="red" onClick={() => openModal("deleteSHPE")}>
@@ -210,7 +219,7 @@ function Archives() {
                   </p>
                 </Grid.Row>
                 <Grid.Row>
-                  <Input fluid focus placeholder="Type here..."/>
+                  <Input fluid focus placeholder="Type here..." />
                 </Grid.Row>
               </Grid.Column>
             </Grid.Row>
