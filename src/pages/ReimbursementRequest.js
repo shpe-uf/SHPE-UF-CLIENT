@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Form, Container, Grid, Button, Modal, Table } from "semantic-ui-react";
-import { Link } from "react-router-dom";
 
 import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
@@ -58,10 +57,6 @@ function ReimbursementRequest({user: user}) {
 
     function reimbursementRequest() {
         addRequest();
-    }
-
-    function enterInfo() {
-        setOpenConfirmation(true);
     }
     
     return (

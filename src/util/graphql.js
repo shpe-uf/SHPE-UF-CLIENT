@@ -193,3 +193,21 @@ export const ETHNICITY_STAT = gql`
     }
   }
 `;
+
+export const FETCH_REIMBURSEMENTS_QUERY = gql`
+  {
+    getReimbursements {
+      id
+      firstName
+      lastName
+      email
+      studentId
+      address
+      company
+      event
+      description
+      reimbursed
+      amount
+    }
+  }
+`;

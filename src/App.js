@@ -37,6 +37,7 @@ import Corporations from "./pages/Corporations";
 import AlumniDirectory from "./pages/AlumniDirectory";
 import ClassSharing from "./pages/ClassSharing";
 import ReimbursementRequest from "./pages/ReimbursementRequest";
+import Reimbursements from "./pages/Reimbursements";
 import jwtDecode from "jwt-decode";
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
@@ -91,6 +92,7 @@ function App() {
           <AdminRoute exact path="/admin/requests" component={Requests} permission={permission} security="requests"/>
           <AdminRoute exact path="/admin/statistics" component={Statistics} permission={permission} security="statistics"/>
           <AdminRoute exact path="/admin/corporatedatabase" component={CorporateDatabase} permission={permission} security="corporatedatabase"/>
+          <AdminRoute exact path="/admin/reimbursements" component={Reimbursements} permission={permission} security="reimbursements"/>
           <Route>
             <Redirect to="/"/>
           </Route>
