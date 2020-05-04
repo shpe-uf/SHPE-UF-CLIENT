@@ -28,13 +28,13 @@ import Admin from "./pages/Admin";
 import Points from "./pages/Points";
 import Profile from "./pages/Profile";
 import CorporateDatabase from "./pages/CorporateDatabase";
+import Archives from "./pages/Archives";
 import Events from "./pages/Events";
 import Tasks from "./pages/Tasks";
 import Members from "./pages/Members";
 import Requests from "./pages/Requests";
 import Statistics from "./pages/Statistics";
 import Corporations from "./pages/Corporations";
-import Archives from "./pages/Archives";
 import AlumniDirectory from "./pages/AlumniDirectory";
 import ClassSharing from "./pages/ClassSharing";
 import jwtDecode from "jwt-decode";
@@ -86,10 +86,10 @@ function App() {
           <AdminRoute exact path="/admin" component={Admin} permission={permission}/>
           <AdminRoute exact path="/admin/events" component={Events} permission={permission}/>
           <UserRoute exact path="/admin/tasks" component={Tasks} />
-          <AdminRoute exact path="/admin/members" component={Members} />
-          <AdminRoute exact path="/admin/requests" component={Requests} />
-          <AdminRoute exact path="/admin/statistics" component={Statistics} />
-          <AdminRoute exact path="/admin/archives" component={Archives} />
+          <AdminRoute exact path="/admin/members" component={Members} permission={permission}/>
+          <AdminRoute exact path="/admin/requests" component={Requests} permission={permission}/>
+          <AdminRoute exact path="/admin/statistics" component={Statistics} permission={permission}/>
+          <AdminRoute exact path="/admin/archives" component={Archives} permission={permission}/>
           <UserRoute exact path="/admin/corporatedatabase" component={CorporateDatabase} />
           <Route>
             <Redirect to="/"/>
