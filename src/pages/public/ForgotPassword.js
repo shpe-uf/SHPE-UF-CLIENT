@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { Form, Button, Container, Segment, Grid, Responsive, Message } from "semantic-ui-react";
 import gql from "graphql-tag";
 import { useMutation } from "@apollo/react-hooks";
@@ -15,7 +15,7 @@ function ForgotPassword(props){
   });
 
 
-  const [resetUser, { loading }] = useMutation(FORGOT_PASSWORD, {
+  const [resetUser] = useMutation(FORGOT_PASSWORD, {
     onCompleted(){
       setErrors({});
       setSent(true);

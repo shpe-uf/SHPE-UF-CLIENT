@@ -1,7 +1,5 @@
 import React, {useContext, useState} from "react";
 import {
-  Dimmer,
-  Loader,
   Segment,
   Header,
   Grid,
@@ -36,27 +34,16 @@ function TasksCards({user}) {
         redeemTasksPoints: userData
       }
     }) {
-      console.log(userData);
-
     },
 
     onError(err) {
       toast.error(err.graphQLErrors[0].extensions.exception.errors.general, {position: toast.POSITION.BOTTOM_CENTER});
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
-      console.log(err);
     }
 
   });
 
-  return (<> < Dimmer active = {
-    tasks
-      ? false
-      : true
-  }
-  inverted > <Loader/>
-</Dimmer>
-    {
-    tasks === undefined || tasks.length === 0
+  return tasks === undefined || tasks.length === 0
       ? (<Segment placeholder="placeholder">
         <Header icon="icon">
           <i className="fas fa-inbox"></i>
@@ -170,9 +157,7 @@ function TasksCards({user}) {
           </Card.Group>
         </Responsive>
       </Grid.Row>)
-  } < />
-  );
-}
+  }
 
 const REDEEM_TASK_POINTS_MUTATION = gql`
   mutation redeemTasksPoints($name:String!, $username: String!){

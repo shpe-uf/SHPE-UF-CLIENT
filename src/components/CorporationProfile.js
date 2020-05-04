@@ -2,7 +2,6 @@ import React from "react";
 import { Grid, Image, Button, List, Divider } from "semantic-ui-react";
 
 function CorporationProfile({corporation}) {
-  console.log(corporation);
     return(
       <>
         <Grid columns={2}>

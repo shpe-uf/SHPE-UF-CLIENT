@@ -37,13 +37,34 @@ import Corporations from "./pages/Corporations";
 import Archives from "./pages/Archives";
 import AlumniDirectory from "./pages/AlumniDirectory";
 import ClassSharing from "./pages/ClassSharing";
+import jwtDecode from "jwt-decode";
+import gql from "graphql-tag";
+import { useQuery } from "@apollo/react-hooks";
 
 function App() {
-  console.log(localStorage);
+  var decodedToken = [];
+
+  if (localStorage.getItem("jwtToken")) {
+    decodedToken = jwtDecode(localStorage.getItem("jwtToken"));
+  }
+
+  var { data } = useQuery(FETCH_USER_QUERY, {
+    variables: {
+      userId: decodedToken.id
+    }
+  });
+
+  var permission = [];
+
+  if (data && data.getUser)
+  {
+    permission = data.getUser.permission;
+  }
+
   return (
     <AuthProvider>
       <Router>
-        <MenuBar />
+        <MenuBar permission = {permission}/>
         <Switch>
           <Route exact path="/" component={Home} />
           <AuthRoute exact path="/login" component={Login} />
@@ -62,8 +83,8 @@ function App() {
           <UserRoute exact path="/points" component={Points} />
           <UserRoute exact path="/alumnidirectory" component={AlumniDirectory} />
           <UserRoute exact path="/classSharing" component={ClassSharing} />
-          <AdminRoute exact path="/admin" component={Admin} />
-          <AdminRoute exact path="/admin/events" component={Events} />
+          <AdminRoute exact path="/admin" component={Admin} permission={permission}/>
+          <AdminRoute exact path="/admin/events" component={Events} permission={permission}/>
           <UserRoute exact path="/admin/tasks" component={Tasks} />
           <AdminRoute exact path="/admin/members" component={Members} />
           <AdminRoute exact path="/admin/requests" component={Requests} />
@@ -79,5 +100,13 @@ function App() {
     </AuthProvider>
   );
 }
+
+const FETCH_USER_QUERY = gql`
+  query getUser($userId: ID!) {
+    getUser(userId: $userId) {
+      permission
+    }
+  }
+`;
 
 export default App;

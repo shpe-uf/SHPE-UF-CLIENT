@@ -15,12 +15,12 @@ function MatchCards({ getMatches, getClasses }) {
             <Card.Header textAlign='center' style={{height:'62px'}}>
               {matchTemp.firstName + " " + matchTemp.lastName}
             </Card.Header>
-            {matchTemp.photo == "" ? <Image src={placeholder} wrapped ui={true} bordered></Image> : 
+            {matchTemp.photo === "" ? <Image src={placeholder} wrapped ui={true} bordered></Image> : 
             <Image src= {matchTemp.photo} wrapped ui={true} bordered></Image>}
             <p></p>
               <Label.Group>
               {matchTemp.classes.map(codeName => (
-                filteredRes = getClasses.filter(classTemp => classTemp.code == codeName.code),
+                filteredRes = getClasses.filter(classTemp => classTemp.code === codeName.code),
                 filteredRes.length > 0 ?
                 <Label color="text-white label-Color-Orange">
                   {codeName.code}

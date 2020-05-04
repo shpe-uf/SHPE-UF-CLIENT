@@ -14,7 +14,6 @@ import {
 import gql from "graphql-tag";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { useForm } from "../util/hooks";
-import moment from "moment";
 import { CSVLink } from "react-csv";
 
 import { FETCH_USERS_QUERY } from "../util/graphql";
@@ -88,7 +87,7 @@ function TasksTable({ tasks }) {
 
     onError(err) {
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
-      console.log(err);
+      console.log(errors);
     },
 
     variables: values
