@@ -72,97 +72,99 @@ function ReimbursementRequest({user: user}) {
                             Is this information correct?
                         </Modal.Header>
                         <Modal.Content>
-                            <Grid.Row>
-                                <Grid.Column>
-                                    <div className="table-responsive" style={{ marginBottom: 16 }}>
-                                        <Table striped selectable unstackable>
-                                            <Table.Body>
-                                                <Table.Row>
-                                                    <Table.Cell>
-                                                        <b>First Name:</b>
-                                                    </Table.Cell>
-                                                    <Table.Cell>
-                                                        <p>{values.firstName}</p>
-                                                    </Table.Cell>
-                                                </Table.Row>
-                                                <Table.Row>
-                                                    <Table.Cell>
-                                                        <b>Last Name:</b>
-                                                    </Table.Cell>
-                                                    <Table.Cell>
-                                                        <p>{values.lastName}</p>
-                                                    </Table.Cell>
-                                                </Table.Row>
-                                                <Table.Row>
-                                                    <Table.Cell>
-                                                        <b>Email:</b>
-                                                    </Table.Cell>
-                                                    <Table.Cell>
-                                                        <p>{values.email}</p>
-                                                    </Table.Cell>
-                                                </Table.Row>
-                                                <Table.Row>
-                                                    <Table.Cell>
-                                                        <b>Student ID:</b>
-                                                    </Table.Cell>
-                                                    <Table.Cell>
-                                                        <p>{values.studentId}</p>
-                                                    </Table.Cell>
-                                                </Table.Row>
-                                                <Table.Row>
-                                                    <Table.Cell>
-                                                        <b>Amount:</b>
-                                                    </Table.Cell>
-                                                    <Table.Cell>
-                                                        <p>{values.amount}</p>
-                                                    </Table.Cell>
-                                                </Table.Row>
-                                                <Table.Row>
-                                                    <Table.Cell>
-                                                        <b>Address:</b>
-                                                    </Table.Cell>
-                                                    <Table.Cell>
-                                                        <p>{values.address}</p>
-                                                    </Table.Cell>
-                                                </Table.Row>
-                                                <Table.Row>
-                                                    <Table.Cell>
-                                                        <b>Company:</b>
-                                                    </Table.Cell>
-                                                    <Table.Cell>
-                                                        <p>{values.company}</p>
-                                                    </Table.Cell>
-                                                </Table.Row>
-                                                <Table.Row>
-                                                    <Table.Cell>
-                                                        <b>Event:</b>
-                                                    </Table.Cell>
-                                                    <Table.Cell>
-                                                        <p>{values.event}</p>
-                                                    </Table.Cell>
-                                                </Table.Row>
-                                            </Table.Body>
-                                        </Table>
-                                    </div>
-                                    <Form onSubmit={onSubmit}>
-                                        <Button
-                                            type="reset"
-                                            color="red"
-                                            onClick={() => setOpenConfirmation(false)}
-                                        >
-                                            Close
-                                        </Button>
-                                        <Button
-                                            type="submit"
-                                            onClick={() => {
-                                                values.execute = true;
-                                            }}
-                                        >
-                                            Submit
-                                        </Button>
-                                    </Form>                                    
-                                </Grid.Column>
-                            </Grid.Row>
+                            <Grid>
+                                <Grid.Row>
+                                    <Grid.Column>
+                                        <div className="table-responsive" style={{ marginBottom: 16 }}>
+                                            <Table striped selectable unstackable>
+                                                <Table.Body>
+                                                    <Table.Row>
+                                                        <Table.Cell>
+                                                            <b>First Name:</b>
+                                                        </Table.Cell>
+                                                        <Table.Cell>
+                                                            <p>{values.firstName}</p>
+                                                        </Table.Cell>
+                                                    </Table.Row>
+                                                    <Table.Row>
+                                                        <Table.Cell>
+                                                            <b>Last Name:</b>
+                                                        </Table.Cell>
+                                                        <Table.Cell>
+                                                            <p>{values.lastName}</p>
+                                                        </Table.Cell>
+                                                    </Table.Row>
+                                                    <Table.Row>
+                                                        <Table.Cell>
+                                                            <b>Email:</b>
+                                                        </Table.Cell>
+                                                        <Table.Cell>
+                                                            <p>{values.email}</p>
+                                                        </Table.Cell>
+                                                    </Table.Row>
+                                                    <Table.Row>
+                                                        <Table.Cell>
+                                                            <b>Student ID:</b>
+                                                        </Table.Cell>
+                                                        <Table.Cell>
+                                                            <p>{values.studentId}</p>
+                                                        </Table.Cell>
+                                                    </Table.Row>
+                                                    <Table.Row>
+                                                        <Table.Cell>
+                                                            <b>Amount:</b>
+                                                        </Table.Cell>
+                                                        <Table.Cell>
+                                                            <p>{values.amount}</p>
+                                                        </Table.Cell>
+                                                    </Table.Row>
+                                                    <Table.Row>
+                                                        <Table.Cell>
+                                                            <b>Address:</b>
+                                                        </Table.Cell>
+                                                        <Table.Cell>
+                                                            <p>{values.address}</p>
+                                                        </Table.Cell>
+                                                    </Table.Row>
+                                                    <Table.Row>
+                                                        <Table.Cell>
+                                                            <b>Company:</b>
+                                                        </Table.Cell>
+                                                        <Table.Cell>
+                                                            <p>{values.company}</p>
+                                                        </Table.Cell>
+                                                    </Table.Row>
+                                                    <Table.Row>
+                                                        <Table.Cell>
+                                                            <b>Event:</b>
+                                                        </Table.Cell>
+                                                        <Table.Cell>
+                                                            <p>{values.event}</p>
+                                                        </Table.Cell>
+                                                    </Table.Row>
+                                                </Table.Body>
+                                            </Table>
+                                        </div>
+                                        <Form onSubmit={onSubmit}>
+                                            <Button
+                                                type="reset"
+                                                color="red"
+                                                onClick={() => setOpenConfirmation(false)}
+                                            >
+                                                Close
+                                            </Button>
+                                            <Button
+                                                type="submit"
+                                                onClick={() => {
+                                                    values.execute = true;
+                                                }}
+                                            >
+                                                Submit
+                                            </Button>
+                                        </Form>                                    
+                                    </Grid.Column>
+                                </Grid.Row>
+                            </Grid>
                         </Modal.Content>
                     </Modal>
                     <Grid.Row>
