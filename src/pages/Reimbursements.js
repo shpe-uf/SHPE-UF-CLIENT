@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Container, Grid, Tab, Table, Button, Modal, Form } from "semantic-ui-react";
+import React, { useState, useRef } from "react";
+import { Container, Grid, Tab, Table, Button, Modal, Form, Icon, Input } from "semantic-ui-react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 
 import Title from "../components/Title";
@@ -12,13 +12,20 @@ var currentReimbursement;
 function Reimbursements() {
     var reimbursements = useQuery(FETCH_REIMBURSEMENTS_QUERY).data.getReimbursements;
     
+    const [search, defineSearch] = useState("");
     const [openResolveModal, setOpenResolveModal] = useState(false);
     const [openUnresolveModal, setOpenUnresolveModal] = useState(false);
+    const [claimModal, setClaimModal] = useState(false);
+    const [claim, setClaim] = useState({});
 
     const [resolve] = useMutation(RESOLVE_MUTATION);
     const [unresolve] = useMutation(UNRESOLVE_MUTATION);
 
-    console.log(currentReimbursement);
+    function setSearch(e) {
+        defineSearch(e.target.value);
+    }
+    
+    console.log(claim);
 
     var pendingPane = {
         menuItem: {content: "Pending"},
@@ -36,13 +43,19 @@ function Reimbursements() {
                                     <Table.HeaderCell>Event</Table.HeaderCell>
                                     <Table.HeaderCell>Amount</Table.HeaderCell>
                                     <Table.HeaderCell>Resolve</Table.HeaderCell>
+                                    <Table.HeaderCell>Info</Table.HeaderCell>
                                 </Table.Row>
                             </Table.Header>
                             <Table.Body>
                                 {reimbursements &&
                                     reimbursements.map((reimbursement, index) => (
                                     <>
-                                        {!reimbursement.reimbursed &&
+                                        {(!reimbursement.reimbursed && 
+                                        (((reimbursement.lastName + ", " + reimbursement.firstName).toLowerCase().includes(search.toLowerCase())) ||
+                                        reimbursement.studentId.toString().toLowerCase().includes(search.toLowerCase()) ||
+                                        reimbursement.email.toLowerCase().includes(search.toLowerCase()) ||
+                                        reimbursement.event.toLowerCase().includes(search.toLowerCase()) ||
+                                        reimbursement.id.toLowerCase().includes(search.toLowerCase()))) &&
                                         <Table.Row key={index}>
                                             <Table.Cell>{reimbursement.lastName}, {reimbursement.firstName}</Table.Cell>
                                             <Table.Cell>{reimbursement.email}</Table.Cell>
@@ -54,10 +67,20 @@ function Reimbursements() {
                                                     onClick={() =>{
                                                         setOpenResolveModal(true);
                                                         currentReimbursement = index;
-                                                        console.log(index);
                                                     }}
                                                 >
-                                                    Reslove
+                                                    Resolve
+                                                </Button>
+                                            </Table.Cell>
+                                            <Table.Cell textAlign="center">
+                                                <Button
+                                                icon
+                                                onClick={() => {
+                                                    setClaim(reimbursement);
+                                                    setClaimModal(true);
+                                                }}
+                                                >
+                                                <Icon name="info" />
                                                 </Button>
                                             </Table.Cell>
                                         </Table.Row>
@@ -88,13 +111,19 @@ function Reimbursements() {
                                     <Table.HeaderCell>Event</Table.HeaderCell>
                                     <Table.HeaderCell>Amount</Table.HeaderCell>
                                     <Table.HeaderCell>Unresolve</Table.HeaderCell>
+                                    <Table.HeaderCell>Info</Table.HeaderCell>
                                 </Table.Row>
                             </Table.Header>
                             <Table.Body>
                                 {reimbursements &&
                                     reimbursements.map((reimbursement, index) => (
                                     <>
-                                        {reimbursement.reimbursed &&
+                                        {(reimbursement.reimbursed && 
+                                        (((reimbursement.lastName + ", " + reimbursement.firstName).toLowerCase().includes(search.toLowerCase())) ||
+                                        reimbursement.studentId.toString().toLowerCase().includes(search.toLowerCase()) ||
+                                        reimbursement.email.toLowerCase().includes(search.toLowerCase()) ||
+                                        reimbursement.event.toLowerCase().includes(search.toLowerCase()) ||
+                                        reimbursement.id.toLowerCase().includes(search.toLowerCase()))) &&
                                         <Table.Row key={index}>
                                             <Table.Cell>{reimbursement.lastName}, {reimbursement.firstName}</Table.Cell>
                                             <Table.Cell>{reimbursement.email}</Table.Cell>
@@ -106,10 +135,20 @@ function Reimbursements() {
                                                     onClick={() =>{
                                                         setOpenUnresolveModal(true);
                                                         currentReimbursement = index;
-                                                        console.log(index);
                                                     }}
                                                 >
-                                                    Unreslove
+                                                    Unresolve
+                                                </Button>
+                                            </Table.Cell>
+                                            <Table.Cell textAlign="center">
+                                                <Button
+                                                icon
+                                                onClick={() => {
+                                                    setClaim(reimbursement);
+                                                    setClaimModal(true);
+                                                }}
+                                                >
+                                                <Icon name="info" />
                                                 </Button>
                                             </Table.Cell>
                                         </Table.Row>
@@ -136,29 +175,35 @@ function Reimbursements() {
                     Are you sure this reimbursement has been resolved?
                 </Modal.Header>
                 <Modal.Content>
-                    <Form>
-                        <Button
-                            type="reset"
-                            color="red"
-                            onClick={() => setOpenResolveModal(false)}
-                        >
-                            Close
-                        </Button>
-                        <Button
-                            type="submit"
-                            onClick={() => {
-                                resolve({variables: {
-                                    id: reimbursements[currentReimbursement].id,
-                                    email: reimbursements[currentReimbursement].email
-                                }});
+                    <Grid>
+                        <Grid.Row>
+                            <Grid.Column>
+                                <Form>
+                                    <Button
+                                        type="reset"
+                                        color="red"
+                                        onClick={() => setOpenResolveModal(false)}
+                                    >
+                                        Close
+                                    </Button>
+                                    <Button
+                                        type="submit"
+                                        onClick={() => {
+                                            resolve({variables: {
+                                                id: reimbursements[currentReimbursement].id,
+                                                email: reimbursements[currentReimbursement].email
+                                            }});
 
-                                reimbursements[currentReimbursement].reimbursed = true;
-                                setOpenResolveModal(false);
-                            }}
-                        >
-                            Resolve
-                        </Button>
-                    </Form>          
+                                            reimbursements[currentReimbursement].reimbursed = true;
+                                            setOpenResolveModal(false);
+                                        }}
+                                    >
+                                        Resolve
+                                    </Button>
+                                </Form>         
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
                 </Modal.Content>
             </Modal>
             <Modal
@@ -169,31 +214,129 @@ function Reimbursements() {
                     Are you sure you want to unresolve this reimbursement?
                 </Modal.Header>
                 <Modal.Content>
-                    <Form>
-                        <Button
-                            type="reset"
-                            color="red"
-                            onClick={() => setOpenUnresolveModal(false)}
-                        >
-                            Close
-                        </Button>
-                        <Button
-                            type="submit"
-                            onClick={() => {
-                                unresolve({variables: {
-                                    id: reimbursements[currentReimbursement].id,
-                                    email: reimbursements[currentReimbursement].email
-                                }});
+                    <Grid>
+                        <Grid.Row>
+                            <Grid.Column>
+                                <Form>
+                                    <Button
+                                        type="reset"
+                                        color="red"
+                                        onClick={() => setOpenUnresolveModal(false)}
+                                    >
+                                        Close
+                                    </Button>
+                                    <Button
+                                        type="submit"
+                                        onClick={() => {
+                                            unresolve({variables: {
+                                                id: reimbursements[currentReimbursement].id,
+                                                email: reimbursements[currentReimbursement].email
+                                            }});
 
-                                reimbursements[currentReimbursement].reimbursed = false;
-                                setOpenUnresolveModal(false);
-                            }}
-                        >
-                            Unresolve
-                        </Button>
-                    </Form>          
+                                            reimbursements[currentReimbursement].reimbursed = false;
+                                            setOpenUnresolveModal(false);
+                                        }}
+                                    >
+                                        Unresolve
+                                    </Button>
+                                </Form>        
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>  
                 </Modal.Content>
             </Modal>
+            <Modal
+                open={claimModal}
+                size="tiny"
+            >
+                <Modal.Header>
+                    {claim.id}
+                </Modal.Header>
+                <Modal.Content>
+                    <Grid>
+                        <Grid.Row>
+                            <Grid.Column>
+                                <h3>{claim.lastName}, {claim.firstName}</h3>
+                                <div className="table-responsive" style={{ marginBottom: 16 }}>
+                                    <Table striped selectable unstackable>
+                                        <Table.Body>
+                                            <Table.Row>
+                                                <Table.Cell>
+                                                    <b>Email:</b>
+                                                </Table.Cell>
+                                                <Table.Cell>
+                                                    <p>{claim.email}</p>
+                                                </Table.Cell>
+                                            </Table.Row>
+                                            <Table.Row>
+                                                <Table.Cell>
+                                                    <b>Student ID:</b>
+                                                </Table.Cell>
+                                                <Table.Cell>
+                                                    <p>{claim.studentId}</p>
+                                                </Table.Cell>
+                                            </Table.Row>
+                                            <Table.Row>
+                                                <Table.Cell>
+                                                    <b>Address:</b>
+                                                </Table.Cell>
+                                                <Table.Cell>
+                                                    <p>{claim.address}</p>
+                                                </Table.Cell>
+                                            </Table.Row>
+                                            <Table.Row>
+                                                <Table.Cell>
+                                                    <b>Amount:</b>
+                                                </Table.Cell>
+                                                <Table.Cell>
+                                                    <p>{claim.amount}</p>
+                                                </Table.Cell>
+                                            </Table.Row>
+                                            <Table.Row>
+                                                <Table.Cell>
+                                                    <b>Company:</b>
+                                                </Table.Cell>
+                                                <Table.Cell>
+                                                    <p>{claim.company}</p>
+                                                </Table.Cell>
+                                            </Table.Row>
+                                            <Table.Row>
+                                                <Table.Cell>
+                                                    <b>Event:</b>
+                                                </Table.Cell>
+                                                <Table.Cell>
+                                                    <p>{claim.event}</p>
+                                                </Table.Cell>
+                                            </Table.Row>
+                                            <Table.Row>
+                                                <Table.Cell>
+                                                    <b>Description:</b>
+                                                </Table.Cell>
+                                                <Table.Cell>
+                                                    <p>{claim.description}</p>
+                                                </Table.Cell>
+                                            </Table.Row>
+                                        </Table.Body>
+                                    </Table>
+                                </div>
+                                <Button
+                                type="reset"
+                                color="grey"
+                                onClick={() => setClaimModal(false)}
+                                >
+                                    Close
+                                </Button>
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
+                </Modal.Content>
+            </Modal>
+            <Input 
+                fluid 
+                placeholder='Search...' 
+                style={{marginBottom: '20px'}}
+                onChange={setSearch}
+            />
             <Tab panes={[pendingPane, resolvedPane]}/>
         </Container>
       </>
