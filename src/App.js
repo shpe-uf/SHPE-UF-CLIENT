@@ -28,6 +28,7 @@ import Admin from "./pages/Admin";
 import Points from "./pages/Points";
 import Profile from "./pages/Profile";
 import CorporateDatabase from "./pages/CorporateDatabase";
+import Archives from "./pages/Archives";
 import Events from "./pages/Events";
 import Tasks from "./pages/Tasks";
 import Members from "./pages/Members";
@@ -91,6 +92,7 @@ function App() {
           <AdminRoute exact path="/admin/members" component={Members} permission={permission} security="members"/>
           <AdminRoute exact path="/admin/requests" component={Requests} permission={permission} security="requests"/>
           <AdminRoute exact path="/admin/statistics" component={Statistics} permission={permission} security="statistics"/>
+          <AdminRoute exact path="/admin/archives" component={Archives} permission={permission}/>
           <AdminRoute exact path="/admin/corporatedatabase" component={CorporateDatabase} permission={permission} security="corporatedatabase"/>
           <AdminRoute exact path="/admin/reimbursements" component={Reimbursements} permission={permission} security="reimbursements"/>
           <Route>

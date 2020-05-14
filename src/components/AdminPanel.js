@@ -70,7 +70,7 @@ function Title({permission: permission}) {
         </Grid.Column>}
         {(permission.includes("super") || permission.includes("archive")) &&
         <Grid.Column>
-          <NavLink to="/admin/">
+          <NavLink to="/admin/archives">
             <Segment inverted color="violet" textAlign="center">
               <i className="fas fa-admin fa-archive"></i>
               <p className="text-admin">Archive</p>
