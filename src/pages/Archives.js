@@ -18,21 +18,29 @@ import ListServTable from "../components/ListServTable";
 import GraduatingTable from "../components/GraduatingTable";
 
 import { FETCH_USERS_QUERY } from "../util/graphql";
+import { CSVLink } from "react-csv";
 
 function Archives() {
   var users = useQuery(FETCH_USERS_QUERY).data.getUsers;
 
   const [deleteSHPEModal, setDeleteSHPEModal] = useState(false);
+  const [deleteDoneModal, setDeleteDoneModal] = useState(false);
 
   const openModal = (name) => {
     if (name === "deleteSHPE") {
       setDeleteSHPEModal(true);
+    }
+    if (name === "deleteDone") {
+      setDeleteDoneModal(true);
     }
   };
 
   const closeModal = (name) => {
     if (name === "deleteSHPE") {
       setDeleteSHPEModal(false);
+    }
+    if (name === "deleteDone") {
+      setDeleteDoneModal(false);
     }
   };
 
@@ -43,7 +51,11 @@ function Archives() {
         <Grid>
           <Grid.Row>
             <Grid.Column>
-              <Button color="green">Download as a CSV</Button>
+              <CSVLink data={"some data"} filename={"Membership.csv"}>
+                <Button color="green" floated="left">
+                  Download as CSV
+                </Button>
+              </CSVLink>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
@@ -63,7 +75,11 @@ function Archives() {
         <Grid>
           <Grid.Row>
             <Grid.Column>
-              <Button color="green">Download as a CSV</Button>
+              <CSVLink data={"some data"} filename={"ListServ.csv"}>
+                <Button color="green" floated="left">
+                  Download as CSV
+                </Button>
+              </CSVLink>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
@@ -83,7 +99,11 @@ function Archives() {
         <Grid>
           <Grid.Row>
             <Grid.Column>
-              <Button color="green">Download as a CSV</Button>
+              <CSVLink data={"some data"} filename={"Graduating.csv"}>
+                <Button color="green" floated="left">
+                  Download as CSV
+                </Button>
+              </CSVLink>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
@@ -103,7 +123,11 @@ function Archives() {
         <Grid>
           <Grid.Row>
             <Grid.Column>
-              <Button color="green">Download as a CSV</Button>
+              <CSVLink data={"some data"} filename={"Alumni.csv"}>
+                <Button color="green" floated="left">
+                  Download as CSV
+                </Button>
+              </CSVLink>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
@@ -208,7 +232,7 @@ function Archives() {
                 <Button
                   type="reset"
                   color="red"
-                  onClick={() => closeModal("deleteSHPE")}
+                  onClick={() => openModal("deleteDone")}
                 >
                   Delete
                 </Button>
@@ -221,6 +245,26 @@ function Archives() {
                   onClick={() => closeModal("deleteSHPE")}
                 >
                   Cancel
+                </Button>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Modal.Content>
+      </Modal>
+
+      <Modal open={deleteDoneModal} size="tiny">
+        <Modal.Header><h2>This SHPE empty...</h2></Modal.Header>
+        <Modal.Content>
+          <Grid columns="equal">
+            <Grid.Row>
+              <Grid.Column>
+                <Button
+                  type="reset"
+                  color="grey"
+                  floated="left"
+                  onClick={() => closeModal("deleteDone")}
+                >
+                  YEET
                 </Button>
               </Grid.Column>
             </Grid.Row>
