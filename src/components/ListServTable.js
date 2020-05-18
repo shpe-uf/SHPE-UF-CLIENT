@@ -1,33 +1,56 @@
 import React from "react";
-import { Dimmer, Loader, Table } from "semantic-ui-react";
+import { Dimmer, Loader, Table, Segment, Header } from "semantic-ui-react";
 
 function ListServTable({ users }) {
+  var listServUsers = [
+    {
+      firstName: "",
+      lastName: "",
+      listServ: "",
+    },
+  ];
+
+  if (users) {
+    for (var i = 0; i < users.length; i++) {
+      if (users[i].listServ === true)
+      listServUsers.push(users[i]);
+    }
+  }
   return (
     <>
-      <div className="table-responsive">
-        <Dimmer active={users ? false : true} inverted>
-          <Loader />
-        </Dimmer>
-        <Table striped selectable unstackable>
-          <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell>Name</Table.HeaderCell>
-              <Table.HeaderCell>ListServ</Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            {users &&
-              users.map((user, index) => (
-                <Table.Row key={index}>
-                  <Table.Cell>
-                    {user.lastName}, {user.firstName}
-                  </Table.Cell>
-                  <Table.Cell>{user.listServ}</Table.Cell>
-                </Table.Row>
-              ))}
-          </Table.Body>
-        </Table>
-      </div>
+      <Dimmer active={listServUsers ? false : true} inverted>
+        <Loader />
+      </Dimmer>
+      {listServUsers === undefined || listServUsers.length === 0 ? (
+        <Segment placeholder>
+          <Header icon>
+            <i className="fas fa-inbox"></i>
+            <p>It seems like there are no users in the ListServ at this moment.</p>
+          </Header>
+        </Segment>
+      ) : (
+        <div className="table-responsive">
+          <Table striped selectable unstackable>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell>Name</Table.HeaderCell>
+                <Table.HeaderCell>ListServ</Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              {listServUsers &&
+                listServUsers.map((user, index) => (
+                  <Table.Row key={index}>
+                    <Table.Cell>
+                      {user.lastName}, {user.firstName}
+                    </Table.Cell>
+                    <Table.Cell>Yes</Table.Cell>
+                  </Table.Row>
+                ))}
+            </Table.Body>
+          </Table>
+        </div>
+      )}
     </>
   );
 }

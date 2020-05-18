@@ -14,6 +14,7 @@ import { useQuery } from "@apollo/react-hooks";
 
 import Title from "../components/Title";
 import MembershipTable from "../components/MembershipTable";
+import graduatingUsers from "../components/MembershipTable";
 import ListServTable from "../components/ListServTable";
 import GraduatingTable from "../components/GraduatingTable";
 
@@ -22,6 +23,7 @@ import { CSVLink } from "react-csv";
 
 function Archives() {
   var users = useQuery(FETCH_USERS_QUERY).data.getUsers;
+  console.log(graduatingUsers);
 
   const [deleteSHPEModal, setDeleteSHPEModal] = useState(false);
   const [deleteDoneModal, setDeleteDoneModal] = useState(false);
@@ -44,6 +46,8 @@ function Archives() {
     }
   };
 
+  //console.log(GraduatingTable.graduatingUsers);
+
   var membershipPane = {
     menuItem: { content: "Membership", icon: "users" },
     render: () => (
@@ -51,7 +55,7 @@ function Archives() {
         <Grid>
           <Grid.Row>
             <Grid.Column>
-              <CSVLink data={"some data"} filename={"Membership.csv"}>
+              <CSVLink data={[["name", "membership"],["Me", "Admin"],["Fulano", "Member"]]} filename={"Membership.csv"}>
                 <Button color="green" floated="left">
                   Download as CSV
                 </Button>
