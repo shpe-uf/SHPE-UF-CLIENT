@@ -8,21 +8,29 @@ import {
   Modal,
   Segment,
   Tab,
-  Table
+  Table,
 } from "semantic-ui-react";
+import { useQuery } from "@apollo/react-hooks";
 
 import Title from "../components/Title";
+import MembershipTable from "../components/MembershipTable";
+import ListServTable from "../components/ListServTable";
+import GraduatingTable from "../components/GraduatingTable";
+
+import { FETCH_USERS_QUERY } from "../util/graphql";
 
 function Archives() {
+  var users = useQuery(FETCH_USERS_QUERY).data.getUsers;
+
   const [deleteSHPEModal, setDeleteSHPEModal] = useState(false);
 
-  const openModal = name => {
+  const openModal = (name) => {
     if (name === "deleteSHPE") {
       setDeleteSHPEModal(true);
     }
   };
 
-  const closeModal = name => {
+  const closeModal = (name) => {
     if (name === "deleteSHPE") {
       setDeleteSHPEModal(false);
     }
@@ -39,24 +47,13 @@ function Archives() {
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
-            <Table striped selectable unstackable>
-              <Table.Header>
-                <Table.Row>
-                  <Table.HeaderCell>Name</Table.HeaderCell>
-                  <Table.HeaderCell>Membership</Table.HeaderCell>
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                <Table.Row key={2}>
-                  <Table.Cell>Fulano Mengano</Table.Cell>
-                  <Table.Cell>User</Table.Cell>
-                </Table.Row>
-              </Table.Body>
-            </Table>
+            <Grid.Column>
+              <MembershipTable users={users} />
+            </Grid.Column>
           </Grid.Row>
         </Grid>
       </Tab.Pane>
-    )
+    ),
   };
 
   var listServPane = {
@@ -70,24 +67,13 @@ function Archives() {
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
-            <Table striped selectable unstackable>
-              <Table.Header>
-                <Table.Row>
-                  <Table.HeaderCell>Name</Table.HeaderCell>
-                  <Table.HeaderCell>ListServ</Table.HeaderCell>
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                <Table.Row key={2}>
-                  <Table.Cell>Fulano Mengano</Table.Cell>
-                  <Table.Cell>Yes</Table.Cell>
-                </Table.Row>
-              </Table.Body>
-            </Table>
+            <Grid.Column>
+              <ListServTable users={users} />
+            </Grid.Column>
           </Grid.Row>
         </Grid>
       </Tab.Pane>
-    )
+    ),
   };
 
   var graduatingPane = {
@@ -101,22 +87,13 @@ function Archives() {
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
-            <Table striped selectable unstackable>
-              <Table.Header>
-                <Table.Row>
-                  <Table.HeaderCell>Name</Table.HeaderCell>
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                <Table.Row key={1}>
-                  <Table.Cell>Eddy, unfortunately</Table.Cell>
-                </Table.Row>
-              </Table.Body>
-            </Table>
+            <Grid.Column>
+              <GraduatingTable users={users} />
+            </Grid.Column>
           </Grid.Row>
         </Grid>
       </Tab.Pane>
-    )
+    ),
   };
 
   var alumniPane = {
@@ -138,14 +115,17 @@ function Archives() {
               </Table.Header>
               <Table.Body>
                 <Table.Row key={1}>
-                  <Table.Cell>Cesar, fortunately</Table.Cell>
+                  <Table.Cell>
+                    Ask if this one should be here since another alumni table
+                    already exists
+                  </Table.Cell>
                 </Table.Row>
               </Table.Body>
             </Table>
           </Grid.Row>
         </Grid>
       </Tab.Pane>
-    )
+    ),
   };
 
   var dangerPane = {
@@ -179,7 +159,7 @@ function Archives() {
           </Grid.Row>
         </Grid>
       </Tab.Pane>
-    )
+    ),
   };
 
   return (
@@ -193,7 +173,7 @@ function Archives() {
               listServPane,
               graduatingPane,
               alumniPane,
-              dangerPane
+              dangerPane,
             ]}
           />
         </Container>
