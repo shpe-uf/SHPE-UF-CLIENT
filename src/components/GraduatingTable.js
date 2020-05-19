@@ -2,17 +2,11 @@ import React from "react";
 import { Dimmer, Loader, Table, Segment, Header } from "semantic-ui-react";
 
 function GraduatingTable({ users }) {
-  var graduatingUsers = [
-    {
-      firstName: "",
-      lastName: "",
-      graduating: "",
-    },
-  ];
+  const graduatingUsers = [];
 
   if (users) {
-    for (var i = 0; i < users.length; i++) {
-      if (users[i].graduating != "Not Graduating")
+    for (let i = 0; i < users.length; i++) {
+      if (users[i].graduating !== "Not Graduating")
       graduatingUsers.push(users[i]);
     }
   }

@@ -14,7 +14,6 @@ import { useQuery } from "@apollo/react-hooks";
 
 import Title from "../components/Title";
 import MembershipTable from "../components/MembershipTable";
-import graduatingUsers from "../components/MembershipTable";
 import ListServTable from "../components/ListServTable";
 import GraduatingTable from "../components/GraduatingTable";
 
@@ -23,7 +22,6 @@ import { CSVLink } from "react-csv";
 
 function Archives() {
   var users = useQuery(FETCH_USERS_QUERY).data.getUsers;
-  console.log(graduatingUsers);
 
   const [deleteSHPEModal, setDeleteSHPEModal] = useState(false);
   const [deleteDoneModal, setDeleteDoneModal] = useState(false);

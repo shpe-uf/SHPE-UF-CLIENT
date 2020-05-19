@@ -2,16 +2,10 @@ import React from "react";
 import { Dimmer, Loader, Table, Segment, Header } from "semantic-ui-react";
 
 function ListServTable({ users }) {
-  var listServUsers = [
-    {
-      firstName: "",
-      lastName: "",
-      listServ: "",
-    },
-  ];
+  const listServUsers = [];
 
   if (users) {
-    for (var i = 0; i < users.length; i++) {
+    for (let i = 0; i < users.length; i++) {
       if (users[i].listServ === true)
       listServUsers.push(users[i]);
     }
