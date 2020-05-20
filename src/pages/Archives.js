@@ -16,12 +16,22 @@ import Title from "../components/Title";
 import MembershipTable from "../components/MembershipTable";
 import ListServTable from "../components/ListServTable";
 import GraduatingTable from "../components/GraduatingTable";
+import AlumniTable from "../components/AlumniTable";
 
 import { FETCH_USERS_QUERY } from "../util/graphql";
+import { FETCH_ALUMNIS_QUERY } from "../util/graphql";
 import { CSVLink } from "react-csv";
 
 function Archives() {
-  var users = useQuery(FETCH_USERS_QUERY).data.getUsers;
+  const users = useQuery(FETCH_USERS_QUERY).data.getUsers;
+
+  const alumni = useQuery(FETCH_ALUMNIS_QUERY).data.getAlumnis;
+  const lists = {
+    membership: users,
+    listserv: (users) ? users.filter(user => user.listServ === true) : [],
+    graduating: (users) ? users.filter(user => user.graduating !== "Not Graduating") : [],
+    alumni: alumni,
+  }
 
   const [deleteSHPEModal, setDeleteSHPEModal] = useState(false);
   const [deleteDoneModal, setDeleteDoneModal] = useState(false);
@@ -44,8 +54,6 @@ function Archives() {
     }
   };
 
-  //console.log(GraduatingTable.graduatingUsers);
-
   var membershipPane = {
     menuItem: { content: "Membership", icon: "users" },
     render: () => (
@@ -53,7 +61,7 @@ function Archives() {
         <Grid>
           <Grid.Row>
             <Grid.Column>
-              <CSVLink data={[["name", "membership"],["Me", "Admin"],["Fulano", "Member"]]} filename={"Membership.csv"}>
+              <CSVLink data={(users) ? lists.membership: []} filename={"Membership.csv"}>
                 <Button color="green" floated="left">
                   Download as CSV
                 </Button>
@@ -77,7 +85,7 @@ function Archives() {
         <Grid>
           <Grid.Row>
             <Grid.Column>
-              <CSVLink data={"some data"} filename={"ListServ.csv"}>
+              <CSVLink data={(users) ? lists.listserv: []} filename={"ListServ.csv"}>
                 <Button color="green" floated="left">
                   Download as CSV
                 </Button>
@@ -101,7 +109,7 @@ function Archives() {
         <Grid>
           <Grid.Row>
             <Grid.Column>
-              <CSVLink data={"some data"} filename={"Graduating.csv"}>
+              <CSVLink data={(users) ? lists.graduating: []} filename={"Graduating.csv"}>
                 <Button color="green" floated="left">
                   Download as CSV
                 </Button>
@@ -125,7 +133,7 @@ function Archives() {
         <Grid>
           <Grid.Row>
             <Grid.Column>
-              <CSVLink data={"some data"} filename={"Alumni.csv"}>
+              <CSVLink data={(alumni) ? lists.alumni: []} filename={"Alumni.csv"}>
                 <Button color="green" floated="left">
                   Download as CSV
                 </Button>
@@ -133,21 +141,7 @@ function Archives() {
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
-            <Table striped selectable unstackable>
-              <Table.Header>
-                <Table.Row>
-                  <Table.HeaderCell>Name</Table.HeaderCell>
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                <Table.Row key={1}>
-                  <Table.Cell>
-                    Ask if this one should be here since another alumni table
-                    already exists
-                  </Table.Cell>
-                </Table.Row>
-              </Table.Body>
-            </Table>
+            <AlumniTable alumnis={alumni} />
           </Grid.Row>
         </Grid>
       </Tab.Pane>
@@ -194,6 +188,7 @@ function Archives() {
       <Segment basic>
         <Container>
           <Tab
+            // onTabChange={onTabChange}
             panes={[
               membershipPane,
               listServPane,
