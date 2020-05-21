@@ -26,8 +26,6 @@ function Points() {
     }
   }).data.getUser;
 
-  console.log(user);
-
   const [redeemPointsModal, setRedeemPointsModal] = useState(false);
 
   const openModal = name => {

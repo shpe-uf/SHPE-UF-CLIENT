@@ -2,8 +2,6 @@ import React, { useContext, useState } from "react";
 import {
   Segment,
   Card,
-  Image,
-  Message,
   Table,
   Header,
   Grid,
@@ -11,25 +9,15 @@ import {
   Button,
   Modal,
   Form,
-  Icon,
-  List,
-  Label,
-  Tab,
-  Placeholder,
-  ListItem,
-  GridColumn,
   Responsive
 } from "semantic-ui-react";
 import gql from "graphql-tag";
-import { useQuery, useMutation, useLazyQuery } from "@apollo/react-hooks";
+import { useQuery, useMutation } from "@apollo/react-hooks";
 
-import placeholder from "../assets/images/team/placeholder.png";
 import { useForm } from "../util/hooks";
 import { AuthContext } from "../context/auth";
 
 import Title from "../components/Title";
-import cesar from "../assets/images/team/2019-2020/cesar.png";
-import { findValuesAddedToEnums } from "graphql/utilities/findBreakingChanges";
 import MatchCards from "../components/MatchCards";
 
 function ClassSharing() {
@@ -69,36 +57,32 @@ function ClassSharing() {
     username: username
   });
 
-  var getClasses = [];
-
-  //var { data } = 0
   var { data } = useQuery(FETCH_USER_QUERY, {
     variables: {
       userId: id
     }
   });
-  console.log(id);
+
+  var getClasses = [];
 
   if (data.getUser) {
     getClasses = data.getUser.classes;
   }
 
-  var getMatches = [];
-
-  var { data: dataM } = useQuery(GET_MATCHES_QUERY, {
+  var { data: dataM, refetch } = useQuery(GET_MATCHES_QUERY, {
     variables: {
       username
     }
   });
 
+  var getMatches = [];
+
   if (dataM.getMatches) {
     getMatches = dataM.getMatches;
   }
 
-  console.log(getMatches);
-
   var classUsers = [];
-  const [getClass, { data: getClassData, loading: loadingClass }] = useMutation(
+  const [getClass] = useMutation(
     GET_CLASS_QUERY,
     {
       update(_, { data: { getClass } }) {
@@ -121,8 +105,8 @@ function ClassSharing() {
       setAddClassModal(false);
     },
     onError(err) {
-      console.log(err);
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
+      console.log(errors);
     },
     variables: values
   });
@@ -137,8 +121,9 @@ function ClassSharing() {
     }
   });
 
-  function addClassCallback() {
-    createClass();
+  async function addClassCallback() {
+    await createClass();
+    refetch();
   }
 
   function getDisplayClass(classCode) {
@@ -148,8 +133,6 @@ function ClassSharing() {
   function getDisplayUsers(users) {
     setDisplayUsers(users);
   }
-
-  var filteredRes = [];
 
   return (
     <div className="body">
@@ -201,14 +184,14 @@ function ClassSharing() {
                               size="mini"
                               floated="right"
                               color="red"
-                              onClick={() => {
-                                deleteClass({
+                              onClick={async () => {
+                                await deleteClass({
                                   variables: {
                                     code: classTemp.code,
                                     username
                                   }
                                 });
-                                window.location.reload();
+                                refetch();
                               }}
                               icon="times"
                             />
@@ -310,7 +293,6 @@ function ClassSharing() {
                       <Button
                         floated="right"
                         type="submit"
-                        onClick={() => window.location.reload()}
                       >
                         Add
                       </Button>
@@ -369,13 +351,15 @@ function ClassSharing() {
                   <Button
                     floated="right"
                     color="red"
-                    onClick={() =>
-                      deleteClass({
-                        variables: {
-                          code: displayClass,
-                          username
-                        }
-                      })
+                    onClick={async () => {
+                        await deleteClass({
+                          variables: {
+                            code: displayClass,
+                            username
+                          }
+                        });
+                        refetch();
+                      }
                     }
                   >
                     Remove Class

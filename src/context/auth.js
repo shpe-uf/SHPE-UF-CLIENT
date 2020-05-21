@@ -8,11 +8,8 @@ const initialState = {
 if (localStorage.getItem("jwtToken")) {
   const decodedToken = jwtDecode(localStorage.getItem("jwtToken"));
 
-  localStorage.setItem('permission', decodedToken.permission);
-
   if (decodedToken.exp*1000 < Date.now()) {
     localStorage.removeItem("jwtToken");
-    localStorage.removeItem('permission');
   } else {
     initialState.user = decodedToken;
   }
@@ -54,7 +51,6 @@ function AuthProvider(props) {
 
   function logout() {
     localStorage.removeItem("jwtToken");
-    localStorage.removeItem('permission');
     dispatch({
       type: "LOGOUT"
     });
