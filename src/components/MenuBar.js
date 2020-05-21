@@ -13,9 +13,7 @@ import { AuthContext } from "../context/auth";
 
 import logo from "../assets/images/logo.png";
 
-import jwtDecode from "jwt-decode";
-
-function MenuBar({permission: permission}) {
+function MenuBar() {
   const { user, logout } = useContext(AuthContext);
 
   return (
@@ -47,7 +45,7 @@ function MenuBar({permission: permission}) {
                 <>
                   <Dropdown pointing item className="email" text={user.email}>
                     <Dropdown.Menu>
-                      {permission.includes('admin') &&
+                      {localStorage.getItem('permission') === 'admin' &&
                       <Dropdown.Item as={Link} to="/admin">
                         Admin Panel
                       </Dropdown.Item>
@@ -61,8 +59,8 @@ function MenuBar({permission: permission}) {
                       <Dropdown.Item as={Link} to="/corporations">
                         Corporate Database
                       </Dropdown.Item>
-                      <Dropdown.Item as={Link} to="/ShpeitoNetwork">
-                        SHPEito Network
+                      <Dropdown.Item as={Link} to="/classSharing">
+                        Class Sharing
                       </Dropdown.Item>
                       <Dropdown.Item as={Link} to="/alumnidirectory">
                         Alumni Directory
@@ -143,8 +141,8 @@ function MenuBar({permission: permission}) {
                       <Dropdown.Item as={Link} to="/corporateDatabase">
                         Corporate Database
                       </Dropdown.Item>
-                      <Dropdown.Item as={Link} to="/shpeitonetwork">
-                        SHPEito Network
+                      <Dropdown.Item as={Link} to="/classSharing">
+                        Class Sharing
                       </Dropdown.Item>
                       <Dropdown.Item as={Link} to="/alumnidirectory">
                         Alumni Directory

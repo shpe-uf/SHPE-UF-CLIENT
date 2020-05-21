@@ -119,7 +119,7 @@ function Corporations(props) {
                 <Card
                   fluid
                   raised
-                  image={<img className='corp-logo' src={corporation.logo} alt=''/>}
+                  image={<img className='corp-logo' src={corporation.logo}/>}
                   header={corporation.name}
                   extra={
                           <>
