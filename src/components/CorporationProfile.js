@@ -1,21 +1,106 @@
 import React from "react";
-import { Grid, Image, Button, List, Divider } from "semantic-ui-react";
+import { Grid, Image, Button, List, Divider, Container, Header, Responsive, Icon } from "semantic-ui-react";
 
 function CorporationProfile({corporation}) {
     return(
       <>
-        <Grid columns={2}>
-        <Grid.Row>
+        <Grid columns={2} stackable>
+          <Grid.Row>
             {/* Left Column */}
-            <Grid.Column width={6}>
+            <Grid.Column width={6} stretched>
               <h3>{corporation.name}</h3>
               <p>"{corporation.slogan}"</p>
               <Image src={corporation.logo}></Image>
               <Divider/>
-              <Button
+              <Responsive
+                minWidth={768}
+                maxWidth={999}
+                as={Container}
+              >
+                  <Button
+                    href={corporation.applyLink}
+                    positive
+                    floated='left'
+                  >
+                    <Icon name='paper plane' size='massive'/>
+                  </Button>
+
+                  <Button
+                    href={corporation.newsLink}
+                    color='blue'
+                    floated='right'
+                  >
+                    <Icon name='newspaper outline' size='massive'/>
+                  </Button>
+              </Responsive>
+              <Responsive
+                minWidth={360}
+                maxWidth={766}
+              >
+                <Button
                 href={corporation.applyLink}
+                icon='paper plane'
+                labelPosition='right'
+                positive
+                content='Apply'
+                // floated='left'
+              />
+              <Button
+                href={corporation.newsLink}
                 color="blue"
-              >Apply</Button>
+                icon='newspaper outline'
+                labelPosition='right'
+                content='News'
+                floated='right'
+              />                
+              </Responsive>
+              <Responsive
+                minWidth={1000}
+              >
+                <Button
+                href={corporation.applyLink}
+                icon='paper plane'
+                labelPosition='right'
+                positive
+                content='Apply'
+                // floated='left'
+              />
+              <Button
+                href={corporation.newsLink}
+                color="blue"
+                icon='newspaper outline'
+                labelPosition='right'
+                content='News'
+                floated='right'
+              />                
+              </Responsive>
+              {/* <Responsive
+                minWidth={768}
+                maxWidth={812}
+                as={Button}
+                color='blue'
+                icon='newspaper outline'
+                floated='left
+                // labelPosition='left'
+              /> */}
+                {/* <div>
+                <Button
+                href={corporation.applyLink}
+                icon='paper plane'
+                labelPosition='right'
+                positive
+                content='Apply'
+                // floated='left'
+              />
+              <Button
+                href={corporation.newsLink}
+                color="blue"
+                icon='newspaper outline'
+                labelPosition='right'
+                content='News'
+                floated='right'
+              />
+                </div> */}
               <h4>Majors</h4>
               <p>
               {
@@ -65,10 +150,6 @@ function CorporationProfile({corporation}) {
                   <List.Content>Attending Fall BBQ with Industry</List.Content>
                 </List.Item>
                 <List.Item>
-                  <List.Icon name={corporation.fallBBQ ? "check" : "cancel"} color={corporation.fallBBQ ? "green" : "red"}/>
-                  <List.Content>Attending Fall BBQ with Industry</List.Content>
-                </List.Item>
-                <List.Item>
                   <List.Icon name={corporation.springBBQ ? "check" : "cancel"} color={corporation.springBBQ ? "green" : "red"}/>
                   <List.Content>Attending Spring BBQ with Industry</List.Content>
                 </List.Item>
@@ -90,10 +171,6 @@ function CorporationProfile({corporation}) {
                 <p>{corporation.goals}</p>
               <h4>Business Model/Operations Highlight</h4>
                 <p>{corporation.businessModel}</p>
-                <Grid.Row>
-                  <h4>News Link</h4>
-                    <a href={corporation.newsLink}>Click here</a>
-                </Grid.Row>
             </Grid.Column>
           </Grid.Row>
         </Grid>

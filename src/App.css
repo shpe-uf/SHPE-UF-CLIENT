@@ -158,7 +158,6 @@ h5 {
 .ui.inverted.menu {
   border-radius: 0px !important;
   box-shadow: none;
-  margin-bottom: 0px;
   background-color: var(--primary) !important;
   height: 64px;
 }
@@ -358,6 +357,10 @@ h5 {
   padding: 8px !important;
 }
 
+.card-team {
+  width: 260px !important;
+}
+
 .header {
   font-size: 1.5rem !important;
 }
@@ -505,6 +508,11 @@ h5 {
   color: var(--white);
 }
 
+.mobile-responsive {
+  padding-right: 3em !important;
+  padding-left: 0.5em !important;
+}
+
 .points-number {
   font-family: "digital-font" !important;
   font-size: 5rem !important;
@@ -592,6 +600,14 @@ th {
 .ui.button,
 .ui.card > .content > .header {
   font-family: "body-font" !important;
+}
+
+.ui.card>.content>.header, 
+.ui.cards>.card>.content>.header {
+  height: 1em                 !important;
+  overflow: hidden            !important;
+  text-overflow: ellipsis     !important;
+  white-space: nowrap         !important;
 }
 
 .panel-admin {
