@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Dropdown,
   Container,
@@ -14,6 +14,7 @@ import graduating from './../assets/options/graduating.json';
 import country from './../assets/options/country.json';
 
 function DropdownMenu(props) {
+  const [width, setWidth] = useState(1000);
   const [category, setCategory] = useState("Name");
   const [filterListUnsorted, setFilterListUnsorted] = useState([]);
   const [filters, setFilters] = useState({
@@ -24,6 +25,17 @@ function DropdownMenu(props) {
     country: [],
     classes: []
   });
+
+  useEffect(() => { 
+    window.addEventListener('resize', resizeWindow.bind(this));
+    return function cleanup() {
+      window.removeEventListener('resize', resizeWindow.bind(this));
+    };  
+  },[]);
+
+  function resizeWindow() {
+    setWidth(window.innerWidth);
+  }
 
   let filterVal = '';
   function updateFilterVal(userIn) {
@@ -87,17 +99,25 @@ function DropdownMenu(props) {
     }
     setFilterListUnsorted(list);
   }
+  console.log(width)
 
   return (
     <Container>
       <div 
-        style={{
+        style={ width > 749 ? {
           display: 'flex',
           justifyContent: 'space-between',
-          alignItems: 'center'
+          alignItems: 'center',
+        } : {
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          flexFlow: 'column nowrap',
+          height: '150px'
         }}>
         <div>
           <Dropdown
+            header='Filter:'
             defaultValue = {'Name'}
             options = {dropdownOptions}
             onChange={(e, data) => {
@@ -108,14 +128,14 @@ function DropdownMenu(props) {
         </div>
         <div
           style={{
-            flexGrow: '0.9'
+            flexGrow: '0.9',
           }}
         >
           {
             fullSelection[category] === '' ?
             <Form>
               <Form.Field>
-                <input onChange={e => updateFilterVal(e.target.value)} placeholder={"Search " + category} />
+                <input onChange={e => updateFilterVal(e.target.value)} onKeyDown={(e) => {if(e.key === 'Enter') addFilter()}} placeholder={"Search " + category} />
               </Form.Field>
             </Form>
             :
