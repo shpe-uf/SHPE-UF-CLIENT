@@ -33,7 +33,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "https://membershpeuf.netlify.com/",
+  "proxy": "http://localhost:5000",
   "eslintConfig": {
     "extends": "react-app"
   },

@@ -28,6 +28,7 @@ import Admin from "./pages/Admin";
 import Points from "./pages/Points";
 import Profile from "./pages/Profile";
 import CorporateDatabase from "./pages/CorporateDatabase";
+import Archives from "./pages/Archives";
 import Events from "./pages/Events";
 import Tasks from "./pages/Tasks";
 import Members from "./pages/Members";
@@ -36,12 +37,34 @@ import Statistics from "./pages/Statistics";
 import Corporations from "./pages/Corporations";
 import AlumniDirectory from "./pages/AlumniDirectory";
 import ShpeitoNetwork from "./pages/ShpeitoNetwork";
+import jwtDecode from "jwt-decode";
+import gql from "graphql-tag";
+import { useQuery } from "@apollo/react-hooks";
 
 function App() {
+  var decodedToken = [];
+
+  if (localStorage.getItem("jwtToken")) {
+    decodedToken = jwtDecode(localStorage.getItem("jwtToken"));
+  }
+
+  var { data } = useQuery(FETCH_USER_QUERY, {
+    variables: {
+      userId: decodedToken.id
+    }
+  });
+
+  var permission = "";
+
+  if (data && data.getUser)
+  {
+    permission = data.getUser.permission;
+  }
+
   return (
     <AuthProvider>
       <Router>
-        <MenuBar />
+        <MenuBar permission = {permission}/>
         <Switch>
           <Route exact path="/" component={Home} />
           <AuthRoute exact path="/login" component={Login} />
@@ -59,14 +82,15 @@ function App() {
           <UserRoute exact path="/profile" component={Profile} />
           <UserRoute exact path="/points" component={Points} />
           <UserRoute exact path="/alumnidirectory" component={AlumniDirectory} />
-          <UserRoute exact path="/ShpeitoNetwork" component={ShpeitoNetwork} />
-          <AdminRoute exact path="/admin" component={Admin} />
-          <AdminRoute exact path="/admin/events" component={Events} />
-          <UserRoute exact path="/admin/tasks" component={Tasks} />
-          <AdminRoute exact path="/admin/members" component={Members} />
-          <AdminRoute exact path="/admin/requests" component={Requests} />
-          <AdminRoute exact path="/admin/statistics" component={Statistics} />
-          <UserRoute exact path="/admin/corporatedatabase" component={CorporateDatabase} />
+          <UserRoute exact path="/shpeitonetwork" component={ShpeitoNetwork} />
+          <AdminRoute exact path="/admin" component={() => <Admin permission={permission}/>} permission={permission} security="admin"/>
+          <AdminRoute exact path="/admin/events" component={Events} permission={permission} security="events"/>
+          <AdminRoute exact path="/admin/tasks" component={Tasks} permission={permission} security="tasks"/>
+          <AdminRoute exact path="/admin/members" component={Members} permission={permission} security="members"/>
+          <AdminRoute exact path="/admin/requests" component={Requests} permission={permission} security="requests"/>
+          <AdminRoute exact path="/admin/statistics" component={Statistics} permission={permission} security="statistics"/>
+          <AdminRoute exact path="/admin/archives" component={Archives} permission={permission}/>
+          <AdminRoute exact path="/admin/corporatedatabase" component={CorporateDatabase} permission={permission} security="corporatedatabase"/>
           <Route>
             <Redirect to="/"/>
           </Route>
@@ -76,5 +100,13 @@ function App() {
     </AuthProvider>
   );
 }
+
+const FETCH_USER_QUERY = gql`
+  query getUser($userId: ID!) {
+    getUser(userId: $userId) {
+      permission
+    }
+  }
+`;
 
 export default App;
