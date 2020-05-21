@@ -72,6 +72,8 @@ function Profile() {
     sex: ""
   });
 
+  console.log(values);
+
   const [editProfile, { loading }] = useMutation(EDIT_USER_PROFILE, {
     update(
       _,
@@ -96,8 +98,8 @@ function Profile() {
     },
 
     onError(err) {
+      console.log(err);
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
-      console.log(errors);
     },
 
     variables: values
@@ -108,6 +110,7 @@ function Profile() {
   }
 
   function photoSelectedHandler(event) {
+    console.log(event.target.files.length);
     if (event.target.files.length > 0) {
       var a = new FileReader();
       a.readAsDataURL(event.target.files[0]);

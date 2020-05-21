@@ -2,6 +2,8 @@ import React, { useContext, useState } from "react";
 import {
   Segment,
   Card,
+  Image,
+  Message,
   Table,
   Header,
   Grid,
@@ -9,15 +11,25 @@ import {
   Button,
   Modal,
   Form,
+  Icon,
+  List,
+  Label,
+  Tab,
+  Placeholder,
+  ListItem,
+  GridColumn,
   Responsive
 } from "semantic-ui-react";
 import gql from "graphql-tag";
-import { useQuery, useMutation } from "@apollo/react-hooks";
+import { useQuery, useMutation, useLazyQuery } from "@apollo/react-hooks";
 
+import placeholder from "../assets/images/team/placeholder.png";
 import { useForm } from "../util/hooks";
 import { AuthContext } from "../context/auth";
 
 import Title from "../components/Title";
+import cesar from "../assets/images/team/2019-2020/cesar.png";
+import { findValuesAddedToEnums } from "graphql/utilities/findBreakingChanges";
 import MatchCards from "../components/MatchCards";
 
 function ClassSharing() {
@@ -57,32 +69,36 @@ function ClassSharing() {
     username: username
   });
 
+  var getClasses = [];
+
+  //var { data } = 0
   var { data } = useQuery(FETCH_USER_QUERY, {
     variables: {
       userId: id
     }
   });
-
-  var getClasses = [];
+  console.log(id);
 
   if (data.getUser) {
     getClasses = data.getUser.classes;
   }
 
-  var { data: dataM, refetch } = useQuery(GET_MATCHES_QUERY, {
+  var getMatches = [];
+
+  var { data: dataM } = useQuery(GET_MATCHES_QUERY, {
     variables: {
       username
     }
   });
 
-  var getMatches = [];
-
   if (dataM.getMatches) {
     getMatches = dataM.getMatches;
   }
 
+  console.log(getMatches);
+
   var classUsers = [];
-  const [getClass] = useMutation(
+  const [getClass, { data: getClassData, loading: loadingClass }] = useMutation(
     GET_CLASS_QUERY,
     {
       update(_, { data: { getClass } }) {
@@ -105,8 +121,8 @@ function ClassSharing() {
       setAddClassModal(false);
     },
     onError(err) {
+      console.log(err);
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
-      console.log(errors);
     },
     variables: values
   });
@@ -121,9 +137,8 @@ function ClassSharing() {
     }
   });
 
-  async function addClassCallback() {
-    await createClass();
-    refetch();
+  function addClassCallback() {
+    createClass();
   }
 
   function getDisplayClass(classCode) {
@@ -133,6 +148,8 @@ function ClassSharing() {
   function getDisplayUsers(users) {
     setDisplayUsers(users);
   }
+
+  var filteredRes = [];
 
   return (
     <div className="body">
@@ -184,14 +201,14 @@ function ClassSharing() {
                               size="mini"
                               floated="right"
                               color="red"
-                              onClick={async () => {
-                                await deleteClass({
+                              onClick={() => {
+                                deleteClass({
                                   variables: {
                                     code: classTemp.code,
                                     username
                                   }
                                 });
-                                refetch();
+                                window.location.reload();
                               }}
                               icon="times"
                             />
@@ -293,6 +310,7 @@ function ClassSharing() {
                       <Button
                         floated="right"
                         type="submit"
+                        onClick={() => window.location.reload()}
                       >
                         Add
                       </Button>
@@ -351,15 +369,13 @@ function ClassSharing() {
                   <Button
                     floated="right"
                     color="red"
-                    onClick={async () => {
-                        await deleteClass({
-                          variables: {
-                            code: displayClass,
-                            username
-                          }
-                        });
-                        refetch();
-                      }
+                    onClick={() =>
+                      deleteClass({
+                        variables: {
+                          code: displayClass,
+                          username
+                        }
+                      })
                     }
                   >
                     Remove Class

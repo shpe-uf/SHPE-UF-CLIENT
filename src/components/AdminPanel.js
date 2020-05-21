@@ -2,10 +2,9 @@ import React from "react";
 import { Grid, Segment } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
 
-function Title({permission: permission}) {
+function Title() {
   return (
     <>
-        {(permission.includes("super") || permission.includes("members")) &&
         <Grid.Column>
           <NavLink to="/admin/members">
             <Segment inverted color="red" textAlign="center">
@@ -13,8 +12,7 @@ function Title({permission: permission}) {
               <p className="text-admin">Members</p>
             </Segment>
           </NavLink>
-        </Grid.Column>}
-        {(permission.includes("super") || permission.includes("events")) &&
+        </Grid.Column>
         <Grid.Column>
           <NavLink to="/admin/events">
             <Segment inverted color="orange" textAlign="center">
@@ -22,8 +20,7 @@ function Title({permission: permission}) {
               <p className="text-admin">Events</p>
             </Segment>
           </NavLink>
-        </Grid.Column>}
-        {(permission.includes("super") || permission.includes("tasks")) &&
+        </Grid.Column>
         <Grid.Column>
           <NavLink to="/admin/tasks">
             <Segment inverted color="yellow" textAlign="center">
@@ -31,8 +28,7 @@ function Title({permission: permission}) {
               <p className="text-admin">Tasks</p>
             </Segment>
           </NavLink>
-        </Grid.Column>}
-        {(permission.includes("super") || permission.includes("requests")) &&
+        </Grid.Column>
         <Grid.Column>
           <NavLink to="/admin/requests">
             <Segment inverted color="olive" textAlign="center">
@@ -40,8 +36,7 @@ function Title({permission: permission}) {
               <p className="text-admin">Requests</p>
             </Segment>
           </NavLink>
-        </Grid.Column>}
-        {(permission.includes("super") || permission.includes("statistics")) &&
+        </Grid.Column>
         <Grid.Column>
           <NavLink to="/admin/statistics">
             <Segment inverted color="green" textAlign="center">
@@ -49,8 +44,7 @@ function Title({permission: permission}) {
               <p className="text-admin">Statistics</p>
             </Segment>
           </NavLink>
-        </Grid.Column>}
-        {(permission.includes("super") || permission.includes("corporatedatabase")) &&
+        </Grid.Column>
         <Grid.Column>
           <NavLink to="/admin/corporatedatabase">
             <Segment inverted color="teal" textAlign="center">
@@ -58,8 +52,7 @@ function Title({permission: permission}) {
               <p className="text-admin">Corporate Database</p>
             </Segment>
           </NavLink>
-        </Grid.Column>}
-        {(permission.includes("super") || permission.includes("reimbursements")) &&
+        </Grid.Column>
         <Grid.Column>
           <NavLink to="/admin/">
             <Segment inverted color="blue" textAlign="center">
@@ -67,16 +60,15 @@ function Title({permission: permission}) {
               <p className="text-admin">Reimbursements</p>
             </Segment>
           </NavLink>
-        </Grid.Column>}
-        {(permission.includes("super") || permission.includes("archive")) &&
+        </Grid.Column>
         <Grid.Column>
-          <NavLink to="/admin/archives">
+          <NavLink to="/admin/">
             <Segment inverted color="violet" textAlign="center">
               <i className="fas fa-admin fa-archive"></i>
               <p className="text-admin">Archive</p>
             </Segment>
           </NavLink>
-        </Grid.Column>}
+        </Grid.Column>
     </>
   );
 }
