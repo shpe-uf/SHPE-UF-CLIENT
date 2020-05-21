@@ -1,101 +1,155 @@
 import React, { useState } from "react";
 import {
   Dropdown,
-  Menu,
-  Search,
   Container,
   Label,
-  Icon,
   Grid,
   Form,
+  Button
 } from "semantic-ui-react";
 
-function DropdownMenu() {
-  var [title, setTitle] = useState("Major");
-  var [options, setOptions] = useState([
-    "Computer Science",
-    "Computer Engineering",
-    "Digital Arts and Sciences",
-    "Biomedical Engineering",
-  ]);
-  var searchTitle = "Search " + title;
-  /*
-  <Search.Category
-  text={nameOfOption.text}
-  onClick={() => console.log(nameOfOption.text)}
-  ></Search.Category>
-  */
+import major from './../assets/options/major.json';
+import year from './../assets/options/year.json';
+import graduating from './../assets/options/graduating.json';
+import country from './../assets/options/country.json';
+
+function DropdownMenu(props) {
+  const [category, setCategory] = useState("Name");
+  const [filterListUnsorted, setFilterListUnsorted] = useState([]);
+  const [filters, setFilters] = useState({
+    name: [],
+    major: [],
+    year: [],
+    graduating: [],
+    country: [],
+    classes: []
+  });
+
+  let filterVal = '';
+  function updateFilterVal(userIn) {
+    filterVal = userIn;
+  };
+
+  let fullSelection = {
+    'Name': '',
+    'Major': major,
+    'Year': year,
+    'Graduating': graduating,
+    'Country': country,
+    'Classes': ''
+  };
+
+  function addFilter(){
+    if(filterVal && filterVal != '' && !filters[category.toLowerCase()].includes(filterVal)) {
+      let f = filters;
+      if(category==='Classes') {
+        let newVal = filterVal.replace(/\s+/g, '').toUpperCase();
+        f[category.toLowerCase()].push(newVal);
+      } else {
+        f[category.toLowerCase()].push(filterVal);
+      }
+      setFilters(f);
+      printLabels();
+      props.getUsers(f);
+    }
+  }
+
+  function deleteFilter(deletedFilter) {
+    let f = filters;
+    let k = Object.keys(f);
+    for(let i = 0; i < k.length; i++) {
+      if(f[k[i]].includes(deletedFilter)) {
+        f[k[i]] = f[k[i]].filter(x => x != deletedFilter)
+      }
+    }
+    setFilters(f);
+    printLabels();
+    props.getUsers(f);
+  }
+
+  let dropdownOptions = (function() {
+    let optionArray = [];
+    let options = Object.keys(fullSelection);
+    for(let i = 0; i < options.length; i++) {
+      optionArray.push({});
+      optionArray[i].text = optionArray[i].value = options[i];
+    }
+    return optionArray;
+  }())
+
+  function printLabels() {
+    let filterKeys = Object.keys(filters);
+    let list = [];
+    for(let i = 0; i < filterKeys.length; i++) {
+      filters[filterKeys[i]].map((individualFilter) => {
+        list.push(individualFilter);
+      })
+    }
+    setFilterListUnsorted(list);
+  }
 
   return (
-    <>
-      <Menu stackable>
-        <Menu.Item>
-          <Form onSubmit={() => console.log("HELLO")}>
-            <Form.Field>
-              <input placeholder={searchTitle} />
-            </Form.Field>
-          </Form>
-        </Menu.Item>
-        <Menu.Item position="right">
-          <Dropdown className="background-dropdown" item text={title}>
-            <Dropdown.Menu>
-              <Dropdown.Item
-                text="Major"
-                onClick={() => {
-                  setTitle((title = "Major"));
-                  setOptions([
-                    { text: "Computer Science" },
-                    { text: "Computer Engineering" },
-                    { text: "Digital Arts and Sciences" },
-                    { text: "Biomedical Engineering" },
-                  ]);
-                }}
-              />
-              <Dropdown.Item
-                text="Year"
-                onClick={() => {
-                  setTitle((title = "Year"));
-                  setOptions([{ text: "1st Year" }, { text: "2nd Year" }]);
-                }}
-              />
-              <Dropdown.Item
-                text="Country of Origin"
-                onClick={() => {
-                  setTitle((title = "Country of Origin"));
-                  setOptions([{ text: "Cuba" }, { text: "Venezuela" }]);
-                }}
-              />
-              <Dropdown.Item
-                text="Sex"
-                onClick={() => {
-                  setTitle((title = "Sex"));
-                  setOptions([{ text: "Female" }, { text: "Male" }]);
-                }}
-              />
-              <Dropdown.Item
-                text="Ethnicity"
-                onClick={() => {
-                  setTitle((title = "Ethnicity"));
-                  setOptions([{ text: "Hispanic/Latino" }]);
-                }}
-              />
-              <Dropdown.Item
-                text="Class Sharing"
-                onClick={() => {
-                  setTitle((title = "Class Sharing"));
-                  setOptions([{ text: "COP4600" }]);
-                }}
-              />
-            </Dropdown.Menu>
-          </Dropdown>
-        </Menu.Item>
-      </Menu>
-      <br></br>
-      <Label circular>
-        Computer Science
-        <Icon name="delete" />
-      </Label>
-    </>
+    <Container>
+      <div 
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center'
+        }}>
+        <div>
+          <Dropdown
+            defaultValue = {'Name'}
+            options = {dropdownOptions}
+            onChange={(e, data) => {
+              setCategory(data.value);
+            }}
+            selection
+          />
+        </div>
+        <div
+          style={{
+            flexGrow: '0.9'
+          }}
+        >
+          {
+            fullSelection[category] === '' ?
+            <Form>
+              <Form.Field>
+                <input onChange={e => updateFilterVal(e.target.value)} placeholder={"Search " + category} />
+              </Form.Field>
+            </Form>
+            :
+            <Dropdown
+              placeholder={'Select ' + category}
+              fluid
+              search
+              selection
+              onChange={(e,data) => updateFilterVal(data.value)}
+              options={fullSelection[category]}
+            />
+          }
+        </div>
+        <Grid.Column>
+          <Button
+            onClick={addFilter}
+          >
+            Enter
+          </Button>
+        </Grid.Column>
+      </div>
+      <br/>
+      {
+        filterListUnsorted.map((filter) => 
+          <Label 
+            size='tiny' 
+            circular 
+            content={filter} 
+            onRemove={(e, data) => deleteFilter(data.content)}
+            key={filter}
+          />
+        )
+      }
+    </Container>
   );
 }
 

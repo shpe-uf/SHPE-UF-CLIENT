@@ -35,7 +35,7 @@ import Requests from "./pages/Requests";
 import Statistics from "./pages/Statistics";
 import Corporations from "./pages/Corporations";
 import AlumniDirectory from "./pages/AlumniDirectory";
-import ClassSharing from "./pages/ClassSharing";
+import ShpeitoNetwork from "./pages/ShpeitoNetwork";
 
 function App() {
   return (
@@ -59,7 +59,7 @@ function App() {
           <UserRoute exact path="/profile" component={Profile} />
           <UserRoute exact path="/points" component={Points} />
           <UserRoute exact path="/alumnidirectory" component={AlumniDirectory} />
-          <UserRoute exact path="/classSharing" component={ClassSharing} />
+          <UserRoute exact path="/ShpeitoNetwork" component={ShpeitoNetwork} />
           <AdminRoute exact path="/admin" component={Admin} />
           <AdminRoute exact path="/admin/events" component={Events} />
           <UserRoute exact path="/admin/tasks" component={Tasks} />

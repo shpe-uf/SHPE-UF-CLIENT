@@ -1,7 +1,6 @@
 import React from "react";
 import { Grid, Container, Icon, Dropdown } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import DropdownMenu from "../components/DropdownMenu";
 
 function Title({ title, adminPath}) {
   return (

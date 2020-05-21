@@ -59,7 +59,7 @@ function MenuBar() {
                       <Dropdown.Item as={Link} to="/corporations">
                         Corporate Database
                       </Dropdown.Item>
-                      <Dropdown.Item as={Link} to="/classSharing">
+                      <Dropdown.Item as={Link} to="/ShpeitoNetwork">
                         SHPEito Network
                       </Dropdown.Item>
                       <Dropdown.Item as={Link} to="/alumnidirectory">
@@ -141,7 +141,7 @@ function MenuBar() {
                       <Dropdown.Item as={Link} to="/corporateDatabase">
                         Corporate Database
                       </Dropdown.Item>
-                      <Dropdown.Item as={Link} to="/classSharing">
+                      <Dropdown.Item as={Link} to="/ShpeitoNetwork">
                         SHPEito Network
                       </Dropdown.Item>
                       <Dropdown.Item as={Link} to="/alumnidirectory">
