@@ -358,7 +358,7 @@ h5 {
 }
 
 .card-team {
-  width: 260px !important;
+  width: 270px !important;
 }
 
 .header {
@@ -720,6 +720,8 @@ div::-webkit-scrollbar-thumb {
 .corp-button {
   margin-top: 4px !important;
   margin-bottom: 4px !important;
+  padding-left: 0em !important;
+  padding-right: 0em !important;
 }
 
 .corp-logo {

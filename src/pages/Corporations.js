@@ -59,7 +59,7 @@ function Corporations(props) {
                 corporations &&
                 corporations.map((corporation, index) => (
                     <Card
-                    className='card-team'
+                      className='card-team'
                       key={index}
                       fluid
                       raised
