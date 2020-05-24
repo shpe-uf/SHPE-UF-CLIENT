@@ -70,7 +70,7 @@ function Title({ title, adminPath}) {
                         {title !== "Archive" && (
                           <Dropdown.Item
                             as={Link}
-                            to="/admin/"
+                            to="/admin/archives"
                             text="Archive"
                           />
                         )}
