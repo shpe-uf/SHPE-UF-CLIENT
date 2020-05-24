@@ -13,9 +13,7 @@ import { AuthContext } from "../context/auth";
 
 import logo from "../assets/images/logo.png";
 
-import jwtDecode from "jwt-decode";
-
-function MenuBar({permission: permission}) {
+function MenuBar({permission}) {
   const { user, logout } = useContext(AuthContext);
 
   return (

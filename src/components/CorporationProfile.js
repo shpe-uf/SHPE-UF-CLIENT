@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Image, Button, List, Divider, Container, Header, Responsive, Icon } from "semantic-ui-react";
+import { Grid, Image, Button, List, Divider, Container, Responsive, Icon } from "semantic-ui-react";
 
 function CorporationProfile({corporation}) {
     return(
