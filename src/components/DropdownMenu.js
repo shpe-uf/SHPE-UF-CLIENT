@@ -99,7 +99,6 @@ function DropdownMenu(props) {
     }
     setFilterListUnsorted(list);
   }
-  console.log(width)
 
   return (
     <Container>
