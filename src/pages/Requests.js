@@ -50,7 +50,6 @@ function Requests() {
             <Grid.Column>
               <div
                 style={{
-                  marginTop: '10px',
                   display: 'flex',
                   justifyContent: 'flex-end',
 
