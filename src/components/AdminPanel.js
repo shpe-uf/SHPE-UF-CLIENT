@@ -2,7 +2,7 @@ import React from "react";
 import { Grid, Segment } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
 
-function Title({permission: permission}) {
+function Title({permission}) {
   return (
     <>
         {(permission.includes("super") || permission.includes("members")) &&

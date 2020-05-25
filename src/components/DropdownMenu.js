@@ -52,7 +52,7 @@ function DropdownMenu(props) {
   };
 
   function addFilter(){
-    if(filterVal && filterVal != '' && !filters[category.toLowerCase()].includes(filterVal)) {
+    if(filterVal && filterVal !== '' && !filters[category.toLowerCase()].includes(filterVal)) {
       let f = filters;
       if(category==='Classes') {
         let newVal = filterVal.replace(/\s+/g, '').toUpperCase();
@@ -71,7 +71,7 @@ function DropdownMenu(props) {
     let k = Object.keys(f);
     for(let i = 0; i < k.length; i++) {
       if(f[k[i]].includes(deletedFilter)) {
-        f[k[i]] = f[k[i]].filter(x => x != deletedFilter)
+        f[k[i]] = f[k[i]].filter(x => x !== deletedFilter)
       }
     }
     setFilters(f);
@@ -93,13 +93,12 @@ function DropdownMenu(props) {
     let filterKeys = Object.keys(filters);
     let list = [];
     for(let i = 0; i < filterKeys.length; i++) {
-      filters[filterKeys[i]].map((individualFilter) => {
-        list.push(individualFilter);
-      })
+      filters[filterKeys[i]].forEach(element => {
+        list.push(element);
+      });
     }
     setFilterListUnsorted(list);
   }
-  console.log(width)
 
   return (
     <Container>
@@ -117,7 +116,6 @@ function DropdownMenu(props) {
         }}>
         <div>
           <Dropdown
-            header='Filter:'
             defaultValue = {'Name'}
             options = {dropdownOptions}
             onChange={(e, data) => {
