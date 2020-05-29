@@ -141,7 +141,7 @@ function MenuBar({permission}) {
                       <Dropdown.Item as={Link} to="/points">
                         Points Program
                       </Dropdown.Item>
-                      <Dropdown.Item as={Link} to="/corporateDatabase">
+                      <Dropdown.Item as={Link} to="/corporations">
                         Corporate Database
                       </Dropdown.Item>
                       <Dropdown.Item as={Link} to="/shpeitonetwork">

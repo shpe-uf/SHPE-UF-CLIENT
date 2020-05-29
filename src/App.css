@@ -755,3 +755,7 @@ div::-webkit-scrollbar-thumb {
 .card-image {
   height: 15rem;
 }
+
+.checkmark {
+  position: absolute
+}

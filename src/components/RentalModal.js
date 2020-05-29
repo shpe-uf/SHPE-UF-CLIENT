@@ -1,73 +1,75 @@
 import React, { useState, useContext } from 'react';
-import { Modal, Segment, Container, Step, Icon, Grid, Button, Loader } from 'semantic-ui-react';
+import { Modal, Segment, Container, Step, Icon, Grid, Button, Loader, Dimmer, Image, Header, Checkbox, Divider, List } from 'semantic-ui-react';
 
 import { AuthContext } from "../context/auth";
 import { useQuery } from '@apollo/react-hooks';
-import { FETCH_USERS_QUERY } from '../util/graphql';
+import gql from 'graphql-tag';
+
+import checkmark from '../assets/images/checkmark.svg';
+import x_icon from '../assets/images/x.svg';
 
 function RentalModal(props) {
 
   const [ rentalState, setRentalState ] = useState(0);
+  const [ agrees, setAgrees ] = useState(false);
+  const [ numberOfItems, setNumberOfItems ] = useState(0);
 
   let {
     user: { id }
   } = useContext(AuthContext);
 
-  let user = useQuery(FETCH_USERS_QUERY, {
+  let user = useQuery(FETCH_USER_QUERY, {
     variables: {
       userId: id
     }
-  })
+  }).data.getUser;
 
-  let canProceed = false;
-  let fakeDoneLoading = false;
+  let rentalAgreement =  require('../assets/options/rentalAgreement.js').lorem;
 
-  setTimeout(() => fakeDoneLoading = true, 3000);
+  let errors = [];
 
-  function hasEnoughPoints(itemTier) {
-    switch(itemTier) {
-      case 1:
-        if(user.points > 5) {
-          canProceed = true;
-          return true;
-        }
-        break;
-      case 2:
-        if(user.points > 15) {
-          canProceed = true;
-          return true;
-        }
-        break;
-      case 3:
-        if(user.points > 30) {
-          canProceed = true;
-          return true;
-        }
-        break;
-      default:
-        return false;
-        break;
+  function hasEnoughPoints() {
+    if(user) {
+      switch(props.item.level) {
+        case 1:
+          if(user.points > 0) {
+            return true;
+          }
+          break;
+        case 2:
+          if(user.points > 0) {
+            return true;
+          }
+          break;
+        case 3:
+          if(user.points > 10) {
+            return true;
+          }
+          break;
+        default:
+          break;
+      }
     }
     return false;
   }
 
-  function handleClose(type) {
-    switch(type) {
-      case 'next':
-        setRentalState(rentalState+1);
+  function changeNumberOfItems(val) {
+    switch(val) {
+      case -1:
+        if(numberOfItems > 0) setNumberOfItems(numberOfItems - 1);
         break;
-      case 'cancel':
-        props.cancelRental;
-        setRentalState(0);
-        break;
-      case 'finish':
-        props.finishRental;
-        setRentalState(0);
+      case 1:
+        setNumberOfItems(numberOfItems + 1);
         break;
       default:
         break;
     }
   }
+
+  const ITEM_LIMIT = 3;
+  //error checking for number of items
+  if(numberOfItems > ITEM_LIMIT) errors.push('You are past the item rental limit for this item');
+  if(numberOfItems > props.item.quantity - props.item.renters.length) errors.push('You are requesting more than what is available');
 
   return (
     <Modal
@@ -97,42 +99,102 @@ function RentalModal(props) {
               </Step.Content>
             </Step>
           </Step.Group>
-          <Segment>
+          <Segment textAlign='center'>
             { rentalState === 0 ? //POINT VALIDATION
-                <div>
-                <Loader active={!fakeDoneLoading}>
-                  Checking your points, please wait
-                </Loader>
-                {
-                  hasEnoughPoints && fakeDoneLoading ?
-                  <Icon name='check' color='green' size='massive'/>
-                  : <div/>
-                }
-                </div>
+                !user ? //loading
+                  <div style={{height: '300px'}}>
+                    <Dimmer active inverted>
+                      <Loader inverted>Loading</Loader>
+                    </Dimmer>
+                  </div> 
+                  :
+                  hasEnoughPoints() ?
+                  <Container>
+                    <Image src={checkmark} centered size='small' className='checkmark'/>
+                    <Header>Your point count qualifies you for this item</Header>
+                  </Container>
+                  :
+                  <Container>
+                    <Image src={x_icon} centered size='small' className='checkmark'/>
+                    <Header>Your point count does not qualify you for this item</Header>
+                  </Container>         
               :
               rentalState === 1 ? //RENTAL AGREEMENT
-                <div/> 
+                <Container>
+                  <Container>
+                    {rentalAgreement}
+                  </Container>
+                  <Divider hidden/>
+                  <Checkbox
+                    label='I agree to the above terms and conditions'
+                    onChange={(e,data) => setAgrees(data.checked)}
+                  />
+                </Container>
               :
               rentalState === 2 ? //INFORMATION
-                <div/> 
-              :                   //DONE
-                <div/>
+                <Container textAlign='left'>
+                  <List
+                    items={[
+                      'The last step is to select the number of items you would like to rent',
+                      'Upon pressing \"Finish\", your rent request will be submitted',
+                      'An email will be sent to your ufl shortly afterwards with information on how to retrieve your item',
+                    ]}
+                  />
+                  <Divider hidden/>
+                  <Container textAlign='center'>
+                    <Button 
+                      circular 
+                      onClick={() => changeNumberOfItems(-1)}
+                      icon='minus'
+                    />
+                    {numberOfItems} <Divider vertical hidden/>
+                    <Button 
+                      circular 
+                      onClick={() => changeNumberOfItems(1)}
+                      icon='plus'
+                    />
+                  </Container>
+                  {errors.length > 0 && (
+                    <div className="ui error message">
+                      <ul className="list">
+                        {Object.values(errors).map(value => (
+                          <li key={value}>{value}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </Container>
+              :
+                null
             }
             <Grid columns={2}>
               <Grid.Column textAlign='center'>
                 <Button
-                  onClick={handleClose}
+                  onClick={() => props.cancelRental()}
                 >
                   Cancel
                 </Button>
               </Grid.Column>
               <Grid.Column textAlign='center'>
-                <Button
-                  onClick={handleClose}
-                  disabled={canProceed}
-                >
-                  {rentalState < 2 ? 'Next': 'Finish'}
-                </Button>
+                {rentalState < 2 ? 
+                  <Button
+                    onClick={() => setRentalState(rentalState+1)}
+                    disabled=
+                      {rentalState === 0 ? 
+                        !hasEnoughPoints() :
+                        !agrees
+                      }
+                  >
+                    Next
+                  </Button>
+                  : 
+                  <Button
+                    onClick={() => props.finishRental(numberOfItems, user)}
+                    disabled={errors.length > 0 || numberOfItems === 0}
+                  >
+                    Finish
+                  </Button>
+                }
               </Grid.Column>
             </Grid>
           </Segment>
@@ -141,5 +203,15 @@ function RentalModal(props) {
     </Modal>
   );
 }
+
+const FETCH_USER_QUERY = gql`
+  query getUser($userId: ID!) {
+    getUser(userId: $userId) {
+      username
+      points
+      email
+    }
+  }
+`;
 
 export default RentalModal;

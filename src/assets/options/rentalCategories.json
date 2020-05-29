@@ -1,0 +1,28 @@
+{
+  "categories": [
+    {
+      "name": "All Inventory",
+      "description": ""
+    },
+    {
+      "name": "Computers",
+      "description": "Arduinos, Raspberry Pis, etc."
+    },
+    {
+      "name": "Tools",
+      "description": "Screwdrivers, pliers, etc."
+    },
+    {
+      "name": "Electronics",
+      "description": "Motors, LEDs, Breadboards, etc."
+    },
+    {
+      "name": "Expendables",
+      "description": "Tape, wire, etc."
+    },
+    {
+      "name": "Miscellaneous",
+      "description": "GPS tracker, magnets, etc."
+    }
+  ]
+}

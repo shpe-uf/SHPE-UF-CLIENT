@@ -27,6 +27,7 @@ function RentalCards(props) {
               </div>
               <Button
                 onClick={() => {props.rent(item)}}
+                disabled={item.quantity - item.renters.length === 0}
               >
                 Rent
               </Button>
@@ -46,7 +47,7 @@ function RentalCards(props) {
         alignItems: 'center'
       }}
     >
-      <Card.Group stackable >
+      <Card.Group stackable>
         {printCards(props.items)}
       </Card.Group>
       <Divider hidden/>
@@ -54,6 +55,7 @@ function RentalCards(props) {
         totalPages={Number.parseInt(props.items.length / ITEMS_PER_PAGE) + 1}
         defaultActivePage={1}
         onPageChange={(e,data) => {setItemPage(data.activePage)}}
+        ellipsisItem={null}
       />
     </div>
     
