@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Grid, Button, Input, Icon, Divider } from "semantic-ui-react";
+import { Container, Grid, Button, Input } from "semantic-ui-react";
 import { useQuery } from "@apollo/react-hooks";
 
 import { FETCH_REQUESTS_QUERY } from "../util/graphql";

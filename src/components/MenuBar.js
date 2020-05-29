@@ -59,8 +59,11 @@ function MenuBar({permission}) {
                       <Dropdown.Item as={Link} to="/corporations">
                         Corporate Database
                       </Dropdown.Item>
-                      <Dropdown.Item as={Link} to="/ShpeitoNetwork">
+                      <Dropdown.Item as={Link} to="/shpeitonetwork">
                         SHPEito Network
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="/shperentals">
+                        SHPE Rentals
                       </Dropdown.Item>
                       <Dropdown.Item as={Link} to="/alumnidirectory">
                         Alumni Directory
@@ -138,11 +141,14 @@ function MenuBar({permission}) {
                       <Dropdown.Item as={Link} to="/points">
                         Points Program
                       </Dropdown.Item>
-                      <Dropdown.Item as={Link} to="/corporateDatabase">
+                      <Dropdown.Item as={Link} to="/corporations">
                         Corporate Database
                       </Dropdown.Item>
                       <Dropdown.Item as={Link} to="/shpeitonetwork">
                         SHPEito Network
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="/shperentals">
+                        SHPE Rentals
                       </Dropdown.Item>
                       <Dropdown.Item as={Link} to="/alumnidirectory">
                         Alumni Directory

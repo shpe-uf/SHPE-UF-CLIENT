@@ -7,7 +7,7 @@ import gql from "graphql-tag";
 import { useLazyQuery } from "@apollo/react-hooks";
 
 import Title from "../components/Title";
-import DropdownMenu from "../components/DropdownMenu";
+import FilterSelection from "../components/FilterSelection";
 
 function ShpeitoNetwork() {
 
@@ -39,7 +39,7 @@ function ShpeitoNetwork() {
     <div className="body">
       <Title title="SHPEito Network"/>
       <Container>
-        <DropdownMenu getUsers={getUsers}/>
+        <FilterSelection getUsers={getUsers}/>
         {true ? <Segment disabled loading><div style={{height:'400px'}} /></Segment> :
 
           <div/>

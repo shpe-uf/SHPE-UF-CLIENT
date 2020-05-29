@@ -8,12 +8,12 @@ import {
   Button
 } from "semantic-ui-react";
 
-import major from './../assets/options/major.json';
-import year from './../assets/options/year.json';
-import graduating from './../assets/options/graduating.json';
-import country from './../assets/options/country.json';
+import major from '../assets/options/major.json';
+import year from '../assets/options/year.json';
+import graduating from '../assets/options/graduating.json';
+import country from '../assets/options/country.json';
 
-function DropdownMenu(props) {
+function FilterSelection(props) {
   const [width, setWidth] = useState(1000);
   const [category, setCategory] = useState("Name");
   const [filterListUnsorted, setFilterListUnsorted] = useState([]);
@@ -171,4 +171,4 @@ function DropdownMenu(props) {
   );
 }
 
-export default DropdownMenu;
+export default FilterSelection;
