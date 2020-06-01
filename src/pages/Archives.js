@@ -8,7 +8,6 @@ import {
   Modal,
   Segment,
   Tab,
-  Table,
 } from "semantic-ui-react";
 import { useQuery } from "@apollo/react-hooks";
 
@@ -24,17 +23,25 @@ import { CSVLink } from "react-csv";
 
 function Archives() {
   const usersUnfiltered = useQuery(FETCH_USERS_QUERY).data.getUsers;
-  const users = (usersUnfiltered) ? usersUnfiltered.map(({ photo, createdAt, events, __typename, ...item }) => item) : []
+  const users = usersUnfiltered
+    ? usersUnfiltered.map(
+        ({ photo, createdAt, events, __typename, ...item }) => item
+      )
+    : [];
 
   const alumniUnfiltered = useQuery(FETCH_ALUMNIS_QUERY).data.getAlumnis;
-  const alumni = (alumniUnfiltered) ? alumniUnfiltered.map(({ __typename, ...item }) => item) : []
+  const alumni = alumniUnfiltered
+    ? alumniUnfiltered.map(({ __typename, ...item }) => item)
+    : [];
 
   const lists = {
     membership: users,
-    listserv: (users) ? users.filter(user => user.listServ === true) : [],
-    graduating: (users) ? users.filter(user => user.graduating !== "Not Graduating") : [],
+    listserv: users ? users.filter((user) => user.listServ === true) : [],
+    graduating: users
+      ? users.filter((user) => user.graduating !== "Not Graduating")
+      : [],
     alumni: alumni,
-  }
+  };
 
   const [deleteSHPEModal, setDeleteSHPEModal] = useState(false);
   const [deleteDoneModal, setDeleteDoneModal] = useState(false);
@@ -64,7 +71,10 @@ function Archives() {
         <Grid>
           <Grid.Row>
             <Grid.Column>
-              <CSVLink data={(users) ? lists.membership: []} filename={"Membership.csv"}>
+              <CSVLink
+                data={users ? lists.membership : []}
+                filename={"Membership.csv"}
+              >
                 <Button color="green" floated="left">
                   Download as CSV
                 </Button>
@@ -88,7 +98,10 @@ function Archives() {
         <Grid>
           <Grid.Row>
             <Grid.Column>
-              <CSVLink data={(users) ? lists.listserv: []} filename={"ListServ.csv"}>
+              <CSVLink
+                data={users ? lists.listserv : []}
+                filename={"ListServ.csv"}
+              >
                 <Button color="green" floated="left">
                   Download as CSV
                 </Button>
@@ -112,7 +125,10 @@ function Archives() {
         <Grid>
           <Grid.Row>
             <Grid.Column>
-              <CSVLink data={(users) ? lists.graduating: []} filename={"Graduating.csv"}>
+              <CSVLink
+                data={users ? lists.graduating : []}
+                filename={"Graduating.csv"}
+              >
                 <Button color="green" floated="left">
                   Download as CSV
                 </Button>
@@ -136,7 +152,10 @@ function Archives() {
         <Grid>
           <Grid.Row>
             <Grid.Column>
-              <CSVLink data={(alumni) ? lists.alumni: []} filename={"Alumni.csv"}>
+              <CSVLink
+                data={alumni ? lists.alumni : []}
+                filename={"Alumni.csv"}
+              >
                 <Button color="green" floated="left">
                   Download as CSV
                 </Button>
@@ -253,7 +272,9 @@ function Archives() {
       </Modal>
 
       <Modal open={deleteDoneModal} size="tiny">
-        <Modal.Header><h2>This SHPE empty...</h2></Modal.Header>
+        <Modal.Header>
+          <h2>This SHPE empty...</h2>
+        </Modal.Header>
         <Modal.Content>
           <Grid columns="equal">
             <Grid.Row>

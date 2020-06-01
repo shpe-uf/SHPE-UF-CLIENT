@@ -5,12 +5,9 @@ function ListServTable({ users }) {
   let listServUsers = [];
 
   if (users) {
-    listServUsers = users.filter(user => user.listServ === true)
-    // for (let i = 0; i < users.length; i++) {
-    //   if (users[i].listServ === true)
-    //   listServUsers.push(users[i]);
-    // }
+    listServUsers = users.filter((user) => user.listServ === true);
   }
+  
   return (
     <>
       <Dimmer active={listServUsers ? false : true} inverted>

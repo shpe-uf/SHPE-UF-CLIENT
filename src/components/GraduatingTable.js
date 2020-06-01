@@ -5,7 +5,9 @@ function GraduatingTable({ users }) {
   let graduatingUsers = [];
 
   if (users) {
-    graduatingUsers = users.filter(user => user.graduating !== "Not Graduating")
+    graduatingUsers = users.filter(
+      (user) => user.graduating !== "Not Graduating"
+    );
   }
 
   return (
