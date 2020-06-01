@@ -7,7 +7,7 @@ function ListServTable({ users }) {
   if (users) {
     listServUsers = users.filter((user) => user.listServ === true);
   }
-  
+
   return (
     <>
       <Dimmer active={listServUsers ? false : true} inverted>
@@ -17,7 +17,9 @@ function ListServTable({ users }) {
         <Segment placeholder>
           <Header icon>
             <i className="fas fa-inbox"></i>
-            <p>It seems like there are no users in the ListServ at this moment.</p>
+            <p>
+              It seems like there are no users in the ListServ at this moment.
+            </p>
           </Header>
         </Segment>
       ) : (

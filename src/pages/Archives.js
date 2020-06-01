@@ -23,11 +23,15 @@ import { CSVLink } from "react-csv";
 
 function Archives() {
   const usersUnfiltered = useQuery(FETCH_USERS_QUERY).data.getUsers;
-  const users = usersUnfiltered
+  const usersFiltered = usersUnfiltered
     ? usersUnfiltered.map(
         ({ photo, createdAt, events, __typename, ...item }) => item
       )
     : [];
+  const users = usersFiltered.map((user) => {
+    user.listServ = user.listServ ? "Yes" : "No";
+    return user;
+  });
 
   const alumniUnfiltered = useQuery(FETCH_ALUMNIS_QUERY).data.getAlumnis;
   const alumni = alumniUnfiltered
