@@ -123,49 +123,6 @@ function Corporations(props) {
                       )
                     }
                     </CorporateCard>
-                    // <Card
-                    //   className='card-team'
-                    //   key={index}
-                    //   fluid
-                    //   raised
-                    //   image={<img className='corp-logo' src={corporation.logo} alt={'Logo for ' + corporation.name}/>}
-                    //   header={corporation.name}
-                    //   extra={
-                    //       <>
-                    //       <Button
-                    //       fluid
-                    //       className="corp-button"
-                    //       content="View Profile"
-                    //       icon="eye"
-                    //       labelPosition="left"
-                    //       onClick={()=>{
-                    //           getCorporationInfo(corporation);
-                    //           openModal("viewCorporation");
-                    //         }}
-                    //       />
-                    //         {user && user.bookmarks.find(function(bookmarked){
-                    //           return bookmarked === corporation.name;
-                    //         }) ? (
-                    //         <Button className="corp-button" fluid onClick={() => {deleteBookmark({variables: {
-                    //             company: corporation.name,
-                    //             username: username
-                    //           }});
-                    //           user.bookmarks.splice(user.bookmarks.indexOf(corporation.name), 1); 
-                    //           }}
-                    //           floated='right' icon='book' color='red' content="Remove Bookmark" labelPosition="left"/>
-                    //         ) : (
-                    //         <Button className="corp-button" fluid onClick={() => {bookmark({variables: {
-                    //             company: corporation.name,
-                    //             username: username
-                    //           }});
-                    //           user.bookmarks.push(corporation.name);
-                    //           }} 
-                    //           floated='right' icon='book' content="Add Bookmark" labelPosition="left"/>
-                    //         )
-                    //       }
-                    //       </>
-                    //         }
-                    // />
                 ))}
               </Card.Group>
             </Grid.Column>
@@ -176,58 +133,62 @@ function Corporations(props) {
 
   var bookmarksPane = {
     menuItem: {content:'Bookmarks', icon:'sticky note outline'},
-    render: () => <Tab.Pane loading={!user.bookmarks}>
-        <Grid stackable columns={4}>
-          <Grid.Row className="sponsor-padding">
-            {
-            user.bookmarks &&
-            corporations.filter(function (corporation) {
-              return user.bookmarks.includes(corporation.name);
-            }).map((corporation, index) => (
-              <Grid.Column className="card-team" key={index}>
-                <Card
-                  fluid
-                  raised
-                  image={<img className='corp-logo' src={corporation.logo} alt=''/>}
-                  header={corporation.name}
-                  extra={
-                          <>
-                          <Button
-                          fluid
-                          className="corp-button"
-                          content="View Profile"
-                          icon="eye"
+    render: () => 
+      <Tab.Pane loading={!user.bookmarks}>
+        <Grid stackable>
+          <Grid.Row className='sponsor-padding'>
+            <Grid.Column className='sponsor-padding'>
+              <Card.Group centered stackable itemsPerRow={4}>
+                { user.bookmarks &&
+                  corporations.filter(function (corporation) {
+                  return user.bookmarks.includes(corporation.name);
+                }).map((corporation, index) => (
+                  <CorporateCard
+                    key={index}
+                    corporation={corporation}
+                  >
+                    <Button
+                      fluid
+                      className="corp-button"
+                      content="View Profile"
+                      icon="eye"
+                      labelPosition="left"
+                      onClick={()=>{
+                          getCorporationInfo(corporation);
+                          openModal("viewCorporation");
+                        }}
+                    />
+                    {user && user.bookmarks.find(function(bookmarked){
+                    return bookmarked === corporation.name;
+                    }) 
+                    ? (
+                        <Button 
+                          className="corp-button" 
+                          fluid 
+                          onClick={()=>removeBookmark(corporation.name,username)}
+                          floated='right' 
+                          icon='book' 
+                          color='red' 
+                          content="Remove Bookmark" 
                           labelPosition="left"
-                          onClick={()=>{
-                              getCorporationInfo(corporation);
-                              openModal("viewCorporation");
-                            }}
-                          />
-                            {user && user.bookmarks.find(function(bookmarked){
-                              return bookmarked === corporation.name;
-                            }) ? (
-                            <Button className="corp-button" fluid onClick={() => {deleteBookmark({variables: {
-                                company: corporation.name,
-                                username: username
-                              }});
-                              user.bookmarks.splice(user.bookmarks.indexOf(corporation.name), 1); 
-                              }}
-                              floated='right' icon='book' color='red' content="Remove Bookmark" labelPosition="left"/>
-                            ) : (
-                            <Button className="corp-button" fluid onClick={() => {bookmark({variables: {
-                                company: corporation.name,
-                                username: username
-                              }});
-                              user.bookmarks.push(corporation.name);
-                              }} 
-                              floated='right' icon='book' content="Add Bookmark" labelPosition="left"/>
-                            )
-                          }
-                          </>
-                        }
-                />
-              </Grid.Column>
-            ))}
+                        />
+                      ) 
+                    : (
+                        <Button 
+                          className="corp-button" 
+                          fluid 
+                          onClick={()=>addBookmark(corporation.name, username)}
+                          floated='right' 
+                          icon='book' 
+                          content="Add Bookmark" 
+                          labelPosition="left"
+                        />
+                      )
+                    }
+                  </CorporateCard>           
+                ))}
+              </Card.Group>
+            </Grid.Column>
           </Grid.Row>
         </Grid>
     </Tab.Pane>
