@@ -17,10 +17,7 @@ import placeholder from "../assets/images/placeholder.png";
 function CorporateDatabase() {
   const [errors, setErrors] = useState({});
   const [addCorporationModal, setAddCorporationModal] = useState(false);
-  // const [selectedCorporation, setSelectedCorporation] = useState({});
-  const [displayCorporations, setDisplayCorporations] = useState(false);
 
-  // const [displayCorporations, setDisplayCorporations] = useState([]);
   var [logoFile, setLogoFile] = useState({});
 
   /**

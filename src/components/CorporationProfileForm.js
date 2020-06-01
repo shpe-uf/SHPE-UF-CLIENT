@@ -20,7 +20,7 @@ function CorporationProfileForm({corporation, closeModal, refetch}) {
 
     //State for image handling
     var [logoFile, setLogoFile] = useState({});
-    var [originalLogo, setOriginalLogo] = useState({});
+    let originalLogo = {};
 
     function logoSelectedHandler(event) {
       if (event.target.files.length > 0) {

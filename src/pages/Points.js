@@ -85,6 +85,8 @@ function Points() {
     }
   }
 
+  console.log(user);
+
   return (
     <div className="body">
       <Title title="Points Program" />

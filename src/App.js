@@ -28,6 +28,7 @@ import Admin from "./pages/Admin";
 import Points from "./pages/Points";
 import Profile from "./pages/Profile";
 import CorporateDatabase from "./pages/CorporateDatabase";
+import Archives from "./pages/Archives";
 import Events from "./pages/Events";
 import Tasks from "./pages/Tasks";
 import Members from "./pages/Members";
@@ -35,7 +36,8 @@ import Requests from "./pages/Requests";
 import Statistics from "./pages/Statistics";
 import Corporations from "./pages/Corporations";
 import AlumniDirectory from "./pages/AlumniDirectory";
-import ClassSharing from "./pages/ClassSharing";
+import ShpeitoNetwork from "./pages/ShpeitoNetwork";
+import ShpeRentals from "./pages/ShpeRentals";
 import jwtDecode from "jwt-decode";
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
@@ -53,7 +55,7 @@ function App() {
     }
   });
 
-  var permission = [];
+  var permission = "";
 
   if (data && data.getUser)
   {
@@ -81,14 +83,16 @@ function App() {
           <UserRoute exact path="/profile" component={Profile} />
           <UserRoute exact path="/points" component={Points} />
           <UserRoute exact path="/alumnidirectory" component={AlumniDirectory} />
-          <UserRoute exact path="/classSharing" component={ClassSharing} />
-          <AdminRoute exact path="/admin" component={Admin} permission={permission}/>
-          <AdminRoute exact path="/admin/events" component={Events} permission={permission}/>
-          <UserRoute exact path="/admin/tasks" component={Tasks} />
-          <AdminRoute exact path="/admin/members" component={Members} permission={permission}/>
-          <AdminRoute exact path="/admin/requests" component={Requests} permission={permission}/>
-          <AdminRoute exact path="/admin/statistics" component={Statistics} permission={permission}/>
-          <UserRoute exact path="/admin/corporatedatabase" component={CorporateDatabase} />
+          <UserRoute exact path="/shpeitonetwork" component={ShpeitoNetwork} />
+          <UserRoute exact path="/shperentals" component={ShpeRentals} />
+          <AdminRoute exact path="/admin" component={() => <Admin permission={permission}/>} permission={permission} security="admin"/>
+          <AdminRoute exact path="/admin/events" component={Events} permission={permission} security="events"/>
+          <AdminRoute exact path="/admin/tasks" component={Tasks} permission={permission} security="tasks"/>
+          <AdminRoute exact path="/admin/members" component={Members} permission={permission} security="members"/>
+          <AdminRoute exact path="/admin/requests" component={Requests} permission={permission} security="requests"/>
+          <AdminRoute exact path="/admin/statistics" component={Statistics} permission={permission} security="statistics"/>
+          <AdminRoute exact path="/admin/archives" component={Archives} permission={permission}/>
+          <AdminRoute exact path="/admin/corporatedatabase" component={CorporateDatabase} permission={permission} security="corporatedatabase"/>
           <Route>
             <Redirect to="/"/>
           </Route>
