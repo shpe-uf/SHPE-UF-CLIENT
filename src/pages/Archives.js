@@ -23,9 +23,12 @@ import { FETCH_ALUMNIS_QUERY } from "../util/graphql";
 import { CSVLink } from "react-csv";
 
 function Archives() {
-  const users = useQuery(FETCH_USERS_QUERY).data.getUsers;
+  const usersUnfiltered = useQuery(FETCH_USERS_QUERY).data.getUsers;
+  const users = (usersUnfiltered) ? usersUnfiltered.map(({ photo, createdAt, events, __typename, ...item }) => item) : []
 
-  const alumni = useQuery(FETCH_ALUMNIS_QUERY).data.getAlumnis;
+  const alumniUnfiltered = useQuery(FETCH_ALUMNIS_QUERY).data.getAlumnis;
+  const alumni = (alumniUnfiltered) ? alumniUnfiltered.map(({ __typename, ...item }) => item) : []
+
   const lists = {
     membership: users,
     listserv: (users) ? users.filter(user => user.listServ === true) : [],
@@ -54,7 +57,7 @@ function Archives() {
     }
   };
 
-  var membershipPane = {
+  const membershipPane = {
     menuItem: { content: "Membership", icon: "users" },
     render: () => (
       <Tab.Pane>
@@ -78,7 +81,7 @@ function Archives() {
     ),
   };
 
-  var listServPane = {
+  const listServPane = {
     menuItem: { content: "List Serv", icon: "address book outline" },
     render: () => (
       <Tab.Pane>
@@ -102,7 +105,7 @@ function Archives() {
     ),
   };
 
-  var graduatingPane = {
+  const graduatingPane = {
     menuItem: { content: "Graduating", icon: "graduation" },
     render: () => (
       <Tab.Pane>
@@ -126,7 +129,7 @@ function Archives() {
     ),
   };
 
-  var alumniPane = {
+  const alumniPane = {
     menuItem: { content: "Alumni", icon: "suitcase" },
     render: () => (
       <Tab.Pane>
@@ -148,7 +151,7 @@ function Archives() {
     ),
   };
 
-  var dangerPane = {
+  const dangerPane = {
     menuItem: { content: "Danger Zone", icon: "warning sign" },
     render: () => (
       <Tab.Pane>
