@@ -43,7 +43,7 @@ function Archives() {
 
   const lists = {
     membership: users,
-    listserv: users ? users.filter((user) => user.listServ === true) : [],
+    listserv: users ? users.filter((user) => user.listServ === "Yes") : [],
     graduating: users
       ? users.filter((user) => user.graduating !== "Not Graduating")
       : [],
@@ -310,7 +310,7 @@ function Archives() {
 
       <Modal open={deleteDoneModal} size="tiny">
         <Modal.Header>
-          <h2>This SHPE empty...</h2>
+          <h2>Databases Wiped</h2>
         </Modal.Header>
         <Modal.Content>
           <Grid columns="equal">
@@ -322,7 +322,7 @@ function Archives() {
                   floated="left"
                   onClick={() => closeModal("deleteDone")}
                 >
-                  YEET
+                  Okay
                 </Button>
               </Grid.Column>
             </Grid.Row>

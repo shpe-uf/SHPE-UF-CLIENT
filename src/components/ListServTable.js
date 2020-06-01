@@ -5,7 +5,7 @@ function ListServTable({ users }) {
   let listServUsers = [];
 
   if (users) {
-    listServUsers = users.filter((user) => user.listServ === true);
+    listServUsers = users.filter((user) => user.listServ === "Yes");
   }
 
   return (
