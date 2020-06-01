@@ -51,6 +51,11 @@
   padding: 0px !important;
 }
 
+.ui.fluid[class*="left labeled"].icon.button, .ui.fluid[class*="right labeled"].icon.button {
+  padding-left: 2em!important;
+  padding-right: 0em!important;
+}
+
 main {
   background-color: var(--white);
 }
@@ -347,19 +352,11 @@ h5 {
 
 .sponsor-padding {
   padding: 0px 0px 24px 0px !important;
+  margin: 0px !important;
 }
 
 .no-margin {
   margin: 0px !important;
-}
-
-.card-team,
-.card-points {
-  padding: 8px !important;
-}
-
-.card-team {
-  width: 270px !important;
 }
 
 .header {
@@ -634,6 +631,16 @@ th {
   white-space: nowrap         !important;
 }
 
+.card-points {
+  padding: 8px !important;
+}
+
+.card-team {
+  width: 240px !important;
+  /* padding: 8px !important; */
+}
+
+
 .panel-admin {
   cursor: pointer;
 }
@@ -749,9 +756,13 @@ div::-webkit-scrollbar-thumb {
 }
 
 .corp-logo {
-  width: 100%;
+  /* width: 100%;
   height: 20rem;
-  object-fit: contain;
+  object-fit: contain; */
+  width: 100% !important;
+  /* height: 20vw; */
+  height: 15rem !important;
+  object-fit: cover;
 }
 
 .card-image {
