@@ -9,7 +9,7 @@ import { setContext } from "apollo-link-context";
 let port = process.env.PORT || 5000;
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:" + port
+  uri: "http://localhost:" + port + "/"
 });
 
 const authLink = setContext(() => {

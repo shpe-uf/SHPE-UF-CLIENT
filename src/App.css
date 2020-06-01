@@ -57,6 +57,7 @@ main {
 
 .body {
   margin-bottom: 16px !important;
+  min-height: 600px;
 }
 
 footer {
@@ -158,7 +159,6 @@ h5 {
 .ui.inverted.menu {
   border-radius: 0px !important;
   box-shadow: none;
-  margin-bottom: 0px;
   background-color: var(--primary) !important;
   height: 64px;
 }
@@ -358,6 +358,10 @@ h5 {
   padding: 8px !important;
 }
 
+.card-team {
+  width: 260px !important;
+}
+
 .header {
   font-size: 1.5rem !important;
 }
@@ -505,6 +509,11 @@ h5 {
   color: var(--white);
 }
 
+.mobile-responsive {
+  padding-right: 3em !important;
+  padding-left: 0.5em !important;
+}
+
 .points-number {
   font-family: "digital-font" !important;
   font-size: 5rem !important;
@@ -577,6 +586,29 @@ th {
   color: rgb(220, 42, 42);
 }
 
+.background-dropdown { 
+  font-size: 2.5rem !important;
+  font-family: "heading-font" !important;
+  padding: 16px !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: var(--primary) !important;
+  text-transform: uppercase !important;
+  line-height: 1.1 !important;
+  margin-bottom: 8px !important;
+  font-weight: bolder !important;
+}
+.menu-border{
+  border:none;
+
+}
+.default-text{
+  color: white;
+}
+.search{
+  color:white;
+}
+
 .fa-inbox,
 .fa-frown,
 .fa-exclamation-circle {
@@ -592,6 +624,14 @@ th {
 .ui.button,
 .ui.card > .content > .header {
   font-family: "body-font" !important;
+}
+
+.ui.card>.content>.header, 
+.ui.cards>.card>.content>.header {
+  height: 1em                 !important;
+  overflow: hidden            !important;
+  text-overflow: ellipsis     !important;
+  white-space: nowrap         !important;
 }
 
 .panel-admin {
@@ -710,4 +750,12 @@ div::-webkit-scrollbar-thumb {
   width: 100%;
   height: 20rem;
   object-fit: contain;
+}
+
+.card-image {
+  height: 15rem;
+}
+
+.checkmark {
+  position: absolute
 }

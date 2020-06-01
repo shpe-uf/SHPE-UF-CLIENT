@@ -51,18 +51,21 @@ function Corporations(props) {
     menuItem: {content:'Corporations', icon:'building outline'},
     render: () => 
       <Tab.Pane loading={!corporations}>
-        <Grid stackable columns={4}>
-          <Grid.Row className="sponsor-padding">
-            {
-            corporations &&
-            corporations.map((corporation, index) => (
-              <Grid.Column className="card-team" key={index}>
-                <Card
-                  fluid
-                  raised
-                  image={<img className='corp-logo' src={corporation.logo} alt={'Logo for ' + corporation.name}/>}
-                  header={corporation.name}
-                  extra={
+        <Grid stackable>
+          <Grid.Row>
+            <Grid.Column>
+              <Card.Group centered itemsPerRow={4}>
+                {
+                corporations &&
+                corporations.map((corporation, index) => (
+                    <Card
+                    className='card-team'
+                      key={index}
+                      fluid
+                      raised
+                      image={<img className='corp-logo' src={corporation.logo} alt={'Logo for ' + corporation.name}/>}
+                      header={corporation.name}
+                      extra={
                           <>
                           <Button
                           fluid
@@ -96,10 +99,11 @@ function Corporations(props) {
                             )
                           }
                           </>
-                        }
-                />
-              </Grid.Column>
-            ))}
+                            }
+                    />
+                ))}
+              </Card.Group>
+            </Grid.Column>
           </Grid.Row>
         </Grid>
       </Tab.Pane>
