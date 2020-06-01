@@ -31,7 +31,10 @@ function Archives() {
 
   const alumniUnfiltered = useQuery(FETCH_ALUMNIS_QUERY).data.getAlumnis;
   const alumni = alumniUnfiltered
-    ? alumniUnfiltered.map(({ __typename, ...item }) => item)
+    ? alumniUnfiltered.map(
+        ({ undergrad, grad, location, coordinates, __typename, ...item }) =>
+          item
+      )
     : [];
 
   const lists = {
@@ -42,6 +45,32 @@ function Archives() {
       : [],
     alumni: alumni,
   };
+
+  const userHeaders = [
+    { label: "First Name", key: "firstName" },
+    { label: "Last Name", key: "lastName" },
+    { label: "Major", key: "major" },
+    { label: "Graduating", key: "graduating" },
+    { label: "Country", key: "country" },
+    { label: "Ethnicity", key: "ethnicity" },
+    { label: "Sex", key: "sex" },
+    { label: "Username", key: "username" },
+    { label: "Email", key: "email" },
+    { label: "Points", key: "points" },
+    { label: "Fall Points", key: "fallPoints" },
+    { label: "Spring Points", key: "springPoints" },
+    { label: "Summer Points", key: "summerPoints" },
+    { label: "Permission", key: "permission" },
+    { label: "ListServ", key: "listServ" },
+  ];
+  const alumniHeaders = [
+    { label: "First Name", key: "firstName" },
+    { label: "Last Name", key: "lastName" },
+    { label: "Email", key: "email" },
+    { label: "Employer", key: "employer" },
+    { label: "Position", key: "position" },
+    { label: "LinkedIn", key: "linkedin" },
+  ];
 
   const [deleteSHPEModal, setDeleteSHPEModal] = useState(false);
   const [deleteDoneModal, setDeleteDoneModal] = useState(false);
@@ -73,6 +102,7 @@ function Archives() {
             <Grid.Column>
               <CSVLink
                 data={users ? lists.membership : []}
+                headers={userHeaders}
                 filename={"Membership.csv"}
               >
                 <Button color="green" floated="left">
@@ -100,6 +130,7 @@ function Archives() {
             <Grid.Column>
               <CSVLink
                 data={users ? lists.listserv : []}
+                headers={userHeaders}
                 filename={"ListServ.csv"}
               >
                 <Button color="green" floated="left">
@@ -127,6 +158,7 @@ function Archives() {
             <Grid.Column>
               <CSVLink
                 data={users ? lists.graduating : []}
+                headers={userHeaders}
                 filename={"Graduating.csv"}
               >
                 <Button color="green" floated="left">
@@ -154,6 +186,7 @@ function Archives() {
             <Grid.Column>
               <CSVLink
                 data={alumni ? lists.alumni : []}
+                headers={alumniHeaders}
                 filename={"Alumni.csv"}
               >
                 <Button color="green" floated="left">
@@ -163,7 +196,7 @@ function Archives() {
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
-            <AlumniTable alumnis={alumni} />
+            <AlumniTable alumnis={alumniUnfiltered} />
           </Grid.Row>
         </Grid>
       </Tab.Pane>
