@@ -44,9 +44,9 @@ function Points() {
       userId: id
     }
   });
+  
   if(data){
     var user = data.getUser;
-    console.log(user);
   }
   const [redeemPointsModal, setRedeemPointsModal] = useState(false);
 
