@@ -225,7 +225,6 @@ function CorporationTable({ corporations, deleteCorporation, refetch }) {
           {viewModal}
           {editModal}
         </div>
-
       )}
     </>
   )
