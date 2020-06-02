@@ -79,7 +79,7 @@ function ShpeRentals() {
               <Segment>
                 {loading | !data | networkStatus === 4 ? 
                   <div style={{marginTop:'300px'}}>
-                    <Loader active/>
+                    <Loader active>Fetching inventory, please wait...</Loader>
                   </div>
                 :
                   <RentalCards items={items} rent={rentItem}/>
