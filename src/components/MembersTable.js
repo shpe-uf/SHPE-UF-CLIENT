@@ -15,6 +15,8 @@ import gql from "graphql-tag";
 import { AuthContext } from "../context/auth";
 import UserProfile from "./UserProfile";
 import PointsTable from "./PointsTable";
+import Permissions from "../util/permissions";
+import PermissionsForm from "./PermissionsForm";
 
 function MembersTable({ users }) {
   const [userInfoModal, setUserInfoModal] = useState(false);
@@ -137,7 +139,9 @@ function MembersTable({ users }) {
         <Modal.Content>
           {userInfo && (
             <>
-              <UserProfile user={userInfo} />
+              <UserProfile user={userInfo}>
+                <PermissionsForm userInfo={userInfo}/>
+              </UserProfile>
               <Grid>
                 <Grid.Row>
                   <Grid.Column>
@@ -150,7 +154,7 @@ function MembersTable({ users }) {
                         </ul>
                       </div>
                     )}
-                    <Button.Group fluid>
+                    {/* <Button.Group fluid>
                       {permission === 'admin' ? (
                         <Button color='yellow'>Admin</Button>)
                         : ( <Button color='grey' onClick={() => changePermission("admin")}>Admin</Button>
@@ -163,7 +167,7 @@ function MembersTable({ users }) {
                         <Button color='blue'>Member</Button>
                       ) : (<Button color='grey' onClick={() => changePermission("member")}>Member</Button>
                       )}
-                    </Button.Group>
+                    </Button.Group> */}
                   </Grid.Column>
                 </Grid.Row>
               </Grid>
