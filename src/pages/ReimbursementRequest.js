@@ -21,7 +21,7 @@ function ReimbursementRequest({user: user}) {
         company: "",
         event: "",
         description: "",
-        reimbursed: false,
+        reimbursed: "pending",
         amount: "",
         execute: false
     });
@@ -252,7 +252,7 @@ const REQUEST_REIMBURSEMENT = gql`
         $company: String!
         $event: String!
         $description: String!
-        $reimbursed: Boolean!
+        $reimbursed: String!
         $amount: String!
         $execute: Boolean!
     ) {

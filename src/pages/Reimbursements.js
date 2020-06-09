@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Container, Grid, Tab, Table, Button, Modal, Form, Icon, Input } from "semantic-ui-react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
+import { CSVLink } from "react-csv";
 
 import Title from "../components/Title";
 import gql from "graphql-tag";
@@ -15,17 +16,35 @@ function Reimbursements() {
     const [search, defineSearch] = useState("");
     const [openResolveModal, setOpenResolveModal] = useState(false);
     const [openUnresolveModal, setOpenUnresolveModal] = useState(false);
+    const [openCancelModal, setOpenCancelModal] = useState(false);
+    const [openUnCancelModal, setOpenUnCancelModal] = useState(false);
     const [claimModal, setClaimModal] = useState(false);
     const [claim, setClaim] = useState({});
 
     const [resolve] = useMutation(RESOLVE_MUTATION);
     const [unresolve] = useMutation(UNRESOLVE_MUTATION);
+    const [cancel] = useMutation(CANCEL_MUTATION);
+    const [uncancel] = useMutation(UNCANCEL_MUTATION);
 
     function setSearch(e) {
         defineSearch(e.target.value);
     }
-    
-    console.log(claim);
+
+    const headers = [
+        { label: "ID", key: "id"},
+        { label: "First Name", key: "firstName" },
+        { label: "Last Name", key: "lastName" },
+        { label: "Email", key: "email" },
+        { label: "Student ID", key: "studentId" },
+        { label: "Address", key: "address" },
+        { label: "Company", key: "company" },
+        { label: "Event", key: "event" },
+        { label: "Description", key: "description" },
+        { label: "Amount", key: "amount" },
+        { label: "Status", key: "reimbursed" },
+      ];
+
+    console.log(reimbursements);
 
     var pendingPane = {
         menuItem: {content: "Pending"},
@@ -43,6 +62,7 @@ function Reimbursements() {
                                     <Table.HeaderCell>Event</Table.HeaderCell>
                                     <Table.HeaderCell>Amount</Table.HeaderCell>
                                     <Table.HeaderCell>Resolve</Table.HeaderCell>
+                                    <Table.HeaderCell>Cancel</Table.HeaderCell>
                                     <Table.HeaderCell>Info</Table.HeaderCell>
                                 </Table.Row>
                             </Table.Header>
@@ -50,7 +70,7 @@ function Reimbursements() {
                                 {reimbursements &&
                                     reimbursements.map((reimbursement, index) => (
                                     <>
-                                        {(!reimbursement.reimbursed && 
+                                        {(reimbursement.reimbursed == "pending" && 
                                         (((reimbursement.lastName + ", " + reimbursement.firstName).toLowerCase().includes(search.toLowerCase())) ||
                                         reimbursement.studentId.toString().toLowerCase().includes(search.toLowerCase()) ||
                                         reimbursement.email.toLowerCase().includes(search.toLowerCase()) ||
@@ -64,12 +84,25 @@ function Reimbursements() {
                                             <Table.Cell>{reimbursement.amount}</Table.Cell>
                                             <Table.Cell>
                                                 <Button
+                                                    icon
                                                     onClick={() =>{
                                                         setOpenResolveModal(true);
                                                         currentReimbursement = index;
                                                     }}
                                                 >
-                                                    Resolve
+                                                    <Icon name="check" />
+                                                </Button>
+                                            </Table.Cell>
+                                            <Table.Cell>
+                                                <Button
+                                                    icon
+                                                    color="red"
+                                                    onClick={() =>{
+                                                        setOpenCancelModal(true);
+                                                        currentReimbursement = index;
+                                                    }}
+                                                >
+                                                    <Icon name="cancel"/>
                                                 </Button>
                                             </Table.Cell>
                                             <Table.Cell textAlign="center">
@@ -80,7 +113,7 @@ function Reimbursements() {
                                                     setClaimModal(true);
                                                 }}
                                                 >
-                                                <Icon name="info" />
+                                                    <Icon name="info" />
                                                 </Button>
                                             </Table.Cell>
                                         </Table.Row>
@@ -118,7 +151,7 @@ function Reimbursements() {
                                 {reimbursements &&
                                     reimbursements.map((reimbursement, index) => (
                                     <>
-                                        {(reimbursement.reimbursed && 
+                                        {(reimbursement.reimbursed == "resolved" && 
                                         (((reimbursement.lastName + ", " + reimbursement.firstName).toLowerCase().includes(search.toLowerCase())) ||
                                         reimbursement.studentId.toString().toLowerCase().includes(search.toLowerCase()) ||
                                         reimbursement.email.toLowerCase().includes(search.toLowerCase()) ||
@@ -163,6 +196,75 @@ function Reimbursements() {
         </Tab.Pane>
     };
 
+    var cancelledPane = {
+        menuItem: {content: "Cancelled"},
+        render: () =>
+        <Tab.Pane>
+            <Grid>
+                <Grid.Row>
+                    <Grid.Column>
+                        <Table striped selectable unstackable>
+                            <Table.Header>
+                                <Table.Row>
+                                    <Table.HeaderCell>Name</Table.HeaderCell>
+                                    <Table.HeaderCell>Email</Table.HeaderCell>
+                                    <Table.HeaderCell>Student ID</Table.HeaderCell>
+                                    <Table.HeaderCell>Event</Table.HeaderCell>
+                                    <Table.HeaderCell>Amount</Table.HeaderCell>
+                                    <Table.HeaderCell>Unresolve</Table.HeaderCell>
+                                    <Table.HeaderCell>Info</Table.HeaderCell>
+                                </Table.Row>
+                            </Table.Header>
+                            <Table.Body>
+                                {reimbursements &&
+                                    reimbursements.map((reimbursement, index) => (
+                                    <>
+                                        {(reimbursement.reimbursed == "cancelled" && 
+                                        (((reimbursement.lastName + ", " + reimbursement.firstName).toLowerCase().includes(search.toLowerCase())) ||
+                                        reimbursement.studentId.toString().toLowerCase().includes(search.toLowerCase()) ||
+                                        reimbursement.email.toLowerCase().includes(search.toLowerCase()) ||
+                                        reimbursement.event.toLowerCase().includes(search.toLowerCase()) ||
+                                        reimbursement.id.toLowerCase().includes(search.toLowerCase()))) &&
+                                        <Table.Row key={index}>
+                                            <Table.Cell>{reimbursement.lastName}, {reimbursement.firstName}</Table.Cell>
+                                            <Table.Cell>{reimbursement.email}</Table.Cell>
+                                            <Table.Cell>{reimbursement.studentId}</Table.Cell>
+                                            <Table.Cell>{reimbursement.event}</Table.Cell>
+                                            <Table.Cell>{reimbursement.amount}</Table.Cell>
+                                            <Table.Cell>
+                                                <Button
+                                                    onClick={() =>{
+                                                        setOpenUnCancelModal(true);
+                                                        currentReimbursement = index;
+                                                    }}
+                                                >
+                                                    Uncancel
+                                                </Button>
+                                            </Table.Cell>
+                                            <Table.Cell textAlign="center">
+                                                <Button
+                                                icon
+                                                onClick={() => {
+                                                    setClaim(reimbursement);
+                                                    setClaimModal(true);
+                                                }}
+                                                >
+                                                <Icon name="info" />
+                                                </Button>
+                                            </Table.Cell>
+                                        </Table.Row>
+                                        }
+                                    </>
+                                ))}
+                            </Table.Body>
+                        </Table>
+                    </Grid.Column>
+                </Grid.Row>
+            </Grid>
+        </Tab.Pane>
+    };
+
+
     return (
       <>
         <Title title="Reimbursements" adminPath={window.location.pathname} />
@@ -194,7 +296,7 @@ function Reimbursements() {
                                                 email: reimbursements[currentReimbursement].email
                                             }});
 
-                                            reimbursements[currentReimbursement].reimbursed = true;
+                                            reimbursements[currentReimbursement].reimbursed = "resolved";
                                             setOpenResolveModal(false);
                                         }}
                                     >
@@ -233,7 +335,7 @@ function Reimbursements() {
                                                 email: reimbursements[currentReimbursement].email
                                             }});
 
-                                            reimbursements[currentReimbursement].reimbursed = false;
+                                            reimbursements[currentReimbursement].reimbursed = "pending";
                                             setOpenUnresolveModal(false);
                                         }}
                                     >
@@ -243,6 +345,84 @@ function Reimbursements() {
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>  
+                </Modal.Content>
+            </Modal>
+            <Modal
+                open={openCancelModal}
+                size="tiny"
+            >
+                <Modal.Header>
+                    Are you sure you want to cancel this reimbursement?
+                </Modal.Header>
+                <Modal.Content>
+                    <Grid>
+                        <Grid.Row>
+                            <Grid.Column>
+                                <Form>
+                                    <Button
+                                        type="reset"
+                                        color="red"
+                                        onClick={() => setOpenCancelModal(false)}
+                                    >
+                                        Close
+                                    </Button>
+                                    <Button
+                                        type="submit"
+                                        onClick={() => {
+                                            cancel({variables: {
+                                                id: reimbursements[currentReimbursement].id,
+                                                email: reimbursements[currentReimbursement].email
+                                            }});
+
+                                            reimbursements[currentReimbursement].reimbursed = "cancelled";
+                                            setOpenCancelModal(false);
+                                        }}
+                                    >
+                                        Cancel
+                                    </Button>
+                                </Form>         
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
+                </Modal.Content>
+            </Modal>
+            <Modal
+                open={openUnCancelModal}
+                size="tiny"
+            >
+                <Modal.Header>
+                    Are you sure you want to uncancel this reimbursement?
+                </Modal.Header>
+                <Modal.Content>
+                    <Grid>
+                        <Grid.Row>
+                            <Grid.Column>
+                                <Form>
+                                    <Button
+                                        type="reset"
+                                        color="red"
+                                        onClick={() => setOpenUnCancelModal(false)}
+                                    >
+                                        Close
+                                    </Button>
+                                    <Button
+                                        type="submit"
+                                        onClick={() => {
+                                            uncancel({variables: {
+                                                id: reimbursements[currentReimbursement].id,
+                                                email: reimbursements[currentReimbursement].email
+                                            }});
+
+                                            reimbursements[currentReimbursement].reimbursed = "pending";
+                                            setOpenUnCancelModal(false);
+                                        }}
+                                    >
+                                        Uncancel
+                                    </Button>
+                                </Form>         
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
                 </Modal.Content>
             </Modal>
             <Modal
@@ -331,13 +511,21 @@ function Reimbursements() {
                     </Grid>
                 </Modal.Content>
             </Modal>
+            <CSVLink 
+                data={reimbursements ? reimbursements : []}
+                headers={headers}
+            >
+                <Button color="green" floated="left">
+                  Download as CSV
+                </Button>
+            </CSVLink>
             <Input 
                 fluid 
                 placeholder='Search...' 
                 style={{marginBottom: '20px'}}
                 onChange={setSearch}
             />
-            <Tab panes={[pendingPane, resolvedPane]}/>
+            <Tab panes={[pendingPane, resolvedPane, cancelledPane]}/>
         </Container>
       </>
     );
@@ -365,6 +553,38 @@ const UNRESOLVE_MUTATION = gql`
     $email: String!
   ) {
     unresolveReimbursement(
+      id: $id
+      email: $email
+    ) {
+      firstName
+      event
+      reimbursed
+    }
+  }
+`;
+
+const CANCEL_MUTATION = gql`
+  mutation cancelReimbursement(
+    $id: ID!
+    $email: String!
+  ) {
+    cancelReimbursement(
+      id: $id
+      email: $email
+    ) {
+      firstName
+      event
+      reimbursed
+    }
+  }
+`;
+
+const UNCANCEL_MUTATION = gql`
+  mutation uncancelReimbursement(
+    $id: ID!
+    $email: String!
+  ) {
+    uncancelReimbursement(
       id: $id
       email: $email
     ) {
