@@ -89,6 +89,7 @@ export const FETCH_ALUMNIS_QUERY = gql`
 export const FETCH_CORPORATIONS_QUERY = gql `
   {
     getCorporations {
+      id
       name
       logo
     	slogan
@@ -148,7 +149,6 @@ export const COUNTRY_STAT = gql`
 export const FETCH_TASKS_QUERY = gql`
   {
     getTasks {
-      id
       name
       startDate
       endDate

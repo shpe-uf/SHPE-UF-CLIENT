@@ -8,147 +8,206 @@ import {
   Modal,
   Segment,
   Tab,
-  Table
 } from "semantic-ui-react";
+import { useQuery } from "@apollo/react-hooks";
 
 import Title from "../components/Title";
+import MembershipTable from "../components/MembershipTable";
+import ListServTable from "../components/ListServTable";
+import GraduatingTable from "../components/GraduatingTable";
+import AlumniTable from "../components/AlumniTable";
+
+import { FETCH_USERS_QUERY } from "../util/graphql";
+import { FETCH_ALUMNIS_QUERY } from "../util/graphql";
+import { CSVLink } from "react-csv";
 
 function Archives() {
-  const [deleteSHPEModal, setDeleteSHPEModal] = useState(false);
+  const usersUnfiltered = useQuery(FETCH_USERS_QUERY).data.getUsers;
+  const usersFiltered = usersUnfiltered
+    ? usersUnfiltered.map(
+        ({ photo, createdAt, events, __typename, ...item }) => item
+      )
+    : [];
+  const users = usersFiltered.map((user) => {
+    user.listServ = user.listServ ? "Yes" : "No";
+    return user;
+  });
 
-  const openModal = name => {
+  const alumniUnfiltered = useQuery(FETCH_ALUMNIS_QUERY).data.getAlumnis;
+  const alumni = alumniUnfiltered
+    ? alumniUnfiltered.map(
+        ({ undergrad, grad, location, coordinates, __typename, ...item }) =>
+          item
+      )
+    : [];
+
+  const lists = {
+    membership: users,
+    listserv: users ? users.filter((user) => user.listServ === "Yes") : [],
+    graduating: users
+      ? users.filter((user) => user.graduating !== "Not Graduating")
+      : [],
+    alumni: alumni,
+  };
+
+  const userHeaders = [
+    { label: "First Name", key: "firstName" },
+    { label: "Last Name", key: "lastName" },
+    { label: "Major", key: "major" },
+    { label: "Graduating", key: "graduating" },
+    { label: "Country", key: "country" },
+    { label: "Ethnicity", key: "ethnicity" },
+    { label: "Sex", key: "sex" },
+    { label: "Username", key: "username" },
+    { label: "Email", key: "email" },
+    { label: "Points", key: "points" },
+    { label: "Fall Points", key: "fallPoints" },
+    { label: "Spring Points", key: "springPoints" },
+    { label: "Summer Points", key: "summerPoints" },
+    { label: "Permission", key: "permission" },
+    { label: "ListServ", key: "listServ" },
+  ];
+  const alumniHeaders = [
+    { label: "First Name", key: "firstName" },
+    { label: "Last Name", key: "lastName" },
+    { label: "Email", key: "email" },
+    { label: "Employer", key: "employer" },
+    { label: "Position", key: "position" },
+    { label: "LinkedIn", key: "linkedin" },
+  ];
+
+  const [deleteSHPEModal, setDeleteSHPEModal] = useState(false);
+  const [deleteDoneModal, setDeleteDoneModal] = useState(false);
+
+  const openModal = (name) => {
     if (name === "deleteSHPE") {
       setDeleteSHPEModal(true);
     }
-  };
-
-  const closeModal = name => {
-    if (name === "deleteSHPE") {
-      setDeleteSHPEModal(false);
+    if (name === "deleteDone") {
+      setDeleteDoneModal(true);
     }
   };
 
-  var membershipPane = {
+  const closeModal = (name) => {
+    if (name === "deleteSHPE") {
+      setDeleteSHPEModal(false);
+    }
+    if (name === "deleteDone") {
+      setDeleteDoneModal(false);
+    }
+  };
+
+  const membershipPane = {
     menuItem: { content: "Membership", icon: "users" },
     render: () => (
       <Tab.Pane>
         <Grid>
           <Grid.Row>
             <Grid.Column>
-              <Button color="green">Download as a CSV</Button>
+              <CSVLink
+                data={users ? lists.membership : []}
+                headers={userHeaders}
+                filename={"Membership.csv"}
+              >
+                <Button color="green" floated="left">
+                  Download as CSV
+                </Button>
+              </CSVLink>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
-            <Table striped selectable unstackable>
-              <Table.Header>
-                <Table.Row>
-                  <Table.HeaderCell>Name</Table.HeaderCell>
-                  <Table.HeaderCell>Membership</Table.HeaderCell>
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                <Table.Row key={2}>
-                  <Table.Cell>Fulano Mengano</Table.Cell>
-                  <Table.Cell>User</Table.Cell>
-                </Table.Row>
-              </Table.Body>
-            </Table>
+            <Grid.Column>
+              <MembershipTable users={users} />
+            </Grid.Column>
           </Grid.Row>
         </Grid>
       </Tab.Pane>
-    )
+    ),
   };
 
-  var listServPane = {
+  const listServPane = {
     menuItem: { content: "List Serv", icon: "address book outline" },
     render: () => (
       <Tab.Pane>
         <Grid>
           <Grid.Row>
             <Grid.Column>
-              <Button color="green">Download as a CSV</Button>
+              <CSVLink
+                data={users ? lists.listserv : []}
+                headers={userHeaders}
+                filename={"ListServ.csv"}
+              >
+                <Button color="green" floated="left">
+                  Download as CSV
+                </Button>
+              </CSVLink>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
-            <Table striped selectable unstackable>
-              <Table.Header>
-                <Table.Row>
-                  <Table.HeaderCell>Name</Table.HeaderCell>
-                  <Table.HeaderCell>ListServ</Table.HeaderCell>
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                <Table.Row key={2}>
-                  <Table.Cell>Fulano Mengano</Table.Cell>
-                  <Table.Cell>Yes</Table.Cell>
-                </Table.Row>
-              </Table.Body>
-            </Table>
+            <Grid.Column>
+              <ListServTable users={users} />
+            </Grid.Column>
           </Grid.Row>
         </Grid>
       </Tab.Pane>
-    )
+    ),
   };
 
-  var graduatingPane = {
+  const graduatingPane = {
     menuItem: { content: "Graduating", icon: "graduation" },
     render: () => (
       <Tab.Pane>
         <Grid>
           <Grid.Row>
             <Grid.Column>
-              <Button color="green">Download as a CSV</Button>
+              <CSVLink
+                data={users ? lists.graduating : []}
+                headers={userHeaders}
+                filename={"Graduating.csv"}
+              >
+                <Button color="green" floated="left">
+                  Download as CSV
+                </Button>
+              </CSVLink>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
-            <Table striped selectable unstackable>
-              <Table.Header>
-                <Table.Row>
-                  <Table.HeaderCell>Name</Table.HeaderCell>
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                <Table.Row key={1}>
-                  <Table.Cell>Eddy, unfortunately</Table.Cell>
-                </Table.Row>
-              </Table.Body>
-            </Table>
+            <Grid.Column>
+              <GraduatingTable users={users} />
+            </Grid.Column>
           </Grid.Row>
         </Grid>
       </Tab.Pane>
-    )
+    ),
   };
 
-  var alumniPane = {
+  const alumniPane = {
     menuItem: { content: "Alumni", icon: "suitcase" },
     render: () => (
       <Tab.Pane>
         <Grid>
           <Grid.Row>
             <Grid.Column>
-              <Button color="green">Download as a CSV</Button>
+              <CSVLink
+                data={alumni ? lists.alumni : []}
+                headers={alumniHeaders}
+                filename={"Alumni.csv"}
+              >
+                <Button color="green" floated="left">
+                  Download as CSV
+                </Button>
+              </CSVLink>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
-            <Table striped selectable unstackable>
-              <Table.Header>
-                <Table.Row>
-                  <Table.HeaderCell>Name</Table.HeaderCell>
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                <Table.Row key={1}>
-                  <Table.Cell>Cesar, fortunately</Table.Cell>
-                </Table.Row>
-              </Table.Body>
-            </Table>
+            <AlumniTable alumnis={alumniUnfiltered} />
           </Grid.Row>
         </Grid>
       </Tab.Pane>
-    )
+    ),
   };
 
-  var dangerPane = {
+  const dangerPane = {
     menuItem: { content: "Danger Zone", icon: "warning sign" },
     render: () => (
       <Tab.Pane>
@@ -179,7 +238,7 @@ function Archives() {
           </Grid.Row>
         </Grid>
       </Tab.Pane>
-    )
+    ),
   };
 
   return (
@@ -188,12 +247,13 @@ function Archives() {
       <Segment basic>
         <Container>
           <Tab
+            // onTabChange={onTabChange}
             panes={[
               membershipPane,
               listServPane,
               graduatingPane,
               alumniPane,
-              dangerPane
+              dangerPane,
             ]}
           />
         </Container>
@@ -228,7 +288,7 @@ function Archives() {
                 <Button
                   type="reset"
                   color="red"
-                  onClick={() => closeModal("deleteSHPE")}
+                  onClick={() => openModal("deleteDone")}
                 >
                   Delete
                 </Button>
@@ -241,6 +301,28 @@ function Archives() {
                   onClick={() => closeModal("deleteSHPE")}
                 >
                   Cancel
+                </Button>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Modal.Content>
+      </Modal>
+
+      <Modal open={deleteDoneModal} size="tiny">
+        <Modal.Header>
+          <h2>Databases Wiped</h2>
+        </Modal.Header>
+        <Modal.Content>
+          <Grid columns="equal">
+            <Grid.Row>
+              <Grid.Column>
+                <Button
+                  type="reset"
+                  color="grey"
+                  floated="left"
+                  onClick={() => closeModal("deleteDone")}
+                >
+                  Okay
                 </Button>
               </Grid.Column>
             </Grid.Row>

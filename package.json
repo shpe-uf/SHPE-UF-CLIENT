@@ -14,8 +14,9 @@
     "image-data-uri": "^2.0.1",
     "jwt-decode": "^2.2.0",
     "koa-compose": "^4.1.0",
-    "mapbox-gl": "^1.7.0",
+    "mapbox-gl": "^1.10.1",
     "moment": "^2.24.0",
+    "nodemon": "^2.0.4",
     "react": "^16.9.0",
     "react-csv": "^1.1.1",
     "react-dom": "^16.9.0",
@@ -33,7 +34,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:5000",
+  "proxy": "https://membershpeuf.netlify.com/",
   "eslintConfig": {
     "extends": "react-app"
   },
