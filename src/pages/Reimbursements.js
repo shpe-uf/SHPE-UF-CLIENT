@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Container, Grid, Tab, Table, Button, Modal, Form, Icon, Input } from "semantic-ui-react";
+import { Container, Grid, Tab, Table, Button, Modal, Form, Icon, Input, Popup } from "semantic-ui-react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { CSVLink } from "react-csv";
 
@@ -12,6 +12,23 @@ var currentReimbursement;
 
 function Reimbursements() {
     var reimbursements = useQuery(FETCH_REIMBURSEMENTS_QUERY).data.getReimbursements;
+    var pending = [];
+    var resolved = [];
+    var cancelled = [];
+
+    if (reimbursements) {
+        reimbursements.map(reimbursement => {
+            if (reimbursement.reimbursed == "pending") {
+                pending.push(reimbursement);
+            }
+            if (reimbursement.reimbursed == "resolved") {
+                resolved.push(reimbursement);
+            }
+            if (reimbursement.reimbursed == "cancelled") {
+                cancelled.push(reimbursement);
+            }
+        })
+    }
     
     const [search, defineSearch] = useState("");
     const [openResolveModal, setOpenResolveModal] = useState(false);
@@ -42,14 +59,28 @@ function Reimbursements() {
         { label: "Description", key: "description" },
         { label: "Amount", key: "amount" },
         { label: "Status", key: "reimbursed" },
-      ];
+    ];
 
-    console.log(reimbursements);
 
     var pendingPane = {
         menuItem: {content: "Pending"},
         render: () =>
         <Tab.Pane>
+            <CSVLink 
+                data={pending ? pending : []}
+                headers={headers}
+                filename={"pending_reimbursements.csv"}
+            >
+                <Popup 
+                    content='Download CSV of all pending reimbursements' 
+                    trigger={
+                        <Button color="green" fluid>
+                        Download Pending
+                        </Button>
+                    } 
+                />
+            </CSVLink>
+            <div className="table-responsive">
             <Grid>
                 <Grid.Row>
                     <Grid.Column>
@@ -125,6 +156,7 @@ function Reimbursements() {
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
+            </div>
         </Tab.Pane>
     };
 
@@ -132,6 +164,21 @@ function Reimbursements() {
         menuItem: {content: "Resolved"},
         render: () =>
         <Tab.Pane>
+            <CSVLink 
+                data={resolved ? resolved : []}
+                headers={headers}
+                filename={"resolved_reimbursements.csv"}
+            >
+                <Popup 
+                    content='Download CSV of all resolved reimbursements' 
+                    trigger={
+                        <Button color="green" fluid>
+                        Download Resolved
+                        </Button>
+                    } 
+                />
+            </CSVLink>
+            <div className="table-responsive">
             <Grid>
                 <Grid.Row>
                     <Grid.Column>
@@ -193,6 +240,7 @@ function Reimbursements() {
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
+            </div>
         </Tab.Pane>
     };
 
@@ -200,6 +248,21 @@ function Reimbursements() {
         menuItem: {content: "Cancelled"},
         render: () =>
         <Tab.Pane>
+            <CSVLink 
+                data={cancelled ? cancelled : []}
+                headers={headers}
+                filename={"cancelled_reimbursements.csv"}
+            >
+                <Popup 
+                    content='Download CSV of all cancelled reimbursements' 
+                    trigger={
+                        <Button color="green" fluid>
+                        Download Cancelled
+                        </Button>
+                    } 
+                />
+            </CSVLink>
+            <div className="table-responsive">
             <Grid>
                 <Grid.Row>
                     <Grid.Column>
@@ -261,6 +324,7 @@ function Reimbursements() {
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
+            </div>
         </Tab.Pane>
     };
 
@@ -514,10 +578,16 @@ function Reimbursements() {
             <CSVLink 
                 data={reimbursements ? reimbursements : []}
                 headers={headers}
+                filename={"reimbursements.csv"}
             >
-                <Button color="green" floated="left">
-                  Download as CSV
-                </Button>
+                <Popup 
+                    content='Download CSV of all reimbursements by last name' 
+                    trigger={
+                        <Button color="green" floated="left">
+                        Download as CSV
+                        </Button>
+                    } 
+                />
             </CSVLink>
             <Input 
                 fluid 
@@ -525,7 +595,23 @@ function Reimbursements() {
                 style={{marginBottom: '20px'}}
                 onChange={setSearch}
             />
-            <Tab panes={[pendingPane, resolvedPane, cancelledPane]}/>
+            <Tab onTabChange={() => {
+                pending = [];
+                resolved = [];
+                cancelled = [];
+
+                reimbursements.map(reimbursement => {
+                    if (reimbursement.reimbursed == "pending") {
+                        pending.push(reimbursement);
+                    }
+                    if (reimbursement.reimbursed == "resolved") {
+                        resolved.push(reimbursement);
+                    }
+                    if (reimbursement.reimbursed == "cancelled") {
+                        cancelled.push(reimbursement);
+                    }
+                })
+            }} panes={[pendingPane, resolvedPane, cancelledPane]}/>
         </Container>
       </>
     );
