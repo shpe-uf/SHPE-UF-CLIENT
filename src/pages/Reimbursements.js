@@ -75,7 +75,7 @@ function Reimbursements() {
                     content='Download CSV of all pending reimbursements' 
                     trigger={
                         <Button color="green" fluid>
-                        Download Pending
+                        Download Pending Reimbursements
                         </Button>
                     } 
                 />
@@ -173,7 +173,7 @@ function Reimbursements() {
                     content='Download CSV of all resolved reimbursements' 
                     trigger={
                         <Button color="green" fluid>
-                        Download Resolved
+                        Download Resolved Reimbursements
                         </Button>
                     } 
                 />
@@ -257,7 +257,7 @@ function Reimbursements() {
                     content='Download CSV of all cancelled reimbursements' 
                     trigger={
                         <Button color="green" fluid>
-                        Download Cancelled
+                        Download Cancelled Reimbursements
                         </Button>
                     } 
                 />
@@ -583,8 +583,8 @@ function Reimbursements() {
                 <Popup 
                     content='Download CSV of all reimbursements by last name' 
                     trigger={
-                        <Button color="green" floated="left">
-                        Download as CSV
+                        <Button icon color="green" floated="left">
+                            <Icon name="download" />
                         </Button>
                     } 
                 />
