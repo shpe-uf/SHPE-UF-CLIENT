@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import {
   Dimmer,
   Loader,
@@ -8,12 +8,9 @@ import {
   Card,
   Responsive
 } from "semantic-ui-react";
-
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { useQuery, useMutation } from "@apollo/react-hooks";
-import gql from "graphql-tag";
+import { useQuery } from "@apollo/react-hooks";
 
 import { AuthContext } from "../context/auth";
 import BookmarkedTaskCard from "../components/BookmarkedTaskCard";
@@ -21,25 +18,18 @@ import BookmarkedTaskCard from "../components/BookmarkedTaskCard";
 import { FETCH_TASKS_QUERY } from "../util/graphql";
 
 function BookmarkedTasksCards({ user, refetch }) {
-  const [errors, setErrors] = useState({});
 
   const { loading, data } = useQuery(FETCH_TASKS_QUERY);
-  console.log("test for data", data);
 
   const bookmarkedTasks = [];
   if (!loading) {
     var tasks = data.getTasks;
-    console.log("tasks: ", tasks);
     var bookmarkedTaskNames = user.bookmarkedTasks;
-    // console.log("bookmarked task names", bookmarkedTaskNames);
     for (const [index, value] of bookmarkedTaskNames.entries()) {
-      console.log("value", value);
       const task = tasks.find(element => element.name === value);
       bookmarkedTasks.push(task);
     }
   }
-
-  console.log("bookmarked tasks", bookmarkedTasks);
 
   var {
     user: { username }

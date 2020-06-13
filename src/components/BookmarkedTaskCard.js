@@ -5,7 +5,7 @@ import {
   Icon
 } from "semantic-ui-react";
 
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { useQuery, useMutation } from "@apollo/react-hooks";
@@ -18,24 +18,17 @@ import { FETCH_TASKS_QUERY } from "../util/graphql";
 function BookmarkedTaskCard({ user, refetch}) {
   const [unBookmarkTask] = useMutation(UNBOOKMARK_TASK_MUTATION);
 
-  const [errors, setErrors] = useState({});
-
   const { loading, data } = useQuery(FETCH_TASKS_QUERY);
-  console.log("test for data", data);
 
   const bookmarkedTasks = [];
   if (!loading) {
     var tasks = data.getTasks;
-    console.log("tasks: ", tasks);
     var bookmarkedTaskNames = user.bookmarkedTasks;
-    // console.log("bookmarked task names", bookmarkedTaskNames);
-    for (const [index, value] of bookmarkedTaskNames.entries()) {
-      console.log("value", value);
+    for (const [_, value] of bookmarkedTaskNames.entries()) {
       const task = tasks.find(element => element.name === value);
       bookmarkedTasks.push(task);
     }
   }
-  console.log("bookmarked tasks", bookmarkedTasks);
 
   var {
     user: { username }
@@ -53,7 +46,6 @@ function BookmarkedTaskCard({ user, refetch}) {
       toast.error(err.graphQLErrors[0].extensions.exception.errors.general, {
         position: toast.POSITION.BOTTOM_CENTER
       });
-      setErrors(err.graphQLErrors[0].extensions.exception.errors);
     }
   });
 

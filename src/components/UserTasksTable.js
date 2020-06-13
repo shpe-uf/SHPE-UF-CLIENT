@@ -1,9 +1,6 @@
 import React from "react";
 import { Grid, Table, Segment, Header } from "semantic-ui-react";
 
-import moment from "moment";
-
-
 function UserTasksTable({ user }) {
   return (
     <Grid.Row>

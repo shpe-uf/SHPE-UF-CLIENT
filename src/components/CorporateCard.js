@@ -1,6 +1,5 @@
-import React, {useState, Children} from "react";
-import {Button, Icon, Card, Image, Header} from "semantic-ui-react"
-import { defaultFieldResolver } from "graphql";
+import React from "react";
+import {Card, Image, Header} from "semantic-ui-react"
 
 export default function CorporateCard ({corporation,children}) {
     return (
