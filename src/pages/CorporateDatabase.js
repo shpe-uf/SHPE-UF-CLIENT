@@ -93,7 +93,6 @@ function CorporateDatabase() {
   async function createCorporation() {
     await addCorporation();
     refetch();
-    // window.location.reload();
   }
 
   //#region MODALS

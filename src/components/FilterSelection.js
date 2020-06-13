@@ -25,6 +25,7 @@ function FilterSelection(props) {
     country: [],
     classes: []
   });
+  const [filterVal, setFilterVal] = useState('');
 
   useEffect(() => { 
     window.addEventListener('resize', resizeWindow.bind(this));
@@ -37,11 +38,6 @@ function FilterSelection(props) {
     setWidth(window.innerWidth);
   }
 
-  let filterVal = '';
-  function updateFilterVal(userIn) {
-    filterVal = userIn;
-  };
-
   let fullSelection = {
     'Name': '',
     'Major': major,
@@ -52,6 +48,8 @@ function FilterSelection(props) {
   };
 
   function addFilter(){
+    console.log('adding')
+    console.log(filterVal)
     if(filterVal && filterVal !== '' && !filters[category.toLowerCase()].includes(filterVal)) {
       let f = filters;
       if(category==='Classes') {
@@ -64,6 +62,7 @@ function FilterSelection(props) {
       printLabels();
       props.getUsers(f);
     }
+    console.log('something went wrong')
   }
 
   function deleteFilter(deletedFilter) {
@@ -133,7 +132,7 @@ function FilterSelection(props) {
             fullSelection[category] === '' ?
             <Form>
               <Form.Field>
-                <input onChange={e => updateFilterVal(e.target.value)} onKeyDown={(e) => {if(e.key === 'Enter') addFilter()}} placeholder={"Search " + category} />
+                <input onChange={e => setFilterVal(e.target.value)} onKeyDown={(e) => {if(e.key === 'Enter') addFilter()}} placeholder={"Search " + category} />
               </Form.Field>
             </Form>
             :
@@ -142,7 +141,7 @@ function FilterSelection(props) {
               fluid
               search
               selection
-              onChange={(e,data) => updateFilterVal(data.value)}
+              onChange={(e,data) => setFilterVal(data.value)}
               options={fullSelection[category]}
             />
           }

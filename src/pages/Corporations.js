@@ -1,5 +1,5 @@
 import React, {useState, useContext} from "react";
-import { Container, Grid, Button, Modal, Card, Tab, Segment, GridColumn } from "semantic-ui-react";
+import { Container, Grid, Button, Modal, Card, Tab, Segment } from "semantic-ui-react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import CorporationProfile from "../components/CorporationProfile";
 import Title from "../components/Title";

@@ -14,7 +14,7 @@ import gql from "graphql-tag";
 
 import { AuthContext } from "../context/auth";
 import UserProfile from "./UserProfile";
-import PointsTable from "./PointsTable";
+import PointsTable from "./UserEventsTable";
 
 function MembersTable({ users }) {
   const [userInfoModal, setUserInfoModal] = useState(false);
@@ -22,6 +22,7 @@ function MembersTable({ users }) {
   const [permission, setPermission] = useState(userInfo.permission);
   const [errors, setErrors] = useState({});
 
+  //REPLACE WITH JUST GRAB FROM USERS
   const { user } = useContext(AuthContext);
 
   const openModal = name => {
@@ -166,8 +167,12 @@ function MembersTable({ users }) {
                     </Button.Group>
                   </Grid.Column>
                 </Grid.Row>
+                <Grid.Row>
+                  <Grid.Column>
+                    <PointsTable user={userInfo} />
+                  </Grid.Column>
+                </Grid.Row>
               </Grid>
-              <PointsTable user={userInfo} />
             </>
           )}
           <Grid>
