@@ -48,7 +48,6 @@ function FilterSelection(props) {
   };
 
   function addFilter(){
-    console.log('adding')
     console.log(filterVal)
     if(filterVal && filterVal !== '' && !filters[category.toLowerCase()].includes(filterVal)) {
       let f = filters;
@@ -62,7 +61,6 @@ function FilterSelection(props) {
       printLabels();
       props.getUsers(f);
     }
-    console.log('something went wrong')
   }
 
   function deleteFilter(deletedFilter) {

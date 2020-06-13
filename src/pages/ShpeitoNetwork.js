@@ -22,6 +22,7 @@ function ShpeitoNetwork() {
 
   let {data, loading} = useQuery(FETCH_USERS_QUERY);
   let users = [];
+
   
   if(!loading) {
     users = data.getUsers.filter(function (user) {
@@ -32,14 +33,13 @@ function ShpeitoNetwork() {
         (filter.graduating.length === 0 ? true : filter.graduating.includes(user.graduating)) &&
         (filter.country.length    === 0 ? true :    filter.country.includes(user.country))    &&
         (filter.classes.length    === 0 ? true :    filter.classes.includes(user.classes))    &&
-        (filter.name.length       === 0 ? true : filter.name.map(n => n.toLowerCase().includes(user.firstName.toLowerCase())).includes(true) ||
-                                                 filter.name.map(n => n.toLowerCase().includes(user.lastName.toLowerCase() )).includes(true))
+        (filter.name.length       === 0 ? true : filter.name.map(n => user.firstName.toLowerCase().includes(n.toLowerCase())).includes(true) ||
+                                                 filter.name.map(n => user.lastName.toLowerCase().includes(n.toLowerCase() )).includes(true))
       )
     })
   }
 
   function getUsers(newFilter) {
-    console.log('assigning this new filter: ', newFilter)
     setFilter(new Filter(newFilter));
   }
 
