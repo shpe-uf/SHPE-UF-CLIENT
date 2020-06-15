@@ -24,18 +24,18 @@ function Profile() {
 
   const [errors, setErrors] = useState({});
   var {
-    user: { id, email }
+    user: { id, email },
   } = useContext(AuthContext);
 
   var user = useQuery(FETCH_USER_QUERY, {
     variables: {
-      userId: id
-    }
+      userId: id,
+    },
   }).data.getUser;
 
   const [editProfileModal, setEditProfileModal] = useState(false);
 
-  const openModal = name => {
+  const openModal = (name) => {
     if (name === "editProfile") {
       setEditProfileModal(true);
       values.firstName = user.firstName;
@@ -47,12 +47,15 @@ function Profile() {
       values.country = user.country;
       values.ethnicity = user.ethnicity;
       values.sex = user.sex;
+      values.classes = user.classes;
+      values.internships = user.internships;
+      values.socialMedia = user.socialMedia;
       setPhotoFile(user.photo);
       setOriginalPhoto(user.photo);
     }
   };
 
-  const closeModal = name => {
+  const closeModal = (name) => {
     if (name === "editProfile") {
       setErrors(false);
       setEditProfileModal(false);
@@ -69,16 +72,14 @@ function Profile() {
     graduating: "",
     country: "",
     ethnicity: "",
-    sex: ""
+    sex: "",
+    classes: "",
+    internships: "",
+    socialMedia: "",
   });
 
   const [editProfile, { loading }] = useMutation(EDIT_USER_PROFILE, {
-    update(
-      _,
-      {
-        data: { editUserProfile: userData }
-      }
-    ) {
+    update(_, { data: { editUserProfile: userData } }) {
       user.firstName = userData.firstName;
       user.lastName = userData.lastName;
       user.photo = userData.photo;
@@ -88,8 +89,11 @@ function Profile() {
       user.country = userData.country;
       user.ethnicity = userData.ethnicity;
       user.sex = userData.sex;
+      user.classes = userData.classes;
+      user.internships = userData.internships;
+      user.socialMedia = userData.socialMedia;
       toast.success("Your profile has been updated.", {
-        position: toast.POSITION.BOTTOM_CENTER
+        position: toast.POSITION.BOTTOM_CENTER,
       });
       setErrors(false);
       setEditProfileModal(false);
@@ -100,7 +104,7 @@ function Profile() {
       console.log(errors);
     },
 
-    variables: values
+    variables: values,
   });
 
   function editProfileCallback() {
@@ -111,7 +115,7 @@ function Profile() {
     if (event.target.files.length > 0) {
       var a = new FileReader();
       a.readAsDataURL(event.target.files[0]);
-      a.onload = function(e) {
+      a.onload = function (e) {
         values.photo = e.target.result;
         setPhotoFile(e.target.result);
       };
@@ -155,7 +159,7 @@ function Profile() {
                 {Object.keys(errors).length > 0 && (
                   <div className="ui error message">
                     <ul className="list">
-                      {Object.values(errors).map(value => (
+                      {Object.values(errors).map((value) => (
                         <li key={value}>{value}</li>
                       ))}
                     </ul>
@@ -213,7 +217,7 @@ function Profile() {
                     error={errors.major ? true : false}
                     onChange={onChange}
                   >
-                    {majorOptions.map(major => (
+                    {majorOptions.map((major) => (
                       <option value={major.value} key={major.key}>
                         {major.value}
                       </option>
@@ -227,7 +231,7 @@ function Profile() {
                     error={errors.year ? true : false}
                     onChange={onChange}
                   >
-                    {yearOptions.map(year => (
+                    {yearOptions.map((year) => (
                       <option value={year.value} key={year.key}>
                         {year.value}
                       </option>
@@ -241,7 +245,7 @@ function Profile() {
                     error={errors.graduating ? true : false}
                     onChange={onChange}
                   >
-                    {graduatingOptions.map(graduating => (
+                    {graduatingOptions.map((graduating) => (
                       <option value={graduating.value} key={graduating.key}>
                         {graduating.value}
                       </option>
@@ -255,7 +259,7 @@ function Profile() {
                     error={errors.country ? true : false}
                     onChange={onChange}
                   >
-                    {countryOptions.map(country => (
+                    {countryOptions.map((country) => (
                       <option value={country.value} key={country.key}>
                         {country.value}
                       </option>
@@ -269,7 +273,7 @@ function Profile() {
                     error={errors.ethnicity ? true : false}
                     onChange={onChange}
                   >
-                    {ethnicityOptions.map(ethnicity => (
+                    {ethnicityOptions.map((ethnicity) => (
                       <option value={ethnicity.value} key={ethnicity.key}>
                         {ethnicity.value}
                       </option>
@@ -283,12 +287,36 @@ function Profile() {
                     error={errors.sex ? true : false}
                     onChange={onChange}
                   >
-                    {sexOptions.map(sex => (
+                    {sexOptions.map((sex) => (
                       <option value={sex.value} key={sex.key}>
                         {sex.value}
                       </option>
                     ))}
                   </Form.Field>
+                  <Form.Input
+                    type="text"
+                    label="Classes"
+                    name="classes"
+                    value={values.classes}
+                    error={errors.classes ? true : false}
+                    onChange={onChange}
+                  />
+                  <Form.Input
+                    type="text"
+                    label="Internships"
+                    name="internships"
+                    value={values.internships}
+                    error={errors.internships ? true : false}
+                    onChange={onChange}
+                  />
+                  <Form.Input
+                    type="text"
+                    label="Social Media"
+                    name="socialMedia"
+                    value={values.socialMedia}
+                    error={errors.socialMedia ? true : false}
+                    onChange={onChange}
+                  />
                   <Button
                     type="reset"
                     color="grey"
@@ -344,6 +372,9 @@ const EDIT_USER_PROFILE = gql`
     $country: String!
     $ethnicity: String!
     $sex: String!
+    $classes: [String]
+    $internships: String
+    $socialMedia: String
   ) {
     editUserProfile(
       editUserProfileInput: {
@@ -357,6 +388,9 @@ const EDIT_USER_PROFILE = gql`
         country: $country
         ethnicity: $ethnicity
         sex: $sex
+        classes: $classes
+        internships: $internships
+        socialMedia: $socialMedia
       }
     ) {
       firstName
@@ -372,6 +406,9 @@ const EDIT_USER_PROFILE = gql`
       sex
       createdAt
       permission
+      classes
+      internships
+      socialMedia
     }
   }
 `;

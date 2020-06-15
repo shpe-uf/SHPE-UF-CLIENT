@@ -12,7 +12,6 @@ function UserProfile({ user }) {
     console.log(user.socialMedia);
   }
   return (
-
     <Grid columns={2} doubling>
       <Grid.Row>
         <Grid.Column>
@@ -111,9 +110,7 @@ function UserProfile({ user }) {
                   <Table.Cell>
                     {user ? (
                       <p>
-                        {moment(user.createdAt)
-                          .local()
-                          .format("MM/DD/YYYY")}
+                        {moment(user.createdAt).local().format("MM/DD/YYYY")}
                       </p>
                     ) : (
                       <p>Loading</p>
