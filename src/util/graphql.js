@@ -21,6 +21,9 @@ export const FETCH_USERS_QUERY = gql`
       summerPoints
       permission
       listServ
+      classes
+      internships
+      socialMedia
       events {
         name
         category

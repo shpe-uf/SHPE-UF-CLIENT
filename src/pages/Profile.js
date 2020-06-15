@@ -325,6 +325,9 @@ const FETCH_USER_QUERY = gql`
       sex
       createdAt
       permission
+      classes
+      internships
+      socialMedia
     }
   }
 `;

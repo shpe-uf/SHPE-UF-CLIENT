@@ -5,7 +5,12 @@ import moment from "moment";
 import placeholder from "../assets/images/placeholder.png";
 
 function UserProfile({ user }) {
-
+  if (user) {
+    console.log(user);
+    console.log(user.classess);
+    console.log(user.internships);
+    console.log(user.socialMedia);
+  }
   return (
 
     <Grid columns={2} doubling>
@@ -113,6 +118,30 @@ function UserProfile({ user }) {
                     ) : (
                       <p>Loading</p>
                     )}
+                  </Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                  <Table.Cell>
+                    <b>Classes:</b>
+                  </Table.Cell>
+                  <Table.Cell>
+                    {user ? <p>{user.classes}</p> : <p>Loading</p>}
+                  </Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                  <Table.Cell>
+                    <b>Internships:</b>
+                  </Table.Cell>
+                  <Table.Cell>
+                    {user ? <p>{user.internships}</p> : <p>Loading</p>}
+                  </Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                  <Table.Cell>
+                    <b>Social Media:</b>
+                  </Table.Cell>
+                  <Table.Cell>
+                    {user ? <p>{user.socialMedia}</p> : <p>Loading</p>}
                   </Table.Cell>
                 </Table.Row>
                 {/*<Table.Row>
