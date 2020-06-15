@@ -11,7 +11,8 @@ import { FETCH_TASKS_QUERY } from "../util/graphql";
 
 function Tasks() {
   const [errors, setErrors] = useState({});
-  var tasks = useQuery(FETCH_TASKS_QUERY).data.getTasks;
+  let tasks = useQuery(FETCH_TASKS_QUERY).data.getTasks;
+  console.log('tasks', tasks)
 
   const openModal = name => {
     if (name === "createTask") {
