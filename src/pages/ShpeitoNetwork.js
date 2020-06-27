@@ -20,7 +20,10 @@ function ShpeitoNetwork() {
     classes: []
   }));
 
+
   let {data, loading} = useQuery(FETCH_USERS_QUERY);
+  console.log(data)
+  console.log(loading)
   let users = [];
 
   
@@ -37,6 +40,7 @@ function ShpeitoNetwork() {
                                                  filter.name.map(n => user.lastName.toLowerCase().includes(n.toLowerCase() )).includes(true))
       )
     })
+    console.log(users)
   }
 
   function getUsers(newFilter) {
@@ -50,7 +54,7 @@ function ShpeitoNetwork() {
         <FilterSelection getUsers={getUsers}/>
         {loading ? <Segment disabled loading><div style={{height:'400px'}} /></Segment> :
 
-          users ? users.map(shpeito => <div key={shpeito.username}>{shpeito.firstName}</div>) : <div>error</div>
+          ((users.length > 0) ? users.map(shpeito => <div key={shpeito.username}>{shpeito.firstName}</div>) : <div>NO USERS</div>)
         }
       </Container>
     </div>
