@@ -625,7 +625,6 @@ th {
 
 .ui.card>.content>.header, 
 .ui.cards>.card>.content>.header {
-  height: 1em                 !important;
   overflow: hidden            !important;
   text-overflow: ellipsis     !important;
   white-space: nowrap         !important;

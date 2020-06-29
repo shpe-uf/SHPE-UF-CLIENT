@@ -76,25 +76,26 @@ function ShpeitoNetwork() {
             <div style={{ height: "400px" }} />
           </Segment>
         ) : users.length > 0 ? (
-          <Card.Group stackable itemsPerRow="3">
-            {users.map((shpeito) => (
-              <Card>
-                <Image src={shpeito.photo} className="card-image" />
-                <Card.Content>
-                  <Card.Header className="shpeito-name">
-                    {shpeito.firstName}
-                  </Card.Header>
-                </Card.Content>
+          <>
+            <p></p>
+            <Card.Group stackable itemsPerRow="3">
+              {users.map((shpeito) => (
+                <Card>
+                  <Image src={shpeito.photo} className="card-image" />
+                  <Card.Content>
+                    <Card.Header>{shpeito.firstName}</Card.Header>
+                  </Card.Content>
 
-                <Button
-                  content="View Profile"
-                  icon="eye"
-                  labelPosition="left"
-                  disabled
-                />
-              </Card>
-            ))}
-          </Card.Group>
+                  <Button
+                    content="View Profile"
+                    icon="eye"
+                    labelPosition="left"
+                    disabled
+                  />
+                </Card>
+              ))}
+            </Card.Group>
+          </>
         ) : (
           <div style={{ paddingBottom: 16 }}>
             <p></p>
