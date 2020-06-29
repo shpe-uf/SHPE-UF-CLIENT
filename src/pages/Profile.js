@@ -8,6 +8,7 @@ import { AuthContext } from "../context/auth";
 
 import Title from "../components/Title";
 import UserProfile from "../components/UserProfile";
+import MiscUserInfoTable from "../components/MiscUserInfoTable";
 
 import majorOptions from "../assets/options/major.json";
 import yearOptions from "../assets/options/year.json";
@@ -146,6 +147,7 @@ function Profile() {
           </Grid.Row>
         </Grid>
         <UserProfile user={user} />
+        <MiscUserInfoTable user={user} />
       </Container>
 
       <Modal open={editProfileModal} size="tiny">
@@ -373,8 +375,8 @@ const EDIT_USER_PROFILE = gql`
     $ethnicity: String!
     $sex: String!
     $classes: [String]
-    $internships: String
-    $socialMedia: String
+    $internships: [String]
+    $socialMedia: [String]
   ) {
     editUserProfile(
       editUserProfileInput: {
