@@ -13,45 +13,36 @@ function MiscUserInfoTable({ user }) {
   return (
     <>
       <Table striped selectable unstackable>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell>Classes</Table.HeaderCell>
-            <Table.HeaderCell>Internships</Table.HeaderCell>
-            <Table.HeaderCell>Social Media</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
         <Table.Body>
           <Table.Row>
             <Table.Cell>
-            {user &&
-              classArr.map((course, index) => (
-                <Table.Row key={index}>
-                  <Table.Cell>
-                    {course}
-                  </Table.Cell>
-                </Table.Row>
-              ))}
+              <b>Classes:</b>
             </Table.Cell>
+            {user && classArr.map((course, index) => (
+              <Table.Cell key={index}>
+                {course}
+              </Table.Cell>
+            ))}
+          </Table.Row>
+          <Table.Row>
             <Table.Cell>
-            {user &&
-              internshipArr.map((internship, index) => (
-                <Table.Row key={index}>
-                  <Table.Cell>
-                    {internship}
-                  </Table.Cell>
-                </Table.Row>
-              ))}
+              <b>Internships:</b>
             </Table.Cell>
+            {user && internshipArr.map((internship, index) => (
+              <Table.Cell key={index}>
+                {internship}
+              </Table.Cell>
+            ))}
+          </Table.Row>
+          <Table.Row>
             <Table.Cell>
-            {user &&
-              socialMediaArr.map((handle, index) => (
-                <Table.Row key={index}>
-                  <Table.Cell>
-                    {handle}
-                  </Table.Cell>
-                </Table.Row>
-              ))}
+              <b>Social Media:</b>
             </Table.Cell>
+            {user && socialMediaArr.map((handle, index) => (
+              <Table.Cell key={index}>
+                {handle}
+              </Table.Cell>
+            ))}
           </Table.Row>
         </Table.Body>
       </Table>
