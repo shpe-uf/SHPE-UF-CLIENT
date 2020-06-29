@@ -772,3 +772,6 @@ div::-webkit-scrollbar-thumb {
 .checkmark {
   position: absolute
 }
+.shpeito-name{
+  line-height: 0.8em;
+}

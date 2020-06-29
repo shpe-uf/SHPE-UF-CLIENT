@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Header, Segment, Container } from "semantic-ui-react";
+import {
+  Header,
+  Segment,
+  Container,
+  Card,
+  Image,
+  Button,
+} from "semantic-ui-react";
 import { useQuery } from "@apollo/react-hooks";
 import { FETCH_USERS_QUERY } from "../util/graphql";
 
@@ -24,6 +31,7 @@ function ShpeitoNetwork() {
   let users = [];
 
   if (!loading) {
+    console.log(filter);
     users = data.getUsers.filter(function (user) {
       return (
         (filter.major.length === 0
@@ -68,9 +76,25 @@ function ShpeitoNetwork() {
             <div style={{ height: "400px" }} />
           </Segment>
         ) : users.length > 0 ? (
-          users.map((shpeito) => (
-            <div key={shpeito.username}>{shpeito.firstName}</div>
-          ))
+          <Card.Group stackable itemsPerRow="3">
+            {users.map((shpeito) => (
+              <Card>
+                <Image src={shpeito.photo} className="card-image" />
+                <Card.Content>
+                  <Card.Header className="shpeito-name">
+                    {shpeito.firstName}
+                  </Card.Header>
+                </Card.Content>
+
+                <Button
+                  content="View Profile"
+                  icon="eye"
+                  labelPosition="left"
+                  disabled
+                />
+              </Card>
+            ))}
+          </Card.Group>
         ) : (
           <div style={{ paddingBottom: 16 }}>
             <p></p>
