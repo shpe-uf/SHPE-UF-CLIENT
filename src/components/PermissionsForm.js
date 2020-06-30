@@ -3,7 +3,7 @@ import { AuthContext } from "../context/auth";
 import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag"
 
-import {Grid, Form, Button} from "semantic-ui-react";
+import {Grid, Form, Button, Message} from "semantic-ui-react";
 import { PERMISSIONS } from "../util/permissions";
 
 
@@ -37,15 +37,17 @@ export default function PermissionsForm({userInfo}) {
             }
         }
     }
-    // const [changePermissionMutation] = useMutation(CHANGE_PERMISSION, {
-    //     onError(err) {
-    //       setErrors(err.graphQLErrors[0].extensions.exception.errors);
-    //     },
-    //     onCompleted() {
-    //       setPermissions(user.permission);
-    //       userInfo.permission = user.permission;
-    //     }
-    // });
+
+    const [changePermissionMutation] = useMutation(CHANGE_PERMISSION, {
+        onError(err) {
+          setErrors(err.graphQLErrors[0].extensions.exception.errors);
+        }
+        // ,
+        // onCompleted() {
+        //   setPermissions(user.permission);
+        //   userInfo.permission = user.permission;
+        // }
+    });
 
     const areEqual = (a, b) => {
         if (a.length == b.length) {
@@ -64,13 +66,15 @@ export default function PermissionsForm({userInfo}) {
             currentPermissions.splice(currentPermissions.indexOf(name), 1);
         }
 
-        console.log(originalPermissions.sort())
-        console.log(currentPermissions.sort())
-
         setPermissions({ ...permissions, [name]: checked });
         setButtonDisabled(areEqual(originalPermissions.sort(), currentPermissions.sort()))
 
+        console.log(currentPermissions.toString().replace(/,/g, "-"))
     };
+
+    const onSubmit = () => {
+        changePermission()
+    }
 
     // const onChange = (_, {checked, value}) => {
     //     if (checked){
@@ -100,6 +104,17 @@ export default function PermissionsForm({userInfo}) {
     //     setButtonDisabled(currentPermissions.sort() === originalPermissions.sort())
     // }
 
+    // const [changePermissionMutation] = useMutation(CHANGE_PERMISSION)
+
+    const changePermission = () => {
+        const values = {
+            email: userInfo.email,
+            currentEmail: loggedInUser.email,
+            permission: permissions.toString().replace(/,/g, "-")
+        }
+        changePermissionMutation({variables: values})
+    }
+
     // function changePermission(value) {
     //   var values = {
     //     email: userInfo.email,
@@ -115,7 +130,11 @@ export default function PermissionsForm({userInfo}) {
             <Grid.Row>
                 <Grid.Column>
                     <h3>Permissions</h3>
-                    <Form widths='equal'>
+                    <Form 
+                        onSubmit={onSubmit}
+                        widths='equal'
+                        error={Object.keys(errors).length !== 0}
+                    >
                         <Form.Group>
                             <Form.Radio
                                 toggle
@@ -188,6 +207,13 @@ export default function PermissionsForm({userInfo}) {
                                 label='Corporate Database'
                             />
                         </Form.Group>
+                        <Message
+                            error
+                            header='Action Forbidden'
+                            content={
+                                errors.general
+                            }
+                        />
                         {buttonDisabled 
                         ?('') 
                         : (
