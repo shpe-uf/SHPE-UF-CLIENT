@@ -68,8 +68,6 @@ export default function PermissionsForm({userInfo}) {
 
         setPermissions({ ...permissions, [name]: checked });
         setButtonDisabled(areEqual(originalPermissions.sort(), currentPermissions.sort()))
-
-        console.log(currentPermissions.toString().replace(/,/g, "-"))
     };
 
     const onSubmit = () => {
@@ -110,7 +108,7 @@ export default function PermissionsForm({userInfo}) {
         const values = {
             email: userInfo.email,
             currentEmail: loggedInUser.email,
-            permission: permissions.toString().replace(/,/g, "-")
+            permission: currentPermissions.toString().replace(/,/g, "-")
         }
         changePermissionMutation({variables: values})
     }
