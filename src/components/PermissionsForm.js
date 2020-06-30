@@ -24,12 +24,13 @@ export default function PermissionsForm({userInfo}) {
         corporateDatabase: userInfo.permission.includes(PERMISSIONS.CORP),
         reimbursements: userInfo.permission.includes(PERMISSIONS.REIMB)
     });
+    const [user, setUser]=useState(userInfo)
 
     const {user: loggedInUser} = useContext(AuthContext)
     let currentPermissions = []
 
     if (userInfo) {
-        originalPermissions = userInfo.permission.split("-");
+        originalPermissions = user.permission.split("-");
 
         for(let key in permissions) {
             if (permissions[key]) {
@@ -42,11 +43,6 @@ export default function PermissionsForm({userInfo}) {
         onError(err) {
           setErrors(err.graphQLErrors[0].extensions.exception.errors);
         }
-        // ,
-        // onCompleted() {
-        //   setPermissions(user.permission);
-        //   userInfo.permission = user.permission;
-        // }
     });
 
     const areEqual = (a, b) => {
@@ -74,36 +70,6 @@ export default function PermissionsForm({userInfo}) {
         changePermission()
     }
 
-    // const onChange = (_, {checked, value}) => {
-    //     if (checked){
-    //         currentPermissions.push(value);
-    //         setPermissions(currentPermissions);
-    //         console.log(currentPermissions)
-    //     } else {
-    //         console.log("Unchecked")
-    //         console.log(currentPermissions)
-    //         // console.log(currentPermissions.indexOf(value))
-    //         // currentPermissions.splice(currentPermissions.indexOf(value), 1);
-    //     }
-    //     // if (currentPermissions.includes(value)) { 
-    //     //     if (userInfo) {
-    //     //         currentPermissions.splice(currentPermissions.indexOf(value), 1);
-    //     //     }
-    //     // } else {
-    //     //     if (userInfo) {
-    //     //         currentPermissions.push(value);
-    //     //     }
-    //     // }
-
-    //     // console.log(currentPermissions)
-    //     // console.log(originalPermissions)
-    //     // console.log('-------------------------')
-
-    //     setButtonDisabled(currentPermissions.sort() === originalPermissions.sort())
-    // }
-
-    // const [changePermissionMutation] = useMutation(CHANGE_PERMISSION)
-
     const changePermission = () => {
         const values = {
             email: userInfo.email,
@@ -111,17 +77,8 @@ export default function PermissionsForm({userInfo}) {
             permission: currentPermissions.toString().replace(/,/g, "-")
         }
         changePermissionMutation({variables: values})
+        setPermissions(currentPermissions)
     }
-
-    // function changePermission(value) {
-    //   var values = {
-    //     email: userInfo.email,
-    //     currentEmail: user.email,
-    //     permission: value
-    //   }
-    //   changePermissionMutation({ variables: values });
-    //   user.permission = value;
-    // }
 
     return (
         <Grid>
