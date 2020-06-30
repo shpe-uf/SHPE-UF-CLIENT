@@ -31,7 +31,11 @@ function Profile() {
     variables: {
       userId: id
     }
-  }).data.getUser;
+  });
+
+  if (user){
+    user = user.getUser;
+  }
 
   const [editProfileModal, setEditProfileModal] = useState(false);
 

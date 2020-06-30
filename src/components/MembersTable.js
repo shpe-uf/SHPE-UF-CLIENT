@@ -24,6 +24,8 @@ function MembersTable({ users }) {
   const [permission, setPermission] = useState(userInfo.permission);
   const [errors, setErrors] = useState({});
 
+  //set up an object with each property
+
   const { user } = useContext(AuthContext);
 
   const openModal = name => {

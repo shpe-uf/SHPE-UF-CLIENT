@@ -1,11 +1,11 @@
 export const PERMISSIONS = {
     ADMIN: 'admin',
-    SUPER: 'admin-super',
+    SUPER: 'super',
     MEMBERS: 'members',
     EVENTS: 'events',
     TASKS: 'tasks',
     REQUESTS: 'requests',
     STATS: 'statistics',
-    CORP: 'corporate-database',
+    CORP: 'corporateDatabase',
     REIMB: 'reimbursements'
 }
