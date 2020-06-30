@@ -24,13 +24,12 @@ export default function PermissionsForm({userInfo}) {
         corporateDatabase: userInfo.permission.includes(PERMISSIONS.CORP),
         reimbursements: userInfo.permission.includes(PERMISSIONS.REIMB)
     });
-    const [user, setUser]=useState(userInfo)
 
     const {user: loggedInUser} = useContext(AuthContext)
     let currentPermissions = []
 
     if (userInfo) {
-        originalPermissions = user.permission.split("-");
+        originalPermissions = userInfo.permission.split("-");
 
         for(let key in permissions) {
             if (permissions[key]) {
@@ -67,10 +66,12 @@ export default function PermissionsForm({userInfo}) {
     };
 
     const onSubmit = () => {
+        setButtonDisabled(true)
         changePermission()
     }
 
     const changePermission = () => {
+        userInfo.permission = currentPermissions.toString().replace(/,/g, "-");
         const values = {
             email: userInfo.email,
             currentEmail: loggedInUser.email,
