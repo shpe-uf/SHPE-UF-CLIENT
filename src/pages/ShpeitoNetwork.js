@@ -6,6 +6,7 @@ import {
   Card,
   Image,
   Button,
+  Icon,
 } from "semantic-ui-react";
 import { useQuery } from "@apollo/react-hooks";
 import { FETCH_USERS_QUERY } from "../util/graphql";
@@ -78,23 +79,33 @@ function ShpeitoNetwork() {
         ) : users.length > 0 ? (
           <>
             <p></p>
-            <Card.Group stackable itemsPerRow="3">
-              {users.map((shpeito) => (
-                <Card>
-                  <Image src={shpeito.photo} className="card-image" />
-                  <Card.Content>
-                    <Card.Header>{shpeito.firstName}</Card.Header>
-                  </Card.Content>
-
-                  <Button
-                    content="View Profile"
-                    icon="eye"
-                    labelPosition="left"
-                    disabled
-                  />
-                </Card>
-              ))}
-            </Card.Group>
+            <Segment>
+              <Card.Group stackable itemsPerRow="4">
+                {users.map((shpeito) => (
+                  <Card>
+                    <Image src={shpeito.photo} className="card-image" />
+                    <Card.Content>
+                      <Card.Header>
+                        {shpeito.firstName} {shpeito.lastName}
+                      </Card.Header>
+                      <Card.Meta>{shpeito.major}</Card.Meta>
+                      <Card.Meta>{shpeito.year}</Card.Meta>
+                      <Card.Description>
+                        <Icon name="flag outline"></Icon>
+                        {shpeito.country}
+                      </Card.Description>
+                      <p></p>
+                      <Button
+                        fluid
+                        content="View Classes"
+                        icon="book"
+                        labelPosition="left"
+                      />
+                    </Card.Content>
+                  </Card>
+                ))}
+              </Card.Group>
+            </Segment>
           </>
         ) : (
           <div style={{ paddingBottom: 16 }}>
