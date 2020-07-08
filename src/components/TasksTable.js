@@ -16,7 +16,7 @@ import { useQuery, useMutation } from "@apollo/react-hooks";
 import { useForm } from "../util/hooks";
 import { CSVLink } from "react-csv";
 
-import { FETCH_USERS_QUERY } from "../util/graphql";
+import { FETCH_USERS_QUERY, FETCH_TASKS_QUERY } from "../util/graphql";
 
 function TasksTable({tasks}) {
   const [errors, setErrors] = useState({});
@@ -55,19 +55,21 @@ function TasksTable({tasks}) {
   });
 
   const [manualTaskInput, { loading }] = useMutation(MANUAL_INPUT_MUTATION, {
-    update(
-      _,
-      {
-        data: { manualTaskInput: tasksData }
-      }
-    ) {
-      setErrors(false);
-      setManualTaskInputModal(false);
+
+    update(cache, { data : { manualTaskInput } }) {
+      const {getTasks} = cache.readQuery({ query: FETCH_TASKS_QUERY });
+      getTasks.forEach((task, pos) => {
+        if(task.name === manualTaskInput.name) getTasks[pos] = manualTaskInput
+      })
+      cache.writeQuery({
+        query: FETCH_TASKS_QUERY,
+        data: { getTasks: getTasks},
+      });
+      closeModal('manualTaskInput')
     },
 
     onError(err) {
-      console.log(err);
-      setErrors([err.graphQLErrors[0].message])
+      setErrors(err.graphQLErrors[0].extensions.exception.errors);
     },
 
     variables: values
@@ -78,6 +80,7 @@ function TasksTable({tasks}) {
   }
 
   function setTaskNameValue(taskName) {
+    values.username = users ? users[0].username : ''
     values.taskName = taskName;
   }
 
@@ -306,6 +309,13 @@ const MANUAL_INPUT_MUTATION = gql`
       manualTaskInputInput: { username: $username, taskName: $taskName }
     ) {
       name
+      startDate
+      endDate
+      description
+      points
+      attendance
+      semester
+      createdAt
       users {
         email
         username
