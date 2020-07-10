@@ -37,7 +37,11 @@ function Title({ title, adminPath}) {
                           />
                         )}
                         {title !== "Tasks" && (
-                          <Dropdown.Item as={Link} to="/admin/" text="Tasks" />
+                          <Dropdown.Item
+                            as={Link}
+                            to="/admin/tasks"
+                            text="Tasks"
+                          />
                         )}
                         {title !== "Requests" && (
                           <Dropdown.Item
