@@ -67,7 +67,7 @@ function Title({ title, adminPath}) {
                         {title !== "Reimbursements" && (
                           <Dropdown.Item
                             as={Link}
-                            to="/admin/"
+                            to="/admin/reimbursements"
                             text="Reimbursements"
                           />
                         )}
