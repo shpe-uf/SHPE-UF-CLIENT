@@ -24,15 +24,15 @@ function ShpeitoNetwork() {
   let users = [];
 
   
-  if(!loading) {
+  if(!loading && data) {
     users = data.getUsers.filter(function (user) {
       return ( 
 
-        (filter.major.length      === 0 ? true :      filter.major.includes(user.major))      &&
-        (filter.year.length       === 0 ? true :       filter.year.includes(user.year))       &&
+        (filter.major.length      === 0 ? true : filter.major.includes(user.major))           &&
+        (filter.year.length       === 0 ? true : filter.year.includes(user.year))             &&
         (filter.graduating.length === 0 ? true : filter.graduating.includes(user.graduating)) &&
-        (filter.country.length    === 0 ? true :    filter.country.includes(user.country))    &&
-        (filter.classes.length    === 0 ? true :    filter.classes.includes(user.classes))    &&
+        (filter.country.length    === 0 ? true : filter.country.includes(user.country))       &&
+        (filter.classes.length    === 0 ? true : filter.classes.includes(user.classes))       &&
         (filter.name.length       === 0 ? true : filter.name.map(n => user.firstName.toLowerCase().includes(n.toLowerCase())).includes(true) ||
                                                  filter.name.map(n => user.lastName.toLowerCase().includes(n.toLowerCase() )).includes(true))
       )

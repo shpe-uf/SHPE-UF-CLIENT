@@ -16,29 +16,15 @@ import { useQuery, useMutation } from "@apollo/react-hooks";
 import { useForm } from "../util/hooks";
 import { CSVLink } from "react-csv";
 
-import { FETCH_USERS_QUERY } from "../util/graphql";
+import { FETCH_USERS_QUERY, FETCH_TASKS_QUERY } from "../util/graphql";
 
-function TasksTable({ tasks }) {
+function TasksTable({tasks}) {
   const [errors, setErrors] = useState({});
   const [manualTaskInputModal, setManualTaskInputModal] = useState(false);
   const [taskInfoModal, setTaskInfoModal] = useState(false);
   const [taskAttendance, setTaskAttendance] = useState({});
 
-  var users = [
-    {
-      username: "",
-      firstName: "",
-      lastName: ""
-    }
-  ];
-
-  var userData = useQuery(FETCH_USERS_QUERY).data.getUsers;
-
-  if (userData) {
-    for (var i = 0; i < userData.length; i++) {
-      users.push(userData[i]);
-    }
-  }
+  let users = useQuery(FETCH_USERS_QUERY).data.getUsers;
 
   const openModal = name => {
     if (name === "manualTaskInput") {
@@ -69,25 +55,21 @@ function TasksTable({ tasks }) {
   });
 
   const [manualTaskInput, { loading }] = useMutation(MANUAL_INPUT_MUTATION, {
-    update(
-      _,
-      {
-        data: { manualTaskInput: tasksData }
-      }
-    ) {
-      values.username = "";
-      values.taskName = "";
-      tasks.splice(0, tasks.length);
-      for (var i = 0; i < tasksData.length; i++) {
-        tasks.push(tasksData[i]);
-      }
-      setErrors(false);
-      setManualTaskInputModal(false);
+
+    update(cache, { data : { manualTaskInput } }) {
+      const {getTasks} = cache.readQuery({ query: FETCH_TASKS_QUERY });
+      getTasks.forEach((task, pos) => {
+        if(task.name === manualTaskInput.name) getTasks[pos] = manualTaskInput
+      })
+      cache.writeQuery({
+        query: FETCH_TASKS_QUERY,
+        data: { getTasks: getTasks},
+      });
+      closeModal('manualTaskInput')
     },
 
     onError(err) {
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
-      console.log(errors);
     },
 
     variables: values
@@ -98,12 +80,14 @@ function TasksTable({ tasks }) {
   }
 
   function setTaskNameValue(taskName) {
+    values.username = users ? users[0].username : ''
     values.taskName = taskName;
   }
 
   function getTaskAttendance(taskInfo) {
     setTaskAttendance(taskInfo);
   }
+
   return (
     <>
       <Dimmer active={tasks ? false : true} inverted>
@@ -327,15 +311,16 @@ const MANUAL_INPUT_MUTATION = gql`
       name
       startDate
       endDate
-      semester
-      request
-      attendance
+      description
       points
+      attendance
+      semester
+      createdAt
       users {
+        email
+        username
         firstName
         lastName
-        username
-        email
       }
     }
   }
