@@ -34,6 +34,8 @@ function ShpeitoNetwork() {
   if (!loading) {
     console.log(filter);
     users = data.getUsers.filter(function (user) {
+      let fullName = user.firstName.concat(" ").concat(user.lastName);
+      console.log(fullName)
       return (
         (filter.major.length === 0
           ? true
@@ -58,7 +60,11 @@ function ShpeitoNetwork() {
             filter.name
               .map((n) => user.lastName.toLowerCase().includes(n.toLowerCase()))
               .includes(true))
-      );
+              ||
+            filter.name
+              .map((n) => fullName.toLowerCase().includes(n.toLowerCase()))
+              .includes(true))
+      
     });
     console.log(users);
   }
@@ -91,7 +97,7 @@ function ShpeitoNetwork() {
                       <Card.Meta>{shpeito.major}</Card.Meta>
                       <Card.Meta>{shpeito.year}</Card.Meta>
                       <Card.Description>
-                        <Icon name="flag outline"></Icon>
+                        <Icon name="world"></Icon>
                         {shpeito.country}
                       </Card.Description>
                       <p></p>
