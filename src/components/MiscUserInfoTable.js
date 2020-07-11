@@ -2,13 +2,14 @@ import React from "react";
 import { Table } from "semantic-ui-react";
 
 function MiscUserInfoTable({ user }) {
-  let classArr = user ? user.classes[0].split(",") : [];
-  let internshipArr = user ? user.internships[0].split(",") : [];
-  let socialMediaArr = user ? user.socialMedia[0].split(",") : [];
+  let classArr = user ? user.classes[0].split(", ") : [];
+  let internshipArr = user ? user.internships[0].split(", ") : [];
+  let socialMediaArr = user ? user.socialMedia[0].split(", ") : [];
   if (user) {
     console.log(classArr);
     console.log(internshipArr);
     console.log(socialMediaArr);
+    console.log(user);
   }
   return (
     <>
