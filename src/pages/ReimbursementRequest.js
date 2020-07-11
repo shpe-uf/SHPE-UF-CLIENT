@@ -8,7 +8,7 @@ import { useForm } from "../util/hooks";
 
 import Title from "../components/Title";
 
-function ReimbursementRequest({user: user}) {
+function ReimbursementRequest({user}) {
     const [errors, setErrors] = useState({});
     const [openConfirmation, setOpenConfirmation] = useState(false);
 
@@ -49,7 +49,6 @@ function ReimbursementRequest({user: user}) {
         },
         onError(err) {
             setErrors(err.graphQLErrors[0].extensions.exception.errors);
-            console.log(errors);
         },
     
         variables: values
