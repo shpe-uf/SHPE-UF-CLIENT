@@ -16,13 +16,16 @@ import { useQuery, useMutation } from "@apollo/react-hooks";
 import { useForm } from "../util/hooks";
 import { CSVLink } from "react-csv";
 
+import DeleteTaskModal from "../components/DeleteTaskModal";
+
 import { FETCH_USERS_QUERY, FETCH_TASKS_QUERY } from "../util/graphql";
 
 function TasksTable({tasks}) {
   const [errors, setErrors] = useState({});
   const [manualTaskInputModal, setManualTaskInputModal] = useState(false);
   const [taskInfoModal, setTaskInfoModal] = useState(false);
-  const [taskAttendance, setTaskAttendance] = useState({});
+  const [deleteTaskModal, setDeleteTaskModal] = useState(false);
+  const [selectedTask, setSelectedTask] = useState({});
 
   let users = useQuery(FETCH_USERS_QUERY).data.getUsers;
 
@@ -75,6 +78,25 @@ function TasksTable({tasks}) {
     variables: values
   });
 
+  const [removeUserFromTask] = useMutation(REMOVE_USER_MUTATION, {
+
+    update(cache, { data : { removeUserFromTask } }) {
+      const {getTasks} = cache.readQuery({ query: FETCH_TASKS_QUERY });
+      getTasks.forEach((task, pos) => {
+        if(task.name === removeUserFromTask.name) getTasks[pos] = removeUserFromTask
+      })
+      cache.writeQuery({
+        query: FETCH_TASKS_QUERY,
+        data: { getTasks: getTasks},
+      });
+      setSelectedTask(removeUserFromTask);
+    },
+
+    onError(err) {
+      setErrors(err.graphQLErrors[0].extensions.exception.errors);
+    }
+  });
+
   function manualTaskInputCallback() {
     manualTaskInput();
   }
@@ -82,10 +104,6 @@ function TasksTable({tasks}) {
   function setTaskNameValue(taskName) {
     values.username = users ? users[0].username : ''
     values.taskName = taskName;
-  }
-
-  function getTaskAttendance(taskInfo) {
-    setTaskAttendance(taskInfo);
   }
 
   return (
@@ -113,8 +131,9 @@ function TasksTable({tasks}) {
                   Attendance
                 </Table.HeaderCell>
                 <Table.HeaderCell textAlign="center">Points</Table.HeaderCell>
-                <Table.HeaderCell textAlign="center">Manual Input</Table.HeaderCell>
+                <Table.HeaderCell textAlign="center">Add User</Table.HeaderCell>
                 <Table.HeaderCell textAlign="center">Info</Table.HeaderCell>
+                <Table.HeaderCell textAlign="center">Delete</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>
@@ -144,11 +163,23 @@ function TasksTable({tasks}) {
                       <Button
                         icon
                         onClick={() => {
-                          getTaskAttendance(task);
+                          setSelectedTask(task);
                           openModal("taskInfo");
                         }}
                       >
                         <Icon name="info" />
+                      </Button>
+                    </Table.Cell>
+                    <Table.Cell textAlign="center">
+                      <Button
+                        icon
+                        onClick={() => {
+                          setSelectedTask(task);
+                          setDeleteTaskModal(true);
+                        }}
+                        color='red'
+                      >
+                        <Icon name='x' />
                       </Button>
                     </Table.Cell>
                   </Table.Row>
@@ -241,10 +272,10 @@ function TasksTable({tasks}) {
           <Grid>
             <Grid.Row>
               <Grid.Column>
-                <h3>{taskAttendance.name}</h3>
-                <p>{taskAttendance.description}</p>
-                <p>Attendance: {taskAttendance.attendance}</p>
-                {taskAttendance.attendance === 0 ? (
+                <h3>{selectedTask.name}</h3>
+                <p>{selectedTask.description}</p>
+                <p>Attendance: {selectedTask.attendance}</p>
+                {selectedTask.attendance === 0 ? (
                   <Segment placeholder>
                     <Header icon>
                       <i className="fas fa-exclamation-circle"></i>
@@ -262,17 +293,32 @@ function TasksTable({tasks}) {
                           <Table.HeaderCell>Name</Table.HeaderCell>
                           <Table.HeaderCell>Username</Table.HeaderCell>
                           <Table.HeaderCell>Email</Table.HeaderCell>
+                          <Table.HeaderCell>Remove</Table.HeaderCell>
                         </Table.Row>
                       </Table.Header>
                       <Table.Body>
-                        {taskAttendance.users &&
-                          taskAttendance.users.map(member => (
+                        {selectedTask.users &&
+                          selectedTask.users.map(member => (
                             <Table.Row key={member.username}>
                               <Table.Cell>
                                 {member.lastName + "," + member.firstName}
                               </Table.Cell>
                               <Table.Cell>{member.username}</Table.Cell>
                               <Table.Cell>{member.email}</Table.Cell>
+                              <Table.Cell textAlign='right'>
+                                <Button
+                                  icon
+                                  color='red'
+                                  onClick={() => {
+                                    removeUserFromTask({variables: {
+                                      username: member.username,
+                                      taskName: selectedTask.name
+                                    }})
+                                  }}
+                                >
+                                  <Icon name='x'/>
+                                </Button>
+                              </Table.Cell>
                             </Table.Row>
                           ))}
                       </Table.Body>
@@ -287,8 +333,8 @@ function TasksTable({tasks}) {
                   Cancel
                 </Button>
                 <CSVLink
-                  data={taskAttendance.users}
-                  filename={taskAttendance.name + ".csv"}
+                  data={selectedTask.users}
+                  filename={selectedTask.name + ".csv"}
                 >
                   <Button color="green" floated="right">
                     Download as CSV
@@ -299,6 +345,11 @@ function TasksTable({tasks}) {
           </Grid>
         </Modal.Content>
       </Modal>
+      <DeleteTaskModal
+        open={deleteTaskModal}
+        close={() => setDeleteTaskModal(false)}
+        task={selectedTask}
+      />
     </>
   );
 }
@@ -326,4 +377,26 @@ const MANUAL_INPUT_MUTATION = gql`
   }
 `;
 
+const REMOVE_USER_MUTATION = gql`
+  mutation removeUserFromTask($username: String!, $taskName: String!) {
+    removeUserFromTask(
+      manualTaskInputInput: { username: $username, taskName: $taskName }
+    ) {
+      name
+      startDate
+      endDate
+      description
+      points
+      attendance
+      semester
+      createdAt
+      users {
+        email
+        username
+        firstName
+        lastName
+      }
+    }
+  }
+`;
 export default TasksTable;

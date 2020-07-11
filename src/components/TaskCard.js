@@ -93,7 +93,7 @@ function TaskCard({ user, refetch}) {
                   clear: "left"
                 }}
               >
-                {task.startDate}- {task.endDate}
+                {task.startDate + ' - ' + task.endDate}
               </Card.Meta>
             </Card.Content>
             <Card.Content>{task.description}</Card.Content>

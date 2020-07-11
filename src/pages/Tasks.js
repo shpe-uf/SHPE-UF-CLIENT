@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid, Button, Form, Modal, Container } from "semantic-ui-react";
+import { Grid, Button, Form, Modal, Container, Input } from "semantic-ui-react";
 import gql from "graphql-tag";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { useForm } from "../util/hooks";
@@ -13,6 +13,7 @@ function Tasks() {
 
   const [errors, setErrors] = useState({});
   const [createTaskModal, setCreateTaskModal] = useState(false);
+  const [filter, setFilter] = useState('');
 
   let tasks = useQuery(FETCH_TASKS_QUERY).data.getTasks;
 
@@ -75,12 +76,25 @@ function Tasks() {
     createTask();
   }
 
+  if(tasks && filter !== '') {
+    tasks = tasks.filter(task => {
+      return (task.name.toLowerCase().includes(filter.toLowerCase()) || task.semester.toLowerCase().includes(filter.toLowerCase()))
+    })
+  }
+
   return (
     <>
       <Title title="Tasks" adminPath={window.location.pathname} />
       <Container className="body">
         <Grid>
-          <Grid.Row>
+          <Grid.Row columns='2'>
+          <Grid.Column>
+              <Input
+                fluid
+                onChange={(_,data) => setFilter(data.value)}
+                placeholder='Search...'
+              />
+            </Grid.Column>
             <Grid.Column>
               <Button
                 content="Create Task"

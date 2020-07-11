@@ -11,8 +11,6 @@ import { FETCH_ALUMNIS_QUERY } from "../util/graphql";
 function AlumniDirectory() {
   var alumnis = useQuery(FETCH_ALUMNIS_QUERY).data.getAlumnis;
 
-  console.log(alumnis);
-
   return (
     <div className="body">
       <Title title="Alumni Directory" />
