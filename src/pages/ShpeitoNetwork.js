@@ -7,12 +7,15 @@ import {
   Image,
   Button,
   Icon,
+  Modal,
+  List,
 } from "semantic-ui-react";
 import { useQuery } from "@apollo/react-hooks";
 import { FETCH_USERS_QUERY } from "../util/graphql";
 
 import Title from "../components/Title";
 import FilterSelection from "../components/FilterSelection";
+import placeholder from "../assets/images/placeholder.png";
 
 function ShpeitoNetwork() {
   const [filter, setFilter] = useState(
@@ -35,38 +38,38 @@ function ShpeitoNetwork() {
     console.log(filter);
     users = data.getUsers.filter(function (user) {
       let fullName = user.firstName.concat(" ").concat(user.lastName);
-      console.log(fullName)
+      console.log(fullName);
       return (
-        (filter.major.length === 0
+        ((filter.major.length === 0
           ? true
           : filter.major.includes(user.major)) &&
-        (filter.year.length === 0 ? true : filter.year.includes(user.year)) &&
-        (filter.graduating.length === 0
-          ? true
-          : filter.graduating.includes(user.graduating)) &&
-        (filter.country.length === 0
-          ? true
-          : filter.country.includes(user.country)) &&
-        (filter.classes.length === 0
-          ? true
-          : filter.classes.includes(user.classes)) &&
-        (filter.name.length === 0
-          ? true
-          : filter.name
-              .map((n) =>
-                user.firstName.toLowerCase().includes(n.toLowerCase())
-              )
-              .includes(true) ||
-            filter.name
-              .map((n) => user.lastName.toLowerCase().includes(n.toLowerCase()))
-              .includes(true))
-              ||
-            filter.name
-              .map((n) => fullName.toLowerCase().includes(n.toLowerCase()))
-              .includes(true))
-      
+          (filter.year.length === 0 ? true : filter.year.includes(user.year)) &&
+          (filter.graduating.length === 0
+            ? true
+            : filter.graduating.includes(user.graduating)) &&
+          (filter.country.length === 0
+            ? true
+            : filter.country.includes(user.country)) &&
+          (filter.classes.length === 0
+            ? true
+            : filter.classes.includes(user.classes)) &&
+          (filter.name.length === 0
+            ? true
+            : filter.name
+                .map((n) =>
+                  user.firstName.toLowerCase().includes(n.toLowerCase())
+                )
+                .includes(true) ||
+              filter.name
+                .map((n) =>
+                  user.lastName.toLowerCase().includes(n.toLowerCase())
+                )
+                .includes(true))) ||
+        filter.name
+          .map((n) => fullName.toLowerCase().includes(n.toLowerCase()))
+          .includes(true)
+      );
     });
-    console.log(users);
   }
 
   function getUsers(newFilter) {
@@ -89,7 +92,7 @@ function ShpeitoNetwork() {
               <Card.Group stackable itemsPerRow="4">
                 {users.map((shpeito) => (
                   <Card>
-                    <Image src={shpeito.photo} className="card-image" />
+                    <Image src={placeholder} className="card-image" />
                     <Card.Content>
                       <Card.Header>
                         {shpeito.firstName} {shpeito.lastName}
@@ -101,12 +104,37 @@ function ShpeitoNetwork() {
                         {shpeito.country}
                       </Card.Description>
                       <p></p>
-                      <Button
-                        fluid
-                        content="View Classes"
-                        icon="book"
-                        labelPosition="left"
-                      />
+                      <Modal
+                        trigger={
+                          <Button
+                            fluid
+                            content="View Classes"
+                            icon="book"
+                            labelPosition="left"
+                          />
+                        }
+                        size="tiny"
+                      >
+                        <Modal.Header>
+                          {shpeito.firstName}'s Classes
+                        </Modal.Header>
+                        <Modal.Content>
+                          <Modal.Description>
+                            {shpeito.classes.length > 0 ? (
+                              shpeito.classes.map((className) => (
+                                <List>
+                                  <List.Item>
+                                    <List.Icon name="book" />
+                                    <List.Content>{className}</List.Content>
+                                  </List.Item>
+                                </List>
+                              ))
+                            ) : (
+                              <div>Sorry, no classes registered.</div>
+                            )}
+                          </Modal.Description>
+                        </Modal.Content>
+                      </Modal>
                     </Card.Content>
                   </Card>
                 ))}
