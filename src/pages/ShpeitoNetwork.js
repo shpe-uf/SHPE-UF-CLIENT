@@ -9,6 +9,7 @@ import {
   Icon,
   Modal,
   List,
+  Divider,
 } from "semantic-ui-react";
 import { useQuery } from "@apollo/react-hooks";
 import { FETCH_USERS_QUERY } from "../util/graphql";
@@ -30,15 +31,11 @@ function ShpeitoNetwork() {
   );
 
   let { data, loading } = useQuery(FETCH_USERS_QUERY);
-  console.log(data);
-  console.log(loading);
   let users = [];
 
   if (!loading) {
-    console.log(filter);
     users = data.getUsers.filter(function (user) {
       let fullName = user.firstName.concat(" ").concat(user.lastName);
-      console.log(fullName);
       return (
         ((filter.major.length === 0
           ? true
@@ -113,31 +110,33 @@ function ShpeitoNetwork() {
                             labelPosition="left"
                           />
                         }
-                        size="tiny"
+                        size="mini"
+                        closeIcon
                       >
                         <Modal.Header>
                           {shpeito.firstName}'s Classes
                         </Modal.Header>
                         <Modal.Content>
-                          <Modal.Description>
-                            <p></p>
+                          <p></p>
                             {shpeito.classes.length > 0 ? (
                               shpeito.classes.map((className) => (
-                                <List divided>
+                                <List divided className="shpeito-spacing">
                                   <List.Item>
-                                    <List.Icon name="book"/>
+                                    <List.Icon
+                                      className="shpeito-spacing"
+                                      name="book"
+                                    />
                                     <List.Content>{className}</List.Content>
                                   </List.Item>
                                 </List>
                               ))
                             ) : (
-                              <div>
-                                <p>Sorry, no classes registered.</p>
+                              <div className="shpeito-spacing">
+                                <p>&ensp;Sorry, no classes registered.</p>
                                 <p></p>
                               </div>
                             )}
                             <p></p>
-                          </Modal.Description>
                         </Modal.Content>
                       </Modal>
                     </Card.Content>
