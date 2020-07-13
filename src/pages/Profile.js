@@ -52,9 +52,12 @@ function Profile() {
   const [miscInfo, setMiscInfo] = useState({
     classes: user ? user.classes : [],
     internships: user ? user.internships : [],
-    socialMedia: user ? user.socialMedia : []
+    socialMedia: user ? user.socialMedia : [],
   });
   const [miscInfoVal, setMiscInfoVal] = useState("");
+  const [classesVal, setClassesVal] = useState("");
+  const [internshipsVal, setInternshipsVal] = useState("");
+  const [socialMediaVal, setSocialMediaVal] = useState("");
 
   const openModal = (name) => {
     if (name === "editProfile") {
@@ -101,6 +104,7 @@ function Profile() {
 
   const [editProfile, { loading }] = useMutation(EDIT_USER_PROFILE, {
     update(_, { data: { editUserProfile: userData } }) {
+      console.log(userData);
       user.firstName = userData.firstName;
       user.lastName = userData.lastName;
       user.photo = userData.photo;
@@ -195,6 +199,20 @@ function Profile() {
   console.log(miscInfoVal);
   if (user) {
     console.log(user);
+  }
+
+  function resetAndAdd() {
+    addMiscInfo();
+    setMiscInfoVal("");
+    if (category === "classes") {
+      setClassesVal("");
+    }
+    if (category === "internships") {
+      setInternshipsVal("");
+    }
+    if (category === "socialMedia") {
+      setSocialMediaVal("");
+    }
   }
 
   return (
@@ -367,23 +385,24 @@ function Profile() {
                     ))}
                   </Form.Field>
                   <Form.Group widths="equal">
-                    <Form.Field>
-                      <input
-                        onChange={(e) => {
+                    <Form.Input
+                      label="Classes"
+                      value={classesVal}
+                      onChange={(e) => {
+                        setCategory("classes");
+                        setMiscInfoVal(e.target.value);
+                        setClassesVal(e.target.value);
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
                           setCategory("classes");
-                          setMiscInfoVal(e.target.value)
-                        }}
-                        onKeyDown={(e) => {
-                          if (e.key === "Enter") {
-                            setCategory("classes");
-                            addMiscInfo();
-                            setMiscInfoVal("");
-                          }
-                        }}
-                        placeholder={"Add your classes here"}
-                      />
-                    </Form.Field>
-                    <Button type="button" icon onClick={addMiscInfo}>
+                          addMiscInfo();
+                          setMiscInfoVal("");
+                        }
+                      }}
+                      placeholder={"Add your classes here"}
+                    />
+                    <Button type="button" icon onClick={resetAndAdd}>
                       <Icon name="add" />
                     </Button>
                   </Form.Group>
@@ -397,22 +416,24 @@ function Profile() {
                     />
                   ))}
                   <Form.Group widths="equal">
-                    <Form.Field>
-                      <input
-                        onChange={(e) => {
+                    <Form.Input
+                      label="Internships"
+                      value={internshipsVal}
+                      onChange={(e) => {
+                        setCategory("internships");
+                        setMiscInfoVal(e.target.value);
+                        setInternshipsVal(e.target.value);
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
                           setCategory("internships");
-                          setMiscInfoVal(e.target.value)
-                        }}
-                        onKeyDown={(e) => {
-                          if (e.key === "Enter") {
-                            setCategory("internships");
-                            addMiscInfo();
-                          }
-                        }}
-                        placeholder={"Add your internships here"}
-                      />
-                    </Form.Field>
-                    <Button type="button" icon onClick={addMiscInfo}>
+                          addMiscInfo();
+                          setMiscInfoVal("");
+                        }
+                      }}
+                      placeholder={"Add your internships here"}
+                    />
+                    <Button type="button" icon onClick={resetAndAdd}>
                       <Icon name="add" />
                     </Button>
                   </Form.Group>
@@ -426,22 +447,24 @@ function Profile() {
                     />
                   ))}
                   <Form.Group widths="equal">
-                    <Form.Field>
-                      <input
-                        onChange={(e) => {
+                    <Form.Input
+                      label="Social Media"
+                      value={socialMediaVal}
+                      onChange={(e) => {
+                        setCategory("socialMedia");
+                        setMiscInfoVal(e.target.value);
+                        setSocialMediaVal(e.target.value);
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter") {
                           setCategory("socialMedia");
-                          setMiscInfoVal(e.target.value);
-                        }}
-                        onKeyDown={(e) => {
-                          if (e.key === "Enter") {
-                            setCategory("socialMedia");
-                            addMiscInfo();
-                          }
-                        }}
-                        placeholder={"Add your social media here"}
-                      />
-                    </Form.Field>
-                    <Button type="button" icon onClick={addMiscInfo}>
+                          addMiscInfo();
+                          setMiscInfoVal("");
+                        }
+                      }}
+                      placeholder={"Add your socialMedia here"}
+                    />
+                    <Button type="button" icon onClick={resetAndAdd}>
                       <Icon name="add" />
                     </Button>
                   </Form.Group>
