@@ -9,7 +9,6 @@ import { PERMISSIONS } from "../util/permissions";
 
 let originalPermissions = []
 
-
 export default function PermissionsForm({userInfo}) {
     const [errors, setErrors] = useState({});
     const [buttonDisabled, setButtonDisabled] = useState(true)
@@ -38,9 +37,13 @@ export default function PermissionsForm({userInfo}) {
         }
     }
 
-    const [changePermissionMutation] = useMutation(CHANGE_PERMISSION, {
+    const [changePermissionMutation, other] = useMutation(CHANGE_PERMISSION, {
         onError(err) {
-          setErrors(err.graphQLErrors[0].extensions.exception.errors);
+            setErrors(err.graphQLErrors[0].extensions.exception.errors);
+        },
+        update(cache, data) { 
+            userInfo.permission = currentPermissions.toString().replace(/,/g, "-");
+            setPermissions(currentPermissions)
         }
     });
 
@@ -71,14 +74,12 @@ export default function PermissionsForm({userInfo}) {
     }
 
     const changePermission = () => {
-        userInfo.permission = currentPermissions.toString().replace(/,/g, "-");
         const values = {
             email: userInfo.email,
             currentEmail: loggedInUser.email,
             permission: currentPermissions.toString().replace(/,/g, "-")
         }
         changePermissionMutation({variables: values})
-        setPermissions(currentPermissions)
     }
 
     return (
@@ -89,7 +90,7 @@ export default function PermissionsForm({userInfo}) {
                     <Form 
                         onSubmit={onSubmit}
                         widths='equal'
-                        error={Object.keys(errors).length !== 0}
+                        error={Object.keys(errors).length !== 0 && errors.constructor === Object}
                     >
                         <Form.Group>
                             <Form.Radio
@@ -166,7 +167,7 @@ export default function PermissionsForm({userInfo}) {
                         <Message
                             error
                             header='Action Forbidden'
-                            content={
+                            content= {
                                 errors.general
                             }
                         />
@@ -179,7 +180,6 @@ export default function PermissionsForm({userInfo}) {
                                 content='Apply'
                             />
                         )}
-                        
                     </Form>
                 </Grid.Column>
             </Grid.Row>
