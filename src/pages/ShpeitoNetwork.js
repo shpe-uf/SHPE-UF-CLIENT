@@ -120,18 +120,23 @@ function ShpeitoNetwork() {
                         </Modal.Header>
                         <Modal.Content>
                           <Modal.Description>
+                            <p></p>
                             {shpeito.classes.length > 0 ? (
                               shpeito.classes.map((className) => (
-                                <List>
+                                <List divided>
                                   <List.Item>
-                                    <List.Icon name="book" />
+                                    <List.Icon name="book"/>
                                     <List.Content>{className}</List.Content>
                                   </List.Item>
                                 </List>
                               ))
                             ) : (
-                              <div>Sorry, no classes registered.</div>
+                              <div>
+                                <p>Sorry, no classes registered.</p>
+                                <p></p>
+                              </div>
                             )}
+                            <p></p>
                           </Modal.Description>
                         </Modal.Content>
                       </Modal>
