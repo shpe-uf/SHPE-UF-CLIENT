@@ -108,6 +108,12 @@ function Profile() {
     socialMedia: "",
   });
 
+  useEffect(() => {
+    values.classes = miscInfo.classes;
+    values.internships = miscInfo.internships;
+    values.socialMedia = miscInfo.socialMedia;
+  },[onSubmit]);
+
   const [editProfile, { loading }] = useMutation(EDIT_USER_PROFILE, {
     update(_, { data: { editUserProfile: userData } }) {
       user.firstName = userData.firstName;
