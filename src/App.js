@@ -62,7 +62,6 @@ function App() {
   if (data && data.getUser)
   {
     permission = data.getUser.permission;
-    console.log(permission)
   }
 
   return (
