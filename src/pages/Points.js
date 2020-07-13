@@ -6,10 +6,7 @@ import {
   Modal,
   Form,
   Menu,
-  Segment,
-  Responsive,
-  Card,
-  Divider
+  Segment
 } from "semantic-ui-react";
 
 import { ToastContainer, toast } from "react-toastify";
@@ -108,8 +105,6 @@ function Points() {
     }
   }
 
-  console.log(user);
-
   return (
     <div className="body">
       <Title title="Points Program" />
@@ -160,7 +155,7 @@ function Points() {
                       <PointsBar user={user} />
                     </Grid.Column>
                   </Grid.Row>
-                  <Grid.Row itemsPerRow={2}>
+                  <Grid.Row>
                     <Grid.Column width={8}>
                       <UserEventsTable user={user} />
                     </Grid.Column>
@@ -297,6 +292,10 @@ const REDEEM_POINTS_MUTATION = gql`
         name
         category
         createdAt
+        points
+      }
+      tasks {
+        name
         points
       }
     }

@@ -4,7 +4,7 @@ import gql from "graphql-tag";
 import Title from "../components/Title";
 import RentalCards from "../components/RentalCards";
 import RentalModal from "../components/RentalModal";
-import { Grid, Container, Input, Loader, Dropdown, Divider, Segment } from "semantic-ui-react";
+import { Grid, Container, Input, Loader, Dropdown, Segment } from "semantic-ui-react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 
 import rentalCategories from "../assets/options/rentalCategories.json";
@@ -50,8 +50,7 @@ function ShpeRentals() {
     category !== 'All Inventory' ?
     items = data.getInventory.filter((item) => item.category === category) : items = data.getInventory;
 
-    filter !== '' ?
-    items = items.filter((item) => item.item.includes(filter)) : items = items;
+    if(filter !== '') items = items.filter((item) => item.item.includes(filter));
   }
 
   return (

@@ -15,8 +15,6 @@ function Requests() {
 
   let filter = '';
 
-  console.log(requests)
-
   let filteredRequests = (function() {
 
     if(requests) {

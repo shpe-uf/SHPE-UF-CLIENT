@@ -4,7 +4,6 @@ import { Card } from "semantic-ui-react";
 import alejandro from "../assets/images/team/2019-2020/alejandro.png";
 import david from "../assets/images/team/2019-2020/david.png";
 import diego from "../assets/images/team/2019-2020/diego.png";
-import eduardo from "../assets/images/team/2019-2020/eduardo.png";
 import isabel from "../assets/images/team/2019-2020/isabel.png";
 import juan from "../assets/images/team/2019-2020/juan.png";
 import mariana from "../assets/images/team/2019-2020/mariana.png";
@@ -16,12 +15,6 @@ function DevTeamCards() {
     <>
       <Card
         fluid
-        image={eduardo}
-        header="Eduardo Graziano"
-        meta="Project Manager"
-      />
-      <Card
-        fluid
         image={juan}
         header="Juan Suhr"
         meta="Scrum Master"
@@ -30,7 +23,7 @@ function DevTeamCards() {
         fluid
         image={alejandro}
         header="Alejandro Alonso"
-        meta="Developer"
+        meta="Project Manager"
       />
       <Card
         fluid

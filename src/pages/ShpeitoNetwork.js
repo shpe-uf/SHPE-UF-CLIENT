@@ -3,36 +3,44 @@ import {
   Segment,
   Container
 } from "semantic-ui-react";
-import gql from "graphql-tag";
-import { useLazyQuery } from "@apollo/react-hooks";
+import { useQuery } from "@apollo/react-hooks";
+import { FETCH_USERS_QUERY } from "../util/graphql";
 
 import Title from "../components/Title";
 import FilterSelection from "../components/FilterSelection";
 
 function ShpeitoNetwork() {
 
-  const [filter, setFilter] = useState({
+  const [filter, setFilter] = useState(new Filter({
     name: [],
     major: [],
     year: [],
     graduating: [],
     country: [],
     classes: []
-  });
+  }));
 
-  const [ getShpeitos, { loading, error, data } ] = useLazyQuery(SHPEITO_QUERY,  {
-    variables: { 
-      name: filter.name,
-      major: filter.major,
-      year: filter.year,
-      graduating: filter.graduating,
-      country: filter.country,
-      classes: filter.classes
-    },
-  });
+  let {data, loading} = useQuery(FETCH_USERS_QUERY);
+  let users = [];
+
+  
+  if(!loading && data) {
+    users = data.getUsers.filter(function (user) {
+      return ( 
+
+        (filter.major.length      === 0 ? true : filter.major.includes(user.major))           &&
+        (filter.year.length       === 0 ? true : filter.year.includes(user.year))             &&
+        (filter.graduating.length === 0 ? true : filter.graduating.includes(user.graduating)) &&
+        (filter.country.length    === 0 ? true : filter.country.includes(user.country))       &&
+        (filter.classes.length    === 0 ? true : filter.classes.includes(user.classes))       &&
+        (filter.name.length       === 0 ? true : filter.name.map(n => user.firstName.toLowerCase().includes(n.toLowerCase())).includes(true) ||
+                                                 filter.name.map(n => user.lastName.toLowerCase().includes(n.toLowerCase() )).includes(true))
+      )
+    })
+  }
 
   function getUsers(newFilter) {
-    setFilter(newFilter);
+    setFilter(new Filter(newFilter));
   }
 
   return (
@@ -40,33 +48,24 @@ function ShpeitoNetwork() {
       <Title title="SHPEito Network"/>
       <Container>
         <FilterSelection getUsers={getUsers}/>
-        {true ? <Segment disabled loading><div style={{height:'400px'}} /></Segment> :
+        {loading ? <Segment disabled loading><div style={{height:'400px'}} /></Segment> :
 
-          <div/>
+          users ? users.map(shpeito => <div key={shpeito.username}>{shpeito.firstName}</div>) : <div>error</div>
         }
       </Container>
     </div>
   );
 }
 
-const SHPEITO_QUERY = gql`
-  query shpeitoQuery(
-    $name: [String]!,
-    $major: [String]!,
-    $year: [String]!,
-    $graduating: [String]!,
-    $country: [String]!,
-    $classes: [String]!
-  ) {
-    shpeitoQuery(
-      name: $name,
-      major: $major,
-      year: $year,
-      graduating: $graduating,
-      country: $country,
-      classes: $classes
-    )
+class Filter {
+  constructor(filter) {
+    this.name = filter.name;
+    this.major = filter.major;
+    this.year = filter.year;
+    this.graduating = filter.graduating;
+    this.country = filter.country;
+    this.classes = filter.classes;
   }
-`;
+}
 
 export default ShpeitoNetwork;

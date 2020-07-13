@@ -17,6 +17,7 @@ import UserProfile from "./UserProfile";
 import PointsTable from "./PointsTable";
 import Permissions from "../util/permissions";
 import PermissionsForm from "./PermissionsForm";
+import PointsTable from "./UserEventsTable";
 
 function MembersTable({ users }) {
   const [userInfoModal, setUserInfoModal] = useState(false);
@@ -24,8 +25,8 @@ function MembersTable({ users }) {
   const [permission, setPermission] = useState(userInfo.permission);
   const [errors, setErrors] = useState({});
 
-  //set up an object with each property
 
+  //REPLACE WITH JUST GRAB FROM USERS
   const { user } = useContext(AuthContext);
 
   const openModal = name => {
@@ -156,24 +157,14 @@ function MembersTable({ users }) {
                         </ul>
                       </div>
                     )}
-                    {/* <Button.Group fluid>
-                      {permission === 'admin' ? (
-                        <Button color='yellow'>Admin</Button>)
-                        : ( <Button color='grey' onClick={() => changePermission("admin")}>Admin</Button>
-                      )}
-                      {permission === 'director' ? (
-                        <Button color='green'>Director</Button>
-                      ) : (<Button color='grey' onClick={() => changePermission("director")}>Director</Button>
-                      )}
-                      {permission === 'member' ? (
-                        <Button color='blue'>Member</Button>
-                      ) : (<Button color='grey' onClick={() => changePermission("member")}>Member</Button>
-                      )}
-                    </Button.Group> */}
+                  </Grid.Column>
+                </Grid.Row>
+                <Grid.Row>
+                  <Grid.Column>
+                    <PointsTable user={userInfo} />
                   </Grid.Column>
                 </Grid.Row>
               </Grid>
-              <PointsTable user={userInfo} />
             </>
           )}
           <Grid>

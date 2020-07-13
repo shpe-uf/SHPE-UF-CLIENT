@@ -1,50 +1,26 @@
-import React, {useContext, useState} from "react";
+import React from "react";
 import {
   Segment,
   Header,
   Grid,
   Card,
-  Button,
   Responsive,
   Dimmer,
   Loader
 } from "semantic-ui-react";
 
-import {ToastContainer, toast} from "react-toastify";
+import {toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import {useQuery, useMutation} from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
-import {AuthContext} from "../context/auth";
 import TaskCard from "../components/TaskCard";
 
 import {FETCH_TASKS_QUERY} from "../util/graphql";
 
 function TasksCards({user, refetch}) {
-  const [errors, setErrors] = useState({});
   var tasks = useQuery(FETCH_TASKS_QUERY).data.getTasks;
-
-  var {
-    user : {
-      username
-    }
-  } = useContext(AuthContext);
-
-  const [redeemTasksPoints] = useMutation(REDEEM_TASK_POINTS_MUTATION, {
-    update(_, {
-      data: {
-        redeemTasksPoints: userData
-      }
-    }) {
-    },
-
-    onError(err) {
-      toast.error(err.graphQLErrors[0].extensions.exception.errors.general, {position: toast.POSITION.BOTTOM_CENTER});
-      setErrors(err.graphQLErrors[0].extensions.exception.errors);
-    }
-
-  });
 
   return (
     <>

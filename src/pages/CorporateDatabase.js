@@ -83,7 +83,6 @@ function CorporateDatabase() {
     },
     onError(err) {
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
-      console.log(errors);
     },
     variables: values
   });
@@ -93,7 +92,6 @@ function CorporateDatabase() {
   async function createCorporation() {
     await addCorporation();
     refetch();
-    // window.location.reload();
   }
 
   //#region MODALS

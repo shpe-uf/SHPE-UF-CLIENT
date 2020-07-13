@@ -136,7 +136,7 @@ function RentalModal(props) {
                   <List
                     items={[
                       'The last step is to select the number of items you would like to rent',
-                      'Upon pressing \"Finish\", your rent request will be submitted',
+                      'Upon pressing "Finish", your rent request will be submitted',
                       'An email will be sent to your ufl shortly afterwards with information on how to retrieve your item',
                     ]}
                   />

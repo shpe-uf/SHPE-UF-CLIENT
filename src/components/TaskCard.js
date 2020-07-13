@@ -5,7 +5,7 @@ import {
   Icon
 } from "semantic-ui-react";
 
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { useQuery, useMutation } from "@apollo/react-hooks";
@@ -19,23 +19,19 @@ import { FETCH_TASKS_QUERY } from "../util/graphql";
 function TaskCard({ user, refetch}) {
   const [bookmarkTask] = useMutation(BOOKMARK_TASK_MUTATION);
 
-  const [errors, setErrors] = useState({});
-
-  const { loading, data } = useQuery(FETCH_TASKS_QUERY);
+  const { data } = useQuery(FETCH_TASKS_QUERY);
 
   var allTasks = (data) ? data.getTasks : [];
   var tasks = [];
 
   if (allTasks) {
     var bookmarkedTaskNames = user.bookmarkedTasks;
-    for (const [index, value] of allTasks.entries()) {
-      console.log(index, value);
+    for (const [_, value] of allTasks.entries()) {
       const task = value;
       const taskName = bookmarkedTaskNames.find(
         element => element === task.name
       );
       if (!taskName) {
-        console.log(task);
         tasks.push(task);
       }
     }
@@ -57,7 +53,6 @@ function TaskCard({ user, refetch}) {
       toast.error(err.graphQLErrors[0].extensions.exception.errors.general, {
         position: toast.POSITION.BOTTOM_CENTER
       });
-      setErrors(err.graphQLErrors[0].extensions.exception.errors);
     }
   });
 
@@ -98,7 +93,7 @@ function TaskCard({ user, refetch}) {
                   clear: "left"
                 }}
               >
-                {task.startDate}- {task.endDate}
+                {task.startDate + ' - ' + task.endDate}
               </Card.Meta>
             </Card.Content>
             <Card.Content>{task.description}</Card.Content>
