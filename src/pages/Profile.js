@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import gql from "graphql-tag";
 import {
   Container,
@@ -44,20 +44,26 @@ function Profile() {
   }).data.getUser;
 
   const [editProfileModal, setEditProfileModal] = useState(false);
-  if (user) {
-    console.log(user.classes);
-  }
+
   const [category, setCategory] = useState("classes");
   const [miscInfoList, setMiscInfoList] = useState(user ? user.classes : []);
   const [miscInfo, setMiscInfo] = useState({
-    classes: user ? user.classes : [],
-    internships: user ? user.internships : [],
-    socialMedia: user ? user.socialMedia : [],
+    classes: [],
+    internships: [],
+    socialMedia: [],
   });
   const [miscInfoVal, setMiscInfoVal] = useState("");
   const [classesVal, setClassesVal] = useState("");
   const [internshipsVal, setInternshipsVal] = useState("");
   const [socialMediaVal, setSocialMediaVal] = useState("");
+
+  useEffect(() => {
+    setMiscInfo({
+      classes: user ? user.classes : [],
+      internships: user ? user.internships : [],
+      socialMedia: user ? user.socialMedia : [],
+    })
+  },[editProfileModal]);
 
   const openModal = (name) => {
     if (name === "editProfile") {
@@ -104,7 +110,6 @@ function Profile() {
 
   const [editProfile, { loading }] = useMutation(EDIT_USER_PROFILE, {
     update(_, { data: { editUserProfile: userData } }) {
-      console.log(userData);
       user.firstName = userData.firstName;
       user.lastName = userData.lastName;
       user.photo = userData.photo;
@@ -114,9 +119,12 @@ function Profile() {
       user.country = userData.country;
       user.ethnicity = userData.ethnicity;
       user.sex = userData.sex;
-      user.classes = miscInfo.classes;
-      user.internships = miscInfo.internships;
-      user.socialMedia = miscInfo.socialMedia;
+      userData.classes = miscInfo.classes;
+      user.classes = userData.classes;
+      userData.internships = miscInfo.internships;
+      user.internships = userData.internships;
+      userData.socialMedia = miscInfo.socialMedia;
+      user.socialMedia = userData.socialMedia;
       toast.success("Your profile has been updated.", {
         position: toast.POSITION.BOTTOM_CENTER,
       });
@@ -151,7 +159,6 @@ function Profile() {
   }
 
   function addMiscInfo() {
-    console.log(miscInfo["socialMedia"]);
     if (
       miscInfoVal &&
       miscInfoVal !== "" &&
@@ -191,14 +198,6 @@ function Profile() {
       });
     }
     setMiscInfoList(list);
-  }
-
-  console.log(miscInfo);
-  console.log(miscInfoList);
-  console.log(category);
-  console.log(miscInfoVal);
-  if (user) {
-    console.log(user);
   }
 
   function resetAndAdd() {
