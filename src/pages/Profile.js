@@ -47,12 +47,12 @@ function Profile() {
   if (user) {
     console.log(user.classes);
   }
-  const [category, setCategory] = useState("Classes");
+  const [category, setCategory] = useState("classes");
   const [miscInfoList, setMiscInfoList] = useState(user ? user.classes : []);
   const [miscInfo, setMiscInfo] = useState({
     classes: user ? user.classes : [],
-    internships: [],
-    socialMedia: [],
+    internships: user ? user.internships : [],
+    socialMedia: user ? user.socialMedia : []
   });
   const [miscInfoVal, setMiscInfoVal] = useState("");
 
@@ -111,8 +111,8 @@ function Profile() {
       user.ethnicity = userData.ethnicity;
       user.sex = userData.sex;
       user.classes = miscInfo.classes;
-      user.internships = userData.internships;
-      user.socialMedia = userData.socialMedia;
+      user.internships = miscInfo.internships;
+      user.socialMedia = miscInfo.socialMedia;
       toast.success("Your profile has been updated.", {
         position: toast.POSITION.BOTTOM_CENTER,
       });
@@ -147,17 +147,19 @@ function Profile() {
   }
 
   function addMiscInfo() {
+    console.log(miscInfo["socialMedia"]);
     if (
       miscInfoVal &&
       miscInfoVal !== "" &&
-      !miscInfo[category.toLowerCase()].includes(miscInfoVal)
+      miscInfo[category].length < 10 &&
+      !miscInfo[category].includes(miscInfoVal)
     ) {
       let m = miscInfo;
-      if (category === "Classes") {
+      if (category === "classes") {
         let newVal = miscInfoVal.replace(/\s+/g, "").toUpperCase();
-        m[category.toLowerCase()].push(newVal);
+        m[category].push(newVal);
       } else {
-        m[category.toLowerCase()].push(miscInfoVal);
+        m[category].push(miscInfoVal);
       }
       setMiscInfo(m);
       printLabels();
@@ -367,20 +369,25 @@ function Profile() {
                   <Form.Group widths="equal">
                     <Form.Field>
                       <input
-                        onChange={(e) => setMiscInfoVal(e.target.value)}
-                        onKeyDown={(e) => {
-                          if (e.key === "Enter") addMiscInfo();
+                        onChange={(e) => {
+                          setCategory("classes");
+                          setMiscInfoVal(e.target.value)
                         }}
-                        placeholder={
-                          "Add your " + category.toLowerCase() + " here"
-                        }
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter") {
+                            setCategory("classes");
+                            addMiscInfo();
+                            setMiscInfoVal("");
+                          }
+                        }}
+                        placeholder={"Add your classes here"}
                       />
                     </Form.Field>
                     <Button type="button" icon onClick={addMiscInfo}>
                       <Icon name="add" />
                     </Button>
                   </Form.Group>
-                  {miscInfoList.map((info) => (
+                  {miscInfo.classes.map((info) => (
                     <Label
                       size="tiny"
                       circular
@@ -390,31 +397,64 @@ function Profile() {
                     />
                   ))}
                   <Form.Group widths="equal">
-                    <Form.Input
-                      type="text"
-                      label="Internships"
-                      name="internships"
-                      value={values.internships}
-                      error={errors.internships ? true : false}
-                      onChange={onChange}
-                    />
-                    <Button icon>
+                    <Form.Field>
+                      <input
+                        onChange={(e) => {
+                          setCategory("internships");
+                          setMiscInfoVal(e.target.value)
+                        }}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter") {
+                            setCategory("internships");
+                            addMiscInfo();
+                          }
+                        }}
+                        placeholder={"Add your internships here"}
+                      />
+                    </Form.Field>
+                    <Button type="button" icon onClick={addMiscInfo}>
                       <Icon name="add" />
                     </Button>
                   </Form.Group>
+                  {miscInfo.internships.map((info) => (
+                    <Label
+                      size="tiny"
+                      circular
+                      content={info}
+                      onRemove={(e, data) => deleteMiscInfo(data.content)}
+                      key={info}
+                    />
+                  ))}
                   <Form.Group widths="equal">
-                    <Form.Input
-                      type="text"
-                      label="Social Media"
-                      name="socialMedia"
-                      value={values.socialMedia}
-                      error={errors.socialMedia ? true : false}
-                      onChange={onChange}
-                    />
-                    <Button icon>
+                    <Form.Field>
+                      <input
+                        onChange={(e) => {
+                          setCategory("socialMedia");
+                          setMiscInfoVal(e.target.value);
+                        }}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter") {
+                            setCategory("socialMedia");
+                            addMiscInfo();
+                          }
+                        }}
+                        placeholder={"Add your social media here"}
+                      />
+                    </Form.Field>
+                    <Button type="button" icon onClick={addMiscInfo}>
                       <Icon name="add" />
                     </Button>
                   </Form.Group>
+                  {miscInfo.socialMedia.map((info) => (
+                    <Label
+                      size="tiny"
+                      circular
+                      content={info}
+                      onRemove={(e, data) => deleteMiscInfo(data.content)}
+                      key={info}
+                    />
+                  ))}
+                  <br />
                   <Button
                     type="reset"
                     color="grey"
