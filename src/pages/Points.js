@@ -294,6 +294,10 @@ const REDEEM_POINTS_MUTATION = gql`
         createdAt
         points
       }
+      tasks {
+        name
+        points
+      }
     }
   }
 `;

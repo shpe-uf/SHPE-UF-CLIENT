@@ -48,7 +48,6 @@ function FilterSelection(props) {
   };
 
   function addFilter(){
-    console.log(filterVal)
     if(filterVal && filterVal !== '' && !filters[category.toLowerCase()].includes(filterVal)) {
       let f = filters;
       if(category==='Classes') {
