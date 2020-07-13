@@ -2,15 +2,8 @@ import React from "react";
 import { Table } from "semantic-ui-react";
 
 function MiscUserInfoTable({ user }) {
-  let classArr = user ? user.classes[0].split(", ") : [];
   let internshipArr = user ? user.internships[0].split(", ") : [];
   let socialMediaArr = user ? user.socialMedia[0].split(", ") : [];
-  if (user) {
-    console.log(classArr);
-    console.log(internshipArr);
-    console.log(socialMediaArr);
-    console.log(user);
-  }
   return (
     <>
       <Table striped selectable unstackable>
@@ -19,7 +12,7 @@ function MiscUserInfoTable({ user }) {
             <Table.Cell>
               <b>Classes:</b>
             </Table.Cell>
-            {user && classArr.map((course, index) => (
+            {user && user.classes.map((course, index) => (
               <Table.Cell key={index}>
                 {course}
               </Table.Cell>

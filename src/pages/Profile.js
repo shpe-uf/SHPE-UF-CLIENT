@@ -1,6 +1,15 @@
 import React, { useContext, useState } from "react";
 import gql from "graphql-tag";
-import { Container, Grid, Button, Modal, Form, Image } from "semantic-ui-react";
+import {
+  Container,
+  Grid,
+  Button,
+  Modal,
+  Form,
+  Image,
+  Icon,
+  Label,
+} from "semantic-ui-react";
 import { ToastContainer, toast } from "react-toastify";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { useForm } from "../util/hooks";
@@ -35,6 +44,17 @@ function Profile() {
   }).data.getUser;
 
   const [editProfileModal, setEditProfileModal] = useState(false);
+  if (user) {
+    console.log(user.classes);
+  }
+  const [category, setCategory] = useState("Classes");
+  const [miscInfoList, setMiscInfoList] = useState(user ? user.classes : []);
+  const [miscInfo, setMiscInfo] = useState({
+    classes: user ? user.classes : [],
+    internships: [],
+    socialMedia: [],
+  });
+  const [miscInfoVal, setMiscInfoVal] = useState("");
 
   const openModal = (name) => {
     if (name === "editProfile") {
@@ -90,7 +110,7 @@ function Profile() {
       user.country = userData.country;
       user.ethnicity = userData.ethnicity;
       user.sex = userData.sex;
-      user.classes = userData.classes;
+      user.classes = miscInfo.classes;
       user.internships = userData.internships;
       user.socialMedia = userData.socialMedia;
       toast.success("Your profile has been updated.", {
@@ -124,6 +144,55 @@ function Profile() {
       setPhotoFile(originalPhoto);
       values.photo = originalPhoto;
     }
+  }
+
+  function addMiscInfo() {
+    if (
+      miscInfoVal &&
+      miscInfoVal !== "" &&
+      !miscInfo[category.toLowerCase()].includes(miscInfoVal)
+    ) {
+      let m = miscInfo;
+      if (category === "Classes") {
+        let newVal = miscInfoVal.replace(/\s+/g, "").toUpperCase();
+        m[category.toLowerCase()].push(newVal);
+      } else {
+        m[category.toLowerCase()].push(miscInfoVal);
+      }
+      setMiscInfo(m);
+      printLabels();
+    }
+  }
+
+  function deleteMiscInfo(deletedMiscInfo) {
+    let m = miscInfo;
+    let k = Object.keys(m);
+    for (let i = 0; i < k.length; i++) {
+      if (m[k[i]].includes(deletedMiscInfo)) {
+        m[k[i]] = m[k[i]].filter((x) => x !== deletedMiscInfo);
+      }
+    }
+    setMiscInfo(m);
+    printLabels();
+  }
+
+  function printLabels() {
+    let miscInfoKeys = Object.keys(miscInfo);
+    let list = [];
+    for (let i = 0; i < miscInfoKeys.length; i++) {
+      miscInfo[miscInfoKeys[i]].forEach((element) => {
+        list.push(element);
+      });
+    }
+    setMiscInfoList(list);
+  }
+
+  console.log(miscInfo);
+  console.log(miscInfoList);
+  console.log(category);
+  console.log(miscInfoVal);
+  if (user) {
+    console.log(user);
   }
 
   return (
@@ -295,30 +364,57 @@ function Profile() {
                       </option>
                     ))}
                   </Form.Field>
-                  <Form.Input
-                    type="text"
-                    label="Classes"
-                    name="classes"
-                    value={values.classes}
-                    error={errors.classes ? true : false}
-                    onChange={onChange}
-                  />
-                  <Form.Input
-                    type="text"
-                    label="Internships"
-                    name="internships"
-                    value={values.internships}
-                    error={errors.internships ? true : false}
-                    onChange={onChange}
-                  />
-                  <Form.Input
-                    type="text"
-                    label="Social Media"
-                    name="socialMedia"
-                    value={values.socialMedia}
-                    error={errors.socialMedia ? true : false}
-                    onChange={onChange}
-                  />
+                  <Form.Group widths="equal">
+                    <Form.Field>
+                      <input
+                        onChange={(e) => setMiscInfoVal(e.target.value)}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter") addMiscInfo();
+                        }}
+                        placeholder={
+                          "Add your " + category.toLowerCase() + " here"
+                        }
+                      />
+                    </Form.Field>
+                    <Button type="button" icon onClick={addMiscInfo}>
+                      <Icon name="add" />
+                    </Button>
+                  </Form.Group>
+                  {miscInfoList.map((info) => (
+                    <Label
+                      size="tiny"
+                      circular
+                      content={info}
+                      onRemove={(e, data) => deleteMiscInfo(data.content)}
+                      key={info}
+                    />
+                  ))}
+                  <Form.Group widths="equal">
+                    <Form.Input
+                      type="text"
+                      label="Internships"
+                      name="internships"
+                      value={values.internships}
+                      error={errors.internships ? true : false}
+                      onChange={onChange}
+                    />
+                    <Button icon>
+                      <Icon name="add" />
+                    </Button>
+                  </Form.Group>
+                  <Form.Group widths="equal">
+                    <Form.Input
+                      type="text"
+                      label="Social Media"
+                      name="socialMedia"
+                      value={values.socialMedia}
+                      error={errors.socialMedia ? true : false}
+                      onChange={onChange}
+                    />
+                    <Button icon>
+                      <Icon name="add" />
+                    </Button>
+                  </Form.Group>
                   <Button
                     type="reset"
                     color="grey"
