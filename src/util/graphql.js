@@ -27,6 +27,7 @@ export const FETCH_USERS_QUERY = gql`
         createdAt
         points
       }
+      classes
     }
   }
 `;
@@ -86,13 +87,13 @@ export const FETCH_ALUMNIS_QUERY = gql`
   }
 `;
 
-export const FETCH_CORPORATIONS_QUERY = gql `
+export const FETCH_CORPORATIONS_QUERY = gql`
   {
     getCorporations {
       id
       name
       logo
-    	slogan
+      slogan
       majors
       industries
       overview
@@ -167,7 +168,7 @@ export const FETCH_TASKS_QUERY = gql`
   }
 `;
 
-export const YEAR_STAT = gql `
+export const YEAR_STAT = gql`
   {
     getYearStat {
       _id
