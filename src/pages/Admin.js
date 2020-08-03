@@ -8,7 +8,7 @@ import {
 import Title from "../components/Title";
 import AdminPanel from "../components/AdminPanel";
 
-function Admin() {
+function Admin({permission}) {
   return (
     <div className="body">
       <Title title="Admin Panel" />

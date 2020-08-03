@@ -13,7 +13,6 @@ import { useMutation } from "@apollo/react-hooks";
 import moment from "moment";
 
 function RequestsTable({ requests }) {
-  const [errors, setErrors] = useState({});
   const [disableButton, setDisableButton] = useState(false);
 
   const [rejectRequest] = useMutation(REJECT_REQUEST_MUTATION, {
@@ -35,12 +34,6 @@ function RequestsTable({ requests }) {
         }
       });
       setDisableButton(false);
-    },
-
-    onError(err) {
-      console.log(err);
-      setErrors(err.graphQLErrors[0].extensions.exception.errors);
-      console.log(errors);
     }
   });
 
@@ -63,12 +56,6 @@ function RequestsTable({ requests }) {
         }
       });
       setDisableButton(false);
-    },
-
-    onError(err) {
-      console.log(err);
-      console.log("loggin errors");
-      setErrors(err.graphQLErrors[0].extensions.exception.errors);
     }
   });
 

@@ -13,7 +13,7 @@ import { AuthContext } from "../context/auth";
 
 import logo from "../assets/images/logo.png";
 
-function MenuBar() {
+function MenuBar({permission}) {
   const { user, logout } = useContext(AuthContext);
 
   return (
@@ -59,11 +59,17 @@ function MenuBar() {
                       <Dropdown.Item as={Link} to="/corporations">
                         Corporate Database
                       </Dropdown.Item>
-                      <Dropdown.Item as={Link} to="/classSharing">
-                        Class Sharing
+                      <Dropdown.Item as={Link} to="/shpeitonetwork">
+                        SHPEito Network
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="/shperentals">
+                        SHPE Rentals
                       </Dropdown.Item>
                       <Dropdown.Item as={Link} to="/alumnidirectory">
                         Alumni Directory
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="/reimbursementrequest">
+                        Reimbursements
                       </Dropdown.Item>
                       <Dropdown.Divider />
                       <Dropdown.Item onClick={logout}>
@@ -129,23 +135,31 @@ function MenuBar() {
                     text={user.email}
                   >
                     <Dropdown.Menu>
+                      {permission.includes('admin') &&
                       <Dropdown.Item as={Link} to="/admin">
                         Admin Panel
                       </Dropdown.Item>
+                      }
                       <Dropdown.Item as={Link} to="/profile">
                         My Profile
                       </Dropdown.Item>
                       <Dropdown.Item as={Link} to="/points">
                         Points Program
                       </Dropdown.Item>
-                      <Dropdown.Item as={Link} to="/corporateDatabase">
+                      <Dropdown.Item as={Link} to="/corporations">
                         Corporate Database
                       </Dropdown.Item>
                       <Dropdown.Item as={Link} to="/classSharing">
                         Class Sharing
                       </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="/shperentals">
+                        SHPE Rentals
+                      </Dropdown.Item>
                       <Dropdown.Item as={Link} to="/alumnidirectory">
                         Alumni Directory
+                      </Dropdown.Item>
+                      <Dropdown.Item as={Link} to="/reimbursementrequest">
+                        Reimbursements
                       </Dropdown.Item>
                       <Dropdown.Divider />
                       <Dropdown.Item onClick={logout}>

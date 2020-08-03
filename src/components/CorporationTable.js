@@ -1,29 +1,32 @@
 import React, { useState } from "react";
 import {
+  Button,
+  Dimmer,
   Table,
   Icon,
-  Dimmer,
   Loader,
   Segment,
   Header,
-  Button,
   Modal,
   Grid
-} from "semantic-ui-react";
-import gql from "graphql-tag";
-import { useMutation } from "@apollo/react-hooks";
+}from "semantic-ui-react";
 
 import CorporationProfile from "../components/CorporationProfile";
+import CorporationProfileForm from "../components/CorporationProfileForm";
 
 
-function CorporationTable({ corporations }) {
+function CorporationTable({ corporations, deleteCorporation, refetch }) {
+  /**
+   * STATES
+   */
+  //States for viewwing and editing corporations
   const [viewCorporationModal, setViewCorporationModal] = useState(false);
   const [editCorporationModal, setEditCorporationModal] = useState(false);
 
   //State to keep track of the current corporation selected
   const [corporationInfo, setCorporationInfo] = useState({});
 
-  const [removeCorporation] = useMutation(DELETE_CORPORATION);
+  //#region MODALS
 
     //Corporation information modals
     const openModal = name => {
@@ -40,32 +43,79 @@ function CorporationTable({ corporations }) {
     const closeModal = name => {
       switch(name) {
         case "viewCorporation":
-          setCorporationInfo({});
           setViewCorporationModal(false);
           break;
         case "editCorporation":
-          setCorporationInfo({});
           setEditCorporationModal(false);
       }
     }
 
-    //Setter function to update the state with the selected corporation
-    function getCorporationInfo(corporationInfo) {
-      setCorporationInfo(corporationInfo);
-    }
+    const viewModal = (
+      <Modal
+      open={viewCorporationModal}
+      size="large"
+      closeOnEscape={true}
+      closeOnDimmerClick={false}
+    >
+    <Modal.Header>
+      <h2>Company Profile</h2>
+    </Modal.Header>
+    <Modal.Content>
+          <CorporationProfile corporation={corporationInfo}/>
+            <Button 
+              color="teal"
+              floated="left"
+              content="Close"
+              onClick={()=> closeModal("viewCorporation")}
+            />
+            <Button 
+              floated="right"
+              content="Edit Company"
+              icon="edit"
+              onClick={()=>{
+                closeModal("viewCorporation");
+                setCorporationInfo(corporationInfo);
+                openModal("editCorporation");
+              }}
+            />
+    </Modal.Content>
+    </Modal>
+    );
 
-    
+    const editModal = (
+      <Modal
+      open={editCorporationModal}
+      size="small"
+      closeOnEscape={true}
+      closeOnDimmerClick={false}
+    >
+      <Modal.Header>
+        <h2>Edit Corporation</h2>
+      </Modal.Header>
+      <Modal.Content>
+      <Grid>
+          <Grid.Row>
+            <Grid.Column>
+            <CorporationProfileForm
+              corporation = {corporationInfo}
+              refetch = {refetch}
+              closeModal = {closeModal}
+            />
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+      </Modal.Content>
+    </Modal>
+    );
 
-    function deleteCorporation(corporationInfo) {
+  //#endregion
 
-      console.log(corporationInfo);
-  
-      removeCorporation({
-        variables: {name: corporationInfo.name}
-      });
-
-      window.location.reload();
-    }
+    // function removeCorporation(corporation) {  
+    //   deleteCorporation({
+    //     variables: {id: corporation.id}
+    //   });
+    //   // window.location.reload();
+    // }
 
     // function editCorporationUpdate(state) {
     //   setEditCorporationModal(state);
@@ -140,101 +190,43 @@ function CorporationTable({ corporations }) {
                     </Table.Cell>
                     <Table.Cell textAlign="center">
                       <Button
-                        icon
-                        onClick={()=>{
-                          getCorporationInfo(corporation);
+                        icon = "info"
+                        onClick={()=> {
+                          setCorporationInfo(corporation);
                           openModal("viewCorporation");
                         }}
-                      >
-                        <Icon name="info" />
-                      </Button>
+                      />
                     </Table.Cell>
                     <Table.Cell textAlign="center">
                       <Button
-                        onClick={()=>{
-                          deleteCorporation(corporation);
-                        }}
+                        icon
+                        color="red"
+                        onClick={ 
+                          async ()=>{
+                            await deleteCorporation(
+                              {
+                                variables: {
+                                  id: corporation.id
+                                }
+                              }
+                            );
+                            refetch();
+                          }
+                        }
                       >
-                        <Icon name="x" />
+                        <Icon name="x"/>
                       </Button>
                     </Table.Cell>
                   </Table.Row>
                 ))}
             </Table.Body>
           </Table>
-
-          <Modal
-            open={viewCorporationModal}
-            size="large"
-            closeOnEscape={true}
-            closeOnDimmerClick={false}
-          >
-          <Modal.Header>
-            <h2>Company Profile</h2>
-          </Modal.Header>
-          <Modal.Content>
-            <Grid>
-              <Grid.Row>
-                <Grid.Column>
-                <CorporationProfile corporation={corporationInfo}/>
-                  <Button 
-                    color="teal"
-                    floated="left"
-                    content="Close"
-                    onClick={()=> closeModal("viewCorporation")}
-                  />
-                  {/* <Button 
-                    color="teal"
-                    floated="right"
-                    content="Edit"
-                    onClick={()=>{
-                      closeModal("viewCorporation");
-                      getCorporationInfo(corporation);
-                      openModal("editCorporation");
-                    }}
-                  /> */}
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
-          </Modal.Content>
-          </Modal>
-
-          {/* <Modal
-            open={viewCorporationModal}
-            size="large"
-            closeOnEscape={true}
-            closeOnDimmerClick={false}
-          >
-            <Modal.Header>
-              <h2>Company Profile</h2>
-            </Modal.Header>
-            <Modal.Content>
-              <Grid>
-                <Grid.Row>
-                  <Grid.Column>
-                    <CorporationProfileForm 
-                      corporation={corporationInfo} 
-                      editCorporation={editCorporationUpdate.bind(this)} 
-                    />
-                  </Grid.Column>
-                </Grid.Row>
-              </Grid>
-            </Modal.Content>
-          </Modal> */}
+          {viewModal}
+          {editModal}
         </div>
       )}
     </>
   )
 }
-
-const DELETE_CORPORATION = gql`
- mutation deleteCorporation(
-   $name: String!
- ) {
-   deleteCorporation(
-    name: $name
-   )
- }
-`;
 
 export default CorporationTable;

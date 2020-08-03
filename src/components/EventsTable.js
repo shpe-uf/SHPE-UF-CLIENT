@@ -9,7 +9,7 @@ import {
   Button,
   Modal,
   Form,
-  Grid
+  Grid,
 } from "semantic-ui-react";
 import gql from "graphql-tag";
 import { useQuery, useMutation } from "@apollo/react-hooks";
@@ -29,8 +29,8 @@ function EventsTable({ events }) {
     {
       username: "",
       firstName: "",
-      lastName: ""
-    }
+      lastName: "",
+    },
   ];
 
   var userData = useQuery(FETCH_USERS_QUERY).data.getUsers;
@@ -41,7 +41,7 @@ function EventsTable({ events }) {
     }
   }
 
-  const openModal = name => {
+  const openModal = (name) => {
     if (name === "manualInput") {
       setManualInputModal(true);
     }
@@ -51,7 +51,7 @@ function EventsTable({ events }) {
     }
   };
 
-  const closeModal = name => {
+  const closeModal = (name) => {
     if (name === "manualInput") {
       values.username = "";
       values.eventName = "";
@@ -67,16 +67,11 @@ function EventsTable({ events }) {
 
   const { values, onChange, onSubmit } = useForm(manualInputCallback, {
     username: "",
-    eventName: ""
+    eventName: "",
   });
 
   const [manualInput, { loading }] = useMutation(MANUAL_INPUT_MUTATION, {
-    update(
-      _,
-      {
-        data: { manualInput: eventsData }
-      }
-    ) {
+    update(_, { data: { manualInput: eventsData } }) {
       values.username = "";
       values.eventName = "";
       events.splice(0, events.length);
@@ -91,7 +86,7 @@ function EventsTable({ events }) {
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
     },
 
-    variables: values
+    variables: values,
   });
 
   function manualInputCallback() {
@@ -208,7 +203,7 @@ function EventsTable({ events }) {
                 {Object.keys(errors).length > 0 && (
                   <div className="ui error message">
                     <ul className="list">
-                      {Object.values(errors).map(value => (
+                      {Object.values(errors).map((value) => (
                         <li key={value}>{value}</li>
                       ))}
                     </ul>
@@ -228,7 +223,7 @@ function EventsTable({ events }) {
                     onChange={onChange}
                   >
                     {users &&
-                      users.map(user =>
+                      users.map((user) =>
                         user.username === "" ? (
                           <option value={user.username} key={user.username}>
                             {user.lastName + user.firstName}
@@ -299,7 +294,7 @@ function EventsTable({ events }) {
                       </Table.Header>
                       <Table.Body>
                         {eventAttendance.users &&
-                          eventAttendance.users.map(member => (
+                          eventAttendance.users.map((member) => (
                             <Table.Row key={member.username}>
                               <Table.Cell>
                                 {member.lastName + ", " + member.firstName}

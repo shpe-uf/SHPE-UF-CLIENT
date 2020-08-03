@@ -27,6 +27,7 @@ export const FETCH_USERS_QUERY = gql`
         createdAt
         points
       }
+      classes
     }
   }
 `;
@@ -86,12 +87,13 @@ export const FETCH_ALUMNIS_QUERY = gql`
   }
 `;
 
-export const FETCH_CORPORATIONS_QUERY = gql `
+export const FETCH_CORPORATIONS_QUERY = gql`
   {
     getCorporations {
+      id
       name
       logo
-    	slogan
+      slogan
       majors
       industries
       overview
@@ -148,7 +150,6 @@ export const COUNTRY_STAT = gql`
 export const FETCH_TASKS_QUERY = gql`
   {
     getTasks {
-      id
       name
       startDate
       endDate
@@ -167,7 +168,7 @@ export const FETCH_TASKS_QUERY = gql`
   }
 `;
 
-export const YEAR_STAT = gql `
+export const YEAR_STAT = gql`
   {
     getYearStat {
       _id
@@ -190,6 +191,40 @@ export const ETHNICITY_STAT = gql`
     getEthnicityStat {
       _id
       value
+    }
+  }
+`;
+
+export const FETCH_REIMBURSEMENTS_QUERY = gql`
+  {
+    getReimbursements {
+      id
+      firstName
+      lastName
+      email
+      studentId
+      address
+      company
+      event
+      description
+      reimbursed
+      amount
+    }
+  }
+`;
+
+export const FETCH_RECEIPTS_QUERY = gql`
+  {
+    getReceipts {
+      id
+      username
+      item
+      quantity
+      email
+      dateCheckedOut
+      datePickedUp
+      dateClosed
+      deleted
     }
   }
 `;

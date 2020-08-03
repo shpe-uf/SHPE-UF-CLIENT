@@ -1,14 +1,15 @@
 import React, { useContext } from "react";
 import { Route, Redirect } from "react-router-dom";
-import { AuthContext } from "../context/auth";
 
-function AdminRoute({ component: Component, ...rest }) {
-
+function AdminRoute({ component: Component, permission, security, ...rest }) {
   return (
     <Route
       {...rest}
       render={props =>
-        (localStorage.getItem('permission') === 'admin') ? <Component {...props}/> : <Redirect to="/" />
+        <>
+        {(permission.includes('super') || permission.includes(security)) && <Component {...props}/>}
+        {(permission !== "" && (!permission.includes('super') && !permission.includes(security))) && <Redirect to="/"/>}
+        </>
       }
     />
   )

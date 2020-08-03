@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid, Button, Form, Modal, Container } from "semantic-ui-react";
+import { Grid, Button, Form, Modal, Container, Input } from "semantic-ui-react";
 import gql from "graphql-tag";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { useForm } from "../util/hooks";
@@ -13,8 +13,12 @@ import categoryOptions from "../assets/options/category.json";
 import expirationOptions from "../assets/options/expiration.json";
 
 function Tasks() {
+
   const [errors, setErrors] = useState({});
-  var tasks = useQuery(FETCH_TASKS_QUERY).data.getTasks;
+  const [createTaskModal, setCreateTaskModal] = useState(false);
+  const [filter, setFilter] = useState('');
+
+  let tasks = useQuery(FETCH_TASKS_QUERY).data.getTasks;
 
   const openModal = name => {
     if (name === "createTask") {
@@ -33,7 +37,6 @@ function Tasks() {
       setCreateTaskModal(false);
     }
   };
-  const [createTaskModal, setCreateTaskModal] = useState(false);
 
   const { values, onChange, onSubmit } = useForm(createTaskCallback, {
     name: "",
@@ -44,21 +47,17 @@ function Tasks() {
   });
 
   const [createTask, { loading }] = useMutation(CREATE_TASK_MUTATION, {
-    update(
-      _,
-      {
-        data: { createTask: tasksData }
-      }
-    ) {
+    update(cache, { data: { createTask } }) {
+      const {getTasks} = cache.readQuery({ query: FETCH_TASKS_QUERY });
+      cache.writeQuery({
+        query: FETCH_TASKS_QUERY,
+        data: { getTasks: getTasks.concat([createTask]) },
+      });
       values.name = "";
       values.description = "";
       values.startDate = "";
       values.endDate = "";
       values.points = "";
-      tasks.splice(0, tasks.length);
-      for (var i = 0; i < tasksData.length; i++) {
-        tasks.push(tasksData[i]);
-      }
       setErrors(false);
       setCreateTaskModal(false);
     },
@@ -67,11 +66,23 @@ function Tasks() {
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
     },
 
-    variables: values
+    variables: {
+      name: values.name,
+      description: values.description,
+      startDate: values.startDate,
+      endDate: values.endDate,
+      points: Number(values.points)
+    }
   });
 
   function createTaskCallback() {
     createTask();
+  }
+
+  if(tasks && filter !== '') {
+    tasks = tasks.filter(task => {
+      return (task.name.toLowerCase().includes(filter.toLowerCase()) || task.semester.toLowerCase().includes(filter.toLowerCase()))
+    })
   }
 
   return (
@@ -79,7 +90,14 @@ function Tasks() {
       <Title title="Tasks" adminPath={window.location.pathname} />
       <Container className="body">
         <Grid>
-          <Grid.Row>
+          <Grid.Row columns='2'>
+          <Grid.Column>
+              <Input
+                fluid
+                onChange={(_,data) => setFilter(data.value)}
+                placeholder='Search...'
+              />
+            </Grid.Column>
             <Grid.Column>
               <Button
                 content="Create Task"
@@ -188,33 +206,33 @@ function Tasks() {
 const CREATE_TASK_MUTATION = gql`
   mutation createTask(
     $name: String!
+    $description: String!
     $startDate: String!
     $endDate: String!
-    $description: String!
-    $points: String!
+    $points: Int!
   ) {
     createTask(
       createTaskInput: {
         name: $name
+        description: $description
         startDate: $startDate
         endDate: $endDate
-        description: $description
         points: $points
       }
     ) {
       name
-      description
       startDate
       endDate
-      semester
+      description
       points
-      createdAt
       attendance
+      semester
+      createdAt
       users {
-        email
         firstName
         lastName
         username
+        email
       }
     }
   }
