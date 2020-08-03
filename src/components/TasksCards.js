@@ -12,7 +12,6 @@ import {
 import "react-toastify/dist/ReactToastify.css";
 
 import {useQuery} from "@apollo/react-hooks";
-import gql from "graphql-tag";
 
 import TaskCard from "../components/TaskCard";
 
@@ -57,16 +56,5 @@ function TasksCards({user, refetch}) {
     </>
   );
 }
-
-const REDEEM_TASK_POINTS_MUTATION = gql`
-  mutation redeemTasksPoints($name:String!, $username: String!){
-    redeemTasksPoints(
-      redeemTasksPointsInput: {name: $name, username: $username}
-    ) {
-      firstName
-      lastName
-    }
-  }
-`;
 
 export default TasksCards;

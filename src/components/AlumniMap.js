@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid, Divider } from "semantic-ui-react";
+import { Divider } from "semantic-ui-react";
 import ReactMapboxGl, { Layer, Feature, Popup } from "react-mapbox-gl";
 
 function AlumniMap({ alumnis }) {

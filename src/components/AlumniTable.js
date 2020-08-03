@@ -258,7 +258,7 @@ function AlumniTable({ alumnis }) {
                         </Table.Cell>
                         <Table.Cell>
                           {alumniProfile.email ? (
-                            <a href={alumniProfile.linkedin} target="_blank">Link</a>
+                            <a href={alumniProfile.linkedin} target="_blank" rel="noopener noreferrer">Link</a>
                           ) : (
                             <p>Loading</p>
                           )}

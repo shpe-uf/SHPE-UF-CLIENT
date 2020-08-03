@@ -235,7 +235,6 @@ function Points() {
                   <BookmarkedTasksCards user={user} refetch={refetch} />
                 </Grid.Column>
               </Grid.Row>
-              <h2></h2>
               <Grid.Row>
                 <h4>Unbookmarked Tasks</h4>
               </Grid.Row>

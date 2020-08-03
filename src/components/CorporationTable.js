@@ -37,6 +37,8 @@ function CorporationTable({ corporations, deleteCorporation, refetch }) {
         case "editCorporation":
           setEditCorporationModal(true);
           break;
+        default:
+          break;
       }
     };
   
@@ -47,6 +49,9 @@ function CorporationTable({ corporations, deleteCorporation, refetch }) {
           break;
         case "editCorporation":
           setEditCorporationModal(false);
+          break;
+        default:
+          break;
       }
     }
 

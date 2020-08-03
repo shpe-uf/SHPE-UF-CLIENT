@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Grid, Container, Button, Form, Segment, Modal, Image } from "semantic-ui-react";
 import gql from "graphql-tag";
 import { useQuery, useMutation } from "@apollo/react-hooks";
@@ -19,7 +19,6 @@ function CorporateDatabase() {
   const [addCorporationModal, setAddCorporationModal] = useState(false);
 
   var [logoFile, setLogoFile] = useState({});
-  var [originalLogo, setOriginalLogo] = useState({});
 
   /**
    * MUTATIONS
@@ -411,8 +410,8 @@ function CorporateDatabase() {
         setLogoFile(e.target.result);
       };
     } else {
-      setLogoFile(originalLogo);
-      values.logo = originalLogo;
+      setLogoFile({});
+      values.logo = {};
     }
   }
 
