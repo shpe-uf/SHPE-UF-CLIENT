@@ -273,6 +273,7 @@ const FETCH_USER_QUERY = gql`
       tasks {
         name
         points
+        createdAt
       }
       bookmarkedTasks
     }
@@ -293,6 +294,11 @@ const REDEEM_POINTS_MUTATION = gql`
         category
         createdAt
         points
+      }
+      tasks {
+        name
+        points
+        createdAt
       }
     }
   }

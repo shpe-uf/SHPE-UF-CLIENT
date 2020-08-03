@@ -37,7 +37,11 @@ function Title({ title, adminPath}) {
                           />
                         )}
                         {title !== "Tasks" && (
-                          <Dropdown.Item as={Link} to="/admin/" text="Tasks" />
+                          <Dropdown.Item
+                            as={Link}
+                            to="/admin/tasks"
+                            text="Tasks"
+                          />
                         )}
                         {title !== "Requests" && (
                           <Dropdown.Item
@@ -72,6 +76,13 @@ function Title({ title, adminPath}) {
                             as={Link}
                             to="/admin/archives"
                             text="Archive"
+                          />
+                        )}
+                        {title !== "SHPE Rentals" && (
+                          <Dropdown.Item
+                            as={Link}
+                            to="/admin/receipts"
+                            text="SHPE Rentals"
                           />
                         )}
                       </Dropdown.Menu>

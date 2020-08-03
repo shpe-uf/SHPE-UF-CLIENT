@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React from "react";
 import {
   Segment,
   Header,
@@ -21,20 +21,6 @@ import {FETCH_TASKS_QUERY} from "../util/graphql";
 
 function TasksCards({user, refetch}) {
   var tasks = useQuery(FETCH_TASKS_QUERY).data.getTasks;
-
-  const [redeemTasksPoints] = useMutation(REDEEM_TASK_POINTS_MUTATION, {
-    update(_, {
-      data: {
-        redeemTasksPoints: userData
-      }
-    }) {
-    },
-
-    onError(err) {
-      toast.error(err.graphQLErrors[0].extensions.exception.errors.general, {position: toast.POSITION.BOTTOM_CENTER});
-    }
-
-  });
 
   return (
     <>

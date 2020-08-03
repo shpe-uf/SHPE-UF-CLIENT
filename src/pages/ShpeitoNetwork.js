@@ -33,7 +33,8 @@ function ShpeitoNetwork() {
   let { data, loading } = useQuery(FETCH_USERS_QUERY);
   let users = [];
 
-  if (!loading) {
+  
+  if(!loading && data) {
     users = data.getUsers.filter(function (user) {
       let fullName = user.firstName.concat(" ").concat(user.lastName);
       return ( 
