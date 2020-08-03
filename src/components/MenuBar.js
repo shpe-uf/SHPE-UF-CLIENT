@@ -135,9 +135,11 @@ function MenuBar({permission}) {
                     text={user.email}
                   >
                     <Dropdown.Menu>
+                      {permission.includes('admin') &&
                       <Dropdown.Item as={Link} to="/admin">
                         Admin Panel
                       </Dropdown.Item>
+                      }
                       <Dropdown.Item as={Link} to="/profile">
                         My Profile
                       </Dropdown.Item>

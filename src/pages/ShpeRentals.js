@@ -122,7 +122,7 @@ const CHECKOUT_ITEM = gql`
     $numberOfItems: Int!,
     $email: String!
   ) {
-    checkOut(
+    checkOutItem(
       data: {
       item: $item,
       username: $username,
@@ -130,7 +130,8 @@ const CHECKOUT_ITEM = gql`
       email: $email,
       }
     ) {
-      username
+      item
+      renters
     }
   }
 `;
