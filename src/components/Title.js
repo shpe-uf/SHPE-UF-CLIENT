@@ -78,6 +78,13 @@ function Title({ title, adminPath}) {
                             text="Archive"
                           />
                         )}
+                        {title !== "SHPE Rentals" && (
+                          <Dropdown.Item
+                            as={Link}
+                            to="/admin/receipts"
+                            text="SHPE Rentals"
+                          />
+                        )}
                       </Dropdown.Menu>
                     </Dropdown>
                   </div>
