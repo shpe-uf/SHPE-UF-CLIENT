@@ -211,3 +211,19 @@ export const FETCH_REIMBURSEMENTS_QUERY = gql`
     }
   }
 `;
+
+export const FETCH_RECEIPTS_QUERY = gql`
+  {
+    getReceipts {
+      id
+      username
+      item
+      quantity
+      email
+      dateCheckedOut
+      datePickedUp
+      dateClosed
+      deleted
+    }
+  }
+`;

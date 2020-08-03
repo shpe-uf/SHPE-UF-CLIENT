@@ -68,10 +68,19 @@ function Title({permission}) {
             </Segment>
           </NavLink>
         </Grid.Column>}
+        {(permission.includes("super") || permission.includes("rental")) &&
+        <Grid.Column>
+          <NavLink to="/admin/receipts">
+            <Segment inverted color="violet" textAlign="center">
+              <i className="fas fa-admin fa-shopping-cart"></i>
+              <p className="text-admin">SHPE Rentals</p>
+            </Segment>
+          </NavLink>
+        </Grid.Column>}
         {(permission.includes("super") || permission.includes("archive")) &&
         <Grid.Column>
           <NavLink to="/admin/archives">
-            <Segment inverted color="violet" textAlign="center">
+            <Segment inverted color="grey" textAlign="center">
               <i className="fas fa-admin fa-archive"></i>
               <p className="text-admin">Archive</p>
             </Segment>

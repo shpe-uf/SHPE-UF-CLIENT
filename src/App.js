@@ -39,6 +39,7 @@ import AlumniDirectory from "./pages/AlumniDirectory";
 import ReimbursementRequest from "./pages/ReimbursementRequest";
 import Reimbursements from "./pages/Reimbursements";
 import ShpeitoNetwork from "./pages/ShpeitoNetwork";
+import RentalAdmin from "./pages/RentalAdmin";
 import ShpeRentals from "./pages/ShpeRentals";
 import jwtDecode from "jwt-decode";
 import gql from "graphql-tag";
@@ -97,6 +98,7 @@ function App() {
           <AdminRoute exact path="/admin/archives" component={Archives} permission={permission}/>
           <AdminRoute exact path="/admin/corporatedatabase" component={CorporateDatabase} permission={permission} security="corporatedatabase"/>
           <AdminRoute exact path="/admin/reimbursements" component={Reimbursements} permission={permission} security="reimbursements"/>
+          <AdminRoute exact path="/admin/receipts" component={RentalAdmin} permission={permission} security="rental"/>
           <Route>
             <Redirect to="/"/>
           </Route>
