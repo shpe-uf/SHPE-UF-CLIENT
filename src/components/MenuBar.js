@@ -45,7 +45,7 @@ function MenuBar({permission}) {
                 <>
                   <Dropdown pointing item className="email" text={user.email}>
                     <Dropdown.Menu>
-                      {localStorage.getItem('permission') === 'admin' &&
+                      {permission.includes('admin') &&
                       <Dropdown.Item as={Link} to="/admin">
                         Admin Panel
                       </Dropdown.Item>

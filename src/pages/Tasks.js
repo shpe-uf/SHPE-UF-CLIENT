@@ -9,9 +9,6 @@ import TasksTable from "../components/TasksTable";
 
 import { FETCH_TASKS_QUERY } from "../util/graphql";
 
-import categoryOptions from "../assets/options/category.json";
-import expirationOptions from "../assets/options/expiration.json";
-
 function Tasks() {
 
   const [errors, setErrors] = useState({});
