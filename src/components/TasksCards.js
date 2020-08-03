@@ -6,15 +6,12 @@ import {
   Header,
   Grid,
   Card,
-  Responsive,
-  Dimmer,
-  Loader
+  Responsive
 } from "semantic-ui-react";
 
-import {toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import {useQuery, useMutation} from "@apollo/react-hooks";
+import {useQuery} from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
 import TaskCard from "../components/TaskCard";

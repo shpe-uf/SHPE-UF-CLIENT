@@ -15,17 +15,17 @@ function Admin({permission}) {
       <Container>
         <Responsive {...Responsive.onlyComputer}>
           <Grid columns={3}>
-            <AdminPanel />
+            <AdminPanel permission={permission}/>
           </Grid>
         </Responsive>
         <Responsive {...Responsive.onlyTablet}>
           <Grid columns={2}>
-            <AdminPanel />
+            <AdminPanel permission={permission}/>
           </Grid>
         </Responsive>
         <Responsive {...Responsive.onlyMobile}>
           <Grid columns={1}>
-            <AdminPanel />
+            <AdminPanel permission={permission}/>
           </Grid>
         </Responsive>
       </Container>

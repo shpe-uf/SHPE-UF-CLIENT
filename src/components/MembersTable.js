@@ -14,7 +14,7 @@ import gql from "graphql-tag";
 
 import { AuthContext } from "../context/auth";
 import UserProfile from "./UserProfile";
-import PointsTable from "./PointsTable";
+import PointsTable from "./UserEventsTable";
 
 function MembersTable({ users }) {
   const [userInfoModal, setUserInfoModal] = useState(false);

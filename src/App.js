@@ -28,6 +28,7 @@ import Admin from "./pages/Admin";
 import Points from "./pages/Points";
 import Profile from "./pages/Profile";
 import CorporateDatabase from "./pages/CorporateDatabase";
+import Archives from "./pages/Archives";
 import Events from "./pages/Events";
 import Tasks from "./pages/Tasks";
 import Members from "./pages/Members";
@@ -40,13 +41,34 @@ import Reimbursements from "./pages/Reimbursements";
 import ShpeitoNetwork from "./pages/ShpeitoNetwork";
 import RentalAdmin from "./pages/RentalAdmin";
 import ShpeRentals from "./pages/ShpeRentals";
+import jwtDecode from "jwt-decode";
+import gql from "graphql-tag";
+import { useQuery } from "@apollo/react-hooks";
 
 function App() {
-  console.log(localStorage);
+  var decodedToken = [];
+
+  if (localStorage.getItem("jwtToken")) {
+    decodedToken = jwtDecode(localStorage.getItem("jwtToken"));
+  }
+
+  var { data } = useQuery(FETCH_USER_QUERY, {
+    variables: {
+      userId: decodedToken.id
+    }
+  });
+
+  var permission = "";
+
+  if (data && data.getUser)
+  {
+    permission = data.getUser.permission;
+  }
+
   return (
     <AuthProvider>
       <Router>
-        <MenuBar />
+        <MenuBar permission={permission}/>
         <Switch>
           <Route exact path="/" component={Home} />
           <AuthRoute exact path="/login" component={Login} />
@@ -86,5 +108,13 @@ function App() {
     </AuthProvider>
   );
 }
+
+const FETCH_USER_QUERY = gql`
+  query getUser($userId: ID!) {
+    getUser(userId: $userId) {
+      permission
+    }
+  }
+`;
 
 export default App;
