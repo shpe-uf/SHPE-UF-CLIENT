@@ -133,65 +133,70 @@ function Corporations(props) {
 
   var bookmarksPane = {
     menuItem: {content:'Bookmarks', icon:'sticky note outline'},
-    render: () => 
-      <Tab.Pane loading={!user.bookmarks}>
-        <Grid stackable>
-          <Grid.Row className='sponsor-padding'>
-            <Grid.Column className='sponsor-padding'>
-              <Card.Group centered stackable itemsPerRow={4}>
-                { user.bookmarks &&
-                  corporations.filter(function (corporation) {
-                  return user.bookmarks.includes(corporation.name);
-                }).map((corporation, index) => (
-                  <CorporateCard
-                    key={index}
-                    corporation={corporation}
-                  >
-                    <Button
-                      fluid
-                      className="corp-button"
-                      content="View Profile"
-                      icon="eye"
-                      labelPosition="left"
-                      onClick={()=>{
-                          getCorporationInfo(corporation);
-                          openModal("viewCorporation");
-                        }}
-                    />
-                    {user && user.bookmarks.find(function(bookmarked){
-                    return bookmarked === corporation.name;
-                    }) 
-                    ? (
-                        <Button 
-                          className="corp-button" 
-                          fluid 
-                          onClick={()=>removeBookmark(corporation.name,username)}
-                          floated='right' 
-                          icon='book' 
-                          color='red' 
-                          content="Remove Bookmark" 
+    render: () => {
+      if (user && corporations) {
+        return(
+          <Tab.Pane loading={!user.bookmarks}>
+            <Grid stackable>
+              <Grid.Row className='sponsor-padding'>
+                <Grid.Column className='sponsor-padding'>
+                  <Card.Group centered stackable itemsPerRow={4}>
+                    { user.bookmarks &&
+                      corporations.filter(function (corporation) {
+                      return user.bookmarks.includes(corporation.name);
+                    }).map((corporation, index) => (
+                      <CorporateCard
+                        key={index}
+                        corporation={corporation}
+                      >
+                        <Button
+                          fluid
+                          className="corp-button"
+                          content="View Profile"
+                          icon="eye"
                           labelPosition="left"
+                          onClick={()=>{
+                              getCorporationInfo(corporation);
+                              openModal("viewCorporation");
+                            }}
                         />
-                      ) 
-                    : (
-                        <Button 
-                          className="corp-button" 
-                          fluid 
-                          onClick={()=>addBookmark(corporation.name, username)}
-                          floated='right' 
-                          icon='book' 
-                          content="Add Bookmark" 
-                          labelPosition="left"
-                        />
-                      )
-                    }
-                  </CorporateCard>           
-                ))}
-              </Card.Group>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-    </Tab.Pane>
+                        {user && user.bookmarks.find(function(bookmarked){
+                        return bookmarked === corporation.name;
+                        }) 
+                        ? (
+                            <Button 
+                              className="corp-button" 
+                              fluid 
+                              onClick={()=>removeBookmark(corporation.name,username)}
+                              floated='right' 
+                              icon='book' 
+                              color='red' 
+                              content="Remove Bookmark" 
+                              labelPosition="left"
+                            />
+                          ) 
+                        : (
+                            <Button 
+                              className="corp-button" 
+                              fluid 
+                              onClick={()=>addBookmark(corporation.name, username)}
+                              floated='right' 
+                              icon='book' 
+                              content="Add Bookmark" 
+                              labelPosition="left"
+                            />
+                          )
+                        }
+                      </CorporateCard>           
+                    ))}
+                  </Card.Group>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </Tab.Pane>
+        )
+      }
+    }
   }
 
   return (
