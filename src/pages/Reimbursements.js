@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { Container, Grid, Tab, Table, Button, Modal, Form, Icon, Input, Popup } from "semantic-ui-react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { CSVLink } from "react-csv";
@@ -17,14 +17,14 @@ function Reimbursements() {
     var cancelled = [];
 
     if (reimbursements) {
-        reimbursements.map(reimbursement => {
-            if (reimbursement.reimbursed == "pending") {
+        reimbursements.foreach(reimbursement => {
+            if (reimbursement.reimbursed === "pending") {
                 pending.push(reimbursement);
             }
-            if (reimbursement.reimbursed == "resolved") {
+            if (reimbursement.reimbursed === "resolved") {
                 resolved.push(reimbursement);
             }
-            if (reimbursement.reimbursed == "cancelled") {
+            if (reimbursement.reimbursed === "cancelled") {
                 cancelled.push(reimbursement);
             }
         })
@@ -101,7 +101,7 @@ function Reimbursements() {
                                 {reimbursements &&
                                     reimbursements.map((reimbursement, index) => (
                                     <>
-                                        {(reimbursement.reimbursed == "pending" && 
+                                        {(reimbursement.reimbursed === "pending" && 
                                         (((reimbursement.lastName + ", " + reimbursement.firstName).toLowerCase().includes(search.toLowerCase())) ||
                                         reimbursement.studentId.toString().toLowerCase().includes(search.toLowerCase()) ||
                                         reimbursement.email.toLowerCase().includes(search.toLowerCase()) ||
@@ -198,7 +198,7 @@ function Reimbursements() {
                                 {reimbursements &&
                                     reimbursements.map((reimbursement, index) => (
                                     <>
-                                        {(reimbursement.reimbursed == "resolved" && 
+                                        {(reimbursement.reimbursed === "resolved" && 
                                         (((reimbursement.lastName + ", " + reimbursement.firstName).toLowerCase().includes(search.toLowerCase())) ||
                                         reimbursement.studentId.toString().toLowerCase().includes(search.toLowerCase()) ||
                                         reimbursement.email.toLowerCase().includes(search.toLowerCase()) ||
@@ -282,7 +282,7 @@ function Reimbursements() {
                                 {reimbursements &&
                                     reimbursements.map((reimbursement, index) => (
                                     <>
-                                        {(reimbursement.reimbursed == "cancelled" && 
+                                        {(reimbursement.reimbursed === "cancelled" && 
                                         (((reimbursement.lastName + ", " + reimbursement.firstName).toLowerCase().includes(search.toLowerCase())) ||
                                         reimbursement.studentId.toString().toLowerCase().includes(search.toLowerCase()) ||
                                         reimbursement.email.toLowerCase().includes(search.toLowerCase()) ||
@@ -600,14 +600,14 @@ function Reimbursements() {
                 resolved = [];
                 cancelled = [];
 
-                reimbursements.map(reimbursement => {
-                    if (reimbursement.reimbursed == "pending") {
+                reimbursements.foreach(reimbursement => {
+                    if (reimbursement.reimbursed === "pending") {
                         pending.push(reimbursement);
                     }
-                    if (reimbursement.reimbursed == "resolved") {
+                    if (reimbursement.reimbursed === "resolved") {
                         resolved.push(reimbursement);
                     }
-                    if (reimbursement.reimbursed == "cancelled") {
+                    if (reimbursement.reimbursed === "cancelled") {
                         cancelled.push(reimbursement);
                     }
                 })

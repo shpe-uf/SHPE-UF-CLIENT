@@ -122,6 +122,10 @@ function CorporationTable({ corporations, deleteCorporation, refetch }) {
     //   // window.location.reload();
     // }
 
+    // function editCorporationUpdate(state) {
+    //   setEditCorporationModal(state);
+    // }
+
   return (
     <>
       <Dimmer active={corporations ? false : true} inverted>

@@ -57,7 +57,7 @@ function AlumniMap({ alumnis }) {
                   alumni.coordinates.latitude
                 ]}
               >
-                <b className="no-margin">
+                <b className="no-margin" className="accent-1-text">
                   {alumni.lastName.toUpperCase()},{" "}
                   {alumni.firstName.toUpperCase()}
                 </b>

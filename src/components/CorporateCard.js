@@ -7,7 +7,7 @@ export default function CorporateCard ({corporation,children}) {
             raised
             className='card-team'
         >
-            <Image className='corp-logo' fill src={corporation.logo}/>
+            <Image className='corp-logo' src={corporation.logo}/>
             <Card.Content>
                 <Header>{corporation.name}</Header>
             </Card.Content>

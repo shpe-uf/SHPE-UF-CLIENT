@@ -68,7 +68,7 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-        <MenuBar permission = {permission}/>
+        <MenuBar permission={permission}/>
         <Switch>
           <Route exact path="/" component={Home} />
           <AuthRoute exact path="/login" component={Login} />

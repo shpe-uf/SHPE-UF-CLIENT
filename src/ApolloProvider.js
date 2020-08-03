@@ -6,10 +6,8 @@ import { createHttpLink } from "apollo-link-http";
 import { ApolloProvider } from "@apollo/react-hooks";
 import { setContext } from "apollo-link-context";
 
-let port = process.env.PORT || 5000;
-
 const httpLink = createHttpLink({
-  uri: "http://localhost:" + port + "/"
+  uri: "https://shpe-uf.herokuapp.com/"
 });
 
 const authLink = setContext(() => {
