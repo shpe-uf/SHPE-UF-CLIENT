@@ -9,7 +9,6 @@ import {
   Icon,
   Modal,
   List,
-  Divider,
 } from "semantic-ui-react";
 import { useQuery } from "@apollo/react-hooks";
 import { FETCH_USERS_QUERY } from "../util/graphql";

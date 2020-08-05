@@ -149,8 +149,8 @@ function MenuBar({permission}) {
                       <Dropdown.Item as={Link} to="/corporations">
                         Corporate Database
                       </Dropdown.Item>
-                      <Dropdown.Item as={Link} to="/shpeitonetwork">
-                        SHPEito Network
+                      <Dropdown.Item as={Link} to="/classSharing">
+                        Class Sharing
                       </Dropdown.Item>
                       <Dropdown.Item as={Link} to="/shperentals">
                         SHPE Rentals

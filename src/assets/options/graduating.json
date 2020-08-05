@@ -5,22 +5,18 @@
   },
   {
     "key": "Not Graduating",
-    "value": "Not Graduating",
-    "text": "Not Graduating"
+    "value": "Not Graduating"
   },
   {
     "key": "Fall Semester",
-    "value": "Fall Semester",
-    "text": "Fall Semester"
+    "value": "Fall Semester"
   },
   {
     "key": "Spring Semester",
-    "value": "Spring Semester",
-    "text": "Spring Semester"
+    "value": "Spring Semester"
   },
   {
     "key": "Summer Semester",
-    "value": "Summer Semester",
-    "text": "Summer Semester"
+    "value": "Summer Semester"
   }
 ]
