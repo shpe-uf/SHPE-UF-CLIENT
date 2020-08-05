@@ -112,30 +112,42 @@ function UserProfile({ user }) {
                     )}
                   </Table.Cell>
                 </Table.Row>
-                {/*<Table.Row>
+                <Table.Row>
                   <Table.Cell>
-                    <b>Permission:</b>
+                    <b>Classes:</b>
                   </Table.Cell>
                   <Table.Cell>
-                    <span>
-                      { user ? <p className="permission_change" >{user.permission}</p> : <p>Loading</p>}
-                      <Dropdown
-                        button
-                        text='Change'
-                        className="float_right"
-                        onChange={permissionChange}
-                        value={value}
-                        selection
-                        >
-                        <Dropdown.Menu>
-                          <Dropdown.Item text='Admin' value='admin'/>
-                          <Dropdown.Item text='Member' value='member'/>
-                          <Dropdown.Item text='Director' value='director'/>
-                        </Dropdown.Menu>
-                      </Dropdown>
-                    </span>
+                    {user ? <p>{user.classes.toString().replaceAll(',', ', ')}</p> : <p>Loading</p>}
                   </Table.Cell>
-                </Table.Row> */}
+                </Table.Row>
+                <Table.Row>
+                  <Table.Cell>
+                    <b>Internships:</b>
+                  </Table.Cell>
+                  <Table.Cell>
+                  {user ? 
+                    user.internships.map((e,i) => (
+                      <div key={i}>
+                        <p>{e}</p>
+                      </div>
+                    ))
+                  : <p>Loading</p>}
+                  </Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                  <Table.Cell>
+                    <b>Social Media:</b>
+                  </Table.Cell>
+                  <Table.Cell>
+                  {user ? 
+                    user.socialMedia.map((e,i) => (
+                      <div key={i}>
+                        <p>{e}</p>
+                      </div>
+                    ))
+                  : <p>Loading</p>}
+                  </Table.Cell>
+                </Table.Row>
               </Table.Body>
             </Table>
           </div>

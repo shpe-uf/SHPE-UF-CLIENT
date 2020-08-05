@@ -7,8 +7,8 @@ import {
   Modal,
   Form,
   Image,
-  Icon,
   Label,
+  Input,
 } from "semantic-ui-react";
 import { ToastContainer, toast } from "react-toastify";
 import { useQuery, useMutation } from "@apollo/react-hooks";
@@ -17,7 +17,6 @@ import { AuthContext } from "../context/auth";
 
 import Title from "../components/Title";
 import UserProfile from "../components/UserProfile";
-import MiscUserInfoTable from "../components/MiscUserInfoTable";
 
 import majorOptions from "../assets/options/major.json";
 import yearOptions from "../assets/options/year.json";
@@ -29,60 +28,50 @@ import sexOptions from "../assets/options/sex.json";
 import placeholder from "../assets/images/placeholder.png";
 
 function Profile() {
-  var [photoFile, setPhotoFile] = useState({});
-  var [originalPhoto, setOriginalPhoto] = useState({});
-
+  const [photoFile, setPhotoFile] = useState({});
+  const [originalPhoto, setOriginalPhoto] = useState({});
   const [errors, setErrors] = useState({});
-  var {
-    user: { id, email },
-  } = useContext(AuthContext);
-
-  var user = useQuery(FETCH_USER_QUERY, {
-    variables: {
-      userId: id,
-    },
-  }).data.getUser;
-
   const [editProfileModal, setEditProfileModal] = useState(false);
-
-  const [category, setCategory] = useState("classes");
-  const [miscInfoList, setMiscInfoList] = useState(user ? user.classes : []);
   const [miscInfo, setMiscInfo] = useState({
     classes: [],
     internships: [],
     socialMedia: [],
   });
-  const [miscInfoVal, setMiscInfoVal] = useState("");
-  const [classesVal, setClassesVal] = useState("");
-  const [internshipsVal, setInternshipsVal] = useState("");
-  const [socialMediaVal, setSocialMediaVal] = useState("");
+  const [newClass, setClass] = useState('');
+  const [newInternship, setInternship] = useState('');
+  const [newSocialMedia, setSocialMedia] = useState('');
 
-  useEffect(() => {
+  let {
+    user: { id, email },
+  } = useContext(AuthContext);
+
+  let user = useQuery(FETCH_USER_QUERY, {
+    variables: {
+      userId: id,
+    },
+  }).data.getUser;
+
+  function openModal() {
+    values.firstName = user.firstName;
+    values.lastName = user.lastName;
+    values.photo = user.photo;
+    values.major = user.major;
+    values.year = user.year;
+    values.graduating = user.graduating;
+    values.country = user.country;
+    values.ethnicity = user.ethnicity;
+    values.sex = user.sex;
+    values.classes = user.classes;
+    values.internships = user.internships;
+    values.socialMedia = user.socialMedia;
     setMiscInfo({
-      classes: user ? user.classes : [],
-      internships: user ? user.internships : [],
-      socialMedia: user ? user.socialMedia : [],
+      classes: user.classes.slice(),
+      internships: user.internships.slice(),
+      socialMedia: user.socialMedia.slice()
     })
-  },[editProfileModal]);
-
-  const openModal = (name) => {
-    if (name === "editProfile") {
-      setEditProfileModal(true);
-      values.firstName = user.firstName;
-      values.lastName = user.lastName;
-      values.photo = user.photo;
-      values.major = user.major;
-      values.year = user.year;
-      values.graduating = user.graduating;
-      values.country = user.country;
-      values.ethnicity = user.ethnicity;
-      values.sex = user.sex;
-      values.classes = user.classes;
-      values.internships = user.internships;
-      values.socialMedia = user.socialMedia;
-      setPhotoFile(user.photo);
-      setOriginalPhoto(user.photo);
-    }
+    setEditProfileModal(true);
+    setPhotoFile(user.photo);
+    setOriginalPhoto(user.photo);
   };
 
   const closeModal = (name) => {
@@ -103,16 +92,10 @@ function Profile() {
     country: "",
     ethnicity: "",
     sex: "",
-    classes: "",
-    internships: "",
-    socialMedia: "",
+    classes: [],
+    internships: [],
+    socialMedia: []
   });
-
-  useEffect(() => {
-    values.classes = miscInfo.classes;
-    values.internships = miscInfo.internships;
-    values.socialMedia = miscInfo.socialMedia;
-  },[onSubmit]);
 
   const [editProfile, { loading }] = useMutation(EDIT_USER_PROFILE, {
     update(_, { data: { editUserProfile: userData } }) {
@@ -125,11 +108,8 @@ function Profile() {
       user.country = userData.country;
       user.ethnicity = userData.ethnicity;
       user.sex = userData.sex;
-      userData.classes = miscInfo.classes;
-      user.classes = userData.classes;
-      userData.internships = miscInfo.internships;
+      user.classes = userData.classes
       user.internships = userData.internships;
-      userData.socialMedia = miscInfo.socialMedia;
       user.socialMedia = userData.socialMedia;
       toast.success("Your profile has been updated.", {
         position: toast.POSITION.BOTTOM_CENTER,
@@ -139,19 +119,20 @@ function Profile() {
     },
 
     onError(err) {
-      console.log(err);
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
     },
-
+    
     variables: values,
   });
 
   function editProfileCallback() {
+    values.classes = miscInfo.classes;
+    values.internships = miscInfo.internships;
+    values.socialMedia = miscInfo.socialMedia;
     editProfile();
   }
 
   function photoSelectedHandler(event) {
-    console.log(event.target.files.length);
     if (event.target.files.length > 0) {
       var a = new FileReader();
       a.readAsDataURL(event.target.files[0]);
@@ -165,59 +146,29 @@ function Profile() {
     }
   }
 
-  function addMiscInfo() {
-    if (
-      miscInfoVal &&
-      miscInfoVal !== "" &&
-      miscInfo[category].length < 10 &&
-      !miscInfo[category].includes(miscInfoVal)
-    ) {
-      let m = miscInfo;
-      if (category === "classes") {
-        let newVal = miscInfoVal.replace(/\s+/g, "").toUpperCase();
-        m[category].push(newVal);
-      } else {
-        m[category].push(miscInfoVal);
-      }
-      setMiscInfo(m);
-      printLabels();
-    }
-  }
-
-  function deleteMiscInfo(deletedMiscInfo) {
-    let m = miscInfo;
-    let k = Object.keys(m);
-    for (let i = 0; i < k.length; i++) {
-      if (m[k[i]].includes(deletedMiscInfo)) {
-        m[k[i]] = m[k[i]].filter((x) => x !== deletedMiscInfo);
-      }
-    }
-    setMiscInfo(m);
-    printLabels();
-  }
-
-  function printLabels() {
-    let miscInfoKeys = Object.keys(miscInfo);
-    let list = [];
-    for (let i = 0; i < miscInfoKeys.length; i++) {
-      miscInfo[miscInfoKeys[i]].forEach((element) => {
-        list.push(element);
-      });
-    }
-    setMiscInfoList(list);
-  }
-
-  function resetAndAdd() {
-    addMiscInfo();
-    setMiscInfoVal("");
-    if (category === "classes") {
-      setClassesVal("");
-    }
-    if (category === "internships") {
-      setInternshipsVal("");
-    }
-    if (category === "socialMedia") {
-      setSocialMediaVal("");
+  function addToArray(e, arrayType) {
+    e.preventDefault()
+    switch(arrayType){
+      case 'class':
+        setMiscInfo({
+          ...miscInfo,
+          classes: miscInfo.classes.concat([newClass.replace(/\s+/g, "").toUpperCase()])
+        })
+        break;
+      case 'internship':
+        setMiscInfo({
+          ...miscInfo,
+          internships: miscInfo.internships.concat([newInternship])
+        })
+        break;
+      case 'socialMedia':
+        setMiscInfo({
+          ...miscInfo,
+          classes: miscInfo.socialMedia.concat([newSocialMedia])
+        })
+        break;
+      default:
+        break;
     }
   }
 
@@ -236,13 +187,13 @@ function Profile() {
                 icon="text cursor"
                 labelPosition="left"
                 floated="right"
-                onClick={() => openModal("editProfile")}
+                onClick={() => openModal()}
+                disabled={!user}
               />
             </Grid.Column>
           </Grid.Row>
         </Grid>
         <UserProfile user={user} />
-        <MiscUserInfoTable user={user} />
       </Container>
 
       <Modal open={editProfileModal} size="tiny">
@@ -390,97 +341,85 @@ function Profile() {
                       </option>
                     ))}
                   </Form.Field>
-                  <Form.Group widths="equal">
-                    <Form.Input
-                      label="Classes"
-                      value={classesVal}
-                      onChange={(e) => {
-                        setCategory("classes");
-                        setMiscInfoVal(e.target.value);
-                        setClassesVal(e.target.value);
-                      }}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter") {
-                          setCategory("classes");
-                          addMiscInfo();
-                          setMiscInfoVal("");
-                        }
-                      }}
-                      placeholder={"Add your classes here"}
-                    />
-                    <Button type="button" icon onClick={resetAndAdd}>
-                      <Icon name="add" />
-                    </Button>
-                  </Form.Group>
+                  <Form.Input
+                    label="Classes"
+                    placeholder={"Add your classes here"}
+                    onKeyPress={(e)=> (e.key === 'Enter') && addToArray(e,'class')}
+                    onChange={(e) => setClass(e.target.value)}
+                    action={{
+                      onClick: (e)=>{addToArray(e,'class')},
+                      icon: 'plus'
+                    }}
+                  />
                   {miscInfo.classes.map((info) => (
                     <Label
                       size="tiny"
                       circular
                       content={info}
-                      onRemove={(e, data) => deleteMiscInfo(data.content)}
                       key={info}
+                      style={{marginBottom: '4px'}}
+                      onRemove={() => {
+                        let newClasses = miscInfo.classes;
+                        newClasses.splice(miscInfo.classes.indexOf(info),1);
+                        setMiscInfo({
+                          ...miscInfo,
+                          classes: newClasses
+                        })
+                      }}
                     />
                   ))}
-                  <Form.Group widths="equal">
-                    <Form.Input
-                      label="Internships"
-                      value={internshipsVal}
-                      onChange={(e) => {
-                        setCategory("internships");
-                        setMiscInfoVal(e.target.value);
-                        setInternshipsVal(e.target.value);
-                      }}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter") {
-                          setCategory("internships");
-                          addMiscInfo();
-                          setMiscInfoVal("");
-                        }
-                      }}
-                      placeholder={"Add your internships here"}
-                    />
-                    <Button type="button" icon onClick={resetAndAdd}>
-                      <Icon name="add" />
-                    </Button>
-                  </Form.Group>
+                  <Form.Input
+                    label="Internships"
+                    placeholder={"Add your classes here"}
+                    onKeyPress={(e)=> (e.key === 'Enter') && addToArray(e,'internship')}
+                    onChange={(e) => setInternship(e.target.value)}
+                    action={{
+                      onClick: (e)=>{addToArray(e,'class')},
+                      icon: 'plus'
+                    }}
+                  />
                   {miscInfo.internships.map((info) => (
                     <Label
                       size="tiny"
                       circular
                       content={info}
-                      onRemove={(e, data) => deleteMiscInfo(data.content)}
                       key={info}
+                      style={{marginBottom: '4px'}}
+                      onRemove={() => {
+                        let newInternships = miscInfo.internships;
+                        newInternships.splice(miscInfo.internships.indexOf(info),1);
+                        setMiscInfo({
+                          ...miscInfo,
+                          internships: newInternships
+                        })
+                      }}
                     />
                   ))}
-                  <Form.Group widths="equal">
-                    <Form.Input
-                      label="Social Media"
-                      value={socialMediaVal}
-                      onChange={(e) => {
-                        setCategory("socialMedia");
-                        setMiscInfoVal(e.target.value);
-                        setSocialMediaVal(e.target.value);
-                      }}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter") {
-                          setCategory("socialMedia");
-                          addMiscInfo();
-                          setMiscInfoVal("");
-                        }
-                      }}
-                      placeholder={"Add your socialMedia here"}
-                    />
-                    <Button type="button" icon onClick={resetAndAdd}>
-                      <Icon name="add" />
-                    </Button>
-                  </Form.Group>
+                  <Form.Input
+                    label="Social Media / Links"
+                    placeholder={"Add your classes here"}
+                    onKeyPress={(e)=> (e.key === 'Enter') && addToArray(e,'socialMedia')}
+                    onChange={(e) => setSocialMedia(e.target.value)}
+                    action={{
+                      onClick: (e)=>{addToArray(e,'class')},
+                      icon: 'plus'
+                    }}
+                  />
                   {miscInfo.socialMedia.map((info) => (
                     <Label
                       size="tiny"
                       circular
                       content={info}
-                      onRemove={(e, data) => deleteMiscInfo(data.content)}
                       key={info}
+                      style={{marginBottom: '4px'}}
+                      onRemove={() => {
+                        let newSocialMedia = miscInfo.socialMedia;
+                        newSocialMedia.splice(miscInfo.socialMedia.indexOf(info),1);
+                        setMiscInfo({
+                          ...miscInfo,
+                          socialMedia: newSocialMedia
+                        })
+                      }}
                     />
                   ))}
                   <br />
