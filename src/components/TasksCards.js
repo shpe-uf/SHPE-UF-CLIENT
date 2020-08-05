@@ -1,19 +1,17 @@
 import React from "react";
 import {
+  Dimmer,
+  Loader,
   Segment,
   Header,
   Grid,
   Card,
-  Responsive,
-  Dimmer,
-  Loader
+  Responsive
 } from "semantic-ui-react";
 
-import {toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import {useQuery, useMutation} from "@apollo/react-hooks";
-import gql from "graphql-tag";
+import {useQuery} from "@apollo/react-hooks";
 
 import TaskCard from "../components/TaskCard";
 
@@ -58,16 +56,5 @@ function TasksCards({user, refetch}) {
     </>
   );
 }
-
-const REDEEM_TASK_POINTS_MUTATION = gql`
-  mutation redeemTasksPoints($name:String!, $username: String!){
-    redeemTasksPoints(
-      redeemTasksPointsInput: {name: $name, username: $username}
-    ) {
-      firstName
-      lastName
-    }
-  }
-`;
 
 export default TasksCards;

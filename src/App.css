@@ -583,29 +583,6 @@ th {
   color: rgb(220, 42, 42);
 }
 
-.background-dropdown { 
-  font-size: 2.5rem !important;
-  font-family: "heading-font" !important;
-  padding: 16px !important;
-  align-items: center !important;
-  justify-content: center !important;
-  color: var(--primary) !important;
-  text-transform: uppercase !important;
-  line-height: 1.1 !important;
-  margin-bottom: 8px !important;
-  font-weight: bolder !important;
-}
-.menu-border{
-  border:none;
-
-}
-.default-text{
-  color: white;
-}
-.search{
-  color:white;
-}
-
 .fa-inbox,
 .fa-frown,
 .fa-exclamation-circle {
@@ -625,7 +602,6 @@ th {
 
 .ui.card>.content>.header, 
 .ui.cards>.card>.content>.header {
-  height: 1em                 !important;
   overflow: hidden            !important;
   text-overflow: ellipsis     !important;
   white-space: nowrap         !important;
@@ -771,4 +747,7 @@ div::-webkit-scrollbar-thumb {
 
 .checkmark {
   position: absolute
+}
+.shpeito-spacing{
+  border-spacing: 10px;
 }

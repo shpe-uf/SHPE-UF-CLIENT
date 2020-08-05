@@ -66,7 +66,7 @@ function AlumniTable({ alumnis }) {
                     {alumni.location.city}, {alumni.location.state}
                   </Table.Cell>
                   <Table.Cell textAlign="center">
-                    <Button icon href={alumni.linkedin} target="_blank" rel="noopener noreferrer">
+                    <Button icon href={alumni.linkedin} target="_blank">
                       <Icon name="linkedin square" />
                     </Button>
                   </Table.Cell>

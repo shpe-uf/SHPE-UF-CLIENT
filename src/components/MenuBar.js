@@ -135,9 +135,11 @@ function MenuBar({permission}) {
                     text={user.email}
                   >
                     <Dropdown.Menu>
+                      {permission.includes('admin') &&
                       <Dropdown.Item as={Link} to="/admin">
                         Admin Panel
                       </Dropdown.Item>
+                      }
                       <Dropdown.Item as={Link} to="/profile">
                         My Profile
                       </Dropdown.Item>
@@ -147,8 +149,8 @@ function MenuBar({permission}) {
                       <Dropdown.Item as={Link} to="/corporations">
                         Corporate Database
                       </Dropdown.Item>
-                      <Dropdown.Item as={Link} to="/shpeitonetwork">
-                        SHPEito Network
+                      <Dropdown.Item as={Link} to="/classSharing">
+                        Class Sharing
                       </Dropdown.Item>
                       <Dropdown.Item as={Link} to="/shperentals">
                         SHPE Rentals

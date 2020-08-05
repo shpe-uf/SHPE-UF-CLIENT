@@ -2,7 +2,7 @@ import React from "react";
 import { Grid, Container, Icon, Dropdown } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
-function Title({ title, adminPath}) {
+function Title({ title, adminPath }) {
   return (
     <div style={{ paddingBottom: 16 }}>
       <div className="masthead masthead-application">
@@ -78,10 +78,17 @@ function Title({ title, adminPath}) {
                             text="Archive"
                           />
                         )}
+                        {title !== "SHPE Rentals" && (
+                          <Dropdown.Item
+                            as={Link}
+                            to="/admin/receipts"
+                            text="SHPE Rentals"
+                          />
+                        )}
                       </Dropdown.Menu>
                     </Dropdown>
                   </div>
-                )} 
+                )}
               </Grid.Column>
             </Grid.Row>
           </Grid>

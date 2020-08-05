@@ -1,6 +1,15 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import gql from "graphql-tag";
-import { Container, Grid, Button, Modal, Form, Image } from "semantic-ui-react";
+import {
+  Container,
+  Grid,
+  Button,
+  Modal,
+  Form,
+  Image,
+  Label,
+  Input,
+} from "semantic-ui-react";
 import { ToastContainer, toast } from "react-toastify";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { useForm } from "../util/hooks";
@@ -19,15 +28,24 @@ import sexOptions from "../assets/options/sex.json";
 import placeholder from "../assets/images/placeholder.png";
 
 function Profile() {
-  var [photoFile, setPhotoFile] = useState({});
-  var [originalPhoto, setOriginalPhoto] = useState({});
-
+  const [photoFile, setPhotoFile] = useState({});
+  const [originalPhoto, setOriginalPhoto] = useState({});
   const [errors, setErrors] = useState({});
-  var {
-    user: { id, email }
+  const [editProfileModal, setEditProfileModal] = useState(false);
+  const [miscInfo, setMiscInfo] = useState({
+    classes: [],
+    internships: [],
+    socialMedia: [],
+  });
+  const [newClass, setClass] = useState('');
+  const [newInternship, setInternship] = useState('');
+  const [newSocialMedia, setSocialMedia] = useState('');
+
+  let {
+    user: { id, email },
   } = useContext(AuthContext);
 
-  var user = useQuery(FETCH_USER_QUERY, {
+  let user = useQuery(FETCH_USER_QUERY, {
     variables: {
       userId: id
     }
@@ -37,26 +55,30 @@ function Profile() {
     user = user.getUser;
   }
 
-  const [editProfileModal, setEditProfileModal] = useState(false);
-
-  const openModal = name => {
-    if (name === "editProfile") {
-      setEditProfileModal(true);
-      values.firstName = user.firstName;
-      values.lastName = user.lastName;
-      values.photo = user.photo;
-      values.major = user.major;
-      values.year = user.year;
-      values.graduating = user.graduating;
-      values.country = user.country;
-      values.ethnicity = user.ethnicity;
-      values.sex = user.sex;
-      setPhotoFile(user.photo);
-      setOriginalPhoto(user.photo);
-    }
+  function openModal() {
+    values.firstName = user.firstName;
+    values.lastName = user.lastName;
+    values.photo = user.photo;
+    values.major = user.major;
+    values.year = user.year;
+    values.graduating = user.graduating;
+    values.country = user.country;
+    values.ethnicity = user.ethnicity;
+    values.sex = user.sex;
+    values.classes = user.classes;
+    values.internships = user.internships;
+    values.socialMedia = user.socialMedia;
+    setMiscInfo({
+      classes: user.classes.slice(),
+      internships: user.internships.slice(),
+      socialMedia: user.socialMedia.slice()
+    })
+    setEditProfileModal(true);
+    setPhotoFile(user.photo);
+    setOriginalPhoto(user.photo);
   };
 
-  const closeModal = name => {
+  const closeModal = (name) => {
     if (name === "editProfile") {
       setErrors(false);
       setEditProfileModal(false);
@@ -73,16 +95,14 @@ function Profile() {
     graduating: "",
     country: "",
     ethnicity: "",
-    sex: ""
+    sex: "",
+    classes: [],
+    internships: [],
+    socialMedia: []
   });
 
   const [editProfile, { loading }] = useMutation(EDIT_USER_PROFILE, {
-    update(
-      _,
-      {
-        data: { editUserProfile: userData }
-      }
-    ) {
+    update(_, { data: { editUserProfile: userData } }) {
       user.firstName = userData.firstName;
       user.lastName = userData.lastName;
       user.photo = userData.photo;
@@ -92,8 +112,11 @@ function Profile() {
       user.country = userData.country;
       user.ethnicity = userData.ethnicity;
       user.sex = userData.sex;
+      user.classes = userData.classes
+      user.internships = userData.internships;
+      user.socialMedia = userData.socialMedia;
       toast.success("Your profile has been updated.", {
-        position: toast.POSITION.BOTTOM_CENTER
+        position: toast.POSITION.BOTTOM_CENTER,
       });
       setErrors(false);
       setEditProfileModal(false);
@@ -102,11 +125,14 @@ function Profile() {
     onError(err) {
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
     },
-
-    variables: values
+    
+    variables: values,
   });
 
   function editProfileCallback() {
+    values.classes = miscInfo.classes;
+    values.internships = miscInfo.internships;
+    values.socialMedia = miscInfo.socialMedia;
     editProfile();
   }
 
@@ -114,13 +140,39 @@ function Profile() {
     if (event.target.files.length > 0) {
       var a = new FileReader();
       a.readAsDataURL(event.target.files[0]);
-      a.onload = function(e) {
+      a.onload = function (e) {
         values.photo = e.target.result;
         setPhotoFile(e.target.result);
       };
     } else {
       setPhotoFile(originalPhoto);
       values.photo = originalPhoto;
+    }
+  }
+
+  function addToArray(e, arrayType) {
+    e.preventDefault()
+    switch(arrayType){
+      case 'class':
+        setMiscInfo({
+          ...miscInfo,
+          classes: miscInfo.classes.concat([newClass.replace(/\s+/g, "").toUpperCase()])
+        })
+        break;
+      case 'internship':
+        setMiscInfo({
+          ...miscInfo,
+          internships: miscInfo.internships.concat([newInternship])
+        })
+        break;
+      case 'socialMedia':
+        setMiscInfo({
+          ...miscInfo,
+          classes: miscInfo.socialMedia.concat([newSocialMedia])
+        })
+        break;
+      default:
+        break;
     }
   }
 
@@ -139,7 +191,8 @@ function Profile() {
                 icon="text cursor"
                 labelPosition="left"
                 floated="right"
-                onClick={() => openModal("editProfile")}
+                onClick={() => openModal()}
+                disabled={!user}
               />
             </Grid.Column>
           </Grid.Row>
@@ -158,7 +211,7 @@ function Profile() {
                 {Object.keys(errors).length > 0 && (
                   <div className="ui error message">
                     <ul className="list">
-                      {Object.values(errors).map(value => (
+                      {Object.values(errors).map((value) => (
                         <li key={value}>{value}</li>
                       ))}
                     </ul>
@@ -216,7 +269,7 @@ function Profile() {
                     error={errors.major ? true : false}
                     onChange={onChange}
                   >
-                    {majorOptions.map(major => (
+                    {majorOptions.map((major) => (
                       <option value={major.value} key={major.key}>
                         {major.value}
                       </option>
@@ -230,7 +283,7 @@ function Profile() {
                     error={errors.year ? true : false}
                     onChange={onChange}
                   >
-                    {yearOptions.map(year => (
+                    {yearOptions.map((year) => (
                       <option value={year.value} key={year.key}>
                         {year.value}
                       </option>
@@ -244,7 +297,7 @@ function Profile() {
                     error={errors.graduating ? true : false}
                     onChange={onChange}
                   >
-                    {graduatingOptions.map(graduating => (
+                    {graduatingOptions.map((graduating) => (
                       <option value={graduating.value} key={graduating.key}>
                         {graduating.value}
                       </option>
@@ -258,7 +311,7 @@ function Profile() {
                     error={errors.country ? true : false}
                     onChange={onChange}
                   >
-                    {countryOptions.map(country => (
+                    {countryOptions.map((country) => (
                       <option value={country.value} key={country.key}>
                         {country.value}
                       </option>
@@ -272,7 +325,7 @@ function Profile() {
                     error={errors.ethnicity ? true : false}
                     onChange={onChange}
                   >
-                    {ethnicityOptions.map(ethnicity => (
+                    {ethnicityOptions.map((ethnicity) => (
                       <option value={ethnicity.value} key={ethnicity.key}>
                         {ethnicity.value}
                       </option>
@@ -286,12 +339,94 @@ function Profile() {
                     error={errors.sex ? true : false}
                     onChange={onChange}
                   >
-                    {sexOptions.map(sex => (
+                    {sexOptions.map((sex) => (
                       <option value={sex.value} key={sex.key}>
                         {sex.value}
                       </option>
                     ))}
                   </Form.Field>
+                  <Form.Input
+                    label="Classes"
+                    placeholder={"Add your classes here"}
+                    onKeyPress={(e)=> (e.key === 'Enter') && addToArray(e,'class')}
+                    onChange={(e) => setClass(e.target.value)}
+                    action={{
+                      onClick: (e)=>{addToArray(e,'class')},
+                      icon: 'plus'
+                    }}
+                  />
+                  {miscInfo.classes.map((info) => (
+                    <Label
+                      size="tiny"
+                      circular
+                      content={info}
+                      key={info}
+                      style={{marginBottom: '4px'}}
+                      onRemove={() => {
+                        let newClasses = miscInfo.classes;
+                        newClasses.splice(miscInfo.classes.indexOf(info),1);
+                        setMiscInfo({
+                          ...miscInfo,
+                          classes: newClasses
+                        })
+                      }}
+                    />
+                  ))}
+                  <Form.Input
+                    label="Internships"
+                    placeholder={"Add your classes here"}
+                    onKeyPress={(e)=> (e.key === 'Enter') && addToArray(e,'internship')}
+                    onChange={(e) => setInternship(e.target.value)}
+                    action={{
+                      onClick: (e)=>{addToArray(e,'class')},
+                      icon: 'plus'
+                    }}
+                  />
+                  {miscInfo.internships.map((info) => (
+                    <Label
+                      size="tiny"
+                      circular
+                      content={info}
+                      key={info}
+                      style={{marginBottom: '4px'}}
+                      onRemove={() => {
+                        let newInternships = miscInfo.internships;
+                        newInternships.splice(miscInfo.internships.indexOf(info),1);
+                        setMiscInfo({
+                          ...miscInfo,
+                          internships: newInternships
+                        })
+                      }}
+                    />
+                  ))}
+                  <Form.Input
+                    label="Social Media / Links"
+                    placeholder={"Add your classes here"}
+                    onKeyPress={(e)=> (e.key === 'Enter') && addToArray(e,'socialMedia')}
+                    onChange={(e) => setSocialMedia(e.target.value)}
+                    action={{
+                      onClick: (e)=>{addToArray(e,'class')},
+                      icon: 'plus'
+                    }}
+                  />
+                  {miscInfo.socialMedia.map((info) => (
+                    <Label
+                      size="tiny"
+                      circular
+                      content={info}
+                      key={info}
+                      style={{marginBottom: '4px'}}
+                      onRemove={() => {
+                        let newSocialMedia = miscInfo.socialMedia;
+                        newSocialMedia.splice(miscInfo.socialMedia.indexOf(info),1);
+                        setMiscInfo({
+                          ...miscInfo,
+                          socialMedia: newSocialMedia
+                        })
+                      }}
+                    />
+                  ))}
+                  <br />
                   <Button
                     type="reset"
                     color="grey"
@@ -328,6 +463,9 @@ const FETCH_USER_QUERY = gql`
       sex
       createdAt
       permission
+      classes
+      internships
+      socialMedia
     }
   }
 `;
@@ -344,6 +482,9 @@ const EDIT_USER_PROFILE = gql`
     $country: String!
     $ethnicity: String!
     $sex: String!
+    $classes: [String]
+    $internships: [String]
+    $socialMedia: [String]
   ) {
     editUserProfile(
       editUserProfileInput: {
@@ -357,6 +498,9 @@ const EDIT_USER_PROFILE = gql`
         country: $country
         ethnicity: $ethnicity
         sex: $sex
+        classes: $classes
+        internships: $internships
+        socialMedia: $socialMedia
       }
     ) {
       firstName
@@ -372,6 +516,9 @@ const EDIT_USER_PROFILE = gql`
       sex
       createdAt
       permission
+      classes
+      internships
+      socialMedia
     }
   }
 `;

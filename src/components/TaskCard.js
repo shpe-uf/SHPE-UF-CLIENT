@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import {
   Card,
   Button,
@@ -24,7 +24,7 @@ function TaskCard({ user, refetch}) {
   var allTasks = (data) ? data.getTasks : [];
   var tasks = [];
 
-  if (allTasks) {
+  if (allTasks && user) {
     var bookmarkedTaskNames = user.bookmarkedTasks;
     for (const [_, value] of allTasks.entries()) {
       const task = value;

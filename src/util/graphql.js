@@ -21,12 +21,16 @@ export const FETCH_USERS_QUERY = gql`
       summerPoints
       permission
       listServ
+      classes
+      internships
+      socialMedia
       events {
         name
         category
         createdAt
         points
       }
+      classes
     }
   }
 `;
@@ -86,13 +90,13 @@ export const FETCH_ALUMNIS_QUERY = gql`
   }
 `;
 
-export const FETCH_CORPORATIONS_QUERY = gql `
+export const FETCH_CORPORATIONS_QUERY = gql`
   {
     getCorporations {
       id
       name
       logo
-    	slogan
+      slogan
       majors
       industries
       overview
@@ -167,7 +171,7 @@ export const FETCH_TASKS_QUERY = gql`
   }
 `;
 
-export const YEAR_STAT = gql `
+export const YEAR_STAT = gql`
   {
     getYearStat {
       _id
@@ -208,6 +212,22 @@ export const FETCH_REIMBURSEMENTS_QUERY = gql`
       description
       reimbursed
       amount
+    }
+  }
+`;
+
+export const FETCH_RECEIPTS_QUERY = gql`
+  {
+    getReceipts {
+      id
+      username
+      item
+      quantity
+      email
+      dateCheckedOut
+      datePickedUp
+      dateClosed
+      deleted
     }
   }
 `;

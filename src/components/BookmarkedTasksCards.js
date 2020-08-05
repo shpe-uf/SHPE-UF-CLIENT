@@ -22,7 +22,7 @@ function BookmarkedTasksCards({ user, refetch }) {
   const { loading, data } = useQuery(FETCH_TASKS_QUERY);
 
   const bookmarkedTasks = [];
-  if (!loading) {
+  if (!loading && user) {
     var tasks = data.getTasks;
     var bookmarkedTaskNames = user.bookmarkedTasks;
     for (const [index, value] of bookmarkedTaskNames.entries()) {
