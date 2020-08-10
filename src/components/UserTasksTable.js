@@ -21,8 +21,7 @@ function UserTasksTable({ user }) {
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell>Task</Table.HeaderCell>
-                <Table.HeaderCell>Start Date</Table.HeaderCell>
-                <Table.HeaderCell>End Date</Table.HeaderCell>
+                <Table.HeaderCell>Date</Table.HeaderCell>
                 <Table.HeaderCell textAlign="center">Points</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
@@ -31,8 +30,7 @@ function UserTasksTable({ user }) {
                 user.tasks.map(task => (
                   <Table.Row key={task.name}>
                     <Table.Cell>{task.name}</Table.Cell>
-                    <Table.Cell>{task.startDate}</Table.Cell>
-                    <Table.Cell>{task.endDate}</Table.Cell>
+                    <Table.Cell>{new Date(task.createdAt).toLocaleDateString()}</Table.Cell>
                     <Table.Cell textAlign="center">{task.points}</Table.Cell>
                   </Table.Row>
                 ))}

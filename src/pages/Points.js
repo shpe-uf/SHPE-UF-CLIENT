@@ -235,7 +235,6 @@ function Points() {
                   <BookmarkedTasksCards user={user} refetch={refetch} />
                 </Grid.Column>
               </Grid.Row>
-              <h2></h2>
               <Grid.Row>
                 <h4>Unbookmarked Tasks</h4>
               </Grid.Row>
@@ -273,6 +272,7 @@ const FETCH_USER_QUERY = gql`
       tasks {
         name
         points
+        createdAt
       }
       bookmarkedTasks
     }
@@ -297,6 +297,7 @@ const REDEEM_POINTS_MUTATION = gql`
       tasks {
         name
         points
+        createdAt
       }
     }
   }
