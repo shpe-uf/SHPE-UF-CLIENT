@@ -3,8 +3,9 @@ import { Modal, Input, Button } from 'semantic-ui-react';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import { FETCH_TASKS_QUERY } from '../util/graphql';
+import { FETCH_EVENTS_QUERY } from "../util/graphql";
 
-function DeleteTaskModal(props){
+function DeleteModal(props){
   const [userInput, setUserInput] = useState('')
 
   const [deleteTaskMutation] = useMutation(DELETE_TASK, {
@@ -16,25 +17,47 @@ function DeleteTaskModal(props){
     }
   })
 
+  const [deleteEventMutation] = useMutation(DELETE_EVENT, {
+    update(cache, { data : { deleteEvent } }) {
+      cache.writeQuery({
+        query: FETCH_EVENTS_QUERY,
+        data: { getEvents: deleteEvent},
+      });
+    }
+  })
+
+  function deleteItem() {
+    switch(props.type) {
+      case "task":
+          deleteTaskMutation({variables: {taskName: props.deleteItem}})
+          break;
+        case "event":
+          deleteEventMutation({variables: {eventName: props.deleteItem}})
+          break;
+        default:
+          break;
+    }
+  }
+
   return (
     <Modal open={props.open} basic size='small'>
       <Modal.Header>
-        Delete "{props.task.name}"?
+        Delete "{props.deleteItem}"?
       </Modal.Header>
       <Modal.Content>
         <ul>
           <li>
-            All users who completed this task will lose their record of it
+            All users who completed this will lose their record of it
           </li>
           <li>
-            All users who completed this task will lose the points they received for it
+            All users who completed this will lose the points they received for it
           </li>
           <li>
-            The task will be permenantly deleted
+            This item will be permenantly deleted
           </li>
         </ul>
         <p>
-          To delete enter the name of the task ({props.task.name}) and press 'Delete'
+          To delete enter the name of the {props.type} ({props.deleteItem}) and press 'Delete'
         </p>
       </Modal.Content>
       <Modal.Actions>
@@ -44,7 +67,7 @@ function DeleteTaskModal(props){
         <Button
           color='red'
           onClick={() => {
-            if(props.task.name === userInput) deleteTaskMutation({variables:{taskName: props.task.name}})
+            if(props.deleteItem === userInput) deleteItem()
             props.close()
           }}
         >
@@ -83,4 +106,26 @@ const DELETE_TASK = gql`
 }
 `;
 
-export default DeleteTaskModal
+const DELETE_EVENT = gql`
+  mutation deleteEvent($eventName: String!) {
+    deleteEvent(eventName: $eventName) {
+      id
+      name
+      code
+      category
+      points
+      attendance
+      expiration
+      request
+      semester
+      createdAt
+      users{
+        firstName
+        lastName
+        username
+      }
+    }
+}
+`;
+
+export default DeleteModal

@@ -18,11 +18,13 @@ import moment from "moment";
 import { CSVLink } from "react-csv";
 
 import { FETCH_USERS_QUERY } from "../util/graphql";
+import DeleteModal from "./DeleteModal";
 
 function EventsTable({ events }) {
   const [errors, setErrors] = useState({});
   const [manualInputModal, setManualInputModal] = useState(false);
   const [eventInfoModal, setEventInfoModal] = useState(false);
+  const [deleteEventModal, setDeleteEventModal] = useState(false)
   const [eventAttendance, setEventAttendance] = useState({});
 
   var users = [
@@ -132,6 +134,7 @@ function EventsTable({ events }) {
                   Manual Input
                 </Table.HeaderCell>
                 <Table.HeaderCell textAlign="center">Info</Table.HeaderCell>
+                <Table.HeaderCell textAlign="center">Delete</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>
@@ -178,6 +181,18 @@ function EventsTable({ events }) {
                         }}
                       >
                         <Icon name="info" />
+                      </Button>
+                    </Table.Cell>
+                    <Table.Cell textAlign="center">
+                      <Button
+                        icon
+                        onClick={() => {
+                          setEventNameValue(event.name);
+                          setDeleteEventModal(true);
+                        }}
+                        color="red"
+                      >
+                        <Icon name="x" />
                       </Button>
                     </Table.Cell>
                   </Table.Row>
@@ -327,6 +342,12 @@ function EventsTable({ events }) {
           </Grid>
         </Modal.Content>
       </Modal>
+      <DeleteModal
+        open={deleteEventModal}
+        close={() => setDeleteEventModal(false)}
+        deleteItem={values.eventName}
+        type='event'
+      />
     </>
   );
 }
