@@ -178,7 +178,7 @@ function Login(props) {
                         <span>
                           <Button type="submit">Login</Button>
                           <p style={{display : 'inline-block', float : 'right', marginTop: 12}}>
-                            Forgot Password? <a href="/forgot">Click Here</a>
+                            Forgot Password? <NavLink to="/forgot">Click Here</NavLink>
                           </p>
                         </span>
                       </Form>
@@ -186,7 +186,7 @@ function Login(props) {
                   </Segment.Group>
                   <Segment textAlign="center">
                     <p>
-                      New to SHPE UF? <a href="/register">Register here!</a>
+                      New to SHPE UF? <NavLink to="/register">Register here!</NavLink>
                     </p>
                   </Segment>
                 </Grid.Column>
@@ -250,7 +250,7 @@ function Login(props) {
                         <span>
                           <Button type="submit">Login</Button>
                           <p style={{display : 'inline-block', float : 'right', marginTop: 12}}>
-                            Forgot Password? <a href="/forgot">Click Here</a>
+                            Forgot Password? <NavLink to="/forgot">Click Here</NavLink>
                           </p>
                         </span>
                       </Form>
@@ -258,7 +258,7 @@ function Login(props) {
                   </Segment.Group>
                   <Segment textAlign="center">
                     <p>
-                      New to SHPE UF? <a href="/register">Register here!</a>
+                      New to SHPE UF? <NavLink to="/register">Register here!</NavLink>
                     </p>
                   </Segment>
                 </Grid.Column>
