@@ -117,7 +117,7 @@ function UserProfile({ user }) {
                     <b>Classes:</b>
                   </Table.Cell>
                   <Table.Cell>
-                    {user ? <p>{user.classes.toString().replaceAll(',', ', ')}</p> : <p>Loading</p>}
+                    {user ? <p>{user.classes.toString()}</p> : <p>Loading</p>}
                   </Table.Cell>
                 </Table.Row>
                 <Table.Row>
