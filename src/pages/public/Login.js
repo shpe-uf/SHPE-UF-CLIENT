@@ -12,6 +12,7 @@ import gql from "graphql-tag";
 
 import { AuthContext } from "../../context/auth";
 import { useForm } from "../../util/hooks";
+import { NavLink } from "react-router-dom";
 
 function Login(props) {
   const context = useContext(AuthContext);
@@ -112,9 +113,9 @@ function Login(props) {
                     </Segment>
                   </Segment.Group>
                   <Segment textAlign="center">
-                    <p>
-                      New to SHPE UF? <a href="/register">Register here!</a>
-                    </p>
+                      <p>
+                        New to SHPE UF? <NavLink to="/register">Register here!</NavLink>
+                      </p>
                   </Segment>
                 </Grid.Column>
               </Grid.Row>
