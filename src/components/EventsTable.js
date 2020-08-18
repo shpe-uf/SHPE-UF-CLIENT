@@ -17,9 +17,8 @@ import { useForm } from "../util/hooks";
 import moment from "moment";
 import { CSVLink } from "react-csv";
 
-import DeleteEventModal from "../components/DeleteEventModal"
-
 import { FETCH_USERS_QUERY } from "../util/graphql";
+import DeleteModal from "./DeleteModal";
 
 function EventsTable({ events }) {
   const [errors, setErrors] = useState({});
@@ -343,10 +342,11 @@ function EventsTable({ events }) {
           </Grid>
         </Modal.Content>
       </Modal>
-      <DeleteEventModal
+      <DeleteModal
         open={deleteEventModal}
         close={() => setDeleteEventModal(false)}
-        event={values.eventName}
+        deleteItem={values.eventName}
+        type='event'
       />
     </>
   );
