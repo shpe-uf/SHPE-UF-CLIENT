@@ -17,7 +17,7 @@ function Reimbursements() {
     var cancelled = [];
 
     if (reimbursements) {
-        reimbursements.foreach(reimbursement => {
+        reimbursements.forEach(reimbursement => {
             if (reimbursement.reimbursed === "pending") {
                 pending.push(reimbursement);
             }
@@ -600,7 +600,7 @@ function Reimbursements() {
                 resolved = [];
                 cancelled = [];
 
-                reimbursements.foreach(reimbursement => {
+                reimbursements.forEach(reimbursement => {
                     if (reimbursement.reimbursed === "pending") {
                         pending.push(reimbursement);
                     }
