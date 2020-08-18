@@ -106,7 +106,7 @@ function Login(props) {
                         <span>
                           <Button type="submit">Login</Button>
                           <p style={{display : 'inline-block', float : 'right', marginTop: 12}}>
-                            Forgot Password? <a href="/forgot">Click Here</a>
+                            Forgot Password? <NavLink to="/forgot">Click Here</NavLink>
                           </p>
                         </span>
                       </Form>
