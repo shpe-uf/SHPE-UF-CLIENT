@@ -286,7 +286,7 @@ function TasksTable({tasks}) {
                     className="table-responsive"
                     style={{ marginBottom: 16 }}
                   >
-                    <Table striped selectable unstackable>
+                    <Table striped selectable unstackable textAlign='center'>
                       <Table.Header>
                         <Table.Row>
                           <Table.HeaderCell>Name</Table.HeaderCell>
@@ -304,7 +304,7 @@ function TasksTable({tasks}) {
                               </Table.Cell>
                               <Table.Cell>{member.username}</Table.Cell>
                               <Table.Cell>{member.email}</Table.Cell>
-                              <Table.Cell textAlign='right'>
+                              <Table.Cell>
                                 <Button
                                   icon
                                   color='red'
