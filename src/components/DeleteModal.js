@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Modal, Input, Button } from 'semantic-ui-react';
 import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
-import { FETCH_TASKS_QUERY } from '../util/graphql';
-import { FETCH_EVENTS_QUERY } from "../util/graphql";
+import { FETCH_TASKS_QUERY, FETCH_CORPORATIONS_QUERY, FETCH_EVENTS_QUERY } from '../util/graphql';
 
 function DeleteModal(props){
+  console.log(props)
   const [userInput, setUserInput] = useState('')
 
   const [deleteTaskMutation] = useMutation(DELETE_TASK, {
@@ -13,6 +13,15 @@ function DeleteModal(props){
       cache.writeQuery({
         query: FETCH_TASKS_QUERY,
         data: { getTasks: deleteTask},
+      });
+    }
+  })
+
+  const [deleteCorporationMutation] = useMutation(DELETE_CORPORATION_MUTATION, {
+    update(cache, { data : { deleteCorporation } }) {
+      cache.writeQuery({
+        query: FETCH_CORPORATIONS_QUERY,
+        data: { getCorporations: deleteCorporation},
       });
     }
   })
@@ -29,13 +38,16 @@ function DeleteModal(props){
   function deleteItem() {
     switch(props.type) {
       case "task":
-          deleteTaskMutation({variables: {taskName: props.deleteItem}})
-          break;
-        case "event":
-          deleteEventMutation({variables: {eventName: props.deleteItem}})
-          break;
-        default:
-          break;
+        deleteTaskMutation({variables: {taskId: props.deleteId}})
+        break;
+      case "corporation":
+        deleteCorporationMutation({variables: {corporationId: props.deleteId}})
+        break;
+      case "event":
+        deleteEventMutation({variables: {eventName: props.deleteItem}})
+        break;
+      default:
+        break;
     }
   }
 
@@ -86,8 +98,9 @@ function DeleteModal(props){
   )
 }
 const DELETE_TASK = gql`
-  mutation deleteTask($taskName: String!) {
-    deleteTask(taskName: $taskName) {
+  mutation deleteTask($taskId: ID!) {
+    deleteTask(taskId: $taskId) {
+      id
       name
       startDate
       endDate
@@ -104,6 +117,34 @@ const DELETE_TASK = gql`
       }
     }
 }
+`;
+
+const DELETE_CORPORATION_MUTATION = gql`
+ mutation deleteCorporation ($corporationId: ID!) {
+    deleteCorporation(corporationId: $corporationId){
+      id
+      name
+      logo
+      slogan
+      majors
+      industries
+      overview
+      mission
+      goals
+      businessModel
+      newsLink
+      applyLink
+      academia
+      govContractor
+      nonProfit
+      visaSponsor
+      shpeSponsor
+      industryPartnership
+      fallBBQ
+      springBBQ
+      nationalConvention
+   }
+ }
 `;
 
 const DELETE_EVENT = gql`

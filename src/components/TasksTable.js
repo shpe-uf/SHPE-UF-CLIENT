@@ -348,6 +348,7 @@ function TasksTable({tasks}) {
         open={deleteTaskModal}
         close={() => setDeleteTaskModal(false)}
         deleteItem={selectedTask.name}
+        deleteId={selectedTask.id}
         type='task'
       />
     </>
