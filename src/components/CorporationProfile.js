@@ -2,7 +2,6 @@ import React from "react";
 import { Grid, Image, Button, List, Divider, Container, Responsive, Icon } from "semantic-ui-react";
 
 function CorporationProfile({corporation}) {
-  console.log(corporation);
     return(
       <>
         <Grid columns={2} stackable>
@@ -106,18 +105,14 @@ function CorporationProfile({corporation}) {
               <p>
               {
                 corporation.majors &&
-                corporation.majors.map((major) => (
-                  major+","
-                ))
+                corporation.majors.toString().trim(',').replace(/,/g, ", ")
               }
               </p>
               <h4>Industries</h4>
               <p>
               {
                 corporation.industries &&
-                corporation.industries.map((industry) => (
-                  industry+","
-                ))
+                corporation.industries.toString().trim(',').replace(/,/g, ", ")
               }
               </p>
               <h4>Additional Information</h4>

@@ -13,8 +13,6 @@ function Requests() {
 
   let requests = useQuery(FETCH_REQUESTS_QUERY).data.getRequests;
 
-  let filter = '';
-
   let filteredRequests = (function() {
 
     if(requests) {
@@ -35,10 +33,6 @@ function Requests() {
     
   }())
 
-  function search() {
-    setSearchTerm(filter);
-  }
-
   return (
     <>
       <Title title="Requests" adminPath={window.location.pathname} />
@@ -46,34 +40,10 @@ function Requests() {
         <Grid>
           <Grid.Row>
             <Grid.Column>
-              <div
-                style={{
-                  display: 'flex',
-                  justifyContent: 'flex-end',
-
-                }}
-              >
-                <Input 
-                  placeholder='Filter by name or event'
-                  onChange={(e, data) => {filter = data.value}}
-                  onKeyDown={(e) => {if(e.key === 'Enter') search()}}
-                />
-                <Button 
-                  onClick={search}
-                  
-                >
-                  Filter
-                </Button>
-                <Button 
-                  onClick={() => {
-                    filter = '';
-                    search();
-                  }}
-                  color='grey'
-                >
-                  Reset
-                </Button>
-              </div>
+              <Input 
+                placeholder='Filter by name or event'
+                onChange={(e, data) => {setSearchTerm(data.value)}}
+              />
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
