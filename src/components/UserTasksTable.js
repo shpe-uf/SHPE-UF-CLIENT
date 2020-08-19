@@ -30,7 +30,7 @@ function UserTasksTable({ user }) {
                 user.tasks.map(task => (
                   <Table.Row key={task.name}>
                     <Table.Cell>{task.name}</Table.Cell>
-                    <Table.Cell>{new Date(task.createdAt).toLocaleDateString()}</Table.Cell>
+                    <Table.Cell>{new Date(task.startDate).toLocaleDateString()}</Table.Cell>
                     <Table.Cell textAlign="center">{task.points}</Table.Cell>
                   </Table.Row>
                 ))}
