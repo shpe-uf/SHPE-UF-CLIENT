@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../context/auth";
-import { useMutation } from "@apollo/react-hooks";
+import { useMutation, useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag"
 
 import {Grid, Form, Button, Message} from "semantic-ui-react";
@@ -24,12 +24,19 @@ export default function PermissionsForm({userInfo}) {
         reimbursements: userInfo.permission.includes(PERMISSIONS.REIMB)
     });
 
-    const {user: loggedInUser} = useContext(AuthContext)
+    // get the current user, query the database to get the permissions of that
+    // user, and update the object with those permissions.
+    let {user: loggedInUser} = useContext(AuthContext)
+    let {data: {getUser:{permission}}} = useQuery(FETCH_USER_QUERY, {
+        variables: {
+            userId: loggedInUser.id
+        }
+    })
+    loggedInUser.permission = permission
     let currentPermissions = []
 
     if (userInfo) {
         originalPermissions = userInfo.permission.split("-");
-
         for(let key in permissions) {
             if (permissions[key]) {
                 currentPermissions.push(key)
@@ -39,6 +46,17 @@ export default function PermissionsForm({userInfo}) {
 
     const [changePermissionMutation, other] = useMutation(CHANGE_PERMISSION, {
         onError(err) {
+            setPermissions({
+                admin: userInfo.permission.includes(PERMISSIONS.ADMIN),
+                super: userInfo.permission.includes(PERMISSIONS.SUPER),
+                members: userInfo.permission.includes(PERMISSIONS.MEMBERS),
+                events: userInfo.permission.includes(PERMISSIONS.EVENTS),
+                tasks: userInfo.permission.includes(PERMISSIONS.TASKS),
+                requests: userInfo.permission.includes(PERMISSIONS.REQUESTS),
+                statistics: userInfo.permission.includes(PERMISSIONS.STATS),
+                corporateDatabase: userInfo.permission.includes(PERMISSIONS.CORP),
+                reimbursements: userInfo.permission.includes(PERMISSIONS.REIMB)
+            });
             setErrors(err.graphQLErrors[0].extensions.exception.errors);
         },
         update(cache, data) { 
@@ -190,5 +208,13 @@ export default function PermissionsForm({userInfo}) {
 const CHANGE_PERMISSION = gql`
   mutation changePermission($email: String!, $currentEmail: String!, $permission: String!) {
     changePermission(email: $email, currentEmail: $currentEmail, permission: $permission)
+  }
+`;
+
+const FETCH_USER_QUERY = gql`
+  query getUser($userId: ID!) {
+    getUser(userId: $userId) {
+      permission
+    }
   }
 `;
