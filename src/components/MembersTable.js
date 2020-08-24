@@ -9,19 +9,16 @@ import {
   Grid
 } from "semantic-ui-react";
 
-import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
 import { AuthContext } from "../context/auth";
 import UserProfile from "./UserProfile";
-import Permissions from "../util/permissions";
 import PermissionsForm from "./PermissionsForm";
 import PointsTable from "./UserEventsTable";
 
 function MembersTable({ users }) {
   const [userInfoModal, setUserInfoModal] = useState(false);
   const [userInfo, setUserInfo] = useState({});
-  const [permission, setPermission] = useState(userInfo.permission);
   const [errors, setErrors] = useState({});
 
 
@@ -43,30 +40,8 @@ function MembersTable({ users }) {
 
   function getUserInfo(userInfo) {
     setUserInfo(userInfo);
-    setPermission(userInfo.permission);
     setErrors({});
   }
-
-  const [changePermissionMutation] = useMutation(CHANGE_PERMISSION, {
-    onError(err) {
-      setErrors(err.graphQLErrors[0].extensions.exception.errors);
-    },
-    onCompleted() {
-      setPermission(user.permission);
-      userInfo.permission = user.permission;
-    }
-  });
-
-  function changePermission(value) {
-    var values = {
-      email: userInfo.email,
-      currentEmail: user.email,
-      permission: value
-    }
-    changePermissionMutation({ variables: values });
-    user.permission = value;
-  }
-
 
   return (
     <>
