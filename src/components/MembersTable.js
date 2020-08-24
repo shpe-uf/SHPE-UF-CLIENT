@@ -14,7 +14,6 @@ import gql from "graphql-tag";
 
 import { AuthContext } from "../context/auth";
 import UserProfile from "./UserProfile";
-import PointsTable from "./PointsTable";
 import Permissions from "../util/permissions";
 import PermissionsForm from "./PermissionsForm";
 import PointsTable from "./UserEventsTable";

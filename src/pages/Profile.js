@@ -51,8 +51,9 @@ function Profile() {
     }
   });
 
+
   if (user){
-    user = user.getUser;
+    user = user.data.getUser;
   }
 
   function openModal() {

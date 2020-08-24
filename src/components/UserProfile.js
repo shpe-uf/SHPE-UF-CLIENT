@@ -5,6 +5,7 @@ import moment from "moment";
 import placeholder from "../assets/images/placeholder.png";
 
 function UserProfile({ user, children }) {
+
   return (
     <Grid columns={2} doubling>
       <Grid.Row>
@@ -117,7 +118,7 @@ function UserProfile({ user, children }) {
                     <b>Classes:</b>
                   </Table.Cell>
                   <Table.Cell>
-                    {user ? <p>{user.classes.toString().replaceAll(',', ', ')}</p> : <p>Loading</p>}
+                    {user ? <p>{user.classes.toString()}</p> : <p>Loading</p>}
                   </Table.Cell>
                 </Table.Row>
                 <Table.Row>
