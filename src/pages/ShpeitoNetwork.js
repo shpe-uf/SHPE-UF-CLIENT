@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   Header,
   Segment,
@@ -12,12 +12,14 @@ import {
 } from "semantic-ui-react";
 import { useQuery } from "@apollo/react-hooks";
 import { FETCH_USERS_QUERY } from "../util/graphql";
+import gql from "graphql-tag";
+import { AuthContext } from "../context/auth";
 
 import Title from "../components/Title";
 import FilterSelection from "../components/FilterSelection";
 import placeholder from "../assets/images/placeholder.png";
 
-function ShpeitoNetwork() {
+function ShpeitoNetwork(props) {
   const [filter, setFilter] = useState(
     new Filter({
       name: [],
@@ -31,8 +33,17 @@ function ShpeitoNetwork() {
 
   let { data, loading } = useQuery(FETCH_USERS_QUERY);
   let users = [];
-
   
+  let {
+    user: { id }
+  } = useContext(AuthContext);
+
+  let user = useQuery(FETCH_USER_QUERY, {
+    variables: {
+      userId: id
+    }
+  }).data.getUser;
+
   if(!loading && data) {
     users = data.getUsers.filter(function (user) {
       let fullName = user.firstName.concat(" ").concat(user.lastName);
@@ -65,6 +76,7 @@ function ShpeitoNetwork() {
         ) : users.length > 0 ? (
           <>
             <p></p>
+            {console.log(user)}
             <Segment>
               <Card.Group stackable itemsPerRow="4">
                 {users.map((shpeito) => (
@@ -152,4 +164,14 @@ class Filter {
   }
 }
 
+const FETCH_USER_QUERY = gql`
+  query getUser($userId: ID!) {
+    getUser(userId: $userId) {
+      firstName
+      lastName
+      username
+      classes
+    }
+  }
+`;
 export default ShpeitoNetwork;
