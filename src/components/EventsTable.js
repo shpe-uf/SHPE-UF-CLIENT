@@ -121,7 +121,6 @@ function EventsTable({ events }) {
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell>Name</Table.HeaderCell>
-                <Table.HeaderCell>Code</Table.HeaderCell>
                 <Table.HeaderCell>Category</Table.HeaderCell>
                 <Table.HeaderCell>Expiration</Table.HeaderCell>
                 <Table.HeaderCell>Semester</Table.HeaderCell>
@@ -142,7 +141,6 @@ function EventsTable({ events }) {
                 events.map((event, index) => (
                   <Table.Row key={index}>
                     <Table.Cell>{event.name}</Table.Cell>
-                    <Table.Cell>{event.code}</Table.Cell>
                     <Table.Cell>{event.category}</Table.Cell>
                     <Table.Cell>
                       {moment(event.expiration)
@@ -283,6 +281,11 @@ function EventsTable({ events }) {
         </Modal.Header>
         <Modal.Content>
           <Grid>
+            <Grid.Row>
+              <Grid.Column>
+                Code: {eventAttendance.code}
+              </Grid.Column>
+            </Grid.Row>
             <Grid.Row>
               <Grid.Column>
                 <h3>{eventAttendance.name}</h3>

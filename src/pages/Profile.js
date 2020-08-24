@@ -47,9 +47,14 @@ function Profile() {
 
   let user = useQuery(FETCH_USER_QUERY, {
     variables: {
-      userId: id,
-    },
-  }).data.getUser;
+      userId: id
+    }
+  });
+
+
+  if (user){
+    user = user.data.getUser;
+  }
 
   function openModal() {
     values.firstName = user.firstName;

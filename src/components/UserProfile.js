@@ -4,17 +4,18 @@ import moment from "moment";
 
 import placeholder from "../assets/images/placeholder.png";
 
-function UserProfile({ user }) {
+function UserProfile({ user, children }) {
 
   return (
     <Grid columns={2} doubling>
       <Grid.Row>
         <Grid.Column>
           {user && user.photo !== "" ? (
-            <Image fluid rounded src={user.photo} className="image-profile" />
+            <Image rounded size={children ? 'medium' : 'huge'} src={user.photo} className="image-profile" />
           ) : (
-            <Image fluid rounded src={placeholder} className="image-profile" />
+            <Image rounded size={children ? 'medium' : 'huge'} src={placeholder} className="image-profile" />
           )}
+          {children}
         </Grid.Column>
         <Grid.Column>
           <div className="table-responsive">
