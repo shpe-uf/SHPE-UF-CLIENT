@@ -112,7 +112,8 @@ function ShpeitoNetwork(props) {
                     <p></p>
                     <p>&emsp;It seems like you currently have no classes.</p>
                     <p>
-                      &emsp;Please click on "Continue" to edit your profile and register your classes.
+                      &emsp;Please click on "Continue" to edit your profile and
+                      register your classes.
                     </p>
                   </Modal.Description>
                 </Modal.Content>
@@ -148,13 +149,12 @@ function ShpeitoNetwork(props) {
             </Container>
           ) : users.length > 0 ? (
             <>
-              {console.log(user.classes.length)}
               <p></p>
               <Segment>
                 <Card.Group stackable itemsPerRow="4">
                   {users.map((shpeito) => (
                     <Card>
-                      <Image src={placeholder} className="card-image" />
+                      <Image fluid src={placeholder} className="card-image" />
                       <Card.Content>
                         <Card.Header>
                           {shpeito.firstName} {shpeito.lastName}
@@ -170,38 +170,86 @@ function ShpeitoNetwork(props) {
                           trigger={
                             <Button
                               fluid
-                              content="View Classes"
-                              icon="book"
+                              content="User Information"
+                              icon="user"
                               labelPosition="left"
                             />
                           }
-                          size="mini"
+                          size="small"
                           closeIcon
                         >
                           <Modal.Header>
-                            {shpeito.firstName}'s Classes
+                            <h3>{shpeito.firstName}'s Information</h3>
                           </Modal.Header>
                           <Modal.Content>
-                            <p></p>
-                            {shpeito.classes.length > 0 ? (
-                              shpeito.classes.map((className) => (
-                                <List divided className="shpeito-spacing">
-                                  <List.Item>
-                                    <List.Icon
-                                      className="shpeito-spacing"
-                                      name="book"
-                                    />
-                                    <List.Content>{className}</List.Content>
-                                  </List.Item>
-                                </List>
-                              ))
-                            ) : (
-                              <div className="shpeito-spacing">
-                                <p>&ensp;Sorry, no classes registered.</p>
-                                <p></p>
-                              </div>
-                            )}
-                            <p></p>
+                            <Grid>
+                              <Grid.Row>
+                                <Grid.Column>
+                                  <h5>Course Schedule:</h5>
+                                  {shpeito.classes.length > 0 ? (
+                                    shpeito.classes.map((className) => (
+                                      <List className="shpeito-spacing">
+                                        <List.Item>
+                                          <List.Icon
+                                            className="shpeito-spacing"
+                                            name="book"
+                                          />
+                                          <List.Content>
+                                            {className}
+                                          </List.Content>
+                                        </List.Item>
+                                      </List>
+                                    ))
+                                  ) : (
+                                    <div className="shpeito-spacing">
+                                      <p>&ensp;Sorry, no classes registered for {shpeito.firstName}.</p>
+                                    </div>
+                                  )}
+                                  <h5>Social Media:</h5>
+                                  {shpeito.socialMedia.length > 0 ? (
+                                    shpeito.socialMedia.map((naming) => (
+                                      <List className="shpeito-spacing">
+                                        <List.Item>
+                                          <List.Icon
+                                            className="shpeito-spacing"
+                                            name="user circle"
+                                          />
+                                          <List.Content>
+                                            {naming}
+                                          </List.Content>
+                                        </List.Item>
+                                      </List>
+                                    ))
+                                  ) : (
+                                    <div className="shpeito-spacing">
+                                      <p>&ensp;Sorry, no social media registered for {shpeito.firstName}.</p>
+                                    </div>
+                                  )}
+                                  <h5>Internship:</h5>
+                                  {shpeito.internships.length > 0 ? (
+                                    shpeito.internships.map((company) => (
+                                      <List className="shpeito-spacing">
+                                        <List.Item>
+                                          <List.Icon
+                                            className="shpeito-spacing"
+                                            name="suitcase"
+                                          />
+                                          <List.Content>
+                                            {company}
+                                          </List.Content>
+                                        </List.Item>
+                                      </List>
+                                    ))
+                                  ) : (
+                                    <div className="shpeito-spacing">
+                                      <p>&ensp;Sorry, no internship registered for {shpeito.firstName}.</p>
+                                      <p></p>
+                                    </div>
+                                  )}
+                                </Grid.Column>
+                              </Grid.Row>
+                              <p></p>
+                            </Grid>
                           </Modal.Content>
                         </Modal>
                       </Card.Content>
