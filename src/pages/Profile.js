@@ -169,7 +169,7 @@ function Profile() {
       case 'socialMedia':
         setMiscInfo({
           ...miscInfo,
-          classes: miscInfo.socialMedia.concat([newSocialMedia])
+          socialMedia: miscInfo.socialMedia.concat([newSocialMedia])
         })
         break;
       default:
