@@ -304,7 +304,7 @@ function TasksTable({tasks}) {
                               </Table.Cell>
                               <Table.Cell>{member.username}</Table.Cell>
                               <Table.Cell>{member.email}</Table.Cell>
-                              <Table.Cell textAlign='right'>
+                              <Table.Cell textAlign='center'>
                                 <Button
                                   icon
                                   color='red'
@@ -315,7 +315,7 @@ function TasksTable({tasks}) {
                                     }})
                                   }}
                                 >
-                                  <Icon name='x'/>
+                                  <Icon name='x' />
                                 </Button>
                               </Table.Cell>
                             </Table.Row>

@@ -5,7 +5,6 @@ import gql from 'graphql-tag';
 import { FETCH_TASKS_QUERY, FETCH_CORPORATIONS_QUERY, FETCH_EVENTS_QUERY } from '../util/graphql';
 
 function DeleteModal(props){
-  console.log(props)
   const [userInput, setUserInput] = useState('')
 
   const [deleteTaskMutation] = useMutation(DELETE_TASK, {

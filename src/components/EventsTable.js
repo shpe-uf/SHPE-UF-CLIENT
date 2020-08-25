@@ -17,7 +17,7 @@ import { useForm } from "../util/hooks";
 import moment from "moment";
 import { CSVLink } from "react-csv";
 
-import { FETCH_USERS_QUERY } from "../util/graphql";
+import { FETCH_USERS_QUERY, FETCH_EVENTS_QUERY } from "../util/graphql";
 import DeleteModal from "./DeleteModal";
 
 function EventsTable({ events }) {
@@ -90,6 +90,27 @@ function EventsTable({ events }) {
 
     variables: values,
   });
+
+
+  const [removeUserFromEvent] = useMutation(REMOVE_USER_MUTATION, {
+
+    update(cache, { data : { removeUserFromEvent } }) {
+      const {getEvents} = cache.readQuery({ query: FETCH_EVENTS_QUERY });
+      getEvents.forEach((event, pos) => {
+        if(event.name === removeUserFromEvent.name) getEvents[pos] = removeUserFromEvent
+      })
+      cache.writeQuery({
+        query: FETCH_EVENTS_QUERY,
+        data: { getEvents: getEvents},
+      });
+      setEventNameValue(removeUserFromEvent.name);
+    },
+
+    onError(err) {
+      setErrors(err.graphQLErrors[0].extensions.exception.errors);
+    }
+  });
+
 
   function manualInputCallback() {
     manualInput();
@@ -308,6 +329,7 @@ function EventsTable({ events }) {
                           <Table.HeaderCell>Name</Table.HeaderCell>
                           <Table.HeaderCell>Username</Table.HeaderCell>
                           <Table.HeaderCell>Email</Table.HeaderCell>
+                          <Table.HeaderCell>Remove</Table.HeaderCell>
                         </Table.Row>
                       </Table.Header>
                       <Table.Body>
@@ -319,6 +341,21 @@ function EventsTable({ events }) {
                               </Table.Cell>
                               <Table.Cell>{member.username}</Table.Cell>
                               <Table.Cell>{member.email}</Table.Cell>
+                              <Table.Cell textAlign='center'>
+                                <Button
+                                  icon
+                                  color='red'
+                                  onClick={() => {
+                                    removeUserFromEvent({variables: {
+                                      username: member.username,
+                                      eventName: eventAttendance.name
+                                    }})
+                                  }}
+                                 
+                                >
+                                  <Icon name='x'/>
+                                </Button>
+                              </Table.Cell>
                             </Table.Row>
                           ))}
                       </Table.Body>
@@ -377,5 +414,28 @@ const MANUAL_INPUT_MUTATION = gql`
     }
   }
 `;
-
+const REMOVE_USER_MUTATION = gql`
+  mutation removeUserFromEvent($username: String!, $eventName: String!) {
+    removeUserFromEvent(
+      manualInputInput: { username: $username, eventName: $eventName }
+    ) {
+      id
+      name
+      code
+      category
+      expiration
+      request
+      points
+      attendance
+      semester
+      createdAt
+      users {
+        email
+        username
+        firstName
+        lastName
+      }
+    }
+  }
+`;
 export default EventsTable;
