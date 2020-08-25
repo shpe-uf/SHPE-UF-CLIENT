@@ -9,6 +9,7 @@ import {
   Icon,
   Modal,
   List,
+  Grid,
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
@@ -96,29 +97,55 @@ function ShpeitoNetwork(props) {
           </Segment>
         ) : user ? (
           user.classes.length == 0 ? (
-            <Modal
-              onClose={() => setOpen(false)}
-              onOpen={() => setOpen(true)}
-              open={open}
-            >
-              <Modal.Header>
-                <h3>Hello {user.firstName},</h3>
-              </Modal.Header>
-              <Modal.Content>
-                <Modal.Description>
-                  <p>&emsp;It seems like you currently have no classes.</p>
-                  <p>
-                    &emsp;Please click on "Continue" to register your classes.
-                  </p>
-                </Modal.Description>
-              </Modal.Content>
-              <Modal.Actions>
-                <Button color="red" onClick={() => setOpen(false)}>
-                  CANCEL
-                </Button>
-                <Button color="green">CONTINUE</Button>
-              </Modal.Actions>
-            </Modal>
+            <Container>
+              <Modal
+                onClose={() => setOpen(false)}
+                onOpen={() => setOpen(true)}
+                open={open}
+                size="small"
+              >
+                <Modal.Header>
+                  <h3>Hello {user.firstName},</h3>
+                </Modal.Header>
+                <Modal.Content>
+                  <Modal.Description>
+                    <p></p>
+                    <p>&emsp;It seems like you currently have no classes.</p>
+                    <p>
+                      &emsp;Please click on "Continue" to edit your profile and register your classes.
+                    </p>
+                  </Modal.Description>
+                </Modal.Content>
+
+                <Grid>
+                  <Grid.Row>
+                    <Grid.Column>
+                      <Modal.Content>
+                        <Modal.Actions>
+                          <Button
+                            floated="left"
+                            color="red"
+                            size="small"
+                            onClick={() => setOpen(false)}
+                          >
+                            Cancel
+                          </Button>
+                          <Button
+                            floated="right"
+                            color="green"
+                            size="small"
+                            as={Link}
+                            to="/profile"
+                          >
+                            Continue
+                          </Button>
+                        </Modal.Actions>
+                      </Modal.Content>
+                    </Grid.Column>
+                  </Grid.Row>
+                </Grid>
+              </Modal>
+            </Container>
           ) : users.length > 0 ? (
             <>
               {console.log(user.classes.length)}
