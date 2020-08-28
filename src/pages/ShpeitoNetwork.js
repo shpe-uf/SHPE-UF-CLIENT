@@ -112,7 +112,7 @@ function ShpeitoNetwork(props) {
                     <p></p>
                     <p>&emsp;It seems like you currently have no classes.</p>
                     <p>
-                      &emsp;Please click on "Continue" to edit your profile and
+                      &emsp;Please click on "Edit Profile" to edit your profile and
                       register your classes.
                     </p>
                   </Modal.Description>
@@ -124,19 +124,18 @@ function ShpeitoNetwork(props) {
                       <Modal.Content>
                         <Modal.Actions>
                           <Button
-                            floated="left"
-                            color="red"
+                            style={{"margin-left":"0em"}}
                             size="small"
-                            onClick={() => setOpen(false)}
+                            as={Link}
+                            to="/profile"
                           >
-                            Cancel
+                            Edit Profile
                           </Button>
                           <Button
                             floated="right"
                             color="green"
                             size="small"
-                            as={Link}
-                            to="/profile"
+                            onClick={() => setOpen(false)}
                           >
                             Continue
                           </Button>
@@ -273,6 +272,7 @@ function ShpeitoNetwork(props) {
           </div>
         )}
       </Container>
+      {console.log("I'M HERE")}
     </div>
   );
 }
