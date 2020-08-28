@@ -374,8 +374,8 @@ function Profile() {
                     />
                   ))}
                   <Form.Input
-                    label="Internships"
-                    placeholder={"Add your classes here"}
+                    label="Internships/Research"
+                    placeholder={"Add your internships/research here"}
                     onKeyPress={(e)=> (e.key === 'Enter') && addToArray(e,'internship')}
                     onChange={(e) => setInternship(e.target.value)}
                     action={{
@@ -402,7 +402,7 @@ function Profile() {
                   ))}
                   <Form.Input
                     label="Social Media / Links"
-                    placeholder={"Add your classes here"}
+                    placeholder={"Add your personal links here"}
                     onKeyPress={(e)=> (e.key === 'Enter') && addToArray(e,'socialMedia')}
                     onChange={(e) => setSocialMedia(e.target.value)}
                     action={{
