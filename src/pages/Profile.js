@@ -374,8 +374,8 @@ function Profile() {
                     />
                   ))}
                   <Form.Input
-                    label="Internships/Research"
-                    placeholder={"Add your internships/research here"}
+                    label="Internships"
+                    placeholder={"Add your internships here"}
                     onKeyPress={(e)=> (e.key === 'Enter') && addToArray(e,'internship')}
                     onChange={(e) => setInternship(e.target.value)}
                     action={{
