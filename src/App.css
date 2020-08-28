@@ -751,3 +751,10 @@ div::-webkit-scrollbar-thumb {
 .shpeito-spacing{
   border-spacing: 1px;
 }
+.shpeito-photo{
+  border: 1px;
+  border-style: solid;
+  border-color: var(--grey);
+  height:254.017;
+  width:253.217;
+}

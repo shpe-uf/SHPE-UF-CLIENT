@@ -19,6 +19,7 @@ import { AuthContext } from "../context/auth";
 
 import Title from "../components/Title";
 import FilterSelection from "../components/FilterSelection";
+import UserProfile from "../components/UserProfile";
 import placeholder from "../assets/images/placeholder.png";
 
 function ShpeitoNetwork(props) {
@@ -33,7 +34,7 @@ function ShpeitoNetwork(props) {
     })
   );
 
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = useState(true);
 
   let { data, loading } = useQuery(FETCH_USERS_QUERY);
   let users = [];
@@ -86,6 +87,54 @@ function ShpeitoNetwork(props) {
     setFilter(new Filter(newFilter));
   }
 
+  function displayUsersCards() {
+    return (
+      <>
+        <p></p>
+        <Segment>
+          <Card.Group stackable itemsPerRow="4">
+            {users.map((shpeito) => (
+              <Card attached>
+                {shpeito.photo !== "" ? (
+                  <Image
+                    fluid
+                    rounded
+                    src={shpeito.photo}
+                    className="image-profile"
+                  />
+                ) : (
+                  <Image
+                    fluid
+                    rounded
+                    src={placeholder}
+                    className="image-profile"
+                  />
+                )}
+                <p></p>
+                <Modal
+                  trigger={
+                    <Button
+                      fluid
+                      
+                      style={{"text-align":"center"}}
+                      content="User Information"
+                      icon="user"
+                      labelPosition="left"
+                    />
+                  }
+                  size="large"
+                  closeIcon
+                >
+                  <UserProfile user={shpeito} />
+                </Modal>
+              </Card>
+            ))}
+          </Card.Group>
+        </Segment>
+      </>
+    );
+  }
+
   return (
     <div className="body">
       <Title title="SHPEito Network" />
@@ -99,7 +148,7 @@ function ShpeitoNetwork(props) {
           user.classes.length == 0 ? (
             <Container>
               <Modal
-                onClose={() => setOpen(false)}
+                onClose={() => console.log("CLOSING MODAL")}
                 onOpen={() => setOpen(true)}
                 open={open}
                 size="small"
@@ -112,8 +161,8 @@ function ShpeitoNetwork(props) {
                     <p></p>
                     <p>&emsp;It seems like you currently have no classes.</p>
                     <p>
-                      &emsp;Please click on "Edit Profile" to edit your profile and
-                      register your classes.
+                      &emsp;Please click on "Edit Profile" to edit your profile
+                      and register your classes.
                     </p>
                   </Modal.Description>
                 </Modal.Content>
@@ -124,7 +173,7 @@ function ShpeitoNetwork(props) {
                       <Modal.Content>
                         <Modal.Actions>
                           <Button
-                            style={{"margin-left":"0em"}}
+                            style={{ "margin-left": "0em" }}
                             size="small"
                             as={Link}
                             to="/profile"
@@ -135,7 +184,9 @@ function ShpeitoNetwork(props) {
                             floated="right"
                             color="green"
                             size="small"
-                            onClick={() => setOpen(false)}
+                            onClick={() => {
+                              setOpen(false);
+                            }}
                           >
                             Continue
                           </Button>
@@ -147,116 +198,7 @@ function ShpeitoNetwork(props) {
               </Modal>
             </Container>
           ) : users.length > 0 ? (
-            <>
-              <p></p>
-              <Segment>
-                <Card.Group stackable itemsPerRow="4">
-                  {users.map((shpeito) => (
-                    <Card>
-                      <Image fluid src={placeholder} className="card-image" />
-                      <Card.Content>
-                        <Card.Header>
-                          {shpeito.firstName} {shpeito.lastName}
-                        </Card.Header>
-                        <Card.Meta>{shpeito.major}</Card.Meta>
-                        <Card.Meta>{shpeito.year}</Card.Meta>
-                        <Card.Description>
-                          <Icon name="world"></Icon>
-                          {shpeito.country}
-                        </Card.Description>
-                        <p></p>
-                        <Modal
-                          trigger={
-                            <Button
-                              fluid
-                              content="User Information"
-                              icon="user"
-                              labelPosition="left"
-                            />
-                          }
-                          size="small"
-                          closeIcon
-                        >
-                          <Modal.Header>
-                            <h3>{shpeito.firstName}'s Information</h3>
-                          </Modal.Header>
-                          <Modal.Content>
-                            <Grid>
-                              <Grid.Row>
-                                <Grid.Column>
-                                  <h5>Course Schedule:</h5>
-                                  {shpeito.classes.length > 0 ? (
-                                    shpeito.classes.map((className) => (
-                                      <List className="shpeito-spacing">
-                                        <List.Item>
-                                          <List.Icon
-                                            className="shpeito-spacing"
-                                            name="book"
-                                          />
-                                          <List.Content>
-                                            {className}
-                                          </List.Content>
-                                        </List.Item>
-                                      </List>
-                                    ))
-                                  ) : (
-                                    <div className="shpeito-spacing">
-                                      <p>&ensp;Sorry, no classes registered for {shpeito.firstName}.</p>
-                                    </div>
-                                  )}
-                                  <h5>Social Media:</h5>
-                                  {shpeito.socialMedia.length > 0 ? (
-                                    shpeito.socialMedia.map((naming) => (
-                                      <List className="shpeito-spacing">
-                                        <List.Item>
-                                          <List.Icon
-                                            className="shpeito-spacing"
-                                            name="user circle"
-                                          />
-                                          <List.Content>
-                                            {naming}
-                                          </List.Content>
-                                        </List.Item>
-                                      </List>
-                                    ))
-                                  ) : (
-                                    <div className="shpeito-spacing">
-                                      <p>&ensp;Sorry, no social media registered for {shpeito.firstName}.</p>
-                                    </div>
-                                  )}
-                                  <h5>Internship:</h5>
-                                  {shpeito.internships.length > 0 ? (
-                                    shpeito.internships.map((company) => (
-                                      <List className="shpeito-spacing">
-                                        <List.Item>
-                                          <List.Icon
-                                            className="shpeito-spacing"
-                                            name="suitcase"
-                                          />
-                                          <List.Content>
-                                            {company}
-                                          </List.Content>
-                                        </List.Item>
-                                      </List>
-                                    ))
-                                  ) : (
-                                    <div className="shpeito-spacing">
-                                      <p>&ensp;Sorry, no internship registered for {shpeito.firstName}.</p>
-                                      <p></p>
-                                    </div>
-                                  )}
-                                </Grid.Column>
-                              </Grid.Row>
-                              <p></p>
-                            </Grid>
-                          </Modal.Content>
-                        </Modal>
-                      </Card.Content>
-                    </Card>
-                  ))}
-                </Card.Group>
-              </Segment>
-            </>
+            displayUsersCards()
           ) : (
             console.log("USER IS UNDEFINED")
           )
