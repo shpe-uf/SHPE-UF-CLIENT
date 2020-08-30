@@ -10,6 +10,7 @@ import {
   Modal,
   List,
   Grid,
+  Responsive,
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
@@ -91,46 +92,88 @@ function ShpeitoNetwork(props) {
     return (
       <>
         <p></p>
-        <Segment>
-          <Card.Group stackable itemsPerRow="4">
-            {users.map((shpeito) => (
-              <Card attached>
-                {shpeito.photo !== "" ? (
-                  <Image
-                    fluid
-                    rounded
-                    src={shpeito.photo}
-                    className="image-profile"
-                  />
-                ) : (
-                  <Image
-                    fluid
-                    rounded
-                    src={placeholder}
-                    className="image-profile"
-                  />
-                )}
-                <p></p>
-                <Modal
-                  trigger={
-                    <Button
+        <Responsive minWidth='1200'>
+          <Segment>
+            <Card.Group itemsPerRow="4">
+              {users.map((shpeito) => (
+                <Card attached>
+                  {shpeito.photo !== "" ? (
+                    <Image
                       fluid
-                      
-                      style={{"text-align":"center"}}
-                      content="User Information"
-                      icon="user"
-                      labelPosition="left"
+                      rounded
+                      src={shpeito.photo}
+                      className="image-profile"
                     />
-                  }
-                  size="large"
-                  closeIcon
-                >
-                  <UserProfile user={shpeito} />
-                </Modal>
-              </Card>
-            ))}
-          </Card.Group>
-        </Segment>
+                  ) : (
+                    <Image
+                      fluid
+                      rounded
+                      src={placeholder}
+                      className="image-profile"
+                    />
+                  )}
+                  <p></p>
+                  <Modal
+                    trigger={
+                      <Button
+                        fluid
+                        style={{ "text-align": "center" }}
+                        content="User Information"
+                        icon="user"
+                        labelPosition="left"
+                      />
+                    }
+                    size="large"
+                    closeIcon
+                  >
+                    <UserProfile user={shpeito} />
+                  </Modal>
+                </Card>
+              ))}
+            </Card.Group>
+          </Segment>
+        </Responsive>
+        <Responsive maxWidth='1199'>
+          <Segment>
+            <Card.Group itemsPerRow="1">
+              {users.map((shpeito) => (
+                <Card attached>
+                  {shpeito.photo !== "" ? (
+                    <Image
+                      fluid
+                      rounded
+                      src={shpeito.photo}
+                      className="image-profile"
+                    />
+                  ) : (
+                    <Image
+                      fluid
+                      rounded
+                      src={placeholder}
+                      className="image-profile"
+                    />
+                  )}
+                  <p></p>
+                  <Modal
+                    trigger={
+                      <Button
+                        fluid
+                        style={{ "text-align": "center" }}
+                        content="User Information"
+                        icon="user"
+                        labelPosition="left"
+                      />
+                    }
+                    size="large"
+                    closeIcon
+                  >
+                    <UserProfile user={shpeito} />
+                  </Modal>
+                </Card>
+              ))}
+            </Card.Group>
+          </Segment>
+        </Responsive>
       </>
     );
   }
@@ -163,6 +206,10 @@ function ShpeitoNetwork(props) {
                     <p>
                       &emsp;Please click on "Edit Profile" to edit your profile
                       and register your classes.
+                    </p>
+                    <p>
+                      &emsp;If you have added your classes already, refresh the
+                      page.
                     </p>
                   </Modal.Description>
                 </Modal.Content>
@@ -213,8 +260,10 @@ function ShpeitoNetwork(props) {
             </Segment>
           </div>
         )}
+        {open
+          ? console.log("UPDATE PROFILE NO CLASSES MODAL IS OPEN")
+          : displayUsersCards()}
       </Container>
-      {console.log("I'M HERE")}
     </div>
   );
 }
