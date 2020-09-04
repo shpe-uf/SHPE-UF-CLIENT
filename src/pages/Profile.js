@@ -14,6 +14,8 @@ import { ToastContainer, toast } from "react-toastify";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { useForm } from "../util/hooks";
 import { AuthContext } from "../context/auth";
+import ReactCrop from 'react-image-crop';
+import 'react-image-crop/dist/ReactCrop.css';
 
 import Title from "../components/Title";
 import UserProfile from "../components/UserProfile";
@@ -29,7 +31,6 @@ import placeholder from "../assets/images/placeholder.png";
 
 function Profile() {
   const [photoFile, setPhotoFile] = useState({});
-  const [originalPhoto, setOriginalPhoto] = useState({});
   const [errors, setErrors] = useState({});
   const [editProfileModal, setEditProfileModal] = useState(false);
   const [miscInfo, setMiscInfo] = useState({
@@ -76,7 +77,6 @@ function Profile() {
     })
     setEditProfileModal(true);
     setPhotoFile(user.photo);
-    setOriginalPhoto(user.photo);
   };
 
   const closeModal = (name) => {
@@ -139,15 +139,14 @@ function Profile() {
 
   function photoSelectedHandler(event) {
     if (event.target.files.length > 0) {
+      console.log(event.target)
       var a = new FileReader();
       a.readAsDataURL(event.target.files[0]);
       a.onload = function (e) {
+        console.log(e)
         values.photo = e.target.result;
         setPhotoFile(e.target.result);
       };
-    } else {
-      setPhotoFile(originalPhoto);
-      values.photo = originalPhoto;
     }
   }
 
