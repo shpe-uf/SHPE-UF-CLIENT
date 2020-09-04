@@ -77,6 +77,11 @@ export default function PermissionsForm({userInfo}) {
     const onChange = (_, {name, checked}) => {
 
         if (checked){
+            // check if the current user does not have basic admin permissions yet
+            // if we are setting Super permissions, and the user is not admin yet, add admin permissions first
+            if(name === PERMISSIONS.SUPER && !currentPermissions.includes(PERMISSIONS.ADMIN)) {   
+                currentPermissions.push(PERMISSIONS.ADMIN)
+            }
             currentPermissions.push(name)
         } else {
             currentPermissions.splice(currentPermissions.indexOf(name), 1);
@@ -115,7 +120,7 @@ export default function PermissionsForm({userInfo}) {
                                 toggle
                                 disabled={!loggedInUser.permission.includes(PERMISSIONS.ADMIN)}
                                 name={PERMISSIONS.TASKS}
-                                defaultChecked={userInfo.permission.includes(PERMISSIONS.TASKS)}
+                                defaultChecked={userInfo.permission.includes(PERMISSIONS.TASKS) || userInfo.permission.includes(PERMISSIONS.SUPER)}
                                 onChange={onChange}
                                 label='Tasks'
                             />
@@ -123,7 +128,7 @@ export default function PermissionsForm({userInfo}) {
                                 toggle
                                 disabled={!loggedInUser.permission.includes(PERMISSIONS.ADMIN)}
                                 name={PERMISSIONS.REQUESTS}
-                                defaultChecked={userInfo.permission.includes(PERMISSIONS.REQUESTS)}
+                                defaultChecked={userInfo.permission.includes(PERMISSIONS.REQUESTS) || userInfo.permission.includes(PERMISSIONS.SUPER)}
                                 onChange={onChange}
                                 label='Requests'
                             />
@@ -133,7 +138,7 @@ export default function PermissionsForm({userInfo}) {
                                 toggle
                                 disabled={!loggedInUser.permission.includes(PERMISSIONS.ADMIN)}
                                 name={PERMISSIONS.EVENTS}
-                                defaultChecked={userInfo.permission.includes(PERMISSIONS.TASKS)}
+                                defaultChecked={userInfo.permission.includes(PERMISSIONS.TASKS) || userInfo.permission.includes(PERMISSIONS.SUPER)}
                                 onChange={onChange}
                                 label='Events'
                             />
@@ -141,7 +146,7 @@ export default function PermissionsForm({userInfo}) {
                                 toggle
                                 disabled={!loggedInUser.permission.includes(PERMISSIONS.ADMIN)}
                                 name={PERMISSIONS.SUPER}
-                                defaultChecked={userInfo.permission.includes(PERMISSIONS.SUPER)}
+                                defaultChecked={userInfo.permission.includes(PERMISSIONS.SUPER) || userInfo.permission.includes(PERMISSIONS.SUPER)}
                                 onChange={onChange}
                                 label='Super Admin'
                             />
@@ -151,7 +156,7 @@ export default function PermissionsForm({userInfo}) {
                                 toggle
                                 disabled={!loggedInUser.permission.includes(PERMISSIONS.ADMIN)}
                                 name={PERMISSIONS.STATS}
-                                defaultChecked={userInfo.permission.includes(PERMISSIONS.STATS)}
+                                defaultChecked={userInfo.permission.includes(PERMISSIONS.STATS) || userInfo.permission.includes(PERMISSIONS.SUPER)}
                                 onChange={onChange}
                                 label='Statistics'
                             />
@@ -159,7 +164,7 @@ export default function PermissionsForm({userInfo}) {
                                 toggle
                                 disabled={!loggedInUser.permission.includes(PERMISSIONS.ADMIN)}
                                 name={PERMISSIONS.REIMB}
-                                defaultChecked={userInfo.permission.includes(PERMISSIONS.REIMB)}
+                                defaultChecked={userInfo.permission.includes(PERMISSIONS.REIMB) || userInfo.permission.includes(PERMISSIONS.SUPER)}
                                 onChange={onChange}
                                 label='Reimbursements'
                             />
@@ -169,7 +174,7 @@ export default function PermissionsForm({userInfo}) {
                                 toggle
                                 disabled={!loggedInUser.permission.includes(PERMISSIONS.ADMIN)}
                                 name={PERMISSIONS.MEMBERS}
-                                defaultChecked={userInfo.permission.includes(PERMISSIONS.MEMBERS)}
+                                defaultChecked={userInfo.permission.includes(PERMISSIONS.MEMBERS) || userInfo.permission.includes(PERMISSIONS.SUPER)}
                                 onChange={onChange}
                                 label='Members'
                             />
@@ -177,7 +182,7 @@ export default function PermissionsForm({userInfo}) {
                                 toggle
                                 disabled={!loggedInUser.permission.includes(PERMISSIONS.ADMIN)}
                                 name={PERMISSIONS.CORP}
-                                defaultChecked={userInfo.permission.includes(PERMISSIONS.CORP)}
+                                defaultChecked={userInfo.permission.includes(PERMISSIONS.CORP) || userInfo.permission.includes(PERMISSIONS.SUPER)}
                                 onChange={onChange}
                                 label='Corporate Database'
                             />
