@@ -69,6 +69,11 @@ function MembersTable({ users, refetch}) {
   }
 
   const UserProfileModal = () => {
+    let {loading, data, refetch} = useQuery(FETCH_USER_QUERY, {
+      variables: {
+          userId: userInfo.id
+      }
+    })
 
     return (
       <Modal
@@ -81,10 +86,22 @@ function MembersTable({ users, refetch}) {
             <h2>Member Info</h2>
           </Modal.Header>
           <Modal.Content>
-            {userInfo && (
               <>
                 <UserProfile user={userInfo}>
-                  <PermissionsForm userInfo={userInfo}/>
+                  {/* {data && data.getUser && (
+                    <PermissionsForm userInfo={data.getUser} refetch={refetch}/>
+                  )} */}
+                  {data ? (
+                    data.getUser ? (
+                      <PermissionsForm userInfo={data.getUser} refetch={refetch}/>
+                    ) : (
+                        <>
+                        <Dimmer active>
+                          <Loader active size='large' inline='centered' />
+                        </Dimmer>
+                        </>
+                      )
+                  ): ("")}
                 </UserProfile>
                 <Grid>
                   <Grid.Row>
@@ -107,7 +124,6 @@ function MembersTable({ users, refetch}) {
                   </Grid.Row>
                 </Grid>
               </>
-            )}
             <Grid>
               <Grid.Row>
                 <Grid.Column>
@@ -185,8 +201,8 @@ function MembersTable({ users, refetch}) {
               ))}
           </Table.Body>
         </Table>
+        <UserProfileModal/>
       </div>
-      <UserProfileModal/>
     </>
   );
 }
@@ -194,6 +210,29 @@ function MembersTable({ users, refetch}) {
 const CHANGE_PERMISSION = gql`
   mutation changePermission($email: String!, $currentEmail: String!, $permission: String!) {
     changePermission(email: $email, currentEmail: $currentEmail, permission: $permission)
+  }
+`;
+
+const FETCH_USER_QUERY = gql`
+  query getUser($userId: ID!) {
+    getUser(userId: $userId) {
+      firstName
+      lastName
+      photo
+      username
+      email
+      major
+      year
+      graduating
+      country
+      ethnicity
+      sex
+      createdAt
+      permission
+      classes
+      internships
+      socialMedia
+    }
   }
 `;
 
