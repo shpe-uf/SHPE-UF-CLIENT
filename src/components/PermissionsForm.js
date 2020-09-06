@@ -12,7 +12,7 @@ import { PERMISSIONS } from "../util/permissions";
 
 let originalPermissions = []
 
-export default function PermissionsForm({userInfo}) {
+export default function PermissionsForm({userInfo, refetch}) {
     const [errors, setErrors] = useState({});
     const [buttonDisabled, setButtonDisabled] = useState(true)
     const [permissions, setPermissions] = useState(userInfo.permission);
@@ -34,8 +34,9 @@ export default function PermissionsForm({userInfo}) {
         onError(err) {
             console.log(err)
         },
-        update(cache, {data: {changePermission: {permission}}}) { 
-            setPermissions(permission)
+        update(cache,data) { 
+            console.log(data)
+            refetch()
         }
     });
 
