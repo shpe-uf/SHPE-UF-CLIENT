@@ -18,7 +18,7 @@ import Permissions from "../util/permissions";
 import PermissionsForm from "./PermissionsForm";
 import PointsTable from "./UserEventsTable";
 
-function MembersTable({ users, refetch }) {
+function MembersTable({ users, refetch}) {
   const [userInfoModal, setUserInfoModal] = useState(false);
   const [userInfo, setUserInfo] = useState({});
   const [permission, setPermission] = useState(userInfo.permission);
