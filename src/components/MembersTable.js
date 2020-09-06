@@ -9,7 +9,7 @@ import {
   Grid
 } from "semantic-ui-react";
 
-import { useMutation } from "@apollo/react-hooks";
+import { useMutation, useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
 import { AuthContext } from "../context/auth";
@@ -18,7 +18,7 @@ import Permissions from "../util/permissions";
 import PermissionsForm from "./PermissionsForm";
 import PointsTable from "./UserEventsTable";
 
-function MembersTable({ users }) {
+function MembersTable({ users, refetch }) {
   const [userInfoModal, setUserInfoModal] = useState(false);
   const [userInfo, setUserInfo] = useState({});
   const [permission, setPermission] = useState(userInfo.permission);
@@ -38,6 +38,7 @@ function MembersTable({ users }) {
     if (name === "userInfo") {
       setUserInfo({});
       setUserInfoModal(false);
+      refetch()
     }
   };
 
@@ -67,6 +68,63 @@ function MembersTable({ users }) {
     user.permission = value;
   }
 
+  const UserProfileModal = () => {
+
+    return (
+      <Modal
+          open={userInfoModal}
+          size="large"
+          closeOnEscape={true}
+          closeOnDimmerClick={false}
+        >
+          <Modal.Header>
+            <h2>Member Info</h2>
+          </Modal.Header>
+          <Modal.Content>
+            {userInfo && (
+              <>
+                <UserProfile user={userInfo}>
+                  <PermissionsForm userInfo={userInfo}/>
+                </UserProfile>
+                <Grid>
+                  <Grid.Row>
+                    <Grid.Column>
+                      {Object.keys(errors).length > 0 && (
+                        <div className="ui error message">
+                          <ul className="list">
+                            {Object.values(errors).map(value => (
+                              <li key={value}>{value}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </Grid.Column>
+                  </Grid.Row>
+                  <Grid.Row>
+                    <Grid.Column>
+                      <PointsTable user={userInfo} />
+                    </Grid.Column>
+                  </Grid.Row>
+                </Grid>
+              </>
+            )}
+            <Grid>
+              <Grid.Row>
+                <Grid.Column>
+                  <Button
+                    type="reset"
+                    color="grey"
+                    onClick={() => closeModal("userInfo")}
+                  >
+                    Close
+                  </Button>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </Modal.Content>
+        </Modal>
+      )
+  }
 
   return (
     <>
@@ -128,59 +186,7 @@ function MembersTable({ users }) {
           </Table.Body>
         </Table>
       </div>
-
-      <Modal
-        open={userInfoModal}
-        size="large"
-        closeOnEscape={true}
-        closeOnDimmerClick={false}
-      >
-        <Modal.Header>
-          <h2>Member Info</h2>
-        </Modal.Header>
-        <Modal.Content>
-          {userInfo && (
-            <>
-              <UserProfile user={userInfo}>
-                <PermissionsForm userInfo={userInfo}/>
-              </UserProfile>
-              <Grid>
-                <Grid.Row>
-                  <Grid.Column>
-                    {Object.keys(errors).length > 0 && (
-                      <div className="ui error message">
-                        <ul className="list">
-                          {Object.values(errors).map(value => (
-                            <li key={value}>{value}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </Grid.Column>
-                </Grid.Row>
-                <Grid.Row>
-                  <Grid.Column>
-                    <PointsTable user={userInfo} />
-                  </Grid.Column>
-                </Grid.Row>
-              </Grid>
-            </>
-          )}
-          <Grid>
-            <Grid.Row>
-              <Grid.Column>
-                <Button
-                  type="reset"
-                  color="grey"
-                  onClick={() => closeModal("userInfo")}
-                >
-                  Close
-                </Button>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Modal.Content>
-      </Modal>
+      <UserProfileModal/>
     </>
   );
 }
