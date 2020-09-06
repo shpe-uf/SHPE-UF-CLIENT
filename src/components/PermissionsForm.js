@@ -29,15 +29,6 @@ export default function PermissionsForm({userInfo}) {
         console.log(originalPermissions)
     }
 
-    // if (userInfo) {
-    //     originalPermissions = userInfo.permission.split("-");
-    //     for(let key in permissions) {
-    //         if (permissions[key]) {
-    //             currentPermissions.push(key)
-    //         }
-    //     }
-    // }
-
     const [changePermissionMutation, other] = useMutation(CHANGE_PERMISSION, {
         onError(err) {
             console.log(err)
@@ -59,15 +50,19 @@ export default function PermissionsForm({userInfo}) {
     const onChange = (_, {name, checked}) => {
         //regex used to remove a permissions from the string formatted as "permission-permission-permission"
         //accounts for the three possible ways in which a permission is found, namely at the beginning, inside, or the end
-        let re = new RegExp(`/(-${name}-)|(${name}-)|(${name})/`)
+        // let re = new RegExp(`/(-${name}-)|(${name}-)|(-${name})/`)
+        let re = new RegExp(`(-${name}-)|(${name}-)|(-${name})`, 'g')
+
         
         let tempPermissions = ''
         if (checked){
             tempPermissions = permission.concat(`-${name}`)
+            console.log(tempPermissions)
+
         } else {
             tempPermissions = permissions.replace(re, '')
+            console.log(tempPermissions)
         }
-
         setPermissions(tempPermissions)
         setButtonDisabled(areEqual(originalPermissions.sort(), tempPermissions.split('-').sort()))
     };
@@ -78,7 +73,6 @@ export default function PermissionsForm({userInfo}) {
     }
 
     const changePermission = () => {
-        console.log(permissions)
         const values = {
             email: userInfo.email,
             currentEmail: loggedInUser.email,
