@@ -8,7 +8,7 @@ import { PERMISSIONS } from "../util/permissions";
 
 
 // TODO
-// It is essential that we're able to refetch the user
+// It is essential that we're able to refetch the user after the permissions have been changed
 
 let originalPermissions = []
 
@@ -26,7 +26,6 @@ export default function PermissionsForm({userInfo}) {
         }
     })
     loggedInUser.permission = permission
-    console.log(permissions)
     if (originalPermissions.length === 0) {
         originalPermissions = userInfo.permission.split("-")
     }
@@ -35,8 +34,8 @@ export default function PermissionsForm({userInfo}) {
         onError(err) {
             console.log(err)
         },
-        update(cache, data) { 
-
+        update(cache, {data: {changePermission: {permission}}}) { 
+            setPermissions(permission)
         }
     });
 
@@ -53,14 +52,13 @@ export default function PermissionsForm({userInfo}) {
         //regex used to remove a permissions from the string formatted as "permission-permission-permission"
         //accounts for the three possible ways in which a permission is found, namely at the beginning, inside, or the end
         // let re = new RegExp(`/(-${name}-)|(${name}-)|(-${name})/`)
-        let re = new RegExp(`(-${name}-)|(${name}-)|(-${name})|(${name})`)
+        let re = new RegExp(`(-${name}-)|(${name}-)|(-${name})|(${name})`, 'g')
         let tempPermissions = ''
 
         if (checked){
-            console.log(name)
             tempPermissions = permissions.concat( (permissions.length !== 0) ? `-${name}` : `${name}`)
         } else {
-            tempPermissions = permissions.replace(re, '')
+            tempPermissions = permissions.replaceAll(re, '')
         }
         setPermissions(tempPermissions)
         setButtonDisabled(areEqual(originalPermissions.sort(), tempPermissions.split('-').sort()))
@@ -72,7 +70,6 @@ export default function PermissionsForm({userInfo}) {
     }
 
     const changePermission = () => {
-        console.log(permissions)
         const values = {
             email: userInfo.email,
             currentEmail: loggedInUser.email,
