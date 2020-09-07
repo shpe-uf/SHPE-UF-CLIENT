@@ -34,14 +34,13 @@ export default function PermissionsForm({userInfo, refetch}) {
             setErrors(err.graphQLErrors[0].extensions.exception.errors);
         },
         update(cache,data) { 
+            console.log("updated too")
             originalPermissions = userInfo.permission.split("-")
             refetch()
         }
     });
 
     const areEqual = (a, b) => {
-        console.log(a)
-        console.log(b)
         if (a.length == b.length) {
             if (a.every((value, index) => value === b[index])) {
                 return true
@@ -61,6 +60,11 @@ export default function PermissionsForm({userInfo, refetch}) {
             tempPermissions = permissions.concat( (permissions.length !== 0) ? `-${name}` : `${name}`)
         } else {
             tempPermissions = permissions.replaceAll(re, '')
+        }
+
+        //if the permissions revert back to original and there were errors, reset them
+        if (areEqual(originalPermissions.sort(), tempPermissions.split('-').sort())) {
+            setErrors({})
         }
         setPermissions(tempPermissions)
         setButtonDisabled(areEqual(originalPermissions.sort(), tempPermissions.split('-').sort()))
@@ -93,7 +97,7 @@ export default function PermissionsForm({userInfo, refetch}) {
                         <Form.Group>
                             <Form.Radio
                                 toggle
-                                disabled={!loggedInUser.permission.includes(PERMISSIONS.ADMIN)}
+                                disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)}
                                 name={PERMISSIONS.TASKS}
                                 defaultChecked={userInfo.permission.includes(PERMISSIONS.TASKS)}
                                 onChange={onChange}
@@ -101,7 +105,7 @@ export default function PermissionsForm({userInfo, refetch}) {
                             />
                             <Form.Radio
                                 toggle
-                                disabled={!loggedInUser.permission.includes(PERMISSIONS.ADMIN)}
+                                disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)}
                                 name={PERMISSIONS.REQUESTS}
                                 defaultChecked={userInfo.permission.includes(PERMISSIONS.REQUESTS)}
                                 onChange={onChange}
@@ -111,7 +115,7 @@ export default function PermissionsForm({userInfo, refetch}) {
                         <Form.Group>
                             <Form.Radio
                                 toggle
-                                disabled={!loggedInUser.permission.includes(PERMISSIONS.ADMIN)}
+                                disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)}
                                 name={PERMISSIONS.EVENTS}
                                 defaultChecked={userInfo.permission.includes(PERMISSIONS.TASKS)}
                                 onChange={onChange}
@@ -119,7 +123,7 @@ export default function PermissionsForm({userInfo, refetch}) {
                             />
                             <Form.Radio
                                 toggle
-                                disabled={!loggedInUser.permission.includes(PERMISSIONS.ADMIN)}
+                                disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)}
                                 name={PERMISSIONS.SUPER}
                                 defaultChecked={userInfo.permission.includes(PERMISSIONS.SUPER)}
                                 onChange={onChange}
@@ -129,7 +133,7 @@ export default function PermissionsForm({userInfo, refetch}) {
                         <Form.Group>
                             <Form.Radio
                                 toggle
-                                disabled={!loggedInUser.permission.includes(PERMISSIONS.ADMIN)}
+                                disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)}
                                 name={PERMISSIONS.STATS}
                                 defaultChecked={userInfo.permission.includes(PERMISSIONS.STATS)}
                                 onChange={onChange}
@@ -137,7 +141,7 @@ export default function PermissionsForm({userInfo, refetch}) {
                             />
                             <Form.Radio
                                 toggle
-                                disabled={!loggedInUser.permission.includes(PERMISSIONS.ADMIN)}
+                                disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)}
                                 name={PERMISSIONS.REIMB}
                                 defaultChecked={userInfo.permission.includes(PERMISSIONS.REIMB)}
                                 onChange={onChange}
@@ -147,7 +151,7 @@ export default function PermissionsForm({userInfo, refetch}) {
                         <Form.Group>
                             <Form.Radio
                                 toggle
-                                disabled={!loggedInUser.permission.includes(PERMISSIONS.ADMIN)}
+                                disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)}
                                 name={PERMISSIONS.MEMBERS}
                                 defaultChecked={userInfo.permission.includes(PERMISSIONS.MEMBERS)}
                                 onChange={onChange}
@@ -155,7 +159,7 @@ export default function PermissionsForm({userInfo, refetch}) {
                             />
                             <Form.Radio
                                 toggle
-                                disabled={!loggedInUser.permission.includes(PERMISSIONS.ADMIN)}
+                                disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)}
                                 name={PERMISSIONS.CORP}
                                 defaultChecked={userInfo.permission.includes(PERMISSIONS.CORP)}
                                 onChange={onChange}
