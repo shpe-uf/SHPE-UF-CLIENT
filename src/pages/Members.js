@@ -8,7 +8,7 @@ import MembersTable from "../components/MembersTable";
 import { FETCH_USERS_QUERY } from "../util/graphql";
 
 function Members() {
-  var users = useQuery(FETCH_USERS_QUERY).data.getUsers;
+  const {data: {getUsers: users}, refetch} = useQuery(FETCH_USERS_QUERY);
 
   return (
     <>
@@ -17,7 +17,7 @@ function Members() {
         <Grid>
           <Grid.Row>
             <Grid.Column>
-              <MembersTable users={users} />
+              <MembersTable users={users} refetch={refetch} />
             </Grid.Column>
           </Grid.Row>
         </Grid>
