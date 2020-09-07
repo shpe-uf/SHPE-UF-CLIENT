@@ -60,7 +60,19 @@ export default function PermissionsForm({userInfo, refetch}) {
             tempPermissions = permissions.replaceAll(re, '')
         }
 
-        //if the permissions revert back to original and there were errors, reset them
+        // In this scenario, this is a regular use that has been granted a permission for the first time (that is not super).
+        // We automatically make that user an admin, granted that the user already contains at least one permission
+        if (!tempPermissions.includes(PERMISSIONS.ADMIN) && tempPermissions.length > 0) {
+            tempPermissions = permission.concat(PERMISSIONS.ADMIN)
+        }
+
+        // In this scenario, the user has been stripped of all permissions, and only admin is left.
+        // This means that we must strip the user of all permissions, so that it is only a regular user.
+        if (tempPermissions.includes(PERMISSIONS.ADMIN) && tempPermissions.length <= (PERMISSIONS.ADMIN.length + 2)) { 
+            tempPermissions = ''
+        }
+
+        // If the permissions revert back to original and there were errors, reset them
         if (areEqual(originalPermissions.sort(), tempPermissions.split('-').sort())) {
             setErrors({})
         }
