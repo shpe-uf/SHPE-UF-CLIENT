@@ -217,6 +217,7 @@ const CREATE_TASK_MUTATION = gql`
         points: $points
       }
     ) {
+      id
       name
       startDate
       endDate

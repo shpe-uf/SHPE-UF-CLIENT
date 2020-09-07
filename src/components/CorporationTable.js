@@ -13,18 +13,20 @@ import {
 
 import CorporationProfile from "../components/CorporationProfile";
 import CorporationProfileForm from "../components/CorporationProfileForm";
+import DeleteModal from "./DeleteModal";
 
 
-function CorporationTable({ corporations, deleteCorporation, refetch }) {
+function CorporationTable({ corporations, refetch }) {
   /**
    * STATES
    */
   //States for viewwing and editing corporations
   const [viewCorporationModal, setViewCorporationModal] = useState(false);
   const [editCorporationModal, setEditCorporationModal] = useState(false);
+  const [deleteCorporationModal, setDeleteCorporationModal] = useState(false);
 
   //State to keep track of the current corporation selected
-  const [corporationInfo, setCorporationInfo] = useState({});
+  const [selectedCorporation, setSelectedCorporation] = useState({});
 
   //#region MODALS
 
@@ -66,9 +68,12 @@ function CorporationTable({ corporations, deleteCorporation, refetch }) {
       <h2>Company Profile</h2>
     </Modal.Header>
     <Modal.Content>
-          <CorporationProfile corporation={corporationInfo}/>
+      <Grid>
+        <Grid.Row>
+          <Grid.Column>
+            <CorporationProfile corporation={selectedCorporation}/>
             <Button 
-              color="teal"
+              color="red"
               floated="left"
               content="Close"
               onClick={()=> closeModal("viewCorporation")}
@@ -79,10 +84,13 @@ function CorporationTable({ corporations, deleteCorporation, refetch }) {
               icon="edit"
               onClick={()=>{
                 closeModal("viewCorporation");
-                setCorporationInfo(corporationInfo);
+                setSelectedCorporation(selectedCorporation);
                 openModal("editCorporation");
               }}
             />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
     </Modal.Content>
     </Modal>
     );
@@ -102,7 +110,7 @@ function CorporationTable({ corporations, deleteCorporation, refetch }) {
           <Grid.Row>
             <Grid.Column>
             <CorporationProfileForm
-              corporation = {corporationInfo}
+              corporation = {selectedCorporation}
               refetch = {refetch}
               closeModal = {closeModal}
             />
@@ -197,7 +205,7 @@ function CorporationTable({ corporations, deleteCorporation, refetch }) {
                       <Button
                         icon = "info"
                         onClick={()=> {
-                          setCorporationInfo(corporation);
+                          setSelectedCorporation(corporation);
                           openModal("viewCorporation");
                         }}
                       />
@@ -206,18 +214,10 @@ function CorporationTable({ corporations, deleteCorporation, refetch }) {
                       <Button
                         icon
                         color="red"
-                        onClick={ 
-                          async ()=>{
-                            await deleteCorporation(
-                              {
-                                variables: {
-                                  id: corporation.id
-                                }
-                              }
-                            );
-                            refetch();
-                          }
-                        }
+                        onClick={() => {
+                          setSelectedCorporation(corporation);
+                          setDeleteCorporationModal(true);
+                        }}
                       >
                         <Icon name="x"/>
                       </Button>
@@ -230,6 +230,13 @@ function CorporationTable({ corporations, deleteCorporation, refetch }) {
           {editModal}
         </div>
       )}
+      <DeleteModal
+        open={deleteCorporationModal}
+        close={() => setDeleteCorporationModal(false)}
+        deleteItem={selectedCorporation.name}
+        deleteId={selectedCorporation.id}
+        type='corporation'
+      />
     </>
   )
 }

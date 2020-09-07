@@ -14,14 +14,12 @@ import gql from "graphql-tag";
 
 import { AuthContext } from "../context/auth";
 import UserProfile from "./UserProfile";
-import Permissions from "../util/permissions";
 import PermissionsForm from "./PermissionsForm";
 import PointsTable from "./UserEventsTable";
 
 function MembersTable({ users, refetch}) {
   const [userInfoModal, setUserInfoModal] = useState(false);
   const [userInfo, setUserInfo] = useState({});
-  const [permission, setPermission] = useState(userInfo.permission);
   const [errors, setErrors] = useState({});
 
 
@@ -44,7 +42,6 @@ function MembersTable({ users, refetch}) {
 
   function getUserInfo(userInfo) {
     setUserInfo(userInfo);
-    setPermission(userInfo.permission);
     setErrors({});
   }
 

@@ -17,12 +17,14 @@ import { useForm } from "../util/hooks";
 import moment from "moment";
 import { CSVLink } from "react-csv";
 
-import { FETCH_USERS_QUERY } from "../util/graphql";
+import { FETCH_USERS_QUERY, FETCH_EVENTS_QUERY } from "../util/graphql";
+import DeleteModal from "./DeleteModal";
 
 function EventsTable({ events }) {
   const [errors, setErrors] = useState({});
   const [manualInputModal, setManualInputModal] = useState(false);
   const [eventInfoModal, setEventInfoModal] = useState(false);
+  const [deleteEventModal, setDeleteEventModal] = useState(false)
   const [eventAttendance, setEventAttendance] = useState({});
 
   var users = [
@@ -89,6 +91,27 @@ function EventsTable({ events }) {
     variables: values,
   });
 
+
+  const [removeUserFromEvent] = useMutation(REMOVE_USER_MUTATION, {
+
+    update(cache, { data : { removeUserFromEvent } }) {
+      const {getEvents} = cache.readQuery({ query: FETCH_EVENTS_QUERY });
+      getEvents.forEach((event, pos) => {
+        if(event.name === removeUserFromEvent.name) getEvents[pos] = removeUserFromEvent
+      })
+      cache.writeQuery({
+        query: FETCH_EVENTS_QUERY,
+        data: { getEvents: getEvents},
+      });
+      setEventNameValue(removeUserFromEvent.name);
+    },
+
+    onError(err) {
+      setErrors(err.graphQLErrors[0].extensions.exception.errors);
+    }
+  });
+
+
   function manualInputCallback() {
     manualInput();
   }
@@ -119,7 +142,6 @@ function EventsTable({ events }) {
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell>Name</Table.HeaderCell>
-                <Table.HeaderCell>Code</Table.HeaderCell>
                 <Table.HeaderCell>Category</Table.HeaderCell>
                 <Table.HeaderCell>Expiration</Table.HeaderCell>
                 <Table.HeaderCell>Semester</Table.HeaderCell>
@@ -132,6 +154,7 @@ function EventsTable({ events }) {
                   Manual Input
                 </Table.HeaderCell>
                 <Table.HeaderCell textAlign="center">Info</Table.HeaderCell>
+                <Table.HeaderCell textAlign="center">Delete</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>
@@ -139,7 +162,6 @@ function EventsTable({ events }) {
                 events.map((event, index) => (
                   <Table.Row key={index}>
                     <Table.Cell>{event.name}</Table.Cell>
-                    <Table.Cell>{event.code}</Table.Cell>
                     <Table.Cell>{event.category}</Table.Cell>
                     <Table.Cell>
                       {moment(event.expiration)
@@ -178,6 +200,18 @@ function EventsTable({ events }) {
                         }}
                       >
                         <Icon name="info" />
+                      </Button>
+                    </Table.Cell>
+                    <Table.Cell textAlign="center">
+                      <Button
+                        icon
+                        onClick={() => {
+                          setEventNameValue(event.name);
+                          setDeleteEventModal(true);
+                        }}
+                        color="red"
+                      >
+                        <Icon name="x" />
                       </Button>
                     </Table.Cell>
                   </Table.Row>
@@ -270,6 +304,11 @@ function EventsTable({ events }) {
           <Grid>
             <Grid.Row>
               <Grid.Column>
+                Code: {eventAttendance.code}
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column>
                 <h3>{eventAttendance.name}</h3>
                 <p>Attendance: {eventAttendance.attendance}</p>
                 {eventAttendance.attendance === 0 ? (
@@ -290,6 +329,7 @@ function EventsTable({ events }) {
                           <Table.HeaderCell>Name</Table.HeaderCell>
                           <Table.HeaderCell>Username</Table.HeaderCell>
                           <Table.HeaderCell>Email</Table.HeaderCell>
+                          <Table.HeaderCell>Remove</Table.HeaderCell>
                         </Table.Row>
                       </Table.Header>
                       <Table.Body>
@@ -301,6 +341,21 @@ function EventsTable({ events }) {
                               </Table.Cell>
                               <Table.Cell>{member.username}</Table.Cell>
                               <Table.Cell>{member.email}</Table.Cell>
+                              <Table.Cell textAlign='center'>
+                                <Button
+                                  icon
+                                  color='red'
+                                  onClick={() => {
+                                    removeUserFromEvent({variables: {
+                                      username: member.username,
+                                      eventName: eventAttendance.name
+                                    }})
+                                  }}
+                                 
+                                >
+                                  <Icon name='x'/>
+                                </Button>
+                              </Table.Cell>
                             </Table.Row>
                           ))}
                       </Table.Body>
@@ -327,6 +382,12 @@ function EventsTable({ events }) {
           </Grid>
         </Modal.Content>
       </Modal>
+      <DeleteModal
+        open={deleteEventModal}
+        close={() => setDeleteEventModal(false)}
+        deleteItem={values.eventName}
+        type='event'
+      />
     </>
   );
 }
@@ -353,5 +414,28 @@ const MANUAL_INPUT_MUTATION = gql`
     }
   }
 `;
-
+const REMOVE_USER_MUTATION = gql`
+  mutation removeUserFromEvent($username: String!, $eventName: String!) {
+    removeUserFromEvent(
+      manualInputInput: { username: $username, eventName: $eventName }
+    ) {
+      id
+      name
+      code
+      category
+      expiration
+      request
+      points
+      attendance
+      semester
+      createdAt
+      users {
+        email
+        username
+        firstName
+        lastName
+      }
+    }
+  }
+`;
 export default EventsTable;

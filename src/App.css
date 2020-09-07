@@ -601,7 +601,9 @@ th {
 }
 
 .ui.card>.content>.header, 
-.ui.cards>.card>.content>.header {
+.ui.cards>.card>.content>.header,
+.ui.card>.content>.meta, 
+.ui.cards>.card>.content>.meta {
   overflow: hidden            !important;
   text-overflow: ellipsis     !important;
   white-space: nowrap         !important;
@@ -747,7 +749,4 @@ div::-webkit-scrollbar-thumb {
 
 .checkmark {
   position: absolute
-}
-.shpeito-spacing{
-  border-spacing: 10px;
 }

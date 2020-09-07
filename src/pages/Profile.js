@@ -169,7 +169,7 @@ function Profile() {
       case 'socialMedia':
         setMiscInfo({
           ...miscInfo,
-          classes: miscInfo.socialMedia.concat([newSocialMedia])
+          socialMedia: miscInfo.socialMedia.concat([newSocialMedia])
         })
         break;
       default:
@@ -375,11 +375,11 @@ function Profile() {
                   ))}
                   <Form.Input
                     label="Internships"
-                    placeholder={"Add your classes here"}
+                    placeholder={"Add your internships here"}
                     onKeyPress={(e)=> (e.key === 'Enter') && addToArray(e,'internship')}
                     onChange={(e) => setInternship(e.target.value)}
                     action={{
-                      onClick: (e)=>{addToArray(e,'class')},
+                      onClick: (e)=>{addToArray(e,'internship')},
                       icon: 'plus'
                     }}
                   />
@@ -402,11 +402,11 @@ function Profile() {
                   ))}
                   <Form.Input
                     label="Social Media / Links"
-                    placeholder={"Add your classes here"}
+                    placeholder={"Add your personal links here"}
                     onKeyPress={(e)=> (e.key === 'Enter') && addToArray(e,'socialMedia')}
                     onChange={(e) => setSocialMedia(e.target.value)}
                     action={{
-                      onClick: (e)=>{addToArray(e,'class')},
+                      onClick: (e)=>{addToArray(e,'socialMedia')},
                       icon: 'plus'
                     }}
                   />

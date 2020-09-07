@@ -20,22 +20,6 @@ function CorporateDatabase() {
 
   var [logoFile, setLogoFile] = useState({});
 
-  /**
-   * MUTATIONS
-   */
-  //Mutation for Removing Corporations
-  const [deleteCorporation] = useMutation(DELETE_CORPORATION_MUTATION,{
-    update(
-      _,
-      {
-        data: {deleteCorporation: corporationData}
-      }
-    ){
-      corporations = corporationData;
-      // setDisplayCorporations(true);
-    }
-  });
-
   //mutation for retrieving company array
   var {data, refetch} = useQuery(FETCH_CORPORATIONS_QUERY);
   var corporations = (data) ? data.getCorporations : [];
@@ -435,7 +419,6 @@ function CorporateDatabase() {
             <Grid.Column>
               <CorporationTable 
                   corporations={corporations}
-                  deleteCorporation={deleteCorporation}
                   refetch={refetch}
                 />
             </Grid.Column>
@@ -497,39 +480,6 @@ const CREATE_CORPORATION = gql`
       name
     }
   }
-`;
-
-const DELETE_CORPORATION_MUTATION = gql`
- mutation deleteCorporation (
-   $id: ID!
- ) {
-   deleteCorporation (
-     deleteCorporationInput: {
-      id: $id
-     }
-   ){
-    name
-    logo
-    slogan
-    majors
-    industries
-    overview
-    mission
-    goals
-    businessModel
-    newsLink
-    applyLink
-    academia
-    govContractor
-    nonProfit
-    visaSponsor
-    shpeSponsor
-    industryPartnership
-    fallBBQ
-    springBBQ
-    nationalConvention
-   }
- }
 `;
 
 export default CorporateDatabase;

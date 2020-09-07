@@ -154,6 +154,7 @@ export const COUNTRY_STAT = gql`
 export const FETCH_TASKS_QUERY = gql`
   {
     getTasks {
+      id
       name
       startDate
       endDate

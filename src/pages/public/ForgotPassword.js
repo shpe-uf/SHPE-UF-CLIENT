@@ -4,6 +4,7 @@ import gql from "graphql-tag";
 import { useMutation } from "@apollo/react-hooks";
 
 import { useForm } from "../../util/hooks";
+import { NavLink } from "react-router-dom";
 
 function ForgotPassword(props){
 
@@ -75,7 +76,7 @@ function ForgotPassword(props){
                         <span>
                           <Button type="submit">Reset Password</Button>
                           <p className="resetLink">
-                            or <a href="/login">Log In</a>
+                            or <NavLink to="/forgot">Log In</NavLink>
                           </p>
                         </span>
                       </Form>
@@ -124,7 +125,7 @@ function ForgotPassword(props){
                         <span>
                           <Button type="submit">Reset Password</Button>
                           <p className="resetLink">
-                            or <a href="/login">Log In</a>
+                            or <NavLink to="/forgot">Log In</NavLink>
                           </p>
                         </span>
                       </Form>
@@ -173,7 +174,7 @@ function ForgotPassword(props){
                         <span>
                           <Button type="submit">Reset Password</Button>
                           <p className="resetLink">
-                            or <a href="/login">Log In</a>
+                            or <NavLink to="/forgot">Log In</NavLink>
                           </p>
                         </span>
                       </Form>

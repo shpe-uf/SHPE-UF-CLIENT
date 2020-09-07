@@ -272,7 +272,7 @@ const FETCH_USER_QUERY = gql`
       tasks {
         name
         points
-        createdAt
+        startDate
       }
       bookmarkedTasks
     }

@@ -16,9 +16,8 @@ import { useQuery, useMutation } from "@apollo/react-hooks";
 import { useForm } from "../util/hooks";
 import { CSVLink } from "react-csv";
 
-import DeleteTaskModal from "../components/DeleteTaskModal";
-
 import { FETCH_USERS_QUERY, FETCH_TASKS_QUERY } from "../util/graphql";
+import DeleteModal from "./DeleteModal";
 
 function TasksTable({tasks}) {
   const [errors, setErrors] = useState({});
@@ -305,7 +304,7 @@ function TasksTable({tasks}) {
                               </Table.Cell>
                               <Table.Cell>{member.username}</Table.Cell>
                               <Table.Cell>{member.email}</Table.Cell>
-                              <Table.Cell textAlign='right'>
+                              <Table.Cell textAlign='center'>
                                 <Button
                                   icon
                                   color='red'
@@ -316,7 +315,7 @@ function TasksTable({tasks}) {
                                     }})
                                   }}
                                 >
-                                  <Icon name='x'/>
+                                  <Icon name='x' />
                                 </Button>
                               </Table.Cell>
                             </Table.Row>
@@ -345,10 +344,12 @@ function TasksTable({tasks}) {
           </Grid>
         </Modal.Content>
       </Modal>
-      <DeleteTaskModal
+      <DeleteModal
         open={deleteTaskModal}
         close={() => setDeleteTaskModal(false)}
-        task={selectedTask}
+        deleteItem={selectedTask.name}
+        deleteId={selectedTask.id}
+        type='task'
       />
     </>
   );
