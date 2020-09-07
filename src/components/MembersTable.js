@@ -66,12 +66,6 @@ function MembersTable({ users, refetch}) {
   // }
 
   const UserProfileModal = () => {
-    let {loading, data, refetch} = useQuery(FETCH_USER_QUERY, {
-      variables: {
-          userId: userInfo.id
-      }
-    })
-
     return (
       <Modal
           open={userInfoModal}
@@ -85,20 +79,7 @@ function MembersTable({ users, refetch}) {
           <Modal.Content>
               <>
                 <UserProfile user={userInfo}>
-                  {/* {data && data.getUser && (
-                    <PermissionsForm userInfo={data.getUser} refetch={refetch}/>
-                  )} */}
-                  {data ? (
-                    data.getUser ? (
-                      <PermissionsForm userInfo={data.getUser} refetch={refetch}/>
-                    ) : (
-                        <>
-                        <Dimmer active>
-                          <Loader active size='large' inline='centered' />
-                        </Dimmer>
-                        </>
-                      )
-                  ): ("")}
+                  <PermissionsForm userInfo={userInfo} />
                 </UserProfile>
                 <Grid>
                   <Grid.Row>
@@ -198,7 +179,7 @@ function MembersTable({ users, refetch}) {
               ))}
           </Table.Body>
         </Table>
-        <UserProfileModal/>
+        {userInfoModal && (<UserProfileModal/>)}
       </div>
     </>
   );

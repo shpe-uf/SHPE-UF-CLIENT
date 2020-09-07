@@ -34,9 +34,7 @@ export default function PermissionsForm({userInfo, refetch}) {
             setErrors(err.graphQLErrors[0].extensions.exception.errors);
         },
         update(cache,data) { 
-            console.log("updated too")
             originalPermissions = userInfo.permission.split("-")
-            refetch()
         }
     });
 
