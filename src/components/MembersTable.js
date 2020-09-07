@@ -45,25 +45,25 @@ function MembersTable({ users, refetch}) {
     setErrors({});
   }
 
-  const [changePermissionMutation] = useMutation(CHANGE_PERMISSION, {
-    onError(err) {
-      setErrors(err.graphQLErrors[0].extensions.exception.errors);
-    },
-    onCompleted() {
-      setPermission(user.permission);
-      userInfo.permission = user.permission;
-    }
-  });
+  // const [changePermissionMutation] = useMutation(CHANGE_PERMISSION, {
+  //   onError(err) {
+  //     setErrors(err.graphQLErrors[0].extensions.exception.errors);
+  //   },
+  //   onCompleted() {
+  //     setPermission(user.permission);
+  //     userInfo.permission = user.permission;
+  //   }
+  // });
 
-  function changePermission(value) {
-    var values = {
-      email: userInfo.email,
-      currentEmail: user.email,
-      permission: value
-    }
-    changePermissionMutation({ variables: values });
-    user.permission = value;
-  }
+  // function changePermission(value) {
+  //   var values = {
+  //     email: userInfo.email,
+  //     currentEmail: user.email,
+  //     permission: value
+  //   }
+  //   changePermissionMutation({ variables: values });
+  //   user.permission = value;
+  // }
 
   const UserProfileModal = () => {
     let {loading, data, refetch} = useQuery(FETCH_USER_QUERY, {
