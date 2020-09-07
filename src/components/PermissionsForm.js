@@ -26,21 +26,22 @@ export default function PermissionsForm({userInfo, refetch}) {
         }
     })
     loggedInUser.permission = permission
-    if (originalPermissions.length === 0) {
-        originalPermissions = userInfo.permission.split("-")
-    }
+    originalPermissions = userInfo.permission.split("-")
+
 
     const [changePermissionMutation, other] = useMutation(CHANGE_PERMISSION, {
         onError(err) {
-            console.log(err)
+            setErrors(err.graphQLErrors[0].extensions.exception.errors);
         },
         update(cache,data) { 
-            console.log(data)
+            originalPermissions = userInfo.permission.split("-")
             refetch()
         }
     });
 
     const areEqual = (a, b) => {
+        console.log(a)
+        console.log(b)
         if (a.length == b.length) {
             if (a.every((value, index) => value === b[index])) {
                 return true
