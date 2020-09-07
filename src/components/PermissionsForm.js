@@ -7,16 +7,11 @@ import {Grid, Form, Button, Message} from "semantic-ui-react";
 import { PERMISSIONS } from "../util/permissions";
 
 
-// TODO
-// It is essential that we're able to refetch the user after the permissions have been changed
-
-let originalPermissions = []
-
 export default function PermissionsForm({userInfo, refetch}) {
     const [errors, setErrors] = useState({});
-    const [buttonDisabled, setButtonDisabled] = useState(true)
+    const [buttonDisabled, setButtonDisabled] = useState(true);
     const [permissions, setPermissions] = useState(userInfo.permission);
-
+    const [originalPermissions, setOriginalPermissions] = useState(userInfo.permission.split("-"));
     // get the current user, query the database to get the permissions of that
     // user, and update the object with those permissions.
     let {user: loggedInUser} = useContext(AuthContext)
@@ -26,15 +21,14 @@ export default function PermissionsForm({userInfo, refetch}) {
         }
     })
     loggedInUser.permission = permission
-    originalPermissions = userInfo.permission.split("-")
-
 
     const [changePermissionMutation, other] = useMutation(CHANGE_PERMISSION, {
         onError(err) {
             setErrors(err.graphQLErrors[0].extensions.exception.errors);
         },
-        update(cache,data) { 
-            originalPermissions = userInfo.permission.split("-")
+        update(cache,{data:{changePermission:{permission}}}) { 
+            console.log(permission)
+            setOriginalPermissions(permission.split("-"))
         }
     });
 
