@@ -59,9 +59,9 @@ function Home() {
                 The Society of Hispanic Professional Engineers Chapter at the
                 University of Florida (SHPE UF) was formerly known as the
                 Hispanic Engineering Society. It was founded in the fall of 1982
-                in an effort to provide Hispanic Engineers, Mathematicians, and
-                Scientists with opportunities to develop as professionals while
-                offering an amiable social environment.Since its inception it
+                in an effort to provide Hispanic engineers, mathematicians, and
+                scientists with opportunities to develop as professionals while
+                offering an amiable social environment. Since its inception it
                 has prompted the recruitment, retention, and graduation of
                 Hispanic students in the fields of science, technology,
                 engineering, and mathematics. The society coordinates community
@@ -82,15 +82,15 @@ function Home() {
               <p>
                 SHPE changes lives by empowering the Hispanic community to
                 realize its fullest potential and to impact the world through
-                STEM awareness, access, support and development. SHPE's vision
-                is a world where Hispanics are highly valued and influential as
-                the leading innovators, scientists, mathematicians and
-                engineers. Statement of Values: We are brought together by
+                STEM awareness, access, support and development. 
+                
+                Statement of Values: We are brought together by
                 heritage, social responsibility and desire to improve the
                 equality of all people through the use of science and
                 technology. We value excellence in education, professional
                 pursuits and leadership. We obtain excellence through integrity,
                 empowerment, achievement, diversity and continuous improvement.
+                
                 Strategic Focus Areas: We will fulfill our mission by increasing
                 educational opportunities, promoting professional and personal
                 growth, carrying out our social responsibility to be involved in
