@@ -53,14 +53,7 @@ function ImageCrop(props) {
         crop.width,
         crop.height
       )
-
-      const reader = new FileReader()
-      canvas.toBlob(blob => {
-        reader.readAsDataURL(blob)
-        reader.onloadend = () => {
-          setCroppedUrl(reader.result, 'cropped.jpg')
-        }
-      })
+      setCroppedUrl(canvas.toDataURL("image/jpeg"))
   }
 
   return (
