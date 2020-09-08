@@ -4,22 +4,22 @@ import { useMutation } from "@apollo/react-hooks";
 import { Segment, Dimmer, Loader, Container, Grid, Responsive } from "semantic-ui-react";
 
 function Confirm(props){
-  const [confirming, setConfirming] = useState(true);
+  const [confirming, setConfirming] = useState(false);
 
-  const value  = {
-    id: props.match.params.id
-  };
+  // const value  = {
+  //   id: props.match.params.id
+  // };
 
-  const [confirm] = useMutation(CONFIRM_USER, {
-    onCompleted(){
-      setConfirming(false);
-    },
-    variables: value
-  });
+  // const [confirm] = useMutation(CONFIRM_USER, {
+  //   onCompleted(){
+  //     setConfirming(false);
+  //   },
+  //   variables: value
+  // });
 
-  useEffect(() => {
-    confirm();
-  });
+  // useEffect(() => {
+  //   confirm();
+  // });
 
   return(
 
@@ -60,9 +60,9 @@ function Confirm(props){
                         <Segment className="title-bg-accent-1">
                           <div className="loading">
                               <div>
-                                <h1 className="text-white confirmMsg">
+                                <h3 className="text-white confirmMsg">
                                   Thank you for confirming your account!
-                                </h1>
+                                </h3>
                               </div>
                           </div>
                         </Segment>
@@ -81,9 +81,9 @@ function Confirm(props){
                         <Segment className="title-bg-accent-1">
                           <div className="loading">
                               <div>
-                                <h1 className="text-white confirmMsg">
+                                <h3 className="text-white confirmMsg">
                                   Thank you for confirming your account!
-                                </h1>
+                                </h3>
                               </div>
                           </div>
                         </Segment>

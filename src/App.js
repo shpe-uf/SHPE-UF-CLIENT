@@ -70,7 +70,7 @@ function App() {
       <Router>
         <MenuBar permission={permission}/>
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={Confirm} />
           <AuthRoute exact path="/login" component={Login} />
           <AuthRoute exact path="/register" component={Register} />
           <Route exact path="/register/alumni" component={RegisterAlumni} />
