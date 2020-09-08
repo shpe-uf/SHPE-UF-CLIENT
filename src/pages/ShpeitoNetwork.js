@@ -158,7 +158,11 @@ function ShpeitoNetwork(props) {
                       className="image-profile"
                     />
                   )}
-                  <p></p>
+                  <Card.Content>
+                    <Card.Header>
+                      {shpeito.firstName} {shpeito.lastName}
+                    </Card.Header>
+                  </Card.Content>
                   <Modal
                     trigger={
                       <Button
