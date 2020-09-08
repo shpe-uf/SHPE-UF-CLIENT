@@ -26,10 +26,10 @@ import ethnicityOptions from "../assets/options/ethnicity.json";
 import sexOptions from "../assets/options/sex.json";
 
 import placeholder from "../assets/images/placeholder.png";
+import ImageCrop from "../components/ImageCrop";
 
 function Profile() {
-  const [photoFile, setPhotoFile] = useState({});
-  const [originalPhoto, setOriginalPhoto] = useState({});
+  const [photoFile, setPhotoFile] = useState('');
   const [errors, setErrors] = useState({});
   const [editProfileModal, setEditProfileModal] = useState(false);
   const [miscInfo, setMiscInfo] = useState({
@@ -76,7 +76,6 @@ function Profile() {
     })
     setEditProfileModal(true);
     setPhotoFile(user.photo);
-    setOriginalPhoto(user.photo);
   };
 
   const closeModal = (name) => {
@@ -135,20 +134,6 @@ function Profile() {
     values.internships = miscInfo.internships;
     values.socialMedia = miscInfo.socialMedia;
     editProfile();
-  }
-
-  function photoSelectedHandler(event) {
-    if (event.target.files.length > 0) {
-      var a = new FileReader();
-      a.readAsDataURL(event.target.files[0]);
-      a.onload = function (e) {
-        values.photo = e.target.result;
-        setPhotoFile(e.target.result);
-      };
-    } else {
-      setPhotoFile(originalPhoto);
-      values.photo = originalPhoto;
-    }
   }
 
   function addToArray(e, arrayType) {
@@ -240,11 +225,12 @@ function Profile() {
                       style={{ marginBottom: 16 }}
                     />
                   )}
-                  <Form.Input
-                    type="file"
-                    label="Photo"
-                    error={errors.photo ? true : false}
-                    onChange={(() => onChange, photoSelectedHandler)}
+                  <ImageCrop
+                    setPhotoFile={setPhotoFile}
+                    values={values}
+                    onChange={onChange}
+                    errors={errors}
+                    type='profile'
                   />
                   <Form.Input
                     type="text"
