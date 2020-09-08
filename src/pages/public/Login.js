@@ -54,7 +54,7 @@ function Login(props) {
           <Container>
             <Grid>
               <Grid.Row centered>
-                <Grid.Column width={6}>
+                <Grid.Column width={8}>
                   <Segment.Group>
                     <Segment className="title-bg-accent-1">
                       <h1 className="text-white">Login</h1>
@@ -250,7 +250,7 @@ function Login(props) {
                         <span>
                           <Button type="submit">Login</Button>
                           <p style={{display : 'inline-block', float : 'right', marginTop: 12}}>
-                            Forgot Password? <NavLink to="/forgot">Click Here</NavLink>
+                            <NavLink to="/forgot">Forgot Password?</NavLink>
                           </p>
                         </span>
                       </Form>
