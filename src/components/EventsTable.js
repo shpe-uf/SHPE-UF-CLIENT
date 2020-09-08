@@ -11,12 +11,11 @@ import {
   Grid,
 } from "semantic-ui-react";
 import gql from "graphql-tag";
-import { useQuery, useMutation } from "@apollo/react-hooks";
-import { useForm } from "../util/hooks";
+import { useMutation } from "@apollo/react-hooks";
 import moment from "moment";
 import { CSVLink } from "react-csv";
 
-import { FETCH_USERS_QUERY, FETCH_EVENTS_QUERY } from "../util/graphql";
+import { FETCH_EVENTS_QUERY } from "../util/graphql";
 import DeleteModal from "./DeleteModal";
 import ManualInputModal from "./ManualInputModal";
 
@@ -25,18 +24,7 @@ function EventsTable({ events }) {
   const [eventInfoModal, setEventInfoModal] = useState(false);
   const [deleteEventModal, setDeleteEventModal] = useState(false)
   const [eventAttendance, setEventAttendance] = useState({});
-
-  const closeModal = (name) => {
-    if (name === "manualInput") {
-      setErrors(false);
-      setManualInputModal(false);
-    }
-
-    if (name === "eventInfo") {
-      setEventAttendance({});
-      setEventInfoModal(false);
-    }
-  };
+  const [selectedEvent, setSelectedEvent] = useState('');
 
   const [removeUserFromEvent] = useMutation(REMOVE_USER_MUTATION, {
 
@@ -49,17 +37,9 @@ function EventsTable({ events }) {
         query: FETCH_EVENTS_QUERY,
         data: { getEvents: getEvents},
       });
-      setEventNameValue(removeUserFromEvent.name);
+      setSelectedEvent(removeUserFromEvent.name);
     }
   });
-
-  function setEventNameValue(eventName) {
-    values.eventName = eventName;
-  }
-
-  function getEventAttendance(eventInfo) {
-    setEventAttendance(eventInfo);
-  }
 
   return (
     <>
@@ -121,7 +101,7 @@ function EventsTable({ events }) {
                       <Button
                         icon
                         onClick={() => {
-                          setEventNameValue(event.name);
+                          setSelectedEvent(event.name);
                           setManualInputModal(true);
                         }}
                       >
@@ -132,7 +112,7 @@ function EventsTable({ events }) {
                       <Button
                         icon
                         onClick={() => {
-                          getEventAttendance(event);
+                          setEventAttendance(event);
                           setEventInfoModal(true);
                         }}
                       >
@@ -143,7 +123,7 @@ function EventsTable({ events }) {
                       <Button
                         icon
                         onClick={() => {
-                          setEventNameValue(event.name);
+                          setSelectedEvent(event.name);
                           setDeleteEventModal(true);
                         }}
                         color="red"
@@ -160,12 +140,9 @@ function EventsTable({ events }) {
 
       <ManualInputModal
         open={manualInputModal}
-        users={users}
-        errors={errors}
-        loading={loading}
-        onChange={onChange}
-        onSubmit={onSubmit}
-        closeModal={() => setManualInputModal(false)}
+        type='event'
+        addObject={selectedEvent}
+        setModalOpen={setManualInputModal}
       />
 
       <Modal
@@ -262,35 +239,13 @@ function EventsTable({ events }) {
       <DeleteModal
         open={deleteEventModal}
         close={() => setDeleteEventModal(false)}
-        deleteItem={values.eventName}
+        deleteItem={selectedEvent}
         type='event'
       />
     </>
   );
 }
 
-const MANUAL_INPUT_MUTATION = gql`
-  mutation manualInput($username: String!, $eventName: String!) {
-    manualInput(
-      manualInputInput: { username: $username, eventName: $eventName }
-    ) {
-      name
-      code
-      category
-      expiration
-      semester
-      request
-      attendance
-      points
-      users {
-        firstName
-        lastName
-        username
-        email
-      }
-    }
-  }
-`;
 const REMOVE_USER_MUTATION = gql`
   mutation removeUserFromEvent($username: String!, $eventName: String!) {
     removeUserFromEvent(
