@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {
   Button,
   Dimmer,
-  Form,
   Grid,
   Header,
   Icon,
@@ -13,20 +12,17 @@ import {
 } from "semantic-ui-react";
 import gql from "graphql-tag";
 import { useQuery, useMutation } from "@apollo/react-hooks";
-import { useForm } from "../util/hooks";
 import { CSVLink } from "react-csv";
 
 import { FETCH_USERS_QUERY, FETCH_TASKS_QUERY } from "../util/graphql";
 import DeleteModal from "./DeleteModal";
+import ManualInputModal from "./ManualInputModal";
 
 function TasksTable({tasks}) {
-  const [errors, setErrors] = useState({});
   const [manualTaskInputModal, setManualTaskInputModal] = useState(false);
   const [taskInfoModal, setTaskInfoModal] = useState(false);
   const [deleteTaskModal, setDeleteTaskModal] = useState(false);
   const [selectedTask, setSelectedTask] = useState({});
-
-  let users = useQuery(FETCH_USERS_QUERY).data.getUsers;
 
   const openModal = name => {
     if (name === "manualTaskInput") {
@@ -37,45 +33,6 @@ function TasksTable({tasks}) {
       setTaskInfoModal(true);
     }
   };
-
-  const closeModal = name => {
-    if (name === "manualTaskInput") {
-      values.username = "";
-      values.taskName = "";
-      setErrors(false);
-      setManualTaskInputModal(false);
-    }
-
-    if (name === "taskInfo") {
-      setTaskInfoModal(false);
-    }
-  };
-
-  const { values, onChange, onSubmit } = useForm(manualTaskInputCallback, {
-    username: "",
-    taskName: ""
-  });
-
-  const [manualTaskInput, { loading }] = useMutation(MANUAL_INPUT_MUTATION, {
-
-    update(cache, { data : { manualTaskInput } }) {
-      const {getTasks} = cache.readQuery({ query: FETCH_TASKS_QUERY });
-      getTasks.forEach((task, pos) => {
-        if(task.name === manualTaskInput.name) getTasks[pos] = manualTaskInput
-      })
-      cache.writeQuery({
-        query: FETCH_TASKS_QUERY,
-        data: { getTasks: getTasks},
-      });
-      closeModal('manualTaskInput')
-    },
-
-    onError(err) {
-      setErrors(err.graphQLErrors[0].extensions.exception.errors);
-    },
-
-    variables: values
-  });
 
   const [removeUserFromTask] = useMutation(REMOVE_USER_MUTATION, {
 
@@ -89,21 +46,8 @@ function TasksTable({tasks}) {
         data: { getTasks: getTasks},
       });
       setSelectedTask(removeUserFromTask);
-    },
-
-    onError(err) {
-      setErrors(err.graphQLErrors[0].extensions.exception.errors);
     }
   });
-
-  function manualTaskInputCallback() {
-    manualTaskInput();
-  }
-
-  function setTaskNameValue(taskName) {
-    values.username = users ? users[0].username : ''
-    values.taskName = taskName;
-  }
 
   return (
     <>
@@ -151,8 +95,8 @@ function TasksTable({tasks}) {
                       <Button
                         icon
                         onClick={() => {
-                          setTaskNameValue(task.name);
-                          openModal("manualTaskInput");
+                          setSelectedTask(task);
+                          setManualTaskInputModal(true);
                         }}
                       >
                         <Icon name="i cursor" />
@@ -163,7 +107,7 @@ function TasksTable({tasks}) {
                         icon
                         onClick={() => {
                           setSelectedTask(task);
-                          openModal("taskInfo");
+                          setTaskInfoModal(true);
                         }}
                       >
                         <Icon name="info" />
@@ -188,75 +132,12 @@ function TasksTable({tasks}) {
         </div>
       )}
 
-      <Modal
+      <ManualInputModal
         open={manualTaskInputModal}
-        size="tiny"
-        closeOnEscape={true}
-        closeOnDimmerClick={false}
-      >
-        <Modal.Header>
-          <h2>Manual Input</h2>
-        </Modal.Header>
-        <Modal.Content>
-          <Grid>
-            <Grid.Row>
-              <Grid.Column>
-                {Object.keys(errors).length > 0 && (
-                  <div className="ui error message">
-                    <ul className="list">
-                      {Object.values(errors).map(value => (
-                        <li key={value}>{value}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-                <Form
-                  onSubmit={onSubmit}
-                  noValidate
-                  className={loading ? "loading" : ""}
-                >
-                  <Form.Field
-                    control="select"
-                    label="Member"
-                    name="username"
-                    value={values.username}
-                    error={errors.username ? true : false}
-                    onChange={onChange}
-                  >
-                    {users &&
-                      users.map(user =>
-                        user.username === "" ? (
-                          <option value={user.username} key={user.username}>
-                            {user.lastName + user.firstName}
-                          </option>
-                        ) : (
-                          <option value={user.username} key={user.username}>
-                            {user.lastName +
-                              ", " +
-                              user.firstName +
-                              " (" +
-                              user.username +
-                              ")"}
-                          </option>
-                        )
-                      )}
-                  </Form.Field>
-                  <Button
-                    type="reset"
-                    color="grey"
-                    onClick={() => closeModal("manualTaskInput")}
-                  >
-                    Cancel
-                  </Button>
-                  <Button type="submit" floated="right">
-                    Submit
-                  </Button>
-                </Form>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Modal.Content>
-      </Modal>
+        type='task'
+        addObject={selectedTask.name}
+        setModalOpen={setManualTaskInputModal}
+      />
 
       <Modal
         open={taskInfoModal}
@@ -327,7 +208,7 @@ function TasksTable({tasks}) {
                 <Button
                   type="reset"
                   color="grey"
-                  onClick={() => closeModal("taskInfo")}
+                  onClick={() => setTaskInfoModal(false)}
                 >
                   Cancel
                 </Button>
@@ -354,29 +235,6 @@ function TasksTable({tasks}) {
     </>
   );
 }
-
-const MANUAL_INPUT_MUTATION = gql`
-  mutation manualTaskInput($username: String!, $taskName: String!) {
-    manualTaskInput(
-      manualTaskInputInput: { username: $username, taskName: $taskName }
-    ) {
-      name
-      startDate
-      endDate
-      description
-      points
-      attendance
-      semester
-      createdAt
-      users {
-        email
-        username
-        firstName
-        lastName
-      }
-    }
-  }
-`;
 
 const REMOVE_USER_MUTATION = gql`
   mutation removeUserFromTask($username: String!, $taskName: String!) {
