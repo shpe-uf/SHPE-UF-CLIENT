@@ -73,7 +73,7 @@ function Tasks() {
   });
 
   function createTaskCallback() {
-    createTask();
+    !isNaN(values.points) && createTask();
   }
 
   if(tasks && filter !== '') {
