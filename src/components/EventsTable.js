@@ -8,89 +8,23 @@ import {
   Header,
   Button,
   Modal,
-  Form,
   Grid,
 } from "semantic-ui-react";
 import gql from "graphql-tag";
-import { useQuery, useMutation } from "@apollo/react-hooks";
-import { useForm } from "../util/hooks";
+import { useMutation } from "@apollo/react-hooks";
 import moment from "moment";
 import { CSVLink } from "react-csv";
 
-import { FETCH_USERS_QUERY, FETCH_EVENTS_QUERY } from "../util/graphql";
+import { FETCH_EVENTS_QUERY } from "../util/graphql";
 import DeleteModal from "./DeleteModal";
+import ManualInputModal from "./ManualInputModal";
 
 function EventsTable({ events }) {
-  const [errors, setErrors] = useState({});
   const [manualInputModal, setManualInputModal] = useState(false);
   const [eventInfoModal, setEventInfoModal] = useState(false);
   const [deleteEventModal, setDeleteEventModal] = useState(false)
   const [eventAttendance, setEventAttendance] = useState({});
-
-  var users = [
-    {
-      username: "",
-      firstName: "",
-      lastName: "",
-    },
-  ];
-
-  var userData = useQuery(FETCH_USERS_QUERY).data.getUsers;
-
-  if (userData) {
-    for (var i = 0; i < userData.length; i++) {
-      users.push(userData[i]);
-    }
-  }
-
-  const openModal = (name) => {
-    if (name === "manualInput") {
-      setManualInputModal(true);
-    }
-
-    if (name === "eventInfo") {
-      setEventInfoModal(true);
-    }
-  };
-
-  const closeModal = (name) => {
-    if (name === "manualInput") {
-      values.username = "";
-      values.eventName = "";
-      setErrors(false);
-      setManualInputModal(false);
-    }
-
-    if (name === "eventInfo") {
-      setEventAttendance({});
-      setEventInfoModal(false);
-    }
-  };
-
-  const { values, onChange, onSubmit } = useForm(manualInputCallback, {
-    username: "",
-    eventName: "",
-  });
-
-  const [manualInput, { loading }] = useMutation(MANUAL_INPUT_MUTATION, {
-    update(_, { data: { manualInput: eventsData } }) {
-      values.username = "";
-      values.eventName = "";
-      events.splice(0, events.length);
-      for (var i = 0; i < eventsData.length; i++) {
-        events.push(eventsData[i]);
-      }
-      setErrors(false);
-      setManualInputModal(false);
-    },
-
-    onError(err) {
-      setErrors(err.graphQLErrors[0].extensions.exception.errors);
-    },
-
-    variables: values,
-  });
-
+  const [selectedEvent, setSelectedEvent] = useState('');
 
   const [removeUserFromEvent] = useMutation(REMOVE_USER_MUTATION, {
 
@@ -103,26 +37,9 @@ function EventsTable({ events }) {
         query: FETCH_EVENTS_QUERY,
         data: { getEvents: getEvents},
       });
-      setEventNameValue(removeUserFromEvent.name);
-    },
-
-    onError(err) {
-      setErrors(err.graphQLErrors[0].extensions.exception.errors);
+      setSelectedEvent(removeUserFromEvent.name);
     }
   });
-
-
-  function manualInputCallback() {
-    manualInput();
-  }
-
-  function setEventNameValue(eventName) {
-    values.eventName = eventName;
-  }
-
-  function getEventAttendance(eventInfo) {
-    setEventAttendance(eventInfo);
-  }
 
   return (
     <>
@@ -184,8 +101,8 @@ function EventsTable({ events }) {
                       <Button
                         icon
                         onClick={() => {
-                          setEventNameValue(event.name);
-                          openModal("manualInput");
+                          setSelectedEvent(event.name);
+                          setManualInputModal(true);
                         }}
                       >
                         <Icon name="i cursor" />
@@ -195,8 +112,8 @@ function EventsTable({ events }) {
                       <Button
                         icon
                         onClick={() => {
-                          getEventAttendance(event);
-                          openModal("eventInfo");
+                          setEventAttendance(event);
+                          setEventInfoModal(true);
                         }}
                       >
                         <Icon name="info" />
@@ -206,7 +123,7 @@ function EventsTable({ events }) {
                       <Button
                         icon
                         onClick={() => {
-                          setEventNameValue(event.name);
+                          setSelectedEvent(event.name);
                           setDeleteEventModal(true);
                         }}
                         color="red"
@@ -221,75 +138,12 @@ function EventsTable({ events }) {
         </div>
       )}
 
-      <Modal
+      <ManualInputModal
         open={manualInputModal}
-        size="tiny"
-        closeOnEscape={true}
-        closeOnDimmerClick={false}
-      >
-        <Modal.Header>
-          <h2>Manual Input</h2>
-        </Modal.Header>
-        <Modal.Content>
-          <Grid>
-            <Grid.Row>
-              <Grid.Column>
-                {Object.keys(errors).length > 0 && (
-                  <div className="ui error message">
-                    <ul className="list">
-                      {Object.values(errors).map((value) => (
-                        <li key={value}>{value}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-                <Form
-                  onSubmit={onSubmit}
-                  noValidate
-                  className={loading ? "loading" : ""}
-                >
-                  <Form.Field
-                    control="select"
-                    label="Member"
-                    name="username"
-                    value={values.username}
-                    error={errors.username ? true : false}
-                    onChange={onChange}
-                  >
-                    {users &&
-                      users.map((user) =>
-                        user.username === "" ? (
-                          <option value={user.username} key={user.username}>
-                            {user.lastName + user.firstName}
-                          </option>
-                        ) : (
-                          <option value={user.username} key={user.username}>
-                            {user.lastName +
-                              ", " +
-                              user.firstName +
-                              " (" +
-                              user.username +
-                              ")"}
-                          </option>
-                        )
-                      )}
-                  </Form.Field>
-                  <Button
-                    type="reset"
-                    color="grey"
-                    onClick={() => closeModal("manualInput")}
-                  >
-                    Cancel
-                  </Button>
-                  <Button type="submit" floated="right">
-                    Submit
-                  </Button>
-                </Form>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Modal.Content>
-      </Modal>
+        type='event'
+        addObject={selectedEvent}
+        setModalOpen={setManualInputModal}
+      />
 
       <Modal
         open={eventInfoModal}
@@ -365,7 +219,7 @@ function EventsTable({ events }) {
                 <Button
                   type="reset"
                   color="grey"
-                  onClick={() => closeModal("eventInfo")}
+                  onClick={() => setEventInfoModal(false)}
                 >
                   Cancel
                 </Button>
@@ -385,35 +239,13 @@ function EventsTable({ events }) {
       <DeleteModal
         open={deleteEventModal}
         close={() => setDeleteEventModal(false)}
-        deleteItem={values.eventName}
+        deleteItem={selectedEvent}
         type='event'
       />
     </>
   );
 }
 
-const MANUAL_INPUT_MUTATION = gql`
-  mutation manualInput($username: String!, $eventName: String!) {
-    manualInput(
-      manualInputInput: { username: $username, eventName: $eventName }
-    ) {
-      name
-      code
-      category
-      expiration
-      semester
-      request
-      attendance
-      points
-      users {
-        firstName
-        lastName
-        username
-        email
-      }
-    }
-  }
-`;
 const REMOVE_USER_MUTATION = gql`
   mutation removeUserFromEvent($username: String!, $eventName: String!) {
     removeUserFromEvent(
