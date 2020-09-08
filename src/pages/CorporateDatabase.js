@@ -13,12 +13,13 @@ import Title from "../components/Title";
 import CorporationTable from "../components/CorporationTable";
 
 import placeholder from "../assets/images/placeholder.png";
+import ImageCrop from "../components/ImageCrop";
 
 function CorporateDatabase() {
   const [errors, setErrors] = useState({});
   const [addCorporationModal, setAddCorporationModal] = useState(false);
 
-  var [logoFile, setLogoFile] = useState({});
+  var [logoFile, setLogoFile] = useState('');
 
   //mutation for retrieving company array
   var {data, refetch} = useQuery(FETCH_CORPORATIONS_QUERY);
@@ -155,11 +156,12 @@ function CorporateDatabase() {
                 style={{ marginBottom: 16 }}
               />
             )}
-            <Form.Input
-              type="file"
-              label="Logo"
-              error={errors.logo ? true : false}
-              onChange={(() => onChange, logoSelectedHandler)}
+            <ImageCrop
+              setPhotoFile={setLogoFile}
+              values={values}
+              onChange={onChange}
+              errors={errors}
+              type='corporation'
             />
             <Form.Group widths="equal">
               <Form.Input
@@ -384,20 +386,6 @@ function CorporateDatabase() {
   </Modal>
   );
   //#endregion
-
-  function logoSelectedHandler(event) {
-    if (event.target.files.length > 0) {
-      var a = new FileReader();
-      a.readAsDataURL(event.target.files[0]);
-      a.onload = function(e) {
-        values.logo = e.target.result;
-        setLogoFile(e.target.result);
-      };
-    } else {
-      setLogoFile({});
-      values.logo = {};
-    }
-  }
 
   return (
     <>

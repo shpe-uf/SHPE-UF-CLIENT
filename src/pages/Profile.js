@@ -14,8 +14,6 @@ import { ToastContainer, toast } from "react-toastify";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { useForm } from "../util/hooks";
 import { AuthContext } from "../context/auth";
-import ReactCrop from 'react-image-crop';
-import 'react-image-crop/dist/ReactCrop.css';
 
 import Title from "../components/Title";
 import UserProfile from "../components/UserProfile";
@@ -28,9 +26,10 @@ import ethnicityOptions from "../assets/options/ethnicity.json";
 import sexOptions from "../assets/options/sex.json";
 
 import placeholder from "../assets/images/placeholder.png";
+import ImageCrop from "../components/ImageCrop";
 
 function Profile() {
-  const [photoFile, setPhotoFile] = useState({});
+  const [photoFile, setPhotoFile] = useState('');
   const [errors, setErrors] = useState({});
   const [editProfileModal, setEditProfileModal] = useState(false);
   const [miscInfo, setMiscInfo] = useState({
@@ -137,19 +136,6 @@ function Profile() {
     editProfile();
   }
 
-  function photoSelectedHandler(event) {
-    if (event.target.files.length > 0) {
-      console.log(event.target)
-      var a = new FileReader();
-      a.readAsDataURL(event.target.files[0]);
-      a.onload = function (e) {
-        console.log(e)
-        values.photo = e.target.result;
-        setPhotoFile(e.target.result);
-      };
-    }
-  }
-
   function addToArray(e, arrayType) {
     e.preventDefault()
     switch(arrayType){
@@ -239,11 +225,12 @@ function Profile() {
                       style={{ marginBottom: 16 }}
                     />
                   )}
-                  <Form.Input
-                    type="file"
-                    label="Photo"
-                    error={errors.photo ? true : false}
-                    onChange={(() => onChange, photoSelectedHandler)}
+                  <ImageCrop
+                    setPhotoFile={setPhotoFile}
+                    values={values}
+                    onChange={onChange}
+                    errors={errors}
+                    type='profile'
                   />
                   <Form.Input
                     type="text"

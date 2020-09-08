@@ -15,7 +15,7 @@ function email(email) {
   return (
     <a href={"mailto:" + email} className="link-email">
       <Icon name="mail" />
-      Contact me via email
+      Contact via email
     </a>
   );
 }
@@ -55,35 +55,35 @@ function EBoardCards() {
         fluid
         image={marketing}
         header="Jonathan Morales"
-        meta="Vice President of Marketing"
+        meta="VP of Marketing"
         extra={email("marketing.shpeuf@gmail.com")}
       />
       <Card
         fluid
         image={corporate}
         header="Jonathan Medina"
-        meta="Vice President of Corporate Affairs"
+        meta="VP of Corporate Affairs"
         extra={email("corporate.shpeuf@gmail.com")}
       />
       <Card
         fluid
         image={technology}
         header="Rodrigo Lobo"
-        meta="Vice President of Technology"
+        meta="VP of Technology"
         extra={email("vptech.shpeuf@gmail.com")}
       />
       <Card
         fluid
         image={external}
         header="Domingo Alegria"
-        meta="Vice President of External Affairs"
+        meta="VP of External Affairs"
         extra={email("vpexternal.shpeuf@gmail.com")}
       />
       <Card
         fluid
         image={internal}
         header="Duncan Ross"
-        meta="Vice President of Internal Affairs"
+        meta="VP of Internal Affairs"
         extra={email("vpinternal.shpeuf@gmail.com")}
       />
     </>

@@ -7,10 +7,10 @@ function CorporationProfile({corporation}) {
         <Grid columns={2} stackable>
           <Grid.Row>
             {/* Left Column */}
-            <Grid.Column width={6} stretched>
+            <Grid.Column width={6}>
               <h3>{corporation.name}</h3>
               <p>"{corporation.slogan}"</p>
-              <Image src={corporation.logo}></Image>
+              <Image src={corporation.logo} size='large'></Image>
               <Divider/>
               <Responsive
                 minWidth={768}
