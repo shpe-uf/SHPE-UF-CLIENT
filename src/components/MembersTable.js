@@ -9,6 +9,7 @@ import {
   Grid
 } from "semantic-ui-react";
 
+import { useMutation, useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
 import { AuthContext } from "../context/auth";
@@ -16,7 +17,7 @@ import UserProfile from "./UserProfile";
 import PermissionsForm from "./PermissionsForm";
 import PointsTable from "./UserEventsTable";
 
-function MembersTable({ users }) {
+function MembersTable({ users, refetch}) {
   const [userInfoModal, setUserInfoModal] = useState(false);
   const [userInfo, setUserInfo] = useState({});
   const [errors, setErrors] = useState({});
@@ -35,12 +36,88 @@ function MembersTable({ users }) {
     if (name === "userInfo") {
       setUserInfo({});
       setUserInfoModal(false);
+      refetch()
     }
   };
 
   function getUserInfo(userInfo) {
     setUserInfo(userInfo);
     setErrors({});
+  }
+
+  // const [changePermissionMutation] = useMutation(CHANGE_PERMISSION, {
+  //   onError(err) {
+  //     setErrors(err.graphQLErrors[0].extensions.exception.errors);
+  //   },
+  //   onCompleted() {
+  //     setPermission(user.permission);
+  //     userInfo.permission = user.permission;
+  //   }
+  // });
+
+  // function changePermission(value) {
+  //   var values = {
+  //     email: userInfo.email,
+  //     currentEmail: user.email,
+  //     permission: value
+  //   }
+  //   changePermissionMutation({ variables: values });
+  //   user.permission = value;
+  // }
+
+  const UserProfileModal = () => {
+    return (
+      <Modal
+          open={userInfoModal}
+          size="large"
+          closeOnEscape={true}
+          closeOnDimmerClick={false}
+        >
+          <Modal.Header>
+            <h2>Member Info</h2>
+          </Modal.Header>
+          <Modal.Content>
+              <>
+                <UserProfile user={userInfo}>
+                  <PermissionsForm userInfo={userInfo} />
+                </UserProfile>
+                <Grid>
+                  <Grid.Row>
+                    <Grid.Column>
+                      {Object.keys(errors).length > 0 && (
+                        <div className="ui error message">
+                          <ul className="list">
+                            {Object.values(errors).map(value => (
+                              <li key={value}>{value}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </Grid.Column>
+                  </Grid.Row>
+                  <Grid.Row>
+                    <Grid.Column>
+                      <PointsTable user={userInfo} />
+                    </Grid.Column>
+                  </Grid.Row>
+                </Grid>
+              </>
+            <Grid>
+              <Grid.Row>
+                <Grid.Column>
+                  <Button
+                    type="reset"
+                    color="grey"
+                    onClick={() => closeModal("userInfo")}
+                  >
+                    Close
+                  </Button>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </Modal.Content>
+        </Modal>
+      )
   }
 
   return (
@@ -102,60 +179,8 @@ function MembersTable({ users }) {
               ))}
           </Table.Body>
         </Table>
+        {userInfoModal && (<UserProfileModal/>)}
       </div>
-
-      <Modal
-        open={userInfoModal}
-        size="large"
-        closeOnEscape={true}
-        closeOnDimmerClick={false}
-      >
-        <Modal.Header>
-          <h2>Member Info</h2>
-        </Modal.Header>
-        <Modal.Content>
-          {userInfo && (
-            <>
-              <UserProfile user={userInfo}>
-                <PermissionsForm userInfo={userInfo}/>
-              </UserProfile>
-              <Grid>
-                <Grid.Row>
-                  <Grid.Column>
-                    {Object.keys(errors).length > 0 && (
-                      <div className="ui error message">
-                        <ul className="list">
-                          {Object.values(errors).map(value => (
-                            <li key={value}>{value}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </Grid.Column>
-                </Grid.Row>
-                <Grid.Row>
-                  <Grid.Column>
-                    <PointsTable user={userInfo} />
-                  </Grid.Column>
-                </Grid.Row>
-              </Grid>
-            </>
-          )}
-          <Grid>
-            <Grid.Row>
-              <Grid.Column>
-                <Button
-                  type="reset"
-                  color="grey"
-                  onClick={() => closeModal("userInfo")}
-                >
-                  Close
-                </Button>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Modal.Content>
-      </Modal>
     </>
   );
 }
@@ -163,6 +188,29 @@ function MembersTable({ users }) {
 const CHANGE_PERMISSION = gql`
   mutation changePermission($email: String!, $currentEmail: String!, $permission: String!) {
     changePermission(email: $email, currentEmail: $currentEmail, permission: $permission)
+  }
+`;
+
+const FETCH_USER_QUERY = gql`
+  query getUser($userId: ID!) {
+    getUser(userId: $userId) {
+      firstName
+      lastName
+      photo
+      username
+      email
+      major
+      year
+      graduating
+      country
+      ethnicity
+      sex
+      createdAt
+      permission
+      classes
+      internships
+      socialMedia
+    }
   }
 `;
 

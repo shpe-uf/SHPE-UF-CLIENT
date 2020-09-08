@@ -7,23 +7,11 @@ import {Grid, Form, Button, Message} from "semantic-ui-react";
 import { PERMISSIONS } from "../util/permissions";
 
 
-let originalPermissions = []
-
-export default function PermissionsForm({userInfo}) {
+export default function PermissionsForm({userInfo, refetch}) {
     const [errors, setErrors] = useState({});
-    const [buttonDisabled, setButtonDisabled] = useState(true)
-    const [permissions, setPermissions] = useState({
-        admin: userInfo.permission.includes(PERMISSIONS.ADMIN),
-        super: userInfo.permission.includes(PERMISSIONS.SUPER),
-        members: userInfo.permission.includes(PERMISSIONS.MEMBERS),
-        events: userInfo.permission.includes(PERMISSIONS.EVENTS),
-        tasks: userInfo.permission.includes(PERMISSIONS.TASKS),
-        requests: userInfo.permission.includes(PERMISSIONS.REQUESTS),
-        statistics: userInfo.permission.includes(PERMISSIONS.STATS),
-        corporateDatabase: userInfo.permission.includes(PERMISSIONS.CORP),
-        reimbursements: userInfo.permission.includes(PERMISSIONS.REIMB)
-    });
-
+    const [buttonDisabled, setButtonDisabled] = useState(true);
+    const [permissions, setPermissions] = useState(userInfo.permission);
+    const [originalPermissions, setOriginalPermissions] = useState(userInfo.permission.split("-"));
     // get the current user, query the database to get the permissions of that
     // user, and update the object with those permissions.
     let {user: loggedInUser} = useContext(AuthContext)
@@ -33,35 +21,14 @@ export default function PermissionsForm({userInfo}) {
         }
     })
     loggedInUser.permission = permission
-    let currentPermissions = []
-
-    if (userInfo) {
-        originalPermissions = userInfo.permission.split("-");
-        for(let key in permissions) {
-            if (permissions[key]) {
-                currentPermissions.push(key)
-            }
-        }
-    }
 
     const [changePermissionMutation, other] = useMutation(CHANGE_PERMISSION, {
         onError(err) {
-            setPermissions({
-                admin: userInfo.permission.includes(PERMISSIONS.ADMIN),
-                super: userInfo.permission.includes(PERMISSIONS.SUPER),
-                members: userInfo.permission.includes(PERMISSIONS.MEMBERS),
-                events: userInfo.permission.includes(PERMISSIONS.EVENTS),
-                tasks: userInfo.permission.includes(PERMISSIONS.TASKS),
-                requests: userInfo.permission.includes(PERMISSIONS.REQUESTS),
-                statistics: userInfo.permission.includes(PERMISSIONS.STATS),
-                corporateDatabase: userInfo.permission.includes(PERMISSIONS.CORP),
-                reimbursements: userInfo.permission.includes(PERMISSIONS.REIMB)
-            });
             setErrors(err.graphQLErrors[0].extensions.exception.errors);
         },
-        update(cache, data) { 
-            userInfo.permission = currentPermissions.toString().replace(/,/g, "-");
-            setPermissions(currentPermissions)
+        update(cache,{data:{changePermission:{permission}}}) { 
+            console.log(permission)
+            setOriginalPermissions(permission.split("-"))
         }
     });
 
@@ -75,15 +42,36 @@ export default function PermissionsForm({userInfo}) {
     }
 
     const onChange = (_, {name, checked}) => {
+        //regex used to remove a permissions from the string formatted as "permission-permission-permission"
+        //accounts for the three possible ways in which a permission is found, namely at the beginning, inside, or the end
+        // let re = new RegExp(`/(-${name}-)|(${name}-)|(-${name})/`)
+        let re = new RegExp(`(-${name}-)|(${name}-)|(-${name})|(${name})`, 'g')
+        let tempPermissions = ''
 
         if (checked){
-            currentPermissions.push(name)
+            tempPermissions = permissions.concat( (permissions.length !== 0) ? `-${name}` : `${name}`)
         } else {
-            currentPermissions.splice(currentPermissions.indexOf(name), 1);
+            tempPermissions = permissions.replaceAll(re, '')
         }
 
-        setPermissions({ ...permissions, [name]: checked });
-        setButtonDisabled(areEqual(originalPermissions.sort(), currentPermissions.sort()))
+        // In this scenario, this is a regular use that has been granted a permission for the first time (that is not super).
+        // We automatically make that user an admin, granted that the user already contains at least one permission
+        if (!tempPermissions.includes(PERMISSIONS.ADMIN) && tempPermissions.length > 0) {
+            tempPermissions = permission.concat(PERMISSIONS.ADMIN)
+        }
+
+        // In this scenario, the user has been stripped of all permissions, and only admin is left.
+        // This means that we must strip the user of all permissions, so that it is only a regular user.
+        if (tempPermissions.includes(PERMISSIONS.ADMIN) && tempPermissions.length <= (PERMISSIONS.ADMIN.length + 2)) { 
+            tempPermissions = ''
+        }
+
+        // If the permissions revert back to original and there were errors, reset them
+        if (areEqual(originalPermissions.sort(), tempPermissions.split('-').sort())) {
+            setErrors({})
+        }
+        setPermissions(tempPermissions)
+        setButtonDisabled(areEqual(originalPermissions.sort(), tempPermissions.split('-').sort()))
     };
 
     const onSubmit = () => {
@@ -95,7 +83,7 @@ export default function PermissionsForm({userInfo}) {
         const values = {
             email: userInfo.email,
             currentEmail: loggedInUser.email,
-            permission: currentPermissions.toString().replace(/,/g, "-")
+            permission: permissions
         }
         changePermissionMutation({variables: values})
     }
@@ -113,7 +101,7 @@ export default function PermissionsForm({userInfo}) {
                         <Form.Group>
                             <Form.Radio
                                 toggle
-                                disabled={!loggedInUser.permission.includes(PERMISSIONS.ADMIN)}
+                                disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)}
                                 name={PERMISSIONS.TASKS}
                                 defaultChecked={userInfo.permission.includes(PERMISSIONS.TASKS)}
                                 onChange={onChange}
@@ -121,7 +109,7 @@ export default function PermissionsForm({userInfo}) {
                             />
                             <Form.Radio
                                 toggle
-                                disabled={!loggedInUser.permission.includes(PERMISSIONS.ADMIN)}
+                                disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)}
                                 name={PERMISSIONS.REQUESTS}
                                 defaultChecked={userInfo.permission.includes(PERMISSIONS.REQUESTS)}
                                 onChange={onChange}
@@ -131,7 +119,7 @@ export default function PermissionsForm({userInfo}) {
                         <Form.Group>
                             <Form.Radio
                                 toggle
-                                disabled={!loggedInUser.permission.includes(PERMISSIONS.ADMIN)}
+                                disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)}
                                 name={PERMISSIONS.EVENTS}
                                 defaultChecked={userInfo.permission.includes(PERMISSIONS.TASKS)}
                                 onChange={onChange}
@@ -139,7 +127,7 @@ export default function PermissionsForm({userInfo}) {
                             />
                             <Form.Radio
                                 toggle
-                                disabled={!loggedInUser.permission.includes(PERMISSIONS.ADMIN)}
+                                disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)}
                                 name={PERMISSIONS.SUPER}
                                 defaultChecked={userInfo.permission.includes(PERMISSIONS.SUPER)}
                                 onChange={onChange}
@@ -149,7 +137,7 @@ export default function PermissionsForm({userInfo}) {
                         <Form.Group>
                             <Form.Radio
                                 toggle
-                                disabled={!loggedInUser.permission.includes(PERMISSIONS.ADMIN)}
+                                disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)}
                                 name={PERMISSIONS.STATS}
                                 defaultChecked={userInfo.permission.includes(PERMISSIONS.STATS)}
                                 onChange={onChange}
@@ -157,7 +145,7 @@ export default function PermissionsForm({userInfo}) {
                             />
                             <Form.Radio
                                 toggle
-                                disabled={!loggedInUser.permission.includes(PERMISSIONS.ADMIN)}
+                                disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)}
                                 name={PERMISSIONS.REIMB}
                                 defaultChecked={userInfo.permission.includes(PERMISSIONS.REIMB)}
                                 onChange={onChange}
@@ -167,7 +155,7 @@ export default function PermissionsForm({userInfo}) {
                         <Form.Group>
                             <Form.Radio
                                 toggle
-                                disabled={!loggedInUser.permission.includes(PERMISSIONS.ADMIN)}
+                                disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)}
                                 name={PERMISSIONS.MEMBERS}
                                 defaultChecked={userInfo.permission.includes(PERMISSIONS.MEMBERS)}
                                 onChange={onChange}
@@ -175,7 +163,7 @@ export default function PermissionsForm({userInfo}) {
                             />
                             <Form.Radio
                                 toggle
-                                disabled={!loggedInUser.permission.includes(PERMISSIONS.ADMIN)}
+                                disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)}
                                 name={PERMISSIONS.CORP}
                                 defaultChecked={userInfo.permission.includes(PERMISSIONS.CORP)}
                                 onChange={onChange}
@@ -206,8 +194,11 @@ export default function PermissionsForm({userInfo}) {
 }
 
 const CHANGE_PERMISSION = gql`
-  mutation changePermission($email: String!, $currentEmail: String!, $permission: String!) {
-    changePermission(email: $email, currentEmail: $currentEmail, permission: $permission)
+  mutation changePermission($email: String!, $currentEmail: String!, $permission: String!) 
+  {
+    changePermission(email: $email, currentEmail: $currentEmail, permission: $permission){
+        permission
+    }
   }
 `;
 

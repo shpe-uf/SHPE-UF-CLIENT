@@ -7,6 +7,7 @@ import majorOptions from "../assets/options/major.json";
 import industryOptions from "../assets/options/industry.json";
 
 import { Image, Button, Form } from "semantic-ui-react";
+import ImageCrop from "./ImageCrop";
 
 function CorporationProfileForm({corporation, closeModal, refetch}) {
 
@@ -19,7 +20,7 @@ function CorporationProfileForm({corporation, closeModal, refetch}) {
     const [industries, setIndustries] = useState(corporation.industries);
 
     //State for image handling
-    var [logoFile, setLogoFile] = useState({});
+    var [logoFile, setLogoFile] = useState('');
     let originalLogo = {};
 
     function logoSelectedHandler(event) {
@@ -82,279 +83,280 @@ function CorporationProfileForm({corporation, closeModal, refetch}) {
       closeModal("editCorporation");
     }
 
-      return(
-        <>
-        {Object.keys(errors).length > 0 && (
-          <div className="ui error message">
-              <ul className="list">
-                {Object.values(errors).map(value => (
-                  <li key={value}>{value}</li>
-                ))}
-              </ul>
-          </div>
-        )}
-        <Form
-          onSubmit={onSubmit}
-          noValidate
-          className={loading ? "loading" : ""}
-        >
-                {logoFile === "" ? (
-                  <Image
-                    rounded
-                    size = "small"
-                    src={corporation.logo}
-                    className="image-profile"
-                    style={{ marginBottom: 16 }}
-                  />
-                ) : (
-                  <Image
-                    rounded
-                    size = "small"
-                    src={corporation.logo}
-                    className="image-profile"
-                    style={{ marginBottom: 16 }}
-                  />
-                )}
+    return(
+      <>
+      {Object.keys(errors).length > 0 && (
+        <div className="ui error message">
+            <ul className="list">
+              {Object.values(errors).map(value => (
+                <li key={value}>{value}</li>
+              ))}
+            </ul>
+        </div>
+      )}
+      <Form
+        onSubmit={onSubmit}
+        noValidate
+        className={loading ? "loading" : ""}
+      >
+              {logoFile === "" ? (
+                <Image
+                  fluid
+                  rounded
+                  src={corporation.logo}
+                  className="image-profile"
+                  style={{ marginBottom: 16 }}
+                />
+              ) : (
+                <Image
+                  fluid
+                  rounded
+                  src={logoFile}
+                  className="image-profile"
+                  style={{ marginBottom: 16 }}
+                />
+              )}
+              <ImageCrop
+                setPhotoFile={setLogoFile}
+                values={values}
+                onChange={onChange}
+                errors={errors}
+                type='corporation'
+              />
+              <Form.Group widths="equal">
                 <Form.Input
-                  type="file"
-                  label="Logo"
-                  error={errors.logo ? true : false}
-                  onChange={(() => onChange, logoSelectedHandler)}
-                />
-                <Form.Group widths="equal">
-                  <Form.Input
-                    type="text"
-                    label="Company Name"
-                    name="name"
-                    value={values.name}
-                    error={errors.name ? true : false}
-                    onChange={onChange}
-                  />
-                  <Form.Input
-                    type="text"
-                    label="Slogan"
-                    name="slogan"
-                    value={values.slogan}
-                    error={errors.slogan ? true : false}
-                    onChange={onChange}
-                  />
-                </Form.Group>
-                <Form.Group widths="equal">
-                  <Form.Dropdown
-                    label="Majors"
-                    name="majors"
-                    fluid multiple selection 
-                    value={majors}  //take display data from the state
-                    options={majorOptions}
-                    onChange={(param, data) => {
-                      setMajors(data.value);      //update the majors state
-                      values.majors = data.value; //update the values with the current data
-                    }}
-                    error={errors.majors ? true : false}
-                  >
-                  </Form.Dropdown>
-                  <Form.Dropdown
-                    label="Industries"
-                    name="industries"
-                    fluid multiple selection 
-                    value={industries}  //take display data from the state
-                    options={industryOptions}
-                    onChange={(param, data) => {
-                      setIndustries(data.value);      //update the industries state
-                      values.industries = data.value; //update the values with the current data
-                    }}
-                    error={errors.industries ? true : false}
-                  />
-                </Form.Group>
-                <Form.TextArea
                   type="text"
-                  label="Overview"
-                  name="overview"
-                  value={values.overview}
-                  error={errors.overview ? true : false}
+                  label="Company Name"
+                  name="name"
+                  value={values.name}
+                  error={errors.name ? true : false}
                   onChange={onChange}
                 />
-                <Form.TextArea
+                <Form.Input
                   type="text"
-                  label="Mission"
-                  name="mission"
-                  value={values.mission}
-                  error={errors.mission ? true : false}
+                  label="Slogan"
+                  name="slogan"
+                  value={values.slogan}
+                  error={errors.slogan ? true : false}
                   onChange={onChange}
                 />
-                <Form.TextArea
-                  type="text"
-                  label="Goals"
-                  name="goals"
-                  value={values.goals}
-                  error={errors.goals ? true : false}
-                  onChange={onChange}
-                />
-                <Form.TextArea
-                  type="text"
-                  label="Business Model/Operations Highlights"
-                  name="businessModel"
-                  value={values.businessModel}
-                  error={errors.businessModel ? true : false}
-                  onChange={onChange}
-                />
-                <Form.Group widths="equal">
-                  <Form.Input
-                    type="text"
-                    label="News Link"
-                    name="newsLink"
-                    value={values.newsLink}
-                    error={errors.newsLink ? true : false}
-                    onChange={onChange}
-                  />
-                  <Form.Input
-                    type="text"
-                    label="Apply Link"
-                    name="applyLink"
-                    value={values.applyLink}
-                    error={errors.applyLink ? true : false}
-                    onChange={onChange}
-                  />
-                </Form.Group>
-                <Form.Field>
-                  <div className="ui toggle checkbox">
-                    <input
-                      type="checkbox"
-                      name="academia"
-                      defaultChecked={values.academia === "true" ? true : false}
-                      value={values.academia === "true" ? false : true }
-                      onChange={onChange}
-                    />
-                    <label>
-                      Academia?
-                    </label>
-                  </div>
-                </Form.Field>
-                <Form.Field>
-                  <div className="ui toggle checkbox">
-                    <input
-                      type="checkbox"
-                      name="govContractor"
-                      defaultChecked={values.govContractor === "true" ? true : false}
-                      value={values.govContractor === "true" ? false : true }
-                      onChange={onChange}
-                    />
-                    <label>
-                      Government Contractor?
-                    </label>
-                  </div>
-                </Form.Field>
-                <Form.Field>
-                  <div className="ui toggle checkbox">
-                    <input
-                      type="checkbox"
-                      name="nonProfit"
-                      defaultChecked={values.nonProfit === "true" ? true : false}
-                      value={values.nonProfit === "true" ? false : true}
-                      onChange={onChange}
-                    />
-                    <label>
-                      Non profit?
-                    </label>
-                  </div>
-                </Form.Field>
-                <Form.Field>
-                  <div className="ui toggle checkbox">
-                    <input
-                      type="checkbox"
-                      name="visaSponsor"
-                      defaultChecked={values.visaSponsor === "true" ? true : false}
-                      value={values.visaSponsor === "true" ? false : true}
-                      onChange={onChange}
-                    />
-                    <label>
-                      Visa Sponsor?
-                    </label>
-                  </div>
-                </Form.Field>
-                <Form.Field>
-                  <div className="ui toggle checkbox">
-                    <input
-                      type="checkbox"
-                      name="shpeSponsor"
-                      defaultChecked={values.shpeSponsor === "true" ? true : false}
-                      value={values.shpeSponsor === "true" ? false : true}
-                      onChange={onChange}
-                    />
-                    <label>
-                      SHPE UF Sponsor?
-                    </label>
-                  </div>
-                </Form.Field>
-                <Form.Field>
-                  <div className="ui toggle checkbox">
-                    <input
-                      type="checkbox"
-                      name="industryPartnership"
-                      defaultChecked={values.industryPartnership === "true" ? true : false}
-                      value={values.industryPartnership === "true" ? false :true}
-                      onChange={onChange}
-                    />
-                    <label>
-                      Industry Partner?
-                    </label>
-                  </div>
-                </Form.Field>
-                <Form.Field>
-                  <div className="ui toggle checkbox">
-                    <input
-                      type="checkbox"
-                      name="fallBBQ"
-                      defaultChecked={values.fallBBQ === "true" ? true : false}
-                      value={values.fallBBQ === "true" ? false :true}
-                      onChange={onChange}
-                    />
-                    <label>
-                      Attending Fall BBQ?
-                    </label>
-                  </div>
-                </Form.Field>
-                <Form.Field>
-                  <div className="ui toggle checkbox">
-                    <input
-                      type="checkbox"
-                      name="springBBQ"
-                      defaultChecked={values.springBBQ === "true" ? true : false}
-                      value={values.springBBQ === "true" ? false : true}
-                      onChange={onChange}
-                    />
-                    <label>
-                      Attending Spring BBQ?
-                    </label>
-                  </div>
-                </Form.Field>
-                <Form.Field>
-                  <div className="ui toggle checkbox">
-                    <input
-                      type="checkbox"
-                      name="nationalConvention"
-                      defaultChecked={values.nationalConvention === "true" ? true : false}
-                      value={values.nationalConvention === "true" ? false : true}
-                      onChange={onChange}
-                    />
-                    <label>
-                      Attending SHPE National Convention?
-                    </label>
-                  </div>
-                </Form.Field>
-                <Button
-                    type="reset"
-                    color="grey"
-                    onClick={() => closeModal("editCorporation")}
+              </Form.Group>
+              <Form.Group widths="equal">
+                <Form.Dropdown
+                  label="Majors"
+                  name="majors"
+                  fluid multiple selection 
+                  value={majors}  //take display data from the state
+                  options={majorOptions}
+                  onChange={(param, data) => {
+                    setMajors(data.value);      //update the majors state
+                    values.majors = data.value; //update the values with the current data
+                  }}
+                  error={errors.majors ? true : false}
                 >
-                    Cancel
-                  </Button>
-                <Button type="submit" floated="right">
-                  Accept
+                </Form.Dropdown>
+                <Form.Dropdown
+                  label="Industries"
+                  name="industries"
+                  fluid multiple selection 
+                  value={industries}  //take display data from the state
+                  options={industryOptions}
+                  onChange={(param, data) => {
+                    setIndustries(data.value);      //update the industries state
+                    values.industries = data.value; //update the values with the current data
+                  }}
+                  error={errors.industries ? true : false}
+                />
+              </Form.Group>
+              <Form.TextArea
+                type="text"
+                label="Overview"
+                name="overview"
+                value={values.overview}
+                error={errors.overview ? true : false}
+                onChange={onChange}
+              />
+              <Form.TextArea
+                type="text"
+                label="Mission"
+                name="mission"
+                value={values.mission}
+                error={errors.mission ? true : false}
+                onChange={onChange}
+              />
+              <Form.TextArea
+                type="text"
+                label="Goals"
+                name="goals"
+                value={values.goals}
+                error={errors.goals ? true : false}
+                onChange={onChange}
+              />
+              <Form.TextArea
+                type="text"
+                label="Business Model/Operations Highlights"
+                name="businessModel"
+                value={values.businessModel}
+                error={errors.businessModel ? true : false}
+                onChange={onChange}
+              />
+              <Form.Group widths="equal">
+                <Form.Input
+                  type="text"
+                  label="News Link"
+                  name="newsLink"
+                  value={values.newsLink}
+                  error={errors.newsLink ? true : false}
+                  onChange={onChange}
+                />
+                <Form.Input
+                  type="text"
+                  label="Apply Link"
+                  name="applyLink"
+                  value={values.applyLink}
+                  error={errors.applyLink ? true : false}
+                  onChange={onChange}
+                />
+              </Form.Group>
+              <Form.Field>
+                <div className="ui toggle checkbox">
+                  <input
+                    type="checkbox"
+                    name="academia"
+                    defaultChecked={values.academia === "true" ? true : false}
+                    value={values.academia === "true" ? false : true }
+                    onChange={onChange}
+                  />
+                  <label>
+                    Academia?
+                  </label>
+                </div>
+              </Form.Field>
+              <Form.Field>
+                <div className="ui toggle checkbox">
+                  <input
+                    type="checkbox"
+                    name="govContractor"
+                    defaultChecked={values.govContractor === "true" ? true : false}
+                    value={values.govContractor === "true" ? false : true }
+                    onChange={onChange}
+                  />
+                  <label>
+                    Government Contractor?
+                  </label>
+                </div>
+              </Form.Field>
+              <Form.Field>
+                <div className="ui toggle checkbox">
+                  <input
+                    type="checkbox"
+                    name="nonProfit"
+                    defaultChecked={values.nonProfit === "true" ? true : false}
+                    value={values.nonProfit === "true" ? false : true}
+                    onChange={onChange}
+                  />
+                  <label>
+                    Non profit?
+                  </label>
+                </div>
+              </Form.Field>
+              <Form.Field>
+                <div className="ui toggle checkbox">
+                  <input
+                    type="checkbox"
+                    name="visaSponsor"
+                    defaultChecked={values.visaSponsor === "true" ? true : false}
+                    value={values.visaSponsor === "true" ? false : true}
+                    onChange={onChange}
+                  />
+                  <label>
+                    Visa Sponsor?
+                  </label>
+                </div>
+              </Form.Field>
+              <Form.Field>
+                <div className="ui toggle checkbox">
+                  <input
+                    type="checkbox"
+                    name="shpeSponsor"
+                    defaultChecked={values.shpeSponsor === "true" ? true : false}
+                    value={values.shpeSponsor === "true" ? false : true}
+                    onChange={onChange}
+                  />
+                  <label>
+                    SHPE UF Sponsor?
+                  </label>
+                </div>
+              </Form.Field>
+              <Form.Field>
+                <div className="ui toggle checkbox">
+                  <input
+                    type="checkbox"
+                    name="industryPartnership"
+                    defaultChecked={values.industryPartnership === "true" ? true : false}
+                    value={values.industryPartnership === "true" ? false :true}
+                    onChange={onChange}
+                  />
+                  <label>
+                    Industry Partner?
+                  </label>
+                </div>
+              </Form.Field>
+              <Form.Field>
+                <div className="ui toggle checkbox">
+                  <input
+                    type="checkbox"
+                    name="fallBBQ"
+                    defaultChecked={values.fallBBQ === "true" ? true : false}
+                    value={values.fallBBQ === "true" ? false :true}
+                    onChange={onChange}
+                  />
+                  <label>
+                    Attending Fall BBQ?
+                  </label>
+                </div>
+              </Form.Field>
+              <Form.Field>
+                <div className="ui toggle checkbox">
+                  <input
+                    type="checkbox"
+                    name="springBBQ"
+                    defaultChecked={values.springBBQ === "true" ? true : false}
+                    value={values.springBBQ === "true" ? false : true}
+                    onChange={onChange}
+                  />
+                  <label>
+                    Attending Spring BBQ?
+                  </label>
+                </div>
+              </Form.Field>
+              <Form.Field>
+                <div className="ui toggle checkbox">
+                  <input
+                    type="checkbox"
+                    name="nationalConvention"
+                    defaultChecked={values.nationalConvention === "true" ? true : false}
+                    value={values.nationalConvention === "true" ? false : true}
+                    onChange={onChange}
+                  />
+                  <label>
+                    Attending SHPE National Convention?
+                  </label>
+                </div>
+              </Form.Field>
+              <Button
+                  type="reset"
+                  color="grey"
+                  onClick={() => closeModal("editCorporation")}
+              >
+                  Cancel
                 </Button>
-              </Form>
-        </>
-    )
+              <Button type="submit" floated="right">
+                Accept
+              </Button>
+            </Form>
+      </>
+  )
 }
 
 const EDIT_CORPORATION = gql`

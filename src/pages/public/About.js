@@ -29,7 +29,7 @@ function About() {
                 serve as role models in the Hispanic community.
               </p>
               <p>
-                The concept of Networking was the key basis for the
+                The concept of networking was the key basis for the
                 organization. SHPE quickly established two student chapters to
                 begin the network that would grow to encompass the nation as
                 well as reach countries outside the United States. Today, SHPE
@@ -47,8 +47,8 @@ function About() {
                 The Society of Hispanic Professional Engineers Chapter at the
                 University of Florida (SHPE UF) was formerly known as the
                 Hispanic Engineering Society. It was founded in the fall of 1982
-                in an effort to provide Hispanic Engineers, Mathematicians, and
-                Scientists with opportunities to develop as professionals while
+                in an effort to provide Hispanic engineers, mathematicians, and
+                scientists with opportunities to develop as professionals while
                 offering an amiable social environment.
               </p>
               <p>
@@ -57,7 +57,7 @@ function About() {
                 technology, engineering, and mathematics. The society
                 coordinates community outreach, corporate exposition meetings,
                 academic development programs, and non-technical events. This is
-                to ensure SHPE-UF members are presented with the opportunities
+                to ensure SHPE UF members are presented with the opportunities
                 necessary to succeed professionally, academically, and socially
                 as Hispanic professionals.
               </p>
