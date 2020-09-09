@@ -6,20 +6,20 @@ import { Segment, Dimmer, Loader, Container, Grid, Responsive } from "semantic-u
 function Confirm(props){
   const [confirming, setConfirming] = useState(false);
 
-  // const value  = {
-  //   id: props.match.params.id
-  // };
+  const value  = {
+    id: props.match.params.id
+  };
 
-  // const [confirm] = useMutation(CONFIRM_USER, {
-  //   onCompleted(){
-  //     setConfirming(false);
-  //   },
-  //   variables: value
-  // });
+  const [confirm] = useMutation(CONFIRM_USER, {
+    onCompleted(){
+      setConfirming(false);
+    },
+    variables: value
+  });
 
-  // useEffect(() => {
-  //   confirm();
-  // });
+  useEffect(() => {
+    confirm();
+  });
 
   return(
 
