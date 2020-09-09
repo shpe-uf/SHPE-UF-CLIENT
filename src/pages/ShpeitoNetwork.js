@@ -269,9 +269,7 @@ function ShpeitoNetwork(props) {
             </Segment>
           </div>
         )}
-        {open
-          ? console.log("UPDATE PROFILE NO CLASSES MODAL IS OPEN")
-          : displayUsersCards()}
+        {!open && displayUsersCards()}
       </Container>
     </div>
   );
