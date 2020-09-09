@@ -42,7 +42,6 @@ function AlumniTable({ alumnis }) {
               <Table.HeaderCell>Name</Table.HeaderCell>
               <Table.HeaderCell>Undergrad. Major</Table.HeaderCell>
               <Table.HeaderCell>Grad. Major</Table.HeaderCell>
-              <Table.HeaderCell>Email</Table.HeaderCell>
               <Table.HeaderCell>Employer</Table.HeaderCell>
               <Table.HeaderCell>Position</Table.HeaderCell>
               <Table.HeaderCell>Location</Table.HeaderCell>
@@ -59,7 +58,6 @@ function AlumniTable({ alumnis }) {
                   </Table.Cell>
                   <Table.Cell>{alumni.undergrad.major}</Table.Cell>
                   <Table.Cell>{alumni.grad.major}</Table.Cell>
-                  <Table.Cell>{alumni.email}</Table.Cell>
                   <Table.Cell>{alumni.employer}</Table.Cell>
                   <Table.Cell>{alumni.position}</Table.Cell>
                   <Table.Cell>
