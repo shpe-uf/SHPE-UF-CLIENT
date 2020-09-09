@@ -72,38 +72,28 @@ function About() {
                 society.
               </p>
               <p>
-                In previous years, SHPE UF has experienced hardships attributed
-                to low membership. However, recently, the new executive boards
-                have found strategic ways to improve previous recruitment and
-                retention initiatives by executing events such as the Goals for
-                Tomorrow scholarship and soccer tournament, and the Green Day
-                and Green Team events. This semester brought much success to the
-                executive board and the chapter members, as well as to the
-                society as a whole. The Executive board members were determined
-                to execute numerous events and offer many involvement
-                opportunities encouraging members to thrive as leaders.
+                In previous years, SHPE UF has experienced exponential growth by
+                employing strategic ways to improve previous recruitment and
+                retention initiatives through execution of events such as the
+                Goals for Tomorrow scholarship and soccer tournament, numerous socials,
+                SHPE Hackathon, and many more.
               </p>
               <p>
-                SHPE UF hosted the most successful BBQ with Industry yet, with
-                20 companies and over 200 students attending the event. The
-                chapter also held a ShadowSHPE day for high school students that
-                received positive feedback from its participants, motivating the
-                chapter to set plans to have a much larger event next year.
-                Additionally, the chapter is in the process of establishing a
-                mentorship program with Siemens and Kraft for its graduating
-                members.
+                SHPE UF hosted the most successful BBQ with Industry yet, with over 20 companies
+                and over 200 students attending the event. The chapter also held a ShadowSHPE day
+                to bring together its 3 SHPE Jr. chapters across the state to experience what it
+                is to be a Gator Engineer. Additionally, the chapter is in offers mentorship programs
+                with companies such as Boeing and Honeywell.
               </p>
               <p>
-                The dedication and commitment shown by past and present members
-                led to an increase in active participation of the chapter at a
-                local, regional, and national level. This drive to further
-                involvement in the society led to a strong presence from the
-                chapter at National Conference and other events. With over 115
-                members attending, The University of Florida had the largest
-                number of members present at this year's conference. The
-                determination of the chapter's leaders has also led to
-                incredible involvement and retention of first-year students in
-                the society.
+                The dedication and commitment shown by past and present members led to an increase
+                in active participation of the chapter at a local, regional, and national level.
+                This drive to further involvement in the society led to a strong presence from the
+                chapter at National Conference and other events. With over 280 members attending,
+                The University of Florida had the largest number of members present at this year's conference.
+                The determination of the chapter's leaders has also led to incredible involvement and retention
+                of first-year students in the society and has made the chapter grow to an astonishing 480 members
+                in the 2019-2020 year.
               </p>
               <p>
                 As a family, we take pride in the passion that is evident among
