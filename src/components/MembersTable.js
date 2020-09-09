@@ -78,7 +78,7 @@ function MembersTable({ users, refetch}) {
           </Modal.Header>
           <Modal.Content>
               <>
-                <UserProfile user={userInfo}>
+                <UserProfile user={userInfo} isPublic={false}>
                   <PermissionsForm userInfo={userInfo} />
                 </UserProfile>
                 <Grid>
