@@ -183,7 +183,7 @@ function Profile() {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-        <UserProfile user={user} />
+        <UserProfile user={user} isPublic={false}/>
       </Container>
 
       <Modal open={editProfileModal} size="tiny">

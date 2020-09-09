@@ -134,7 +134,7 @@ function ShpeitoNetwork(props) {
                     size="large"
                     closeIcon
                   >
-                    <UserProfile user={shpeito} />
+                    <UserProfile user={shpeito} isPublic={true}/>
                   </Modal>
                 </Card>
               ))}
@@ -179,7 +179,7 @@ function ShpeitoNetwork(props) {
                     size="large"
                     closeIcon
                   >
-                    <UserProfile user={shpeito} />
+                    <UserProfile user={shpeito} isPublic={true}/>
                   </Modal>
                 </Card>
               ))}

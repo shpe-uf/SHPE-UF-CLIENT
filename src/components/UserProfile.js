@@ -4,7 +4,7 @@ import moment from "moment";
 
 import placeholder from "../assets/images/placeholder.png";
 
-function UserProfile({ user, children }) {
+function UserProfile({ user, children, isPublic }) {
 
   return (
     <Grid columns={2} doubling>
@@ -35,6 +35,7 @@ function UserProfile({ user, children }) {
                     )}
                   </Table.Cell>
                 </Table.Row>
+                {!isPublic &&
                 <Table.Row>
                   <Table.Cell>
                     <b>Username:</b>
@@ -43,6 +44,7 @@ function UserProfile({ user, children }) {
                     {user ? <p>{user.username}</p> : <p>Loading</p>}
                   </Table.Cell>
                 </Table.Row>
+                }
                 <Table.Row>
                   <Table.Cell>
                     <b>Email:</b>
@@ -83,6 +85,7 @@ function UserProfile({ user, children }) {
                     {user ? <p>{user.country}</p> : <p>Loading</p>}
                   </Table.Cell>
                 </Table.Row>
+                {!isPublic &&
                 <Table.Row>
                   <Table.Cell>
                     <b>Ethnicity:</b>
@@ -91,6 +94,8 @@ function UserProfile({ user, children }) {
                     {user ? <p>{user.ethnicity}</p> : <p>Loading</p>}
                   </Table.Cell>
                 </Table.Row>
+                }
+                {!isPublic &&
                 <Table.Row>
                   <Table.Cell>
                     <b>Sex:</b>
@@ -99,6 +104,7 @@ function UserProfile({ user, children }) {
                     {user ? <p>{user.sex}</p> : <p>Loading</p>}
                   </Table.Cell>
                 </Table.Row>
+                }
                 <Table.Row>
                   <Table.Cell>
                     <b>Member Since:</b>
