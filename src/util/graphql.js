@@ -25,6 +25,7 @@ export const FETCH_USERS_QUERY = gql`
       internships
       socialMedia
       id
+      confirmed
       events {
         name
         category
