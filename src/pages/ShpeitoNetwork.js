@@ -51,7 +51,6 @@ function ShpeitoNetwork(props) {
   }).data.getUser;
 
   if (!loading && data) {
-    console.log(data.getUsers)
     users = data.getUsers.filter(function (user) {
       let fullName = user.firstName.concat(" ").concat(user.lastName);
       return (
@@ -204,7 +203,6 @@ function ShpeitoNetwork(props) {
           user.classes.length == 0 ? (
             <Container>
               <Modal
-                onClose={() => console.log("CLOSING MODAL")}
                 onOpen={() => setOpen(true)}
                 open={open}
                 size="small"
@@ -257,11 +255,7 @@ function ShpeitoNetwork(props) {
                 </Grid>
               </Modal>
             </Container>
-          ) : users.length > 0 ? (
-            displayUsersCards()
-          ) : (
-            console.log("USER IS UNDEFINED")
-          )
+          ) : users.length > 0 && ( displayUsersCards())
         ) : (
           <div style={{ paddingBottom: 16 }}>
             <p></p>
