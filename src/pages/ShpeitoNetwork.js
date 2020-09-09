@@ -51,13 +51,17 @@ function ShpeitoNetwork(props) {
   }).data.getUser;
 
   if (!loading && data) {
+    console.log(data.getUsers)
     users = data.getUsers.filter(function (user) {
       let fullName = user.firstName.concat(" ").concat(user.lastName);
       return (
+        (user.confirmed)&&
         (filter.major.length === 0
           ? true
           : filter.major.includes(user.major)) &&
-        (filter.year.length === 0 ? true : filter.year.includes(user.year)) &&
+        (filter.year.length === 0 
+          ? true 
+          : filter.year.includes(user.year)) &&
         (filter.graduating.length === 0
           ? true
           : filter.graduating.includes(user.graduating)) &&
