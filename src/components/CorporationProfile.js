@@ -9,7 +9,6 @@ function CorporationProfile({corporation}) {
             {/* Left Column */}
             <Grid.Column width={6}>
               <h3>{corporation.name}</h3>
-              <p>"{corporation.slogan}"</p>
               <Image src={corporation.logo} size='large'></Image>
               <Divider/>
               <Responsive
@@ -163,8 +162,6 @@ function CorporationProfile({corporation}) {
                 <p>{corporation.overview}</p>
               <h4>Mission</h4>
                 <p>{corporation.mission}</p>
-              <h4>Goals</h4>
-                <p>{corporation.goals}</p>
               <h4>Business Model/Operations Highlight</h4>
                 <p>{corporation.businessModel}</p>
             </Grid.Column>
