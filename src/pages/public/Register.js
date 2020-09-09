@@ -4,13 +4,15 @@ import {
   Button,
   Container,
   Segment,
-  Message
+  Message,
+  Modal,
+  Header,
+  Icon
 } from "semantic-ui-react";
 import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 
 import { useForm } from "../../util/hooks";
-import ModalBasic from "../../components/ModalBasic"
 
 import majorOptions from "../../assets/options/major.json";
 import yearOptions from "../../assets/options/year.json";
@@ -66,7 +68,22 @@ function Register(props) {
     <div className="register">
       <div className="overlay-register">
         <Container>
-          <ModalBasic open={openModal} handleClose={handleClose} message={msg}/>
+          <Modal basic open={openModal} >
+            <Header icon>
+              <Icon name='mail outline' />
+              Email sent!
+            </Header>
+            <Modal.Content>
+              <p>
+                A link has been sent to your email, please press the confirm link inside to complete registration, thank you!
+              </p>
+            </Modal.Content>
+            <Modal.Actions>
+              <Button color='green' inverted onClick={() => handleClose}>
+                OK
+              </Button>
+            </Modal.Actions>
+          </Modal>
           <Segment.Group className="segment-spacing">
             <Segment className="title-bg-accent-1">
               <h1 className="text-white">Registration</h1>
