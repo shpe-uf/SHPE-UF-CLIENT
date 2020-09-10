@@ -69,7 +69,7 @@ function ShpeitoNetwork(props) {
           : filter.country.includes(user.country)) &&
         (filter.classes.length === 0
           ? true
-          : filter.classes.includes(user.classes)) &&
+          : filter.classes.some(o => user.classes.includes(o))) &&
         (filter.name.length === 0
           ? true
           : filter.name
@@ -90,7 +90,6 @@ function ShpeitoNetwork(props) {
   function getUsers(newFilter) {
     setFilter(new Filter(newFilter));
   }
-
 
   function displayUsersCards() {
     return (
