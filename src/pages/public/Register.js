@@ -78,7 +78,7 @@ function Register(props) {
               </p>
             </Modal.Content>
             <Modal.Actions>
-              <Button color='green' inverted onClick={() => handleClose}>
+              <Button color='green' inverted onClick={() => handleClose()}>
                 OK
               </Button>
             </Modal.Actions>
