@@ -11,10 +11,10 @@ import {
   Table
 } from "semantic-ui-react";
 import gql from "graphql-tag";
-import { useQuery, useMutation } from "@apollo/react-hooks";
+import { useMutation } from "@apollo/react-hooks";
 import { CSVLink } from "react-csv";
 
-import { FETCH_USERS_QUERY, FETCH_TASKS_QUERY } from "../util/graphql";
+import { FETCH_TASKS_QUERY } from "../util/graphql";
 import DeleteModal from "./DeleteModal";
 import ManualInputModal from "./ManualInputModal";
 
@@ -23,16 +23,6 @@ function TasksTable({tasks}) {
   const [taskInfoModal, setTaskInfoModal] = useState(false);
   const [deleteTaskModal, setDeleteTaskModal] = useState(false);
   const [selectedTask, setSelectedTask] = useState({});
-
-  const openModal = name => {
-    if (name === "manualTaskInput") {
-      setManualTaskInputModal(true);
-    }
-
-    if (name === "taskInfo") {
-      setTaskInfoModal(true);
-    }
-  };
 
   const [removeUserFromTask] = useMutation(REMOVE_USER_MUTATION, {
 

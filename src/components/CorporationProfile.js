@@ -10,7 +10,7 @@ function CorporationProfile({corporation}) {
             <Grid.Column width={6}>
               <h3>{corporation.name}</h3>
               <Image src={corporation.logo} size='large'></Image>
-              <Divider/>
+              <Divider hidden/>
               <Responsive
                 minWidth={768}
                 maxWidth={999}

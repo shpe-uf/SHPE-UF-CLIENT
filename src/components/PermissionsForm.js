@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../context/auth";
 import { useMutation, useQuery } from "@apollo/react-hooks";
 import gql from "graphql-tag"
@@ -22,7 +22,7 @@ export default function PermissionsForm({userInfo, refetch}) {
     })
     loggedInUser.permission = permission
 
-    const [changePermissionMutation, other] = useMutation(CHANGE_PERMISSION, {
+    const [changePermissionMutation] = useMutation(CHANGE_PERMISSION, {
         onError(err) {
             setErrors(err.graphQLErrors[0].extensions.exception.errors);
         },
@@ -32,7 +32,7 @@ export default function PermissionsForm({userInfo, refetch}) {
     });
 
     const areEqual = (a, b) => {
-        if (a.length == b.length) {
+        if (a.length === b.length) {
             if (a.every((value, index) => value === b[index])) {
                 return true
             }
