@@ -10,27 +10,21 @@ import chevron from "../../assets/images/sponsors/chevron-min.png";
 import cummins from "../../assets/images/sponsors/cummins-min.jpg";
 import deloitte from "../../assets/images/sponsors/deloitte-min.jpg";
 import edwards from "../../assets/images/sponsors/edwards-min.jpg";
-import exxon from "../../assets/images/sponsors/exxon-min.png";
 import facebook from "../../assets/images/sponsors/facebook-min.png";
 import ge from "../../assets/images/sponsors/ge-min.png";
 import geAppliances from "../../assets/images/sponsors/geAppliances-min.png";
-import google from "../../assets/images/sponsors/google-min.jpg";
-import harris from "../../assets/images/sponsors/harris-min.png";
 import ibm from "../../assets/images/sponsors/ibm-min.png";
 import intel from "../../assets/images/sponsors/intel-min.jpg";
 import kpmg from "../../assets/images/sponsors/kpmg-min.png";
 import lincoln from "../../assets/images/sponsors/lincoln-min.png";
 import lutron from "../../assets/images/sponsors/lutron-min.png";
 import michelin from "../../assets/images/sponsors/michelin-min.jpg";
-import micron from "../../assets/images/sponsors/micron-min.jpg";
-import mosaic from "../../assets/images/sponsors/mosaic-min.png";
 import oneSubSea from "../../assets/images/sponsors/oneSubSea-min.png";
 import osiSoft from "../../assets/images/sponsors/osiSoft-min.png";
 import png from "../../assets/images/sponsors/png-min.png";
 import pepsico from "../../assets/images/sponsors/pepsico-min.jpg";
 import southern from "../../assets/images/sponsors/southern-min.jpg";
 import trinity from "../../assets/images/sponsors/trinity-min.jpg";
-import visa from "../../assets/images/sponsors/visa-min.png";
 
 function Sponsors() {
   return (

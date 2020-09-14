@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import {
   Table,
   Dimmer,
@@ -9,10 +9,6 @@ import {
   Grid
 } from "semantic-ui-react";
 
-import { useMutation, useQuery } from "@apollo/react-hooks";
-import gql from "graphql-tag";
-
-import { AuthContext } from "../context/auth";
 import UserProfile from "./UserProfile";
 import PermissionsForm from "./PermissionsForm";
 import PointsTable from "./UserEventsTable";
@@ -21,10 +17,6 @@ function MembersTable({ users, refetch}) {
   const [userInfoModal, setUserInfoModal] = useState(false);
   const [userInfo, setUserInfo] = useState({});
   const [errors, setErrors] = useState({});
-
-
-  //REPLACE WITH JUST GRAB FROM USERS
-  const { user } = useContext(AuthContext);
 
   const openModal = name => {
     if (name === "userInfo") {
@@ -44,26 +36,6 @@ function MembersTable({ users, refetch}) {
     setUserInfo(userInfo);
     setErrors({});
   }
-
-  // const [changePermissionMutation] = useMutation(CHANGE_PERMISSION, {
-  //   onError(err) {
-  //     setErrors(err.graphQLErrors[0].extensions.exception.errors);
-  //   },
-  //   onCompleted() {
-  //     setPermission(user.permission);
-  //     userInfo.permission = user.permission;
-  //   }
-  // });
-
-  // function changePermission(value) {
-  //   var values = {
-  //     email: userInfo.email,
-  //     currentEmail: user.email,
-  //     permission: value
-  //   }
-  //   changePermissionMutation({ variables: values });
-  //   user.permission = value;
-  // }
 
   const UserProfileModal = () => {
     return (
@@ -184,34 +156,5 @@ function MembersTable({ users, refetch}) {
     </>
   );
 }
-
-const CHANGE_PERMISSION = gql`
-  mutation changePermission($email: String!, $currentEmail: String!, $permission: String!) {
-    changePermission(email: $email, currentEmail: $currentEmail, permission: $permission)
-  }
-`;
-
-const FETCH_USER_QUERY = gql`
-  query getUser($userId: ID!) {
-    getUser(userId: $userId) {
-      firstName
-      lastName
-      photo
-      username
-      email
-      major
-      year
-      graduating
-      country
-      ethnicity
-      sex
-      createdAt
-      permission
-      classes
-      internships
-      socialMedia
-    }
-  }
-`;
 
 export default MembersTable;

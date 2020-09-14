@@ -9,12 +9,27 @@ import { AuthContext } from "../context/auth";
 
 import gql from "graphql-tag";
 import {FETCH_CORPORATIONS_QUERY} from "../util/graphql";
+import CorporationFilter from "../components/CorporationFilter";
 
 function Corporations(props) {
   const [viewCorporationModal, setViewCorporationModal] = useState(false);
+  const [filterModal, setFilterModal] = useState(false);
   
   //State to keep track of the current corporation selected
   const [corporationInfo, setCorporationInfo] = useState({});
+  const [filter, setFilter] = useState(
+    new Filter({
+      academia: false,
+      govContractor: false,
+      nonProfit: false,
+      visaSponsor: false,
+      shpeSponsor: false,
+      industryPartnership: false,
+      fallBBQ: false,
+      springBBQ: false,
+      nationalConvention: false,
+    })
+  );
 
   //Corporation information modals
   const openModal = name => {
@@ -43,7 +58,23 @@ function Corporations(props) {
     }
   }).data.getUser;
 
-  var corporations = useQuery(FETCH_CORPORATIONS_QUERY).data.getCorporations;
+  let corporations = useQuery(FETCH_CORPORATIONS_QUERY).data.getCorporations;
+
+  if(corporations) {
+    console.log(filter)
+    if(Object.values(filter).includes(true)) corporations = corporations.filter(corp => {
+      if(filter.academia) if(corp.academia) return true;
+      if(filter.govContractor) if(corp.govContractor) return true;
+      if(filter.nonProfit) if(corp.nonProfit) return true;
+      if(filter.visaSponsor) if(corp.visaSponsor) return true;
+      if(filter.shpeSponsor) if(corp.shpeSponsor) return true;
+      if(filter.industryPartnership) if(corp.industryPartnership) return true;
+      if(filter.fallBBQ) if(corp.fallBBQ) return true;
+      if(filter.springBBQ) if(corp.springBBQ) return true;
+      if(filter.nationalConvention) if(corp.nationalConvention) return true;
+      return false;
+    })
+  }
 
   const [bookmark] = useMutation(BOOKMARK_MUTATION);
   const [deleteBookmark] = useMutation(DELETE_BOOKMARK_MUTATION);
@@ -58,14 +89,14 @@ function Corporations(props) {
     user.bookmarks.splice(user.bookmarks.indexOf(corpName), 1);
   }
 
-  const addBookmark = (coprName, username) => {
+  const addBookmark = (corpName, username) => {
     bookmark({
       variables: {
-        company: coprName,
+        company: corpName,
         username: username
       }
     });
-    user.bookmarks.push(coprName); 
+    user.bookmarks.push(corpName); 
   }
 
   var corporationPane = {
@@ -203,10 +234,17 @@ function Corporations(props) {
     <div className="body">
       <Title title="Corporate Database" />
       <Segment basic>
-        <Container>
-        <Tab 
-          panes={[corporationPane, bookmarksPane]}
-        />
+        <Container textAlign='right'>
+          <Button
+            size='tiny'
+            basic
+            onClick={() => setFilterModal(true)}
+          >
+            Filter
+          </Button>
+          <Tab 
+            panes={[corporationPane, bookmarksPane]}
+          />
         </Container>
       </Segment>
 
@@ -255,8 +293,28 @@ function Corporations(props) {
         </Grid>
       </Modal.Content>
     </Modal>
+    <CorporationFilter
+      open={filterModal}
+      close={() => setFilterModal(false)}
+      getCorporations={(newFilter) => setFilter(new Filter(newFilter))}
+      filter={filter}
+    />
     </div>
   );
+}
+
+class Filter {
+  constructor(filter) {
+    this.academia = filter.academia;
+    this.govContractor = filter.govContractor;
+    this.nonProfit = filter.nonProfit;
+    this.visaSponsor = filter.visaSponsor;
+    this.shpeSponsor = filter.shpeSponsor;
+    this.industryPartnership = filter.industryPartnership;
+    this.fallBBQ = filter.fallBBQ;
+    this.springBBQ = filter.springBBQ;
+    this.nationalConvention = filter.nationalConvention;
+  }
 }
 
 const FETCH_USER_QUERY = gql`
