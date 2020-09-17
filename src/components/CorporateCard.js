@@ -8,7 +8,7 @@ export default function CorporateCard ({corporation,children}) {
             className='card-team'
         >
             <Image className='corp-logo' src={corporation.logo}/>
-            <Card.Content>
+            <Card.Content textAlign='left'>
                 <Header>{corporation.name}</Header>
             </Card.Content>
             <Card.Content>
