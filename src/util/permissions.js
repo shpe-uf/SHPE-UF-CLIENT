@@ -6,6 +6,6 @@ export const PERMISSIONS = {
     TASKS: 'tasks',
     REQUESTS: 'requests',
     STATS: 'statistics',
-    CORP: 'corporateDatabase',
+    CORP: 'corporatedatabase',
     REIMB: 'reimbursements'
 }
