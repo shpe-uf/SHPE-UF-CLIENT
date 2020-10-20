@@ -44,6 +44,7 @@ import ShpeRentals from "./pages/ShpeRentals";
 import jwtDecode from "jwt-decode";
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
+import { callbackify } from "util";
 
 function App() {
   var decodedToken = [];
@@ -68,6 +69,7 @@ function App() {
   return (
     <AuthProvider>
       <Router>
+        <div style={{minHeight: "calc(100vh - 66px)"}}>
         <MenuBar permission={permission}/>
         <Switch>
           <Route exact path="/" component={Home} />
@@ -103,6 +105,7 @@ function App() {
             <Redirect to="/"/>
           </Route>
         </Switch>
+        </div>
         <Footer />
       </Router>
     </AuthProvider>
