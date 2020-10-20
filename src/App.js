@@ -104,8 +104,8 @@ function App() {
             <Redirect to="/"/>
           </Route>
         </Switch>
-        <Footer />
         </div>
+        <Footer />
       </Router>
     </AuthProvider>
   );
