@@ -68,6 +68,7 @@ function App() {
   return (
     <AuthProvider>
       <Router>
+        <div style={{minHeight: "calc(100vh - 66px"}}>
         <MenuBar permission={permission}/>
         <Switch>
           <Route exact path="/" component={Home} />
@@ -104,6 +105,7 @@ function App() {
           </Route>
         </Switch>
         <Footer />
+        </div>
       </Router>
     </AuthProvider>
   );
