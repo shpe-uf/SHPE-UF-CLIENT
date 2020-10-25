@@ -69,6 +69,7 @@ function CorporationProfileForm({corporation, closeModal, refetch}) {
           data: { editCorporation: corporationData }
         }
       ) {
+        setErrors(false);
       },
       onError(err) {
         console.log(err.graphQLErrors[0].extensions.exception.errors)
@@ -79,8 +80,8 @@ function CorporationProfileForm({corporation, closeModal, refetch}) {
   
     async function modifyCorporationCallback(){
       await editCorporationProfile();
+      refetch();
       if (!errors) {
-        refetch();
         closeModal("editCorporation");
       }
     }
