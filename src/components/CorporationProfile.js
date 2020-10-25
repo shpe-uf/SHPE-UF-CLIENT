@@ -46,7 +46,6 @@ function CorporationProfile({corporation}) {
                 labelPosition='right'
                 positive
                 content='Apply'
-                // floated='left'
               />
               <Button
                 href={corporation.newsLink}
@@ -77,33 +76,6 @@ function CorporationProfile({corporation}) {
                 floated='right'
               />                
               </Responsive>
-              {/* <Responsive
-                minWidth={768}
-                maxWidth={812}
-                as={Button}
-                color='blue'
-                icon='newspaper outline'
-                floated='left
-                // labelPosition='left'
-              /> */}
-                {/* <div>
-                <Button
-                href={corporation.applyLink}
-                icon='paper plane'
-                labelPosition='right'
-                positive
-                content='Apply'
-                // floated='left'
-              />
-              <Button
-                href={corporation.newsLink}
-                color="blue"
-                icon='newspaper outline'
-                labelPosition='right'
-                content='News'
-                floated='right'
-              />
-                </div> */}
               <h4>Additional Information</h4>
               <List>
                 <List.Item>
