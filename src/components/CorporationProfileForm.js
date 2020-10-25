@@ -69,9 +69,9 @@ function CorporationProfileForm({corporation, closeModal, refetch}) {
           data: { editCorporation: corporationData }
         }
       ) {
-        setErrors(false);
       },
       onError(err) {
+        console.log(err.graphQLErrors[0].extensions.exception.errors)
         setErrors(err.graphQLErrors[0].extensions.exception.errors);
       },
       variables: values
@@ -79,8 +79,10 @@ function CorporationProfileForm({corporation, closeModal, refetch}) {
   
     async function modifyCorporationCallback(){
       await editCorporationProfile();
-      refetch();
-      closeModal("editCorporation");
+      if (!errors) {
+        refetch();
+        closeModal("editCorporation");
+      }
     }
 
     return(
@@ -96,7 +98,6 @@ function CorporationProfileForm({corporation, closeModal, refetch}) {
       )}
       <Form
         onSubmit={onSubmit}
-        noValidate
         className={loading ? "loading" : ""}
       >
               {logoFile === "" ? (
@@ -128,12 +129,14 @@ function CorporationProfileForm({corporation, closeModal, refetch}) {
                   type="text"
                   label="Company Name"
                   name="name"
+                  required={true}
                   value={values.name}
                   error={errors.name ? true : false}
                   onChange={onChange}
                 />
                 <Form.Input
                   type="text"
+                  required={true}
                   label="Slogan"
                   name="slogan"
                   value={values.slogan}
@@ -145,6 +148,7 @@ function CorporationProfileForm({corporation, closeModal, refetch}) {
                 <Form.Dropdown
                   label="Majors"
                   name="majors"
+                  required={true}
                   fluid multiple selection 
                   value={majors}  //take display data from the state
                   options={majorOptions}
@@ -158,6 +162,7 @@ function CorporationProfileForm({corporation, closeModal, refetch}) {
                 <Form.Dropdown
                   label="Industries"
                   name="industries"
+                  required={true}
                   fluid multiple selection 
                   value={industries}  //take display data from the state
                   options={industryOptions}
@@ -170,6 +175,7 @@ function CorporationProfileForm({corporation, closeModal, refetch}) {
               </Form.Group>
               <Form.TextArea
                 type="text"
+                required={true}
                 label="Overview"
                 name="overview"
                 value={values.overview}
@@ -178,6 +184,7 @@ function CorporationProfileForm({corporation, closeModal, refetch}) {
               />
               <Form.TextArea
                 type="text"
+                required={true}
                 label="Mission"
                 name="mission"
                 value={values.mission}
@@ -186,6 +193,7 @@ function CorporationProfileForm({corporation, closeModal, refetch}) {
               />
               <Form.TextArea
                 type="text"
+                required={true}
                 label="Goals"
                 name="goals"
                 value={values.goals}
@@ -194,6 +202,7 @@ function CorporationProfileForm({corporation, closeModal, refetch}) {
               />
               <Form.TextArea
                 type="text"
+                required={true}
                 label="Business Model/Operations Highlights"
                 name="businessModel"
                 value={values.businessModel}
@@ -203,6 +212,7 @@ function CorporationProfileForm({corporation, closeModal, refetch}) {
               <Form.Group widths="equal">
                 <Form.Input
                   type="text"
+                  required={true}
                   label="News Link"
                   name="newsLink"
                   value={values.newsLink}
@@ -211,6 +221,7 @@ function CorporationProfileForm({corporation, closeModal, refetch}) {
                 />
                 <Form.Input
                   type="text"
+                  required={true}
                   label="Apply Link"
                   name="applyLink"
                   value={values.applyLink}
