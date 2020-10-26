@@ -423,10 +423,11 @@ function CorporateDatabase() {
               filename = {"Corporations" + ".csv"}
               >
               <Button
-                content="Download CSV"
+                content="Download as CSV"
                 icon="download"
+                color="green"
                 labelPosition="right"
-                floated="left"
+                floated="right"
                 />
               </CSVLink>
               
