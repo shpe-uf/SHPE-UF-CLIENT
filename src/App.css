@@ -84,7 +84,8 @@ footer p {
 }
 
 i.inverted.bordered.icon,
-i.inverted.circular.icon {
+i.inverted.circular.icon,
+.ui.button.bugButton {
   color: var(--white) !important;
   background-color: var(--accent-1) !important;
   margin: 0px 8px;
