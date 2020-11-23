@@ -123,7 +123,7 @@ h5 {
   font-size: 1.5rem !important;
 }
 
-.ui.form input, select{
+.ui.form input, select, textarea{
   font-family: "body-font" !important;
 }
 
@@ -271,6 +271,15 @@ h5 {
 
 .masthead-sponsors {
   background: url(assets/images/sponsors.jpg) !important;
+  border-radius: 0px;
+  background-position: 50% 50% !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+.masthead-contactus {
+  background: url(assets/images/contact-us-1.JPG) !important;
   border-radius: 0px;
   background-position: 50% 50% !important;
   background-attachment: fixed !important;
