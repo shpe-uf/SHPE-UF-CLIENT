@@ -21,6 +21,7 @@ import Alumni from "./pages/public/Alumni";
 import EBoard from "./pages/public/EBoard";
 import DevTeam from "./pages/public/DevTeam";
 import Sponsors from "./pages/public/Sponsors";
+import ContactUs from "./pages/public/ContactUs";
 import ResetPassword from "./pages/public/ResetPassword";
 import ForgotPassword from "./pages/public/ForgotPassword";
 import Confirm from "./pages/public/Confirm";
@@ -44,7 +45,6 @@ import ShpeRentals from "./pages/ShpeRentals";
 import jwtDecode from "jwt-decode";
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
-import ContactUs from "./pages/public/ContactUs";
 
 function App() {
   var decodedToken = [];

@@ -147,13 +147,11 @@ const SUBMIT_CONTACT_REQUEST_MUTATION = gql`
     $message: String!
   ) {
     submitContactRequest(
-      contactUsFormInput: {
-        firstName: $firstName
-        lastName: $lastName
-        email: $email
-        messageType: $messageType
-        message: $message
-      }
+      firstName: $firstName
+      lastName: $lastName
+      email: $email
+      messageType: $messageType
+      message: $message
     ) {
       firstName
       lastName
