@@ -21,6 +21,7 @@ import Alumni from "./pages/public/Alumni";
 import EBoard from "./pages/public/EBoard";
 import DevTeam from "./pages/public/DevTeam";
 import Sponsors from "./pages/public/Sponsors";
+import ContactUs from "./pages/public/ContactUs";
 import ResetPassword from "./pages/public/ResetPassword";
 import ForgotPassword from "./pages/public/ForgotPassword";
 import Confirm from "./pages/public/Confirm";
@@ -80,6 +81,7 @@ function App() {
           <Route exact path="/eboard" component={EBoard} />
           <Route exact path="/devteam" component={DevTeam} />
           <Route exact path="/sponsors" component={Sponsors} />
+          <Route exact path="/contactus" component={ContactUs} />
           <UserRoute exact path="/corporations" component={Corporations} />
           <Route exact path="/reset/:token" component={ResetPassword} />
           <Route exact path="/forgot" component={ForgotPassword} />
