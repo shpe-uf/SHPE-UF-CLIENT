@@ -24,25 +24,23 @@ function RentalModal(props) {
     }
   }).data.getUser;
 
-  let rentalAgreement =  require('../assets/options/rentalAgreement.js').lorem;
-
   let errors = [];
 
   function hasEnoughPoints() {
     if(user) {
       switch(props.item.level) {
         case 1:
-          if(user.points > 0) {
+          if(user.fallPoints > 8) {
             return true;
           }
           break;
         case 2:
-          if(user.points > 0) {
+          if(user.fallPoints > 15) {
             return true;
           }
           break;
         case 3:
-          if(user.points > 10) {
+          if(user.fallPoints > 25) {
             return true;
           }
           break;
@@ -65,6 +63,8 @@ function RentalModal(props) {
         break;
     }
   }
+
+  const requiredPoints = props.item.level === 1 ? 8 : props.item.level === 2 ? 15 : props.item.level === 3 ? 25 : -1;
 
   const ITEM_LIMIT = 3;
   //error checking for number of items
@@ -117,12 +117,34 @@ function RentalModal(props) {
                   <Container>
                     <Image src={x_icon} centered size='small' className='checkmark'/>
                     <Header>Your point count does not qualify you for this item</Header>
+                    <p>{"A Tier " + props.item.level + " item requires " + requiredPoints + " points."}</p>
+                    <p>Point values are calculated from the previous semester.</p>
                   </Container>         
               :
               rentalState === 1 ? //RENTAL AGREEMENT
                 <Container>
                   <Container>
-                    {rentalAgreement}
+                    <p>
+                    I accept the equipment selected and accept full responsibility for the equipment while it is in my possession. 
+                    I agree that I will only use the equipment in the matter that it was intended. 
+                    You shall not remove, alter, disfigure or cover up any numbering, lettering, bar code, or logo displayed upon the equipment. 
+                    You shall see that the equipment is not subjected to careless, unusually, or needlessly rough usage. 
+                    You must return the equipment to us in the same condition as delivered, ordinary wear and tear resulting from proper use thereof alone expected. 
+                    By renting this piece of equipment from the Society of Hispanic Professional Engineers at the University of Florida, you adhere to all of its rules and regulations.
+                    </p>
+                    <br/>
+                    <p>
+                    1. If the equipment is lost, damaged, or not returned, you will forfeit points depending on the item's tier. 
+                    </p>
+                    <p>
+                    2. You agree that if you do not pick up the equipment in the timeframe given, you will lose your item and will have to order it again.
+                    </p>
+                    <p>
+                    3. You agree that if the item is not returned on time, you are subject to being suspended from renting items from SHPE UF at the discrepancy of the SHPE Rentals director.
+                    </p>
+                    <p>
+                    4. If any issues or questions arise, you will contact the SHPERentals director or the VP of the Tech Cabinet.
+                    </p>
                   </Container>
                   <Divider hidden/>
                   <Checkbox

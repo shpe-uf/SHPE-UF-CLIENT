@@ -91,7 +91,7 @@ function App() {
           <UserRoute exact path="/alumnidirectory" component={AlumniDirectory} />
           <UserRoute exact path="/reimbursementrequest" component={() => <ReimbursementRequest user={decodedToken}/>} />
           <UserRoute exact path="/shpeitonetwork" component={ShpeitoNetwork}/>
-          {/* <UserRoute exact path="/shperentals" component={ShpeRentals} /> */}
+          <UserRoute exact path="/shperentals" component={ShpeRentals} />
           <AdminRoute exact path="/admin" component={() => <Admin permission={permission}/>} permission={permission} security="admin"/>
           <AdminRoute exact path="/admin/events" component={Events} permission={permission} security="events"/>
           <AdminRoute exact path="/admin/tasks" component={Tasks} permission={permission} security="tasks"/>
