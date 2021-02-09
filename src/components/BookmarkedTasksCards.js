@@ -46,7 +46,7 @@ function BookmarkedTasksCards({ user, refetch }) {
         <Segment placeholder>
           <Header icon>
             <i className="fas fa-inbox"></i>
-            <p>It seems like there are no events at this moment.</p>
+            <p>It seems you haven't bookmarked any tasks yet...</p>
           </Header>
         </Segment>
       ) : (
