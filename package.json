@@ -20,7 +20,7 @@
     "react": "^16.9.0",
     "react-csv": "^1.1.1",
     "react-dom": "^16.9.0",
-    "react-image-crop": "^8.6.5",
+    "react-image-crop": "^8.6.6",
     "react-mapbox-gl": "^4.7.3",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.4.3",

@@ -6,7 +6,8 @@ import {
   Header,
   Grid,
   Card,
-  Responsive
+  Icon,
+  Responsive,
 } from "semantic-ui-react";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -18,7 +19,6 @@ import BookmarkedTaskCard from "../components/BookmarkedTaskCard";
 import { FETCH_TASKS_QUERY } from "../util/graphql";
 
 function BookmarkedTasksCards({ user, refetch }) {
-
   const { loading, data } = useQuery(FETCH_TASKS_QUERY);
 
   const bookmarkedTasks = [];
@@ -26,13 +26,13 @@ function BookmarkedTasksCards({ user, refetch }) {
     var tasks = data.getTasks;
     var bookmarkedTaskNames = user.bookmarkedTasks;
     for (const [index, value] of bookmarkedTaskNames.entries()) {
-      const task = tasks.find(element => element.name === value);
+      const task = tasks.find((element) => element.name === value);
       bookmarkedTasks.push(task);
     }
   }
 
   var {
-    user: { username }
+    user: { username },
   } = useContext(AuthContext);
 
   return (
@@ -43,10 +43,10 @@ function BookmarkedTasksCards({ user, refetch }) {
         <Loader />
       </Dimmer>
       {!bookmarkedTasks || bookmarkedTasks.length === 0 ? (
-        <Segment placeholder="placeholder">
-          <Header icon="icon">
+        <Segment placeholder>
+          <Header icon>
             <i className="fas fa-inbox"></i>
-            <p>It seems you haven't bookmarked any tasks yet...</p>
+            <p>It seems like there are no events at this moment.</p>
           </Header>
         </Segment>
       ) : (
@@ -71,6 +71,5 @@ function BookmarkedTasksCards({ user, refetch }) {
     </>
   );
 }
-
 
 export default BookmarkedTasksCards;
