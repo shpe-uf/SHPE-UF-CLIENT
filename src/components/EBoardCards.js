@@ -1,5 +1,8 @@
 import React from "react";
-import { Card, Icon } from "semantic-ui-react";
+import {useState, useContext} from "react";
+import { Container, Grid, Button, Modal, Card, Tab, Segment, Icon } from "semantic-ui-react";
+import  CorporateCard  from "../components/CorporateCard";
+//import Modal from "../components/CabinetModal";
 
 import president from "../assets/images/eboard/president.jpeg";
 import graduate from "../assets/images/eboard/graduate.jpeg";
@@ -20,6 +23,26 @@ function email(email) {
   );
 }
 
+function cabinet(){
+  return (
+<a>
+      <Icon name="cabinet" />
+      Learn more about cabinet
+</a>
+  //<div className="App">
+      //<h1>Hello CodeSandbox</h1>
+      //<Modal />
+    //</div>
+  );
+}
+
+function Cabinets(props){
+
+
+
+}
+
+
 function EBoardCards() {
   return (
     <>
@@ -28,63 +51,72 @@ function EBoardCards() {
         image={president}
         header="Federico Roye"
         meta="President"
-        extra={email("president.shpeuf@gmail.com")}
+        //extra={email("president.shpeuf@gmail.com")}
+        extra = {cabinet()}
       />
       <Card
         fluid
         image={graduate}
         header="Baltazar Lopez Sardi"
         meta="Graduate Coordinator"
-        extra={email("graduate.shpeuf@gmail.com")}
+        //extra={email("graduate.shpeuf@gmail.com")}
+        extra = {cabinet()}
       />
       <Card
         fluid
         image={secretary}
         header="Kelly Salas Diaz"
         meta="Secretary"
-        extra={email("secretary.shpeuf@gmail.com")}
+        //extra={email("secretary.shpeuf@gmail.com")}
+        extra = {cabinet()}
       />
       <Card
         fluid
         image={treasurer}
         header="Tomas Cusi"
         meta="Treasurer"
-        extra={email("treasurer.shpeuf@gmail.com")}
+        extra = {cabinet()}
+        //extra={email("treasurer.shpeuf@gmail.com")}
       />
       <Card
         fluid
         image={marketing}
         header="Melody Morales Roja"
         meta="VP of Marketing"
-        extra={email("marketing.shpeuf@gmail.com")}
+        extra = {cabinet()}
+        //extra={email("marketing.shpeuf@gmail.com")}
       />
       <Card
         fluid
         image={corporate}
         header="Ariana Ortega"
         meta="VP of Corporate Affairs"
-        extra={email("corporate.shpeuf@gmail.com")}
+        extra = {cabinet()}
+        //extra={email("corporate.shpeuf@gmail.com")}
       />
       <Card
         fluid
         image={technology}
         header="Gabriel Rodríguez Torres"
         meta="VP of Technology"
-        extra={email("vptech.shpeuf@gmail.com")}
+        extra = {cabinet()}
+        //extra={email("vptech.shpeuf@gmail.com")}
       />
       <Card
         fluid
         image={external}
         header="Lisa Duran"
         meta="VP of External Affairs"
-        extra={email("vpexternal.shpeuf@gmail.com")}
+        extra = {cabinet()}
+        //extra={email("vpexternal.shpeuf@gmail.com")}
       />
       <Card
         fluid
         image={internal}
         header="Caterina Zientek"
         meta="VP of Internal Affairs"
-        extra={email("vpinternal.shpeuf@gmail.com")}
+        extra = {cabinet()}
+        //extra={email("vpinternal.shpeuf@gmail.com")}
       />
     </>
   );
