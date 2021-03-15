@@ -1,14 +1,18 @@
 import React from "react";
-import { Grid, Image, Button, List, Divider, Container, Responsive, Icon } from "semantic-ui-react";
+import { Grid, Image, Button, List, Divider, Container, Responsive, Icon, Label, LabelGroup } from "semantic-ui-react";
 
 function CorporationProfile({corporation}) {
+  const majors = (corporation.majors) ? [] : corporation.majors
     return(
       <>
         <Grid columns={2} stackable>
           <Grid.Row>
             {/* Left Column */}
             <Grid.Column width={6}>
-              <h3>{corporation.name}</h3>
+              <h3>
+                  {corporation.name}
+              </h3>
+              <p><i>"{corporation.slogan}"</i></p>
               <Image src={corporation.logo} size='large'></Image>
               <Divider hidden/>
               <Responsive
@@ -42,7 +46,6 @@ function CorporationProfile({corporation}) {
                 labelPosition='right'
                 positive
                 content='Apply'
-                // floated='left'
               />
               <Button
                 href={corporation.newsLink}
@@ -73,47 +76,6 @@ function CorporationProfile({corporation}) {
                 floated='right'
               />                
               </Responsive>
-              {/* <Responsive
-                minWidth={768}
-                maxWidth={812}
-                as={Button}
-                color='blue'
-                icon='newspaper outline'
-                floated='left
-                // labelPosition='left'
-              /> */}
-                {/* <div>
-                <Button
-                href={corporation.applyLink}
-                icon='paper plane'
-                labelPosition='right'
-                positive
-                content='Apply'
-                // floated='left'
-              />
-              <Button
-                href={corporation.newsLink}
-                color="blue"
-                icon='newspaper outline'
-                labelPosition='right'
-                content='News'
-                floated='right'
-              />
-                </div> */}
-              <h4>Majors</h4>
-              <p>
-              {
-                corporation.majors &&
-                corporation.majors.toString().trim(',').replace(/,/g, ", ")
-              }
-              </p>
-              <h4>Industries</h4>
-              <p>
-              {
-                corporation.industries &&
-                corporation.industries.toString().trim(',').replace(/,/g, ", ")
-              }
-              </p>
               <h4>Additional Information</h4>
               <List>
                 <List.Item>
@@ -162,8 +124,32 @@ function CorporationProfile({corporation}) {
                 <p>{corporation.overview}</p>
               <h4>Mission</h4>
                 <p>{corporation.mission}</p>
+              <h4>Goals</h4>
+                <p>{corporation.goals}</p>
               <h4>Business Model/Operations Highlight</h4>
                 <p>{corporation.businessModel}</p>
+                <h4>Majors</h4>
+              <Label.Group>
+               { 
+                corporation.majors &&
+                  corporation.majors.map((major, index)=>(
+                    <Label key={index}>
+                      {major}
+                    </Label>
+                  ))
+               }
+              </Label.Group>
+              <h4>Industries</h4>
+                <Label.Group>
+              {
+                corporation.industries &&
+                corporation.industries.map((industry, index)=>(
+                  <Label key={index}>
+                    {industry}
+                  </Label>
+                ))
+              }
+              </Label.Group>
             </Grid.Column>
           </Grid.Row>
         </Grid>

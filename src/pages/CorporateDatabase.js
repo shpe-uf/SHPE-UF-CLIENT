@@ -15,7 +15,11 @@ import CorporationTable from "../components/CorporationTable";
 import placeholder from "../assets/images/placeholder.png";
 import ImageCrop from "../components/ImageCrop";
 
+import { CSVLink} from "react-csv" 
+import { Popup } from "mapbox-gl";
+
 function CorporateDatabase() {
+  var reimbursements = useQuery(FETCH_CORPORATIONS_QUERY).data.getCorporations;
   const [errors, setErrors] = useState({});
   const [addCorporationModal, setAddCorporationModal] = useState(false);
 
@@ -110,6 +114,19 @@ function CorporateDatabase() {
     setAddCorporationModal(false);
   }
 
+  const corpHeaders = [
+    {label: "ID", key: "id"},
+    {label: "Company Name", key: "name"},
+    {label: "Slogan", key: "slogan"},
+    {label: "Major", key: "majors"},
+    {label: "Industries", key: "industries"},
+    {label: "Mission", key: "overview"},    
+    {label: "Goals", key: "mission"},
+    {label: "Business Model", key: "goals"},
+    {label: "NewsLink", key: "businessModel"},
+    {label: "Apply Link", key: "newsLink"},
+    {label: "National Convention Attendee", key: "applyLink"},
+  ];
 
   const addModal = (
     <Modal
@@ -400,7 +417,22 @@ function CorporateDatabase() {
                 onClick={() => openModal()}
                 floated="right"
               />
+              <CSVLink 
+              data={reimbursements ? reimbursements : []}
+              headers = {corpHeaders}
+              filename = {"Corporations" + ".csv"}
+              >
+              <Button
+                content="Download as CSV"
+                icon="download"
+                color="green"
+                labelPosition="right"
+                floated="right"
+                />
+              </CSVLink>
+              
             </Grid.Column>
+           
           </Grid.Row>
           <Grid.Row>
             <Grid.Column>
