@@ -13,7 +13,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import gql from "graphql-tag";
-import { useQuery, useMutation } from "@apollo/react-hooks";
+import { useQuery, useMutation} from "@apollo/react-hooks";
 
 import { useForm } from "../util/hooks";
 import { AuthContext } from "../context/auth";
@@ -24,9 +24,12 @@ import UserEventsTable from "../components/UserEventsTable";
 import UserTasksTable from "../components/UserTasksTable";
 import TasksCards from "../components/TasksCards";
 import BookmarkedTasksCards from "../components/BookmarkedTasksCards";
+import MentorPairTab from "../components/MentorPairTab";
 
 function Points() {
   const [activeItem, setActiveItem] = useState("Your Points");
+  const [mentorID, setMentorID] = useState('');
+  const [menteeID, setMenteeID] = useState('');
 
   const handleItemClick = (e, { name }) => {
     setActiveItem(name);
@@ -45,6 +48,19 @@ function Points() {
   if(data){
     var user = data.getUser;
   }
+
+  const {data: {getMentorPairs: mentorPairs}, refetch: refetch2} = useQuery(FETCH_MENTOR_PAIRS_QUERY);
+
+  if (mentorPairs) {
+    mentorPairs.forEach(pair => {
+      if (pair.mentor === id && !menteeID) {
+        setMenteeID(pair.mentee);
+      } else if (pair.mentee === id && !mentorID) {
+        setMentorID(pair.mentor);
+      }
+    });
+  }
+
   const [redeemPointsModal, setRedeemPointsModal] = useState(false);
 
   const openModal = name => {
@@ -121,6 +137,11 @@ function Points() {
           <Menu.Item
             name="Tasks"
             active={activeItem === "Tasks"}
+            onClick={handleItemClick}
+          />
+          <Menu.Item
+            name="MentorSHPE"
+            active={activeItem === "MentorSHPE"}
             onClick={handleItemClick}
           />
         </Menu>
@@ -246,6 +267,11 @@ function Points() {
             </Grid>
           </Segment>
         )}
+        {activeItem === "MentorSHPE" && (
+          <Segment attached="bottom">
+            <MentorPairTab mentorID={mentorID} menteeID={menteeID} user={user}/>
+          </Segment>
+        )}
       </Container>
     </div>
   );
@@ -299,6 +325,15 @@ const REDEEM_POINTS_MUTATION = gql`
         points
         createdAt
       }
+    }
+  }
+`;
+
+const FETCH_MENTOR_PAIRS_QUERY = gql`
+  {
+    getMentorPairs {
+      mentor
+      mentee
     }
   }
 `;
