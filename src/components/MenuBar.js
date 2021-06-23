@@ -25,7 +25,7 @@ function MenuBar({permission}) {
               <img src={logo} alt="" />
             </Menu.Item>
             <Menu.Item as={Link} to="/about">
-              About Us
+              About
             </Menu.Item>
             <Menu.Item as={Link} to="/alumni">
               Alumni
@@ -38,6 +38,9 @@ function MenuBar({permission}) {
             </Menu.Item>
             <Menu.Item as={Link} to="/sponsors">
               Sponsors
+            </Menu.Item>
+            <Menu.Item as={Link} to="/contactus">
+              Contact Us
             </Menu.Item>
 
             <Menu.Menu position="right">
@@ -62,9 +65,9 @@ function MenuBar({permission}) {
                       <Dropdown.Item as={Link} to="/shpeitonetwork">
                         SHPEito Network
                       </Dropdown.Item>
-                      {/* <Dropdown.Item as={Link} to="/shperentals">
+                      <Dropdown.Item as={Link} to="/shperentals">
                         SHPE Rentals
-                      </Dropdown.Item> */}
+                      </Dropdown.Item>
                       <Dropdown.Item as={Link} to="/alumnidirectory">
                         Alumni Directory
                       </Dropdown.Item>
