@@ -13,14 +13,7 @@ import internal from "../assets/images/eboard/internal.jpeg";
 
 function CabinetModal(cabinet, description, cabinetEmail, pic, panels) {
 
-console.log(panels)
-
   const [open, setOpen] = React.useState(false)
-
-
-//use Grid
-
-
 
     return (
       <Modal
@@ -62,7 +55,10 @@ console.log(panels)
             </Grid>
         </Modal.Content>
         <Modal.Actions>
-          {email(cabinetEmail)}
+        {  <a href={"mailto:" + cabinetEmail} className="link-email">
+            <Icon name="mail" />
+            Contact via email
+          </a>}
 
           <Button
             content="Close"
@@ -75,13 +71,6 @@ console.log(panels)
       </Modal>
     )
 }
-function email(email) {
-  return (
-    <a href={"mailto:" + email} className="link-email">
-      <Icon name="mail" />
-      Contact via email
-    </a>
-  );
-}
+
 
 export default CabinetModal
