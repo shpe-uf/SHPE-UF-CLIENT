@@ -5,15 +5,24 @@ import moment from "moment";
 import placeholder from "../assets/images/placeholder.png";
 
 function UserProfile({ user, children, isPublic }) {
-
   return (
     <Grid columns={2} doubling>
       <Grid.Row>
         <Grid.Column>
           {user && user.photo !== "" ? (
-            <Image rounded size={children ? 'medium' : 'huge'} src={user.photo} className="image-profile" />
+            <Image
+              rounded
+              size={children ? "medium" : "huge"}
+              src={user.photo}
+              className="image-profile"
+            />
           ) : (
-            <Image rounded size={children ? 'medium' : 'huge'} src={placeholder} className="image-profile" />
+            <Image
+              rounded
+              size={children ? "medium" : "huge"}
+              src={placeholder}
+              className="image-profile"
+            />
           )}
           {children}
         </Grid.Column>
@@ -35,16 +44,16 @@ function UserProfile({ user, children, isPublic }) {
                     )}
                   </Table.Cell>
                 </Table.Row>
-                {!isPublic &&
-                <Table.Row>
-                  <Table.Cell>
-                    <b>Username:</b>
-                  </Table.Cell>
-                  <Table.Cell>
-                    {user ? <p>{user.username}</p> : <p>Loading</p>}
-                  </Table.Cell>
-                </Table.Row>
-                }
+                {!isPublic && (
+                  <Table.Row>
+                    <Table.Cell>
+                      <b>Username:</b>
+                    </Table.Cell>
+                    <Table.Cell>
+                      {user ? <p>{user.username}</p> : <p>Loading</p>}
+                    </Table.Cell>
+                  </Table.Row>
+                )}
                 <Table.Row>
                   <Table.Cell>
                     <b>Email:</b>
@@ -85,26 +94,26 @@ function UserProfile({ user, children, isPublic }) {
                     {user ? <p>{user.country}</p> : <p>Loading</p>}
                   </Table.Cell>
                 </Table.Row>
-                {!isPublic &&
-                <Table.Row>
-                  <Table.Cell>
-                    <b>Ethnicity:</b>
-                  </Table.Cell>
-                  <Table.Cell>
-                    {user ? <p>{user.ethnicity}</p> : <p>Loading</p>}
-                  </Table.Cell>
-                </Table.Row>
-                }
-                {!isPublic &&
-                <Table.Row>
-                  <Table.Cell>
-                    <b>Sex:</b>
-                  </Table.Cell>
-                  <Table.Cell>
-                    {user ? <p>{user.sex}</p> : <p>Loading</p>}
-                  </Table.Cell>
-                </Table.Row>
-                }
+                {!isPublic && (
+                  <Table.Row>
+                    <Table.Cell>
+                      <b>Ethnicity:</b>
+                    </Table.Cell>
+                    <Table.Cell>
+                      {user ? <p>{user.ethnicity}</p> : <p>Loading</p>}
+                    </Table.Cell>
+                  </Table.Row>
+                )}
+                {!isPublic && (
+                  <Table.Row>
+                    <Table.Cell>
+                      <b>Gender:</b>
+                    </Table.Cell>
+                    <Table.Cell>
+                      {user ? <p>{user.sex}</p> : <p>Loading</p>}
+                    </Table.Cell>
+                  </Table.Row>
+                )}
                 <Table.Row>
                   <Table.Cell>
                     <b>Member Since:</b>
@@ -132,13 +141,15 @@ function UserProfile({ user, children, isPublic }) {
                     <b>Internships:</b>
                   </Table.Cell>
                   <Table.Cell>
-                  {user ? 
-                    user.internships.map((e,i) => (
-                      <div key={i}>
-                        <p>{e}</p>
-                      </div>
-                    ))
-                  : <p>Loading</p>}
+                    {user ? (
+                      user.internships.map((e, i) => (
+                        <div key={i}>
+                          <p>{e}</p>
+                        </div>
+                      ))
+                    ) : (
+                      <p>Loading</p>
+                    )}
                   </Table.Cell>
                 </Table.Row>
                 <Table.Row>
@@ -146,13 +157,15 @@ function UserProfile({ user, children, isPublic }) {
                     <b>Social Media:</b>
                   </Table.Cell>
                   <Table.Cell>
-                  {user ? 
-                    user.socialMedia.map((e,i) => (
-                      <div key={i}>
-                        <p>{e}</p>
-                      </div>
-                    ))
-                  : <p>Loading</p>}
+                    {user ? (
+                      user.socialMedia.map((e, i) => (
+                        <div key={i}>
+                          <p>{e}</p>
+                        </div>
+                      ))
+                    ) : (
+                      <p>Loading</p>
+                    )}
                   </Table.Cell>
                 </Table.Row>
               </Table.Body>

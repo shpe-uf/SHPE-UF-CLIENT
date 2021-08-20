@@ -29,7 +29,7 @@ import placeholder from "../assets/images/placeholder.png";
 import ImageCrop from "../components/ImageCrop";
 
 function Profile() {
-  const [photoFile, setPhotoFile] = useState('');
+  const [photoFile, setPhotoFile] = useState("");
   const [errors, setErrors] = useState({});
   const [editProfileModal, setEditProfileModal] = useState(false);
   const [miscInfo, setMiscInfo] = useState({
@@ -37,9 +37,9 @@ function Profile() {
     internships: [],
     socialMedia: [],
   });
-  const [newClass, setClass] = useState('');
-  const [newInternship, setInternship] = useState('');
-  const [newSocialMedia, setSocialMedia] = useState('');
+  const [newClass, setClass] = useState("");
+  const [newInternship, setInternship] = useState("");
+  const [newSocialMedia, setSocialMedia] = useState("");
 
   let {
     user: { id, email },
@@ -47,12 +47,11 @@ function Profile() {
 
   let user = useQuery(FETCH_USER_QUERY, {
     variables: {
-      userId: id
-    }
+      userId: id,
+    },
   });
 
-
-  if (user){
+  if (user) {
     user = user.data.getUser;
   }
 
@@ -72,11 +71,11 @@ function Profile() {
     setMiscInfo({
       classes: user.classes.slice(),
       internships: user.internships.slice(),
-      socialMedia: user.socialMedia.slice()
-    })
+      socialMedia: user.socialMedia.slice(),
+    });
     setEditProfileModal(true);
     setPhotoFile(user.photo);
-  };
+  }
 
   const closeModal = (name) => {
     if (name === "editProfile") {
@@ -98,7 +97,7 @@ function Profile() {
     sex: "",
     classes: [],
     internships: [],
-    socialMedia: []
+    socialMedia: [],
   });
 
   const [editProfile, { loading }] = useMutation(EDIT_USER_PROFILE, {
@@ -112,7 +111,7 @@ function Profile() {
       user.country = userData.country;
       user.ethnicity = userData.ethnicity;
       user.sex = userData.sex;
-      user.classes = userData.classes
+      user.classes = userData.classes;
       user.internships = userData.internships;
       user.socialMedia = userData.socialMedia;
       toast.success("Your profile has been updated.", {
@@ -125,7 +124,7 @@ function Profile() {
     onError(err) {
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
     },
-    
+
     variables: values,
   });
 
@@ -137,25 +136,27 @@ function Profile() {
   }
 
   function addToArray(e, arrayType) {
-    e.preventDefault()
-    switch(arrayType){
-      case 'class':
+    e.preventDefault();
+    switch (arrayType) {
+      case "class":
         setMiscInfo({
           ...miscInfo,
-          classes: miscInfo.classes.concat([newClass.replace(/\s+/g, "").toUpperCase()])
-        })
+          classes: miscInfo.classes.concat([
+            newClass.replace(/\s+/g, "").toUpperCase(),
+          ]),
+        });
         break;
-      case 'internship':
+      case "internship":
         setMiscInfo({
           ...miscInfo,
-          internships: miscInfo.internships.concat([newInternship])
-        })
+          internships: miscInfo.internships.concat([newInternship]),
+        });
         break;
-      case 'socialMedia':
+      case "socialMedia":
         setMiscInfo({
           ...miscInfo,
-          socialMedia: miscInfo.socialMedia.concat([newSocialMedia])
-        })
+          socialMedia: miscInfo.socialMedia.concat([newSocialMedia]),
+        });
         break;
       default:
         break;
@@ -183,7 +184,7 @@ function Profile() {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-        <UserProfile user={user} isPublic={false}/>
+        <UserProfile user={user} isPublic={false} />
       </Container>
 
       <Modal open={editProfileModal} size="tiny">
@@ -230,7 +231,7 @@ function Profile() {
                     values={values}
                     onChange={onChange}
                     errors={errors}
-                    type='profile'
+                    type="profile"
                   />
                   <Form.Input
                     type="text"
@@ -319,7 +320,7 @@ function Profile() {
                     ))}
                   </Form.Field>
                   <Form.Field
-                    label="Sex"
+                    label="Gender"
                     control="select"
                     name="sex"
                     value={values.sex}
@@ -335,11 +336,15 @@ function Profile() {
                   <Form.Input
                     label="Classes"
                     placeholder={"Add your classes here"}
-                    onKeyPress={(e)=> (e.key === 'Enter') && addToArray(e,'class')}
+                    onKeyPress={(e) =>
+                      e.key === "Enter" && addToArray(e, "class")
+                    }
                     onChange={(e) => setClass(e.target.value)}
                     action={{
-                      onClick: (e)=>{addToArray(e,'class')},
-                      icon: 'plus'
+                      onClick: (e) => {
+                        addToArray(e, "class");
+                      },
+                      icon: "plus",
                     }}
                   />
                   {miscInfo.classes.map((info) => (
@@ -348,25 +353,29 @@ function Profile() {
                       circular
                       content={info}
                       key={info}
-                      style={{marginBottom: '4px'}}
+                      style={{ marginBottom: "4px" }}
                       onRemove={() => {
                         let newClasses = miscInfo.classes;
-                        newClasses.splice(miscInfo.classes.indexOf(info),1);
+                        newClasses.splice(miscInfo.classes.indexOf(info), 1);
                         setMiscInfo({
                           ...miscInfo,
-                          classes: newClasses
-                        })
+                          classes: newClasses,
+                        });
                       }}
                     />
                   ))}
                   <Form.Input
                     label="Internships"
                     placeholder={"Add your internships here"}
-                    onKeyPress={(e)=> (e.key === 'Enter') && addToArray(e,'internship')}
+                    onKeyPress={(e) =>
+                      e.key === "Enter" && addToArray(e, "internship")
+                    }
                     onChange={(e) => setInternship(e.target.value)}
                     action={{
-                      onClick: (e)=>{addToArray(e,'internship')},
-                      icon: 'plus'
+                      onClick: (e) => {
+                        addToArray(e, "internship");
+                      },
+                      icon: "plus",
                     }}
                   />
                   {miscInfo.internships.map((info) => (
@@ -375,25 +384,32 @@ function Profile() {
                       circular
                       content={info}
                       key={info}
-                      style={{marginBottom: '4px'}}
+                      style={{ marginBottom: "4px" }}
                       onRemove={() => {
                         let newInternships = miscInfo.internships;
-                        newInternships.splice(miscInfo.internships.indexOf(info),1);
+                        newInternships.splice(
+                          miscInfo.internships.indexOf(info),
+                          1
+                        );
                         setMiscInfo({
                           ...miscInfo,
-                          internships: newInternships
-                        })
+                          internships: newInternships,
+                        });
                       }}
                     />
                   ))}
                   <Form.Input
                     label="Social Media / Links"
                     placeholder={"Add your personal links here"}
-                    onKeyPress={(e)=> (e.key === 'Enter') && addToArray(e,'socialMedia')}
+                    onKeyPress={(e) =>
+                      e.key === "Enter" && addToArray(e, "socialMedia")
+                    }
                     onChange={(e) => setSocialMedia(e.target.value)}
                     action={{
-                      onClick: (e)=>{addToArray(e,'socialMedia')},
-                      icon: 'plus'
+                      onClick: (e) => {
+                        addToArray(e, "socialMedia");
+                      },
+                      icon: "plus",
                     }}
                   />
                   {miscInfo.socialMedia.map((info) => (
@@ -402,14 +418,17 @@ function Profile() {
                       circular
                       content={info}
                       key={info}
-                      style={{marginBottom: '4px'}}
+                      style={{ marginBottom: "4px" }}
                       onRemove={() => {
                         let newSocialMedia = miscInfo.socialMedia;
-                        newSocialMedia.splice(miscInfo.socialMedia.indexOf(info),1);
+                        newSocialMedia.splice(
+                          miscInfo.socialMedia.indexOf(info),
+                          1
+                        );
                         setMiscInfo({
                           ...miscInfo,
-                          socialMedia: newSocialMedia
-                        })
+                          socialMedia: newSocialMedia,
+                        });
                       }}
                     />
                   ))}

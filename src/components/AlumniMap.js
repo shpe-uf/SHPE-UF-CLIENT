@@ -9,7 +9,7 @@ function AlumniMap({ alumnis }) {
 
   const Map = ReactMapboxGl({
     accessToken:
-      "pk.eyJ1IjoiY2Vjcmlnb3BlIiwiYSI6ImNrMzRxMDAwdTB6cHUzY3Myd3ZjeWhhdzkifQ.uND4rBRWT0KBJoDFt_xhMQ"
+      "pk.eyJ1IjoiY2Vjcmlnb3BlIiwiYSI6ImNrMzRxMDAwdTB6cHUzY3Myd3ZjeWhhdzkifQ.uND4rBRWT0KBJoDFt_xhMQ",
   });
 
   function handleAlumniPopup(alumni) {
@@ -29,7 +29,7 @@ function AlumniMap({ alumnis }) {
       style="mapbox://styles/cecrigope/ck36yhbkr6ytf1cmmvrvzpffo"
       containerStyle={{
         height: "600px",
-        width: "100%"
+        width: "100%",
       }}
       center={center}
       zoom={zoom}
@@ -44,7 +44,7 @@ function AlumniMap({ alumnis }) {
               <Feature
                 coordinates={[
                   alumni.coordinates.longitude,
-                  alumni.coordinates.latitude
+                  alumni.coordinates.latitude,
                 ]}
                 onClick={() => handleAlumniPopup(alumni)}
               />
@@ -54,7 +54,7 @@ function AlumniMap({ alumnis }) {
                 anchor="bottom-left"
                 coordinates={[
                   alumni.coordinates.longitude,
-                  alumni.coordinates.latitude
+                  alumni.coordinates.latitude,
                 ]}
               >
                 <b className="no-margin" className="accent-1-text">

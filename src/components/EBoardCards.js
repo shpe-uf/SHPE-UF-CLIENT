@@ -1,22 +1,5 @@
-import React, { useState } from "react";
-import { useContext } from "react";
-import {
-  Accordion,
-  Container,
-  Grid,
-  Button,
-  Card,
-  Tab,
-  Segment,
-  Icon,
-  Header,
-  Image,
-  Modal,
-} from "semantic-ui-react";
-import CorporateCard from "../components/CorporateCard";
-import ModalDialog from "react-bootstrap/ModalDialog";
-import CorporationProfile from "../components/CorporationProfile";
-import CorporationTable from "../components/CorporationTable";
+import React from "react";
+import { Card } from "semantic-ui-react";
 import CabinetModal from "../components/CabinetModal";
 import PresidentModal from "../components/PresidentModal";
 
@@ -29,6 +12,8 @@ import corporate from "../assets/images/eboard/corporate.jpeg";
 import technology from "../assets/images/eboard/technology.jpeg";
 import external from "../assets/images/eboard/external.jpeg";
 import internal from "../assets/images/eboard/internal.jpeg";
+
+import marketingPositions from "../assets/options/marketing.json";
 
 function cabinet(cabinet, description, email, pic, panels) {
   return CabinetModal(cabinet, description, email, pic, panels);
@@ -892,6 +877,7 @@ const presidentDescription = (
 );
 
 function EBoardCards() {
+  //console.log(marketingPositions);
   return (
     <>
       <Card

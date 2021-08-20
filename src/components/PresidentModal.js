@@ -1,26 +1,8 @@
 import React, { useState } from "react";
-import { useContext } from "react";
-import {
-  Accordion,
-  Container,
-  Grid,
-  Button,
-  Card,
-  Tab,
-  Segment,
-  Icon,
-  Header,
-  Image,
-  Modal,
-} from "semantic-ui-react";
-import CorporateCard from "../components/CorporateCard";
-import ModalDialog from "react-bootstrap/ModalDialog";
-import CorporationProfile from "../components/CorporationProfile";
-import CorporationTable from "../components/CorporationTable";
-import CabinetModal from "../components/CabinetModal";
+import { Grid, Button, Icon, Header, Image, Modal } from "semantic-ui-react";
 
 function PresidentModal(cabinet, description, cabinetEmail, pic) {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
     <Modal
@@ -39,10 +21,8 @@ function PresidentModal(cabinet, description, cabinetEmail, pic) {
           <Grid.Column width={5}>
             <Image size="medium" src={pic} wrapped />
           </Grid.Column>
-
           <Grid.Column width={11}>
             <Header>Description</Header>
-
             <p>{description}</p>
           </Grid.Column>
         </Grid>
@@ -54,7 +34,6 @@ function PresidentModal(cabinet, description, cabinetEmail, pic) {
             Contact via email
           </a>
         }
-
         <Button
           content="Close"
           labelPosition="right"

@@ -7,7 +7,7 @@ import {
   Message,
   Modal,
   Header,
-  Icon
+  Icon,
 } from "semantic-ui-react";
 import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
@@ -28,7 +28,7 @@ function Register(props) {
   const handleClose = () => {
     setOpenModal(false);
     props.history.push("/login");
-  }
+  };
 
   const { onChange, onSubmit, values } = useForm(registerUser, {
     firstName: "",
@@ -43,42 +43,41 @@ function Register(props) {
     email: "",
     password: "",
     confirmPassword: "",
-    listServ: "false"
+    listServ: "false",
   });
 
   const [addUser, { loading }] = useMutation(REGISTER_USER, {
-    onCompleted(){
+    onCompleted() {
       setOpenModal(true);
     },
     onError(err) {
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
     },
 
-    variables: values
+    variables: values,
   });
 
   function registerUser() {
     addUser();
   }
 
-  const msg = "Please confirm your email to complete registration, thank you!"
-
   return (
     <div className="register">
       <div className="overlay-register">
         <Container>
-          <Modal basic open={openModal} >
+          <Modal basic open={openModal}>
             <Header icon>
-              <Icon name='mail outline' />
+              <Icon name="mail outline" />
               Email sent!
             </Header>
             <Modal.Content>
               <p>
-                A link has been sent to your email, please press the confirm link inside to complete registration, thank you!
+                A link has been sent to your email, please press the confirm
+                link inside to complete registration, thank you!
               </p>
             </Modal.Content>
             <Modal.Actions>
-              <Button color='green' inverted onClick={() => handleClose()}>
+              <Button color="green" inverted onClick={() => handleClose()}>
                 OK
               </Button>
             </Modal.Actions>
@@ -91,7 +90,7 @@ function Register(props) {
               {Object.keys(errors).length > 0 && (
                 <div className="ui error message">
                   <ul className="list">
-                    {Object.values(errors).map(value => (
+                    {Object.values(errors).map((value) => (
                       <li key={value}>{value}</li>
                     ))}
                   </ul>
@@ -129,7 +128,7 @@ function Register(props) {
                     error={errors.major ? true : false}
                     onChange={onChange}
                   >
-                    {majorOptions.map(major => (
+                    {majorOptions.map((major) => (
                       <option value={major.value} key={major.key}>
                         {major.value}
                       </option>
@@ -143,7 +142,7 @@ function Register(props) {
                     error={errors.year ? true : false}
                     onChange={onChange}
                   >
-                    {yearOptions.map(year => (
+                    {yearOptions.map((year) => (
                       <option value={year.value} key={year.key}>
                         {year.value}
                       </option>
@@ -157,7 +156,7 @@ function Register(props) {
                     error={errors.graduating ? true : false}
                     onChange={onChange}
                   >
-                    {graduatingOptions.map(graduating => (
+                    {graduatingOptions.map((graduating) => (
                       <option value={graduating.value} key={graduating.key}>
                         {graduating.value}
                       </option>
@@ -173,7 +172,7 @@ function Register(props) {
                     error={errors.country ? true : false}
                     onChange={onChange}
                   >
-                    {countryOptions.map(country => (
+                    {countryOptions.map((country) => (
                       <option value={country.value} key={country.key}>
                         {country.value}
                       </option>
@@ -187,7 +186,7 @@ function Register(props) {
                     error={errors.ethnicity ? true : false}
                     onChange={onChange}
                   >
-                    {ethnicityOptions.map(ethnicity => (
+                    {ethnicityOptions.map((ethnicity) => (
                       <option value={ethnicity.value} key={ethnicity.key}>
                         {ethnicity.value}
                       </option>
@@ -201,7 +200,7 @@ function Register(props) {
                     error={errors.sex ? true : false}
                     onChange={onChange}
                   >
-                    {sexOptions.map(sex => (
+                    {sexOptions.map((sex) => (
                       <option value={sex.value} key={sex.key}>
                         {sex.value}
                       </option>

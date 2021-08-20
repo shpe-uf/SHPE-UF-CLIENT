@@ -188,7 +188,7 @@ h5 {
   padding: 16px !important;
   align-items: center !important;
   justify-content: center !important;
-  background-color: var(--accent-1) !important;
+  background-color: var(--white) !important;
 }
 
 .overlay-home {
@@ -610,9 +610,9 @@ th {
   font-family: "body-font" !important;
 }
 
-.ui.card>.content>.header, 
+.ui.card>.content>.header,
 .ui.cards>.card>.content>.header,
-.ui.card>.content>.meta, 
+.ui.card>.content>.meta,
 .ui.cards>.card>.content>.meta {
   overflow: hidden            !important;
   text-overflow: ellipsis     !important;
