@@ -8,19 +8,9 @@ import {
   Header,
   Grid,
 } from "semantic-ui-react";
-import president from "../assets/images/eboard/president.jpeg";
-import graduate from "../assets/images/eboard/graduate.jpeg";
-import secretary from "../assets/images/eboard/secretary.jpg";
-import treasurer from "../assets/images/eboard/treasurer.jpeg";
-import marketing from "../assets/images/eboard/marketing.jpeg";
-import corporate from "../assets/images/eboard/corporate.jpeg";
-import technology from "../assets/images/eboard/technology.jpeg";
-import external from "../assets/images/eboard/external.jpeg";
-import internal from "../assets/images/eboard/internal.jpeg";
 
-function CabinetModal(cabinet, description, cabinetEmail, pic, panels) {
+function CabinetModal(cabinet, description, cabinetEmail, pic, json) {
   const [open, setOpen] = React.useState(false);
-
   return (
     <Modal
       onClose={() => setOpen(false)}
@@ -47,9 +37,7 @@ function CabinetModal(cabinet, description, cabinetEmail, pic, panels) {
 
           <Grid.Column width={16}>
             <Header>Director Positions</Header>
-            <Accordion defaultActiveIndex={0} panels={panels} />
-
-            <p></p>
+            <Accordion defaultActiveIndex={0} panels={json} />
           </Grid.Column>
         </Grid>
       </Modal.Content>

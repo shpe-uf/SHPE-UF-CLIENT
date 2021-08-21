@@ -1,76 +1,47 @@
 [
   {
-    "key": "",
-    "value": ""
+    "key": "marketingLead",
+    "title": "Marketing Lead Director",
+    "content": "Marketing Lead Director acts as the VP Marketings right hand. Facilitates the communication between all mini cabinets and the Secretary Cabinet. They can assist any mini-cabinet with their needs and act as an aid when needed."
   },
   {
-    "key": "VP Marketing",
-    "value": "The Vice President of Marketing’s responsibilities lie within
-    Recruitment, Public Relations, and Event Promotion of the
-    organization. They serve as a point of communication between
-    cabinet, other cabinets, new members and other orgs. Manage and
-    delegate responsibilities in each mini-cabinet (social media,
-    recruitment, podcast, photography, video, marketing event, graphic
-    design, apparel)."
+    "key": "socialMedia",
+    "title": "Social Media Director",
+    "content": "Social Media directors manage all social media platforms including Instagram, Tik Tok, and Youtube. This includes posting and editing pictures on our Instagram, creating Tik Tok videos, creating member highlight stories, and posting videos on Youtube/IGTV."
   },
   {
-    "key": "Marketing Lead Director",
-    "value": "Marketing Lead Director acts as the VP Marketings right hand.
-    Facilitates the communication between all mini cabinets and the
-    Secretary Cabinet. They can assist any mini-cabinet with their needs
-    and act as an aid when needed."
+    "key": "graphicDesign",
+    "title": "Graphic Design Director",
+    "content": "Graphics Director oversees media designs including flyers, t-shirt designs, stickers, and advertisements."
   },
   {
-    "key": "Social Media Director",
-    "value": "Social Media directors manage all social media platforms including
-    Instagram, Tik Tok, and Youtube. This includes posting and editing
-    pictures on our Instagram, creating Tik Tok videos, creating member
-    highlight stories, and posting videos on Youtube/IGTV."
+    "key": "recruitment",
+    "title": "Recruitment Director",
+    "content": "Recruitment Directors are responsible for recruiting new members to SHPE and spreading the word about our organization. This will include leading recruitment initiatives, speaking in classes, and attending recruiting events when possible."
   },
   {
-    "key": "Graphic Design Director",
-    "value": "Graphics Director oversees media designs including flyers, t-shirt
-    designs, stickers, and advertisements."
+    "key": "marketingEvent",
+    "title": "Marketing Event Director",
+    "content": "Marketing Event Directors plan and execute the logistics for marketing events throughout the year that bring a creative outlook to our members. Our main marketing event is Mural Day - an annual event where we go to 34th street and fill one mural with SHPE spirit. Past marketing events have included Tie Dye Day and an arts and crafts social."
   },
   {
-    "key": "Recruitment Director",
-    "value": "Recruitment Directors are responsible for recruiting new members to
-    SHPE and spreading the word about our organization. This will
-    include leading recruitment initiatives, speaking in classes, and
-    attending recruiting events when possible."
+    "key": "videography",
+    "title": "Videography Director",
+    "content": "Video Directors document in-person SHPE events and members' experiences through videos. Will oversee editing videos to post on the SHPE social media pages."
   },
   {
-    "key": "Marketing Event Director",
-    "value": "Marketing Event Directors plan and execute the logistics for
-    marketing events throughout the year that bring a creative outlook
-    to our members. Our main marketing event is Mural Day - an annual
-    event where we go to 34th street and fill one mural with SHPE
-    spirit. Past marketing events have included Tie Dye Day and an arts
-    and crafts social."
+    "key": "photography",
+    "title": "Photography Director",
+    "content": "Photo Directors document all SHPE experiences and events through photography. Directors upload pictures and showcase what a great familia we are to the UF community."
   },
   {
-    "key": "Videography Director",
-    "value": "Video Directors document in-person SHPE events and members'
-    experiences through videos. Will oversee editing videos to post on
-    the SHPE social media pages."
+    "key": "apparel",
+    "title": "Apparel Director",
+    "content": "Apparel Directors are responsible for all of our merchandise, from brainstorming ideas for new apparel and designs, to getting estimates and actual orders placed for the cabinet. Directors will also keep track of our inventory as merchandise is sold."
   },
   {
-    "key": "Photography Director",
-    "value": "Photo Directors document all SHPE experiences and events through
-    photography. Directors upload pictures and showcase what a great
-    familia we are to the UF community."
-  },
-  {
-    "key": "Apparel Director",
-    "value": "Apparel Directors are responsible for all of our merchandise, from
-    brainstorming ideas for new apparel and designs, to getting
-    estimates and actual orders placed for the cabinet. Directors will
-    also keep track of our inventory as merchandise is sold."
-  },
-  {
-    "key": "Podcast Director",
-    "value": "Podcast Directors create audio and/or visual podcasts throughout the
-    semester which document SHPEitos experiences, recommendations, and
-    anecdotes in a light hearted and fun light."
+    "key": "podcast",
+    "title": "Podcast Director",
+    "content": "Podcast Directors create audio and/or visual podcasts throughout the semester which document SHPEitos experiences, recommendations, and anecdotes in a light hearted and fun light."
   }
 ]
