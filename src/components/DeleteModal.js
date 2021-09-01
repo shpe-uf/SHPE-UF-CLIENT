@@ -4,6 +4,8 @@ import { useMutation } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 import { FETCH_TASKS_QUERY, FETCH_CORPORATIONS_QUERY, FETCH_EVENTS_QUERY } from '../util/graphql';
 
+
+
 function DeleteModal(props){
   const [userInput, setUserInput] = useState('');
   console.log(props.deleteId)
@@ -49,7 +51,7 @@ function DeleteModal(props){
       default:
         break;
     }
-  }
+
 
   return (
     <Modal open={props.open} basic size='small'>
@@ -168,5 +170,6 @@ const DELETE_EVENT = gql`
     }
 }
 `;
+};
 
 export default DeleteModal

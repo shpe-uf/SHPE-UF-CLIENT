@@ -6,9 +6,7 @@ import {
   Card,
   Image,
   Button,
-  Icon,
   Modal,
-  List,
   Grid,
   Responsive,
 } from "semantic-ui-react";
@@ -54,13 +52,11 @@ function ShpeitoNetwork(props) {
     users = data.getUsers.filter(function (user) {
       let fullName = user.firstName.concat(" ").concat(user.lastName);
       return (
-        (user.confirmed)&&
+        user.confirmed &&
         (filter.major.length === 0
           ? true
           : filter.major.includes(user.major)) &&
-        (filter.year.length === 0 
-          ? true 
-          : filter.year.includes(user.year)) &&
+        (filter.year.length === 0 ? true : filter.year.includes(user.year)) &&
         (filter.graduating.length === 0
           ? true
           : filter.graduating.includes(user.graduating)) &&
@@ -69,7 +65,7 @@ function ShpeitoNetwork(props) {
           : filter.country.includes(user.country)) &&
         (filter.classes.length === 0
           ? true
-          : filter.classes.some(o => user.classes.includes(o))) &&
+          : filter.classes.some((o) => user.classes.includes(o))) &&
         (filter.name.length === 0
           ? true
           : filter.name
@@ -95,7 +91,7 @@ function ShpeitoNetwork(props) {
     return (
       <>
         <p></p>
-        <Responsive minWidth='1200'>
+        <Responsive minWidth="1200">
           <Segment>
             <Card.Group itemsPerRow="4">
               {users.map((shpeito) => (
@@ -133,14 +129,14 @@ function ShpeitoNetwork(props) {
                     size="large"
                     closeIcon
                   >
-                    <UserProfile user={shpeito} isPublic={true}/>
+                    <UserProfile user={shpeito} isPublic={true} />
                   </Modal>
                 </Card>
               ))}
             </Card.Group>
           </Segment>
         </Responsive>
-        <Responsive maxWidth='1199'>
+        <Responsive maxWidth="1199">
           <Segment>
             <Card.Group itemsPerRow="1">
               {users.map((shpeito) => (
@@ -178,7 +174,7 @@ function ShpeitoNetwork(props) {
                     size="large"
                     closeIcon
                   >
-                    <UserProfile user={shpeito} isPublic={true}/>
+                    <UserProfile user={shpeito} isPublic={true} />
                   </Modal>
                 </Card>
               ))}
@@ -199,13 +195,9 @@ function ShpeitoNetwork(props) {
             <div style={{ height: "400px" }} />
           </Segment>
         ) : user ? (
-          user.classes.length == 0 ? (
+          user.classes.length === 0 ? (
             <Container>
-              <Modal
-                onOpen={() => setOpen(true)}
-                open={open}
-                size="small"
-              >
+              <Modal onOpen={() => setOpen(true)} open={open} size="small">
                 <Modal.Header>
                   <h3>Hello {user.firstName},</h3>
                 </Modal.Header>
@@ -254,7 +246,9 @@ function ShpeitoNetwork(props) {
                 </Grid>
               </Modal>
             </Container>
-          ) : users.length > 0 && ( displayUsersCards())
+          ) : (
+            users.length > 0 && displayUsersCards()
+          )
         ) : (
           <div style={{ paddingBottom: 16 }}>
             <p></p>

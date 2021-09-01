@@ -16,29 +16,43 @@ import moment from "moment";
 import { CSVLink } from "react-csv";
 
 import { FETCH_EVENTS_QUERY } from "../util/graphql";
-import DeleteModal from "./DeleteModal";
 import ManualInputModal from "./ManualInputModal";
 
 function EventsTable({ events }) {
   const [manualInputModal, setManualInputModal] = useState(false);
   const [eventInfoModal, setEventInfoModal] = useState(false);
-  const [deleteEventModal, setDeleteEventModal] = useState(false)
+  const [deleteEventModal, setDeleteEventModal] = useState(false);
   const [eventAttendance, setEventAttendance] = useState({});
-  const [selectedEvent, setSelectedEvent] = useState('');
+  const [selectedEvent, setSelectedEvent] = useState("");
+
+  const fallSem = [];
+  const springSem = [];
+  const summerSem = [];
 
   const [removeUserFromEvent] = useMutation(REMOVE_USER_MUTATION, {
+    update(cache, { data: { removeUserFromEvent } }) {
+      const { getEvents } = cache.readQuery({ query: FETCH_EVENTS_QUERY });
 
-    update(cache, { data : { removeUserFromEvent } }) {
-      const {getEvents} = cache.readQuery({ query: FETCH_EVENTS_QUERY });
       getEvents.forEach((event, pos) => {
-        if(event.name === removeUserFromEvent.name) getEvents[pos] = removeUserFromEvent
-      })
+        if (event.semester === "Fall Semester") fallSem.push(event);
+      });
+      getEvents.forEach((event, pos) => {
+        if (event.semester === "Spring Semester") springSem.push(event);
+      });
+      getEvents.forEach((event, pos) => {
+        if (event.semester === "Summer Semester") summerSem.push(event);
+      });
+
+      getEvents.forEach((event, pos) => {
+        if (event.name === removeUserFromEvent.name)
+          getEvents[pos] = removeUserFromEvent;
+      });
       cache.writeQuery({
         query: FETCH_EVENTS_QUERY,
-        data: { getEvents: getEvents},
+        data: { getEvents: getEvents },
       });
       setSelectedEvent(removeUserFromEvent.name);
-    }
+    },
   });
 
   return (
@@ -140,7 +154,7 @@ function EventsTable({ events }) {
 
       <ManualInputModal
         open={manualInputModal}
-        type='event'
+        type="event"
         addObject={selectedEvent}
         setModalOpen={setManualInputModal}
       />
@@ -157,9 +171,7 @@ function EventsTable({ events }) {
         <Modal.Content>
           <Grid>
             <Grid.Row>
-              <Grid.Column>
-                Code: {eventAttendance.code}
-              </Grid.Column>
+              <Grid.Column>Code: {eventAttendance.code}</Grid.Column>
             </Grid.Row>
             <Grid.Row>
               <Grid.Column>
@@ -195,19 +207,20 @@ function EventsTable({ events }) {
                               </Table.Cell>
                               <Table.Cell>{member.username}</Table.Cell>
                               <Table.Cell>{member.email}</Table.Cell>
-                              <Table.Cell textAlign='center'>
+                              <Table.Cell textAlign="center">
                                 <Button
                                   icon
-                                  color='red'
+                                  color="red"
                                   onClick={() => {
-                                    removeUserFromEvent({variables: {
-                                      username: member.username,
-                                      eventName: eventAttendance.name
-                                    }})
+                                    removeUserFromEvent({
+                                      variables: {
+                                        username: member.username,
+                                        eventName: eventAttendance.name,
+                                      },
+                                    });
                                   }}
-                                 
                                 >
-                                  <Icon name='x'/>
+                                  <Icon name="x" />
                                 </Button>
                               </Table.Cell>
                             </Table.Row>
@@ -236,12 +249,6 @@ function EventsTable({ events }) {
           </Grid>
         </Modal.Content>
       </Modal>
-      <DeleteModal
-        open={deleteEventModal}
-        close={() => setDeleteEventModal(false)}
-        deleteItem={selectedEvent}
-        type='event'
-      />
     </>
   );
 }
