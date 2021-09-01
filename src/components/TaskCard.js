@@ -1,27 +1,19 @@
 import React, { useContext } from "react";
-import {
-  Card,
-  Button,
-  Icon
-} from "semantic-ui-react";
-
+import { Card, Button, Icon } from "semantic-ui-react";
+import { useQuery, useMutation } from "@apollo/react-hooks";
+import gql from "graphql-tag";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { useQuery, useMutation } from "@apollo/react-hooks";
-import gql from "graphql-tag";
-
 import { AuthContext } from "../context/auth";
-
 import { FETCH_TASKS_QUERY } from "../util/graphql";
 
-
-function TaskCard({ user, refetch}) {
+function TaskCard({ user, refetch }) {
   const [bookmarkTask] = useMutation(BOOKMARK_TASK_MUTATION);
 
   const { data } = useQuery(FETCH_TASKS_QUERY);
 
-  var allTasks = (data) ? data.getTasks : [];
+  var allTasks = data ? data.getTasks : [];
   var tasks = [];
 
   if (allTasks && user) {
@@ -29,7 +21,7 @@ function TaskCard({ user, refetch}) {
     for (const [_, value] of allTasks.entries()) {
       const task = value;
       const taskName = bookmarkedTaskNames.find(
-        element => element === task.name
+        (element) => element === task.name
       );
       if (!taskName) {
         tasks.push(task);
@@ -38,22 +30,17 @@ function TaskCard({ user, refetch}) {
   }
 
   var {
-    user: { username }
+    user: { username },
   } = useContext(AuthContext);
 
   const [redeemTasksPoints] = useMutation(REDEEM_TASK_POINTS_MUTATION, {
-    update(
-      _,
-      {
-        data: { redeemTasksPoints: userData }
-      }
-    ) {},
+    update(_, { data: { redeemTasksPoints: userData } }) {},
 
     onError(err) {
       toast.error(err.graphQLErrors[0].extensions.exception.errors.general, {
-        position: toast.POSITION.BOTTOM_CENTER
+        position: toast.POSITION.BOTTOM_CENTER,
       });
-    }
+    },
   });
 
   return (
@@ -69,31 +56,33 @@ function TaskCard({ user, refetch}) {
                 </b>
               </div>
               <div style={{ float: "right", transform: "translateY(15%)" }}>
-                <Button icon
-                  inverted color="blue"
+                <Button
+                  icon
+                  inverted
+                  color="blue"
                   floated="right"
                   size="big"
                   onClick={async () => {
                     await bookmarkTask({
                       variables: {
                         name: task.name,
-                        username: username
-                      }
+                        username: username,
+                      },
                     });
                     refetch();
                   }}
                 >
-                <Icon name="bookmark outline"/>
+                  <Icon name="bookmark outline" />
                 </Button>
               </div>
             </Card.Content>
             <Card.Content>
               <Card.Meta
                 style={{
-                  clear: "left"
+                  clear: "left",
                 }}
               >
-                {task.startDate + ' - ' + task.endDate}
+                {task.startDate + " - " + task.endDate}
               </Card.Meta>
             </Card.Content>
             <Card.Content>{task.description}</Card.Content>
@@ -106,8 +95,8 @@ function TaskCard({ user, refetch}) {
                   redeemTasksPoints({
                     variables: {
                       name: task.name,
-                      username: username
-                    }
+                      username: username,
+                    },
                   });
                 }}
               >
@@ -122,9 +111,7 @@ function TaskCard({ user, refetch}) {
 
 const BOOKMARK_TASK_MUTATION = gql`
   mutation bookmarkTask($name: String!, $username: String!) {
-    bookmarkTask(
-      bookmarkTaskInput: {name: $name, username: $username}
-    ) {
+    bookmarkTask(bookmarkTaskInput: { name: $name, username: $username }) {
       bookmarkedTasks
     }
   }

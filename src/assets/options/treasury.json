@@ -1,0 +1,45 @@
+[
+  {
+    "key": "scholarship",
+    "title": "Scholarship Newsletter Executive Director",
+    "content": [
+      "This director is responsible for creating a bi-monthly scholarship newsletter that includes multiple scholarships for each month and advertising the newsletter to members of the SHPE community. ",
+      "Must work with the treasurer in order to produce proper newsletters."
+    ]
+  },
+  {
+    "key": "fundraising",
+    "title": "Fundraising Executive Director",
+    "content": [
+      "This director is responsible for producing fundraisers in order to increase awareness of SHPE and build stronger ties with the community and the city of Gainesville. ",
+      "Must work with the treasurer in order to organize events."
+    ]
+  },
+  {
+    "key": "bec",
+    "title": "BEC Representative Director",
+    "content": [
+      "This director will be responsible to attend all the Student Government meetings as well as be informed of all the policies. ",
+      "Must work with the treasurer in order to deliver the information."
+    ]
+  },
+  {
+    "key": "reimbursement",
+    "title": "Reimbursement Executive Director",
+    "content": [
+      "This director will be in charge of tracking and updating various budgets using Excel spreadsheets. ",
+      "Must work closely with the treasurer on budget adjustments."
+    ]
+  },
+
+  {
+    "key": "gbm",
+    "title": "General Body Meeting Directors",
+    "content": [
+      "This director will be in charge of searching for good and affordable options for the General Body Meetings, as well as find volunteers to help serve the food at such meetings. ",
+      "Sometimes you will be asked to purchase the food but the money will be reimbursed to you. ",
+      "In addition, volunteers and directors should do their best to clean up after the GBM is over. ",
+      "Note: Advised to have a credit card, and be able to accommodate transport for food."
+    ]
+  }
+]
