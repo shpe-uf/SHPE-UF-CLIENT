@@ -73,7 +73,7 @@ function Corporations(props) {
   }
 
   let corporations = null;
-  let { corpData, refetch } = useQuery(FETCH_CORPORATIONS_QUERY);
+  let { corpData, loading } = useQuery(FETCH_CORPORATIONS_QUERY);
   if (corpData) {
     corporations = corpData.getCorporations;
   }

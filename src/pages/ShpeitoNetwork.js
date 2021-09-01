@@ -37,7 +37,8 @@ function ShpeitoNetwork(props) {
 
   let { data, loading } = useQuery(FETCH_USERS_QUERY);
   let users = [];
-
+  console.log(loading);
+  console.log(data);
   let {
     user: { id },
   } = useContext(AuthContext);
