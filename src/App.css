@@ -185,10 +185,10 @@ h5 {
 }
 
 .brand-logo {
-  padding: 16px !important;
+  padding: 15px !important;
   align-items: center !important;
   justify-content: center !important;
-  background-color: var(--white) !important;
+  background-color: var(--accent-1) !important;
 }
 
 .overlay-home {
