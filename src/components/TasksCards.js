@@ -6,19 +6,23 @@ import {
   Header,
   Grid,
   Card,
-  Responsive
+  Responsive,
 } from "semantic-ui-react";
 
 import "react-toastify/dist/ReactToastify.css";
 
-import {useQuery} from "@apollo/react-hooks";
+import { useQuery } from "@apollo/react-hooks";
 
 import TaskCard from "../components/TaskCard";
 
-import {FETCH_TASKS_QUERY} from "../util/graphql";
+import { FETCH_TASKS_QUERY } from "../util/graphql";
 
-function TasksCards({user, refetch}) {
-  var tasks = useQuery(FETCH_TASKS_QUERY).data.getTasks;
+function TasksCards({ user, refetch }) {
+  let tasks = null;
+  let { data } = useQuery(FETCH_TASKS_QUERY);
+  if (data) {
+    tasks = data.getTasks;
+  }
 
   return (
     <>
@@ -29,7 +33,7 @@ function TasksCards({user, refetch}) {
       </Dimmer>
       {!tasks || tasks.length === 0 ? (
         <Segment placeholder="placeholder">
-          <Header icon="icon">
+          <Header icon>
             <i className="fas fa-inbox"></i>
             <p>It seems there aren't any tasks yet...</p>
           </Header>

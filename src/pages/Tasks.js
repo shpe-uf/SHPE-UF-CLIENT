@@ -10,20 +10,23 @@ import TasksTable from "../components/TasksTable";
 import { FETCH_TASKS_QUERY } from "../util/graphql";
 
 function Tasks() {
-
   const [errors, setErrors] = useState({});
   const [createTaskModal, setCreateTaskModal] = useState(false);
-  const [filter, setFilter] = useState('');
+  const [filter, setFilter] = useState("");
 
-  let tasks = useQuery(FETCH_TASKS_QUERY).data.getTasks;
+  let tasks = null;
+  let { data } = useQuery(FETCH_TASKS_QUERY);
+  if (data) {
+    tasks = data.getTasks;
+  }
 
-  const openModal = name => {
+  const openModal = (name) => {
     if (name === "createTask") {
       setCreateTaskModal(true);
     }
   };
 
-  const closeModal = name => {
+  const closeModal = (name) => {
     if (name === "createTask") {
       values.name = "";
       values.description = "";
@@ -40,12 +43,12 @@ function Tasks() {
     description: "",
     startDate: "",
     endDate: "",
-    points: ""
+    points: "",
   });
 
   const [createTask, { loading }] = useMutation(CREATE_TASK_MUTATION, {
     update(cache, { data: { createTask } }) {
-      const {getTasks} = cache.readQuery({ query: FETCH_TASKS_QUERY });
+      const { getTasks } = cache.readQuery({ query: FETCH_TASKS_QUERY });
       cache.writeQuery({
         query: FETCH_TASKS_QUERY,
         data: { getTasks: getTasks.concat([createTask]) },
@@ -68,18 +71,21 @@ function Tasks() {
       description: values.description,
       startDate: values.startDate,
       endDate: values.endDate,
-      points: Number(values.points)
-    }
+      points: Number(values.points),
+    },
   });
 
   function createTaskCallback() {
     !isNaN(values.points) && createTask();
   }
 
-  if(tasks && filter !== '') {
-    tasks = tasks.filter(task => {
-      return (task.name.toLowerCase().includes(filter.toLowerCase()) || task.semester.toLowerCase().includes(filter.toLowerCase()))
-    })
+  if (tasks && filter !== "") {
+    tasks = tasks.filter((task) => {
+      return (
+        task.name.toLowerCase().includes(filter.toLowerCase()) ||
+        task.semester.toLowerCase().includes(filter.toLowerCase())
+      );
+    });
   }
 
   return (
@@ -87,12 +93,12 @@ function Tasks() {
       <Title title="Tasks" adminPath={window.location.pathname} />
       <Container className="body">
         <Grid>
-          <Grid.Row columns='2'>
-          <Grid.Column>
+          <Grid.Row columns="2">
+            <Grid.Column>
               <Input
                 fluid
-                onChange={(_,data) => setFilter(data.value)}
-                placeholder='Search...'
+                onChange={(_, data) => setFilter(data.value)}
+                placeholder="Search..."
               />
             </Grid.Column>
             <Grid.Column>
@@ -129,7 +135,7 @@ function Tasks() {
                 {Object.keys(errors).length > 0 && (
                   <div className="ui error message">
                     <ul className="list">
-                      {Object.values(errors).map(value => (
+                      {Object.values(errors).map((value) => (
                         <li key={value}>{value}</li>
                       ))}
                     </ul>

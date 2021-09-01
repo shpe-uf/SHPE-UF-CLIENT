@@ -45,14 +45,14 @@ function Profile() {
     user: { id, email },
   } = useContext(AuthContext);
 
-  let user = useQuery(FETCH_USER_QUERY, {
+  let { data } = useQuery(FETCH_USER_QUERY, {
     variables: {
       userId: id,
     },
   });
-
-  if (user) {
-    user = user.data.getUser;
+  let user = null;
+  if (data) {
+    user = data.getUser;
   }
 
   function openModal() {

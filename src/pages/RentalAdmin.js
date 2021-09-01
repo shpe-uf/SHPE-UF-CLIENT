@@ -7,14 +7,17 @@ import { FETCH_RECEIPTS_QUERY } from '../util/graphql';
 import { useQuery } from '@apollo/react-hooks';
 
 function RentalAdmin() {
+  let receipts = null;
+  let {data, refetch} = useQuery(FETCH_RECEIPTS_QUERY);
+  if(data) {
+    receipts = data.getReceipts;
+  }
 
-  let receipts = useQuery(FETCH_RECEIPTS_QUERY).data.getReceipts;
-  
   return(
     <>
       <Title title="SHPE Rentals" adminPath={window.location.pathname}/>
       <Container className="body">
-        {receipts ? 
+        {receipts ?
           <Tab panes={[
             {menuItem: 'Checked Out', render: () => <Tab.Pane><ReceiptTable receipts={receipts.filter(e => !e.datePickedUp && !e.deleted)} type='checked'/></Tab.Pane>},
             {menuItem: 'Picked Up', render: () => <Tab.Pane><ReceiptTable receipts={receipts.filter(e => e.datePickedUp && !e.dateClosed && !e.deleted)}  type='picked'/></Tab.Pane>},

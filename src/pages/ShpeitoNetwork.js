@@ -42,11 +42,15 @@ function ShpeitoNetwork(props) {
     user: { id },
   } = useContext(AuthContext);
 
-  let user = useQuery(FETCH_USER_QUERY, {
+  let { userData } = useQuery(FETCH_USER_QUERY, {
     variables: {
       userId: id,
     },
-  }).data.getUser;
+  });
+  let user = null;
+  if (userData) {
+    user = userData.getUser;
+  }
 
   if (!loading && data) {
     users = data.getUsers.filter(function (user) {
