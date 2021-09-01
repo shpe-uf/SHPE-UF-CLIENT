@@ -1,13 +1,8 @@
 import React from "react";
 import { Card } from "semantic-ui-react";
 
-import alejandro from "../assets/images/team/2019-2020/alejandro.png";
-import david from "../assets/images/team/2019-2020/david.png";
-import diego from "../assets/images/team/2019-2020/diego.png";
 import isabel from "../assets/images/team/2019-2020/isabel.png";
-import juan from "../assets/images/team/2019-2020/juan.png";
 import mariana from "../assets/images/team/2019-2020/mariana.png";
-import sofia from "../assets/images/team/2019-2020/sofia.png";
 import placeholder from "../assets/images/team/placeholder.png";
 
 function DevTeamCards() {
@@ -15,52 +10,20 @@ function DevTeamCards() {
     <>
       <Card
         fluid
-        image={juan}
-        header="Juan Suhr"
+        image={mariana}
+        header="Mariana Torres Torres"
         meta="Scrum Master"
-        />
-      <Card
-        fluid
-        image={alejandro}
-        header="Alejandro Alonso"
-        meta="Project Manager"
       />
-      <Card
-        fluid
-        image={diego}
-        header="Diego Coviella"
-        meta="Developer"
-      />
-      <Card
-        fluid
-        image={david}
-        header="David Espantoso"
-        meta="Developer"
-      />
-      <Card
-        fluid
-        image={sofia}
-        header="Sofia Harmon"
-        meta="Developer"
-      />
-      <Card
-        fluid
-        image={isabel}
-        header="Isabel Mitre"
-        meta="Developer"
-      />
+      <Card fluid image={isabel} header="Isabel Mitre" meta="Project Manager" />
+      <Card fluid image={placeholder} header="Daniel Camejo" meta="Developer" />
+      <Card fluid image={placeholder} header="Julia Chancey" meta="Developer" />
       <Card
         fluid
         image={placeholder}
-        header="Gabriel Rodriguez Torres"
+        header="Isabella Rodriguez"
         meta="Developer"
       />
-      <Card
-        fluid
-        image={mariana}
-        header="Mariana Torres Torres"
-        meta="Developer"
-      />
+      <Card fluid image={placeholder} header="Yair Temkin" meta="Developer" />
     </>
   );
 }
