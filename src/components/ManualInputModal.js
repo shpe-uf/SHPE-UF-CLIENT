@@ -8,7 +8,11 @@ function ManualInputModal(props) {
   const [errors, setErrors] = useState({});
   const [user, setUser] = useState('');
 
-  let {data: {getUsers: users}} = useQuery(FETCH_USERS_QUERY);
+  let users = null;
+  let {data} = useQuery(FETCH_USERS_QUERY);
+  if(data) {
+    users = data.getUsers;
+  }
 
   if(users) {
     users = users.map(user => {
@@ -99,9 +103,9 @@ function ManualInputModal(props) {
               >
                 Cancel
               </Button>
-              <Button 
-                type="submit" 
-                floated="right" 
+              <Button
+                type="submit"
+                floated="right"
                 onClick={() => {
                   props.type === 'event' && manualInput({variables: {username: user, eventName: props.addObject}})
                   props.type === 'task' && manualTaskInput({variables: {username: user, taskName: props.addObject}})

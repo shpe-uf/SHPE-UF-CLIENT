@@ -9,7 +9,7 @@ function GraduatingTable({ users }) {
       (user) => user.graduating !== "Not Graduating"
     );
   }
-
+  
   return (
     <>
       <Dimmer active={graduatingUsers ? false : true} inverted>

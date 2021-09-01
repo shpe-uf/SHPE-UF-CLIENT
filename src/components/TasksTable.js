@@ -8,7 +8,7 @@ import {
   Loader,
   Modal,
   Segment,
-  Table
+  Table,
 } from "semantic-ui-react";
 import gql from "graphql-tag";
 import { useMutation } from "@apollo/react-hooks";
@@ -18,25 +18,25 @@ import { FETCH_TASKS_QUERY } from "../util/graphql";
 import DeleteModal from "./DeleteModal";
 import ManualInputModal from "./ManualInputModal";
 
-function TasksTable({tasks}) {
+function TasksTable({ tasks }) {
   const [manualTaskInputModal, setManualTaskInputModal] = useState(false);
   const [taskInfoModal, setTaskInfoModal] = useState(false);
   const [deleteTaskModal, setDeleteTaskModal] = useState(false);
   const [selectedTask, setSelectedTask] = useState({});
 
   const [removeUserFromTask] = useMutation(REMOVE_USER_MUTATION, {
-
-    update(cache, { data : { removeUserFromTask } }) {
-      const {getTasks} = cache.readQuery({ query: FETCH_TASKS_QUERY });
+    update(cache, { data: { removeUserFromTask } }) {
+      const { getTasks } = cache.readQuery({ query: FETCH_TASKS_QUERY });
       getTasks.forEach((task, pos) => {
-        if(task.name === removeUserFromTask.name) getTasks[pos] = removeUserFromTask
-      })
+        if (task.name === removeUserFromTask.name)
+          getTasks[pos] = removeUserFromTask;
+      });
       cache.writeQuery({
         query: FETCH_TASKS_QUERY,
-        data: { getTasks: getTasks},
+        data: { getTasks: getTasks },
       });
       setSelectedTask(removeUserFromTask);
-    }
+    },
   });
 
   return (
@@ -44,7 +44,7 @@ function TasksTable({tasks}) {
       <Dimmer active={tasks ? false : true} inverted>
         <Loader />
       </Dimmer>
-      {tasks === undefined || tasks.length === 0 ? (
+      {tasks === undefined || tasks === null || tasks.length === 0 ? (
         <Segment placeholder>
           <Header icon>
             <i className="fas fa-inbox"></i>
@@ -110,9 +110,9 @@ function TasksTable({tasks}) {
                           setSelectedTask(task);
                           setDeleteTaskModal(true);
                         }}
-                        color='red'
+                        color="red"
                       >
-                        <Icon name='x' />
+                        <Icon name="x" />
                       </Button>
                     </Table.Cell>
                   </Table.Row>
@@ -124,7 +124,7 @@ function TasksTable({tasks}) {
 
       <ManualInputModal
         open={manualTaskInputModal}
-        type='task'
+        type="task"
         addObject={selectedTask.name}
         setModalOpen={setManualTaskInputModal}
       />
@@ -157,7 +157,7 @@ function TasksTable({tasks}) {
                     className="table-responsive"
                     style={{ marginBottom: 16 }}
                   >
-                    <Table striped selectable unstackable textAlign='center'>
+                    <Table striped selectable unstackable textAlign="center">
                       <Table.Header>
                         <Table.Row>
                           <Table.HeaderCell>Name</Table.HeaderCell>
@@ -168,25 +168,27 @@ function TasksTable({tasks}) {
                       </Table.Header>
                       <Table.Body>
                         {selectedTask.users &&
-                          selectedTask.users.map(member => (
+                          selectedTask.users.map((member) => (
                             <Table.Row key={member.username}>
                               <Table.Cell>
                                 {member.lastName + "," + member.firstName}
                               </Table.Cell>
                               <Table.Cell>{member.username}</Table.Cell>
                               <Table.Cell>{member.email}</Table.Cell>
-                              <Table.Cell textAlign='center'>
+                              <Table.Cell textAlign="center">
                                 <Button
                                   icon
-                                  color='red'
+                                  color="red"
                                   onClick={() => {
-                                    removeUserFromTask({variables: {
-                                      username: member.username,
-                                      taskName: selectedTask.name
-                                    }})
+                                    removeUserFromTask({
+                                      variables: {
+                                        username: member.username,
+                                        taskName: selectedTask.name,
+                                      },
+                                    });
                                   }}
                                 >
-                                  <Icon name='x' />
+                                  <Icon name="x" />
                                 </Button>
                               </Table.Cell>
                             </Table.Row>
@@ -220,7 +222,7 @@ function TasksTable({tasks}) {
         close={() => setDeleteTaskModal(false)}
         deleteItem={selectedTask.name}
         deleteId={selectedTask.id}
-        type='task'
+        type="task"
       />
     </>
   );

@@ -60,7 +60,7 @@ function EventsTable({ events }) {
       <Dimmer active={events ? false : true} inverted>
         <Loader />
       </Dimmer>
-      {events === undefined || events.length === 0 ? (
+      {events === undefined || events === null || events.length === 0 ? (
         <Segment placeholder>
           <Header icon>
             <i className="fas fa-inbox"></i>

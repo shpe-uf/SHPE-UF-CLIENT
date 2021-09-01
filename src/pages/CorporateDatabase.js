@@ -25,7 +25,11 @@ import CorporationTable from "../components/CorporationTable";
 import ImageCrop from "../components/ImageCrop";
 
 function CorporateDatabase() {
-  var reimbursements = useQuery(FETCH_CORPORATIONS_QUERY).data.getCorporations;
+  let reimbursements = null;
+  let { reimburseData } = useQuery(FETCH_CORPORATIONS_QUERY);
+  if (reimburseData) {
+    reimbursements = reimburseData.getCorporations;
+  }
   const [errors, setErrors] = useState({});
   const [addCorporationModal, setAddCorporationModal] = useState(false);
 
