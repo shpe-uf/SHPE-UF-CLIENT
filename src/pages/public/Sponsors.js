@@ -3,28 +3,22 @@ import { Container, Grid, Image } from "semantic-ui-react";
 
 import accenture from "../../assets/images/sponsors/accenture-min.png";
 import amex from "../../assets/images/sponsors/amex-min.png";
-import busch from "../../assets/images/sponsors/busch-min.jpg";
-import capitalOne from "../../assets/images/sponsors/capitalOne-min.jpg";
-import ch2m from "../../assets/images/sponsors/ch2m-min.png";
-import chevron from "../../assets/images/sponsors/chevron-min.png";
+import cap from "../../assets/images/sponsors/cap.png";
 import cummins from "../../assets/images/sponsors/cummins-min.jpg";
-import deloitte from "../../assets/images/sponsors/deloitte-min.jpg";
-import edwards from "../../assets/images/sponsors/edwards-min.jpg";
 import facebook from "../../assets/images/sponsors/facebook-min.png";
 import ge from "../../assets/images/sponsors/ge-min.png";
 import geAppliances from "../../assets/images/sponsors/geAppliances-min.png";
-import ibm from "../../assets/images/sponsors/ibm-min.png";
-import intel from "../../assets/images/sponsors/intel-min.jpg";
+import jane from "../../assets/images/sponsors/janestreet.png";
 import kpmg from "../../assets/images/sponsors/kpmg-min.png";
-import lincoln from "../../assets/images/sponsors/lincoln-min.png";
+import l3harris from "../../assets/images/sponsors/l3harris.png";
 import lutron from "../../assets/images/sponsors/lutron-min.png";
 import michelin from "../../assets/images/sponsors/michelin-min.jpg";
-import oneSubSea from "../../assets/images/sponsors/oneSubSea-min.png";
 import osiSoft from "../../assets/images/sponsors/osiSoft-min.png";
 import png from "../../assets/images/sponsors/png-min.png";
 import pepsico from "../../assets/images/sponsors/pepsico-min.jpg";
 import southern from "../../assets/images/sponsors/southern-min.jpg";
-import trinity from "../../assets/images/sponsors/trinity-min.jpg";
+import slb from "../../assets/images/sponsors/schlumberger.jpg";
+import truist from "../../assets/images/sponsors/truist.png";
 
 function Sponsors() {
   return (
@@ -38,37 +32,36 @@ function Sponsors() {
       </div>
 
       <Container>
-        {/* PLATINUM SPONSORS (COMMENTED BECAUSE NO ONE IS PLATINUM YET) */}
-        {/* <Grid stackable columns={3}>
+        {/* PLATINUM SPONSORS*/}
+        <Grid stackable columns={3}>
           <h2 className="no-margin">Platinum Level</h2>
           <Grid.Row className="sponsor-padding">
             <Grid.Column className="card-team">
               <Image
                 fluid
-                src={chevron}
-                href="http://chevron.com"
+                src={cap}
+                href="https://capfla.com/"
                 target="_blank"
                 className="sponsor platinum chevron"
               />
             </Grid.Column>
           </Grid.Row>
-        </Grid> */}
+        </Grid>
 
         {/* SILVER SPONSORS */}
         <Grid stackable columns={4}>
           <h2 className="no-margin">Silver Level</h2>
           <Grid.Row className="sponsor-padding">
-          <Grid.Column className="card-team">
+            <Grid.Column className="card-team">
               <Image
                 fluid
-                src={osiSoft}
-                href="http://osisoft.com"
+                src={kpmg}
+                href="http://kpmg.com"
                 target="_blank"
                 className="sponsor silver"
               />
-          </Grid.Column>
-
-          <Grid.Column className="card-team">
+            </Grid.Column>
+            <Grid.Column className="card-team">
               <Image
                 fluid
                 src={png}
@@ -76,27 +69,43 @@ function Sponsors() {
                 target="_blank"
                 className="sponsor silver"
               />
-          </Grid.Column>
-
-          <Grid.Column className="card-team">
+            </Grid.Column>
+            <Grid.Column className="card-team">
               <Image
                 fluid
-                src={pepsico}
-                href="http://pepsico.com"
+                src={slb}
+                href="https://www.slb.com/"
                 target="_blank"
                 className="sponsor silver"
               />
-          </Grid.Column>
-
-          <Grid.Column className="card-team">
+            </Grid.Column>
+            <Grid.Column className="card-team">
               <Image
                 fluid
-                src={facebook}
-                href="http://facebook.com"
+                src={jane}
+                href="https://www.janestreet.com/"
                 target="_blank"
                 className="sponsor silver"
               />
-           </Grid.Column>
+            </Grid.Column>
+            <Grid.Column className="card-team">
+              <Image
+                fluid
+                src={truist}
+                href="https://www.truist.com/"
+                target="_blank"
+                className="sponsor silver"
+              />
+            </Grid.Column>
+            <Grid.Column className="card-team">
+              <Image
+                fluid
+                src={l3harris}
+                href="https://www.l3harris.com/"
+                target="_blank"
+                className="sponsor silver"
+              />
+            </Grid.Column>
           </Grid.Row>
         </Grid>
 
@@ -104,26 +113,25 @@ function Sponsors() {
         <Grid stackable columns={5}>
           <h2 className="no-margin">Bronze Level</h2>
           <Grid.Row className="sponsor-padding">
-          <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={southern}
-                href="http://southerncompany.com"
-                target="_blank"
-                className="sponsor bronze"
-              />
-            </Grid.Column>
-
             <Grid.Column className="card-team">
               <Image
                 fluid
-                src={trinity}
-                href="http://trinityconsultants.com"
+                src={geAppliances}
+                href="http://geappliances.com"
                 target="_blank"
                 className="sponsor bronze"
               />
             </Grid.Column>
-
+            <Grid.Column className="card-team">
+              <Image
+                fluid
+                src={facebook}
+                href="http://facebook.com"
+                target="_blank"
+                className="sponsor bronze"
+              />
+            </Grid.Column>
+            {/*general mills*/}
             <Grid.Column className="card-team">
               <Image
                 fluid
@@ -133,21 +141,13 @@ function Sponsors() {
                 className="sponsor bronze"
               />
             </Grid.Column>
+            {/*texas instruments*/}
+            {/*bloomberg*/}
             <Grid.Column className="card-team">
               <Image
                 fluid
-                src={amex}
-                href="http://americanexpress.com"
-                target="_blank"
-                className="sponsor bronze"
-              />
-            </Grid.Column>
-
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={chevron}
-                href="http://chevron.com"
+                src={southern}
+                href="http://southerncompany.com"
                 target="_blank"
                 className="sponsor bronze"
               />
@@ -155,26 +155,18 @@ function Sponsors() {
             <Grid.Column className="card-team">
               <Image
                 fluid
-                src={busch}
-                href="http://anheuser-busch.com"
+                src={lutron}
+                href="http://lutron.com"
                 target="_blank"
                 className="sponsor bronze"
               />
             </Grid.Column>
+            {/*kiewit*/}
             <Grid.Column className="card-team">
               <Image
                 fluid
-                src={capitalOne}
-                href="http://capitalone.com"
-                target="_blank"
-                className="sponsor bronze"
-              />
-            </Grid.Column>
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={ch2m}
-                href="http://www.jacobs.com"
+                src={pepsico}
+                href="http://pepsico.com"
                 target="_blank"
                 className="sponsor bronze"
               />
@@ -191,17 +183,8 @@ function Sponsors() {
             <Grid.Column className="card-team">
               <Image
                 fluid
-                src={deloitte}
-                href="https://www2.deloitte.com/"
-                target="_blank"
-                className="sponsor bronze"
-              />
-            </Grid.Column>
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={edwards}
-                href="http://edwards.com"
+                src={osiSoft}
+                href="http://osisoft.com"
                 target="_blank"
                 className="sponsor bronze"
               />
@@ -215,56 +198,12 @@ function Sponsors() {
                 className="sponsor bronze"
               />
             </Grid.Column>
+            {/*micron*/}
             <Grid.Column className="card-team">
               <Image
                 fluid
-                src={geAppliances}
-                href="http://geappliances.com"
-                target="_blank"
-                className="sponsor bronze"
-              />
-            </Grid.Column>
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={ibm}
-                href="http://ibm.com"
-                target="_blank"
-                className="sponsor bronze"
-              />
-            </Grid.Column>
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={intel}
-                href="http://intel.com"
-                target="_blank"
-                className="sponsor bronze"
-              />
-            </Grid.Column>
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={kpmg}
-                href="http://kpmg.com"
-                target="_blank"
-                className="sponsor bronze"
-              />
-            </Grid.Column>
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={lincoln}
-                href="https://www.lincolnelectric.com/"
-                target="_blank"
-                className="sponsor bronze"
-              />
-            </Grid.Column>
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={lutron}
-                href="http://lutron.com"
+                src={amex}
+                href="http://americanexpress.com"
                 target="_blank"
                 className="sponsor bronze"
               />
@@ -278,18 +217,7 @@ function Sponsors() {
                 className="sponsor bronze"
               />
             </Grid.Column>
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={oneSubSea}
-                href="http://onesubsea.com"
-                target="_blank"
-                className="sponsor bronze"
-              />
-            </Grid.Column>
-            
-           
-           
+            {/*CDMSmith*/}
           </Grid.Row>
         </Grid>
       </Container>

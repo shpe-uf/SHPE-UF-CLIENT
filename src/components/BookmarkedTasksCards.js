@@ -37,7 +37,9 @@ function BookmarkedTasksCards({ user, refetch }) {
       {" "}
       <Dimmer active={bookmarkedTasks ? false : true} inverted>
         {" "}
-        <Loader />
+        <Loader active>
+          Loading bookmarked tasks, please wait...
+        </Loader>
       </Dimmer>
       {!bookmarkedTasks || bookmarkedTasks.length === 0 ? (
         <Segment placeholder>

@@ -7,6 +7,7 @@ import {
   Card,
   Tab,
   Segment,
+  Loader,
 } from "semantic-ui-react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import CorporationProfile from "../components/CorporationProfile";
@@ -58,28 +59,18 @@ function Corporations(props) {
     setCorporationInfo(corporationInfo);
   }
 
-  let {
-    user: { id, username },
-  } = useContext(AuthContext);
-
-  let { data } = useQuery(FETCH_USER_QUERY, {
-    variables: {
-      userId: id,
-    },
-  });
-  let user = null;
-  if (data) {
-    user = data.getUser;
-  }
-
-  let corporations = null;
-  let { corpData, loading } = useQuery(FETCH_CORPORATIONS_QUERY);
-  if (corpData) {
-    corporations = corpData.getCorporations;
+  let { loading, data, refetch, networkStatus } = useQuery(
+    FETCH_CORPORATIONS_QUERY,
+    {
+      notifyOnNetworkStatusChange: true,
+    }
+  );
+  let corporations = [];
+  if (data && data.getCorporations) {
+    corporations = data.getCorporations;
   }
 
   if (corporations) {
-    console.log(filter);
     if (Object.values(filter).includes(true))
       corporations = corporations.filter((corp) => {
         if (filter.academia) if (corp.academia) return true;
@@ -94,6 +85,20 @@ function Corporations(props) {
         if (filter.nationalConvention) if (corp.nationalConvention) return true;
         return false;
       });
+  }
+
+  var {
+    user: { id, username },
+  } = useContext(AuthContext);
+
+  let { userData } = useQuery(FETCH_USER_QUERY, {
+    variables: {
+      userId: id,
+    },
+  });
+  let user = null;
+  if (userData && userData.getUser) {
+    user = userData.getUser;
   }
 
   const [bookmark] = useMutation(BOOKMARK_MUTATION);
@@ -127,7 +132,14 @@ function Corporations(props) {
           <Grid.Row className="sponsor-padding">
             <Grid.Column className="sponsor-padding">
               <Card.Group centered stackable itemsPerRow={4}>
-                {corporations &&
+                {loading | !data | (networkStatus === 4) ? (
+                  <div style={{ marginTop: "300px" }}>
+                    <Loader active>
+                      Fetching corporations, please wait...
+                    </Loader>
+                  </div>
+                ) : (
+                  corporations &&
                   corporations.map((corporation, index) => (
                     <CorporateCard key={index} corporation={corporation}>
                       <Button
@@ -172,7 +184,8 @@ function Corporations(props) {
                         />
                       )}
                     </CorporateCard>
-                  ))}
+                  ))
+                )}
               </Card.Group>
             </Grid.Column>
           </Grid.Row>
@@ -191,7 +204,14 @@ function Corporations(props) {
               <Grid.Row className="sponsor-padding">
                 <Grid.Column className="sponsor-padding">
                   <Card.Group centered stackable itemsPerRow={4}>
-                    {user.bookmarks &&
+                    {loading | !data | (networkStatus === 4) ? (
+                      <div style={{ marginTop: "300px" }}>
+                        <Loader active>
+                          Fetching corporations, please wait...
+                        </Loader>
+                      </div>
+                    ) : (
+                      user.bookmarks &&
                       corporations
                         .filter(function (corporation) {
                           return user.bookmarks.includes(corporation.name);
@@ -239,7 +259,8 @@ function Corporations(props) {
                               />
                             )}
                           </CorporateCard>
-                        ))}
+                        ))
+                    )}
                   </Card.Group>
                 </Grid.Column>
               </Grid.Row>
