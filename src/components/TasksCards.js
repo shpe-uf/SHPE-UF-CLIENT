@@ -29,7 +29,9 @@ function TasksCards({ user, refetch }) {
       {" "}
       <Dimmer active={tasks ? false : true} inverted>
         {" "}
-        <Loader />
+        <Loader active>
+          Loading unbookmarked tasks, please wait...
+        </Loader>
       </Dimmer>
       {!tasks || tasks.length === 0 ? (
         <Segment placeholder="placeholder">

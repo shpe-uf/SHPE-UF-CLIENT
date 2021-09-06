@@ -58,28 +58,20 @@ function Corporations(props) {
     setCorporationInfo(corporationInfo);
   }
 
-  let {
-    user: { id, username },
-  } = useContext(AuthContext);
-
-  let { data } = useQuery(FETCH_USER_QUERY, {
-    variables: {
-      userId: id,
-    },
-  });
-  let user = null;
-  if (data) {
-    user = data.getUser;
-  }
-
-  let corporations = null;
-  let { corpData, loading } = useQuery(FETCH_CORPORATIONS_QUERY);
-  if (corpData) {
-    corporations = corpData.getCorporations;
+  let { loading, data, refetch, networkStatus } = useQuery(
+    FETCH_CORPORATIONS_QUERY,
+    {
+      notifyOnNetworkStatusChange: true,
+    }
+  );
+  let corporations = [];
+  if (data && data.getCorporations) {
+    corporations = data.getCorporations;
   }
 
   if (corporations) {
     console.log(filter);
+    console.log(corporations);
     if (Object.values(filter).includes(true))
       corporations = corporations.filter((corp) => {
         if (filter.academia) if (corp.academia) return true;
@@ -95,6 +87,16 @@ function Corporations(props) {
         return false;
       });
   }
+
+  var {
+    user: { id, username },
+  } = useContext(AuthContext);
+
+  var user = useQuery(FETCH_USER_QUERY, {
+    variables: {
+      userId: id,
+    },
+  }).data.getUser;
 
   const [bookmark] = useMutation(BOOKMARK_MUTATION);
   const [deleteBookmark] = useMutation(DELETE_BOOKMARK_MUTATION);
