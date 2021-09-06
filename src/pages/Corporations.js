@@ -7,6 +7,7 @@ import {
   Card,
   Tab,
   Segment,
+  Loader,
 } from "semantic-ui-react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import CorporationProfile from "../components/CorporationProfile";
@@ -70,8 +71,6 @@ function Corporations(props) {
   }
 
   if (corporations) {
-    console.log(filter);
-    console.log(corporations);
     if (Object.values(filter).includes(true))
       corporations = corporations.filter((corp) => {
         if (filter.academia) if (corp.academia) return true;
@@ -92,11 +91,15 @@ function Corporations(props) {
     user: { id, username },
   } = useContext(AuthContext);
 
-  var user = useQuery(FETCH_USER_QUERY, {
+  let { userData } = useQuery(FETCH_USER_QUERY, {
     variables: {
       userId: id,
     },
-  }).data.getUser;
+  });
+  let user = null;
+  if (userData && userData.getUser) {
+    user = userData.getUser;
+  }
 
   const [bookmark] = useMutation(BOOKMARK_MUTATION);
   const [deleteBookmark] = useMutation(DELETE_BOOKMARK_MUTATION);
@@ -129,7 +132,14 @@ function Corporations(props) {
           <Grid.Row className="sponsor-padding">
             <Grid.Column className="sponsor-padding">
               <Card.Group centered stackable itemsPerRow={4}>
-                {corporations &&
+                {loading | !data | (networkStatus === 4) ? (
+                  <div style={{ marginTop: "300px" }}>
+                    <Loader active>
+                      Fetching corporations, please wait...
+                    </Loader>
+                  </div>
+                ) : (
+                  corporations &&
                   corporations.map((corporation, index) => (
                     <CorporateCard key={index} corporation={corporation}>
                       <Button
@@ -174,7 +184,8 @@ function Corporations(props) {
                         />
                       )}
                     </CorporateCard>
-                  ))}
+                  ))
+                )}
               </Card.Group>
             </Grid.Column>
           </Grid.Row>
@@ -193,7 +204,14 @@ function Corporations(props) {
               <Grid.Row className="sponsor-padding">
                 <Grid.Column className="sponsor-padding">
                   <Card.Group centered stackable itemsPerRow={4}>
-                    {user.bookmarks &&
+                    {loading | !data | (networkStatus === 4) ? (
+                      <div style={{ marginTop: "300px" }}>
+                        <Loader active>
+                          Fetching corporations, please wait...
+                        </Loader>
+                      </div>
+                    ) : (
+                      user.bookmarks &&
                       corporations
                         .filter(function (corporation) {
                           return user.bookmarks.includes(corporation.name);
@@ -241,7 +259,8 @@ function Corporations(props) {
                               />
                             )}
                           </CorporateCard>
-                        ))}
+                        ))
+                    )}
                   </Card.Group>
                 </Grid.Column>
               </Grid.Row>
