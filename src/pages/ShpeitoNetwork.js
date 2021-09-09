@@ -6,11 +6,13 @@ import {
   Card,
   Image,
   Button,
+  Icon,
   Modal,
+  List,
   Grid,
+  Loader,
   Responsive,
 } from "semantic-ui-react";
-import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
 import { FETCH_USERS_QUERY } from "../util/graphql";
 import gql from "graphql-tag";
@@ -35,22 +37,14 @@ function ShpeitoNetwork(props) {
 
   const [open, setOpen] = useState(true);
 
-  let { data, loading } = useQuery(FETCH_USERS_QUERY);
+  let usersQuery = useQuery(FETCH_USERS_QUERY, {});
+  let data = usersQuery.data;
+  let loading = usersQuery.loading;
+  let refetch = usersQuery.refetch;
   let users = [];
-  console.log(loading);
-  console.log(data);
-  let {
-    user: { id },
-  } = useContext(AuthContext);
 
-  let { userData } = useQuery(FETCH_USER_QUERY, {
-    variables: {
-      userId: id,
-    },
-  });
-  let user = null;
-  if (userData) {
-    user = userData.getUser;
+  if (data && data.getUsers) {
+    users = data.getUsers;
   }
 
   if (!loading && data) {
@@ -195,66 +189,13 @@ function ShpeitoNetwork(props) {
       <Title title="SHPEito Network" />
       <Container>
         <FilterSelection getUsers={getUsers} />
-        {loading ? (
-          <Segment disabled loading>
-            <div style={{ height: "400px" }} />
-          </Segment>
-        ) : user ? (
-          user.classes.length === 0 ? (
-            <Container>
-              <Modal onOpen={() => setOpen(true)} open={open} size="small">
-                <Modal.Header>
-                  <h3>Hello {user.firstName},</h3>
-                </Modal.Header>
-                <Modal.Content>
-                  <Modal.Description>
-                    <p></p>
-                    <p>&emsp;It seems like you currently have no classes.</p>
-                    <p>
-                      &emsp;Please click on "Edit Profile" to edit your profile
-                      and register your classes.
-                    </p>
-                    <p>
-                      &emsp;If you have added your classes already, refresh the
-                      page.
-                    </p>
-                  </Modal.Description>
-                </Modal.Content>
-
-                <Grid>
-                  <Grid.Row>
-                    <Grid.Column>
-                      <Modal.Content>
-                        <Modal.Actions>
-                          <Button
-                            style={{ "margin-left": "0em" }}
-                            size="small"
-                            as={Link}
-                            to="/profile"
-                          >
-                            Edit Profile
-                          </Button>
-                          <Button
-                            floated="right"
-                            color="green"
-                            size="small"
-                            onClick={() => {
-                              setOpen(false);
-                            }}
-                          >
-                            Continue
-                          </Button>
-                        </Modal.Actions>
-                      </Modal.Content>
-                    </Grid.Column>
-                  </Grid.Row>
-                </Grid>
-              </Modal>
-            </Container>
-          ) : (
-            users.length > 0 && displayUsersCards()
-          )
-        ) : (
+        {loading | !data ? (
+          <div style={{ marginTop: "300px" }}>
+            <Loader active>
+              Wow! That's a lot of shpeitos! This might take a while...
+            </Loader>
+          </div>
+        ) : users.length < 0 ? (
           <div style={{ paddingBottom: 16 }}>
             <p></p>
             <Segment placeholder>
@@ -264,8 +205,9 @@ function ShpeitoNetwork(props) {
               </Header>
             </Segment>
           </div>
+        ) : (
+          displayUsersCards()
         )}
-        {!open && displayUsersCards()}
       </Container>
     </div>
   );
@@ -292,4 +234,5 @@ const FETCH_USER_QUERY = gql`
     }
   }
 `;
+
 export default ShpeitoNetwork;

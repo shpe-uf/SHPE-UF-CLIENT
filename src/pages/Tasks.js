@@ -14,8 +14,8 @@ function Tasks() {
   const [createTaskModal, setCreateTaskModal] = useState(false);
   const [filter, setFilter] = useState("");
 
-  let tasks = null;
-  let { data } = useQuery(FETCH_TASKS_QUERY);
+  let tasks = [];
+  let { data } = useQuery(FETCH_TASKS_QUERY, {});
   if (data) {
     tasks = data.getTasks;
   }

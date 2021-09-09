@@ -7,7 +7,7 @@ import { FETCH_RECEIPTS_QUERY } from '../util/graphql';
 import { useQuery } from '@apollo/react-hooks';
 
 function RentalAdmin() {
-  let receipts = null;
+  let receipts = [];
   let {data, refetch} = useQuery(FETCH_RECEIPTS_QUERY);
   if(data) {
     receipts = data.getReceipts;

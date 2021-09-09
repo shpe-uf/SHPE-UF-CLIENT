@@ -22,8 +22,9 @@ import { FETCH_ALUMNIS_QUERY } from "../util/graphql";
 import { CSVLink } from "react-csv";
 
 function Archives() {
-  let usersUnfiltered = null;
-  let { userData } = useQuery(FETCH_USERS_QUERY);
+  let usersUnfiltered = [];
+  let userQuery = useQuery(FETCH_USERS_QUERY);
+  let userData = userQuery.data;
   if (userData) {
     usersUnfiltered = userData.getUsers;
   }
@@ -37,8 +38,9 @@ function Archives() {
     return user;
   });
 
-  let alumniUnfiltered = null;
-  let { alumniData } = useQuery(FETCH_ALUMNIS_QUERY);
+  let alumniUnfiltered = [];
+  let alumniQuery = useQuery(FETCH_ALUMNIS_QUERY);
+  let alumniData = alumniQuery.data;
   if (alumniData) {
     alumniUnfiltered = alumniData.getAlumnis;
   }

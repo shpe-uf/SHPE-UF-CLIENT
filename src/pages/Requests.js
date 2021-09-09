@@ -10,7 +10,7 @@ import RequestsTable from "../components/RequestsTable";
 function Requests() {
   const [searchTerm, setSearchTerm] = useState("");
 
-  let requests = null;
+  let requests = [];
   let { data, refetch } = useQuery(FETCH_REQUESTS_QUERY);
   if (data) {
     requests = data.getRequests;

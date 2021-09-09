@@ -25,19 +25,15 @@ import CorporationTable from "../components/CorporationTable";
 import ImageCrop from "../components/ImageCrop";
 
 function CorporateDatabase() {
-  let reimbursements = null;
-  let { reimburseData } = useQuery(FETCH_CORPORATIONS_QUERY);
-  if (reimburseData) {
-    reimbursements = reimburseData.getCorporations;
-  }
   const [errors, setErrors] = useState({});
   const [addCorporationModal, setAddCorporationModal] = useState(false);
 
   var [logoFile, setLogoFile] = useState("");
 
   //mutation for retrieving company array
-  var { data, refetch } = useQuery(FETCH_CORPORATIONS_QUERY);
-  var corporations = data ? data.getCorporations : [];
+  let { data, refetch } = useQuery(FETCH_CORPORATIONS_QUERY);
+  let corporations = data ? data.getCorporations : [];
+  let reimbursements = data ? data.getCorporations : [];
 
   // if (data) {
   //   corporations = data.getCorporations;

@@ -3,6 +3,8 @@ import gql from "graphql-tag";
 import {
   Container,
   Grid,
+  Segment,
+  Loader,
   Button,
   Modal,
   Form,
@@ -45,13 +47,16 @@ function Profile() {
     user: { id, email },
   } = useContext(AuthContext);
 
-  let { data } = useQuery(FETCH_USER_QUERY, {
+  let userQuery = useQuery(FETCH_USER_QUERY, {
     variables: {
       userId: id,
     },
   });
+  let data = userQuery.data;
+  let loadingUser = userQuery.loading;
   let user = null;
-  if (data) {
+
+  if (data && data.getUser) {
     user = data.getUser;
   }
 
@@ -184,7 +189,15 @@ function Profile() {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-        <UserProfile user={user} isPublic={false} />
+        <Segment>
+          {loadingUser | !data ? (
+            <div style={{ marginTop: "300px" }}>
+              <Loader active>Loading user info, please wait...</Loader>
+            </div>
+          ) : (
+            <UserProfile user={user} isPublic={false} />
+          )}
+        </Segment>
       </Container>
 
       <Modal open={editProfileModal} size="tiny">
@@ -320,7 +333,7 @@ function Profile() {
                     ))}
                   </Form.Field>
                   <Form.Field
-                    label="Gender"
+                    label="Sex"
                     control="select"
                     name="sex"
                     value={values.sex}
