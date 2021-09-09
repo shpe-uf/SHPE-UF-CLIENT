@@ -22,8 +22,8 @@ import { FETCH_REIMBURSEMENTS_QUERY } from "../util/graphql";
 var currentReimbursement;
 
 function Reimbursements() {
-  let reimbursements = null;
-  let { data, refetch } = useQuery(FETCH_REIMBURSEMENTS_QUERY);
+  let reimbursements = [];
+  let { data } = useQuery(FETCH_REIMBURSEMENTS_QUERY);
   if (data) {
     reimbursements = data.getReimbursements;
   }
