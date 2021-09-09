@@ -59,12 +59,10 @@ function Corporations(props) {
     setCorporationInfo(corporationInfo);
   }
 
-  let { loading, data, refetch, networkStatus } = useQuery(
-    FETCH_CORPORATIONS_QUERY,
-    {
-      notifyOnNetworkStatusChange: true,
-    }
-  );
+  let corpsQuery = useQuery(FETCH_CORPORATIONS_QUERY, {});
+  let data = corpsQuery.data;
+  let loading = corpsQuery.loading;
+
   let corporations = [];
   if (data && data.getCorporations) {
     corporations = data.getCorporations;
@@ -91,12 +89,14 @@ function Corporations(props) {
     user: { id, username },
   } = useContext(AuthContext);
 
-  let { userData } = useQuery(FETCH_USER_QUERY, {
+  let userQuery = useQuery(FETCH_USER_QUERY, {
     variables: {
       userId: id,
     },
   });
+  let userData = userQuery.data;
   let user = null;
+
   if (userData && userData.getUser) {
     user = userData.getUser;
   }
@@ -132,7 +132,7 @@ function Corporations(props) {
           <Grid.Row className="sponsor-padding">
             <Grid.Column className="sponsor-padding">
               <Card.Group centered stackable itemsPerRow={4}>
-                {loading | !data | (networkStatus === 4) ? (
+                {loading | !data ? (
                   <div style={{ marginTop: "300px" }}>
                     <Loader active>
                       Fetching corporations, please wait...
@@ -204,7 +204,7 @@ function Corporations(props) {
               <Grid.Row className="sponsor-padding">
                 <Grid.Column className="sponsor-padding">
                   <Card.Group centered stackable itemsPerRow={4}>
-                    {loading | !data | (networkStatus === 4) ? (
+                    {loading | !data ? (
                       <div style={{ marginTop: "300px" }}>
                         <Loader active>
                           Fetching corporations, please wait...

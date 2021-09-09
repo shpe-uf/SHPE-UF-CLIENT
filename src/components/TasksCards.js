@@ -18,7 +18,7 @@ import TaskCard from "../components/TaskCard";
 import { FETCH_TASKS_QUERY } from "../util/graphql";
 
 function TasksCards({ user, refetch }) {
-  let tasks = null;
+  let tasks = [];
   let { data } = useQuery(FETCH_TASKS_QUERY);
   if (data) {
     tasks = data.getTasks;

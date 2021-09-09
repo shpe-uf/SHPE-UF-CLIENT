@@ -22,30 +22,34 @@ import {
 } from "../util/graphql";
 
 function Statistics() {
-  let majorData = null;
-  let { major } = useQuery(MAJOR_STAT);
-  if (major) {
-    majorData = major.getMajorStat;
+  let majorQuery = useQuery(MAJOR_STAT);
+  let majorData = majorQuery.data;
+  if (majorData) {
+    majorData = majorData.getMajorStat;
   }
-  let countryData = null;
-  let { country } = useQuery(COUNTRY_STAT);
-  if (country) {
-    countryData = country.getCountryStat;
+
+  let yearQuery = useQuery(YEAR_STAT);
+  let yearData = yearQuery.data;
+  if (yearData) {
+    yearData = yearData.getYearStat;
   }
-  let yearData = null;
-  let { year } = useQuery(YEAR_STAT);
-  if (year) {
-    yearData = year.getYearStat;
+
+  let countryQuery = useQuery(COUNTRY_STAT);
+  let countryData = countryQuery.data;
+  if (countryData) {
+    countryData = countryData.getCountryStat;
   }
-  let sexData = null;
-  let { sex } = useQuery(SEX_STAT);
-  if (sex) {
-    sexData = sex.getSexStat;
+
+  let sexQuery = useQuery(SEX_STAT);
+  let sexData = sexQuery.data;
+  if (sexData) {
+    sexData = sexData.getSexStat;
   }
-  let ethnicityData = null;
-  let { ethnicity } = useQuery(ETHNICITY_STAT);
-  if (ethnicity) {
-    ethnicityData = ethnicity.getEthnicityStat;
+
+  let ethnicityQuery = useQuery(ETHNICITY_STAT);
+  let ethnicityData = ethnicityQuery.data;
+  if (ethnicityData) {
+    ethnicityData = ethnicityData.getEthnicityStat;
   }
 
   const [activeItem, setActiveItem] = useState("Major");

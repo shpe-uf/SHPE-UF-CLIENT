@@ -37,41 +37,15 @@ function ShpeitoNetwork(props) {
 
   const [open, setOpen] = useState(true);
 
-  let { loading, data, refetch, networkStatus } = useQuery(FETCH_USERS_QUERY, {
-    notifyOnNetworkStatusChange: true,
-  });
+  let usersQuery = useQuery(FETCH_USERS_QUERY, {});
+  let data = usersQuery.data;
+  let loading = usersQuery.loading;
+  let refetch = usersQuery.refetch;
   let users = [];
 
   if (data && data.getUsers) {
     users = data.getUsers;
-    console.log(users);
   }
-
-  /*let {
-    user: { id },
-  } = useContext(AuthContext);
-
-  let { loadingUser, userData, userRefetch, userNetworkStatus } = useQuery(
-    FETCH_USER_QUERY,
-    {
-      variables: {
-        userId: id,
-      },
-      notifyOnNetworkStatusChange: true,
-    }
-  );
-  let user = null;
-
-  if (userData && userData.getUser) {
-    user = userData.getUser;
-    console.log(user);
-  }*/
-
-  /*let user = useQuery(FETCH_USER_QUERY, {
-    variables: {
-      userId: id,
-    },
-  }).data.getUser;*/
 
   if (!loading && data) {
     users = data.getUsers.filter(function (user) {
@@ -215,7 +189,7 @@ function ShpeitoNetwork(props) {
       <Title title="SHPEito Network" />
       <Container>
         <FilterSelection getUsers={getUsers} />
-        {loading | !data | (networkStatus === 4) ? (
+        {loading | !data ? (
           <div style={{ marginTop: "300px" }}>
             <Loader active>
               Wow! That's a lot of shpeitos! This might take a while...

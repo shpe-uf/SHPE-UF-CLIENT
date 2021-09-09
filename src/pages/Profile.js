@@ -47,15 +47,13 @@ function Profile() {
     user: { id, email },
   } = useContext(AuthContext);
 
-  let { loadingUser, data, refetch, networkStatus } = useQuery(
-    FETCH_USER_QUERY,
-    {
-      notifyOnNetworkStatusChange: true,
-      variables: {
-        userId: id,
-      },
-    }
-  );
+  let userQuery = useQuery(FETCH_USER_QUERY, {
+    variables: {
+      userId: id,
+    },
+  });
+  let data = userQuery.data;
+  let loadingUser = userQuery.loading;
   let user = null;
 
   if (data && data.getUser) {
@@ -192,7 +190,7 @@ function Profile() {
           </Grid.Row>
         </Grid>
         <Segment>
-          {loading | !data | (networkStatus === 4) ? (
+          {loadingUser | !data ? (
             <div style={{ marginTop: "300px" }}>
               <Loader active>Loading user info, please wait...</Loader>
             </div>

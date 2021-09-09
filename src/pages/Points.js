@@ -37,15 +37,14 @@ function Points() {
     user: { id, username },
   } = useContext(AuthContext);
 
-  let { loadingUser, data, refetch, networkStatus } = useQuery(
-    FETCH_USER_QUERY,
-    {
-      notifyOnNetworkStatusChange: true,
-      variables: {
-        userId: id,
-      },
-    }
-  );
+  let userQuery = useQuery(FETCH_USER_QUERY, {
+    variables: {
+      userId: id,
+    },
+  });
+  let data = userQuery.data;
+  let loadingUser = userQuery.loading;
+  let refetch = userQuery.refetch;
   let user = null;
 
   if (data && data.getUser) {
@@ -150,7 +149,7 @@ function Points() {
                   />
                 </Grid.Column>
               </Grid.Row>
-              {loadingUser | !data | (networkStatus === 4) ? (
+              {loadingUser | !data ? (
                 <Loader active>Loading your points, please wait...</Loader>
               ) : (
                 user && (
@@ -238,7 +237,7 @@ function Points() {
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column>
-                  {loadingUser | !data | (networkStatus === 4) ? (
+                  {loadingUser | !data ? (
                     <Loader active>
                       Loading bookmarked tasks, please wait...
                     </Loader>
@@ -252,7 +251,7 @@ function Points() {
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column>
-                  {loadingUser | !data | (networkStatus === 4) ? (
+                  {loadingUser | !data ? (
                     <Loader active>
                       Loading unbookmarked tasks, please wait...
                     </Loader>
