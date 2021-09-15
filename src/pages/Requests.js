@@ -11,7 +11,7 @@ function Requests() {
   const [searchTerm, setSearchTerm] = useState("");
 
   let requests = [];
-  let { data, refetch } = useQuery(FETCH_REQUESTS_QUERY);
+  let { data } = useQuery(FETCH_REQUESTS_QUERY);
   if (data) {
     requests = data.getRequests;
   }

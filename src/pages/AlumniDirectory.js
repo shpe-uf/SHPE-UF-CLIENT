@@ -10,7 +10,7 @@ import { FETCH_ALUMNIS_QUERY } from "../util/graphql";
 
 function AlumniDirectory() {
   let alumnis = null;
-  let { data, refetch } = useQuery(FETCH_ALUMNIS_QUERY);
+  let { data } = useQuery(FETCH_ALUMNIS_QUERY);
   if (data) {
     alumnis = data.getAlumnis;
   }
