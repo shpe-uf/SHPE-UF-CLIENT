@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import {
   Header,
   Segment,
@@ -6,17 +6,12 @@ import {
   Card,
   Image,
   Button,
-  Icon,
   Modal,
-  List,
-  Grid,
   Loader,
   Responsive,
 } from "semantic-ui-react";
 import { useQuery } from "@apollo/react-hooks";
-import { FETCH_USERS_QUERY } from "../util/graphql";
-import gql from "graphql-tag";
-import { AuthContext } from "../context/auth";
+import { FETCH_USERS_QUERY } from "../util/graphql"
 
 import Title from "../components/Title";
 import FilterSelection from "../components/FilterSelection";
@@ -35,12 +30,9 @@ function ShpeitoNetwork(props) {
     })
   );
 
-  const [open, setOpen] = useState(true);
-
   let usersQuery = useQuery(FETCH_USERS_QUERY, {});
   let data = usersQuery.data;
   let loading = usersQuery.loading;
-  let refetch = usersQuery.refetch;
   let users = [];
 
   if (data && data.getUsers) {
@@ -223,16 +215,5 @@ class Filter {
     this.classes = filter.classes;
   }
 }
-
-const FETCH_USER_QUERY = gql`
-  query getUser($userId: ID!) {
-    getUser(userId: $userId) {
-      firstName
-      lastName
-      username
-      classes
-    }
-  }
-`;
 
 export default ShpeitoNetwork;

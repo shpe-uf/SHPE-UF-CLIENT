@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import gql from "graphql-tag";
 import {
   Container,
@@ -10,7 +10,6 @@ import {
   Form,
   Image,
   Label,
-  Input,
 } from "semantic-ui-react";
 import { ToastContainer, toast } from "react-toastify";
 import { useQuery, useMutation } from "@apollo/react-hooks";

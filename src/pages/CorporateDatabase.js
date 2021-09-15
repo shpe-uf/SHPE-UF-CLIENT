@@ -11,7 +11,6 @@ import {
 import gql from "graphql-tag";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { CSVLink } from "react-csv";
-import { Popup } from "mapbox-gl";
 
 import { useForm } from "../util/hooks";
 import { FETCH_CORPORATIONS_QUERY } from "../util/graphql";

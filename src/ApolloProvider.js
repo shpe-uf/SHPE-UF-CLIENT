@@ -6,12 +6,12 @@ import { createHttpLink } from "apollo-link-http";
 import { ApolloProvider } from "@apollo/react-hooks";
 import { setContext } from "apollo-link-context";
 
-//for live website
+//for live website, uncomment this in your PR
 const httpLink = createHttpLink({
   uri: "https://shpe-uf.herokuapp.com/"
 });
 
-//for development
+//for development, comment this out in your PR
 /*const httpLink = createHttpLink({
   uri: "http://localhost:5000/"
 });*/
