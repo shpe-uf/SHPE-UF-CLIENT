@@ -625,7 +625,8 @@ th {
 
 .card-team {
   width: 240px !important;
-  /* padding: 8px !important; */
+  padding-top: 16.4px !important;
+  padding-bottom: 16.4px !important;
 }
 
 
