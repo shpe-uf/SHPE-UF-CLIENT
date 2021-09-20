@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import {
   Header,
   Segment,
@@ -6,17 +6,12 @@ import {
   Card,
   Image,
   Button,
-  Icon,
   Modal,
-  List,
-  Grid,
+  Loader,
   Responsive,
 } from "semantic-ui-react";
-import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/react-hooks";
-import { FETCH_USERS_QUERY } from "../util/graphql";
-import gql from "graphql-tag";
-import { AuthContext } from "../context/auth";
+import { FETCH_USERS_QUERY } from "../util/graphql"
 
 import Title from "../components/Title";
 import FilterSelection from "../components/FilterSelection";
@@ -35,32 +30,24 @@ function ShpeitoNetwork(props) {
     })
   );
 
-  const [open, setOpen] = useState(true);
-
-  let { data, loading } = useQuery(FETCH_USERS_QUERY);
+  let usersQuery = useQuery(FETCH_USERS_QUERY, {});
+  let data = usersQuery.data;
+  let loading = usersQuery.loading;
   let users = [];
 
-  let {
-    user: { id },
-  } = useContext(AuthContext);
-
-  let user = useQuery(FETCH_USER_QUERY, {
-    variables: {
-      userId: id,
-    },
-  }).data.getUser;
+  if (data && data.getUsers) {
+    users = data.getUsers;
+  }
 
   if (!loading && data) {
     users = data.getUsers.filter(function (user) {
       let fullName = user.firstName.concat(" ").concat(user.lastName);
       return (
-        (user.confirmed)&&
+        user.confirmed &&
         (filter.major.length === 0
           ? true
           : filter.major.includes(user.major)) &&
-        (filter.year.length === 0 
-          ? true 
-          : filter.year.includes(user.year)) &&
+        (filter.year.length === 0 ? true : filter.year.includes(user.year)) &&
         (filter.graduating.length === 0
           ? true
           : filter.graduating.includes(user.graduating)) &&
@@ -69,7 +56,7 @@ function ShpeitoNetwork(props) {
           : filter.country.includes(user.country)) &&
         (filter.classes.length === 0
           ? true
-          : filter.classes.some(o => user.classes.includes(o))) &&
+          : filter.classes.some((o) => user.classes.includes(o))) &&
         (filter.name.length === 0
           ? true
           : filter.name
@@ -95,7 +82,7 @@ function ShpeitoNetwork(props) {
     return (
       <>
         <p></p>
-        <Responsive minWidth='1200'>
+        <Responsive minWidth="1200">
           <Segment>
             <Card.Group itemsPerRow="4">
               {users.map((shpeito) => (
@@ -133,14 +120,14 @@ function ShpeitoNetwork(props) {
                     size="large"
                     closeIcon
                   >
-                    <UserProfile user={shpeito} isPublic={true}/>
+                    <UserProfile user={shpeito} isPublic={true} />
                   </Modal>
                 </Card>
               ))}
             </Card.Group>
           </Segment>
         </Responsive>
-        <Responsive maxWidth='1199'>
+        <Responsive maxWidth="1199">
           <Segment>
             <Card.Group itemsPerRow="1">
               {users.map((shpeito) => (
@@ -178,7 +165,7 @@ function ShpeitoNetwork(props) {
                     size="large"
                     closeIcon
                   >
-                    <UserProfile user={shpeito} isPublic={true}/>
+                    <UserProfile user={shpeito} isPublic={true} />
                   </Modal>
                 </Card>
               ))}
@@ -194,68 +181,13 @@ function ShpeitoNetwork(props) {
       <Title title="SHPEito Network" />
       <Container>
         <FilterSelection getUsers={getUsers} />
-        {loading ? (
-          <Segment disabled loading>
-            <div style={{ height: "400px" }} />
-          </Segment>
-        ) : user ? (
-          user.classes.length == 0 ? (
-            <Container>
-              <Modal
-                onOpen={() => setOpen(true)}
-                open={open}
-                size="small"
-              >
-                <Modal.Header>
-                  <h3>Hello {user.firstName},</h3>
-                </Modal.Header>
-                <Modal.Content>
-                  <Modal.Description>
-                    <p></p>
-                    <p>&emsp;It seems like you currently have no classes.</p>
-                    <p>
-                      &emsp;Please click on "Edit Profile" to edit your profile
-                      and register your classes.
-                    </p>
-                    <p>
-                      &emsp;If you have added your classes already, refresh the
-                      page.
-                    </p>
-                  </Modal.Description>
-                </Modal.Content>
-
-                <Grid>
-                  <Grid.Row>
-                    <Grid.Column>
-                      <Modal.Content>
-                        <Modal.Actions>
-                          <Button
-                            style={{ "margin-left": "0em" }}
-                            size="small"
-                            as={Link}
-                            to="/profile"
-                          >
-                            Edit Profile
-                          </Button>
-                          <Button
-                            floated="right"
-                            color="green"
-                            size="small"
-                            onClick={() => {
-                              setOpen(false);
-                            }}
-                          >
-                            Continue
-                          </Button>
-                        </Modal.Actions>
-                      </Modal.Content>
-                    </Grid.Column>
-                  </Grid.Row>
-                </Grid>
-              </Modal>
-            </Container>
-          ) : users.length > 0 && ( displayUsersCards())
-        ) : (
+        {loading | !data ? (
+          <div style={{ marginTop: "300px" }}>
+            <Loader active>
+              Wow! That's a lot of shpeitos! This might take a while...
+            </Loader>
+          </div>
+        ) : users.length < 0 ? (
           <div style={{ paddingBottom: 16 }}>
             <p></p>
             <Segment placeholder>
@@ -265,8 +197,9 @@ function ShpeitoNetwork(props) {
               </Header>
             </Segment>
           </div>
+        ) : (
+          displayUsersCards()
         )}
-        {!open && displayUsersCards()}
       </Container>
     </div>
   );
@@ -283,14 +216,4 @@ class Filter {
   }
 }
 
-const FETCH_USER_QUERY = gql`
-  query getUser($userId: ID!) {
-    getUser(userId: $userId) {
-      firstName
-      lastName
-      username
-      classes
-    }
-  }
-`;
 export default ShpeitoNetwork;

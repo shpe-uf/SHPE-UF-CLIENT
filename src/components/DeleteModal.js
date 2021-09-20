@@ -1,103 +1,101 @@
-import React, { useState } from 'react';
-import { Modal, Input, Button } from 'semantic-ui-react';
-import { useMutation } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
-import { FETCH_TASKS_QUERY, FETCH_CORPORATIONS_QUERY, FETCH_EVENTS_QUERY } from '../util/graphql';
+import React, { useState } from "react";
+import { Modal, Input, Button } from "semantic-ui-react";
+import { useMutation } from "@apollo/react-hooks";
+import gql from "graphql-tag";
+import {
+  FETCH_TASKS_QUERY,
+  FETCH_CORPORATIONS_QUERY,
+  FETCH_EVENTS_QUERY,
+} from "../util/graphql";
 
-
-
-function DeleteModal(props){
-  const [userInput, setUserInput] = useState('');
-  console.log(props.deleteId)
+function DeleteModal(props) {
+  const [userInput, setUserInput] = useState("");
+  console.log(props.deleteId);
 
   const [deleteTaskMutation] = useMutation(DELETE_TASK, {
-    update(cache, { data : { deleteTask } }) {
+    update(cache, { data: { deleteTask } }) {
       cache.writeQuery({
         query: FETCH_TASKS_QUERY,
-        data: { getTasks: deleteTask},
+        data: { getTasks: deleteTask },
       });
-    }
-  })
+    },
+  });
 
   const [deleteCorporationMutation] = useMutation(DELETE_CORPORATION_MUTATION, {
-    update(cache, { data : { deleteCorporation } }) {
+    update(cache, { data: { deleteCorporation } }) {
       cache.writeQuery({
         query: FETCH_CORPORATIONS_QUERY,
-        data: { getCorporations: deleteCorporation},
+        data: { getCorporations: deleteCorporation },
       });
-    }
-  })
+    },
+  });
 
   const [deleteEventMutation] = useMutation(DELETE_EVENT, {
-    update(cache, { data : { deleteEvent } }) {
+    update(cache, { data: { deleteEvent } }) {
       cache.writeQuery({
         query: FETCH_EVENTS_QUERY,
-        data: { getEvents: deleteEvent},
+        data: { getEvents: deleteEvent },
       });
-    }
-  })
+    },
+  });
 
   function deleteItem() {
-    switch(props.type) {
+    switch (props.type) {
       case "task":
-        deleteTaskMutation({variables: {taskId: props.deleteId}})
+        deleteTaskMutation({ variables: { taskId: props.deleteId } });
         break;
       case "corporation":
-        deleteCorporationMutation({variables: {corporationId: props.deleteId}})
+        deleteCorporationMutation({
+          variables: { corporationId: props.deleteId },
+        });
         break;
       case "event":
-        deleteEventMutation({variables: {eventName: props.deleteItem}})
+        deleteEventMutation({ variables: { eventName: props.deleteItem } });
         break;
       default:
         break;
     }
-
+  }
 
   return (
-    <Modal open={props.open} basic size='small'>
-      <Modal.Header>
-        Delete "{props.deleteItem}"?
-      </Modal.Header>
+    <Modal open={props.open} basic size="small">
+      <Modal.Header>Delete "{props.deleteItem}"?</Modal.Header>
       <Modal.Content>
         <ul>
+          <li>All users who completed this will lose their record of it</li>
           <li>
-            All users who completed this will lose their record of it
+            All users who completed this will lose the points they received for
+            it
           </li>
-          <li>
-            All users who completed this will lose the points they received for it
-          </li>
-          <li>
-            This item will be permenantly deleted
-          </li>
+          <li>This item will be permenantly deleted</li>
         </ul>
         <p>
-          To delete enter the name of the {props.type} ({props.deleteItem}) and press 'Delete'
+          To delete enter the name of the {props.type} ({props.deleteItem}) and
+          press 'Delete'
         </p>
       </Modal.Content>
       <Modal.Actions>
-        <Input
-          onChange={(_,data) => setUserInput(data.value)}
-        />
+        <Input onChange={(_, data) => setUserInput(data.value)} />
         <Button
-          color='red'
+          color="red"
           onClick={() => {
-            if(props.deleteItem === userInput) deleteItem()
-            props.close()
+            if (props.deleteItem === userInput) deleteItem();
+            props.close();
           }}
         >
           Delete
         </Button>
         <Button
-          color='grey'
+          color="grey"
           onClick={() => {
-            props.close()
+            props.close();
           }}
         >
           Cancel
         </Button>
       </Modal.Actions>
     </Modal>
-  )
+  );
 }
 const DELETE_TASK = gql`
   mutation deleteTask($taskId: ID!) {
@@ -118,12 +116,12 @@ const DELETE_TASK = gql`
         lastName
       }
     }
-}
+  }
 `;
 
 const DELETE_CORPORATION_MUTATION = gql`
- mutation deleteCorporation ($corporationId: ID!) {
-    deleteCorporation(corporationId: $corporationId){
+  mutation deleteCorporation($corporationId: ID!) {
+    deleteCorporation(corporationId: $corporationId) {
       id
       name
       logo
@@ -145,8 +143,8 @@ const DELETE_CORPORATION_MUTATION = gql`
       fallBBQ
       springBBQ
       nationalConvention
-   }
- }
+    }
+  }
 `;
 
 const DELETE_EVENT = gql`
@@ -162,14 +160,13 @@ const DELETE_EVENT = gql`
       request
       semester
       createdAt
-      users{
+      users {
         firstName
         lastName
         username
       }
     }
-}
+  }
 `;
-};
 
-export default DeleteModal
+export default DeleteModal;

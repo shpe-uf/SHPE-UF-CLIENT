@@ -6,7 +6,8 @@ import {
   Modal,
   Form,
   Menu,
-  Segment
+  Segment,
+  Loader,
 } from "semantic-ui-react";
 
 import { ToastContainer, toast } from "react-toastify";
@@ -33,27 +34,32 @@ function Points() {
   };
   const [errors, setErrors] = useState({});
   var {
-    user: { id, username }
+    user: { id, username },
   } = useContext(AuthContext);
 
-  var {data, refetch} = useQuery(FETCH_USER_QUERY, {
+  let userQuery = useQuery(FETCH_USER_QUERY, {
     variables: {
-      userId: id
-    }
+      userId: id,
+    },
   });
-  
-  if(data){
-    var user = data.getUser;
+  let data = userQuery.data;
+  let loadingUser = userQuery.loading;
+  let refetch = userQuery.refetch;
+  let user = null;
+
+  if (data && data.getUser) {
+    user = data.getUser;
   }
+
   const [redeemPointsModal, setRedeemPointsModal] = useState(false);
 
-  const openModal = name => {
+  const openModal = (name) => {
     if (name === "redeemPoints") {
       setRedeemPointsModal(true);
     }
   };
 
-  const closeModal = name => {
+  const closeModal = (name) => {
     if (name === "redeemPoints") {
       values.code = "";
       setErrors(false);
@@ -63,16 +69,11 @@ function Points() {
 
   const { values, onChange, onSubmit } = useForm(redeemPointsCallback, {
     code: "",
-    username: username
+    username: username,
   });
 
   const [redeemPoints, { loading }] = useMutation(REDEEM_POINTS_MUTATION, {
-    update(
-      _,
-      {
-        data: { redeemPoints: userData }
-      }
-    ) {
+    update(_, { data: { redeemPoints: userData } }) {
       values.code = "";
       setErrors(false);
       setRedeemPointsModal(false);
@@ -83,7 +84,7 @@ function Points() {
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
     },
 
-    variables: values
+    variables: values,
   });
 
   function redeemPointsCallback() {
@@ -100,7 +101,7 @@ function Points() {
 
     if (user.message !== "") {
       toast.warn(user.message, {
-        position: toast.POSITION.BOTTOM_CENTER
+        position: toast.POSITION.BOTTOM_CENTER,
       });
     }
   }
@@ -148,22 +149,26 @@ function Points() {
                   />
                 </Grid.Column>
               </Grid.Row>
-              {user && (
-                <>
-                  <Grid.Row>
-                    <Grid.Column>
-                      <PointsBar user={user} />
-                    </Grid.Column>
-                  </Grid.Row>
-                  <Grid.Row>
-                    <Grid.Column width={8}>
-                      <UserEventsTable user={user} />
-                    </Grid.Column>
-                    <Grid.Column width={8}>
-                      <UserTasksTable user={user} />
-                    </Grid.Column>
-                  </Grid.Row>
-                </>
+              {loadingUser | !data ? (
+                <Loader active>Loading your points, please wait...</Loader>
+              ) : (
+                user && (
+                  <>
+                    <Grid.Row>
+                      <Grid.Column>
+                        <PointsBar user={user} />
+                      </Grid.Column>
+                    </Grid.Row>
+                    <Grid.Row>
+                      <Grid.Column width={8}>
+                        <UserEventsTable user={user} />
+                      </Grid.Column>
+                      <Grid.Column width={8}>
+                        <UserTasksTable user={user} />
+                      </Grid.Column>
+                    </Grid.Row>
+                  </>
+                )
               )}
             </Grid>
 
@@ -178,7 +183,7 @@ function Points() {
                       {Object.keys(errors).length > 0 && (
                         <div className="ui error message">
                           <ul className="list">
-                            {Object.values(errors).map(value => (
+                            {Object.values(errors).map((value) => (
                               <li key={value}>{value}</li>
                             ))}
                           </ul>
@@ -232,7 +237,13 @@ function Points() {
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column>
-                  <BookmarkedTasksCards user={user} refetch={refetch} />
+                  {loadingUser | !data ? (
+                    <Loader active>
+                      Loading bookmarked tasks, please wait...
+                    </Loader>
+                  ) : (
+                    <BookmarkedTasksCards user={user} refetch={refetch} />
+                  )}
                 </Grid.Column>
               </Grid.Row>
               <Grid.Row>
@@ -240,7 +251,13 @@ function Points() {
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column>
-                  <TasksCards user={user} refetch={refetch}/>
+                  {loadingUser | !data ? (
+                    <Loader active>
+                      Loading unbookmarked tasks, please wait...
+                    </Loader>
+                  ) : (
+                    <TasksCards user={user} refetch={refetch} />
+                  )}
                 </Grid.Column>
               </Grid.Row>
             </Grid>

@@ -22,7 +22,12 @@ import { FETCH_ALUMNIS_QUERY } from "../util/graphql";
 import { CSVLink } from "react-csv";
 
 function Archives() {
-  const usersUnfiltered = useQuery(FETCH_USERS_QUERY).data.getUsers;
+  let usersUnfiltered = [];
+  let userQuery = useQuery(FETCH_USERS_QUERY);
+  let userData = userQuery.data;
+  if (userData) {
+    usersUnfiltered = userData.getUsers;
+  }
   const usersFiltered = usersUnfiltered
     ? usersUnfiltered.map(
         ({ photo, createdAt, events, __typename, ...item }) => item
@@ -33,7 +38,13 @@ function Archives() {
     return user;
   });
 
-  const alumniUnfiltered = useQuery(FETCH_ALUMNIS_QUERY).data.getAlumnis;
+  let alumniUnfiltered = [];
+  let alumniQuery = useQuery(FETCH_ALUMNIS_QUERY);
+  let alumniData = alumniQuery.data;
+  if (alumniData) {
+    alumniUnfiltered = alumniData.getAlumnis;
+  }
+
   const alumni = alumniUnfiltered
     ? alumniUnfiltered.map(
         ({ undergrad, grad, location, coordinates, __typename, ...item }) =>

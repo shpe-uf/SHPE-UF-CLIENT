@@ -76,7 +76,7 @@ function ForgotPassword(props){
                         <span>
                           <Button type="submit">Reset Password</Button>
                           <p className="resetLink">
-                            or <NavLink to="/forgot">Log In</NavLink>
+                            or <NavLink to="/login">Log In</NavLink>
                           </p>
                         </span>
                       </Form>

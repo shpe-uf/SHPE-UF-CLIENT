@@ -1,0 +1,53 @@
+[
+  {
+    "key": "xtreme",
+    "title": "XTreme Engineer Director",
+    "content": [
+      "XTreme Engineering Directors will be in charge of SHPE UF 12 hour XTreme Engineering Competition. ",
+      "This includes planning, organizing and working with other organizations prior to the event. ",
+      "You will be responsible for this year's problem statement, marketing and logistics for the event."
+    ]
+  },
+  {
+    "key": "texternal",
+    "title": "TeXternal Director",
+    "content": [
+      "TeXternal Director position will cover the scope of all technical needs of the external cabinet and you will report to both the VP Tech and VP External. ",
+      "You should assist and provide ideas with any technical projects or activities needed for an event, including, but not limited to, SHPE Jr., E-week, elementary and middle school outreach, ShadowSHPE, etc."
+    ]
+  },
+  {
+    "key": "shpeworks",
+    "title": "SHPEWorks Director",
+    "content": [
+      "SHPEWorks are a series of workshops intended to increase technical awareness. ",
+      "These workshops will explore various computer, electrical, and mechanical engineering principles. ",
+      "Directors are responsible for planning and deciding time, location, theme and goals of the workshops."
+    ]
+  },
+  {
+    "key": "shpeinnovate",
+    "title": "SHPEInnovate Director",
+    "content": [
+      "SHPEInnovate Director will be in charge of SHPE UF Hackathon. ",
+      "This includes planning, organizing and working with other organizations prior to the event. ",
+      "You will be responsible for this year theme, marketing and logistics for the event."
+    ]
+  },
+  {
+    "key": "shperentals",
+    "title": "SHPERentals Director",
+    "content": [
+      "SHPERentals Director will be responsible for keeping track and monitoring our SHPE UF inventory, developing a tier system for items and serve as primary form of communication for SHPEitos trying to rent items from our Rentals feature within our web app."
+    ]
+  },
+  {
+    "key": "software",
+    "title": "Software Developer Director",
+    "content": [
+      "You will be part of the technical team that develops and maintains the web and mobile apps used by SHPE UF (such as this website). ",
+      "The directors will work with other Software Developer Directors under a Project Manager and SCRUM Master in the Technology Cabinet. ",
+      "Familiarity with some form of programming recommended, but not required."
+    ]
+  }
+]

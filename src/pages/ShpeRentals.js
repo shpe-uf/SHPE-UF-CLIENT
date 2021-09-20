@@ -4,41 +4,56 @@ import gql from "graphql-tag";
 import Title from "../components/Title";
 import RentalCards from "../components/RentalCards";
 import RentalModal from "../components/RentalModal";
-import { Grid, Container, Input, Loader, Dropdown, Segment } from "semantic-ui-react";
+import {
+  Grid,
+  Container,
+  Input,
+  Loader,
+  Dropdown,
+  Segment,
+} from "semantic-ui-react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 
 import rentalCategories from "../assets/options/rentalCategories.json";
 
 function ShpeRentals() {
+  const [rentingItem, setRentingItem] = useState(undefined);
+  const [category, setCategory] = useState("All Inventory");
+  const [filter, setFilter] = useState("");
 
-  const [ rentingItem, setRentingItem ] = useState(undefined);
-  const [ category, setCategory ] = useState('All Inventory');
-  const [ filter, setFilter ] = useState('');
-
-  const [checkOut] = useMutation(CHECKOUT_ITEM, 
-    {onCompleted: () => {
+  const [checkOut] = useMutation(CHECKOUT_ITEM, {
+    onCompleted: () => {
       refetch();
-    }}
-  );
-
-  let { loading, data, refetch, networkStatus } = useQuery(FETCH_INVENTORY_QUERY, {
-    notifyOnNetworkStatusChange: true
+    },
   });
+
+  let { loading, data, refetch, networkStatus } = useQuery(
+    FETCH_INVENTORY_QUERY,
+    {
+      notifyOnNetworkStatusChange: true,
+    }
+  );
   let items = [];
 
-  let categories = rentalCategories.categories.map(({name}) => ({text: name, key: name, value: name === 'Miscellaneous' ? 'Misc' : name}))
-  
+  let categories = rentalCategories.categories.map(({ name }) => ({
+    text: name,
+    key: name,
+    value: name === "Miscellaneous" ? "Misc" : name,
+  }));
+
   function rentItem(item) {
     setRentingItem(item);
   }
 
   function finishRental(numItems, user) {
-    checkOut({ variables: {
-      item: rentingItem.item,
-      username: user.username,
-      numberOfItems: numItems,
-      email: user.email,
-    }})
+    checkOut({
+      variables: {
+        item: rentingItem.item,
+        username: user.username,
+        numberOfItems: numItems,
+        email: user.email,
+      },
+    });
     setRentingItem(undefined);
   }
 
@@ -46,23 +61,25 @@ function ShpeRentals() {
     setRentingItem(undefined);
   }
 
-  if(data.getInventory) {
-    category !== 'All Inventory' ?
-    items = data.getInventory.filter((item) => item.category === category) : items = data.getInventory;
+  if (data && data.getInventory) {
+    category !== "All Inventory"
+      ? (items = data.getInventory.filter((item) => item.category === category))
+      : (items = data.getInventory);
 
-    if(filter !== '') items = items.filter((item) => item.item.includes(filter));
+    if (filter !== "")
+      items = items.filter((item) => item.item.includes(filter));
   }
 
   return (
     <div className="body">
-      <Title title="SHPE Rentals"/>
+      <Title title="SHPE Rentals" />
       <Container>
         <Grid stackable>
           <Grid.Row columns={2}>
             <Grid.Column>
               <Dropdown
-                defaultValue = {'All Inventory'}
-                options = {categories}
+                defaultValue={"All Inventory"}
+                options={categories}
                 onChange={(e, data) => {
                   setCategory(data.value);
                 }}
@@ -70,31 +87,35 @@ function ShpeRentals() {
               />
             </Grid.Column>
             <Grid.Column>
-              <Input fluid onChange={(e,data) => setFilter(data.value)} placeholder={'Search for an item...'}/>
+              <Input
+                fluid
+                onChange={(e, data) => setFilter(data.value)}
+                placeholder={"Search for an item..."}
+              />
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
             <Grid.Column>
               <Segment>
-                {loading | !data | networkStatus === 4 ? 
-                  <div style={{marginTop:'300px'}}>
+                {loading | !data | (networkStatus === 4) ? (
+                  <div style={{ marginTop: "300px" }}>
                     <Loader active>Fetching inventory, please wait...</Loader>
                   </div>
-                :
-                  <RentalCards items={items} rent={rentItem}/>
-                }
+                ) : (
+                  <RentalCards items={items} rent={rentItem} />
+                )}
               </Segment>
             </Grid.Column>
           </Grid.Row>
         </Grid>
-        {rentingItem === undefined ? null :
-          <RentalModal 
-            isOpen 
+        {rentingItem === undefined ? null : (
+          <RentalModal
+            isOpen
             item={rentingItem}
             finishRental={finishRental}
             cancelRental={cancelRental}
           />
-        }
+        )}
       </Container>
     </div>
   );
@@ -102,7 +123,7 @@ function ShpeRentals() {
 
 const FETCH_INVENTORY_QUERY = gql`
   {
-    getInventory{
+    getInventory {
       item
       quantity
       level
@@ -113,21 +134,21 @@ const FETCH_INVENTORY_QUERY = gql`
       category
     }
   }
-`
+`;
 
 const CHECKOUT_ITEM = gql`
   mutation checkOut(
     $item: String!
     $username: String!
-    $numberOfItems: Int!,
+    $numberOfItems: Int!
     $email: String!
   ) {
     checkOutItem(
       data: {
-      item: $item,
-      username: $username,
-      numberOfItems: $numberOfItems,
-      email: $email,
+        item: $item
+        username: $username
+        numberOfItems: $numberOfItems
+        email: $email
       }
     ) {
       item

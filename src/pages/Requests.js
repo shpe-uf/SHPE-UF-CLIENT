@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Grid, Button, Input } from "semantic-ui-react";
+import { Container, Grid, Input } from "semantic-ui-react";
 import { useQuery } from "@apollo/react-hooks";
 
 import { FETCH_REQUESTS_QUERY } from "../util/graphql";
@@ -8,30 +8,32 @@ import Title from "../components/Title";
 import RequestsTable from "../components/RequestsTable";
 
 function Requests() {
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const [searchTerm, setSearchTerm] = useState('');
+  let requests = [];
+  let { data } = useQuery(FETCH_REQUESTS_QUERY);
+  if (data) {
+    requests = data.getRequests;
+  }
 
-  let requests = useQuery(FETCH_REQUESTS_QUERY).data.getRequests;
-
-  let filteredRequests = (function() {
-
-    if(requests) {
-      if(searchTerm === '') {return requests;}
-
+  let filteredRequests = (function () {
+    if (requests) {
+      if (searchTerm === "") {
+        return requests;
+      }
       let searchLower = searchTerm.toLowerCase();
-
-      return requests.filter(event => {
-        return event.name.toLowerCase().includes(searchLower) || 
+      return requests.filter((event) => {
+        return (
+          event.name.toLowerCase().includes(searchLower) ||
           event.firstName.toLowerCase().includes(searchLower) ||
           event.lastName.toLowerCase().includes(searchLower) ||
           event.username.toLowerCase().includes(searchLower)
-      })
-    }
-    else {
+        );
+      });
+    } else {
       return undefined;
     }
-    
-  }())
+  })();
 
   return (
     <>
@@ -40,9 +42,11 @@ function Requests() {
         <Grid>
           <Grid.Row>
             <Grid.Column>
-              <Input 
-                placeholder='Filter by name or event'
-                onChange={(e, data) => {setSearchTerm(data.value)}}
+              <Input
+                placeholder="Filter by name or event"
+                onChange={(e, data) => {
+                  setSearchTerm(data.value);
+                }}
               />
             </Grid.Column>
           </Grid.Row>

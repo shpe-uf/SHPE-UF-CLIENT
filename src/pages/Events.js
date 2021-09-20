@@ -15,7 +15,11 @@ import expirationOptions from "../assets/options/expiration.json";
 
 function Events() {
   const [errors, setErrors] = useState({});
-  var events = useQuery(FETCH_EVENTS_QUERY).data.getEvents;
+  let events = null;
+  let { data } = useQuery(FETCH_EVENTS_QUERY);
+  if (data) {
+    events = data.getEvents;
+  }
 
   const openModal = name => {
     if (name === "createEvent") {

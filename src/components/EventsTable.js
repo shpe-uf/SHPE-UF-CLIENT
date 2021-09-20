@@ -22,9 +22,9 @@ import ManualInputModal from "./ManualInputModal";
 function EventsTable({ events }) {
   const [manualInputModal, setManualInputModal] = useState(false);
   const [eventInfoModal, setEventInfoModal] = useState(false);
-  const [deleteEventModal, setDeleteEventModal] = useState(false)
+  const [deleteEventModal, setDeleteEventModal] = useState(false);
   const [eventAttendance, setEventAttendance] = useState({});
-  const [selectedEvent, setSelectedEvent] = useState('');
+  const [selectedEvent, setSelectedEvent] = useState("");
 
   const eventsNoUsers = events
     ? events.map(
@@ -34,20 +34,24 @@ function EventsTable({ events }) {
 
   const [removeUserFromEvent] = useMutation(REMOVE_USER_MUTATION, {
 
+
     update(cache, { data : { removeUserFromEvent } }) {
       const {getEvents} = cache.readQuery({ query: FETCH_EVENTS_QUERY });
 
 
+
       getEvents.forEach((event, pos) => {
-        if(event.name === removeUserFromEvent.name) getEvents[pos] = removeUserFromEvent
-      })
+        if (event.name === removeUserFromEvent.name)
+          getEvents[pos] = removeUserFromEvent;
+      });
       cache.writeQuery({
         query: FETCH_EVENTS_QUERY,
-        data: { getEvents: getEvents},
+        data: { getEvents: getEvents },
       });
       setSelectedEvent(removeUserFromEvent.name);
-    }
+    },
   });
+
 if (typeof events != "undefined"){
     events.map((event, index) => (
 console.log(event.semester)
@@ -58,7 +62,7 @@ console.log(event.semester)
       <Dimmer active={events ? false : true} inverted>
         <Loader />
       </Dimmer>
-      {events === undefined || events.length === 0 ? (
+      {events === undefined || events === null || events.length === 0 ? (
         <Segment placeholder>
           <Header icon>
             <i className="fas fa-inbox"></i>
@@ -168,7 +172,7 @@ console.log(event.semester)
 
       <ManualInputModal
         open={manualInputModal}
-        type='event'
+        type="event"
         addObject={selectedEvent}
         setModalOpen={setManualInputModal}
       />
@@ -185,9 +189,7 @@ console.log(event.semester)
         <Modal.Content>
           <Grid>
             <Grid.Row>
-              <Grid.Column>
-                Code: {eventAttendance.code}
-              </Grid.Column>
+              <Grid.Column>Code: {eventAttendance.code}</Grid.Column>
             </Grid.Row>
             <Grid.Row>
               <Grid.Column>
@@ -223,19 +225,20 @@ console.log(event.semester)
                               </Table.Cell>
                               <Table.Cell>{member.username}</Table.Cell>
                               <Table.Cell>{member.email}</Table.Cell>
-                              <Table.Cell textAlign='center'>
+                              <Table.Cell textAlign="center">
                                 <Button
                                   icon
-                                  color='red'
+                                  color="red"
                                   onClick={() => {
-                                    removeUserFromEvent({variables: {
-                                      username: member.username,
-                                      eventName: eventAttendance.name
-                                    }})
+                                    removeUserFromEvent({
+                                      variables: {
+                                        username: member.username,
+                                        eventName: eventAttendance.name,
+                                      },
+                                    });
                                   }}
-
                                 >
-                                  <Icon name='x'/>
+                                  <Icon name="x" />
                                 </Button>
                               </Table.Cell>
                             </Table.Row>
@@ -264,7 +267,6 @@ console.log(event.semester)
           </Grid>
         </Modal.Content>
       </Modal>
-
     </>
 
 

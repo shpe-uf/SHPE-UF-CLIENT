@@ -8,13 +8,11 @@ import {
   Card,
   Responsive,
 } from "semantic-ui-react";
-import "react-toastify/dist/ReactToastify.css";
-
 import { useQuery } from "@apollo/react-hooks";
+import "react-toastify/dist/ReactToastify.css";
 
 import { AuthContext } from "../context/auth";
 import BookmarkedTaskCard from "../components/BookmarkedTaskCard";
-
 import { FETCH_TASKS_QUERY } from "../util/graphql";
 
 function BookmarkedTasksCards({ user, refetch }) {
@@ -39,7 +37,9 @@ function BookmarkedTasksCards({ user, refetch }) {
       {" "}
       <Dimmer active={bookmarkedTasks ? false : true} inverted>
         {" "}
-        <Loader />
+        <Loader active>
+          Loading bookmarked tasks, please wait...
+        </Loader>
       </Dimmer>
       {!bookmarkedTasks || bookmarkedTasks.length === 0 ? (
         <Segment placeholder>
