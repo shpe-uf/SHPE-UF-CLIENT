@@ -17,7 +17,6 @@ import moment from "moment";
 import { CSVLink } from "react-csv";
 
 import { FETCH_EVENTS_QUERY } from "../util/graphql";
-import DeleteModal from "./DeleteModal";
 import ManualInputModal from "./ManualInputModal";
 
 function EventsTable({ events }) {
@@ -26,15 +25,12 @@ function EventsTable({ events }) {
   const [deleteEventModal, setDeleteEventModal] = useState(false)
   const [eventAttendance, setEventAttendance] = useState({});
   const [selectedEvent, setSelectedEvent] = useState('');
-  console.log(events);
 
   const eventsNoUsers = events
     ? events.map(
         ({ users, ...item }) => item
       )
     : [];
-    console.log(eventsNoUsers);
-
 
   const [removeUserFromEvent] = useMutation(REMOVE_USER_MUTATION, {
 
