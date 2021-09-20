@@ -20,44 +20,26 @@ import { FETCH_EVENTS_QUERY } from "../util/graphql";
 import DeleteModal from "./DeleteModal";
 import ManualInputModal from "./ManualInputModal";
 
-/*
-<DeleteModal
-  open={deleteEventModal}
-  close={() => setDeleteEventModal(false)}
-  deleteItem={selectedEvent}
-  type='event'
-/>*/
-
-
-
 function EventsTable({ events }) {
   const [manualInputModal, setManualInputModal] = useState(false);
   const [eventInfoModal, setEventInfoModal] = useState(false);
   const [deleteEventModal, setDeleteEventModal] = useState(false)
   const [eventAttendance, setEventAttendance] = useState({});
   const [selectedEvent, setSelectedEvent] = useState('');
+  console.log(events);
 
-  let fallSem = [];
-  const springSem = [];
-  const summerSem = [];
+  const eventsNoUsers = events
+    ? events.map(
+        ({ users, ...item }) => item
+      )
+    : [];
+    console.log(eventsNoUsers);
+
 
   const [removeUserFromEvent] = useMutation(REMOVE_USER_MUTATION, {
 
     update(cache, { data : { removeUserFromEvent } }) {
       const {getEvents} = cache.readQuery({ query: FETCH_EVENTS_QUERY });
-
-       fallSem =  getEvents.filter(event => event.semester == 'Fall');
-
-
-
-
-      getEvents.forEach((event, pos) => {
-        console.log(event.semester);
-      });
-      getEvents.forEach((event, pos) => {
-        if(event.semester === "Summer Semester") summerSem.push(event)
-      });
-
 
 
       getEvents.forEach((event, pos) => {
@@ -89,6 +71,8 @@ console.log(event.semester)
         </Segment>
       ) : (
         <div className="table-responsive">
+        <Grid>
+          <Grid.Row>
           <Table striped selectable unstackable>
             <Table.Header>
               <Table.Row>
@@ -167,8 +151,22 @@ console.log(event.semester)
                     </Table.Cell>
                   </Table.Row>
                 ))}
-            </Table.Body>
-          </Table>
+                </Table.Body>
+              </Table>
+                </Grid.Row>
+                <Grid.Row>
+                <CSVLink
+                  data={eventsNoUsers}
+                  filename={"events.csv"}
+                >
+
+                  <Button color="green" floated="right">
+                    Download as CSV
+                  </Button>
+                </CSVLink>
+                </Grid.Row>
+                </Grid>
+
         </div>
       )}
 
@@ -272,6 +270,11 @@ console.log(event.semester)
       </Modal>
 
     </>
+
+
+
+
+
   );
 }
 

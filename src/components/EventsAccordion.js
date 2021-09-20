@@ -35,7 +35,6 @@ export default function EventsAccordion({ events }){
   tab3 = EventsTable(summerSem)
 }
 
-//  console.log(fallSem)
 
   const panes = [
   { menuItem: 'Fall Semester', render: () => <Tab.Pane><EventsTable events={fallSem} /></Tab.Pane> },
@@ -54,8 +53,6 @@ export default function EventsAccordion({ events }){
         </Header>
       </Segment>
     ) : (
-    // <EventsTable events={events} />
-    // <Accordion defaultActiveIndex={0} panels={EventsTable(events)} />
     <Tab panes={panes} />
   )
 
