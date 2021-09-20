@@ -6,6 +6,7 @@ import { useForm } from "../util/hooks";
 
 import Title from "../components/Title";
 import EventsTable from "../components/EventsTable";
+import EventsAccordion from "../components/EventsAccordion";
 
 import { FETCH_EVENTS_QUERY } from "../util/graphql";
 
@@ -96,7 +97,7 @@ function Events() {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column>
-              <EventsTable events={events} />
+              <EventsAccordion events={events} />
             </Grid.Column>
           </Grid.Row>
         </Grid>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  Accordion,
   Table,
   Icon,
   Dimmer,
@@ -16,7 +17,7 @@ import moment from "moment";
 import { CSVLink } from "react-csv";
 
 import { FETCH_EVENTS_QUERY } from "../util/graphql";
-//import DeleteModal from "./DeleteModal";
+import DeleteModal from "./DeleteModal";
 import ManualInputModal from "./ManualInputModal";
 
 /*
@@ -25,8 +26,9 @@ import ManualInputModal from "./ManualInputModal";
   close={() => setDeleteEventModal(false)}
   deleteItem={selectedEvent}
   type='event'
-/>
-*/
+/>*/
+
+
 
 function EventsTable({ events }) {
   const [manualInputModal, setManualInputModal] = useState(false);
@@ -35,7 +37,7 @@ function EventsTable({ events }) {
   const [eventAttendance, setEventAttendance] = useState({});
   const [selectedEvent, setSelectedEvent] = useState('');
 
-  const fallSem = [];
+  let fallSem = [];
   const springSem = [];
   const summerSem = [];
 
@@ -44,17 +46,18 @@ function EventsTable({ events }) {
     update(cache, { data : { removeUserFromEvent } }) {
       const {getEvents} = cache.readQuery({ query: FETCH_EVENTS_QUERY });
 
+       fallSem =  getEvents.filter(event => event.semester == 'Fall');
+
+
 
 
       getEvents.forEach((event, pos) => {
-        if(event.semester === "Fall Semester") fallSem.push(event)
-      });
-      getEvents.forEach((event, pos) => {
-        if(event.semester === "Spring Semester") springSem.push(event)
+        console.log(event.semester);
       });
       getEvents.forEach((event, pos) => {
         if(event.semester === "Summer Semester") summerSem.push(event)
       });
+
 
 
       getEvents.forEach((event, pos) => {
@@ -67,13 +70,11 @@ function EventsTable({ events }) {
       setSelectedEvent(removeUserFromEvent.name);
     }
   });
-
-  console.log(fallSem);
-
-    console.log(springSem);
-
-      console.log(summerSem);
-
+if (typeof events != "undefined"){
+    events.map((event, index) => (
+console.log(event.semester)
+))
+}
   return (
     <>
       <Dimmer active={events ? false : true} inverted>
