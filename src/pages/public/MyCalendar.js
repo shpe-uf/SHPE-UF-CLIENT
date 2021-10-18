@@ -9,8 +9,6 @@ const localizer = momentLocalizer(moment);
 require('dotenv').config(); 
 
 function MyCalendar() {
-    console.log(process);
-
 
     const [openModal, setOpenModal] = React.useState(false);
     const [currEvent, setEvent] = React.useState({});
@@ -45,7 +43,6 @@ function MyCalendar() {
                 color: "ff0000",
             });
         }
-        console.log(allEvents);
         getEvents(allEvents);
     }
 
