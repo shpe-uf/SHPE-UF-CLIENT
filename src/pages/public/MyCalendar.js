@@ -6,14 +6,15 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 import ReactHTMLParser from 'react-html-parser'; 
  
 const localizer = momentLocalizer(moment);
- 
+require('dotenv').config(); 
+
 function MyCalendar() {
- 
+
     const [openModal, setOpenModal] = React.useState(false);
     const [currEvent, setEvent] = React.useState({});
     const [events, getEvents] = React.useState([]);
     const calendarId = "calendar.shpeuf@gmail.com";
-    const API_KEY = "AIzaSyDksxCOxxnppCicmkpwDZchaQyqbfzNv64";
+    const API_KEY = process.env.REACT_APP_API_KEY;
 
     function showEvent(event){
         setEvent(event);
@@ -42,7 +43,6 @@ function MyCalendar() {
                 color: "ff0000",
             });
         }
-        console.log(allEvents);
         getEvents(allEvents);
     }
 
