@@ -9,7 +9,6 @@ import { setContext } from "apollo-link-context";
 //for live website, uncomment this in your PR
 const httpLink = createHttpLink({
   uri: "https://shpe-uf.herokuapp.com/",
-  credentials: "include",
 });
 
 //for development, comment this out in your PR
