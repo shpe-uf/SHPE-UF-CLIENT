@@ -25,6 +25,7 @@ import ContactUs from "./pages/public/ContactUs";
 import ResetPassword from "./pages/public/ResetPassword";
 import ForgotPassword from "./pages/public/ForgotPassword";
 import Confirm from "./pages/public/Confirm";
+import MyCalendar from "./pages/public/MyCalendar";
 import Admin from "./pages/Admin";
 import Points from "./pages/Points";
 import Profile from "./pages/Profile";
@@ -82,6 +83,7 @@ function App() {
           <Route exact path="/devteam" component={DevTeam} />
           <Route exact path="/sponsors" component={Sponsors} />
           <Route exact path="/contactus" component={ContactUs} />
+          <Route exact path="/calendar" component={MyCalendar} />
           <UserRoute exact path="/corporations" component={Corporations} />
           <Route exact path="/reset/:token" component={ResetPassword} />
           <Route exact path="/forgot" component={ForgotPassword} />

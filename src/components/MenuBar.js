@@ -39,6 +39,9 @@ function MenuBar({permission}) {
             <Menu.Item as={Link} to="/sponsors">
               Sponsors
             </Menu.Item>
+            <Menu.Item as={Link} to="/calendar">
+              Calendar
+            </Menu.Item>
             <Menu.Item as={Link} to="/contactus">
               Contact Us
             </Menu.Item>
@@ -124,6 +127,12 @@ function MenuBar({permission}) {
                     </Dropdown.Item>
                     <Dropdown.Item as={Link} to="/sponsors">
                       Sponsors
+                    </Dropdown.Item>
+                    <Dropdown.Item as={Link} to="/calendar">
+                      Calendar
+                    </Dropdown.Item>
+                    <Dropdown.Item as={Link} to="/contactus">
+                      Contact Us
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
