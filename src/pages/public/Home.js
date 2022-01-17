@@ -1,5 +1,12 @@
 import React from "react";
-import { Grid, Container, Image, Divider, Responsive } from "semantic-ui-react";
+import {
+  Button,
+  Container,
+  Divider,
+  Grid,
+  Image,
+  Responsive,
+} from "semantic-ui-react";
 
 import homePhoto1 from "../../assets/images/home-1.jpg";
 import homePhoto2 from "../../assets/images/home-2.jpg";
@@ -8,7 +15,7 @@ import homePhoto3 from "../../assets/images/home-3.jpg";
 function Home() {
   return (
     <div>
-      <Responsive minWidth={768} >
+      <Responsive minWidth={768}>
         <div className="masthead masthead-home">
           <div className="overlay-home">
             <Container>
@@ -16,6 +23,13 @@ function Home() {
                 Society of Hispanic Professional Engineers
               </h2>
               <h2 className="masthead-title">University of Florida</h2>
+              <a
+                href="https://www.shpeconnect.org"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button className="join-button">Join Now!</Button>
+              </a>
             </Container>
           </div>
         </div>
@@ -28,6 +42,13 @@ function Home() {
                 Society of Hispanic Professional Engineers
               </h2>
               <h2 className="masthead-title-mobile">University of Florida</h2>
+              <a
+                href="https://www.shpeconnect.org"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button className="join-button">Join Now!</Button>
+              </a>
             </Container>
           </div>
         </div>
@@ -82,18 +103,16 @@ function Home() {
               <p>
                 SHPE changes lives by empowering the Hispanic community to
                 realize its fullest potential and to impact the world through
-                STEM awareness, access, support and development. 
-                
-                Statement of Values: We are brought together by
-                heritage, social responsibility and desire to improve the
-                equality of all people through the use of science and
-                technology. We value excellence in education, professional
-                pursuits and leadership. We obtain excellence through integrity,
-                empowerment, achievement, diversity and continuous improvement.
-                
-                Strategic Focus Areas: We will fulfill our mission by increasing
-                educational opportunities, promoting professional and personal
-                growth, carrying out our social responsibility to be involved in
+                STEM awareness, access, support and development. Statement of
+                Values: We are brought together by heritage, social
+                responsibility and desire to improve the equality of all people
+                through the use of science and technology. We value excellence
+                in education, professional pursuits and leadership. We obtain
+                excellence through integrity, empowerment, achievement,
+                diversity and continuous improvement. Strategic Focus Areas: We
+                will fulfill our mission by increasing educational
+                opportunities, promoting professional and personal growth,
+                carrying out our social responsibility to be involved in
                 education, business, and government issues and enhancing pride
                 within our organization and reinforcing our reputation as a
                 vital Hispanic organization.
@@ -127,9 +146,7 @@ function Home() {
             worthwhile."
           </h2>
           <Divider />
-          <h2 className="text-white">
-            Ellen Ochoa
-          </h2>
+          <h2 className="text-white">Ellen Ochoa</h2>
           <h4 className="text-white" style={{ marginTop: 8 }}>
             Electrical Engineer & First Latina Astronaut
           </h4>
