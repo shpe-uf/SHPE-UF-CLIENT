@@ -516,6 +516,11 @@ h5 {
   color: var(--white);
 }
 
+.join-button {
+  margin-top: 2rem !important;
+  background: var(--accent-1-dark-2) !important;
+}
+
 .mobile-responsive {
   padding-right: 3em !important;
   padding-left: 0.5em !important;
