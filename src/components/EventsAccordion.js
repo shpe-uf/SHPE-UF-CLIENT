@@ -8,11 +8,7 @@ import { FETCH_EVENTS_QUERY } from "../util/graphql";
 import { CSVLink } from "react-csv";
 import ManualInputModal from "./ManualInputModal";
 
-
-export default function EventsAccordion({ events }){
-
-
-
+function EventsAccordion({ events }){
 
   let fallSem = [];
   let springSem = [];
@@ -60,3 +56,5 @@ export default function EventsAccordion({ events }){
 </>
 )
 }
+
+export default EventsAccordion;

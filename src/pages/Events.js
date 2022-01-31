@@ -1,15 +1,11 @@
 import React, { useState } from "react";
-import { Grid, Button, Form, Modal, Container } from "semantic-ui-react";
+import { Grid, Button, Form, Modal, Container, Dimmer, Loader,} from "semantic-ui-react";
 import gql from "graphql-tag";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { useForm } from "../util/hooks";
-
 import Title from "../components/Title";
-import EventsTable from "../components/EventsTable";
 import EventsAccordion from "../components/EventsAccordion";
-
 import { FETCH_EVENTS_QUERY } from "../util/graphql";
-
 import categoryOptions from "../assets/options/category.json";
 import expirationOptions from "../assets/options/expiration.json";
 
@@ -101,6 +97,9 @@ function Events() {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column>
+                <Dimmer active={events ? false : true} inverted>
+                  <Loader />
+                </Dimmer>
               <EventsAccordion events={events} />
             </Grid.Column>
           </Grid.Row>
