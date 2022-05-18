@@ -243,9 +243,9 @@ h5 {
 }
 
 .masthead-eboard {
-  background: url(assets/images/eboard.jpeg) !important;
+  background: url(assets/images/eboard.jpg) !important;
   border-radius: 0px;
-  background-position: 50% 50% !important;
+  background-position: 50% 250% !important;
   background-attachment: fixed !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
@@ -705,6 +705,11 @@ div::-webkit-scrollbar-thumb {
   .overlay-reset,
   .overlay-confirm {
     min-height: calc(100vh - 62.41px - 118px) !important;
+  }
+
+  .masthead-eboard {
+    background: url(assets/images/eboardMini.jpg) !important;
+    background-position: 50% 20% !important;
   }
 }
 
