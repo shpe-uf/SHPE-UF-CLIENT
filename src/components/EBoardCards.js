@@ -147,7 +147,7 @@ function EBoardCards() {
     <>
       <Card
         image={president}
-        header="Ariana Ortega"
+        header="Jorge Moros"
         meta="President"
         extra={prezModal(
           "President",
@@ -157,44 +157,8 @@ function EBoardCards() {
         )}
       />
       <Card
-        image={graduate}
-        header="Kamila Hernandez"
-        meta="Graduate Coordinator"
-        extra={cabinet(
-          "Graduate Cabinet",
-          graduateDescription,
-          "graduate.shpeuf@gmail.com",
-          graduate,
-          graduatePositions
-        )}
-      />
-      <Card
-        image={secretary}
-        header="Anays Hernandez"
-        meta="Secretary"
-        extra={cabinet(
-          "Secretary Cabinet",
-          secretaryDescription,
-          "secretary.shpeuf@gmail.com",
-          secretary,
-          secretaryPositions
-        )}
-      />
-      <Card
-        image={treasurer}
-        header="Walter Sanchez"
-        meta="Treasurer"
-        extra={cabinet(
-          "Treasury Cabinet",
-          treasurerDescription,
-          "treasurer.shpeuf@gmail.com",
-          treasurer,
-          treasuryPositions
-        )}
-      />
-      <Card
         image={marketing}
-        header="Sofia Serna"
+        header="Victor Rodriguez"
         meta="VP of Marketing"
         extra={cabinet(
           "Marketing Cabinet",
@@ -206,7 +170,7 @@ function EBoardCards() {
       />
       <Card
         image={corporate}
-        header="Diego Batista"
+        header="Paige Sam"
         meta="VP of Corporate Affairs"
         extra={cabinet(
           "Corporate Cabinet",
@@ -217,20 +181,20 @@ function EBoardCards() {
         )}
       />
       <Card
-        image={technology}
-        header="Emmanuel Mora"
-        meta="VP of Technology"
+        image={internal}
+        header="Katie Muratti"
+        meta="VP of Internal Affairs"
         extra={cabinet(
-          "Tech Cabinet",
-          techDescription,
-          "vptech.shpeuf@gmail.com",
-          technology,
-          technologyPositions
+          "Internal Cabinet",
+          internalDescription,
+          "vpinternal.shpeuf@gmail.com",
+          internal,
+          internalPositions
         )}
       />
       <Card
         image={external}
-        header="Jorge Moros"
+        header="Isabella Eby"
         meta="VP of External Affairs"
         extra={cabinet(
           "External Cabinet",
@@ -241,15 +205,51 @@ function EBoardCards() {
         )}
       />
       <Card
-        image={internal}
-        header="Franco Nazarian"
-        meta="VP of Internal Affairs"
+        image={technology}
+        header="Mariana Torres Torres"
+        meta="VP of Technology"
         extra={cabinet(
-          "Internal Cabinet",
-          internalDescription,
-          "vpinternal.shpeuf@gmail.com",
-          internal,
-          internalPositions
+          "Tech Cabinet",
+          techDescription,
+          "vptech.shpeuf@gmail.com",
+          technology,
+          technologyPositions
+        )}
+      />
+      <Card
+        image={graduate}
+        header="Juan Valderrama"
+        meta="Graduate Coordinator"
+        extra={cabinet(
+          "Graduate Cabinet",
+          graduateDescription,
+          "graduate.shpeuf@gmail.com",
+          graduate,
+          graduatePositions
+        )}
+      />
+      <Card
+        image={secretary}
+        header="Bianca Piñeros"
+        meta="Secretary"
+        extra={cabinet(
+          "Secretary Cabinet",
+          secretaryDescription,
+          "secretary.shpeuf@gmail.com",
+          secretary,
+          secretaryPositions
+        )}
+      />
+      <Card
+        image={treasurer}
+        header="Frank Vigoa"
+        meta="Treasurer"
+        extra={cabinet(
+          "Treasury Cabinet",
+          treasurerDescription,
+          "treasurer.shpeuf@gmail.com",
+          treasurer,
+          treasuryPositions
         )}
       />
     </>
