@@ -28,7 +28,7 @@ function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button className="join-button">Join Now!</Button>
+                <Button className="join-button">Join SHPE National</Button>
               </a>
             </Container>
           </div>
@@ -47,7 +47,7 @@ function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button className="join-button">Join Now!</Button>
+                <Button className="join-button">Join SHPE National</Button>
               </a>
             </Container>
           </div>
