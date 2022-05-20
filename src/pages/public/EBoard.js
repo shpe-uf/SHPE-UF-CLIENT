@@ -16,7 +16,7 @@ function EBoard() {
 
       <Container>
         <Responsive minWidth={992}>
-          <Card.Group itemsPerRow={4}>
+          <Card.Group itemsPerRow={3}>
             <EBoardCards />
           </Card.Group>
         </Responsive>
