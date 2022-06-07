@@ -8,8 +8,8 @@ import graduate from "../assets/images/eboard/graduate.jpeg";
 import secretary from "../assets/images/eboard/secretary.jpeg";
 import treasurer from "../assets/images/eboard/treasurer.jpeg";
 import marketing from "../assets/images/eboard/marketing.jpeg";
-import corporate from "../assets/images/eboard/corporate.jpeg";
 import technology from "../assets/images/eboard/technology.jpeg";
+import corporate from "../assets/images/eboard/corporate.jpeg";
 import external from "../assets/images/eboard/external.jpeg";
 import internal from "../assets/images/eboard/internal.jpeg";
 
@@ -17,8 +17,8 @@ import graduatePositions from "../assets/options/gradCabinet.json";
 import secretaryPositions from "../assets/options/secretary.json";
 import treasuryPositions from "../assets/options/treasury.json";
 import marketingPositions from "../assets/options/marketing.json";
-import corporatePositions from "../assets/options/corporate.json";
 import technologyPositions from "../assets/options/technology.json";
+import corporatePositions from "../assets/options/corporate.json";
 import externalPositions from "../assets/options/external.json";
 import internalPositions from "../assets/options/internal.json";
 
@@ -87,6 +87,17 @@ const marketingDescription = (
   </div>
 );
 
+const techDescription = (
+  <div>
+  Responsibilities: Spearhead implementation days for prospective projects,
+  including room reservations, tool inventory, and meeting tasks XTreme
+  Engineering SHPE’s Hackathon Design Team Project Lead SHPE + SHPE JR Website
+  Coding Interview Prep Collaborate with organizations on campus for tech
+  projects Plan project details for the upcoming academic year Tech workshop
+  series throughout Fall and Spring semesters
+  </div>
+);
+
 const corporateDescription = (
   <div>
     Responsibilities: Establish and maintain relationships between SHPE-UF and
@@ -97,17 +108,6 @@ const corporateDescription = (
     and Spring) Prepare SHPE-UF members for SHPE National Convention Provide
     opportunities for professionalism and growth to chapter members (workshops,
     internships, info sessions, etc.) (New) Oversee LYLP in the Spring semester
-  </div>
-);
-
-const techDescription = (
-  <div>
-    Responsibilities: Spearhead implementation days for prospective projects,
-    including room reservations, tool inventory, and meeting tasks XTreme
-    Engineering SHPE’s Hackathon Design Team Project Lead SHPE + SHPE JR Website
-    Coding Interview Prep Collaborate with organizations on campus for tech
-    projects Plan project details for the upcoming academic year Tech workshop
-    series throughout Fall and Spring semesters
   </div>
 );
 
@@ -157,66 +157,6 @@ function EBoardCards() {
         )}
       />
       <Card
-        image={marketing}
-        header="Victor Rodriguez"
-        meta="VP of Marketing"
-        extra={cabinet(
-          "Marketing Cabinet",
-          marketingDescription,
-          "marketing.shpeuf@gmail.com",
-          marketing,
-          marketingPositions
-        )}
-      />
-      <Card
-        image={corporate}
-        header="Paige Sam"
-        meta="VP of Corporate Affairs"
-        extra={cabinet(
-          "Corporate Cabinet",
-          corporateDescription,
-          "corporate.shpeuf@gmail.com",
-          corporate,
-          corporatePositions
-        )}
-      />
-      <Card
-        image={internal}
-        header="Katie Muratti"
-        meta="VP of Internal Affairs"
-        extra={cabinet(
-          "Internal Cabinet",
-          internalDescription,
-          "vpinternal.shpeuf@gmail.com",
-          internal,
-          internalPositions
-        )}
-      />
-      <Card
-        image={external}
-        header="Isabella Eby"
-        meta="VP of External Affairs"
-        extra={cabinet(
-          "External Cabinet",
-          externalDescription,
-          "vpexternal.shpeuf@gmail.com",
-          external,
-          externalPositions
-        )}
-      />
-      <Card
-        image={technology}
-        header="Mariana Torres Torres"
-        meta="VP of Technology"
-        extra={cabinet(
-          "Tech Cabinet",
-          techDescription,
-          "vptech.shpeuf@gmail.com",
-          technology,
-          technologyPositions
-        )}
-      />
-      <Card
         image={graduate}
         header="Juan Valderrama"
         meta="Graduate Coordinator"
@@ -250,6 +190,66 @@ function EBoardCards() {
           "treasurer.shpeuf@gmail.com",
           treasurer,
           treasuryPositions
+        )}
+      />
+      <Card
+        image={marketing}
+        header="Victor Rodriguez"
+        meta="VP of Marketing"
+        extra={cabinet(
+          "Marketing Cabinet",
+          marketingDescription,
+          "marketing.shpeuf@gmail.com",
+          marketing,
+          marketingPositions
+        )}
+      />
+      <Card
+        image={technology}
+        header="Mariana Torres Torres"
+        meta="VP of Technology"
+        extra={cabinet(
+          "Tech Cabinet",
+          techDescription,
+          "vptech.shpeuf@gmail.com",
+          technology,
+          technologyPositions
+        )}
+      />
+      <Card
+        image={corporate}
+        header="Paige Sam"
+        meta="VP of Corporate Affairs"
+        extra={cabinet(
+          "Corporate Cabinet",
+          corporateDescription,
+          "corporate.shpeuf@gmail.com",
+          corporate,
+          corporatePositions
+        )}
+      />
+      <Card
+        image={external}
+        header="Isabella Eby"
+        meta="VP of External Affairs"
+        extra={cabinet(
+          "External Cabinet",
+          externalDescription,
+          "vpexternal.shpeuf@gmail.com",
+          external,
+          externalPositions
+        )}
+      />
+      <Card
+        image={internal}
+        header="Katie Muratti"
+        meta="VP of Internal Affairs"
+        extra={cabinet(
+          "Internal Cabinet",
+          internalDescription,
+          "vpinternal.shpeuf@gmail.com",
+          internal,
+          internalPositions
         )}
       />
     </>
