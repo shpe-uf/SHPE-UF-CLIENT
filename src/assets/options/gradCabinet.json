@@ -1,29 +1,34 @@
 [
   {
-    "key": "gradCabinet",
-    "title": "Graduate Cabinet Director",
+    "key": "gradOutreach",
+    "title": "Graduate Outreach Director",
     "content": [
-      "This position will shadow the Graduate Coordinator and help other directors in completing their tasks. ",
-      "Another very important responsibility involves coming up with ideas to bring graduate students closer to SHPE and showcase graduate life to current undergraduate students. ",
-      "This could be done for example by collaborating with the Marketing Cabinet to introduce content to attract graduate students and present graduate life to undergraduates."
+      "Connect with the graduate body (students and professors) and encourage graduate students at UF to become involved in SHPE and in other graduate student organizations (GSOs). ",
+      "This position includes planning for the Graduate Meet & Greet (GSO Fair) and other graduate involvement opportunities."
     ]
   },
   {
-    "key": "eventManager",
-    "title": "Event Manager",
+    "key": "researchDirector",
+    "title": "Research Director",
     "content": [
-      "This position is for those who love or want to get experience with planning events/workshops. ",
-      "You will work closely with me to make informative and hopefully fun events/workshops regarding graduate topics. ",
-      "I am looking for a person who is motivated and creative, someone that will bring new event ideas and make current events even better. ",
-      "You don't need to have any experience with event coordinating or anything of the sort, everything that you will need you will learn over time in your position."
+      "Help members obtain research opportunities and provide a space for those that have already participated in research to showcase their projects. ",
+      "This position includes planning for the SHPE Research Symposium, SHPEitos-in-Research program, and various research info sessions."
     ]
   },
   {
-    "key": "profDev",
-    "title": "Professional Development Director",
+    "key": "networkDirector",
+    "title": "Networking Director",
     "content": [
-      "This position is focused on current SHPE members and teaching them about their options during and after college in relation to graduate topics. ",
-      "This involves everything from creating newsletters by collaborating with the secretary cabinet about grad opportunities/programs to helping me coordinate one-on-one counseling with our members on how to best prepare for graduate opportunities (e.g fix resume)."
+      "Work closely with the Graduate Coordinator to plan and manage all of the events pertaining to the Graduate Cabinet. ",
+      "This position includes providing creative insight and ideas on how to maximize the impact and reach of all of the cabinet’s events."
+    ]
+  },
+  {
+    "key": "newsletterDirector",
+    "title": "Newsletter Director",
+    "content": [
+      "Craft a biweekly graduate-focused newsletter with information regarding research opportunities, graduate cabinet events, deadlines and more. ",
+      "This position includes coordinating with the Secretary Cabinet to optimize newsletter content and delivery."
     ]
   }
 ]
