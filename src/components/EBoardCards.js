@@ -41,12 +41,13 @@ const presidentDescription = (
 
 const graduateDescription = (
   <div>
-    Responsibilities: Manage events/workshops to instruct students on how to
-    obtain research opportunities and grad studies options Webinars Research Day
-    Info Sessions Bridge the gap between undergraduate and graduate members by
-    providing more opportunities for interaction Coordinate with graduate
-    organizations and departments to highlight SHPE to the graduate community at
-    UF Use events as possible gateways to obtain new graduate members
+    Responsibilities: Manage events, workshops, and informational sessions to
+    help members obtain undergraduate research opportunities. Aid in the academic
+    development of members looking to pursue a graduate education. Bridge the
+    gap between undergraduate and graduate members by providing more opportunities
+    for interaction. Organize events that bolster graduate student involvement in
+    SHPE and in other organizations on campus. Use events as possible gateways to
+    recruit new graduate members.
   </div>
 );
 

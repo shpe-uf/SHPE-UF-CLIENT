@@ -1,22 +1,18 @@
 import React from "react";
-import {
-  Grid,
-  Table,
-  Dimmer,
-  Loader,
-  Placeholder
-} from "semantic-ui-react";
+import { Grid, Table, Dimmer, Loader, Placeholder } from "semantic-ui-react";
 import { VictoryPie, VictoryTooltip } from "victory";
 import palette from "google-palette";
 
 function Statistic({ statData }) {
   if (statData) {
     var statArray = [];
+    var totalUsers = 0;
     for (var i = 0; i < statData.length; i++) {
+      totalUsers += statData[i].value;
       var obj = {
         x: statData[i]._id,
         y: statData[i].value,
-        label: statData[i]._id + ": " + statData[i].value
+        label: statData[i]._id + ": " + statData[i].value,
       };
       statArray.push(obj);
     }
@@ -52,14 +48,16 @@ function Statistic({ statData }) {
                     <Table.Row>
                       <Table.HeaderCell>Name</Table.HeaderCell>
                       <Table.HeaderCell>Value</Table.HeaderCell>
+                      <Table.HeaderCell>Percent</Table.HeaderCell>
                     </Table.Row>
                   </Table.Header>
                   <Table.Body>
                     {statData &&
-                      statData.map(stat => (
+                      statData.map((stat) => (
                         <Table.Row key={stat._id}>
                           <Table.Cell>{stat._id}</Table.Cell>
                           <Table.Cell>{stat.value}</Table.Cell>
+                          <Table.Cell>{((stat.value / totalUsers)*100).toFixed(2) + "%"}</Table.Cell>
                         </Table.Row>
                       ))}
                   </Table.Body>
