@@ -42,6 +42,21 @@ function Points() {
       userId: id,
     },
   });
+
+  let [guestCount, setGuestCount] = useState(0);
+
+  function incrementGuestCount() {
+    if (guestCount < 5) {
+      setGuestCount(guestCount + 1);
+    }
+  }
+
+  function decrementGuestCount() {
+    if (guestCount > 0) {
+      setGuestCount(guestCount - 1);
+    }
+  }
+
   let data = userQuery.data;
   let loadingUser = userQuery.loading;
   let refetch = userQuery.refetch;
@@ -70,6 +85,7 @@ function Points() {
   const { values, onChange, onSubmit } = useForm(redeemPointsCallback, {
     code: "",
     username: username,
+    guests: 0,
   });
 
   const [redeemPoints, { loading }] = useMutation(REDEEM_POINTS_MUTATION, {
@@ -88,6 +104,7 @@ function Points() {
   });
 
   function redeemPointsCallback() {
+    values.guests = guestCount;
     redeemPoints();
   }
 
@@ -125,7 +142,6 @@ function Points() {
             onClick={handleItemClick}
           />
         </Menu>
-
         {activeItem === "Your Points" && (
           <Segment attached="bottom">
             <Grid stackable>
@@ -171,7 +187,6 @@ function Points() {
                 )
               )}
             </Grid>
-
             <Modal open={redeemPointsModal} size="tiny">
               <Modal.Header>
                 <h2>Redeem Points</h2>
@@ -202,10 +217,35 @@ function Points() {
                           error={errors.code ? true : false}
                           onChange={onChange}
                         />
+                        <div>
+                          <div>Guests</div>
+                          <div
+                            style={{ display: "flex", alignItems: "center" }}
+                          >
+                            {" "}
+                            <Button
+                              type="button"
+                              icon="minus"
+                              color="blue"
+                              onClick={decrementGuestCount}
+                            ></Button>
+                            <div style={{ padding: "16px" }}>{guestCount}</div>
+                            <Button
+                              type="button"
+                              icon="plus"
+                              color="blue"
+                              onClick={incrementGuestCount}
+                            ></Button>
+                          </div>
+                        </div>
+
                         <Button
                           type="reset"
                           color="grey"
-                          onClick={() => closeModal("redeemPoints")}
+                          onClick={() => [
+                            closeModal("redeemPoints"),
+                            setGuestCount((guestCount = 0)),
+                          ]}
                         >
                           Cancel
                         </Button>
@@ -297,8 +337,10 @@ const FETCH_USER_QUERY = gql`
 `;
 
 const REDEEM_POINTS_MUTATION = gql`
-  mutation redeemPoints($code: String!, $username: String!) {
-    redeemPoints(redeemPointsInput: { code: $code, username: $username }) {
+  mutation redeemPoints($code: String!, $username: String!, $guests: Int!) {
+    redeemPoints(
+      redeemPointsInput: { code: $code, username: $username, guests: $guests }
+    ) {
       points
       fallPoints
       springPoints
