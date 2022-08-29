@@ -136,11 +136,11 @@ function Points() {
             active={activeItem === "Your Points"}
             onClick={handleItemClick}
           />
-          <Menu.Item
+          {/*<Menu.Item
             name="Tasks"
             active={activeItem === "Tasks"}
             onClick={handleItemClick}
-          />
+          />*/}
         </Menu>
         {activeItem === "Your Points" && (
           <Segment attached="bottom">
@@ -176,12 +176,12 @@ function Points() {
                       </Grid.Column>
                     </Grid.Row>
                     <Grid.Row>
-                      <Grid.Column width={8}>
+                      <Grid.Column width={16}>
                         <UserEventsTable user={user} />
                       </Grid.Column>
-                      <Grid.Column width={8}>
+                      {/*<Grid.Column width={8}>
                         <UserTasksTable user={user} />
-                      </Grid.Column>
+                      </Grid.Column>*/}
                     </Grid.Row>
                   </>
                 )
