@@ -13,7 +13,7 @@ const httpLink = createHttpLink({
 
 //for development, comment this out in your PR
 /*const httpLink = createHttpLink({
-  uri: "http://localhost:5000/"
+  uri: "http://localhost:5000/",
 });*/
 
 const authLink = setContext(() => {
