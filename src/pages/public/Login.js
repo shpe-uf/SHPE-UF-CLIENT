@@ -5,7 +5,7 @@ import {
   Container,
   Segment,
   Grid,
-  Responsive
+  Responsive,
 } from "semantic-ui-react";
 import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
@@ -21,16 +21,11 @@ function Login(props) {
   const { onChange, onSubmit, values } = useForm(loginUserCallback, {
     username: "",
     password: "",
-    remember: "false"
+    remember: "false",
   });
 
   const [loginUser, { loading }] = useMutation(LOGIN_USER, {
-    update(
-      _,
-      {
-        data: { login: userData }
-      }
-    ) {
+    update(_, { data: { login: userData } }) {
       context.login(userData);
       props.history.push("/points");
       window.location.reload();
@@ -40,7 +35,7 @@ function Login(props) {
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
     },
 
-    variables: values
+    variables: values,
   });
 
   function loginUserCallback() {
@@ -63,7 +58,7 @@ function Login(props) {
                       {Object.keys(errors).length > 0 && (
                         <div className="ui error message">
                           <ul className="list">
-                            {Object.values(errors).map(value => (
+                            {Object.values(errors).map((value) => (
                               <li key={value}>{value}</li>
                             ))}
                           </ul>
@@ -98,9 +93,7 @@ function Login(props) {
                               value={values.remember === "true" ? false : true}
                               onChange={onChange}
                             />
-                            <label>
-                              Remember me (30 days)
-                            </label>
+                            <label>Remember me (30 days)</label>
                           </div>
                         </Form.Field>
                         <span>
@@ -135,7 +128,7 @@ function Login(props) {
                       {Object.keys(errors).length > 0 && (
                         <div className="ui error message">
                           <ul className="list">
-                            {Object.values(errors).map(value => (
+                            {Object.values(errors).map((value) => (
                               <li key={value}>{value}</li>
                             ))}
                           </ul>
@@ -170,9 +163,7 @@ function Login(props) {
                               value={values.remember === "true" ? false : true}
                               onChange={onChange}
                             />
-                            <label>
-                              Remember me (30 days)
-                            </label>
+                            <label>Remember me (30 days)</label>
                           </div>
                         </Form.Field>
                         <span>
@@ -207,7 +198,7 @@ function Login(props) {
                       {Object.keys(errors).length > 0 && (
                         <div className="ui error message">
                           <ul className="list">
-                            {Object.values(errors).map(value => (
+                            {Object.values(errors).map((value) => (
                               <li key={value}>{value}</li>
                             ))}
                           </ul>
@@ -242,9 +233,7 @@ function Login(props) {
                               value={values.remember === "true" ? false : true}
                               onChange={onChange}
                             />
-                            <label>
-                              Remember me (30 days)
-                            </label>
+                            <label>Remember me (30 days)</label>
                           </div>
                         </Form.Field>
                         <span>
