@@ -218,10 +218,11 @@ function Points() {
                           onChange={onChange}
                         />
                         <div>
-                          <div style={{ fontWeight: "bold"}} >Guests</div>
+                          <div>Guests</div>
                           <div
                             style={{ display: "flex", alignItems: "center" }}
                           >
+                            {" "}
                             <Button
                               type="button"
                               icon="minus"
