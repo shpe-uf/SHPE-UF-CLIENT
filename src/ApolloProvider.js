@@ -11,9 +11,10 @@ const httpLink = createHttpLink({
   uri: "https://shpe-uf.herokuapp.com/",
 });
 
-/*for development, comment this out in your PR
-const httpLink = createHttpLink({
-   uri: "http://localhost:5000/",
+
+//for development, comment this out in your PR
+/*const httpLink = createHttpLink({
+  uri: "http://localhost:5000/",
 });*/
 
 const authLink = setContext(() => {
@@ -21,9 +22,9 @@ const authLink = setContext(() => {
   return {
     headers: {
       Authorization: token ? `Bearer ${token}` : "",
-      /*"Access-Control-Allow-Origin": "*",
+      'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-      'Access-Control-Allow-Origin': 'https://shpe-uf.herokuapp.com/'*/
+      'Access-Control-Allow-Origin': 'https://shpe-uf.herokuapp.com/'
     },
   };
 });
