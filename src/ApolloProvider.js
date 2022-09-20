@@ -11,10 +11,10 @@ const httpLink = createHttpLink({
   uri: "https://shpe-uf.herokuapp.com/",
 });
 
-//for development, comment this out in your PR
-// const httpLink = createHttpLink({
-//   uri: "http://localhost:5000/",
-// });
+/*for development, comment this out in your PR
+const httpLink = createHttpLink({
+   uri: "http://localhost:5000/",
+});*/
 
 const authLink = setContext(() => {
   const token = localStorage.getItem("jwtToken");
