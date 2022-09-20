@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import { Calendar, momentLocalizer} from 'react-big-calendar';
 import {Button, Modal} from 'semantic-ui-react';
 import moment from 'moment';
