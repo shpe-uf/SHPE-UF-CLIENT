@@ -21,8 +21,8 @@ const authLink = setContext(() => {
   return {
     headers: {
       Authorization: token ? `Bearer ${token}` : "",
-      "Access-Control-Allow-Origin": "*",
-      /*'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+      /*"Access-Control-Allow-Origin": "*",
+      'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
       'Access-Control-Allow-Origin': 'https://shpe-uf.herokuapp.com/'*/
     },
   };
