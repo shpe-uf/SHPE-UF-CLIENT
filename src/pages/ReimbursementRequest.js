@@ -18,7 +18,6 @@ function ReimbursementRequest({user}) {
 
     const [receiptFile, setReceiptFile] = useState("");
     const [flyerFile, setFlyerFile] = useState("");
-    let originalReceipt = {};
 
     const { onChange, onSubmit, values } = useForm(reimbursementRequest, {
         firstName: user.firstName,
