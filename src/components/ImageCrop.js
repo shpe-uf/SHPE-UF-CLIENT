@@ -30,8 +30,13 @@ function ImageCrop(props) {
     } else if(props.type === 'profile') {
       props.values.photo = croppedUrl;
       props.setPhotoFile(croppedUrl);
+    } else if(props.type === 'reimbursementR') {
+      props.values.receiptPhoto = croppedUrl;
+      props.setPhotoFile(croppedUrl);
+    }  else if(props.type === 'reimbursementF') {
+      props.values.eventFlyer = croppedUrl;
+      props.setPhotoFile(croppedUrl);
     }
-    
   }
 
   function getCroppedImg(image, crop) {
