@@ -193,7 +193,7 @@ function Register(props) {
                     ))}
                   </Form.Field>
                   <Form.Field
-                    label="Sex"
+                    label="Gender"
                     control="select"
                     name="sex"
                     value={values.sex}
