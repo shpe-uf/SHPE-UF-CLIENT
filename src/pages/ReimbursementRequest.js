@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Container, Grid, Button, Modal, Table, Label, Image, Header, Tab } from "semantic-ui-react";
+import { Form, Container, Grid, Button, Modal, Table, Label, Image, Header, Tab, TextArea } from "semantic-ui-react";
 
 import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
@@ -246,23 +246,27 @@ function ReimbursementRequest({user}) {
                                 noValidate
                                 className={loading ? "loading" : ""}
                             >
-                                <Header size='small' dividing>Email</Header>
+                                <Form.Group widths={"equal"}>
                                 <Form.Input
                                     type="text"
                                     name="email"
+                                    label="Email"
+                                    width={8}
                                     value={values.email}
                                     error={errors.email ? true : false}
                                     onChange={onChange}
                                 />
-                                <Header size='small' dividing>Name</Header>
                                 <Form.Input
                                     type="text"
                                     name="name"
+                                    label="Name"
+                                    width={8}
                                     value={values.name}
                                     error={errors.name ? true : false}
                                     onChange={onChange}
                                 />
-                                <Header size='small' dividing>Do you work for UF (ex. RecSports)?</Header>
+                                </Form.Group>
+                               <span style={{ fontWeight: 'bold' }}>Do you work for UF (ex. RecSports)?</span>
                                 <Form.Field>
                                 <div className="ui checkbox"> 
                                     <input
@@ -275,56 +279,70 @@ function ReimbursementRequest({user}) {
                                     />
                                     <label>Yes</label>
                                 </div>
-                                </Form.Field>                                                    
-                                <Header size='small' dividing>Student ID (######## format)</Header>
+                                </Form.Field>  
+                                <Form.Group widths={"equal"}>                                                 
                                 <Form.Input
                                     type="text"
                                     name="studentId"
+                                    label="Student ID (######## format)"
+                                    width={8}
                                     value={values.studentId}
                                     error={errors.studentId ? true : false}
                                     onChange={onChange}
                                 />
-                                <Header size='small' dividing>Address</Header>
                                 <Form.Input
                                     type="text"
                                     name="address"
+                                    label="Address"
+                                    width={8}
                                     value={values.address}
                                     error={errors.address ? true : false}
                                     onChange={onChange}
                                 />
-                                <Header size='small' dividing>Company you bought from</Header>
+                                </Form.Group> 
+                                <Form.Group widths={"equal"}> 
                                 <Form.Input
                                     type="text"
                                     name="company"
+                                    label="Company you bought from"
+                                    width={8}
                                     value={values.company}
                                     error={errors.company ? true : false}
                                     onChange={onChange}
                                 />
-                                <Header size='small' dividing>Event</Header>
                                 <Form.Input
                                     type="text"
                                     name="event"
+                                    label="Event"
+                                    width={8}
                                     value={values.event}
                                     error={errors.event ? true : false}
                                     onChange={onChange}
                                 />
-                                <Header size='small' dividing>Event Description and benefit to SHPE (and/or Agenda)</Header>
+                                </Form.Group>
+                                <Form.Group widths={"equal"}> 
                                 <Form.Input
                                     type="text"
                                     name="description"
+                                    label="Event Description and benefit to SHPE (and/or Agenda)"
+                                    control={TextArea}
+                                    width={8}
                                     value={values.description}
                                     error={errors.description ? true : false}
                                     onChange={onChange}
                                 />
-                                <Header size='small' dividing>What you bought (Ex: x2 Ketchup Bottles, x2 24 Packs of Burgers)</Header>
                                 <Form.Input  
                                     type="text"
                                     name="amount"
+                                    label="What you bought (Ex: x2 Ketchup Bottles, x2 24 Packs of Burgers)"
+                                    control={TextArea}
+                                    width={8}
                                     value={values.amount}
                                     error={errors.amount ? true : false} 
                                     onChange={onChange}
                                 />
-                                <Header size="small" dividing>Upload itemized receipt here or email to treasurer.shpeuf@gmail. Make sure you upload a receipt showing the last 4 numbers of your card and your name. If you only have an invoice, upload the invoice and the bank statement proving you paid off the invoice.</Header>
+                                </Form.Group>
+                                <span style={{ fontWeight: 'bold' }}>Upload itemized receipt here or email to treasurer.shpeuf@gmail. Make sure you upload a receipt showing the last 4 numbers of your card and your name. If you only have an invoice, upload the invoice and the bank statement proving you paid off the invoice.</span>
                                 <Grid.Column className="card-team">
                                 <Image
                                     src={receipt}
@@ -354,7 +372,7 @@ function ReimbursementRequest({user}) {
                                           errors={errors.receiptPhoto ? true : false}
                                           type="reimbursementR"
                                 />
-                                <Header size="small" dividing>Upload the event flyer (IG post or physical)</Header>
+                                <span style={{ fontWeight: 'bold' }}>Upload the event flyer (IG post or physical)</span>
                                 <Grid.Column className="card-team">
                                 </Grid.Column>
                                 {flyerFile === "" ? (
