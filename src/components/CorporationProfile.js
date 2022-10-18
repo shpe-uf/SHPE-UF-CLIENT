@@ -49,8 +49,7 @@ function CorporationProfile({ corporation }) {
   }
 
   //additional information accordion
-  const [open, toggle] = useState(false);
-
+  const [accordionOpen, toggle] = useState(false);
   return (
     <>
       <Grid columns={2} stackable>
@@ -107,12 +106,12 @@ function CorporationProfile({ corporation }) {
             </Responsive>
             <Accordion>
               <Accordion.Title
-                active={open}
-                onClick={() => toggle(open => !open)}>
+                active={accordionOpen}
+                onClick={() => toggle(accordionOpen => !accordionOpen)}>
                 <Icon name='dropdown' />
                 Additional Information
               </Accordion.Title>
-              <Accordion.Content active={open}>
+              <Accordion.Content active={accordionOpen}>
                 <List>
                   <List.Item>
                     <List.Icon
