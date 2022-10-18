@@ -296,10 +296,9 @@ function Corporations(props) {
           <Grid>
             <Grid.Row>
               <Grid.Column>
-                <CorporationProfile corporation={corporationInfo} />
                 <Button
                   color="red"
-                  floated="left"
+                  floated="right"
                   content="Close"
                   onClick={() => closeModal("viewCorporation")}
                 />
@@ -320,7 +319,7 @@ function Corporations(props) {
                         1
                       );
                     }}
-                    floated="right"
+                    floated="left"
                     color="red"
                     content="Remove Bookmark"
                   />
@@ -335,11 +334,14 @@ function Corporations(props) {
                       });
                       user.bookmarks.push(corporationInfo.name);
                     }}
-                    floated="right"
+                    floated="left"
                     content="Add Bookmark"
                   />
                 )}
               </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <CorporationProfile corporation={corporationInfo} />
             </Grid.Row>
           </Grid>
         </Modal.Content>
