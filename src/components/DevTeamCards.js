@@ -8,6 +8,10 @@ import omar from "../assets/images/team/omar.jpg";
 import victoria from "../assets/images/team/victoria.jpg";
 import andrea from "../assets/images/team/andrea.jpg";
 import mateo from "../assets/images/team/mateo.jpg";
+import lucas from "../assets/images/team/lucas.jpeg";
+import isabella from "../assets/images/team/isabella.jpg";
+//import joel from "../assets/images/team/joel.jpg";
+//import jesus from "../assets/images/team/jesus.jpg";
 import temp from "../assets/images/team/placeholder.png";
 
 function DevTeamCards() {
@@ -20,6 +24,10 @@ function DevTeamCards() {
       <Card fluid image={victoria} header="Victoria De Alba" meta="Senior Developer" />
       <Card fluid image={andrea} header="Andrea Moreno" meta="Senior Developer" />
       <Card fluid image={mateo} header="Mateo Slivka" meta="Senior Developer" />
+      <Card fluid image={lucas} header="Lucas Skaf" meta="Junior Developer" />
+      <Card fluid image={isabella} header="Isabella Roman" meta="Junior Developer" />
+      <Card fluid image={temp} header="Jesus Jurado" meta="Junior Developer" />
+      <Card fluid image={temp} header="Joel Aloma" meta="Junior Developer" />
     </>
   );
 }
