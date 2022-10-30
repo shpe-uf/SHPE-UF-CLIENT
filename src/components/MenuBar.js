@@ -45,6 +45,9 @@ function MenuBar({permission}) {
             <Menu.Item as={Link} to="/contactus">
               Contact Us
             </Menu.Item>
+            <Menu.Item as={Link} to="/shpejr">
+              SHPE Jr
+            </Menu.Item>
 
             <Menu.Menu position="right">
               {user ? (
@@ -133,6 +136,9 @@ function MenuBar({permission}) {
                     </Dropdown.Item>
                     <Dropdown.Item as={Link} to="/contactus">
                       Contact Us
+                    </Dropdown.Item>
+                    <Dropdown.Item as={Link} to="/shpejr">
+                      SHPE JR
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
