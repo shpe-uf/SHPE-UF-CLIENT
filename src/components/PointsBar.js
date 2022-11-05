@@ -19,7 +19,7 @@ function PointsBar({ user }) {
                 </Segment>
                 <Segment vertical>
                   <p className="points-header">
-                    {user ? user.fallPercentile : "0"} percentile
+                    Top {user ? user.fallPercent : "0"} percent
                   </p>
                 </Segment>
               </div>
@@ -36,7 +36,7 @@ function PointsBar({ user }) {
                 </Segment>
                 <Segment vertical>
                   <p className="points-header">
-                    {user ? user.springPercentile : "0"} percentile
+                    Top {user ? user.springPercent : "0"} percent
                   </p>
                 </Segment>
               </div>
@@ -53,7 +53,7 @@ function PointsBar({ user }) {
                 </Segment>
                 <Segment vertical>
                   <p className="points-header">
-                    {user ? user.summerPercentile : "0"} percentile
+                    Top {user ? user.summerPercent : "0"} percent
                   </p>
                 </Segment>
               </div>
@@ -76,7 +76,7 @@ function PointsBar({ user }) {
                 </Segment>
                 <Segment vertical>
                   <p className="points-header">
-                    {user ? user.fallPercentile : "0"} percentile
+                    {user ? user.fallPercent : "0"} Percent
                   </p>
                 </Segment>
               </div>
@@ -95,7 +95,7 @@ function PointsBar({ user }) {
                 </Segment>
                 <Segment vertical>
                   <p className="points-header">
-                    {user ? user.springPercentile : "0"} percentile
+                    {user ? user.springPercent : "0"} Percent
                   </p>
                 </Segment>
               </div>
@@ -114,7 +114,7 @@ function PointsBar({ user }) {
                 </Segment>
                 <Segment vertical>
                   <p className="points-header">
-                    {user ? user.summerPercentile : "0"} percentile
+                    {user ? user.summerPercent : "0"} Percent
                   </p>
                 </Segment>
               </div>
