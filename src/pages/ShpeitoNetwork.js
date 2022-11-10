@@ -27,6 +27,7 @@ function ShpeitoNetwork(props) {
       graduating: [],
       country: [],
       classes: [],
+      internships: [],
     })
   );
 
@@ -54,6 +55,9 @@ function ShpeitoNetwork(props) {
         (filter.country.length === 0
           ? true
           : filter.country.includes(user.country)) &&
+        (filter.internships.length === 0
+            ? true
+            : filter.internships.some((o) => user.internships.includes(o))) &&
         (filter.classes.length === 0
           ? true
           : filter.classes.some((o) => user.classes.includes(o))) &&
@@ -213,6 +217,7 @@ class Filter {
     this.graduating = filter.graduating;
     this.country = filter.country;
     this.classes = filter.classes;
+    this.internships = filter.internships;
   }
 }
 
