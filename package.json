@@ -28,7 +28,7 @@
     "react-image-crop": "^8.6.5",
     "react-mapbox-gl": "^4.7.3",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "^5.0.1",
+    "react-scripts": "^3.4.3",
     "react-toastify": "^5.4.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.88.2",
