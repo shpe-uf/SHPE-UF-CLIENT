@@ -54,7 +54,18 @@ function EventsTable({ events }) {
       setSelectedEvent(removeUserFromEvent.name);
     },
   });
-
+  function populateCSV(users) {
+    if (!users) return null;
+    let list = [];
+    users.forEach((user) =>
+      list.push({
+        name: user.firstName + " " + user.lastName,
+        username: user.username,
+        email: user.email,
+      })
+    );
+    return list;
+  }
   return (
     <>
       <Dimmer active={events ? false : true} inverted>
@@ -237,10 +248,14 @@ function EventsTable({ events }) {
                   Cancel
                 </Button>
                 <CSVLink
-                  data={eventAttendance.users}
+                  data={populateCSV(eventAttendance.users)}
                   filename={eventAttendance.name + ".csv"}
                 >
-                  <Button color="green" floated="right">
+                  <Button
+                    color="green"
+                    floated="right"
+                    onClick="{console.log(eventAttendance.users)}"
+                  >
                     Download as CSV
                   </Button>
                 </CSVLink>
