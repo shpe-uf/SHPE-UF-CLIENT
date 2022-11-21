@@ -128,7 +128,13 @@ h5 {
 }
 
 .ui.modal > .header {
+  display: flex;
+  justify-content: space-between;
   padding: 16px !important;
+}
+
+.ui.modal > .header > .closeButton {
+  cursor: pointer;
 }
 
 .ui.modal > .content {
@@ -771,3 +777,7 @@ div::-webkit-scrollbar-thumb {
 .checkmark {
   position: absolute
 }
+
+/* .closeButton::before {
+  margin-left: auto;
+} */
