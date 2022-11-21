@@ -22,7 +22,16 @@ function CabinetModal(cabinet, description, cabinetEmail, pic, json) {
         </Grid>
       }
     >
-      <Modal.Header>{cabinet}</Modal.Header>
+      <Modal.Header>
+        {cabinet}
+        
+        <Icon 
+        name="close" 
+        className="closeButton"
+        color="red"
+        onClick={() => setOpen(false)} />
+        
+        </Modal.Header>
       <Modal.Content image>
         <Grid>
           <Grid.Column width={5}>
@@ -49,13 +58,13 @@ function CabinetModal(cabinet, description, cabinetEmail, pic, json) {
           </a>
         }
 
-        <Button
+        {/* <Button
           content="Close"
           labelPosition="right"
           icon="checkmark"
           onClick={() => setOpen(false)}
           positive
-        />
+        /> */}
       </Modal.Actions>
     </Modal>
   );
