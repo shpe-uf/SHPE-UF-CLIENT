@@ -130,6 +130,7 @@ h5 {
 .ui.modal > .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 16px !important;
 }
 
@@ -777,7 +778,3 @@ div::-webkit-scrollbar-thumb {
 .checkmark {
   position: absolute
 }
-
-/* .closeButton::before {
-  margin-left: auto;
-} */

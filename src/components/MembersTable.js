@@ -46,7 +46,19 @@ function MembersTable({ users, refetch}) {
           closeOnDimmerClick={false}
         >
           <Modal.Header>
-            <h2>Member Info</h2>
+                <Grid.Column floated="left">
+                  <h2>Member Info</h2>
+                </Grid.Column>
+                <Grid.Column floated="right">
+                  <Button
+                  icon
+                  type="reset"
+                    color="grey"
+                    onClick={() => closeModal("userInfo")}
+                    >
+                    <Icon name="close" />
+                  </Button>
+                </Grid.Column>
           </Modal.Header>
           <Modal.Content>
               <>
@@ -77,13 +89,13 @@ function MembersTable({ users, refetch}) {
             <Grid>
               <Grid.Row>
                 <Grid.Column>
-                  <Button
+                  {/* <Button
                     type="reset"
                     color="grey"
                     onClick={() => closeModal("userInfo")}
-                  >
-                    Close
-                  </Button>
+                  > */}
+                    {/* Close */}
+                  {/* </Button> */}
                 </Grid.Column>
               </Grid.Row>
             </Grid>
