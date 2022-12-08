@@ -8,7 +8,7 @@ import { setContext } from "apollo-link-context";
 
 //for live website, uncomment this in your PR
 const httpLink = createHttpLink({
-  uri: "https://shpe-uf.herokuapp.com/",
+  uri: "https://shpe-uf-backend.onrender.com",
 });
 
 
