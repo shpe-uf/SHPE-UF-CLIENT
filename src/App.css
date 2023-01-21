@@ -123,6 +123,18 @@ h5 {
   font-size: 1.5rem !important;
 }
 
+h6 {
+  line-height: 1.1 !important;
+  font-family: "heading-font" !important;
+  text-transform: uppercase !important;
+  color: var(--accent-2-dark-2);
+  margin-bottom: 8px;
+}
+
+h6 {
+  font-size: 1.75 rem !important;
+}
+
 .ui.form input, select, textarea{
   font-family: "body-font" !important;
 }
@@ -271,6 +283,15 @@ h5 {
 
 .masthead-sponsors {
   background: url(assets/images/sponsors.jpg) !important;
+  border-radius: 0px;
+  background-position: 50% 50% !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+.masthead-resources {
+  background: url(assets/images/resource.png) !important;
   border-radius: 0px;
   background-position: 50% 50% !important;
   background-attachment: fixed !important;
