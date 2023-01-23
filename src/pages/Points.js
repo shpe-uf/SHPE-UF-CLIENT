@@ -317,9 +317,9 @@ const FETCH_USER_QUERY = gql`
       fallPoints
       springPoints
       summerPoints
-      fallPercent
-      springPercent
-      summerPercent
+      fallPercentile
+      springPercentile
+      summerPercentile
       events {
         name
         category
