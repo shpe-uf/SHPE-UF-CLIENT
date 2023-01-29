@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Container, Grid, Button, Modal, Table } from "semantic-ui-react";
+import { Form, Container, Grid, Button, Modal, Table, Label, Image, Header, Tab, TextArea } from "semantic-ui-react";
 
 import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
@@ -7,15 +7,23 @@ import gql from "graphql-tag";
 import { useForm } from "../util/hooks";
 
 import Title from "../components/Title";
+import { Text } from "victory";
+import ImageCrop from "../components/ImageCrop";
+
+import receipt from "../assets/images/itemized receipt print view with callout.jpg"
 
 function ReimbursementRequest({user}) {
     const [errors, setErrors] = useState({});
     const [openConfirmation, setOpenConfirmation] = useState(false);
 
+    const [receiptFile, setReceiptFile] = useState("");
+    const [flyerFile, setFlyerFile] = useState("");
+
     const { onChange, onSubmit, values } = useForm(reimbursementRequest, {
         firstName: user.firstName,
         lastName: user.lastName,
-        email: user.email,
+        eventFlyer: "",
+        email: "",
         studentId: "",
         address: "",
         company: "",
@@ -23,6 +31,8 @@ function ReimbursementRequest({user}) {
         description: "",
         reimbursed: "pending",
         amount: "",
+        ufEmployee: "false",
+        receiptPhoto: "",
         execute: false
     });
 
@@ -40,6 +50,9 @@ function ReimbursementRequest({user}) {
                 values.event = "";
                 values.description = "";
                 values.amount = "";
+                values.ufEmployee = "false";
+                values.receiptPhoto = "";
+                values.eventFlyer = "";
                 setOpenConfirmation(false);
                 setErrors({});
                 values.execute = false;
@@ -57,7 +70,6 @@ function ReimbursementRequest({user}) {
     function reimbursementRequest() {
         addRequest();
     }
-    
     return (
         <div className="body">
             <Title title="Reimbursement Request" />
@@ -77,6 +89,14 @@ function ReimbursementRequest({user}) {
                                         <div className="table-responsive" style={{ marginBottom: 16 }}>
                                             <Table striped selectable unstackable>
                                                 <Table.Body>
+                                                <Table.Row>
+                                                        <Table.Cell>
+                                                            <b>Email:</b>
+                                                        </Table.Cell>
+                                                        <Table.Cell>
+                                                            <p>{values.email}</p>
+                                                        </Table.Cell>
+                                                    </Table.Row>
                                                     <Table.Row>
                                                         <Table.Cell>
                                                             <b>First Name:</b>
@@ -95,14 +115,6 @@ function ReimbursementRequest({user}) {
                                                     </Table.Row>
                                                     <Table.Row>
                                                         <Table.Cell>
-                                                            <b>Email:</b>
-                                                        </Table.Cell>
-                                                        <Table.Cell>
-                                                            <p>{values.email}</p>
-                                                        </Table.Cell>
-                                                    </Table.Row>
-                                                    <Table.Row>
-                                                        <Table.Cell>
                                                             <b>Student ID:</b>
                                                         </Table.Cell>
                                                         <Table.Cell>
@@ -111,10 +123,10 @@ function ReimbursementRequest({user}) {
                                                     </Table.Row>
                                                     <Table.Row>
                                                         <Table.Cell>
-                                                            <b>Amount:</b>
+                                                            <b>ufEmployee:</b>
                                                         </Table.Cell>
                                                         <Table.Cell>
-                                                            <p>{values.amount}</p>
+                                                            <p>{values.ufEmployee=="true" ? 'Yes' : 'No'}</p>
                                                         </Table.Cell>
                                                     </Table.Row>
                                                     <Table.Row>
@@ -139,6 +151,58 @@ function ReimbursementRequest({user}) {
                                                         </Table.Cell>
                                                         <Table.Cell>
                                                             <p>{values.event}</p>
+                                                        </Table.Cell>
+                                                    </Table.Row>
+                                                    <Table.Row>
+                                                        <Table.Cell>
+                                                            <b>Event Description:</b>
+                                                        </Table.Cell>
+                                                        <Table.Cell>
+                                                            <p>{values.description}</p>
+                                                        </Table.Cell>
+                                                    </Table.Row>
+                                                    <Table.Row>
+                                                        <Table.Cell>
+                                                            <b>What you bought:</b>
+                                                        </Table.Cell>
+                                                        <Table.Cell>
+                                                            <p>{values.amount}</p>
+                                                        </Table.Cell>
+                                                    </Table.Row>
+                                                    <Table.Row>
+                                                        <Table.Cell>
+                                                            <b>Receipt:</b>
+                                                        </Table.Cell>
+                                                        <Table.Cell>
+                                                            {receiptFile === "" ? (
+                                                                <p>No Image Included</p>
+                                                                ) : (
+                                                                <Image
+                                                                    fluid
+                                                                    rounded
+                                                                    src={values.receiptPhoto}
+                                                                    className="image-profile"
+                                                                    style={{ marginBottom: 16 }}
+                                                                />
+                                                            )}
+                                                        </Table.Cell>
+                                                    </Table.Row>
+                                                    <Table.Row>
+                                                        <Table.Cell>
+                                                        <b>Event Flyer:</b>
+                                                        </Table.Cell>
+                                                        <Table.Cell>
+                                                            {flyerFile === "" ? (
+                                                                <p>No Image Included</p>
+                                                                ) : (
+                                                                <Image
+                                                                    fluid
+                                                                    rounded
+                                                                    src={values.eventFlyer}
+                                                                    className="image-profile"
+                                                                    style={{ marginBottom: 16 }}
+                                                                />
+                                                            )}
                                                         </Table.Cell>
                                                     </Table.Row>
                                                 </Table.Body>
@@ -182,56 +246,156 @@ function ReimbursementRequest({user}) {
                                 noValidate
                                 className={loading ? "loading" : ""}
                             >
+                                <Form.Group widths={"equal"}>
                                 <Form.Input
                                     type="text"
-                                    label="Student Id"
+                                    name="email"
+                                    label="Email"
+                                    width={8}
+                                    value={values.email}
+                                    error={errors.email ? true : false}
+                                    onChange={onChange}
+                                />
+                                <Form.Input
+                                    type="text"
+                                    name="name"
+                                    label="Name"
+                                    width={8}
+                                    value={values.name}
+                                    error={errors.name ? true : false}
+                                    onChange={onChange}
+                                />
+                                </Form.Group>
+                               <span style={{ fontWeight: 'bold' }}>Do you work for UF (ex. RecSports)?</span>
+                                <Form.Field>
+                                <div className="ui checkbox"> 
+                                    <input
+                                    type="checkbox"
+                                    name="ufEmployee"
+                                    defaultChecked={values.ufEmployee === "true" ? true : false} 
+                                    value={values.ufEmployee === "true" ? false : true}          
+                                    error={errors.ufEmployee ? true : false}
+                                    onChange={onChange}
+                                    />
+                                    <label>Yes</label>
+                                </div>
+                                </Form.Field>  
+                                <Form.Group widths={"equal"}>                                                 
+                                <Form.Input
+                                    type="text"
                                     name="studentId"
+                                    label="Student ID (######## format)"
+                                    width={8}
                                     value={values.studentId}
                                     error={errors.studentId ? true : false}
                                     onChange={onChange}
                                 />
                                 <Form.Input
                                     type="text"
-                                    label="Amount"
-                                    name="amount"
-                                    value={values.amount}
-                                    error={errors.amount ? true : false}
-                                    onChange={onChange}
-                                />
-                                <Form.Input
-                                    type="text"
-                                    label="Address (Reimbursement will be mailed here)"
                                     name="address"
+                                    label="Address"
+                                    width={8}
                                     value={values.address}
                                     error={errors.address ? true : false}
                                     onChange={onChange}
                                 />
+                                </Form.Group> 
+                                <Form.Group widths={"equal"}> 
                                 <Form.Input
                                     type="text"
-                                    label="Company you bought from"
                                     name="company"
+                                    label="Company you bought from"
+                                    width={8}
                                     value={values.company}
                                     error={errors.company ? true : false}
                                     onChange={onChange}
                                 />
                                 <Form.Input
                                     type="text"
-                                    label="Event"
                                     name="event"
+                                    label="Event"
+                                    width={8}
                                     value={values.event}
                                     error={errors.event ? true : false}
                                     onChange={onChange}
                                 />
+                                </Form.Group>
+                                <Form.Group widths={"equal"}> 
                                 <Form.Input
                                     type="text"
-                                    label="Event Description"
                                     name="description"
+                                    label="Event Description and benefit to SHPE (and/or Agenda)"
+                                    control={TextArea}
+                                    width={8}
                                     value={values.description}
                                     error={errors.description ? true : false}
                                     onChange={onChange}
                                 />
-
+                                <Form.Input  
+                                    type="text"
+                                    name="amount"
+                                    label="What you bought (Ex: x2 Ketchup Bottles, x2 24 Packs of Burgers)"
+                                    control={TextArea}
+                                    width={8}
+                                    value={values.amount}
+                                    error={errors.amount ? true : false} 
+                                    onChange={onChange}
+                                />
+                                </Form.Group>
+                                <span style={{ fontWeight: 'bold' }}>Upload itemized receipt here or email to treasurer.shpeuf@gmail. Make sure you upload a receipt showing the last 4 numbers of your card and your name. If you only have an invoice, upload the invoice and the bank statement proving you paid off the invoice.</span>
+                                <Grid.Column className="card-team">
+                                <Image
+                                    src={receipt}
+                                />
+                                </Grid.Column>
+                                {receiptFile === "" ? (
+                                    <Image
+                                        fluid
+                                        rounded
+                                        src={values.receiptPhoto}
+                                        className="image-profile"
+                                        style={{ marginBottom: 16 }}
+                                    />
+                                    ) : (
+                                    <Image
+                                        fluid
+                                        rounded
+                                        src={values.receiptPhoto}
+                                        className="image-profile"
+                                        style={{ marginBottom: 16 }}
+                                    />
+                                )}
+                                <ImageCrop
+                                          setPhotoFile={setReceiptFile}
+                                          values={values}
+                                          onChange={onChange}
+                                          errors={errors.receiptPhoto ? true : false}
+                                          type="reimbursementR"
+                                />
+                                <span style={{ fontWeight: 'bold' }}>Upload the event flyer (IG post or physical)</span>
+                                <Grid.Column className="card-team">
+                                </Grid.Column>
+                                {flyerFile === "" ? (
+                                <Text>No image selected.</Text>
+                                    ) : (
+                                    <Image
+                                        fluid
+                                        rounded
+                                        src={values.eventFlyer}
+                                        className="image-profile"
+                                        style={{ marginBottom: 16 }}
+                                    />
+                                )}
+                                <ImageCrop
+                                          setPhotoFile={setFlyerFile}
+                                          values={values}
+                                          onChange={onChange}
+                                          errors={errors.eventFlyer ? true : false}
+                                          type="reimbursementF"
+                                />
+                                <Grid.Column>
                                 <Button type="submit">Send Request</Button>
+                                </Grid.Column>
                             </Form>
                         </Grid.Column>
                     </Grid.Row>
@@ -253,6 +417,9 @@ const REQUEST_REIMBURSEMENT = gql`
         $description: String!
         $reimbursed: String!
         $amount: String!
+        $ufEmployee: String!
+        $receiptPhoto: String!    
+        $eventFlyer: String!    
         $execute: Boolean!
     ) {
         reimbursementRequest(
@@ -267,6 +434,9 @@ const REQUEST_REIMBURSEMENT = gql`
                 description: $description
                 reimbursed: $reimbursed
                 amount: $amount
+                ufEmployee: $ufEmployee
+                receiptPhoto: $receiptPhoto
+                eventFlyer: $eventFlyer
                 execute: $execute
             }
         ) {
