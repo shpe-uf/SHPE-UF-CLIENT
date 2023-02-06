@@ -9,6 +9,8 @@ import {
   Segment,
   Tab,
 } from "semantic-ui-react";
+import gql from "graphql-tag";
+import { useMutation } from "@apollo/react-hooks";
 import { useQuery } from "@apollo/react-hooks";
 
 import Title from "../components/Title";
@@ -107,6 +109,8 @@ function Archives() {
       setDeleteDoneModal(false);
     }
   };
+
+  const [updateYears] = useMutation(UPDATE_YEARS_MUTATION);
 
   const membershipPane = {
     menuItem: { content: "Membership", icon: "users" },
@@ -218,6 +222,21 @@ function Archives() {
     ),
   };
 
+  const functionPane = {
+    menuItem: { content: "Functions", icon: "code" },
+    render: () => (
+      <Tab.Pane>
+        <Grid columns={2}>
+          <Grid.Row>
+            <Button color="blue" onClick={async() => await updateYears()}>
+              Update Years
+            </Button>
+          </Grid.Row>
+        </Grid>
+      </Tab.Pane>
+    ),
+  };
+
   const dangerPane = {
     menuItem: { content: "Danger Zone", icon: "warning sign" },
     render: () => (
@@ -264,6 +283,7 @@ function Archives() {
               listServPane,
               graduatingPane,
               alumniPane,
+              functionPane,
               dangerPane,
             ]}
           />
@@ -343,5 +363,14 @@ function Archives() {
     </div>
   );
 }
+
+const UPDATE_YEARS_MUTATION = gql`
+  mutation updateYears {
+    updateYears {
+      email
+      year
+    }
+  }
+`;
 
 export default Archives;
