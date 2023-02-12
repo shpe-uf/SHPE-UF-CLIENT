@@ -18,7 +18,7 @@
     "koa-compose": "^4.1.0",
     "mapbox-gl": "^1.10.1",
     "moment": "^2.24.0",
-    "nodemon": "^2.0.4",
+    "nodemon": "^2.0.20",
     "react": "^16.9.0",
     "react-big-calendar": "^0.35.0",
     "react-bootstrap": "^1.5.1",
