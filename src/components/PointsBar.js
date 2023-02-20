@@ -109,7 +109,7 @@ function PointsBar({ user }) {
                 </Segment>
                 <Segment vertical>
                   <p className="points-number">
-                    Top {user ? user.summerPoints : "0"} Percent
+                     {user ? user.summerPoints : "0"} 
                   </p>
                 </Segment>
                 <Segment vertical>
