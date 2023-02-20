@@ -1,13 +1,10 @@
-import React from "react";
-import { Container, Grid, Image, Menu, Responsive } from "semantic-ui-react";
+import React, { Children } from "react";
+import { Container } from "semantic-ui-react";
 import { Link } from 'react-router-dom';
 import { useState } from "react";
+import JrTabs from "../../components/JrTabs";
 
 function ShpeJr(){
-  const pathname = window.location.pathname;
-  const path = pathname === '/' ? 'home' : pathname.substr(1);
-  const [activeItem, setActiveItem] = useState(path);
-  const handleItemClick = (e, { name }) => setActiveItem(name);
 
     return (
         <div className="body">
@@ -29,43 +26,18 @@ function ShpeJr(){
                     laboris nisi ut aliquip ex ea commodo consequat!
                     This will be text Isa wants for the welcome message </p>
             </div>
-      
+       
         </Container>
         <div>
-          <Menu pointing secondary>
-          <Menu.Item
-        name="Home"
-        active={activeItem === 'home'}
-        onClick={handleItemClick}
-        as={Link}
-        to="/"
-      />
-        <Menu.Item
-        name="About"
-        active={activeItem === 'about'}
-        onClick={handleItemClick}
-        as={Link}
-        to="/About"
-      />
-      <Menu.Item
-        name="ShadowSHPE"
-        active={activeItem === 'ShadowSHPE'}
-        onClick={handleItemClick}
-        as={Link}
-        to="/SHPEJr"
-      />
-          </Menu>
-          
+          <JrTabs />
         </div>
-
-
-
-
+        
       </div>
 
 
     );
 
   }
+
 
 export default ShpeJr;

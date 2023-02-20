@@ -47,6 +47,7 @@ import ShpeRentals from "./pages/ShpeRentals";
 import jwtDecode from "jwt-decode";
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
+import SJrAbout from "./pages/public/SJrAbout";
 
 function App() {
   var decodedToken = [];
@@ -83,6 +84,7 @@ function App() {
           <Route exact path="/eboard" component={EBoard} />
           <Route exact path="/devteam" component={DevTeam} />
           <Route exact path="/shpejr" component={ShpeJr} />
+          <Route exact path = "/SJrAbout" component={SJrAbout}/>
           <Route exact path="/sponsors" component={Sponsors} />
           <Route exact path="/contactus" component={ContactUs} />
           <Route exact path="/calendar" component={MyCalendar} />
