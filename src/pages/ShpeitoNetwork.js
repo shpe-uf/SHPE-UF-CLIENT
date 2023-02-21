@@ -11,7 +11,7 @@ import {
   Responsive,
 } from "semantic-ui-react";
 import { useQuery } from "@apollo/react-hooks";
-import { FETCH_USERS_QUERY } from "../util/graphql"
+import { FETCH_USERS_QUERY } from "../util/graphql";
 
 import Title from "../components/Title";
 import FilterSelection from "../components/FilterSelection";
@@ -27,6 +27,7 @@ function ShpeitoNetwork(props) {
       graduating: [],
       country: [],
       classes: [],
+      internships: [],
     })
   );
 
@@ -42,6 +43,8 @@ function ShpeitoNetwork(props) {
   if (!loading && data) {
     users = data.getUsers.filter(function (user) {
       let fullName = user.firstName.concat(" ").concat(user.lastName);
+      let allInternships = user.internships.toString();
+      let allClasses = user.classes.toString();
       return (
         user.confirmed &&
         (filter.major.length === 0
@@ -54,9 +57,18 @@ function ShpeitoNetwork(props) {
         (filter.country.length === 0
           ? true
           : filter.country.includes(user.country)) &&
+        (filter.internships.length === 0
+          ? true
+          : filter.internships
+              .map((n) =>
+                allInternships.toLowerCase().includes(n.toLowerCase())
+              )
+              .includes(true)) &&
         (filter.classes.length === 0
           ? true
-          : filter.classes.some((o) => user.classes.includes(o))) &&
+          : filter.classes
+              .map((n) => allClasses.toLowerCase().includes(n.toLowerCase()))
+              .includes(true)) &&
         (filter.name.length === 0
           ? true
           : filter.name
@@ -213,6 +225,7 @@ class Filter {
     this.graduating = filter.graduating;
     this.country = filter.country;
     this.classes = filter.classes;
+    this.internships = filter.internships;
   }
 }
 
