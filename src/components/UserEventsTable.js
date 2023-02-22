@@ -4,6 +4,10 @@ import { Table, Segment, Header, Grid } from "semantic-ui-react";
 import moment from "moment";
 
 function UserEventsTable({ user }) {
+  const reversedEvents = [];
+  for (let i = user.events.length - 1; i >= 0; i--) {
+    reversedEvents.push(user.events[i])
+  }
   return (
     <Grid.Row>
       <h1>Events</h1>
@@ -29,7 +33,7 @@ function UserEventsTable({ user }) {
             </Table.Header>
             <Table.Body>
               {user &&
-                user.events.map(event => (
+                reversedEvents.map(event => (
                   <Table.Row key={event.name}>
                     <Table.Cell>{event.name}</Table.Cell>
                     <Table.Cell>{event.category}</Table.Cell>
