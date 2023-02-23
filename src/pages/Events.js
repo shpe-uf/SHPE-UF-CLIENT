@@ -1,19 +1,11 @@
 import React, { useState } from "react";
-import {
-  Grid,
-  Button,
-  Form,
-  Modal,
-  Container,
-  Dimmer,
-  Loader,
-} from "semantic-ui-react";
+import { Grid, Button, Form, Modal, Container } from "semantic-ui-react";
 import gql from "graphql-tag";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { useForm } from "../util/hooks";
 
 import Title from "../components/Title";
-import EventsAccordion from "../components/EventsAccordion";
+import EventsTable from "../components/EventsTable";
 
 import { FETCH_EVENTS_QUERY } from "../util/graphql";
 
@@ -28,13 +20,13 @@ function Events() {
     events = data.getEvents;
   }
 
-  const openModal = (name) => {
+  const openModal = name => {
     if (name === "createEvent") {
       setCreateEventModal(true);
     }
   };
 
-  const closeModal = (name) => {
+  const closeModal = name => {
     if (name === "createEvent") {
       values.name = "";
       values.code = "";
@@ -55,11 +47,16 @@ function Events() {
     category: "",
     expiration: "",
     points: "",
-    request: "false",
+    request: "false"
   });
 
   const [createEvent, { loading }] = useMutation(CREATE_EVENT_MUTATION, {
-    update(_, { data: { createEvent: eventsData } }) {
+    update(
+      _,
+      {
+        data: { createEvent: eventsData }
+      }
+    ) {
       values.name = "";
       values.code = "";
       values.category = "";
@@ -78,7 +75,7 @@ function Events() {
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
     },
 
-    variables: values,
+    variables: values
   });
 
   function createEventCallback() {
@@ -103,10 +100,7 @@ function Events() {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column>
-              <Dimmer active={events ? false : true} inverted>
-                <Loader />
-              </Dimmer>
-              <EventsAccordion events={events} />
+              <EventsTable events={events} />
             </Grid.Column>
           </Grid.Row>
         </Grid>
@@ -128,7 +122,7 @@ function Events() {
                 {Object.keys(errors).length > 0 && (
                   <div className="ui error message">
                     <ul className="list">
-                      {Object.values(errors).map((value) => (
+                      {Object.values(errors).map(value => (
                         <li key={value}>{value}</li>
                       ))}
                     </ul>
@@ -163,7 +157,7 @@ function Events() {
                     error={errors.category ? true : false}
                     onChange={onChange}
                   >
-                    {categoryOptions.map((category) =>
+                    {categoryOptions.map(category =>
                       category.points === 0 ? (
                         <option value={category.value} key={category.key}>
                           {category.value}
@@ -199,7 +193,7 @@ function Events() {
                     error={errors.expiration ? true : false}
                     onChange={onChange}
                   >
-                    {expirationOptions.map((expiration) => (
+                    {expirationOptions.map(expiration => (
                       <option value={expiration.value} key={expiration.key}>
                         {expiration.key}
                       </option>
