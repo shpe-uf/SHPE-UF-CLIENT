@@ -101,7 +101,7 @@ function EventsTable({ events }) {
             </Table.Header>
             <Table.Body>
               {events &&
-                events.reverse().map((event, index) => (
+                events.map((event, index) => (
                   <Table.Row key={index}>
                     <Table.Cell>{event.name}</Table.Cell>
                     <Table.Cell>{event.category}</Table.Cell>
