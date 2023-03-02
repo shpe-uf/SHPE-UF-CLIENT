@@ -1,7 +1,17 @@
 import React from "react";
-import { Container, Card, Responsive } from "semantic-ui-react";
+import { Container, Card, Segment } from "semantic-ui-react";
 
 import EBoardCards from "../../components/EBoardCards";
+import { createMedia } from "@artsy/fresnel";
+
+const AppMedia = createMedia({
+    breakpoints: {
+      mobile: 320,
+      computer: 992,
+    }
+  });
+  const mediaStyles = AppMedia.createMediaStyle();
+  const { Media, MediaContextProvider } = AppMedia;
 
 function EBoard() {
   return (
@@ -14,17 +24,23 @@ function EBoard() {
         </div>
       </div>
 
+      <style>{mediaStyles}</style>
+
       <Container>
-        <Responsive minWidth={992}>
+        <MediaContextProvider>
+          <Segment as={Media} at="computer">
           <Card.Group itemsPerRow={3}>
             <EBoardCards />
           </Card.Group>
-        </Responsive>
-        <Responsive maxWidth={991}>
+          </Segment>
+        </MediaContextProvider>
+        <MediaContextProvider>
+          <Segment as={Media} at="mobile">
           <Card.Group itemsPerRow={1}>
             <EBoardCards />
           </Card.Group>
-        </Responsive>
+          </Segment>
+        </MediaContextProvider>
       </Container>
     </div>
   );
