@@ -24,6 +24,7 @@ function FilterSelection(props) {
     graduating: [],
     country: [],
     classes: [],
+    internships: [],
   });
   const [filterVal, setFilterVal] = useState("");
 
@@ -45,6 +46,7 @@ function FilterSelection(props) {
     Graduating: graduating,
     Country: country,
     Classes: "",
+    Internships: "",
   };
 
   function addFilter() {
