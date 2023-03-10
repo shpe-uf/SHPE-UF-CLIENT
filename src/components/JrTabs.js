@@ -1,9 +1,10 @@
 import React, {useState} from "react";
 import JrTabNavItem from "./JrTabNavItem";
 import JrTabContent from "./JrTabContent";
-import SJrAbout from "./SJrAbout";
 import SJrContact from "./SJrContact";
 import SJrSchools from "./SJrSchools";
+import SJrHighEvent from "./SJrHighEvent";
+import SJrElemMidEvent from "./SJrElemMidEvent";
 
 const JrTabs = () => {
   const [activeTab, setActiveTab] = useState("tab1");
@@ -11,20 +12,25 @@ const JrTabs = () => {
     
     <div className="JrTabs">
       <ul className="nav">
-      <JrTabNavItem title="About" id="tab1" activeTab={activeTab} setActiveTab={setActiveTab}/>
-        <JrTabNavItem title="Partner Schools" id="tab2" activeTab={activeTab} setActiveTab={setActiveTab}/>
-        <JrTabNavItem title="Contact Us" id="tab3" activeTab={activeTab} setActiveTab={setActiveTab}/>
+        <JrTabNavItem title="High School Events" id="tab1" activeTab={activeTab} setActiveTab={setActiveTab}/>
+        <JrTabNavItem title="K-6 School Events" id="tab2" activeTab={activeTab} setActiveTab={setActiveTab}/>
+        <JrTabNavItem title="Partner Schools" id="tab3" activeTab={activeTab} setActiveTab={setActiveTab}/>
+        <JrTabNavItem title="Contact Us" id="tab4" activeTab={activeTab} setActiveTab={setActiveTab}/>
       </ul>
       <div className="outlet">
         <JrTabContent id="tab1" activeTab={activeTab}>
-          <SJrAbout/>
+          <SJrHighEvent/>
         </JrTabContent>
 
         <JrTabContent id="tab2" activeTab={activeTab}>
-          <SJrSchools/>
+          <SJrElemMidEvent/>
         </JrTabContent>
 
         <JrTabContent id="tab3" activeTab={activeTab}>
+          <SJrSchools/>
+        </JrTabContent>
+
+        <JrTabContent id="tab4" activeTab={activeTab}>
           <SJrContact/>
         </JrTabContent>
 
