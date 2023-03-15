@@ -59,6 +59,28 @@ export const FETCH_EVENTS_QUERY = gql`
     }
   }
 `;
+export const FETCH_EVENTS_REVERSED_QUERY = gql`
+  {
+    getEvents {
+      id
+      name
+      code
+      category
+      points
+      request
+      attendance
+      expiration
+      semester
+      createdAt
+      users {
+        firstName
+        lastName
+        username
+        email
+      }
+    }
+  }
+`;
 
 export const FETCH_ALUMNIS_QUERY = gql`
   {
