@@ -17,6 +17,7 @@ import EventsAccordion from "../components/EventsAccordion";
 
 import { FETCH_EVENTS_QUERY } from "../util/graphql";
 
+
 import categoryOptions from "../assets/options/category.json";
 import expirationOptions from "../assets/options/expiration.json";
 
@@ -25,7 +26,7 @@ function Events() {
   let events = null;
   let { data } = useQuery(FETCH_EVENTS_QUERY);
   if (data) {
-    events = data.getEvents;
+    events = data.getEventsReversed;
   }
 
   const openModal = (name) => {
