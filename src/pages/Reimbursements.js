@@ -566,7 +566,21 @@ function Reimbursements() {
           </Modal.Content>
         </Modal>
         <Modal open={claimModal} size="tiny">
-          <Modal.Header>{claim.id}</Modal.Header>
+          <Modal.Header>
+
+            {claim.id}
+
+            <Grid.Column floated="right">
+              <Button
+                      icon
+                      type="reset"
+                      color="grey"
+                      onClick={() => setClaimModal(false)}
+                    >
+                      <Icon name="close" />
+                    </Button>
+            </Grid.Column>
+          </Modal.Header>
           <Modal.Content>
             <Grid>
               <Grid.Row>
@@ -639,13 +653,6 @@ function Reimbursements() {
                       </Table.Body>
                     </Table>
                   </div>
-                  <Button
-                    type="reset"
-                    color="grey"
-                    onClick={() => setClaimModal(false)}
-                  >
-                    Close
-                  </Button>
                 </Grid.Column>
               </Grid.Row>
             </Grid>

@@ -15,7 +15,20 @@ function PresidentModal(cabinet, description, cabinetEmail, pic) {
         </Grid>
       }
     >
-      <Modal.Header>{cabinet}</Modal.Header>
+      <Modal.Header>
+        {cabinet}
+
+        <Grid.Column floated="right">
+                    <Button
+                      icon
+                      color="grey"
+                      onClick={() => setOpen(false)}
+                    >
+                      <Icon name="close" />
+                    </Button>
+        </Grid.Column>
+        </Modal.Header>
+
       <Modal.Content image>
         <Grid>
           <Grid.Column width={5}>
@@ -34,13 +47,6 @@ function PresidentModal(cabinet, description, cabinetEmail, pic) {
             Contact via email
           </a>
         }
-        <Button
-          content="Close"
-          labelPosition="right"
-          icon="checkmark"
-          onClick={() => setOpen(false)}
-          positive
-        />
       </Modal.Actions>
     </Modal>
   );

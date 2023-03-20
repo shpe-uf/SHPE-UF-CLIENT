@@ -18,6 +18,8 @@ function MembersTable({ users, refetch}) {
   const [userInfo, setUserInfo] = useState({});
   const [errors, setErrors] = useState({});
 
+  const [search, setSearch] = useState('')
+
   const openModal = name => {
     if (name === "userInfo") {
       setUserInfoModal(true);
@@ -46,7 +48,19 @@ function MembersTable({ users, refetch}) {
           closeOnDimmerClick={false}
         >
           <Modal.Header>
-            <h2>Member Info</h2>
+                <Grid.Column floated="left">
+                  <h2>Member Info</h2>
+                </Grid.Column>
+                <Grid.Column floated="right">
+                  <Button
+                  icon
+                  type="reset"
+                    color="grey"
+                    onClick={() => closeModal("userInfo")}
+                    >
+                    <Icon name="close" />
+                  </Button>
+                </Grid.Column>
           </Modal.Header>
           <Modal.Content>
               <>
@@ -77,13 +91,13 @@ function MembersTable({ users, refetch}) {
             <Grid>
               <Grid.Row>
                 <Grid.Column>
-                  <Button
+                  {/* <Button
                     type="reset"
                     color="grey"
                     onClick={() => closeModal("userInfo")}
-                  >
-                    Close
-                  </Button>
+                  > */}
+                    {/* Close */}
+                  {/* </Button> */}
                 </Grid.Column>
               </Grid.Row>
             </Grid>
@@ -94,6 +108,12 @@ function MembersTable({ users, refetch}) {
 
   return (
     <>
+      <div class="ui search" style={{ display: "flex", justifyContent: "end" }}>
+        <div class="ui icon input" style={{width: '40%'}}>
+          <input class="prompt" type="text" placeholder="Search Members (by First Name)" onChange={(e) => setSearch(e.target.value)}/>
+          <i class="search icon"></i>
+        </div>
+      </div>
       <div className="table-responsive">
         <Dimmer active={users ? false : true} inverted>
           <Loader />
@@ -121,7 +141,16 @@ function MembersTable({ users, refetch}) {
           </Table.Header>
           <Table.Body>
             {users &&
-              users.map((user, index) => (
+              users.filter((user) => {
+                let searchName = search.charAt(0).toUpperCase() + search.slice(1)
+
+                if (search === '') {
+                  return user
+                }
+                else {
+                  return user.firstName.includes(searchName)
+                }
+              }).map((user, index) => (
                 <Table.Row key={index}>
                   <Table.Cell>
                     {user.lastName}, {user.firstName}

@@ -128,7 +128,14 @@ h5 {
 }
 
 .ui.modal > .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 16px !important;
+}
+
+.ui.modal > .header > .closeButton {
+  cursor: pointer;
 }
 
 .ui.modal > .content {
