@@ -13,7 +13,7 @@ const JrTabs = () => {
     <div className="JrTabs">
       <ul className="nav">
         <JrTabNavItem title="High School Events" id="tab1" activeTab={activeTab} setActiveTab={setActiveTab}/>
-        <JrTabNavItem title="K-6 School Events" id="tab2" activeTab={activeTab} setActiveTab={setActiveTab}/>
+        <JrTabNavItem title="K-8 School Events" id="tab2" activeTab={activeTab} setActiveTab={setActiveTab}/>
         <JrTabNavItem title="Partner Schools" id="tab3" activeTab={activeTab} setActiveTab={setActiveTab}/>
         <JrTabNavItem title="Contact Us" id="tab4" activeTab={activeTab} setActiveTab={setActiveTab}/>
       </ul>
