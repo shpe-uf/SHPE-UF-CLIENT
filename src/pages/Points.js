@@ -26,6 +26,8 @@ import UserTasksTable from "../components/UserTasksTable";
 import TasksCards from "../components/TasksCards";
 import BookmarkedTasksCards from "../components/BookmarkedTasksCards";
 
+import { NavLink } from "react-router-dom";
+
 function Points() {
   const [activeItem, setActiveItem] = useState("Your Points");
 
@@ -57,6 +59,11 @@ function Points() {
     }
   }
 
+  function addFakePoints() {
+    user.springPoints += 1000;
+    user.springPercentile = 100;
+  }
+
   let data = userQuery.data;
   let loadingUser = userQuery.loading;
   let refetch = userQuery.refetch;
@@ -67,10 +74,14 @@ function Points() {
   }
 
   const [redeemPointsModal, setRedeemPointsModal] = useState(false);
+  const [aprilFoolsModal, setAprilFoolsModal] = useState(false);
 
   const openModal = (name) => {
     if (name === "redeemPoints") {
       setRedeemPointsModal(true);
+    } else if (name == "aprilFools") {
+      setAprilFoolsModal(true);
+      values.code = "aprilfools";
     }
   };
 
@@ -79,6 +90,10 @@ function Points() {
       values.code = "";
       setErrors(false);
       setRedeemPointsModal(false);
+    } else if (name === "aprilFools") {
+      values.code = "";
+      setErrors(false);
+      setAprilFoolsModal(false);
     }
   };
 
@@ -156,6 +171,14 @@ function Points() {
               )}
               <Grid.Row>
                 <Grid.Column>
+                  <Button
+                    content="Delete Website?"
+                    icon="close"
+                    color="red"
+                    labelPosition="left"
+                    floated="left"
+                    onClick={() => openModal("aprilFools")}
+                  />
                   <Button
                     content="Redeem Code"
                     icon="font"
@@ -249,8 +272,39 @@ function Points() {
                         >
                           Cancel
                         </Button>
-                        <Button type="submit" floated="right">
+
+                        <Button type="submit" floated="right" onClick="">
                           Submit
+                        </Button>
+                      </Form>
+                    </Grid.Column>
+                  </Grid.Row>
+                </Grid>
+              </Modal.Content>
+            </Modal>
+            <Modal open={aprilFoolsModal} size="medium">
+              <Modal.Header>
+                <h2>Delete the website?</h2>
+              </Modal.Header>
+              <Modal.Content>
+                <Grid>
+                  <Grid.Row>
+                    <Grid.Column>
+                      <Form
+                        onSubmit={onSubmit}
+                        noValidate
+                        className={loading ? "loading" : ""}
+                      >
+                        <p>Are you sure we should delete the website?</p>
+                        <Button
+                          type="reset"
+                          color="grey"
+                          onClick={() => [closeModal("aprilFools")]}
+                        >
+                          Cancel
+                        </Button>
+                        <Button type="reset" floated="right">
+                          Confirm
                         </Button>
                       </Form>
                     </Grid.Column>
