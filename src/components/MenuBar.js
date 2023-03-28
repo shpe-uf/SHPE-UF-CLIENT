@@ -45,9 +45,9 @@ function MenuBar({permission}) {
             <Menu.Item as={Link} to="/contactus">
               Contact Us
             </Menu.Item>
-            <Menu.Item as={Link} to="/shpejr">
+           {/* <Menu.Item as={Link} to="/shpejr">
               SHPE Jr
-            </Menu.Item>
+             </Menu.Item> */} 
 
             <Menu.Menu position="right">
               {user ? (
