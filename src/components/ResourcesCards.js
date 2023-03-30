@@ -137,7 +137,7 @@ function ResourcesCards() {
         />
         <Card 
             image={<Image src={WhatsApp} as="a" href="https://chat.whatsapp.com/KyuEjmCLT7c1VRSkexoQkO" target="_blank"/>}
-            header={<Grid><Grid.Column textAlign="center">{<a className="ui header" href="https://chat.whatsapp.com/KyuEjmCLT7c1VRSkexoQkO" target="_blank">SHPE UF Announcement Chats</a>}</Grid.Column></Grid>}
+            header={<Grid><Grid.Column textAlign="center">{<a className="ui header" href="https://chat.whatsapp.com/KyuEjmCLT7c1VRSkexoQkO" target="_blank">SHPE UF Announcements Chat</a>}</Grid.Column></Grid>}
             description="Join the SHPE UF WhatsApp chat to stay up to date with all SHPE UF news and events."
             extra={<a class="extra" href="https://chat.whatsapp.com/KyuEjmCLT7c1VRSkexoQkO" target="_blank">Click here to access the site!</a>}
         />
