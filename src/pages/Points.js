@@ -8,6 +8,8 @@ import {
   Menu,
   Segment,
   Loader,
+  ButtonGroup,
+  Responsive,
 } from "semantic-ui-react";
 
 import { ToastContainer, toast } from "react-toastify";
@@ -75,6 +77,7 @@ function Points() {
 
   const [redeemPointsModal, setRedeemPointsModal] = useState(false);
   const [aprilFoolsModal, setAprilFoolsModal] = useState(false);
+  const [pointsStolen, setPointsStolen] = useState(false);
 
   const openModal = (name) => {
     if (name === "redeemPoints") {
@@ -91,6 +94,7 @@ function Points() {
       setErrors(false);
       setRedeemPointsModal(false);
     } else if (name === "aprilFools") {
+      if (values.code != "") redeemPoints();
       values.code = "";
       setErrors(false);
       setAprilFoolsModal(false);
@@ -108,6 +112,7 @@ function Points() {
       values.code = "";
       setErrors(false);
       setRedeemPointsModal(false);
+      setAprilFoolsModal(false);
       updateGetUser(userData);
     },
 
@@ -171,21 +176,49 @@ function Points() {
               )}
               <Grid.Row>
                 <Grid.Column>
-                  <Button
-                    content="Delete Website?"
-                    icon="close"
-                    color="red"
-                    labelPosition="left"
-                    floated="left"
-                    onClick={() => openModal("aprilFools")}
-                  />
-                  <Button
-                    content="Redeem Code"
-                    icon="font"
-                    labelPosition="left"
-                    floated="right"
-                    onClick={() => openModal("redeemPoints")}
-                  />
+                  <Responsive minWidth={700}>
+                    <Button
+                      content="Redeem Code"
+                      icon="font"
+                      labelPosition="center"
+                      floated="right"
+                      onClick={() => openModal("redeemPoints")}
+                    />
+                    {!pointsStolen ? (
+                      <Button
+                        className="fools"
+                        content="Steal all Shpoints"
+                        icon="exclamation"
+                        color="red"
+                        labelPosition="center"
+                        floated="left"
+                        onClick={() => openModal("aprilFools")}
+                      />
+                    ) : null}
+                  </Responsive>
+                  <Responsive maxWidth={700}>
+                    <Button.Group vertical labeled icon floated="right">
+                      <Button
+                        content="Redeem Code"
+                        icon="font"
+                        labelPosition="center"
+                        floated="right"
+                        onClick={() => openModal("redeemPoints")}
+                        style={{ marginBottom: "10px" }}
+                      />
+                      {!pointsStolen ? (
+                        <Button
+                          className="fools"
+                          content="Steal all Shpoints"
+                          icon="exclamation"
+                          color="red"
+                          labelPosition="center"
+                          floated="right"
+                          onClick={() => openModal("aprilFools")}
+                        />
+                      ) : null}
+                    </Button.Group>
+                  </Responsive>
                 </Grid.Column>
               </Grid.Row>
               {loadingUser | !data ? (
@@ -284,7 +317,7 @@ function Points() {
             </Modal>
             <Modal open={aprilFoolsModal} size="medium">
               <Modal.Header>
-                <h2>Delete the website?</h2>
+                <h2>Steal everyone's points?</h2>
               </Modal.Header>
               <Modal.Content>
                 <Grid>
@@ -295,15 +328,22 @@ function Points() {
                         noValidate
                         className={loading ? "loading" : ""}
                       >
-                        <p>Are you sure we should delete the website?</p>
+                        <p>Would you like to steal everyone's points? 😈</p>
                         <Button
                           type="reset"
                           color="grey"
-                          onClick={() => [closeModal("aprilFools")]}
+                          onClick={() => [
+                            (values.code = ""),
+                            closeModal("aprilFools"),
+                          ]}
                         >
                           Cancel
                         </Button>
-                        <Button type="reset" floated="right">
+                        <Button
+                          type="submit"
+                          floated="right"
+                          onClick={() => [setPointsStolen(true)]}
+                        >
                           Confirm
                         </Button>
                       </Form>
