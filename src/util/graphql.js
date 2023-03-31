@@ -57,7 +57,11 @@ export const FETCH_EVENTS_QUERY = gql`
         email
       }
     }
-    getEventsReversed{
+  }
+`;
+export const FETCH_EVENTS_REVERSED_QUERY = gql`
+  {
+    getEventsReversed {
       id
       name
       code
@@ -77,7 +81,6 @@ export const FETCH_EVENTS_QUERY = gql`
     }
   }
 `;
-
 
 export const FETCH_ALUMNIS_QUERY = gql`
   {

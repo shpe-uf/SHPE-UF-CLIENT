@@ -74,86 +74,105 @@ function EventsTable({ events }) {
         </Segment>
       ) : (
         <div className="table-responsive">
-          <Table striped selectable unstackable>
-            <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell>Name</Table.HeaderCell>
-                <Table.HeaderCell>Category</Table.HeaderCell>
-                <Table.HeaderCell>Expiration</Table.HeaderCell>
-                <Table.HeaderCell>Semester</Table.HeaderCell>
-                <Table.HeaderCell textAlign="center">Request</Table.HeaderCell>
-                <Table.HeaderCell textAlign="center">
-                  Attendance
-                </Table.HeaderCell>
-                <Table.HeaderCell textAlign="center">Points</Table.HeaderCell>
-                <Table.HeaderCell textAlign="center">
-                  Manual Input
-                </Table.HeaderCell>
-                <Table.HeaderCell textAlign="center">Info</Table.HeaderCell>
-                <Table.HeaderCell textAlign="center">Delete</Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>
-              {events &&
-                events.map((event, index) => (
-                  <Table.Row key={index}>
-                    <Table.Cell>{event.name}</Table.Cell>
-                    <Table.Cell>{event.category}</Table.Cell>
-                    <Table.Cell>
-                      {moment(event.expiration)
-                        .local()
-                        .format("MM/DD/YYYY @ hh:mm A")}
-                    </Table.Cell>
-                    <Table.Cell>{event.semester}</Table.Cell>
-                    <Table.Cell textAlign="center">
-                      {event.request === true ? (
-                        <Icon className="request-true" name="check" />
-                      ) : (
-                        <Icon className="request-false" name="x" />
-                      )}
-                    </Table.Cell>
-                    <Table.Cell textAlign="center">
-                      {event.attendance}
-                    </Table.Cell>
-                    <Table.Cell textAlign="center">{event.points}</Table.Cell>
-                    <Table.Cell textAlign="center">
-                      <Button
-                        icon
-                        onClick={() => {
-                          setSelectedEvent(event.name);
-                          setManualInputModal(true);
-                        }}
-                      >
-                        <Icon name="i cursor" />
-                      </Button>
-                    </Table.Cell>
-                    <Table.Cell textAlign="center">
-                      <Button
-                        icon
-                        onClick={() => {
-                          setEventAttendance(event);
-                          setEventInfoModal(true);
-                        }}
-                      >
-                        <Icon name="info" />
-                      </Button>
-                    </Table.Cell>
-                    <Table.Cell textAlign="center">
-                      <Button
-                        icon
-                        onClick={() => {
-                          setSelectedEvent(event.name);
-                          setDeleteEventModal(true);
-                        }}
-                        color="red"
-                      >
-                        <Icon name="x" />
-                      </Button>
-                    </Table.Cell>
+          <Grid>
+            <Grid.Row>
+              <Table striped selectable unstackable>
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell>Name</Table.HeaderCell>
+                    <Table.HeaderCell>Category</Table.HeaderCell>
+                    <Table.HeaderCell>Expiration</Table.HeaderCell>
+                    <Table.HeaderCell>Semester</Table.HeaderCell>
+                    <Table.HeaderCell textAlign="center">
+                      Request
+                    </Table.HeaderCell>
+                    <Table.HeaderCell textAlign="center">
+                      Attendance
+                    </Table.HeaderCell>
+                    <Table.HeaderCell textAlign="center">
+                      Points
+                    </Table.HeaderCell>
+                    <Table.HeaderCell textAlign="center">
+                      Manual Input
+                    </Table.HeaderCell>
+                    <Table.HeaderCell textAlign="center">Info</Table.HeaderCell>
+                    <Table.HeaderCell textAlign="center">
+                      Delete
+                    </Table.HeaderCell>
                   </Table.Row>
-                ))}
-            </Table.Body>
-          </Table>
+                </Table.Header>
+                <Table.Body>
+                  {events &&
+                    events.map((event, index) => (
+                      <Table.Row key={index}>
+                        <Table.Cell>{event.name}</Table.Cell>
+                        <Table.Cell>{event.category}</Table.Cell>
+                        <Table.Cell>
+                          {moment(event.expiration)
+                            .local()
+                            .format("MM/DD/YYYY @ hh:mm A")}
+                        </Table.Cell>
+                        <Table.Cell>{event.semester}</Table.Cell>
+                        <Table.Cell textAlign="center">
+                          {event.request === true ? (
+                            <Icon className="request-true" name="check" />
+                          ) : (
+                            <Icon className="request-false" name="x" />
+                          )}
+                        </Table.Cell>
+                        <Table.Cell textAlign="center">
+                          {event.attendance}
+                        </Table.Cell>
+                        <Table.Cell textAlign="center">
+                          {event.points}
+                        </Table.Cell>
+                        <Table.Cell textAlign="center">
+                          <Button
+                            icon
+                            onClick={() => {
+                              setSelectedEvent(event.name);
+                              setManualInputModal(true);
+                            }}
+                          >
+                            <Icon name="i cursor" />
+                          </Button>
+                        </Table.Cell>
+                        <Table.Cell textAlign="center">
+                          <Button
+                            icon
+                            onClick={() => {
+                              setEventAttendance(event);
+                              setEventInfoModal(true);
+                            }}
+                          >
+                            <Icon name="info" />
+                          </Button>
+                        </Table.Cell>
+                        <Table.Cell textAlign="center">
+                          <Button
+                            icon
+                            onClick={() => {
+                              setSelectedEvent(event.name);
+                              setDeleteEventModal(true);
+                            }}
+                            color="red"
+                          >
+                            <Icon name="x" />
+                          </Button>
+                        </Table.Cell>
+                      </Table.Row>
+                    ))}
+                </Table.Body>
+              </Table>
+            </Grid.Row>
+            <Grid.Row>
+              <CSVLink data={eventsNoUsers} filename={"events.csv"}>
+                <Button color="green" floated="right">
+                  Download as CSV
+                </Button>
+              </CSVLink>
+            </Grid.Row>
+          </Grid>
         </div>
       )}
 
