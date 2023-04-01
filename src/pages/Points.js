@@ -307,7 +307,7 @@ function Points() {
             </Modal>
             <Modal open={aprilFoolsModal} size="medium">
               <Modal.Header>
-                <h2>Delete the website?</h2>
+                <h2>Steal all Shpoints?</h2>
               </Modal.Header>
               <Modal.Content>
                 <Grid>
