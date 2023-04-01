@@ -103,6 +103,7 @@ function Points() {
       values.code = "";
       setErrors(false);
       setRedeemPointsModal(false);
+      setAprilFoolsModal(false);
       updateGetUser(userData);
     },
 
