@@ -1,5 +1,6 @@
 import React from "react";
 import { Table, Segment, Header, Grid } from "semantic-ui-react";
+import UserEventPoints from "./UserEventPoints";
 
 import moment from "moment";
 
@@ -9,152 +10,24 @@ function UserEventsTable({ user }) {
     reversedEvents.push(user.events[i])
   }
 
-  var GBMCount = 0;
+  var gbmCount = 0;
   var workshopCount = 0;
   var cabinetMeetingCount = 0;
   var miscCount = 0;
   
-  {user && user.events.map(event => (
-    event.category === "General Body Meeting" ?
-    GBMCount++ : false
-  ))}
-  {user && user.events.map(event => (
-    event.category === "Workshop" ?
-    workshopCount++ : false
-  ))}
-  {user && user.events.map(event => (
-    event.category === "Cabinet Meeting" ?
-    cabinetMeetingCount++ : false
-  ))}
-  {user && user.events.map(event => (
-    event.category === "Miscellaneous" || event.category === "Volunteering" || event.category === "Tabling" || event.category === "Social" || event.category === "Fundraising" || event.category === "Corporate Event" ?
-    miscCount++ : false
-  ))}
-
-
+  for (let i = 0; i < reversedEvents.length; i++) {
+    if (reversedEvents[i].category === "General Body Meeting")
+      gbmCount++
+    else if (reversedEvents[i].category === "Workshop")
+      workshopCount++
+    else if (reversedEvents[i].category === "Cabinet Meeting")
+      cabinetMeetingCount++
+    else 
+      miscCount++
+  }
 
   return (
     <Grid.Row>
-      {user === undefined || GBMCount === 0 ? false :
-      (
-      <><h1>General Body Meetings</h1>
-        <div className="table-responsive">
-            <Table striped selectable unstackable>
-              <Table.Header>
-                <Table.Row>
-                  <Table.HeaderCell>Event</Table.HeaderCell>
-                  <Table.HeaderCell>Date</Table.HeaderCell>
-                  <Table.HeaderCell textAlign="center">Points</Table.HeaderCell>
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                {user &&
-                  reversedEvents.map(event => (
-                    event.category === "General Body Meeting" ?
-                      <Table.Row key={event.name}>
-                        <Table.Cell>{event.name}</Table.Cell>
-                        <Table.Cell>
-                          {moment(event.createdAt)
-                            .local()
-                            .format("MM/DD/YYYY")}
-                        </Table.Cell>
-                        <Table.Cell textAlign="center">{event.points}</Table.Cell>
-                      </Table.Row>
-                      : false))}
-              </Table.Body>
-            </Table>
-          </div></>
-      )}
-      {user === undefined || workshopCount === 0 ? false :
-      (
-      <><h1>Workshops</h1>
-        <div className="table-responsive">
-            <Table striped selectable unstackable>
-              <Table.Header>
-                <Table.Row>
-                  <Table.HeaderCell>Event</Table.HeaderCell>
-                  <Table.HeaderCell>Date</Table.HeaderCell>
-                  <Table.HeaderCell textAlign="center">Points</Table.HeaderCell>
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                {user &&
-                  reversedEvents.map(event => (
-                    event.category === "Workshop" ?
-                      <Table.Row key={event.name}>
-                        <Table.Cell>{event.name}</Table.Cell>
-                        <Table.Cell>
-                          {moment(event.createdAt)
-                            .local()
-                            .format("MM/DD/YYYY")}
-                        </Table.Cell>
-                        <Table.Cell textAlign="center">{event.points}</Table.Cell>
-                      </Table.Row>
-                      : false))}
-              </Table.Body>
-            </Table>
-          </div></>
-      )}
-      {user === undefined || cabinetMeetingCount === 0 ? false :
-      (
-      <><h1>Cabinet Meetings</h1>
-        <div className="table-responsive">
-            <Table striped selectable unstackable>
-              <Table.Header>
-                <Table.Row>
-                  <Table.HeaderCell>Event</Table.HeaderCell>
-                  <Table.HeaderCell>Date</Table.HeaderCell>
-                  <Table.HeaderCell textAlign="center">Points</Table.HeaderCell>
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                {user &&
-                  reversedEvents.map(event => (
-                    event.category === "Cabinet Meeting" ?
-                      <Table.Row key={event.name}>
-                        <Table.Cell>{event.name}</Table.Cell>
-                        <Table.Cell>
-                          {moment(event.createdAt)
-                            .local()
-                            .format("MM/DD/YYYY")}
-                        </Table.Cell>
-                        <Table.Cell textAlign="center">{event.points}</Table.Cell>
-                      </Table.Row>
-                      : false))}
-              </Table.Body>
-            </Table>
-          </div></>
-      )}
-      {user === undefined || miscCount === 0 ? false :
-      (
-      <><h1>Miscellaneous</h1>
-        <div className="table-responsive">
-            <Table striped selectable unstackable>
-              <Table.Header>
-                <Table.Row>
-                  <Table.HeaderCell>Event</Table.HeaderCell>
-                  <Table.HeaderCell>Date</Table.HeaderCell>
-                  <Table.HeaderCell textAlign="center">Points</Table.HeaderCell>
-                </Table.Row>
-              </Table.Header>
-              <Table.Body>
-                {user &&
-                  reversedEvents.map(event => (
-                    event.category != "General Body Meeting" && event.category != "Workshop" && event.category != "Cabinet Meeting" ?
-                      <Table.Row key={event.name}>
-                        <Table.Cell>{event.name}</Table.Cell>
-                        <Table.Cell>
-                          {moment(event.createdAt)
-                            .local()
-                            .format("MM/DD/YYYY")}
-                        </Table.Cell>
-                        <Table.Cell textAlign="center">{event.points}</Table.Cell>
-                      </Table.Row>
-                      : false))}
-              </Table.Body>
-            </Table>
-          </div></>
-      )}
       {user === undefined || user.events.length === 0 ? (
         <><h1>Events</h1>
         <div style={{ paddingBottom: 16 }}>
@@ -165,8 +38,16 @@ function UserEventsTable({ user }) {
             </Header>
           </Segment>
         </div></>
-      ) : false
-      } 
+      ) : [
+      user === undefined || gbmCount === 0 ? null :
+        <UserEventPoints reversedEvents={reversedEvents} category= "General Body Meeting" />,
+      user === undefined || workshopCount === 0 ? null :
+        <UserEventPoints reversedEvents={reversedEvents} category= "Workshop" />,
+      user === undefined || cabinetMeetingCount === 0 ? null :
+        <UserEventPoints reversedEvents={reversedEvents} category= "Cabinet Meeting" />,
+      user === undefined || miscCount === 0 ? null :
+        <UserEventPoints reversedEvents={reversedEvents} category= "Miscellaneous" />,
+      ]} 
     </Grid.Row>
   );
 }
