@@ -137,9 +137,9 @@ function MenuBar({permission}) {
                     <Dropdown.Item as={Link} to="/contactus">
                       Contact Us
                     </Dropdown.Item>
-                    <Dropdown.Item as={Link} to="/shpejr">
+                   {/* <Dropdown.Item as={Link} to="/shpejr">
                       SHPE JR
-                    </Dropdown.Item>
+              </Dropdown.Item> */}
                   </Dropdown.Menu>
                 </Dropdown>
 
