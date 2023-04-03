@@ -6,13 +6,16 @@ const UserEventPoints = ({ reversedEvents, category }) => {
  
   let eventsToDisplay = [];
 
-  if (category === "Miscellaneous") {
+  if (category === "Miscellaneous" || category === "Misc") {
     eventsToDisplay = reversedEvents.filter(event =>
         event.category !== "General Body Meeting" &&
         event.category !== "Workshop" &&
         event.category !== "Cabinet Meeting"
     );
-  } 
+  }
+  else if (category === "GBM") {
+    eventsToDisplay = reversedEvents.filter(event => event.category === "General Body Meeting")
+  }
   else {
     eventsToDisplay = reversedEvents.filter(event => event.category === category);
   }

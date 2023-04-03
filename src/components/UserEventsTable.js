@@ -26,6 +26,8 @@ function UserEventsTable({ user }) {
       miscCount++
   }
 
+  const isMobile = window.innerWidth <= 768;
+
   return (
     <Grid.Row>
       {user === undefined || user.events.length === 0 ? (
@@ -40,13 +42,13 @@ function UserEventsTable({ user }) {
         </div></>
       ) : [
       user === undefined || gbmCount === 0 ? null :
-        <UserEventPoints reversedEvents={reversedEvents} category= "General Body Meeting" />,
+        <UserEventPoints reversedEvents={reversedEvents} category= {isMobile ? "GBM" : "General Body Meeting"} />,
       user === undefined || workshopCount === 0 ? null :
         <UserEventPoints reversedEvents={reversedEvents} category= "Workshop" />,
       user === undefined || cabinetMeetingCount === 0 ? null :
         <UserEventPoints reversedEvents={reversedEvents} category= "Cabinet Meeting" />,
       user === undefined || miscCount === 0 ? null :
-        <UserEventPoints reversedEvents={reversedEvents} category= "Miscellaneous" />,
+        <UserEventPoints reversedEvents={reversedEvents} category= {isMobile ? "Misc" : "Miscellaneous"} />,
       ]} 
     </Grid.Row>
   );
