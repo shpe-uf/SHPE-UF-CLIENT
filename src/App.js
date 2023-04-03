@@ -20,6 +20,7 @@ import About from "./pages/public/About";
 import Alumni from "./pages/public/Alumni";
 import EBoard from "./pages/public/EBoard";
 import DevTeam from "./pages/public/DevTeam";
+import ShpeJr from "./pages/public/ShpeJr";
 import Sponsors from "./pages/public/Sponsors";
 import ContactUs from "./pages/public/ContactUs";
 import ResetPassword from "./pages/public/ResetPassword";
@@ -81,6 +82,7 @@ function App() {
           <Route exact path="/alumni" component={Alumni} />
           <Route exact path="/eboard" component={EBoard} />
           <Route exact path="/devteam" component={DevTeam} />
+          <Route exact path="/shpejr" component={ShpeJr} />
           <Route exact path="/sponsors" component={Sponsors} />
           <Route exact path="/contactus" component={ContactUs} />
           <Route exact path="/calendar" component={MyCalendar} />
