@@ -787,7 +787,7 @@ div::-webkit-scrollbar-thumb {
  }
 
  ul.nav {
-  width: 69%;
+  width: fit-content;
   margin: 0 auto 2rem;
   display: flex;
   align-items: center;
@@ -795,18 +795,32 @@ div::-webkit-scrollbar-thumb {
   border: 1px solid #39A2DB;
   border-radius: 2rem;
   padding-left: 0px;
-  @media (max-width: 780px) {
-    width: 90%;
+}
+
+@media (max-width: 780px) {
+  ul.nav {
+    width: 100%;
+    max-width: 400px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  ul.nav li {
+    width: 50%;
+    padding: 1rem;
+    box-sizing: border-box;
   }
 }
 ul.nav li {
-  width: 60%;
+  width: 180px;
   padding: 1rem;
   list-style: none;
   text-align: center;
   cursor: pointer;
+  position: relative; 
   transition: all 0.7s;
 }
+
 ul.nav li:first-child {
   border-bottom-left-radius: 2rem;
   border-top-left-radius: 2rem;
@@ -816,13 +830,16 @@ ul.nav li:last-child {
   border-bottom-right-radius: 2rem;
   border-top-right-radius: 2rem;
 }
-ul.nav li:hover {
+
+ul.nav li:hover{
   background: rgba(13, 104, 130, 0.15);
 }
+
 ul.nav li.active {
   background:rgba(13, 104, 130, 0.75);
   color: white;
 }
+
 .JrTabContent {
   font-size: 2rem;
   text-align: center;
