@@ -390,24 +390,24 @@ function Archives() {
 }
 
 const RESET_FALL_MUTATION = gql`
-  mutation resetFallPercentiles {
-    resetFallPercentiles{
+  mutation resetFallPercentile {
+    resetFallPercentile{
       percentile
     }
   }
 `;
 
 const RESET_SPRING_MUTATION = gql`
-mutation resetSpringPercentiles {
-  resetSpringPercentiles{
+mutation resetSpringPercentile {
+  resetSpringPercentile{
     percentile
   }
 }
 `;
 
 const RESET_SUMMER_MUTATION = gql`
-mutation resetSummerPercentiles {
-  resetSummerPercentiles{
+mutation resetSummerPercentile {
+  resetSummerPercentile{
     percentile
   }
 }
