@@ -44,10 +44,6 @@ function EventsTable({ events }) {
     },
   });
 
-  if (typeof events != "undefined") {
-    events.map((event, index) => console.log(event.semester));
-  }
-
   function populateCSV(users) {
     if (!users) return null;
     let list = [];
