@@ -754,6 +754,12 @@ div::-webkit-scrollbar-thumb {
   }
 }
 
+@media (min-width: 1200px) {
+  .ui.container.body {
+    width: 1375px !important;
+  }
+}
+
 .resetLink {
   display: inline-block;
   margin-top: 12px;

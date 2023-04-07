@@ -64,6 +64,14 @@ function UserProfile({ user, children, isPublic }) {
                 </Table.Row>
                 <Table.Row>
                   <Table.Cell>
+                    <b>Personal Email:</b>
+                  </Table.Cell>
+                  <Table.Cell>
+                    {user ? <p>{user.personalEmail}</p> : <p>Loading</p>}
+                  </Table.Cell>
+                </Table.Row>
+                <Table.Row>
+                  <Table.Cell>
                     <b>Major:</b>
                   </Table.Cell>
                   <Table.Cell>

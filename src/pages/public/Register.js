@@ -41,6 +41,7 @@ function Register(props) {
     sex: "",
     username: "",
     email: "",
+    personalEmail: "",
     password: "",
     confirmPassword: "",
     listServ: "false",
@@ -224,6 +225,14 @@ function Register(props) {
                     error={errors.email ? true : false}
                     onChange={onChange}
                   />
+                  <Form.Input
+                    type="text"
+                    label="Personal Email"
+                    name="personalEmail"
+                    value={values.personalEmail}
+                    error={errors.personalEmail ? true : false}
+                    onChange={onChange}
+                  />
                 </Form.Group>
                 <Form.Group widths="equal">
                   <Form.Input
@@ -284,6 +293,7 @@ const REGISTER_USER = gql`
     $sex: String!
     $username: String!
     $email: String!
+    $personalEmail: String!
     $password: String!
     $confirmPassword: String!
     $listServ: String!
@@ -300,6 +310,7 @@ const REGISTER_USER = gql`
         sex: $sex
         username: $username
         email: $email
+        personalEmail: $personalEmail
         password: $password
         confirmPassword: $confirmPassword
         listServ: $listServ
