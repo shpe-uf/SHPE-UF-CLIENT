@@ -45,6 +45,7 @@ function AlumniTable({ alumnis }) {
               <Table.HeaderCell>Employer</Table.HeaderCell>
               <Table.HeaderCell>Position</Table.HeaderCell>
               <Table.HeaderCell>Location</Table.HeaderCell>
+              <Table.HeaderCell>Email</Table.HeaderCell>
               <Table.HeaderCell textAlign="center">LinkedIn</Table.HeaderCell>
               <Table.HeaderCell textAlign="center">Profile</Table.HeaderCell>
             </Table.Row>
@@ -63,6 +64,7 @@ function AlumniTable({ alumnis }) {
                   <Table.Cell>
                     {alumni.location.city}, {alumni.location.state}
                   </Table.Cell>
+                  <Table.Cell>{alumni.email}</Table.Cell>
                   <Table.Cell textAlign="center">
                     <Button icon href={alumni.linkedin} target="_blank">
                       <Icon name="linkedin square" />

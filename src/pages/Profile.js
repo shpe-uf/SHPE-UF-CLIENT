@@ -60,6 +60,7 @@ function Profile() {
   }
 
   function openModal() {
+    values.personalEmail = user.personalEmail;
     values.firstName = user.firstName;
     values.lastName = user.lastName;
     values.photo = user.photo;
@@ -89,6 +90,7 @@ function Profile() {
   };
 
   const { values, onChange, onSubmit } = useForm(editProfileCallback, {
+    personalEmail: "",
     email: email,
     firstName: "",
     lastName: "",
@@ -106,6 +108,7 @@ function Profile() {
 
   const [editProfile, { loading }] = useMutation(EDIT_USER_PROFILE, {
     update(_, { data: { editUserProfile: userData } }) {
+      user.personalEmail = userData.personalEmail;
       user.firstName = userData.firstName;
       user.lastName = userData.lastName;
       user.photo = userData.photo;
@@ -259,6 +262,14 @@ function Profile() {
                     name="lastName"
                     value={values.lastName}
                     error={errors.lastName ? true : false}
+                    onChange={onChange}
+                  />
+                  <Form.Input
+                    type="text"
+                    label="Personal Email"
+                    name="personalEmail"
+                    value={values.personalEmail}
+                    error={errors.personalEmail ? true : false}
                     onChange={onChange}
                   />
                   <Form.Field
@@ -473,6 +484,7 @@ const FETCH_USER_QUERY = gql`
       photo
       username
       email
+      personalEmail
       major
       year
       graduating
@@ -491,6 +503,7 @@ const FETCH_USER_QUERY = gql`
 const EDIT_USER_PROFILE = gql`
   mutation editUserProfile(
     $email: String!
+    $personalEmail: String!
     $firstName: String!
     $lastName: String!
     $photo: String!
@@ -507,6 +520,7 @@ const EDIT_USER_PROFILE = gql`
     editUserProfile(
       editUserProfileInput: {
         email: $email
+        personalEmail: $personalEmail
         firstName: $firstName
         lastName: $lastName
         photo: $photo
@@ -521,6 +535,7 @@ const EDIT_USER_PROFILE = gql`
         socialMedia: $socialMedia
       }
     ) {
+      personalEmail
       firstName
       lastName
       photo
