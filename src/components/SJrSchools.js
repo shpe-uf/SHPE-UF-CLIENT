@@ -2,6 +2,9 @@ import React from 'react'
 import {Card, Container, Responsive } from 'semantic-ui-react'
 import JrSchoolCards from './JrSchoolCards';
 
+
+
+
 const SJrSchools = () =>{
   return(
     <div className='SJrSchools'>
