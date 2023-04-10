@@ -1,12 +1,37 @@
 import React from "react";
-import { Card, CardHeader } from "semantic-ui-react";
+import { Card } from "semantic-ui-react";
+import emptyImg from "../assets/images/about-1.jpg";
 
 function JrSchoolCards(){
     return (
-        <Card.Group itemsPerRow={3}>
-            <Card >
-                
-            </Card>
-        </Card.Group>
+        <>
+        <Card
+            image = {emptyImg}
+            header = "Sample School 1"
+            meta = "Name of school"
+
+        />
+        <Card
+            image = {emptyImg}
+            header = "Sample School 2"
+            meta = "Name of school"
+
+        />
+        <Card
+            image = {emptyImg}
+            header = "Sample School 3"
+            meta = "Name of school"
+
+        />
+        <Card
+            image = {emptyImg}
+            header = "Sample School 4"
+            meta = "Name of school"
+
+        />
+        
+        </>
+
     );
 }
+export default JrSchoolCards;
