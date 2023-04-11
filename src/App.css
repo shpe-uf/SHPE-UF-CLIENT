@@ -827,3 +827,19 @@ ul.nav li.active {
   font-size: 2rem;
   text-align: center;
 }
+.contact-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding-left: 15rem;
+  padding-right: 15rem;
+  padding-bottom: 1rem;
+}
+.left-align {
+  flex-basis: 90%;
+  margin-right: 1px;
+}
+.right-align {
+  flex-basis: 50%;
+}

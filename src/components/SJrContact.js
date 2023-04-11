@@ -2,9 +2,11 @@ import React from 'react'
 import { Card, Modal, Grid, Button, Icon, Segment } from "semantic-ui-react";
 import external from "../assets/images/eboard/external.jpeg";
 
+
 function contact(email) {
   return JRModal(contact, email);
 }
+
 
 function JRModal(cabinet, email){
   const [open, setOpen] = React.useState(false);
@@ -26,11 +28,12 @@ function JRModal(cabinet, email){
             </Modal.Actions>
             </Button>
         </Grid>
-        
+       
       }
     ></Modal>
   );
 }
+
 
 const SJrContact = () =>{
   return(
@@ -38,20 +41,24 @@ const SJrContact = () =>{
       <h1>
         Contact Us
       </h1>
-      <p>
-      </p>
-      <p>
-        Interested in becoming a SHPE UF jr chapter? Contact SHPE JR Chair
-      </p>
-      <p>
-        Have questions about outreach and STEM opportunities? Contact VP of External Affairs
-      </p>
-      <p>
-        To have Elementary/Middle school stem events, mentorships, and program
-      </p>
-      <p>
-        To become a partnered high school chapter
-      </p>
+      <div className='contact-info'>
+        <div className='left-align'>
+          <p>Interested in becoming a SHPE UF jr chapter?</p>
+        </div>
+        <div className='right-align'>
+          <p><strong style={{fontSize: 'larger', color: 'black'}}>Contact SHPE JR Chair</strong></p>
+        </div>
+      </div>
+      <div className='contact-info'>
+        <div className='left-align'>
+          <p>Have questions about outreach and STEM opportunities?</p>
+          <p>To have Elementary/Middle school STEM events, mentorships, and program:</p>
+          <p>To become a partnered high school chapter:</p>
+        </div>
+        <div className='right-align'>
+          <p><strong style={{fontSize: 'larger', color: 'black'}}>Contact VP of External Affairs</strong></p>
+        </div>
+      </div>
       <>
       <Card.Group centered itemsPerRow={3}>
       <Card
@@ -69,10 +76,8 @@ const SJrContact = () =>{
       </Card.Group>
       </>
     </div>
-
   );
 };
 
+
 export default SJrContact;
-
-
