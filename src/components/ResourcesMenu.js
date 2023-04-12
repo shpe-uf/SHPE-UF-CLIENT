@@ -78,16 +78,16 @@ const MediaSegment = () => (
             </Menu>
         </Grid.Column>
         <Grid.Column>
-            <h4>Episodes</h4>
+            <h4>Latest Episodes</h4>
             <Menu vertical >
+                <Menu.Item href='https://open.spotify.com/episode/7HLm0AsslxrRNGU2PEfh2u?si=NhDcRx43Q4WVPCpPzYZs_w' target='_blank'>
+                    <Message><h6>#4</h6><b>SHPEitos Abroad: Insider Scoop</b></Message>
+                </Menu.Item>
                 <Menu.Item href='https://open.spotify.com/episode/3Qn5iGwCRDFcmLb7NfcGTF?si=pj9mlR59SVm9FOrdPMyQXg' target='_blank'>
                     <Message><h6>#3</h6><b>From Directors to E-board: The Experience</b></Message>
                 </Menu.Item>
                 <Menu.Item href='https://open.spotify.com/episode/1BB4kWtxklQNztzt8RLUV7?si=8zj-PqyrSvi-rdTqwA7BlQ' target='_blank'>
-                    <Message><h6>#2</h6><b>What Had Happened Was: Crazy Stories</b></Message>
-                </Menu.Item>
-                <Menu.Item href='https://open.spotify.com/episode/4jx5Gp9tpZyHKwvAbm7xCC?si=MUoXv49CQXC3SjCRhd3nzg' target='_blank'>
-                <Message><h6>#1</h6><b>Transitioning to College: Perfectly Imperfect</b></Message>
+                <Message><h6>#2</h6><b>What Had Happened Was: Crazy Stories</b></Message>
                 </Menu.Item>
             </Menu>
         </Grid.Column>
