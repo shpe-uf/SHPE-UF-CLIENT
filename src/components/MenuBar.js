@@ -137,11 +137,11 @@ function MenuBar({permission}) {
                     <Dropdown.Item as={Link} to="/calendar">
                       Calendar
                     </Dropdown.Item>
-                    <Dropdown.Item as={Link} to="/contactus">
-                      Contact Us
-                    </Dropdown.Item>
                     <Dropdown.Item as={Link} to="/resources">
                       Resources
+                    </Dropdown.Item>
+                    <Dropdown.Item as={Link} to="/contactus">
+                      Contact Us
                     </Dropdown.Item>
                    {/* <Dropdown.Item as={Link} to="/shpejr">
                       SHPE JR
