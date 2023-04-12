@@ -64,7 +64,11 @@ function AlumniTable({ alumnis }) {
                   <Table.Cell>
                     {alumni.location.city}, {alumni.location.state}
                   </Table.Cell>
-                  <Table.Cell>{alumni.email}</Table.Cell>
+                  <Table.Cell textAlign="center">
+                    <Button icon href={"mailto:" + alumni.email}>
+                      <Icon name="mail" />
+                    </Button>
+                  </Table.Cell>
                   <Table.Cell textAlign="center">
                     <Button icon href={alumni.linkedin} target="_blank">
                       <Icon name="linkedin square" />

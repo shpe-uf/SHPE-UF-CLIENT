@@ -756,7 +756,7 @@ div::-webkit-scrollbar-thumb {
 
 @media (min-width: 1200px) {
   .ui.container.body {
-    width: 1375px !important;
+    width: 1150px !important;
   }
 }
 
