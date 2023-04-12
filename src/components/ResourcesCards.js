@@ -52,7 +52,7 @@ const EBoardOptions = [
       text: <a href={"mailto:" + "treasurer.shpeuf@gmail.com"} className="link-email">
                 <Image src={Tres} avatar/>
                 <Icon name="mail" />
-                Frank Victor
+                Frank Vigoa
             </a>,
       value: 'Frank Vigoa',
     },
