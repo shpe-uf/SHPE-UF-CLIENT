@@ -1,3 +1,4 @@
 src/assets/images/resources/** filter=lfs diff=lfs merge=lfs -text
 src/assets/images/photosdisplay/** filter=lfs diff=lfs merge=lfs -text
 src/assets/images/resources/gbm.jpg filter=lfs diff=lfs merge=lfs -text
+src/assets/images/resources/gbm2.jpg filter=lfs diff=lfs merge=lfs -text
