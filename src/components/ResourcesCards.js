@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Dropdown, Grid, Icon, Image } from "semantic-ui-react";
 
-import GBM from "../assets/images/resources/gbm2.jpg"
+import GBM from "../assets/images/resources/gbm.png"
 import EBoard from "../assets/images/eboard.jpg";
 import National from "../assets/images/resources/national.jpg"
 import NewMember from "../assets/images/resources/newmember.jpeg"
