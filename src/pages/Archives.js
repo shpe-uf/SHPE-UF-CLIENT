@@ -230,7 +230,7 @@ function Archives() {
       <Tab.Pane>
         <Grid columns={3}>
           <Grid.Row>
-            <h2>Reset Everyone's of the Percentiles</h2>
+            <h2>Reset Everyone's Percentiles</h2>
           </Grid.Row>
           <Grid.Row>
             <p>
@@ -240,19 +240,19 @@ function Archives() {
             </p>
             <Grid.Column>
               <h2>Fall Semester</h2>
-              <Button color="red" onClick={resetFall()}>
+              <Button color="red" onClick={resetFall}>
                 Reset Fall Percentiles
               </Button>
             </Grid.Column>
             <Grid.Column>
               <h2>Spring Semester</h2>
-              <Button color="red" onClick={resetSpring()}>
+              <Button color="red" onClick={resetSpring}>
                 Reset Spring Percentiles
               </Button>
             </Grid.Column>
             <Grid.Column>
               <h2>Summer Semester</h2>
-              <Button color="red" onClick={resetSummer()}>
+              <Button color="red" onClick={resetSummer}>
                 Reset Summer Percentiles
               </Button>
             </Grid.Column>
