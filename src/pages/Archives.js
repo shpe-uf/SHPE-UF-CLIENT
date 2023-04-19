@@ -92,9 +92,9 @@ function Archives() {
   const [deleteSHPEModal, setDeleteSHPEModal] = useState(false);
   const [deleteDoneModal, setDeleteDoneModal] = useState(false);
 
-  const [resetFall] = useMutation(RESET_FALL_MUTATION);
-  const [resetSpring] = useMutation(RESET_SPRING_MUTATION);
-  const [resetSummer] = useMutation(RESET_SUMMER_MUTATION);
+  const [resetFall] = useMutation(RESET_PERCENTILE_MUTATION);
+  const [resetSpring] = useMutation(RESET_PERCENTILE_MUTATION);
+  const [resetSummer] = useMutation(RESET_PERCENTILE_MUTATION);
 
   const openModal = (name) => {
     if (name === "deleteSHPE") {
@@ -240,19 +240,46 @@ function Archives() {
             </p>
             <Grid.Column>
               <h2>Fall Semester</h2>
-              <Button color="red" onClick={resetFall}>
+              <Button
+                color="red"
+                onClick={async () => {
+                  await resetFall({
+                    variables: {
+                      semester: "fallPercentile",
+                    },
+                  });
+                }}
+              >
                 Reset Fall Percentiles
               </Button>
             </Grid.Column>
             <Grid.Column>
               <h2>Spring Semester</h2>
-              <Button color="red" onClick={resetSpring}>
+              <Button
+                color="red"
+                onClick={async () => {
+                  await resetSpring({
+                    variables: {
+                      semester: "springPercentile",
+                    },
+                  });
+                }}
+              >
                 Reset Spring Percentiles
               </Button>
             </Grid.Column>
             <Grid.Column>
               <h2>Summer Semester</h2>
-              <Button color="red" onClick={resetSummer}>
+              <Button
+                color="red"
+                onClick={async () => {
+                  await resetSummer({
+                    variables: {
+                      semester: "summerPercentile",
+                    },
+                  });
+                }}
+              >
                 Reset Summer Percentiles
               </Button>
             </Grid.Column>
@@ -389,28 +416,12 @@ function Archives() {
   );
 }
 
-const RESET_FALL_MUTATION = gql`
-  mutation resetFallPercentile {
-    resetFallPercentile{
+const RESET_PERCENTILE_MUTATION = gql`
+  mutation resetPercentile($semester: String!) {
+    resetPercentile(resetPercentile: { semester: $semester }) {
       percentile
     }
   }
-`;
-
-const RESET_SPRING_MUTATION = gql`
-mutation resetSpringPercentile {
-  resetSpringPercentile{
-    percentile
-  }
-}
-`;
-
-const RESET_SUMMER_MUTATION = gql`
-mutation resetSummerPercentile {
-  resetSummerPercentile{
-    percentile
-  }
-}
 `;
 
 export default Archives;
