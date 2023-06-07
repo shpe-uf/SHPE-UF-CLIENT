@@ -1,6 +1,6 @@
 ### Summary
 
-_please explain what your PR does here_
+_please explain what your PR does here. screenshots are especially helpful._
 
 ### Reference
 
@@ -10,4 +10,4 @@ _Reference your Asana task here as shown below_
 
 ### Extra
 
-_please add me (@yairtemkin) as a reviewer. thank u_
+_please add me (@w-omar) as a reviewer. thank u_
