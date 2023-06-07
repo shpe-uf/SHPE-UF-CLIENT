@@ -17,6 +17,7 @@ import moment from "moment";
 import { CSVLink } from "react-csv";
 
 import { FETCH_EVENTS_QUERY } from "../util/graphql";
+import { FETCH_EVENTS_REVERSED_QUERY } from "../util/graphql";
 import ManualInputModal from "./ManualInputModal";
 
 function EventsTable({ events }) {
@@ -37,8 +38,8 @@ function EventsTable({ events }) {
           getEvents[pos] = removeUserFromEvent;
       });
       cache.writeQuery({
-        query: FETCH_EVENTS_QUERY,
-        data: { getEvents: getEvents },
+        query: FETCH_EVENTS_REVERSED_QUERY,
+        data: { getEventsReversed: getEvents },
       });
       setSelectedEvent(removeUserFromEvent.name);
     },
