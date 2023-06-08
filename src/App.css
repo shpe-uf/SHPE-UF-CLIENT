@@ -746,6 +746,12 @@ div::-webkit-scrollbar-thumb {
     margin-bottom: 0.5rem !important;
     min-width: 50vw ;
   }
+
+  .JrEventButton {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+    min-width: 50vw !important;
+  }
 }
 
 @media (min-width: 992px) {
