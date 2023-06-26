@@ -2,12 +2,16 @@ import React from "react";
 import { Card } from "semantic-ui-react";
 import emptyImg from "../assets/images/about-1.jpg";
 import Norton from "../assets/images/shpejr/Norton.png";
+import N2 from "../assets/images/shpejr/NortonIn.JPG";
 import Idylwild from "../assets/images/shpejr/idylwild.png";
+import ID2 from "../assets/images/shpejr/ID2.JPG";
 import PKY from "../assets/images/shpejr/PKY.jpg";
+import PK2 from "../assets/images/shpejr/PK2.JPG";
 import CB from "../assets/images/shpejr/CB.png";
 import RR from "../assets/images/shpejr/RR.jpg";
 import NFC from "../assets/images/shpejr/NFC.jpg";
 import Mater from "../assets/images/shpejr/Mater.png";
+
 import JrSchoolModal from "./JrSchoolModal";
 
 function partnerMod(schoolName, description, pic) {
@@ -98,7 +102,7 @@ function JrSchoolCards() {
         extra={partnerMod(
           "Norton Elementary School",
           NortonDescription,
-          emptyImg
+          N2
         )}
       />
       <Card
@@ -108,7 +112,7 @@ function JrSchoolCards() {
         extra={partnerMod(
           "Idylwild Elementary School",
           IdylwildDescription,
-          emptyImg
+          ID2
         )}
       />
       <Card
@@ -118,7 +122,7 @@ function JrSchoolCards() {
         extra={partnerMod(
           "PK Yonge Middle School",
           PKYongeDescription,
-          emptyImg
+          PK2
         )}
       />
       <Card
