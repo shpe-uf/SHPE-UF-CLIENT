@@ -1,6 +1,13 @@
 import React from "react";
 import { Card } from "semantic-ui-react";
 import emptyImg from "../assets/images/about-1.jpg";
+import Norton from "../assets/images/shpejr/Norton.png";
+import Idylwild from "../assets/images/shpejr/idylwild.png";
+import PKY from "../assets/images/shpejr/PKY.jpg";
+import CB from "../assets/images/shpejr/CB.png";
+import RR from "../assets/images/shpejr/RR.jpg";
+import NFC from "../assets/images/shpejr/NFC.jpg";
+import Mater from "../assets/images/shpejr/Mater.png";
 import JrSchoolModal from "./JrSchoolModal";
 
 function partnerMod(schoolName, description, pic) {
@@ -49,9 +56,7 @@ const PKYongeDescription = (
 );
 const PKYongeHDescription = (
   <div>
-    PK Yonge High School is located in Gainesville, Florida. Our SHPEJr chapter
-    hosts events such as STEM days with the kids! Check out our K-8 School
-    Events for more info
+    remove from dev. 
   </div>
 );
 const CypressBayDescription = (
@@ -87,7 +92,7 @@ function JrSchoolCards() {
   return (
     <>
       <Card
-        image={emptyImg}
+        image={Norton}
         header="Norton"
         meta="Elementary School"
         extra={partnerMod(
@@ -97,7 +102,7 @@ function JrSchoolCards() {
         )}
       />
       <Card
-        image={emptyImg}
+        image={Idylwild}
         header="Idylwild"
         meta="Elementary School"
         extra={partnerMod(
@@ -107,7 +112,7 @@ function JrSchoolCards() {
         )}
       />
       <Card
-        image={emptyImg}
+        image={PKY}
         header="PK Yonge"
         meta="Middle School"
         extra={partnerMod(
@@ -117,7 +122,7 @@ function JrSchoolCards() {
         )}
       />
       <Card
-        image={emptyImg}
+        image={CB}
         header="Cypress Bay High"
         meta="High School"
         extra={partnerMod(
@@ -127,7 +132,7 @@ function JrSchoolCards() {
         )}
       />
       <Card
-        image={emptyImg}
+        image={RR}
         header="Ronald W Reagan Sr."
         meta="High School"
         extra={partnerMod(
@@ -137,7 +142,7 @@ function JrSchoolCards() {
         )}
       />
       <Card
-        image={emptyImg}
+        image={NFC}
         header="North Florida Central"
         meta="High School"
         extra={partnerMod(
@@ -148,7 +153,7 @@ function JrSchoolCards() {
       />
 
       <Card
-        image={emptyImg}
+        image={Mater}
         header="Mater Academy"
         meta="High School"
         extra={partnerMod(
