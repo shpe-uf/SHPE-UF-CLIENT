@@ -45,6 +45,7 @@ import Reimbursements from "./pages/Reimbursements";
 import ShpeitoNetwork from "./pages/ShpeitoNetwork";
 import RentalAdmin from "./pages/RentalAdmin";
 import ShpeRentals from "./pages/ShpeRentals";
+import MentorSHPE from "./pages/MentorShpe";
 import jwtDecode from "jwt-decode";
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
@@ -97,6 +98,7 @@ function App() {
           <UserRoute exact path="/alumnidirectory" component={AlumniDirectory} />
           <UserRoute exact path="/reimbursementrequest" component={() => <ReimbursementRequest user={decodedToken}/>} />
           <UserRoute exact path="/shpeitonetwork" component={ShpeitoNetwork}/>
+          <UserRoute exact path="/mentorshpe" component={MentorSHPE}/>
           <UserRoute exact path="/shperentals" component={ShpeRentals} />
           <AdminRoute exact path="/admin" component={() => <Admin permission={permission}/>} permission={permission} security="admin"/>
           <AdminRoute exact path="/admin/events" component={Events} permission={permission} security="events"/>
