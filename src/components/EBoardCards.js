@@ -3,16 +3,6 @@ import { Card } from "semantic-ui-react";
 import CabinetModal from "../components/CabinetModal";
 import PresidentModal from "../components/PresidentModal";
 
-import president from "../assets/images/eboard/president.jpeg";
-import graduate from "../assets/images/eboard/graduate.jpeg";
-import secretary from "../assets/images/eboard/secretary.jpeg";
-import treasurer from "../assets/images/eboard/treasurer.jpeg";
-import marketing from "../assets/images/eboard/marketing.jpeg";
-import technology from "../assets/images/eboard/technology.jpeg";
-import corporate from "../assets/images/eboard/corporate.jpeg";
-import external from "../assets/images/eboard/external.jpeg";
-import internal from "../assets/images/eboard/internal.jpeg";
-
 import graduatePositions from "../assets/options/gradCabinet.json";
 import secretaryPositions from "../assets/options/secretary.json";
 import treasuryPositions from "../assets/options/treasury.json";
@@ -21,6 +11,8 @@ import technologyPositions from "../assets/options/technology.json";
 import corporatePositions from "../assets/options/corporate.json";
 import externalPositions from "../assets/options/external.json";
 import internalPositions from "../assets/options/internal.json";
+
+import {president, secretary, treasurer, graduate, marketing, technology, corporate, external, internal} from "../assets/images/eboard"
 
 function cabinet(cabinet, description, email, pic, json) {
   return CabinetModal(cabinet, description, email, pic, json);
@@ -147,8 +139,8 @@ function EBoardCards() {
   return (
     <>
       <Card
-        image={president}
-        header="Jorge Moros"
+        image={president[1]}
+        header={president[0]}
         meta="President"
         extra={prezModal(
           "President",
@@ -158,8 +150,8 @@ function EBoardCards() {
         )}
       />
       <Card
-        image={graduate}
-        header="Juan Valderrama"
+        image={graduate[1]}
+        header={graduate[0]}
         meta="Graduate Coordinator"
         extra={cabinet(
           "Graduate Cabinet",
@@ -170,8 +162,8 @@ function EBoardCards() {
         )}
       />
       <Card
-        image={secretary}
-        header="Bianca Piñeros"
+        image={secretary[1]}
+        header={secretary[0]}
         meta="Secretary"
         extra={cabinet(
           "Secretary Cabinet",
@@ -182,8 +174,8 @@ function EBoardCards() {
         )}
       />
       <Card
-        image={treasurer}
-        header="Frank Vigoa"
+        image={treasurer[1]}
+        header={treasurer[0]}
         meta="Treasurer"
         extra={cabinet(
           "Treasury Cabinet",
@@ -194,8 +186,8 @@ function EBoardCards() {
         )}
       />
       <Card
-        image={marketing}
-        header="Victor Rodriguez"
+        image={marketing[1]}
+        header={marketing[0]}
         meta="VP of Marketing"
         extra={cabinet(
           "Marketing Cabinet",
@@ -206,8 +198,8 @@ function EBoardCards() {
         )}
       />
       <Card
-        image={technology}
-        header="Mariana Torres Torres"
+        image={technology[1]}
+        header={technology[0]}
         meta="VP of Technology"
         extra={cabinet(
           "Tech Cabinet",
@@ -218,8 +210,8 @@ function EBoardCards() {
         )}
       />
       <Card
-        image={corporate}
-        header="Paige Sam"
+        image={corporate[1]}
+        header={corporate[0]}
         meta="VP of Corporate Affairs"
         extra={cabinet(
           "Corporate Cabinet",
@@ -230,8 +222,8 @@ function EBoardCards() {
         )}
       />
       <Card
-        image={external}
-        header="Isabella Eby"
+        image={external[1]}
+        header={external[0]}
         meta="VP of External Affairs"
         extra={cabinet(
           "External Cabinet",
@@ -242,8 +234,8 @@ function EBoardCards() {
         )}
       />
       <Card
-        image={internal}
-        header="Katie Muratti"
+        image={internal[1]}
+        header={internal[0]}
         meta="VP of Internal Affairs"
         extra={cabinet(
           "Internal Cabinet",
