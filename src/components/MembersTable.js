@@ -88,19 +88,6 @@ function MembersTable({ users, refetch}) {
                   </Grid.Row>
                 </Grid>
               </>
-            <Grid>
-              <Grid.Row>
-                <Grid.Column>
-                  {/* <Button
-                    type="reset"
-                    color="grey"
-                    onClick={() => closeModal("userInfo")}
-                  > */}
-                    {/* Close */}
-                  {/* </Button> */}
-                </Grid.Column>
-              </Grid.Row>
-            </Grid>
           </Modal.Content>
         </Modal>
       )

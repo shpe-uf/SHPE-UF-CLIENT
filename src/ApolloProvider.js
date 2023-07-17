@@ -5,17 +5,11 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 import { createHttpLink } from "apollo-link-http";
 import { ApolloProvider } from "@apollo/react-hooks";
 import { setContext } from "apollo-link-context";
+require("dotenv").config();
 
-//for live website, uncomment this in your PR
 const httpLink = createHttpLink({
-  uri: "https://shpe-uf.herokuapp.com/",
+  uri: process.env.REACT_APP_SERVER_ORIGIN,
 });
-
-
-//for development, comment this out in your PR
-/*const httpLink = createHttpLink({
-  uri: "http://localhost:5000/",
-});*/
 
 const authLink = setContext(() => {
   const token = localStorage.getItem("jwtToken");

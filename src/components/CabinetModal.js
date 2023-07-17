@@ -24,18 +24,13 @@ function CabinetModal(cabinet, description, cabinetEmail, pic, json) {
     >
       <Modal.Header>
         {cabinet}
-        
+
         <Grid.Column floated="right">
-                    <Button
-                      icon
-                      color="grey"
-                      onClick={() => setOpen(false)}
-                    >
-                      <Icon name="close" />
-                    </Button>
+          <Button icon color="grey" onClick={() => setOpen(false)}>
+            <Icon name="close" />
+          </Button>
         </Grid.Column>
-        
-        </Modal.Header>
+      </Modal.Header>
       <Modal.Content image>
         <Grid>
           <Grid.Column width={5}>
@@ -61,14 +56,6 @@ function CabinetModal(cabinet, description, cabinetEmail, pic, json) {
             Contact via email
           </a>
         }
-
-        {/* <Button
-          content="Close"
-          labelPosition="right"
-          icon="checkmark"
-          onClick={() => setOpen(false)}
-          positive
-        /> */}
       </Modal.Actions>
     </Modal>
   );

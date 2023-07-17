@@ -30,6 +30,9 @@ function Footer() {
                 >
                   <Icon circular inverted name="facebook" />
                 </a>
+                <a class="bug-report" href="#" target="_blank" rel="noopener noreferrer">
+                  Report a bug/problem!
+                </a>
               </Grid.Column>
               <Grid.Column width={8} textAlign="right">
                 <p>© Copyright 2022. All Rights Reserved.</p>
