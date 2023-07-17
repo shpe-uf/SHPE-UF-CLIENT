@@ -27,6 +27,7 @@ import ResetPassword from "./pages/public/ResetPassword";
 import ForgotPassword from "./pages/public/ForgotPassword";
 import Confirm from "./pages/public/Confirm";
 import MyCalendar from "./pages/public/MyCalendar";
+import Resources from "./pages/public/Resources";
 import Admin from "./pages/Admin";
 import Points from "./pages/Points";
 import Profile from "./pages/Profile";
@@ -86,6 +87,7 @@ function App() {
           <Route exact path="/sponsors" component={Sponsors} />
           <Route exact path="/contactus" component={ContactUs} />
           <Route exact path="/calendar" component={MyCalendar} />
+          <Route exact path="/resources" component={Resources}/>
           <UserRoute exact path="/corporations" component={Corporations} />
           <Route exact path="/reset/:token" component={ResetPassword} />
           <Route exact path="/forgot" component={ForgotPassword} />
