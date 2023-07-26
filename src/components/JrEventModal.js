@@ -16,8 +16,8 @@ function JrEventModal(event, description, pic) {
       open={open}
       trigger={
         <Grid verticalAlign="middle" columns={2} centered>
-            <Button fluid>
-                {event}
+            <Button fluid className="EventButton">
+              {event}
             </Button>
         </Grid>
       }

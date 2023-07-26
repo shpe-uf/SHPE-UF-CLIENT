@@ -1,50 +1,78 @@
-// import React, { useState, useEffect } from 'react'
-import React from 'react'
-import { alignPropType } from 'react-bootstrap/esm/DropdownMenu';
+import React from "react"
 import {
   Container,
   Grid,
-  Button,
-  Image,
-  Responsive
+  Responsive,
 } from "semantic-ui-react";
-import JrEventModal from './JrEventModal';
+import JrEventModal from "./JrEventModal";
+import JrSlideshow from "./JrSlideshow";
 
-import president from "../assets/images/eboard/president.jpeg";
-import graduate from "../assets/images/eboard/graduate.jpeg";
-import secretary from "../assets/images/eboard/secretary.jpeg";
+import slide_1 from "../assets/images/shpejr/shpejr_1.JPG";
+import slide_2 from "../assets/images/shpejr/shpejr_2.JPG";
+import slide_3 from "../assets/images/shpejr/shpejr_3.JPG";
 
 function event(event, description, pic){
   return JrEventModal(event, description, pic);
 }
 
+function slideshow(images){
+  return JrSlideshow(images, 5000);
+}
+
+const slideDeck = [
+  slide_1,
+  slide_2,
+  slide_3
+];
+
 const event1 = (
   <div>
-    This is filler text for event 1.
+    Our SHPE Jr Elementary/Middle school director hand picks 
+    events for each STEM day oriented towards in class topics 
+    and varying engineering fields to create an interactive, 
+    yet informative, environment for students. Hands-on 
+    experience for each student is fostered through the 
+    multiple activities administered throughout the 
+    duration of the event. 
   </div>
 );
 
 const event2 = (
   <div>
-    This is filler text for event 2.
+    Students are paired with University of Florida SHPE 
+    Engineering students to aid in class-work, discuss 
+    hobbies, and join in interactive activities during lunch 
+    meeting times.<br/><br/>
+
+    Mentorship requirements and meeting days can be adjusted 
+    based on school and goals the teacher would like to 
+    attain through the mentorship program.
   </div>
 );
 
 const event3 = (
   <div>
-    This is filler text for event 3.
+    TSHPE volunteers come into existing robotics clubs at 
+    school to help with design development, coding, and 
+    preparation for competitions. 
   </div>
 );
 
 const event4 = (
   <div>
-    This is filler text for event 4.
+    STEAM Night is a yearly event hosted by CW Norton 
+    Elementary school aimed at providing students a wide 
+    variety of activities (4-5) to learn about multiple 
+    engineering fields in a span of two hours.
   </div>
 );
 
 const event5 = (
   <div>
-    This is filler text for event 5.
+    Stem Carnival is an event hosted by CW Norton 
+    Elementary aimed at having a fun carnival experience 
+    for the students, while creating interactive activities 
+    for students to enjoy a field day with their families. 
   </div>
 );
 
@@ -54,50 +82,27 @@ function Events () {
       <Grid>
         <Grid.Column>
           <Grid.Row className="JrEventButton">
-            {event("STEM DAY", event1, president)}
+            {event("STEM Days", event1, slide_1)}
           </Grid.Row>
           <Grid.Row className="JrEventButton">
-            {event("MENTORSHIP PROGRAM", event2, graduate)}
+            {event("Mentorship Program", event2, slide_2)}
           </Grid.Row>
           <Grid.Row className="JrEventButton">
-            {event("ROBOTICS TEAM", event3, secretary)}
+            {event("Robotics Program", event3, slide_3)}
           </Grid.Row>
           <Grid.Row className="JrEventButton">
-            {event("STEAM NIGHT", event4, president)}
+            {event("STEAM Night", event4, slide_1)}
           </Grid.Row>
           <Grid.Row className="JrEventButton">
-            {event("STEAM CARNIVAL", event5, graduate)}
+            {event("STEM Carnival", event5, slide_2)}
           </Grid.Row>
         </Grid.Column>
       </Grid>
     </>
   )
 }
-// const imagesLol = [president, graduate, secretary];
 
-// function Slideshow ( images, interval = 5000 )  {
-//   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-//   useEffect(() => {
-//     const slideshowInterval = setInterval(() => {
-//       setCurrentImageIndex(currentImageIndex => (currentImageIndex + 1) % images.length);
-//     }, interval);
-
-//     return () => clearInterval(slideshowInterval);
-//   }, [images.length, interval]);
-
-//   return (
-//     <div style={{
-//       width: 1rem,
-//       height: 1rem,
-//     }}>
-//       <img src={images[currentImageIndex]} alt="slideshow" />
-//     </div>
-//   );
-// };
-
-
-const SJrElemMidEvent = () =>{
+const SJrElemMidEvent = () => {
   return(
     <Container>
       <h1>Events</h1>
@@ -109,48 +114,14 @@ const SJrElemMidEvent = () =>{
         an about statement
       </p>
       <div className='SJrElemMidEvent'>
-        <div style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}>
+        <div>
           <Responsive minWidth={992}>
             <Grid columns={2}>
               <Grid.Column width={8}>
                 {Events()}
               </Grid.Column>
               <Grid.Column width={8}>
-                {/* <Image src='https://via.placeholder.com/600x600' /> */}
-                {/* {Slideshow(imagesLol)} */}
-                <div className='JrEventSlides'>
-                  <div className='slider'>
-                    <div className='slides'>
-                      <input type="radio" name="radio-btn" id="radio1"/>
-                      <input type="radio" name="radio-btn" id="radio2"/>
-                      <input type="radio" name="radio-btn" id="radio3"/>
-
-                      <div className="firstslide">
-                        <Image src={president}/>
-                      </div>
-                      <div className="slide">
-                        <Image src={graduate}/>
-                      </div>
-                      <div className="slide">
-                        <Image src={secretary}/>
-                      </div>
-                      <div className='navigation-auto'>
-                        <div className='auto-btn1'></div>
-                        <div className='auto-btn2'></div>
-                        <div className='auto-btn3'></div>
-                      </div>
-                    </div>
-                    <div className='navigation-manual'>
-                      <label for="radio1" className="manual-btn"></label>
-                      <label for="radio2" className="manual-btn"></label>
-                      <label for="radio3" className="manual-btn"></label>
-                    </div>
-                  </div>
-                </div>
+                {slideshow(slideDeck)}
               </Grid.Column>
             </Grid>
           </Responsive>
