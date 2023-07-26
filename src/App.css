@@ -750,7 +750,7 @@ div::-webkit-scrollbar-thumb {
   .JrEventButton {
     margin-top: 0.5rem !important;
     margin-bottom: 0.5rem !important;
-    min-width: 50vw !important;
+    min-width: 50vw ;
   }
 }
 
