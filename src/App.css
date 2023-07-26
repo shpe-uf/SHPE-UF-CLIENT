@@ -56,6 +56,12 @@
   padding-right: 0em!important;
 }
 
+.ui.fluid.button.EventButton {
+  width: 90%;
+  height: 5rem;
+  font-size: 1.4rem !important;
+}
+
 main {
   background-color: var(--white);
 }
@@ -738,7 +744,7 @@ div::-webkit-scrollbar-thumb {
   .JrEventButton {
     margin-top: 0.5rem !important;
     margin-bottom: 0.5rem !important;
-    min-width: 50vw !important;
+    min-width: 50vw ;
   }
 }
 
@@ -859,8 +865,9 @@ ul.nav li.active {
 }
 
 .JrEventButton {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.35rem;
+  position: relative;
+  top: -1rem;
 }
 
 .JrEventSlides {
@@ -874,29 +881,38 @@ ul.nav li.active {
   width: 600px;
 }
 
-.slider {
-  width: 600px;
-  height: 600px;
-  border-radius: 10px;
+.slideshow {
+  margin: 0 auto;
   overflow: hidden;
+  max-width: 500px;
 }
 
-.slides {
-  width: 500%;
-  height: 500px;
-  display: flex;
-}
-
-.slides input{
-  display: none;
+.slideshowSlider {
+  white-space: nowrap;
+  transition: ease 1000ms;
 }
 
 .slide {
-  width: 20%;
-  transition: 2s;
+  display: inline-block;
+  height: 500px;
+  width: 500px;
+  border-radius: 10px;
 }
 
-.slide img{
-  width: 600px;
-  height: 600px;
+.slideshowDots {
+  text-align: center;
+}
+
+.slideshowDot {
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin: 15px 7px 0px;
+  background-color: #c4c4c4;
+}
+
+.slideshowDot.active {
+  background-color: var(--accent-1);
 }
