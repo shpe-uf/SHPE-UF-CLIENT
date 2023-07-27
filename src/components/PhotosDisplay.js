@@ -1,44 +1,46 @@
 import React,{Component} from 'react'
 import { Divider, Button, Segment, Image, Reveal, Container } from 'semantic-ui-react'
 
-import a from "../assets/images/photosdisplay/BC.JPG"
-import b from "../assets/images/photosdisplay/BLSHPE.JPG"
-import c from "../assets/images/photosdisplay/FGBM2.jpg"
-import d from "../assets/images/photosdisplay/FGBM3.JPG"
-import e from "../assets/images/photosdisplay/FGBM6.JPG"
-import f from "../assets/images/photosdisplay/GMG.JPG"
-import g from "../assets/images/photosdisplay/LSHPE.jpg"
-import h from "../assets/images/photosdisplay/SAIS.jpg"
-import i from "../assets/images/photosdisplay/SHPROM.JPG"
-import j from "../assets/images/photosdisplay/BLSHPE2.JPG"
-import k from "../assets/images/photosdisplay/LSHPE2.jpg"
-import l from "../assets/images/photosdisplay/GMG2.JPG"
-import m from "../assets/images/photosdisplay/MD.JPG"
-import n from "../assets/images/photosdisplay/PIE.JPG"
-import o from "../assets/images/photosdisplay/FYLPPS.JPG"
-import p from "../assets/images/photosdisplay/GALA.jpg"
-import q from "../assets/images/photosdisplay/FGBM62.jpg"
+const photoLinks = [
+  "https://shpeuf.s3.amazonaws.com/public/resources/photosdisplay/BC.JPG",
+  "https://shpeuf.s3.amazonaws.com/public/resources/photosdisplay/BLSHPE.JPG",
+  "https://shpeuf.s3.amazonaws.com/public/resources/photosdisplay/FGBM2.jpg",
+  "https://shpeuf.s3.amazonaws.com/public/resources/photosdisplay/FGBM3.JPG",
+  "https://shpeuf.s3.amazonaws.com/public/resources/photosdisplay/FGBM6.JPG",
+  "https://shpeuf.s3.amazonaws.com/public/resources/photosdisplay/GMG.JPG",
+  "https://shpeuf.s3.amazonaws.com/public/resources/photosdisplay/LSHPE.jpg",
+  "https://shpeuf.s3.amazonaws.com/public/resources/photosdisplay/SAIS.jpg",
+  "https://shpeuf.s3.amazonaws.com/public/resources/photosdisplay/SHPROM.JPG",
+  "https://shpeuf.s3.amazonaws.com/public/resources/photosdisplay/BLSHPE2.JPG",
+  "https://shpeuf.s3.amazonaws.com/public/resources/photosdisplay/LSHPE2.jpg",
+  "https://shpeuf.s3.amazonaws.com/public/resources/photosdisplay/GMG2.JPG",
+  "https://shpeuf.s3.amazonaws.com/public/resources/photosdisplay/MD.JPG",
+  "https://shpeuf.s3.amazonaws.com/public/resources/photosdisplay/PIE.JPG",
+  "https://shpeuf.s3.amazonaws.com/public/resources/photosdisplay/FYLPPS.JPG",
+  "https://shpeuf.s3.amazonaws.com/public/resources/photosdisplay/GALA.jpg",
+  "https://shpeuf.s3.amazonaws.com/public/resources/photosdisplay/FGBM62.jpg"
+];
 
 function photoSelect ( ){
     const photos = new Map();
 
-    photos.set(0, a); 
-    photos.set(1, b); 
-    photos.set(2, c); 
-    photos.set(3, d); 
-    photos.set(4, e); 
-    photos.set(5, f); 
-    photos.set(6, g); 
-    photos.set(7, h); 
-    photos.set(8, i); 
-    photos.set(9, j); 
-    photos.set(10, k); 
-    photos.set(11, l); 
-    photos.set(12, m); 
-    photos.set(13, n); 
-    photos.set(14, o); 
-    photos.set(15, p); 
-    photos.set(16, q);
+    photos.set(0, photoLinks[0]); 
+    photos.set(1, photoLinks[1]); 
+    photos.set(2, photoLinks[2]); 
+    photos.set(3, photoLinks[3]); 
+    photos.set(4, photoLinks[4]); 
+    photos.set(5, photoLinks[5]); 
+    photos.set(6, photoLinks[6]); 
+    photos.set(7, photoLinks[7]); 
+    photos.set(8, photoLinks[8]); 
+    photos.set(9, photoLinks[9]); 
+    photos.set(10, photoLinks[10]); 
+    photos.set(11, photoLinks[11]); 
+    photos.set(12, photoLinks[12]); 
+    photos.set(13, photoLinks[13]); 
+    photos.set(14, photoLinks[14]); 
+    photos.set(15, photoLinks[15]); 
+    photos.set(16, photoLinks[16]);
 
 
     let index = Math.floor(Math.random() * 14)

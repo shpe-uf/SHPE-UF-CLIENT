@@ -10,7 +10,7 @@ import Title from "../components/Title";
 import { Text } from "victory";
 import ImageCrop from "../components/ImageCrop";
 
-import receipt from "../assets/images/itemized receipt print view with callout.jpg"
+const receipt = "https://shpeuf.s3.amazonaws.com/public/misc/receipt.jpg"
 
 function ReimbursementRequest({user}) {
     const [errors, setErrors] = useState({});
