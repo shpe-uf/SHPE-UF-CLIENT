@@ -12,7 +12,7 @@ import corporatePositions from "../assets/options/corporate.json";
 import externalPositions from "../assets/options/external.json";
 import internalPositions from "../assets/options/internal.json";
 
-import {president, secretary, treasurer, graduate, marketing, technology, corporate, external, internal} from "../assets/images/eboard"
+import eboard from "../assets/images/eboard"
 
 function cabinet(cabinet, description, email, pic, json) {
   return CabinetModal(cabinet, description, email, pic, json);
@@ -139,109 +139,109 @@ function EBoardCards() {
   return (
     <>
       <Card
-        image={president[1]}
-        header={president[0]}
+        image={eboard.president[1]}
+        header={eboard.president[0]}
         meta="President"
         extra={prezModal(
           "President",
           presidentDescription,
           "president.shpeuf@gmail.com",
-          president
+          eboard.president[1]
         )}
       />
       <Card
-        image={graduate[1]}
-        header={graduate[0]}
+        image={eboard.graduate[1]}
+        header={eboard.graduate[0]}
         meta="Graduate Coordinator"
         extra={cabinet(
           "Graduate Cabinet",
           graduateDescription,
           "graduate.shpeuf@gmail.com",
-          graduate,
+          eboard.graduate[1],
           graduatePositions
         )}
       />
       <Card
-        image={secretary[1]}
-        header={secretary[0]}
+        image={eboard.secretary[1]}
+        header={eboard.secretary[0]}
         meta="Secretary"
         extra={cabinet(
           "Secretary Cabinet",
           secretaryDescription,
           "secretary.shpeuf@gmail.com",
-          secretary,
+          eboard.secretary[1],
           secretaryPositions
         )}
       />
       <Card
-        image={treasurer[1]}
-        header={treasurer[0]}
+        image={eboard.treasurer[1]}
+        header={eboard.treasurer[0]}
         meta="Treasurer"
         extra={cabinet(
           "Treasury Cabinet",
           treasurerDescription,
           "treasurer.shpeuf@gmail.com",
-          treasurer,
+          eboard.treasurer[1],
           treasuryPositions
         )}
       />
       <Card
-        image={marketing[1]}
-        header={marketing[0]}
+        image={eboard.marketing[1]}
+        header={eboard.marketing[0]}
         meta="VP of Marketing"
         extra={cabinet(
           "Marketing Cabinet",
           marketingDescription,
           "marketing.shpeuf@gmail.com",
-          marketing,
+          eboard.marketing[1],
           marketingPositions
         )}
       />
       <Card
-        image={technology[1]}
-        header={technology[0]}
+        image={eboard.technology[1]}
+        header={eboard.technology[0]}
         meta="VP of Technology"
         extra={cabinet(
           "Tech Cabinet",
           techDescription,
           "vptech.shpeuf@gmail.com",
-          technology,
+          eboard.technology[1],
           technologyPositions
         )}
       />
       <Card
-        image={corporate[1]}
-        header={corporate[0]}
+        image={eboard.corporate[1]}
+        header={eboard.corporate[0]}
         meta="VP of Corporate Affairs"
         extra={cabinet(
           "Corporate Cabinet",
           corporateDescription,
           "corporate.shpeuf@gmail.com",
-          corporate,
+          eboard.corporate[1],
           corporatePositions
         )}
       />
       <Card
-        image={external[1]}
-        header={external[0]}
+        image={eboard.external[1]}
+        header={eboard.external[0]}
         meta="VP of External Affairs"
         extra={cabinet(
           "External Cabinet",
           externalDescription,
           "vpexternal.shpeuf@gmail.com",
-          external,
+          eboard.external[1],
           externalPositions
         )}
       />
       <Card
-        image={internal[1]}
-        header={internal[0]}
+        image={eboard.internal[1]}
+        header={eboard.internal[0]}
         meta="VP of Internal Affairs"
         extra={cabinet(
           "Internal Cabinet",
           internalDescription,
           "vpinternal.shpeuf@gmail.com",
-          internal,
+          eboard.internal[1],
           internalPositions
         )}
       />

@@ -1,17 +1,17 @@
 import React,{Component} from 'react'
-import { Header, Menu, Segment, Image, Grid, Icon, Button, Divider, Message, Embed, List, Tab, Container } from 'semantic-ui-react'
-  
-import Freshman1011 from "../assets/images/resources/F1011.jpg"
-import Freshman1012 from "../assets/images/resources/F1012.jpg"
-import Playlist from "../assets/images/resources/playlist.jpg"
-import Podcast from "../assets/images/resources/SHPECast.jpg"
-import Spotify from "../assets/images/resources/spotify.jpg"
-import Stitcher from "../assets/images/resources/stitcher.png"
-import CrashCourse from "../assets/images/resources/ConventionCrashCourse.jpg"
+import { Header, Menu, Segment, Image, Grid, Icon, Button, Divider, Message, Embed, List, Tab, Container } from 'semantic-ui-react';
 
-import GBMSlidesAccordion from './GBMSlidesAccordion'
-import PhotosDisplay from './PhotosDisplay'
-    
+import GBMSlidesAccordion from './GBMSlidesAccordion';
+import PhotosDisplay from './PhotosDisplay';
+
+const Freshman1011 = "https://shpeuf.s3.amazonaws.com/public/resources/F1011.jpg";
+const Freshman1012 = "https://shpeuf.s3.amazonaws.com/public/resources/F1012.jpg";
+const Playlist = "https://shpeuf.s3.amazonaws.com/public/resources/playlist.jpg";
+const Podcast = "https://shpeuf.s3.amazonaws.com/public/resources/SHPECast.jpg";
+const Spotify = "https://shpeuf.s3.amazonaws.com/public/resources/spotify.jpg";
+const Stitcher = "https://shpeuf.s3.amazonaws.com/public/resources/stitcher.png";
+const CrashCourse = "https://shpeuf.s3.amazonaws.com/public/resources/ConventionCrashCourse.jpg";
+
 const GBMSlidesSegment = () => (
     <div>
         <br/>
