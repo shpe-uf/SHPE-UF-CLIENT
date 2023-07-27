@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 import { AuthContext } from "../context/auth";
 
-import logo from "../assets/images/logo.png";
+const logo = "https://shpeuf.s3.amazonaws.com/public/misc/logo.png";
 
 function MenuBar({permission}) {
   const { user, logout } = useContext(AuthContext);

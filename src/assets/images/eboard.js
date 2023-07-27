@@ -7,5 +7,6 @@ const technology = ["Yair Temkin", "https://shpeuf.s3.amazonaws.com/eboard/VPTec
 const corporate = ["Gabriel Pascual", "https://shpeuf.s3.amazonaws.com/eboard/VPCorporate"];
 const external = ["Malena Gonzalez Fernandez", "https://shpeuf.s3.amazonaws.com/eboard/VPExternal"];
 const internal = ["Diego Leon", "https://shpeuf.s3.amazonaws.com/eboard/VPInternal"];
+const eboard = "https://shpeuf.s3.amazonaws.com/eboard/eboard.jpg"
 
-export {president, graduate, secretary, treasurer, marketing, technology, corporate, external, internal}
+export {president, graduate, secretary, treasurer, marketing, technology, corporate, external, internal, eboard}

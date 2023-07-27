@@ -1,9 +1,7 @@
 import React from "react";
 import { Container, Grid, Image } from "semantic-ui-react";
 
-import aboutPhoto1 from "../../assets/images/about-1.jpg";
-import aboutPhoto2 from "../../assets/images/about-2.jpg";
-import aboutPhoto3 from "../../assets/images/about-3.jpg";
+import {about1, about2, about3} from "../../assets/images/about"
 
 function About() {
   return (
@@ -109,13 +107,13 @@ function About() {
       <Grid stackable>
         <Grid.Row centered columns={3}>
           <Grid.Column>
-            <Image bordered src={aboutPhoto1} />
+            <Image bordered src={about1} />
           </Grid.Column>
           <Grid.Column>
-            <Image bordered src={aboutPhoto2} />
+            <Image bordered src={about2} />
           </Grid.Column>
           <Grid.Column>
-            <Image bordered src={aboutPhoto3} />
+            <Image bordered src={about3} />
           </Grid.Column>
         </Grid.Row>
       </Grid>

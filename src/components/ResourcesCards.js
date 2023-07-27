@@ -1,14 +1,14 @@
 import React from "react";
 import { Card, Dropdown, Grid, Icon, Image } from "semantic-ui-react";
 
-import GBM from "../assets/images/resources/gbm.JPG"
-import EBoard from "../assets/images/eboard.jpg";
 import National from "../assets/images/resources/national.jpg"
 import NewMember from "../assets/images/resources/newmember.jpeg"
 import WhatsApp from "../assets/images/resources/whatsapp.png"
 import InfoSlides from "../assets/images/resources/info.jpg"
 
-import {president, graduate, secretary, treasurer, marketing, technology, corporate, external, internal} from "../assets/images/eboard"
+import {president, graduate, secretary, treasurer, marketing, technology, corporate, external, internal, eboard} from "../assets/images/eboard"
+
+const GBM = "https://shpeuf.s3.amazonaws.com/public/misc/gbm.JPG"
 
 const EBoardOptions = [
     {
@@ -98,7 +98,7 @@ function ResourcesCards() {
     return (
         <>
         <Card 
-            image={EBoard}
+            image={eboard}
             header={<Grid><Grid.Column textAlign="center">{<a className="ui header">EBoard Contact</a>}</Grid.Column></Grid>}
             description="Email members of the E-Board."
             extra={<Dropdown

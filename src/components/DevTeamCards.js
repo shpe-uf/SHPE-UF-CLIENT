@@ -1,26 +1,22 @@
 import React from "react";
 import { Card, CardHeader } from "semantic-ui-react";
 
-import yair from "../assets/images/team/yair.jpg";
-import fer from "../assets/images/team/fernando.jpg";
-import ju from "../assets/images/team/julia.jpg";
-import omar from "../assets/images/team/omar.jpg";
-import victoria from "../assets/images/team/victoria.jpg";
-import andrea from "../assets/images/team/andrea.jpg";
-import mateo from "../assets/images/team/mateo.jpg";
-import lucas from "../assets/images/team/lucas.jpeg";
-import isabella from "../assets/images/team/isabella.jpg";
-import joel from "../assets/images/team/joel.jpeg";
-import jesus from "../assets/images/team/jesus.jpg";
-import temp from "../assets/images/team/placeholder.png";
-
+const yair = "https://shpeuf.s3.amazonaws.com/public/team/yair.jpg";
+const omar = "https://shpeuf.s3.amazonaws.com/public/team/omar.jpg";
+const victoria = "https://shpeuf.s3.amazonaws.com/public/team/victoria.jpg";
+const ju = "https://shpeuf.s3.amazonaws.com/public/team/julia.jpg";
+const mateo = "https://shpeuf.s3.amazonaws.com/public/team/mateo.jpg";
+const lucas = "https://shpeuf.s3.amazonaws.com/public/team/lucas.jpeg";
+const isabella = "https://shpeuf.s3.amazonaws.com/public/team/isabella.jpg";
+const joel = "https://shpeuf.s3.amazonaws.com/public/team/joel.jpeg";
+const jesus = "https://shpeuf.s3.amazonaws.com/public/team/jesus.jpg";
+const temp = "../assets/images/placeholder.png"
 function DevTeamCards() {
   return (
     <>
       <Card.Group itemsPerRow={3}>
         <Card fluid image={yair} header="Yair Temkin" meta="Scrum Master" />
         <Card fluid image={omar} header="Omar Collado" meta="Project Manager" />
-        
         <Card fluid image={ju} header="Julia Chancey" meta="Senior Developer" />
         <Card fluid image={victoria} header="Victoria De Alba" meta="Senior Developer" />
         <Card fluid image={mateo} header="Mateo Slivka" meta="Senior Developer" />
