@@ -324,10 +324,6 @@ h6 {
   margin: 0px;
   font-size: 3.5rem !important;
 }
-.masthead-title-mobile {
-  margin: 0px;
-  font-size: 2.5rem !important;
-}
 
 .background-grey {
   background-color: var(--grey);
@@ -727,10 +723,16 @@ div::-webkit-scrollbar-thumb {
   .overlay-confirm {
     min-height: calc(100vh - 62.41px - 118px) !important;
   }
-
+  .masthead-title {
+    margin: 0px;
+    font-size: 2.5rem !important;
+  }
   .masthead-eboard {
-    background: url(https://shpeuf.s3.amazonaws.com/eboard/eboardMini) !important;
     background-position: 50% 20% !important;
+  }
+  .masthead-resources {
+    background-size: 260% auto !important;
+    background-position: center 28% !important;
   }
 }
 
