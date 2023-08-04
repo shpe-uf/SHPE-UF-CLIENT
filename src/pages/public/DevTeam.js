@@ -15,17 +15,12 @@ function DevTeam() {
       </div>
 
       <Container>
-        <Responsive {...Responsive.onlyComputer}>
-          <Card.Group itemsPerRow={5}>
-            <DevTeamCards />
-          </Card.Group>
-        </Responsive>
-        <Responsive {...Responsive.onlyTablet}>
+        <Responsive minWidth={992}>
           <Card.Group itemsPerRow={3}>
             <DevTeamCards />
           </Card.Group>
         </Responsive>
-        <Responsive {...Responsive.onlyMobile}>
+        <Responsive maxWidth={991}>
           <Card.Group itemsPerRow={1}>
             <DevTeamCards />
           </Card.Group>

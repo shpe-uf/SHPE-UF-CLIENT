@@ -17,7 +17,7 @@ const team = {
 function DevTeamCards() {
   return (
     <>
-      <Card.Group itemsPerRow={3}>
+      <Card.Group>
         <Card fluid image={team.yair} header="Yair Temkin" meta="Scrum Master" />
         <Card fluid image={team.omar} header="Omar Collado" meta="Project Manager" />
         <Card fluid image={team.ju} header="Julia Chancey" meta="Senior Developer" />
