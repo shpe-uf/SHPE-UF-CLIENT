@@ -8,6 +8,7 @@ const eboard = {
     corporate: ["Gabriel Pascual", "https://shpeuf.s3.amazonaws.com/public/eboard/VPCorporate"],
     external: ["Malena Gonzalez Fernandez", "https://shpeuf.s3.amazonaws.com/public/eboard/VPExternal"],
     internal: ["Diego Leon", "https://shpeuf.s3.amazonaws.com/public/eboard/VPInternal"],
-    eboard: "https://shpeuf.s3.amazonaws.com/public/eboard/eboard.jpg"
+    eboard: "https://shpeuf.s3.amazonaws.com/public/eboard/eboard",
+    mini: "https://shpeuf.s3.amazonaws.com/public/eboard/eboardMini"
 }
 export default eboard;
