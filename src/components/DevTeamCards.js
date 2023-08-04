@@ -17,7 +17,6 @@ const team = {
 function DevTeamCards() {
   return (
     <>
-      <Card.Group>
         <Card fluid image={team.yair} header="Yair Temkin" meta="Scrum Master" />
         <Card fluid image={team.omar} header="Omar Collado" meta="Project Manager" />
         <Card fluid image={team.ju} header="Julia Chancey" meta="Senior Developer" />
@@ -27,7 +26,6 @@ function DevTeamCards() {
         <Card fluid image={team.isabella} header="Isabella Roman" meta="Junior Developer" />
         <Card fluid image={team.jesus} header="Jesus Jurado" meta="Junior Developer" />
         <Card fluid image={team.joel} header="Joel Aloma" meta="Junior Developer" />
-      </Card.Group>
     </>
   );
 }
