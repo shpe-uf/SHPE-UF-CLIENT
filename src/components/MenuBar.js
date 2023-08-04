@@ -51,10 +51,7 @@ function MenuBar({permission}) {
            {/* <Menu.Item as={Link} to="/shpejr">
               SHPE Jr
              </Menu.Item> */} 
-
-            <Menu.Menu position="right">
               {user ? (
-                <>
                   <Dropdown pointing item className="email" text={user.email}>
                     <Dropdown.Menu>
                       {permission.includes('admin') &&
@@ -89,7 +86,6 @@ function MenuBar({permission}) {
                       </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
-                </>
               ) : (
                 <Menu.Item>
                   <Button
@@ -101,7 +97,6 @@ function MenuBar({permission}) {
                   />
                 </Menu.Item>
               )}
-            </Menu.Menu>
           </Container>
         </Menu>
       </Responsive>
