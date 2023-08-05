@@ -13,7 +13,7 @@ import {home1, home2, home3} from "../../assets/images/home"
 function Home() {
   return (
     <div>
-      <Responsive minWidth={768}>
+      <Responsive>
         <div className="masthead masthead-home">
           <div className="overlay-home">
             <Container>
@@ -32,25 +32,7 @@ function Home() {
           </div>
         </div>
       </Responsive>
-      <Responsive maxWidth={768}>
-        <div className="masthead masthead-home">
-          <div className="overlay-home">
-            <Container>
-              <h2 className="masthead-title-mobile text-white">
-                Society of Hispanic Professional Engineers
-              </h2>
-              <h2 className="masthead-title-mobile">University of Florida</h2>
-              <a
-                href="https://www.shpeconnect.org"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button className="join-button">Join SHPE National</Button>
-              </a>
-            </Container>
-          </div>
-        </div>
-      </Responsive>
+      
 
       <div className="masthead masthead-quote">
         <Container>

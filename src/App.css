@@ -255,7 +255,7 @@ h6 {
 }
 
 .masthead-eboard {
-  background: url(https://shpeuf.s3.amazonaws.com/eboard/eboard.jpg) !important;
+  background: url(https://shpeuf.s3.amazonaws.com/public/eboard/eboardMini) !important;
   border-radius: 0px;
   background-position: 50% 250% !important;
   background-attachment: fixed !important;
@@ -293,8 +293,8 @@ h6 {
 .masthead-resources {
   background: url(https://shpeuf.s3.amazonaws.com/public/misc/resource.png) !important;
   border-radius: 0px;
-  background-position: 50% 50% !important;
-  background-attachment: fixed !important;
+  background-position: 50% 35% !important;
+  background-attachment: scroll !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
 }
@@ -323,10 +323,6 @@ h6 {
 .masthead-title {
   margin: 0px;
   font-size: 3.5rem !important;
-}
-.masthead-title-mobile {
-  margin: 0px;
-  font-size: 2.5rem !important;
 }
 
 .background-grey {
@@ -727,10 +723,16 @@ div::-webkit-scrollbar-thumb {
   .overlay-confirm {
     min-height: calc(100vh - 62.41px - 118px) !important;
   }
-
+  .masthead-title {
+    margin: 0px;
+    font-size: 2.5rem !important;
+  }
   .masthead-eboard {
-    background: url(https://shpeuf.s3.amazonaws.com/eboard/eboardMini.jpg) !important;
     background-position: 50% 20% !important;
+  }
+  .masthead-resources {
+    background-size: 260% auto !important;
+    background-position: center 28% !important;
   }
 }
 
@@ -827,6 +829,7 @@ ul.nav li {
   text-align: center;
   cursor: pointer;
   transition: all 0.7s;
+  border-left: ipx solid #39A2DB;
 }
 ul.nav li:first-child {
   border-bottom-left-radius: 2rem;
