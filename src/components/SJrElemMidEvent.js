@@ -7,9 +7,9 @@ import {
 import JrEventModal from "./JrEventModal";
 import JrSlideshow from "./JrSlideshow";
 
-import slide_1 from "../assets/images/shpejr/shpejr_1.JPG";
-import slide_2 from "../assets/images/shpejr/shpejr_2.JPG";
-import slide_3 from "../assets/images/shpejr/shpejr_3.JPG";
+const slide_1 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/temp1.JPG'
+const slide_2 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/temp2.JPG'
+const slide_3 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/temp3.JPG'
 
 function event(event, description, pic){
   return JrEventModal(event, description, pic);
