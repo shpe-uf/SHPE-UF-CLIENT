@@ -48,6 +48,7 @@ import ShpeRentals from "./pages/ShpeRentals";
 import jwtDecode from "jwt-decode";
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
+import MentorSHPE from "./pages/public/MentorSHPE";
 
 function App() {
   var decodedToken = [];
@@ -80,6 +81,7 @@ function App() {
           <AuthRoute exact path="/register" component={Register} />
           <Route exact path="/register/alumni" component={RegisterAlumni} />
           <Route exact path="/about" component={About} />
+          <Route exact path="/mentorshpe" component={MentorSHPE}/>
           <Route exact path="/alumni" component={Alumni} />
           <Route exact path="/eboard" component={EBoard} />
           <Route exact path="/devteam" component={DevTeam} />
