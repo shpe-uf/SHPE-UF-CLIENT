@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Dropdown, Grid, Icon, Image } from "semantic-ui-react";
 
-import eboard from "../assets/images/eboard";
+import eboard from "../assets/eboard";
 
 const National = "https://shpeuf.s3.amazonaws.com/public/resources/national.jpg";
 const NewMember = "https://shpeuf.s3.amazonaws.com/public/resources/newmember.jpeg";
@@ -11,85 +11,85 @@ const GBM = "https://shpeuf.s3.amazonaws.com/public/misc/gbm.JPG";
 
 const EBoardOptions = [
     {
-      key: eboard.president[0],
-      text: <a href={"mailto:" + "president.shpeuf@gmail.com"} className="link-email">
-                <Image src={eboard.president[1]} avatar/>
+      key: eboard.president.name,
+      text: <a href={"mailto:" + eboard.president.email} className="link-email">
+                <Image src={eboard.president.image} avatar/>
                 <Icon name="mail" />
-                {eboard.president[0]} 
+                {eboard.president.name} 
             </a>,
-      value: eboard.president[0],
+      value: eboard.president.name,
     },
     {
-      key: eboard.graduate[0],
-      text: <a href={"mailto:" + "graduate.shpeuf@gmail.com"} className="link-email">
-                <Image src={eboard.graduate[1]} avatar/>
+      key: eboard.graduate.name,
+      text: <a href={"mailto:" + eboard.graduate.email} className="link-email">
+                <Image src={eboard.graduate.image} avatar/>
                 <Icon name="mail" />
-                {eboard.graduate[0]}
+                {eboard.graduate.name}
             </a>,
-      value: eboard.graduate[0],
+      value: eboard.graduate.name,
     },
     {
-      key: eboard.secretary[0],
-      text: <a href={"mailto:" + "secretary.shpeuf@gmail.com"} className="link-email">
-                <Image src={eboard.secretary[1]} avatar/>
+      key: eboard.secretary.name,
+      text: <a href={"mailto:" + eboard.secretary.email} className="link-email">
+                <Image src={eboard.secretary.image} avatar/>
                 <Icon name="mail" />
-                {eboard.secretary[0]}
+                {eboard.secretary.name}
             </a>,
-      value: eboard.secretary[0],
+      value: eboard.secretary.name,
     },
     {
-      key: eboard.treasurer[0],
-      text: <a href={"mailto:" + "treasurer.shpeuf@gmail.com"} className="link-email">
-                <Image src={eboard.treasurer[1]} avatar/>
+      key: eboard.treasurer.name,
+      text: <a href={"mailto:" + eboard.treasurer.email} className="link-email">
+                <Image src={eboard.treasurer.image} avatar/>
                 <Icon name="mail" />
-                {eboard.treasurer[0]}
+                {eboard.treasurer.name}
             </a>,
-      value: eboard.treasurer[0],
+      value: eboard.treasurer.name,
     },
     {
-      key: eboard.marketing[0],
-      text: <a href={"mailto:" + "marketing.shpeuf@gmail.com"} className="link-email">
-                <Image src={eboard.marketing[1]} avatar/>
+      key: eboard.marketing.name,
+      text: <a href={"mailto:" + eboard.marketing.email} className="link-email">
+                <Image src={eboard.marketing.image} avatar/>
                 <Icon name="mail" />
-                {eboard.marketing[0]}
+                {eboard.marketing.name}
             </a>,
-      value: eboard.marketing[0],
+      value: eboard.marketing.name,
     },
     {
-      key: eboard.technology[0],
-      text: <a href={"mailto:" + "vptech.shpeuf@gmail.com"} className="link-email">
-                <Image src={eboard.technology[1]} avatar/>
+      key: eboard.technology.name,
+      text: <a href={"mailto:" + eboard.technology.email} className="link-email">
+                <Image src={eboard.technology.image} avatar/>
                 <Icon name="mail" />
-                {eboard.technology[0]}
+                {eboard.technology.name}
             </a>,
-      value: eboard.technology[0],
+      value: eboard.technology.name,
     },
     {
-        key: eboard.corporate[0],
-        text:   <a href={"mailto:" + "corporate.shpeuf@gmail.com"} className="link-email">
-                    <Image src={eboard.corporate[1]} avatar/>
+        key: eboard.corporate.name,
+        text:   <a href={"mailto:" + eboard.corporate.email} className="link-email">
+                    <Image src={eboard.corporate.image} avatar/>
                     <Icon name="mail" />
-                    {eboard.corporate[0]}
+                    {eboard.corporate.name}
                 </a>,
-        value: eboard.corporate[0],
+        value: eboard.corporate.name,
     },
     {
-        key: eboard.external[0],
-        text:   <a href={"mailto:" + "vpexternal.shpeuf@gmail.com"} className="link-email">
-                    <Image src={eboard.external[1]} avatar/>
+        key: eboard.external.name,
+        text:   <a href={"mailto:" + eboard.external.email} className="link-email">
+                    <Image src={eboard.external.image} avatar/>
                     <Icon name="mail" />
-                    {eboard.external[0]}
+                    {eboard.external.name}
                 </a>,
-        value: eboard.external[0],
+        value: eboard.external.name,
     },
     {
-        key: eboard.internal[0],
-        text:   <a href={"mailto:" + "vpinternal.shpeuf@gmail.com"} className="link-email">
-                    <Image src={eboard.internal[1]} avatar/>
+        key: eboard.internal.name,
+        text:   <a href={"mailto:" + eboard.internal.email} className="link-email">
+                    <Image src={eboard.internal.image} avatar/>
                     <Icon name="mail" />
-                    {eboard.internal[0]}
+                    {eboard.internal.name}
                 </a>,
-        value: eboard.internal[1],
+        value: eboard.internal.email,
     },
   ]
 
