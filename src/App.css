@@ -237,7 +237,7 @@ h6 {
 }
 
 .masthead-home {
-  background: url(assets/images/home-bg.jpg) !important;
+  background: url(https://shpeuf.s3.amazonaws.com/public/home/home-bg.jpg) !important;
   border-radius: 0px;
   background-position: 50% 155% !important;
   background-attachment: fixed !important;
@@ -246,7 +246,7 @@ h6 {
 }
 
 .masthead-team {
-  background: url(assets/images/team.jpg) !important;
+  background: url(https://shpeuf.s3.amazonaws.com/public/misc/team.jpg) !important;
   border-radius: 0px;
   background-position: 50% 50% !important;
   background-attachment: fixed !important;
@@ -255,7 +255,7 @@ h6 {
 }
 
 .masthead-eboard {
-  background: url(assets/images/eboard.jpg) !important;
+  background: url(https://shpeuf.s3.amazonaws.com/public/eboard/eboardMini) !important;
   border-radius: 0px;
   background-position: 50% 250% !important;
   background-attachment: fixed !important;
@@ -264,7 +264,7 @@ h6 {
 }
 
 .masthead-about {
-  background: url(assets/images/about.jpg) !important;
+  background: url(https://shpeuf.s3.amazonaws.com/public/about/about.jpg) !important;
   border-radius: 0px;
   background-position: 75% 75% !important;
   background-attachment: fixed !important;
@@ -273,7 +273,7 @@ h6 {
 }
 
 .masthead-alumni {
-  background: url(assets/images/alumni.jpg) !important;
+  background: url(https://shpeuf.s3.amazonaws.com/public/misc/alumni.jpg) !important;
   border-radius: 0px;
   background-position: 50% 50% !important;
   background-attachment: fixed !important;
@@ -282,7 +282,7 @@ h6 {
 }
 
 .masthead-sponsors {
-  background: url(assets/images/sponsors.jpg) !important;
+  background: url(https://shpeuf.s3.amazonaws.com/public/misc/sponsors.jpg) !important;
   border-radius: 0px;
   background-position: 50% 50% !important;
   background-attachment: fixed !important;
@@ -291,16 +291,16 @@ h6 {
 }
 
 .masthead-resources {
-  background: url(assets/images/resource.png) !important;
+  background: url(https://shpeuf.s3.amazonaws.com/public/misc/resource.png) !important;
   border-radius: 0px;
-  background-position: 50% 50% !important;
-  background-attachment: fixed !important;
+  background-position: 50% 35% !important;
+  background-attachment: scroll !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
 }
 
 .masthead-contactus {
-  background: url(assets/images/contact-us-1.JPG) !important;
+  background: url(https://shpeuf.s3.amazonaws.com/public/misc/contact-us-1.JPG) !important;
   border-radius: 0px;
   background-position: 50% 50% !important;
   background-attachment: fixed !important;
@@ -323,10 +323,6 @@ h6 {
 .masthead-title {
   margin: 0px;
   font-size: 3.5rem !important;
-}
-.masthead-title-mobile {
-  margin: 0px;
-  font-size: 2.5rem !important;
 }
 
 .background-grey {
@@ -395,7 +391,7 @@ h6 {
 }
 
 .register {
-  background: url(assets/images/register.jpg) !important;
+  background: url(https://shpeuf.s3.amazonaws.com/public/misc/register.jpg) !important;
   border-radius: 0px;
   background-position: 50% 50% !important;
   background-attachment: fixed !important;
@@ -404,7 +400,7 @@ h6 {
 }
 
 .register-alumni {
-  background: url(assets/images/register-alumni.jpg) !important;
+  background: url(https://shpeuf.s3.amazonaws.com/public/misc/register-alumni.jpg) !important;
   border-radius: 0px;
   background-position: 50% 50% !important;
   background-attachment: fixed !important;
@@ -413,7 +409,7 @@ h6 {
 }
 
 .login {
-  background: url(assets/images/login.jpg) !important;
+  background: url(https://shpeuf.s3.amazonaws.com/public/misc/login.jpg) !important;
   border-radius: 0px;
   background-position: 15% 50% !important;
   background-attachment: fixed !important;
@@ -422,7 +418,7 @@ h6 {
 }
 
 .reset {
-  background: url(assets/images/reset.jpg) !important;
+  background: url(https://shpeuf.s3.amazonaws.com/public/misc/reset.jpg) !important;
   border-radius: 0px;
   background-position: 15% 50% !important;
   background-attachment: fixed !important;
@@ -456,7 +452,7 @@ h6 {
 }
 
 .platinum {
-  background: url(assets/images/sponsors/platinum-min.png);
+  background: url(https://shpeuf.s3.amazonaws.com/public/sponsors/platinum-min.png);
 }
 
 .chevron {
@@ -727,10 +723,16 @@ div::-webkit-scrollbar-thumb {
   .overlay-confirm {
     min-height: calc(100vh - 62.41px - 118px) !important;
   }
-
+  .masthead-title {
+    margin: 0px;
+    font-size: 2.5rem !important;
+  }
   .masthead-eboard {
-    background: url(assets/images/eboardMini.jpg) !important;
     background-position: 50% 20% !important;
+  }
+  .masthead-resources {
+    background-size: 260% auto !important;
+    background-position: center 28% !important;
   }
 }
 
@@ -827,6 +829,7 @@ ul.nav li {
   text-align: center;
   cursor: pointer;
   transition: all 0.7s;
+  border-left: ipx solid #39A2DB;
 }
 ul.nav li:first-child {
   border-bottom-left-radius: 2rem;

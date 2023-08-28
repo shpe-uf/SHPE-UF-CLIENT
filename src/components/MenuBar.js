@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 import { AuthContext } from "../context/auth";
 
-import logo from "../assets/images/logo.png";
+const logo = "https://shpeuf.s3.amazonaws.com/public/misc/logo.png";
 
 function MenuBar({permission}) {
   const { user, logout } = useContext(AuthContext);
@@ -51,10 +51,7 @@ function MenuBar({permission}) {
            {/* <Menu.Item as={Link} to="/shpejr">
               SHPE Jr
              </Menu.Item> */} 
-
-            <Menu.Menu position="right">
               {user ? (
-                <>
                   <Dropdown pointing item className="email" text={user.email}>
                     <Dropdown.Menu>
                       {permission.includes('admin') &&
@@ -92,7 +89,6 @@ function MenuBar({permission}) {
                       </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
-                </>
               ) : (
                 <Menu.Item>
                   <Button
@@ -104,7 +100,6 @@ function MenuBar({permission}) {
                   />
                 </Menu.Item>
               )}
-            </Menu.Menu>
           </Container>
         </Menu>
       </Responsive>

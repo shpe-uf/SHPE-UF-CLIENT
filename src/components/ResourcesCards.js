@@ -1,105 +1,95 @@
 import React from "react";
 import { Card, Dropdown, Grid, Icon, Image } from "semantic-ui-react";
 
-import GBM from "../assets/images/resources/gbm.JPG"
-import EBoard from "../assets/images/eboard.jpg";
-import National from "../assets/images/resources/national.jpg"
-import NewMember from "../assets/images/resources/newmember.jpeg"
-import WhatsApp from "../assets/images/resources/whatsapp.png"
-import InfoSlides from "../assets/images/resources/info.jpg"
+import eboard from "../assets/eboard";
 
-import Pres from '../assets/images/eboard/president.jpeg'
-import Grad from '../assets/images/eboard/graduate.jpeg'
-import Sec from '../assets/images/eboard/secretary.jpeg'
-import Tres from '../assets/images/eboard/treasurer.jpeg'
-import Mark from '../assets/images/eboard/marketing.jpeg'
-import Tech from '../assets/images/eboard/technology.jpeg'
-import Corp from '../assets/images/eboard/corporate.jpeg'
-import VPe from '../assets/images/eboard/external.jpeg'
-import VPi from '../assets/images/eboard/internal.jpeg'
-
+const National = "https://shpeuf.s3.amazonaws.com/public/resources/national.jpg";
+const NewMember = "https://shpeuf.s3.amazonaws.com/public/resources/newmember.jpeg";
+const WhatsApp = "https://shpeuf.s3.amazonaws.com/public/resources/whatsapp.png";
+const InfoSlides = "https://shpeuf.s3.amazonaws.com/public/resources/info.jpg";
+const GBM = "https://shpeuf.s3.amazonaws.com/public/misc/gbm.JPG";
 
 const EBoardOptions = [
     {
-      key: 'Jorge Moros',
-      text: <a href={"mailto:" + "president.shpeuf@gmail.com"} className="link-email">
-                <Image src={Pres} avatar/>
+      key: eboard.president.name,
+      text: <a href={"mailto:" + eboard.president.email} className="link-email">
+                <Image src={eboard.president.image} avatar/>
                 <Icon name="mail" />
-                Jorge Moros 
+                {eboard.president.name} 
             </a>,
-      value: 'Jorge Moros',
+      value: eboard.president.name,
     },
     {
-      key: 'Juan Valderrama',
-      text: <a href={"mailto:" + "graduate.shpeuf@gmail.com"} className="link-email">
-                <Image src={Grad} avatar/>
+      key: eboard.graduate.name,
+      text: <a href={"mailto:" + eboard.graduate.email} className="link-email">
+                <Image src={eboard.graduate.image} avatar/>
                 <Icon name="mail" />
-                Juan Valderrama
+                {eboard.graduate.name}
             </a>,
-      value: 'Juan Valderrama',
+      value: eboard.graduate.name,
     },
     {
-      key: 'Bianca Piñeros',
-      text: <a href={"mailto:" + "secretary.shpeuf@gmail.com"} className="link-email">
-                <Image src={Sec} avatar/>
+      key: eboard.secretary.name,
+      text: <a href={"mailto:" + eboard.secretary.email} className="link-email">
+                <Image src={eboard.secretary.image} avatar/>
                 <Icon name="mail" />
-                Bianca Piñeros
+                {eboard.secretary.name}
             </a>,
-      value: 'Bianca Piñeros',
+      value: eboard.secretary.name,
     },
     {
-      key: 'Frank Vigoa',
-      text: <a href={"mailto:" + "treasurer.shpeuf@gmail.com"} className="link-email">
-                <Image src={Tres} avatar/>
+      key: eboard.treasurer.name,
+      text: <a href={"mailto:" + eboard.treasurer.email} className="link-email">
+                <Image src={eboard.treasurer.image} avatar/>
                 <Icon name="mail" />
-                Frank Victor
+                {eboard.treasurer.name}
             </a>,
-      value: 'Frank Vigoa',
+      value: eboard.treasurer.name,
     },
     {
-      key: 'Victor Rodriguez',
-      text: <a href={"mailto:" + "marketing.shpeuf@gmail.com"} className="link-email">
-                <Image src={Mark} avatar/>
+      key: eboard.marketing.name,
+      text: <a href={"mailto:" + eboard.marketing.email} className="link-email">
+                <Image src={eboard.marketing.image} avatar/>
                 <Icon name="mail" />
-                Victor Rodriguez
+                {eboard.marketing.name}
             </a>,
-      value: 'Victor Rodriguez',
+      value: eboard.marketing.name,
     },
     {
-      key: 'Mariana Torres Torres',
-      text: <a href={"mailto:" + "vptech.shpeuf@gmail.com"} className="link-email">
-                <Image src={Tech} avatar/>
+      key: eboard.technology.name,
+      text: <a href={"mailto:" + eboard.technology.email} className="link-email">
+                <Image src={eboard.technology.image} avatar/>
                 <Icon name="mail" />
-                Mariana Torres Torres
+                {eboard.technology.name}
             </a>,
-      value: 'Mariana Torres Torres',
+      value: eboard.technology.name,
     },
     {
-        key: 'Paige Sam',
-        text:   <a href={"mailto:" + "corporate.shpeuf@gmail.com"} className="link-email">
-                    <Image src={Corp} avatar/>
+        key: eboard.corporate.name,
+        text:   <a href={"mailto:" + eboard.corporate.email} className="link-email">
+                    <Image src={eboard.corporate.image} avatar/>
                     <Icon name="mail" />
-                    Paige Sam
+                    {eboard.corporate.name}
                 </a>,
-        value: 'Paige Sam',
+        value: eboard.corporate.name,
     },
     {
-        key: 'Isabella Eby',
-        text:   <a href={"mailto:" + "vpexternal.shpeuf@gmail.com"} className="link-email">
-                    <Image src={VPe} avatar/>
+        key: eboard.external.name,
+        text:   <a href={"mailto:" + eboard.external.email} className="link-email">
+                    <Image src={eboard.external.image} avatar/>
                     <Icon name="mail" />
-                    Isabella Eby
+                    {eboard.external.name}
                 </a>,
-        value: 'Isabella Eby',
+        value: eboard.external.name,
     },
     {
-        key: 'Katie Muratti',
-        text:   <a href={"mailto:" + "vpinternal.shpeuf@gmail.com"} className="link-email">
-                    <Image src={VPi} avatar/>
+        key: eboard.internal.name,
+        text:   <a href={"mailto:" + eboard.internal.email} className="link-email">
+                    <Image src={eboard.internal.image} avatar/>
                     <Icon name="mail" />
-                    Katie Muratti
+                    {eboard.internal.name}
                 </a>,
-        value: 'Katie Muratti',
+        value: eboard.internal.email,
     },
   ]
 
@@ -107,7 +97,7 @@ function ResourcesCards() {
     return (
         <>
         <Card 
-            image={EBoard}
+            image={eboard.eboard}
             header={<Grid><Grid.Column textAlign="center">{<a className="ui header">EBoard Contact</a>}</Grid.Column></Grid>}
             description="Email members of the E-Board."
             extra={<Dropdown
@@ -133,7 +123,7 @@ function ResourcesCards() {
             image={<Image src={National} as="a" href="https://shpe.org/membership/become-a-member/" target="_blank"/>}
             header={<Grid><Grid.Column textAlign="center">{<a className="ui header" href="https://shpe.org/membership/become-a-member/" target="_blank">National Membership</a>}</Grid.Column></Grid>}
             description="While it is not required for all members, there are many benefits to having SHPE National Membership."
-            extra=<a class="extra" href="https://shpe.org/membership/become-a-member/" target="_blank">Register for SHPE National Membership here!</a>
+            extra={<a class="extra" href="https://shpe.org/membership/become-a-member/" target="_blank">Register for SHPE National Membership here!</a>}
         />
         <Card 
             image={<Image src={WhatsApp} as="a" href="https://chat.whatsapp.com/KyuEjmCLT7c1VRSkexoQkO" target="_blank"/>}

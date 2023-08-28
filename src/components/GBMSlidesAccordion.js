@@ -1,26 +1,36 @@
-import React, { Component } from 'react'
-import { Accordion, Icon, Segment, Grid, Image, Divider } from 'semantic-ui-react'
+import React, { Component } from 'react';
+import { Accordion, Icon, Segment, Grid, Image, Divider } from 'semantic-ui-react';
 
-import Fall22I1 from "../assets/images/resources/GBMSlides/Fall 2022 GBM 1.png"
-import Fall22P1 from "../assets/images/resources/GBMSlides/Fall 2022 GBM 1.pdf"
-import Fall22I2 from "../assets/images/resources/GBMSlides/Fall 2022 GBM 2.png"
-import Fall22P2 from "../assets/images/resources/GBMSlides/Fall 2022 GBM 2.pdf"
-import Fall22I3 from "../assets/images/resources/GBMSlides/Fall 2022 GBM 3.png"
-import Fall22P3 from "../assets/images/resources/GBMSlides/Fall 2022 GBM 3.pdf"
-import Fall22I4 from "../assets/images/resources/GBMSlides/Fall 2022 GBM 4.png"
-import Fall22P4 from "../assets/images/resources/GBMSlides/Fall 2022 GBM 4.pdf"
-import Fall22I5 from "../assets/images/resources/GBMSlides/Fall 2022 GBM 5.png"
-import Fall22P5 from "../assets/images/resources/GBMSlides/Fall 2022 GBM 5.pdf"
-import Fall22I6 from "../assets/images/resources/GBMSlides/Fall 2022 GBM 6.png"
-import Fall22P6 from "../assets/images/resources/GBMSlides/Fall 2022 GBM 6.pdf"
-import Spring23I1 from "../assets/images/resources/GBMSlides/Spring 2023 GBM 1.png"
-import Spring23P1 from "../assets/images/resources/GBMSlides/Spring 2023 GBM 1.pdf"
-import Spring23I2 from "../assets/images/resources/GBMSlides/Spring 2023 GBM 2.png"
-import Spring23P2 from "../assets/images/resources/GBMSlides/Spring 2023 GBM 2.pdf"
-import Spring23I3 from "../assets/images/resources/GBMSlides/Spring 2023 GBM 3.png"
-import Spring23P3 from "../assets/images/resources/GBMSlides/Spring 2023 GBM 3.pdf"
-import Spring23I4 from "../assets/images/resources/GBMSlides/Spring 2023 GBM 4.png"
-import Spring23P4 from "../assets/images/resources/GBMSlides/Spring 2023 GBM 4.pdf"
+const slides = {
+  fall: {
+    I1:"https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Fall+2022+GBM+1.png",
+    P1:"https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Fall+2022+GBM+1.pdf",
+    I2:"https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Fall+2022+GBM+2.png",
+    P2:"https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Fall+2022+GBM+2.pdf",
+    I3:"https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Fall+2022+GBM+3.png",
+    P3:"https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Fall+2022+GBM+3.pdf",
+    I4:"https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Fall+2022+GBM+4.png",
+    P4:"https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Fall+2022+GBM+4.pdf",
+    I5:"https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Fall+2022+GBM+5.png",
+    P5:"https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Fall+2022+GBM+5.pdf",
+    I6:"https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Fall+2022+GBM+6.png",
+    P6:"https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Fall+2022+GBM+6.pdf",
+  },
+  spring: {
+    I1:"https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Spring+2023+GBM+1.png",
+    P1:"https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Spring+2023+GBM+1.pdf",
+    I2:"https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Spring+2023+GBM+2.png",
+    P2:"https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Spring+2023+GBM+2.pdf",
+    I3:"https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Spring+2023+GBM+3.png",
+    P3:"https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Spring+2023+GBM+3.pdf",
+    I4:"https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Spring+2023+GBM+4.png",
+    P4:"https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Spring+2023+GBM+4.pdf",
+    I5:"https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Spring+2023+GBM+5.png",
+    P5:"https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Spring+2023+GBM+5.pdf",
+    I6:"https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Spring+2023+GBM+6.png",
+    P6:"https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Spring+2023+GBM+6.pdf",
+  }
+};
 
 {/*TODO: switch pdf files with links to slides */}
 export default class GBMSlidesAccordion extends Component {
@@ -53,34 +63,34 @@ export default class GBMSlidesAccordion extends Component {
             <Grid.Column>
               <b>GBM 1</b>
               <Divider horizontal/>
-              <Image src={Fall22I1} as="a" size="medium" href={Fall22P1} target="_blank"/>
+              <Image src={slides.fall.I1} as="a" size="medium" href={slides.fall.P1} target="_blank"/>
             </Grid.Column>
             <Grid.Column>
               <b>GBM 2</b>
               <Divider horizontal/>
-              <Image src={Fall22I2} as="a" size="medium" href={Fall22P2} target="_blank"/>
+              <Image src={slides.fall.I2} as="a" size="medium" href={slides.fall.P2} target="_blank"/>
             </Grid.Column>
             <Grid.Column>
               <b>GBM 3</b>
               <Divider horizontal/>
-              <Image src={Fall22I3} as="a" size="medium" href={Fall22P3} target="_blank"/>
+              <Image src={slides.fall.I3} as="a" size="medium" href={slides.fall.P3} target="_blank"/>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row columns={3}>
             <Grid.Column>
               <b>GBM 4</b>
               <Divider horizontal/>
-              <Image src={Fall22I4} as="a" size="medium" href={Fall22P4} target="_blank"/>
+              <Image src={slides.fall.I4} as="a" size="medium" href={slides.fall.P4} target="_blank"/>
             </Grid.Column>
             <Grid.Column>
               <b>GBM 5</b>
               <Divider horizontal/>
-              <Image src={Fall22I5} as="a" size="medium" href={Fall22P5} target="_blank"/>
+              <Image src={slides.fall.I5} as="a" size="medium" href={slides.fall.P5} target="_blank"/>
             </Grid.Column>
             <Grid.Column>
               <b>GBM 6</b>
               <Divider horizontal/>
-              <Image src={Fall22I6} as="a" size="medium" href={Fall22P6} target="_blank"/>   
+              <Image src={slides.fall.I6} as="a" size="medium" href={slides.fall.P6} target="_blank"/>   
             </Grid.Column>
           </Grid.Row>
         </Grid>
@@ -99,36 +109,36 @@ export default class GBMSlidesAccordion extends Component {
               <Grid.Column>
                 <b>GBM 1</b>
                 <Divider horizontal/>
-                <Image src={Spring23I1} as="a" size="medium" href={Spring23P1} target="_blank"/>
+                <Image src={slides.spring.I1} as="a" size="medium" href={slides.spring.P1} target="_blank"/>
               </Grid.Column>
               <Grid.Column>
                 <b>GBM 2</b>
                 <Divider horizontal/>
-                <Image src={Spring23I2} as="a" size="medium" href={Spring23P2} target="_blank"/>
+                <Image src={slides.spring.I2} as="a" size="medium" href={slides.spring.P2} target="_blank"/>
               </Grid.Column>
               <Grid.Column>
                 <b>GBM 3</b>
                 <Divider horizontal/>
-                <Image  src={Spring23I3} as="a" size="medium" href={Spring23P3} target="_blank"/>
+                <Image  src={slides.spring.I3} as="a" size="medium" href={slides.spring.P3} target="_blank"/>
               </Grid.Column>
             </Grid.Row>
             <Grid.Row columns={3}>
             <Grid.Column>
                 <b>GBM 4</b>
                 <Divider horizontal/>
-                <Image src={Spring23I4} as="a" size="medium" href={Spring23P4} target="_blank"/>
+                <Image src={slides.spring.I4} as="a" size="medium" href={slides.spring.P4} target="_blank"/>
               </Grid.Column>
               <Grid.Column>
                 <b>GBM 5</b>
                 <Divider horizontal/>
                 {/*Need to add new file once available*/}
-                <Image hidden src={Spring23I1} as="a" size="medium" href={Spring23P1} target="_blank"/>
+                <Image hidden src={slides.spring.I5} as="a" size="medium" href={slides.spring.P5} target="_blank"/>
               </Grid.Column>
               <Grid.Column>
                 <b>GBM 6</b>
                 <Divider horizontal/>
                 {/*Need to add new file once available*/}
-                <Image hidden src={Spring23I1} as="a" size="medium" href={Spring23P1} target="_blank"/>   
+                <Image hidden src={slides.spring.I6} as="a" size="medium" href={slides.spring.P6} target="_blank"/>   
               </Grid.Column>
             </Grid.Row>
           </Grid>
