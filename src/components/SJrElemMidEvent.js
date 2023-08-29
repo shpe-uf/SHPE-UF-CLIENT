@@ -7,9 +7,14 @@ import {
 import JrEventModal from "./JrEventModal";
 import JrSlideshow from "./JrSlideshow";
 
-const slide_1 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/temp1.JPG'
-const slide_2 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/temp2.JPG'
-const slide_3 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/temp3.JPG'
+const slide_1 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/elemid-slide-1.JPG'
+const slide_2 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/elemid-slide-2.JPG'
+const slide_3 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/elemid-slide-3.JPG'
+const modal_1 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/elemid-modal-1.JPG'
+const modal_2 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/elemid-modal-2.JPG'
+const modal_3 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/elemid-modal-3.JPG'
+const modal_4 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/elemid-modal-4.JPG'
+const modal_5 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/elemid-modal-5.JPG'
 
 function event(event, description, pic){
   return JrEventModal(event, description, pic);
@@ -82,19 +87,19 @@ function Events () {
       <Grid>
         <Grid.Column>
           <Grid.Row className="JrEventButton">
-            {event("STEM Days", event1, slide_1)}
+            {event("STEM Days", event1, modal_1)}
           </Grid.Row>
           <Grid.Row className="JrEventButton">
-            {event("Mentorship Program", event2, slide_2)}
+            {event("Mentorship Program", event2, modal_2)}
           </Grid.Row>
           <Grid.Row className="JrEventButton">
-            {event("Robotics Program", event3, slide_3)}
+            {event("Robotics Program", event3, modal_3)}
           </Grid.Row>
           <Grid.Row className="JrEventButton">
-            {event("STEAM Night", event4, slide_1)}
+            {event("STEAM Night", event4, modal_4)}
           </Grid.Row>
           <Grid.Row className="JrEventButton">
-            {event("STEM Carnival", event5, slide_2)}
+            {event("STEM Carnival", event5, modal_5)}
           </Grid.Row>
         </Grid.Column>
       </Grid>
