@@ -57,7 +57,7 @@ const event2 = (
 
 const event3 = (
   <div>
-    TSHPE volunteers come into existing robotics clubs at 
+    SHPE volunteers come into existing robotics clubs at 
     school to help with design development, coding, and 
     preparation for competitions. 
   </div>
@@ -66,7 +66,7 @@ const event3 = (
 const event4 = (
   <div>
     STEAM Night is a yearly event hosted by CW Norton 
-    Elementary school aimed at providing students a wide 
+    Elementary school aimed at providing students with a wide 
     variety of activities (4-5) to learn about multiple 
     engineering fields in a span of two hours.
   </div>
@@ -74,7 +74,7 @@ const event4 = (
 
 const event5 = (
   <div>
-    Stem Carnival is an event hosted by CW Norton 
+    STEM Carnival is an event hosted by CW Norton 
     Elementary aimed at having a fun carnival experience 
     for the students, while creating interactive activities 
     for students to enjoy a field day with their families. 
