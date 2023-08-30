@@ -56,6 +56,12 @@
   padding-right: 0em!important;
 }
 
+.ui.fluid.button.EventButton {
+  width: 90%;
+  height: 5rem;
+  font-size: 1.4rem !important;
+}
+
 main {
   background-color: var(--white);
 }
@@ -734,6 +740,12 @@ div::-webkit-scrollbar-thumb {
     background-size: 260% auto !important;
     background-position: center 28% !important;
   }
+
+  .JrEventButton {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+    min-width: 50vw ;
+  }
 }
 
 @media (min-width: 992px) {
@@ -850,4 +862,57 @@ ul.nav li.active {
 .JrTabContent {
   font-size: 2rem;
   text-align: center;
+}
+
+.JrEventButton {
+  margin-bottom: 1.35rem;
+  position: relative;
+  top: -1rem;
+}
+
+.JrEventSlides {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  height: 600px;
+  width: 600px;
+}
+
+.slideshow {
+  margin: 0 auto;
+  overflow: hidden;
+  max-width: 500px;
+}
+
+.slideshowSlider {
+  white-space: nowrap;
+  transition: ease 1000ms;
+}
+
+.slide {
+  display: inline-block;
+  height: 500px;
+  width: 500px;
+  border-radius: 10px;
+}
+
+.slideshowDots {
+  text-align: center;
+}
+
+.slideshowDot {
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin: 15px 7px 0px;
+  background-color: #c4c4c4;
+}
+
+.slideshowDot.active {
+  background-color: var(--accent-1);
 }
