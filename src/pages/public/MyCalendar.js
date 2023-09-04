@@ -22,7 +22,9 @@ function MyCalendar() {
     }
  
     function getAllEvents(){
-        fetch('https://www.googleapis.com/calendar/v3/calendars/'+calendarId+'/events?key='+API_KEY)
+        const oneYearAgo = new Date();
+        oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+        fetch('https://www.googleapis.com/calendar/v3/calendars/'+calendarId+'/events?timeMin='+oneYearAgo.toISOString()+'&key='+REACT_APP_API_KEY)
             .then(response => response.json())
             .then(data => setEvents(data.items));
     }
