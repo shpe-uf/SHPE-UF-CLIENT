@@ -24,7 +24,7 @@ function MyCalendar() {
     function getAllEvents(){
         const oneYearAgo = new Date();
         oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
-        fetch('https://www.googleapis.com/calendar/v3/calendars/'+calendarId+'/events?timeMin='+oneYearAgo.toISOString()+'&key=AIzaSyDksxCOxxnppCicmkpwDZchaQyqbfzNv64')
+        fetch('https://www.googleapis.com/calendar/v3/calendars/'+calendarId+'/events?timeMin='+oneYearAgo.toISOString()+'&key='+API_KEY)
             .then(response => response.json())
             .then(data => setEvents(data.items));
     }
