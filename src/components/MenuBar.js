@@ -52,7 +52,7 @@ function MenuBar({permission}) {
               SHPE Jr
              </Menu.Item> */} 
 
-            <Menu.Menu position="right">
+            <Menu.Menu position="left">
               {user ? (
                 <>
                   <Dropdown pointing item className="email" text={user.email}>
