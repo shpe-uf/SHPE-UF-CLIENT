@@ -22,11 +22,20 @@ function MyCalendar() {
     }
  
     function getAllEvents(){
-        fetch('https://www.googleapis.com/calendar/v3/calendars/'+calendarId+'/events?key='+API_KEY)
+        const oneYearAgo = new Date();
+        oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+        fetch('https://www.googleapis.com/calendar/v3/calendars/'+calendarId+'/events?timeMin='+oneYearAgo.toISOString()+'&key='+API_KEY)
             .then(response => response.json())
             .then(data => setEvents(data.items));
     }
     
+    //Google calendar formats all-day event end times exclusively. react-big-calendar takes inclusive end dates.
+    function fixAllDayEventHack(date){
+        const dateObj = new Date(date);
+        dateObj.setDate(dateObj.getDate() - 1);
+        return dateObj;
+    }
+
     function setEvents(dataItems){
         var allEvents = [];
         let allday = false;
@@ -36,8 +45,13 @@ function MyCalendar() {
                 id: dataItems[i].id,
                 title: dataItems[i].summary,
                 allDay: allday,
-                start: new Date(allday ? dataItems[i].start.date : dataItems[i].start.dateTime),
-                end: new Date(allday ? dataItems[i].end.date : dataItems[i].end.dateTime),
+                start: new Date(
+                    allday 
+                    ? dataItems[i].start.date
+                    : dataItems[i].start.dateTime),
+                end: allday
+                ? fixAllDayEventHack(dataItems[i].end.date)
+                : new Date(dataItems[i].end.dateTime),
                 desc: dataItems[i].description ? dataItems[i].description : "",
                 resource: dataItems[i].htmlLink,
                 color: "ff0000",
