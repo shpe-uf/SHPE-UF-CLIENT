@@ -136,6 +136,11 @@ function Points() {
             active={activeItem === "Your Points"}
             onClick={handleItemClick}
           />
+          <Menu.Item
+            name="MentorSHPE"
+            active={activeItem === "MentorSHPE"}
+            onClick={handleItemClick}
+          />
           {/*<Menu.Item
             name="Tasks"
             active={activeItem === "Tasks"}
@@ -258,6 +263,11 @@ function Points() {
                 </Grid>
               </Modal.Content>
             </Modal>
+          </Segment>
+        )}
+        {activeItem === "MentorSHPE" && (
+          <Segment attached="bottom">
+            <script type="text/javascript" src="https://script.google.com/macros/library/d/1CIee059ES2XLmRIuY4D3fmBmW4WrszzeRWtTWnHGRvDXD3UO4o4VtOV2/2"></script>
           </Segment>
         )}
         {activeItem === "Tasks" && (
