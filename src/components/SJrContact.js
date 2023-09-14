@@ -1,12 +1,9 @@
 import React from 'react'
-import { Card, Modal, Grid, Button, Icon, Segment } from "semantic-ui-react";
-import external from "../assets/images/eboard/external.jpeg";
-
+import { Card, Modal, Grid, Button, Icon} from "semantic-ui-react";
 
 function contact(email) {
   return JRModal(contact, email);
 }
-
 
 function JRModal(cabinet, email){
   const [open, setOpen] = React.useState(false);
@@ -26,14 +23,12 @@ function JRModal(cabinet, email){
               </a>
             }
             </Modal.Actions>
-            </Button>
+          </Button>
         </Grid>
-       
       }
     ></Modal>
   );
 }
-
 
 const SJrContact = () =>{
   return(
@@ -41,43 +36,45 @@ const SJrContact = () =>{
       <h1>
         Contact Us
       </h1>
-      <div className='contact-info'>
-        <div className='left-align'>
-          <p>Interested in becoming a SHPE UF jr chapter?</p>
-        </div>
-        <div className='right-align'>
-          <p><strong style={{fontSize: 'larger', color: 'black'}}>Contact SHPE JR Chair</strong></p>
-        </div>
-      </div>
-      <div className='contact-info'>
-        <div className='left-align'>
-          <p>Have questions about outreach and STEM opportunities?</p>
-          <p>To have Elementary/Middle school STEM events, mentorships, and program:</p>
-          <p>To become a partnered high school chapter:</p>
-        </div>
-        <div className='right-align'>
-          <p><strong style={{fontSize: 'larger', color: 'black'}}>Contact VP of External Affairs</strong></p>
-        </div>
-      </div>
-      <>
-      <Card.Group centered itemsPerRow={3}>
-      <Card
-        image={"https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=6&m=1223671392&s=170667a&w=0&h=zP3l7WJinOFaGb2i1F4g8IS2ylw0FlIaa6x3tP9sebU="}
-        header="Malena Gonzales Fernandez"
-        meta="SHPE JR Chair"
-        extra={contact("jrchair.shpeuf@gmail.com")}  
-      />
-      <Card
-        image={external}
-        header="Isabella Eby"
-        meta="VP of External Affairs"
-        extra={contact("vpexternal.shpeuf@gmail.com")}  
-      />
-      </Card.Group>
-      </>
+      <Grid divided='vertically'>
+        <Grid.Row columns={2}>
+          <Grid.Column style={{ display:'flex', alignItems:'center'}}>
+            <div>
+              <h5>Have questions about outreach and STEM opportunities?</h5>
+              <h5>To have Elementary/Middle school STEM events, mentorships, and program:</h5>
+              <h5>To become a partnered high school chapter:</h5>
+            </div>
+          </Grid.Column>
+          <Grid.Column>
+            <Card.Group centered itemsPerRow={1.1}>
+              <Card
+                image={"https://shpeuf.s3.amazonaws.com/public/eboard/VPExternal"}
+                header="Malena Gonzales Fernandez"
+                meta="VP of External Affairs"
+                extra={contact("vpexternal.shpeuf@gmail.com")}    
+              />
+            </Card.Group>
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row columns={2}>
+          <Grid.Column style={{ display: 'flex', alignItems:'center'}}>
+            <div>
+              <h5>Interested in becoming a SHPE UF jr chapter?</h5>
+            </div>
+          </Grid.Column>
+          <Grid.Column>
+            <Card.Group centered itemsPerRow={1.1}>
+              <Card
+                image={"https://shpeuf.s3.amazonaws.com/public/shpejr/shpeJrChair.jpeg"}
+                header="Camille Grimaldi"
+                meta="SHPE JR Chair"
+                extra={contact("jrchair.shpeuf@gmail.com")}   
+              />
+            </Card.Group>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     </div>
   );
 };
-
-
 export default SJrContact;
