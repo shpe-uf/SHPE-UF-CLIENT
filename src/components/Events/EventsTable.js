@@ -16,8 +16,8 @@ import { useMutation } from "@apollo/react-hooks";
 import moment from "moment";
 import { CSVLink } from "react-csv";
 
-import { FETCH_EVENTS_QUERY } from "../util/graphql";
-import ManualInputModal from "./ManualInputModal";
+import { FETCH_EVENTS_QUERY } from "../../util/graphql";
+import ManualInputModal from "../ManualInputModal";
 
 function EventsTable({ events }) {
   const [manualInputModal, setManualInputModal] = useState(false);

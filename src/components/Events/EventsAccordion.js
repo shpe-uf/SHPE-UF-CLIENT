@@ -1,6 +1,6 @@
 import React from "react";
 import { Segment, Header, Tab } from "semantic-ui-react";
-import EventsTable from "../components/EventsTable.js";
+import EventsTable from "./EventsTable.js";
 
 function EventsAccordion({ events }){
 
