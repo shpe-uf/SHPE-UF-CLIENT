@@ -45,7 +45,7 @@ function EventsTable({ events }) {
   });
 
   function populateCSV(users) {
-    if (!users) return null;
+    if (!users) return [];
     let list = [];
     users.forEach((user) =>
       list.push({
@@ -263,7 +263,6 @@ function EventsTable({ events }) {
                   <Button
                     color="green"
                     floated="right"
-                    onClick="{console.log(eventAttendance.users)}"
                   >
                     Download as CSV
                   </Button>
