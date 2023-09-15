@@ -9,13 +9,10 @@ function EventsAccordion({ events }){
   let summerSem = [];
 
   if (events){
-      events.map((event, index) => (
-        fallSem = events.filter(event => event.semester =='Fall Semester'),
-        springSem = events.filter(event => event.semester =='Spring Semester'),
-        summerSem = events.filter(event => event.semester =='Summer Semester')
-
-  ))
-}
+    fallSem = events.filter(event => event.semester ==='Fall Semester')
+    springSem = events.filter(event => event.semester ==='Spring Semester')
+    summerSem = events.filter(event => event.semester ==='Summer Semester')
+  }
 
   const panes = [
   { menuItem: 'Fall Semester', render: () => <Tab.Pane><EventsTable events={fallSem} /></Tab.Pane> },
