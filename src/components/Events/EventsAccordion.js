@@ -1,6 +1,6 @@
 import React from "react";
 import { Segment, Header, Tab } from "semantic-ui-react";
-import EventsTable from "../components/EventsTable.js";
+import EventsTable from "./EventsTable.js";
 
 function EventsAccordion({ events }){
 
@@ -8,23 +8,11 @@ function EventsAccordion({ events }){
   let springSem = [];
   let summerSem = [];
 
-  let tab1;
-  let tab2;
-  let tab3;
-
   if (events){
-      events.map((event, index) => (
-        fallSem = events.filter(event => event.semester =='Fall Semester'),
-        springSem = events.filter(event => event.semester =='Spring Semester'),
-        summerSem = events.filter(event => event.semester =='Summer Semester')
-
-  ))
-
-  tab1 = EventsTable(fallSem)
-  tab2 = EventsTable(springSem)
-  tab3 = EventsTable(summerSem)
-}
-
+    fallSem = events.filter(event => event.semester ==='Fall Semester')
+    springSem = events.filter(event => event.semester ==='Spring Semester')
+    summerSem = events.filter(event => event.semester ==='Summer Semester')
+  }
 
   const panes = [
   { menuItem: 'Fall Semester', render: () => <Tab.Pane><EventsTable events={fallSem} /></Tab.Pane> },

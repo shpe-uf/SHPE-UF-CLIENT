@@ -16,8 +16,9 @@ import { useMutation } from "@apollo/react-hooks";
 import moment from "moment";
 import { CSVLink } from "react-csv";
 
-import { FETCH_EVENTS_QUERY } from "../util/graphql";
-import ManualInputModal from "./ManualInputModal";
+import { FETCH_EVENTS_QUERY } from "../../util/graphql";
+import ManualInputModal from "../ManualInputModal";
+import DeleteModal from "../DeleteModal"
 
 function EventsTable({ events }) {
   const [manualInputModal, setManualInputModal] = useState(false);
@@ -43,9 +44,8 @@ function EventsTable({ events }) {
       setSelectedEvent(removeUserFromEvent.name);
     },
   });
-
   function populateCSV(users) {
-    if (!users) return null;
+    if (!users) return [];
     let list = [];
     users.forEach((user) =>
       list.push({
@@ -78,7 +78,6 @@ function EventsTable({ events }) {
                     <Table.HeaderCell>Name</Table.HeaderCell>
                     <Table.HeaderCell>Category</Table.HeaderCell>
                     <Table.HeaderCell>Expiration</Table.HeaderCell>
-                    <Table.HeaderCell>Semester</Table.HeaderCell>
                     <Table.HeaderCell textAlign="center">
                       Request
                     </Table.HeaderCell>
@@ -108,7 +107,6 @@ function EventsTable({ events }) {
                             .local()
                             .format("MM/DD/YYYY @ hh:mm A")}
                         </Table.Cell>
-                        <Table.Cell>{event.semester}</Table.Cell>
                         <Table.Cell textAlign="center">
                           {event.request === true ? (
                             <Icon className="request-true" name="check" />
@@ -148,7 +146,7 @@ function EventsTable({ events }) {
                           <Button
                             icon
                             onClick={() => {
-                              setSelectedEvent(event.name);
+                              setSelectedEvent(event);
                               setDeleteEventModal(true);
                             }}
                             color="red"
@@ -164,7 +162,7 @@ function EventsTable({ events }) {
             <Grid.Row>
               <CSVLink data={eventsNoUsers} filename={"events.csv"}>
                 <Button color="green" floated="right">
-                  Download as CSV
+                  Export to CSV
                 </Button>
               </CSVLink>
             </Grid.Row>
@@ -254,7 +252,7 @@ function EventsTable({ events }) {
                   color="grey"
                   onClick={() => setEventInfoModal(false)}
                 >
-                  Cancel
+                  Close
                 </Button>
                 <CSVLink
                   data={populateCSV(eventAttendance.users)}
@@ -263,7 +261,6 @@ function EventsTable({ events }) {
                   <Button
                     color="green"
                     floated="right"
-                    onClick="{console.log(eventAttendance.users)}"
                   >
                     Download as CSV
                   </Button>
@@ -273,6 +270,13 @@ function EventsTable({ events }) {
           </Grid>
         </Modal.Content>
       </Modal>
+      <DeleteModal
+        open={deleteEventModal}
+        close={() => setDeleteEventModal(false)}
+        deleteItem={selectedEvent.name}
+        deleteId={selectedEvent.id}
+        type='event'
+      />
     </>
   );
 }

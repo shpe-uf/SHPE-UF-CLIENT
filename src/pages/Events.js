@@ -13,7 +13,7 @@ import { useQuery, useMutation } from "@apollo/react-hooks";
 import { useForm } from "../util/hooks";
 
 import Title from "../components/Title";
-import EventsAccordion from "../components/EventsAccordion";
+import EventsAccordion from "../components/Events/EventsAccordion";
 
 import { FETCH_EVENTS_REVERSED_QUERY } from "../util/graphql";
 
@@ -98,7 +98,7 @@ function Events() {
                 icon="pencil"
                 labelPosition="left"
                 onClick={() => openModal("createEvent")}
-                floated="right"
+                floated="left"
               />
             </Grid.Column>
           </Grid.Row>
