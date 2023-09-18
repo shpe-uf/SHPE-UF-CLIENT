@@ -98,7 +98,7 @@ function Events() {
                 icon="pencil"
                 labelPosition="left"
                 onClick={() => openModal("createEvent")}
-                floated="right"
+                floated="left"
               />
             </Grid.Column>
           </Grid.Row>
