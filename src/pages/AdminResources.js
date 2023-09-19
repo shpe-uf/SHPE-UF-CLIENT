@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid, Button, Form, Modal, Container, Input } from "semantic-ui-react";
+import { Grid, Button, Form, Modal, Container, Input, Checkbox } from "semantic-ui-react";
 import gql from "graphql-tag";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { useForm } from "../util/hooks";
@@ -12,7 +12,6 @@ import { FETCH_RESOURCES_QUERY } from "../util/graphql";
 function AdminResources() {
   const [errors, setErrors] = useState({});
   const [createResourceModal, setCreateResourceModal] = useState(false);
-  const [filter, setFilter] = useState("");
 
   let resources = [];
   let { data } = useQuery(FETCH_RESOURCES_QUERY, {});
@@ -32,7 +31,7 @@ function AdminResources() {
       values.description = "";
       values.link = "";
       values.image = "";
-      values.type = "";
+      values.podcast = "";
       setErrors(false);
       setCreateResourceModal(false);
     }
@@ -43,7 +42,7 @@ function AdminResources() {
     description: "",
     link: "",
     image: "",
-    type: "",
+    podcast: false,
   });
 
   const [createResource, { loading }] = useMutation(CREATE_RESOURCE_MUTATION, {
@@ -57,7 +56,7 @@ function AdminResources() {
       values.description = "";
       values.link = "";
       values.image = "";
-      values.type = "";
+      values.podcast = false;
       setErrors(false);
       setCreateResourceModal(false);
     },
@@ -67,29 +66,17 @@ function AdminResources() {
     },
 
     variables: {
-      name: values.title,
+      title: values.title,
       description: values.description,
       link: values.link,
       image: values.image,
-      type: Number(values.type),
+      podcast: values.podcast,
     },
   });
 
   function createResourceCallback() {
-    !isNaN(values.type) && createResource();
+    createResource();
   }
-
-  //TODO: Check this
-  /*
-  if (resources && filter !== "") {
-    resources = resources.filter((resource) => {
-      return (
-        task.name.toLowerCase().includes(filter.toLowerCase()) ||
-        task.semester.toLowerCase().includes(filter.toLowerCase())
-      );
-    });
-  }
-  */
 
   return (
     <>
@@ -98,11 +85,7 @@ function AdminResources() {
         <Grid>
           <Grid.Row columns="2">
             <Grid.Column>
-              <Input
-                fluid
-                onChange={(_, data) => setFilter(data.value)}
-                placeholder="Search..."
-              />
+              {/*Maybe add something here*/ }
             </Grid.Column>
             <Grid.Column>
               <Button
@@ -167,41 +150,15 @@ function AdminResources() {
                   />
                   <Form.Input
                     type="text"
-                    label="link"
+                    label="Link"
                     name="link"
                     value={values.link}
                     error={errors.link ? true : false}
                     onChange={onChange}
                   />
-                  <Form.Input
-                    type="text"
-                    label="Image"
-                    name="image"
-                    value={values.image}
-                    error={errors.image ? true : false}
-                    onChange={onChange}
-                  />
-                  <Form.Group grouped>
-                    <label>Type</label>
-                    <Form.Field
-                      label='Podcast'
-                      control='input'
-                      type='radio'
-                      name='podcast'
-                    />
-                    <Form.Field
-                      label='GBM Slides'
-                      control='input'
-                      type='radio'
-                      name='gbmslides'
-                    />
-                    <Form.Field
-                      label='Other'
-                      control='input'
-                      type='radio'
-                      name='other'
-                    />
-                  </Form.Group>
+                  {/*
+                  <b>To add an image, email the image to _.</b>
+                      */}
                   <Button
                     type="reset"
                     color="grey"
@@ -225,26 +182,26 @@ function AdminResources() {
 const CREATE_RESOURCE_MUTATION = gql`
   mutation createResource(
     $title: String!
-    $description: String
     $link: String!
-    $image: String
-    $type: Int!
+    $description: String!
+    $image: String!
+    $podcast: Boolean!
   ) {
     createResource(
       createResourceInput: {
         title: $title
-        description: $description
         link: $link
+        description: $description
         image: $image
-        type: $type
+        podcast: $podcast
       }
     ) {
       id
       title
-      description
       link
+      description
       image
-      type
+      podcast
       createdAt
     }
   }

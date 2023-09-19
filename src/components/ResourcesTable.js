@@ -42,8 +42,6 @@ function ResourcesTable({ resources }) {
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell>Title</Table.HeaderCell>
-                <Table.HeaderCell>Description</Table.HeaderCell>
-                <Table.HeaderCell>Type</Table.HeaderCell>
                 <Table.HeaderCell>Created</Table.HeaderCell>
                 <Table.HeaderCell textAlign="center">Delete</Table.HeaderCell>
               </Table.Row>
@@ -53,7 +51,6 @@ function ResourcesTable({ resources }) {
                 resources.map((resource, index) => (
                   <Table.Row key={index}>
                     <Table.Cell>{resource.title}</Table.Cell>
-                    <Table.Cell>{resource.type}</Table.Cell>
                     <Table.Cell>{resource.createdAt}</Table.Cell>
                     <Table.Cell textAlign="center">
                       <Button
