@@ -85,7 +85,7 @@ function AdminResources() {
         <Grid>
           <Grid.Row columns="2">
             <Grid.Column>
-              {/*Maybe add something here*/ }
+              {/*Place holder for now*/ }
             </Grid.Column>
             <Grid.Column>
               <Button
