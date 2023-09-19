@@ -27,6 +27,7 @@ import ResetPassword from "./pages/public/ResetPassword";
 import ForgotPassword from "./pages/public/ForgotPassword";
 import Confirm from "./pages/public/Confirm";
 import MyCalendar from "./pages/public/MyCalendar";
+import Resources from "./pages/public/Resources";
 import Admin from "./pages/Admin";
 import Points from "./pages/Points";
 import Profile from "./pages/Profile";
@@ -44,6 +45,7 @@ import Reimbursements from "./pages/Reimbursements";
 import ShpeitoNetwork from "./pages/ShpeitoNetwork";
 import RentalAdmin from "./pages/RentalAdmin";
 import ShpeRentals from "./pages/ShpeRentals";
+import MentorSHPE from "./pages/MentorShpe";
 import jwtDecode from "jwt-decode";
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
@@ -86,6 +88,7 @@ function App() {
           <Route exact path="/sponsors" component={Sponsors} />
           <Route exact path="/contactus" component={ContactUs} />
           <Route exact path="/calendar" component={MyCalendar} />
+          <Route exact path="/resources" component={Resources}/>
           <UserRoute exact path="/corporations" component={Corporations} />
           <Route exact path="/reset/:token" component={ResetPassword} />
           <Route exact path="/forgot" component={ForgotPassword} />
@@ -95,6 +98,7 @@ function App() {
           <UserRoute exact path="/alumnidirectory" component={AlumniDirectory} />
           <UserRoute exact path="/reimbursementrequest" component={() => <ReimbursementRequest user={decodedToken}/>} />
           <UserRoute exact path="/shpeitonetwork" component={ShpeitoNetwork}/>
+          <UserRoute exact path="/mentorshpe" component={MentorSHPE}/>
           <UserRoute exact path="/shperentals" component={ShpeRentals} />
           <AdminRoute exact path="/admin" component={() => <Admin permission={permission}/>} permission={permission} security="admin"/>
           <AdminRoute exact path="/admin/events" component={Events} permission={permission} security="events"/>

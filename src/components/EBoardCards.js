@@ -3,16 +3,6 @@ import { Card } from "semantic-ui-react";
 import CabinetModal from "../components/CabinetModal";
 import PresidentModal from "../components/PresidentModal";
 
-import president from "../assets/images/eboard/president.jpeg";
-import graduate from "../assets/images/eboard/graduate.jpeg";
-import secretary from "../assets/images/eboard/secretary.jpeg";
-import treasurer from "../assets/images/eboard/treasurer.jpeg";
-import marketing from "../assets/images/eboard/marketing.jpeg";
-import technology from "../assets/images/eboard/technology.jpeg";
-import corporate from "../assets/images/eboard/corporate.jpeg";
-import external from "../assets/images/eboard/external.jpeg";
-import internal from "../assets/images/eboard/internal.jpeg";
-
 import graduatePositions from "../assets/options/gradCabinet.json";
 import secretaryPositions from "../assets/options/secretary.json";
 import treasuryPositions from "../assets/options/treasury.json";
@@ -21,6 +11,8 @@ import technologyPositions from "../assets/options/technology.json";
 import corporatePositions from "../assets/options/corporate.json";
 import externalPositions from "../assets/options/external.json";
 import internalPositions from "../assets/options/internal.json";
+
+import eboard from "../assets/eboard"
 
 function cabinet(cabinet, description, email, pic, json) {
   return CabinetModal(cabinet, description, email, pic, json);
@@ -147,109 +139,109 @@ function EBoardCards() {
   return (
     <>
       <Card
-        image={president}
-        header="Jorge Moros"
+        image={eboard.president.image}
+        header={eboard.president.name}
         meta="President"
         extra={prezModal(
           "President",
           presidentDescription,
-          "president.shpeuf@gmail.com",
-          president
+          eboard.president.email,
+          eboard.president.image
         )}
       />
       <Card
-        image={graduate}
-        header="Juan Valderrama"
+        image={eboard.graduate.image}
+        header={eboard.graduate.name}
         meta="Graduate Coordinator"
         extra={cabinet(
           "Graduate Cabinet",
           graduateDescription,
-          "graduate.shpeuf@gmail.com",
-          graduate,
+          eboard.graduate.email,
+          eboard.graduate.image,
           graduatePositions
         )}
       />
       <Card
-        image={secretary}
-        header="Bianca Piñeros"
+        image={eboard.secretary.image}
+        header={eboard.secretary.name}
         meta="Secretary"
         extra={cabinet(
           "Secretary Cabinet",
           secretaryDescription,
-          "secretary.shpeuf@gmail.com",
-          secretary,
+          eboard.secretary.email,
+          eboard.secretary.image,
           secretaryPositions
         )}
       />
       <Card
-        image={treasurer}
-        header="Frank Vigoa"
+        image={eboard.treasurer.image}
+        header={eboard.treasurer.name}
         meta="Treasurer"
         extra={cabinet(
           "Treasury Cabinet",
           treasurerDescription,
-          "treasurer.shpeuf@gmail.com",
-          treasurer,
+          eboard.treasurer.email,
+          eboard.treasurer.image,
           treasuryPositions
         )}
       />
       <Card
-        image={marketing}
-        header="Victor Rodriguez"
+        image={eboard.marketing.image}
+        header={eboard.marketing.name}
         meta="VP of Marketing"
         extra={cabinet(
           "Marketing Cabinet",
           marketingDescription,
-          "marketing.shpeuf@gmail.com",
-          marketing,
+          eboard.marketing.email,
+          eboard.marketing.image,
           marketingPositions
         )}
       />
       <Card
-        image={technology}
-        header="Mariana Torres Torres"
+        image={eboard.technology.image}
+        header={eboard.technology.name}
         meta="VP of Technology"
         extra={cabinet(
           "Tech Cabinet",
           techDescription,
-          "vptech.shpeuf@gmail.com",
-          technology,
+          eboard.technology.email,
+          eboard.technology.image,
           technologyPositions
         )}
       />
       <Card
-        image={corporate}
-        header="Paige Sam"
+        image={eboard.corporate.image}
+        header={eboard.corporate.name}
         meta="VP of Corporate Affairs"
         extra={cabinet(
           "Corporate Cabinet",
           corporateDescription,
-          "corporate.shpeuf@gmail.com",
-          corporate,
+          eboard.corporate.email,
+          eboard.corporate.image,
           corporatePositions
         )}
       />
       <Card
-        image={external}
-        header="Isabella Eby"
+        image={eboard.external.image}
+        header={eboard.external.name}
         meta="VP of External Affairs"
         extra={cabinet(
           "External Cabinet",
           externalDescription,
-          "vpexternal.shpeuf@gmail.com",
-          external,
+          eboard.external.email,
+          eboard.external.image,
           externalPositions
         )}
       />
       <Card
-        image={internal}
-        header="Katie Muratti"
+        image={eboard.internal.image}
+        header={eboard.internal.name}
         meta="VP of Internal Affairs"
         extra={cabinet(
           "Internal Cabinet",
           internalDescription,
-          "vpinternal.shpeuf@gmail.com",
-          internal,
+          eboard.internal.email,
+          eboard.internal.image,
           internalPositions
         )}
       />

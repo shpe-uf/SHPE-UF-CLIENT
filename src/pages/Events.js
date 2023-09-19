@@ -13,9 +13,10 @@ import { useQuery, useMutation } from "@apollo/react-hooks";
 import { useForm } from "../util/hooks";
 
 import Title from "../components/Title";
-import EventsAccordion from "../components/EventsAccordion";
+import EventsAccordion from "../components/Events/EventsAccordion";
 
-import { FETCH_EVENTS_QUERY } from "../util/graphql";
+import { FETCH_EVENTS_REVERSED_QUERY } from "../util/graphql";
+
 
 import categoryOptions from "../assets/options/category.json";
 import expirationOptions from "../assets/options/expiration.json";
@@ -23,9 +24,9 @@ import expirationOptions from "../assets/options/expiration.json";
 function Events() {
   const [errors, setErrors] = useState({});
   let events = null;
-  let { data } = useQuery(FETCH_EVENTS_QUERY);
+  let { data } = useQuery(FETCH_EVENTS_REVERSED_QUERY);
   if (data) {
-    events = data.getEvents;
+    events = data.getEventsReversed;
   }
 
   const openModal = (name) => {
@@ -97,7 +98,7 @@ function Events() {
                 icon="pencil"
                 labelPosition="left"
                 onClick={() => openModal("createEvent")}
-                floated="right"
+                floated="left"
               />
             </Grid.Column>
           </Grid.Row>

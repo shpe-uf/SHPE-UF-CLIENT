@@ -56,6 +56,12 @@
   padding-right: 0em!important;
 }
 
+.ui.fluid.button.EventButton {
+  width: 90%;
+  height: 5rem;
+  font-size: 1.4rem !important;
+}
+
 main {
   background-color: var(--white);
 }
@@ -121,6 +127,18 @@ h4 {
 
 h5 {
   font-size: 1.5rem !important;
+}
+
+h6 {
+  line-height: 1.1 !important;
+  font-family: "heading-font" !important;
+  text-transform: uppercase !important;
+  color: var(--accent-2-dark-2);
+  margin-bottom: 8px;
+}
+
+h6 {
+  font-size: 1.75 rem !important;
 }
 
 .ui.form input, select, textarea{
@@ -225,7 +243,7 @@ h5 {
 }
 
 .masthead-home {
-  background: url(assets/images/home-bg.jpg) !important;
+  background: url(https://shpeuf.s3.amazonaws.com/public/home/home-bg.jpg) !important;
   border-radius: 0px;
   background-position: 50% 155% !important;
   background-attachment: fixed !important;
@@ -234,7 +252,7 @@ h5 {
 }
 
 .masthead-team {
-  background: url(assets/images/team.jpg) !important;
+  background: url(https://shpeuf.s3.amazonaws.com/public/misc/team.jpg) !important;
   border-radius: 0px;
   background-position: 50% 50% !important;
   background-attachment: fixed !important;
@@ -243,7 +261,7 @@ h5 {
 }
 
 .masthead-eboard {
-  background: url(assets/images/eboard.jpg) !important;
+  background: url(https://shpeuf.s3.amazonaws.com/public/eboard/eboardMini) !important;
   border-radius: 0px;
   background-position: 50% 250% !important;
   background-attachment: fixed !important;
@@ -252,7 +270,7 @@ h5 {
 }
 
 .masthead-about {
-  background: url(assets/images/about.jpg) !important;
+  background: url(https://shpeuf.s3.amazonaws.com/public/about/about.jpg) !important;
   border-radius: 0px;
   background-position: 75% 75% !important;
   background-attachment: fixed !important;
@@ -261,7 +279,7 @@ h5 {
 }
 
 .masthead-alumni {
-  background: url(assets/images/alumni.jpg) !important;
+  background: url(https://shpeuf.s3.amazonaws.com/public/misc/alumni.jpg) !important;
   border-radius: 0px;
   background-position: 50% 50% !important;
   background-attachment: fixed !important;
@@ -270,7 +288,7 @@ h5 {
 }
 
 .masthead-sponsors {
-  background: url(assets/images/sponsors.jpg) !important;
+  background: url(https://shpeuf.s3.amazonaws.com/public/misc/sponsors.jpg) !important;
   border-radius: 0px;
   background-position: 50% 50% !important;
   background-attachment: fixed !important;
@@ -278,8 +296,17 @@ h5 {
   background-size: cover !important;
 }
 
+.masthead-resources {
+  background: url(https://shpeuf.s3.amazonaws.com/public/misc/resource.png) !important;
+  border-radius: 0px;
+  background-position: 50% 35% !important;
+  background-attachment: scroll !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
 .masthead-contactus {
-  background: url(assets/images/contact-us-1.JPG) !important;
+  background: url(https://shpeuf.s3.amazonaws.com/public/misc/contact-us-1.JPG) !important;
   border-radius: 0px;
   background-position: 50% 50% !important;
   background-attachment: fixed !important;
@@ -302,10 +329,6 @@ h5 {
 .masthead-title {
   margin: 0px;
   font-size: 3.5rem !important;
-}
-.masthead-title-mobile {
-  margin: 0px;
-  font-size: 2.5rem !important;
 }
 
 .background-grey {
@@ -374,7 +397,7 @@ h5 {
 }
 
 .register {
-  background: url(assets/images/register.jpg) !important;
+  background: url(https://shpeuf.s3.amazonaws.com/public/misc/register.jpg) !important;
   border-radius: 0px;
   background-position: 50% 50% !important;
   background-attachment: fixed !important;
@@ -383,7 +406,7 @@ h5 {
 }
 
 .register-alumni {
-  background: url(assets/images/register-alumni.jpg) !important;
+  background: url(https://shpeuf.s3.amazonaws.com/public/misc/register-alumni.jpg) !important;
   border-radius: 0px;
   background-position: 50% 50% !important;
   background-attachment: fixed !important;
@@ -392,7 +415,7 @@ h5 {
 }
 
 .login {
-  background: url(assets/images/login.jpg) !important;
+  background: url(https://shpeuf.s3.amazonaws.com/public/misc/login.jpg) !important;
   border-radius: 0px;
   background-position: 15% 50% !important;
   background-attachment: fixed !important;
@@ -401,7 +424,7 @@ h5 {
 }
 
 .reset {
-  background: url(assets/images/reset.jpg) !important;
+  background: url(https://shpeuf.s3.amazonaws.com/public/misc/reset.jpg) !important;
   border-radius: 0px;
   background-position: 15% 50% !important;
   background-attachment: fixed !important;
@@ -435,7 +458,7 @@ h5 {
 }
 
 .platinum {
-  background: url(assets/images/sponsors/platinum-min.png);
+  background: url(https://shpeuf.s3.amazonaws.com/public/sponsors/platinum-min.png);
 }
 
 .chevron {
@@ -706,10 +729,22 @@ div::-webkit-scrollbar-thumb {
   .overlay-confirm {
     min-height: calc(100vh - 62.41px - 118px) !important;
   }
-
+  .masthead-title {
+    margin: 0px;
+    font-size: 2.5rem !important;
+  }
   .masthead-eboard {
-    background: url(assets/images/eboardMini.jpg) !important;
     background-position: 50% 20% !important;
+  }
+  .masthead-resources {
+    background-size: 260% auto !important;
+    background-position: center 28% !important;
+  }
+
+  .JrEventButton {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+    min-width: 50vw ;
   }
 }
 
@@ -806,6 +841,7 @@ ul.nav li {
   text-align: center;
   cursor: pointer;
   transition: all 0.7s;
+  border-left: ipx solid #39A2DB;
 }
 ul.nav li:first-child {
   border-bottom-left-radius: 2rem;
@@ -827,19 +863,56 @@ ul.nav li.active {
   font-size: 2rem;
   text-align: center;
 }
-.contact-info {
+
+.JrEventButton {
+  margin-bottom: 1.35rem;
+  position: relative;
+  top: -1rem;
+}
+
+.JrEventSlides {
+  margin: 0;
+  padding: 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  margin-top: 20px;
-  padding-left: 15rem;
-  padding-right: 15rem;
-  padding-bottom: 1rem;
+  background-color: black;
+  height: 600px;
+  width: 600px;
 }
-.left-align {
-  flex-basis: 90%;
-  margin-right: 1px;
+
+.slideshow {
+  margin: 0 auto;
+  overflow: hidden;
+  max-width: 500px;
 }
-.right-align {
-  flex-basis: 50%;
+
+.slideshowSlider {
+  white-space: nowrap;
+  transition: ease 1000ms;
+}
+
+.slide {
+  display: inline-block;
+  height: 500px;
+  width: 500px;
+  border-radius: 10px;
+}
+
+.slideshowDots {
+  text-align: center;
+}
+
+.slideshowDot {
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin: 15px 7px 0px;
+  background-color: #c4c4c4;
+}
+
+.slideshowDot.active {
+  background-color: var(--accent-1);
 }

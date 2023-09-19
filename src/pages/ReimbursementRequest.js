@@ -9,8 +9,9 @@ import { useForm } from "../util/hooks";
 import Title from "../components/Title";
 import { Text } from "victory";
 import ImageCrop from "../components/ImageCrop";
+import { treasurerEmail } from "../assets/eboard";
 
-import receipt from "../assets/images/itemized receipt print view with callout.jpg"
+const receipt = "https://shpeuf.s3.amazonaws.com/public/misc/receipt.jpg"
 
 function ReimbursementRequest({user}) {
     const [errors, setErrors] = useState({});
@@ -342,7 +343,11 @@ function ReimbursementRequest({user}) {
                                     onChange={onChange}
                                 />
                                 </Form.Group>
-                                <span style={{ fontWeight: 'bold' }}>Upload itemized receipt here or email to treasurer.shpeuf@gmail. Make sure you upload a receipt showing the last 4 numbers of your card and your name. If you only have an invoice, upload the invoice and the bank statement proving you paid off the invoice.</span>
+                                <span style={{ fontWeight: 'bold' }}>
+                                    Upload itemized receipt here or email the{' '}
+                                    <a href= {`mailto:${treasurerEmail}`}>treasurer</a>.
+                                    Make sure you upload a receipt showing the last 4 numbers of your card and your name. If you only have an invoice, upload the invoice and the bank statement proving you paid off the invoice.
+                                </span>
                                 <Grid.Column className="card-team">
                                 <Image
                                     src={receipt}

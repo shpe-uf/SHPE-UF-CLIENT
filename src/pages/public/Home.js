@@ -8,14 +8,12 @@ import {
   Responsive,
 } from "semantic-ui-react";
 
-import homePhoto1 from "../../assets/images/home-1.jpg";
-import homePhoto2 from "../../assets/images/home-2.jpg";
-import homePhoto3 from "../../assets/images/home-3.jpg";
+import {home1, home2, home3} from "../../assets/images/home"
 
 function Home() {
   return (
     <div>
-      <Responsive minWidth={768}>
+      <Responsive>
         <div className="masthead masthead-home">
           <div className="overlay-home">
             <Container>
@@ -34,25 +32,7 @@ function Home() {
           </div>
         </div>
       </Responsive>
-      <Responsive maxWidth={768}>
-        <div className="masthead masthead-home">
-          <div className="overlay-home">
-            <Container>
-              <h2 className="masthead-title-mobile text-white">
-                Society of Hispanic Professional Engineers
-              </h2>
-              <h2 className="masthead-title-mobile">University of Florida</h2>
-              <a
-                href="https://www.shpeconnect.org"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button className="join-button">Join SHPE National</Button>
-              </a>
-            </Container>
-          </div>
-        </div>
-      </Responsive>
+      
 
       <div className="masthead masthead-quote">
         <Container>
@@ -72,7 +52,7 @@ function Home() {
         <Grid stackable>
           <Grid.Row className="no-padding who">
             <Grid.Column width={6} className="no-padding">
-              <Image src={homePhoto1} className="image-home"></Image>
+              <Image src={home1} className="image-home"></Image>
             </Grid.Column>
             <Grid.Column width={10} className="text-home">
               <h1 className="text-white">Who are we?</h1>
@@ -96,7 +76,7 @@ function Home() {
           </Grid.Row>
           <Grid.Row className="no-padding mission">
             <Grid.Column width={6} className="no-padding">
-              <Image src={homePhoto2} className="image-home"></Image>
+              <Image src={home2} className="image-home"></Image>
             </Grid.Column>
             <Grid.Column width={10} className="text-home">
               <h1 className="text-white">Mission</h1>
@@ -121,7 +101,7 @@ function Home() {
           </Grid.Row>
           <Grid.Row className="no-padding vision">
             <Grid.Column width={6} className="no-padding">
-              <Image src={homePhoto3} className="image-home"></Image>
+              <Image src={home3} className="image-home"></Image>
             </Grid.Column>
             <Grid.Column width={10} className="text-home">
               <h1 className="text-white">Vision</h1>
