@@ -3,6 +3,16 @@ import { Card } from "semantic-ui-react";
 import emptyImg from "../assets/images/placeholder.png";
 import JrSchoolModal from "./JrSchoolModal";
 
+const img1 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/nortonelem.jpg'
+const img2 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/idlewild.png'
+const img3 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/Littlewoodelem.jpeg'
+const img4 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/PKyonge.jpg'
+const img5 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/pkyHigh.jpg'
+const img6 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/cypressBay.jpg'
+const img7 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/RonaldReaSr.jpg'
+const img8 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/Central_High_School_Front.jpg'
+const img9 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/Materacademyhigh.jpg'
+
 function partnerMod(schoolName, description, pic){
     return JrSchoolModal(schoolName,description,pic);
   }
@@ -85,97 +95,97 @@ function JrSchoolCards(){
 
         <>
         <Card
-            image = {emptyImg}
+            image = {img1}
             header = "Norton"
             meta = "Elementary School"
             extra ={partnerMod(
                 "Norton Elementary School",
                 NortonDescription,
-                emptyImg
+                img1
             )}
 
         />
         <Card
-            image = {emptyImg}
-            header = "Idylwood"
+            image = {img2}
+            header = "Idylwild"
             meta = "Elementary School"
             extra ={partnerMod(
                 "Idylwild Elementary School",
                 IdylwildDescription,
-                emptyImg
+                img2
             )}
 
         />
         <Card
-            image = {emptyImg}
+            image = {img3}
             header = "Littlewood"
             meta = "Elementary School"
             extra ={partnerMod(
                 "Littlewood Elementary School",
                 LittlewoodDescription,
-                emptyImg
+                img3
             )}
 
         />
         <Card
-            image = {emptyImg}
+            image = {img4}
             header = "PK Yonge"
             meta = "Middle School"
             extra ={partnerMod(
                 "PK Yonge Middle School",
                 PKYongeDescription,
-                emptyImg
+                img4
             )}
         /> 
         <Card
-            image = {emptyImg}
+            image = {img5}
             header = "PK Yonge"
             meta = "High School"
             extra ={partnerMod(
                 "PK Yonge High School",
                 PKYongeHDescription,
-                emptyImg
+                img5
             )}
         />
          <Card
-            image = {emptyImg}
+            image = {img6}
             header = "Cypress Bay High"
             meta = "High School"
             extra ={partnerMod(
                 "Cypress Bay High School",
                 CypressBayDescription,
-                emptyImg
+                img6
             )}
         />
          <Card
-            image = {emptyImg}
+            image = {img7}
             header = "Ronald W Reagan"
             meta = "High School"
             extra ={partnerMod(
                 "Ronald W Reagan High School",
                 RonaldWReaganDescription,
-                emptyImg
+                img7
             )}
         />
          <Card
-            image = {emptyImg}
+            image = {img8}
             header = "North Florida Central"
             meta = "High School"
             extra ={partnerMod(
                 "North Florida Central High School",
                 NorthFloridaCentralDescription,
-                emptyImg
+                img8
             )}
         />
 
          <Card
-            image = {emptyImg}
+            image = {img9}
             header = "Mater Academy"
             meta = "High School"
             extra ={partnerMod(
                 "Mater Academy High School",
                 MaterAcademyDescription,
-                emptyImg
+                img9
             )}
         />
         </>

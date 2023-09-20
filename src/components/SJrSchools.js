@@ -6,6 +6,7 @@ const SJrSchools = () =>{
   return(
     <div className='SJrSchools'>
       <h2> Partner Schools</h2>
+      <br></br>
      <Container>
       <Responsive minWidth={992}>
         <Card.Group itemsPerRow={3}>
