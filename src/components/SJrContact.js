@@ -40,9 +40,7 @@ const SJrContact = () =>{
         <Grid.Row columns={2}>
           <Grid.Column style={{ display:'flex', alignItems:'center'}}>
             <div>
-              <h5>Have questions about outreach and STEM opportunities?</h5>
-              <h5>To have Elementary/Middle school STEM events, mentorships, and program:</h5>
-              <h5>To become a partnered high school chapter:</h5>
+              <h5>Have questions about our SHPE JR Outreach and K-12 STEM Opportunities?</h5>
             </div>
           </Grid.Column>
           <Grid.Column>
