@@ -10,16 +10,10 @@ import {
   Segment,
   Table,
 } from "semantic-ui-react";
-import gql from "graphql-tag";
-import { useMutation } from "@apollo/react-hooks";
-import { CSVLink } from "react-csv";
 
-import { FETCH_RESOURCES_QUERY } from "../util/graphql";
 import DeleteModal from "./DeleteModal";
-import ManualInputModal from "./ManualInputModal";
 
 function ResourcesTable({ resources }) {
-  const [manualResourceInputModal, setManualResourceInputModal] = useState(false);
   const [resourceInfoModal, setResourceInfoModal] = useState(false);
   const [deleteResourceModal, setDeleteResourceModal] = useState(false);
   const [selectedResource, setSelectedResource] = useState({});
@@ -43,6 +37,7 @@ function ResourcesTable({ resources }) {
               <Table.Row>
                 <Table.HeaderCell>Title</Table.HeaderCell>
                 <Table.HeaderCell>Created</Table.HeaderCell>
+                <Table.HeaderCell textAlign="center">Info</Table.HeaderCell>
                 <Table.HeaderCell textAlign="center">Delete</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
@@ -52,6 +47,18 @@ function ResourcesTable({ resources }) {
                   <Table.Row key={index}>
                     <Table.Cell>{resource.title}</Table.Cell>
                     <Table.Cell>{resource.createdAt}</Table.Cell>
+                    <Table.Cell textAlign="center">
+                      <Button
+                        icon
+                        onClick={() => {
+                          setSelectedResource(resource);
+                          setResourceInfoModal(true);
+                        }}
+                        color="blue"
+                      >
+                        <Icon name="info" />
+                      </Button>
+                    </Table.Cell>
                     <Table.Cell textAlign="center">
                       <Button
                         icon
@@ -89,15 +96,17 @@ function ResourcesTable({ resources }) {
                 <h3>Description</h3>
                 <p>{selectedResource.description}</p>
                 <h3>Link</h3>
-                <p>{selectedResource.link}</p>
+                <a href={selectedResource.link} target="_blank">{selectedResource.link}</a>
                 <h3>Image</h3>
-                {selectedResource.image}
+                <a href={selectedResource.image} target="_blank">{selectedResource.image}</a>
+                <br/>
+                <br/>
                 <Button
                   type="reset"
                   color="grey"
                   onClick={() => setResourceInfoModal(false)}
                 >
-                  Cancel
+                  Close
                 </Button>
               </Grid.Column>
             </Grid.Row>

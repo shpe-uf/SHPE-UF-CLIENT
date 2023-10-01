@@ -10,8 +10,6 @@ const NewMember = "https://shpeuf.s3.amazonaws.com/public/resources/newmember.jp
 const WhatsApp = "https://shpeuf.s3.amazonaws.com/public/resources/whatsapp.png";
 const InfoSlides = "https://shpeuf.s3.amazonaws.com/public/resources/info.jpg";
 const GBM = "https://shpeuf.s3.amazonaws.com/public/misc/gbm.JPG";
-const resourceImage = "https://shpeuf.s3.amazonaws.com/public/resources/resourceImage.png"
-/*Placeholder image*/
 
 
 const EBoardOptions = [
@@ -154,10 +152,9 @@ function ResourcesCards() {
         />
         {resources.map((resource) => (
             <Card
-                image={<Image src={resourceImage} as="a" href={resource.link} target="_blank"/>}
+                image={<Image src={resource.image} as="a" href={resource.link} target="_blank"/>}
                 header={<Grid><Grid.Column textAlign="center">{<a className="ui header" href={resource.link} target="_blank">{resource.title}</a>}</Grid.Column></Grid>}
                 description={resource.description}
-                extra={<a class="extra" href={resource.link} target="_blank">Access Here!</a>}
             ></Card>
         ))}
         </>

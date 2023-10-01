@@ -41,7 +41,7 @@ function AdminResources() {
     title: "",
     description: "",
     link: "",
-    image: "",
+    image: "https://shpeuf.s3.amazonaws.com/public/resources/resourceImage.png",
     podcast: false,
   });
 
