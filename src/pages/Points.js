@@ -19,6 +19,7 @@ import { useQuery, useMutation } from "@apollo/react-hooks";
 import { useForm } from "../util/hooks";
 import { AuthContext } from "../context/auth";
 
+import MentorshpeLeaderboard from "../components/MentorshpeLeaderboard";
 import Title from "../components/Title";
 import PointsBar from "../components/PointsBar";
 import UserEventsTable from "../components/UserEventsTable";
@@ -267,7 +268,7 @@ function Points() {
         )}
         {activeItem === "MentorSHPE" && (
           <Segment attached="bottom">
-            <script type="text/javascript" src="https://script.google.com/macros/library/d/1CIee059ES2XLmRIuY4D3fmBmW4WrszzeRWtTWnHGRvDXD3UO4o4VtOV2/2"></script>
+            <MentorshpeLeaderboard></MentorshpeLeaderboard>
           </Segment>
         )}
         {activeItem === "Tasks" && (

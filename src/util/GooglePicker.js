@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-const GooglePicker = ({ apiKey, clientId, onPick }) => {
+const GooglePicker = ({ apiKey, clientId, onPicker }) => {
   useEffect(() => {
     const loadPicker = () => {
       const script = document.createElement('script');
@@ -24,7 +24,7 @@ const GooglePicker = ({ apiKey, clientId, onPick }) => {
     };
 
     loadPicker();
-  }, [apiKey, clientId, onPick]);
+  }, [apiKey, clientId, onPicker]);
 
   return <div id="picker-container"></div>;
 };
