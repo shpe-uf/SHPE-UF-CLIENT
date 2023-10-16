@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Modal, Grid, Button, Icon} from "semantic-ui-react";
+import { Card, Modal, Grid, Button, Icon, Responsive} from "semantic-ui-react";
 
 function contact(email) {
   return JRModal(contact, email);
@@ -36,6 +36,7 @@ const SJrContact = () =>{
       <h1>
         Contact Us
       </h1>
+      <Responsive minWidth={992}>
       <Grid divided='vertically'>
         <Grid.Row columns={2}>
           <Grid.Column style={{ display:'flex', alignItems:'center'}}>
@@ -72,6 +73,46 @@ const SJrContact = () =>{
           </Grid.Column>
         </Grid.Row>
       </Grid>
+      </Responsive>
+
+      <Responsive maxWidth={991}>
+      <Grid divided='vertically'>
+        <Grid.Row columns={1}>
+          <Grid.Column style={{ display:'flex', alignItems:'center'}}>
+            <div>
+              <h5>Have questions about our SHPE JR Outreach and K-12 STEM Opportunities?</h5>
+            </div>
+          </Grid.Column>
+          <Grid.Column>
+            <Card.Group centered itemsPerRow={1.1}>
+              <Card
+                image={"https://shpeuf.s3.amazonaws.com/public/eboard/VPExternal"}
+                header="Malena Gonzales Fernandez"
+                meta="VP of External Affairs"
+                extra={contact("vpexternal.shpeuf@gmail.com")}    
+              />
+            </Card.Group>
+          </Grid.Column>
+        </Grid.Row>
+        <Grid.Row columns={1}>
+          <Grid.Column style={{ display: 'flex', alignItems:'center'}}>
+            <div>
+              <h5>Interested in becoming a SHPE UF jr chapter?</h5>
+            </div>
+          </Grid.Column>
+          <Grid.Column>
+            <Card.Group centered itemsPerRow={1.1}>
+              <Card
+                image={"https://shpeuf.s3.amazonaws.com/public/shpejr/shpeJrChair.jpeg"}
+                header="Camille Grimaldi"
+                meta="SHPE JR Chair"
+                extra={contact("jrchair.shpeuf@gmail.com")}   
+              />
+            </Card.Group>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+      </Responsive>
     </div>
   );
 };
