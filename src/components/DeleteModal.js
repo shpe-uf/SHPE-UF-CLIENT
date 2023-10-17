@@ -6,11 +6,21 @@ import {
   FETCH_TASKS_QUERY,
   FETCH_CORPORATIONS_QUERY,
   FETCH_EVENTS_QUERY,
+  FETCH_RESOURCES_QUERY
 } from "../util/graphql";
 
 function DeleteModal(props) {
   const [userInput, setUserInput] = useState("");
   console.log(props.deleteId);
+
+  const [deleteResourceMutation] = useMutation(DELETE_RESOURCE, {
+    update(cache, { data: { deleteResource } }) {
+      cache.writeQuery({
+        query: FETCH_RESOURCES_QUERY,
+        data: { getResources: deleteResource },
+      });
+    },
+  });
 
   const [deleteTaskMutation] = useMutation(DELETE_TASK, {
     update(cache, { data: { deleteTask } }) {
@@ -51,6 +61,9 @@ function DeleteModal(props) {
         break;
       case "event":
         deleteEventMutation({ variables: { eventName: props.deleteItem } });
+        break;
+      case "resource":
+        deleteResourceMutation({ variables: { resourceId: props.deleteId } });
         break;
       default:
         break;
@@ -97,6 +110,21 @@ function DeleteModal(props) {
     </Modal>
   );
 }
+
+const DELETE_RESOURCE = gql`
+  mutation deleteResource($resourceId: ID!) {
+    deleteResource(resourceId: $resourceId) {
+      id
+      title
+      link
+      description
+      image
+      createdAt
+      podcast 
+    }
+  }
+`;
+
 const DELETE_TASK = gql`
   mutation deleteTask($taskId: ID!) {
     deleteTask(taskId: $taskId) {

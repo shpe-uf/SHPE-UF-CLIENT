@@ -1,6 +1,5 @@
 import React,{Component} from 'react'
 import { Header, Menu, Segment, Image, Grid, Icon, Button, Divider, Message, Embed, List, Tab, Container } from 'semantic-ui-react';
-
 import GBMSlidesAccordion from './GBMSlidesAccordion';
 import PhotosDisplay from './PhotosDisplay';
 
@@ -49,7 +48,7 @@ const F101Segment = () => (
     </div>
 )
 
-const MediaSegment = () => (
+const MediaSegment = ( ) => (
     <div>
     <Header block color='blue'>Playlist and Podcast</Header>
     <Grid divided stackable>
@@ -77,19 +76,26 @@ const MediaSegment = () => (
                 </Menu.Item>
             </Menu>
         </Grid.Column>
-        <Grid.Column>
+        <Grid.Column width={5}>
             <h4>Episodes</h4>
-            <Menu vertical >
-                <Menu.Item href='https://open.spotify.com/episode/3Qn5iGwCRDFcmLb7NfcGTF?si=pj9mlR59SVm9FOrdPMyQXg' target='_blank'>
-                    <Message><h6>#3</h6><b>From Directors to E-board: The Experience</b></Message>
-                </Menu.Item>
-                <Menu.Item href='https://open.spotify.com/episode/1BB4kWtxklQNztzt8RLUV7?si=8zj-PqyrSvi-rdTqwA7BlQ' target='_blank'>
-                    <Message><h6>#2</h6><b>What Had Happened Was: Crazy Stories</b></Message>
-                </Menu.Item>
-                <Menu.Item href='https://open.spotify.com/episode/4jx5Gp9tpZyHKwvAbm7xCC?si=MUoXv49CQXC3SjCRhd3nzg' target='_blank'>
-                <Message><h6>#1</h6><b>Transitioning to College: Perfectly Imperfect</b></Message>
-                </Menu.Item>
-            </Menu>
+                <List divided relaxed>
+                    <List.Item href='https://open.spotify.com/episode/7HLm0AsslxrRNGU2PEfh2u?si=707f1ebe40994a8b' target='_blank'>
+                        <List.Icon name='spotify' color='black'/>
+                        <List.Content><b># 4- SHPEitos Abroad: Insider Scoop</b></List.Content>
+                    </List.Item>    
+                    <List.Item href='https://open.spotify.com/episode/3Qn5iGwCRDFcmLb7NfcGTF?si=4b1fecd077bb423e' target='_blank'>
+                        <List.Icon name='spotify' color='black'/>
+                        <List.Content><b># 3- From Directors to E-board: The Experience</b></List.Content>
+                    </List.Item>             
+                    <List.Item href='https://open.spotify.com/episode/1BB4kWtxklQNztzt8RLUV7?si=6f3dfeaf3c15422f' target='_blank'>
+                        <List.Icon name='spotify' color='black'/>
+                        <List.Content><b># 2- What Had Happened Was: Crazy Stories</b></List.Content>
+                    </List.Item>  
+                    <List.Item href='https://open.spotify.com/episode/4jx5Gp9tpZyHKwvAbm7xCC?si=4ed1766417054c9a' target='_blank'>
+                        <List.Icon name='spotify' color='black'/>
+                        <List.Content><b># 1- Transitioning to College: Perfectly Imperfect</b></List.Content>
+                    </List.Item>  
+                </List>
         </Grid.Column>
     </Grid>
     <Header block color='blue'>Photos</Header>
