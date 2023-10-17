@@ -47,10 +47,9 @@ function AdminResources() {
 
   const [createResource, { loading }] = useMutation(CREATE_RESOURCE_MUTATION, {
     update(cache, { data: { createResource } }) {
-      const { getResources } = cache.readQuery({ query: FETCH_RESOURCES_QUERY });
       cache.writeQuery({
         query: FETCH_RESOURCES_QUERY,
-        data: { getResources: getResources.concat([createResource]) },
+        data: { getResources: createResource },
       });
       values.title = "";
       values.description = "";
