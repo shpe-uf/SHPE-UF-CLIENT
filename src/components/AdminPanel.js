@@ -23,12 +23,12 @@ function Title({permission}) {
             </Segment>
           </NavLink>
         </Grid.Column>}
-        {(permission.includes("super") || permission.includes("tasks")) &&
+        {(permission.includes("super") || permission.includes("adminResources")) &&
         <Grid.Column>
-          <NavLink to="/admin/tasks">
+          <NavLink to="/admin/admin-resources">
             <Segment inverted color="yellow" textAlign="center">
-              <i className="fas fa-admin fa-tasks"></i>
-              <p className="text-admin">Tasks</p>
+              <i className="fas fa-admin fa-briefcase"></i>
+              <p className="text-admin">Resources</p>
             </Segment>
           </NavLink>
         </Grid.Column>}

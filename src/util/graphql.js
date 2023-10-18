@@ -196,6 +196,20 @@ export const FETCH_TASKS_QUERY = gql`
   }
 `;
 
+export const FETCH_RESOURCES_QUERY = gql`
+  {
+    getResources {
+      id
+      title
+      description
+      link
+      image
+      createdAt
+      podcast
+  }
+  }
+`;
+
 export const YEAR_STAT = gql`
   {
     getYearStat {

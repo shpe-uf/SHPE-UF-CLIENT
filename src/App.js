@@ -49,6 +49,7 @@ import MentorSHPE from "./pages/MentorShpe";
 import jwtDecode from "jwt-decode";
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/react-hooks";
+import AdminResources from "./pages/AdminResources";
 
 function App() {
   var decodedToken = [];
@@ -103,6 +104,7 @@ function App() {
           <AdminRoute exact path="/admin" component={() => <Admin permission={permission}/>} permission={permission} security="admin"/>
           <AdminRoute exact path="/admin/events" component={Events} permission={permission} security="events"/>
           <AdminRoute exact path="/admin/tasks" component={Tasks} permission={permission} security="tasks"/>
+          <AdminRoute exact path="/admin/admin-resources" component={AdminResources} permission={permission} security="adminresources"/>
           <AdminRoute exact path="/admin/members" component={Members} permission={permission} security="members"/>
           <AdminRoute exact path="/admin/requests" component={Requests} permission={permission} security="requests"/>
           <AdminRoute exact path="/admin/statistics" component={Statistics} permission={permission} security="statistics"/>

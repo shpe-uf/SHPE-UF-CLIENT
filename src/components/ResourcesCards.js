@@ -1,5 +1,7 @@
 import React from "react";
 import { Card, Dropdown, Grid, Icon, Image } from "semantic-ui-react";
+import { useQuery } from "@apollo/react-hooks";
+import { FETCH_RESOURCES_QUERY } from "../util/graphql";
 
 import eboard from "../assets/eboard";
 
@@ -8,6 +10,7 @@ const NewMember = "https://shpeuf.s3.amazonaws.com/public/resources/newmember.jp
 const WhatsApp = "https://shpeuf.s3.amazonaws.com/public/resources/whatsapp.png";
 const InfoSlides = "https://shpeuf.s3.amazonaws.com/public/resources/info.jpg";
 const GBM = "https://shpeuf.s3.amazonaws.com/public/misc/gbm.JPG";
+
 
 const EBoardOptions = [
     {
@@ -94,6 +97,16 @@ const EBoardOptions = [
   ]
 
 function ResourcesCards() {
+    
+    let resourcesQuery = useQuery(FETCH_RESOURCES_QUERY, {});
+    let data = resourcesQuery.data;
+    let loading = resourcesQuery.loading;
+    let resources = [];
+
+    if (data && data.getResources)
+    {
+        resources = data.getResources
+    }
     return (
         <>
         <Card 
@@ -137,6 +150,13 @@ function ResourcesCards() {
             description="Check out our SHPE UF: Info Slides to learn more about the programs, events, and opportunities SHPE UF has to offer!"
             extra={<a class="extra" href="https://28d1f378-e21f-4379-a063-11326d549c54.filesusr.com/ugd/4f1a8d_68ff9284c7dd40658aa324292ece1ac9.pdf" target="_blank">Click here to download the slides!</a>}
         />
+        {resources.map((resource) => (
+            <Card
+                image={<Image src={resource.image} as="a" href={resource.link} target="_blank"/>}
+                header={<Grid><Grid.Column textAlign="center">{<a className="ui header" href={resource.link} target="_blank">{resource.title}</a>}</Grid.Column></Grid>}
+                description={resource.description}
+            ></Card>
+        ))}
         </>
     );
 }
