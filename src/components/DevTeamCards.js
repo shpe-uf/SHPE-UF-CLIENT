@@ -10,7 +10,7 @@ const team = {
   mateo: "https://shpeuf.s3.amazonaws.com/public/team/mateo.jpg",
   elisa: "https://shpeuf.s3.amazonaws.com/public/team/elisa.png",
   alex: "https://shpeuf.s3.amazonaws.com/public/team/alex.png",
-  alejandro: "https://shpeuf.s3.amazonaws.com/public/team/alex.png"
+  alejandro: "https://shpeuf.s3.amazonaws.com/public/team/alejandro.png"
 }
 
 function DevTeamCards() {
