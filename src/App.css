@@ -536,6 +536,16 @@ h5 {
   color: var(--white);
 }
 
+.points-podium {
+  font-family: "digital-font" !important;
+  font-size: 3rem !important;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-align: center;
+  margin: 0px !important;
+  color: var(--white);
+}
+
 .points-header {
   font-family: "digital-font" !important;
   font-size: 1rem !important;
@@ -544,6 +554,16 @@ h5 {
   text-align: center;
   margin: 0px !important;
   color: var(--white);
+}
+
+.points-podium-inverted {
+  font-family: "digital-font" !important;
+  font-size: 3rem !important;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-align: center;
+  margin: 0px !important;
+  color: var(--black);
 }
 
 .fall {
@@ -572,6 +592,16 @@ h5 {
     135deg,
     rgba(255, 92, 0, 1) 25%,
     rgba(255, 222, 0, 1) 75%
+  ) !important;
+  border: 0px !important;
+}
+
+.winter {
+  background: rgb(0, 0, 0) !important;
+  background: linear-gradient(
+    135deg,
+    rgb(0, 0, 0) 25%,
+    rgb(0, 0, 0) 75%
   ) !important;
   border: 0px !important;
 }
