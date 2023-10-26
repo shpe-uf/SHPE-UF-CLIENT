@@ -98,7 +98,7 @@ const MediaSegment = ( ) => (
                 </List>
         </Grid.Column>
     </Grid>
-    <Header block color='blue'>Photos</Header>
+    {/* <Header block color='blue'>Photos</Header>
     <b>See photos from various SHPE UF events!</b>
     <Grid divided columns={3} stackable>
         <Grid.Column>
@@ -189,47 +189,47 @@ const MediaSegment = ( ) => (
         <Grid.Column width={4}>
             <PhotosDisplay/>
         </Grid.Column>
-    </Grid>
+    </Grid> */}
     </div>
 )
 
-const CorporateSegment = () => (
-    <div>
-        <br/>
-        <b>Take advantage of our corporate resources to help you advance your professional career!</b>
-        <Divider horizontal>Convention Crash Course</Divider>
-        <Segment inverted>
-            <Embed
-            autoplay={false}
-            hd={true}
-            id='SK3FSh8f32o'
-            placeholder={CrashCourse}
-            source='youtube'
-            />
-        </Segment>
-        <Divider/>
-        <List animated>
-            <List.Item href='https://drive.google.com/drive/folders/1QsdfYtPfIhJkGTYfrep04DLOeBtf8X1G?usp=sharing' target='_blank'>
-                <b>Bootcamp Workshop Slides</b>
-            </List.Item>
-            <List.Item href='https://docs.google.com/spreadsheets/d/1Ioi_U7l0gLhKZmeUtsWUR3qgjiG1PG_no9ID_2ZDe78/edit?usp=sharing' target='_blank'>
-                <b>SHPEito LinkedIn Hub</b>
-            </List.Item>
-            <List.Item href='https://drive.google.com/drive/folders/1fAvthXv0F-dpHelVFYl_4NI2l_gOtoL4?usp=sharing' target='_blank'>
-                <b>LinkedIn SHPE Banners</b>
-            </List.Item>
-            <List.Item href='https://docs.google.com/document/d/1HLDXHC0v_zzPuvR-t9SSbrt8qGsKVQTZ5Q-gcEKJTQA/edit?usp=sharing' target='_blank'>
-                <b>Behavioral Interview Sample Questions</b>
-            </List.Item>
-            <List.Item href='https://drive.google.com/drive/folders/1gEGK280Y_oKACfFF_od9I-JC2gINS_3t?usp=sharing' target='_blank'>
-                <b>Sample Resume Drive</b>
-            </List.Item>
-            <List.Item href='https://shpebbq.weebly.com/' target='_blank'>
-                <b>BBQ With Industry Website</b>
-            </List.Item>
-        </List>
-    </div>
-)
+// const CorporateSegment = () => (
+//     <div>
+//         <br/>
+//         <b>Take advantage of our corporate resources to help you advance your professional career!</b>
+//         <Divider horizontal>Convention Crash Course</Divider>
+//         <Segment inverted>
+//             <Embed
+//             autoplay={false}
+//             hd={true}
+//             id='SK3FSh8f32o'
+//             placeholder={CrashCourse}
+//             source='youtube'
+//             />
+//         </Segment>
+//         <Divider/>
+//         <List animated>
+//             <List.Item href='https://drive.google.com/drive/folders/1QsdfYtPfIhJkGTYfrep04DLOeBtf8X1G?usp=sharing' target='_blank'>
+//                 <b>Bootcamp Workshop Slides</b>
+//             </List.Item>
+//             <List.Item href='https://docs.google.com/spreadsheets/d/1Ioi_U7l0gLhKZmeUtsWUR3qgjiG1PG_no9ID_2ZDe78/edit?usp=sharing' target='_blank'>
+//                 <b>SHPEito LinkedIn Hub</b>
+//             </List.Item>
+//             <List.Item href='https://drive.google.com/drive/folders/1fAvthXv0F-dpHelVFYl_4NI2l_gOtoL4?usp=sharing' target='_blank'>
+//                 <b>LinkedIn SHPE Banners</b>
+//             </List.Item>
+//             <List.Item href='https://docs.google.com/document/d/1HLDXHC0v_zzPuvR-t9SSbrt8qGsKVQTZ5Q-gcEKJTQA/edit?usp=sharing' target='_blank'>
+//                 <b>Behavioral Interview Sample Questions</b>
+//             </List.Item>
+//             <List.Item href='https://drive.google.com/drive/folders/1gEGK280Y_oKACfFF_od9I-JC2gINS_3t?usp=sharing' target='_blank'>
+//                 <b>Sample Resume Drive</b>
+//             </List.Item>
+//             <List.Item href='https://shpebbq.weebly.com/' target='_blank'>
+//                 <b>BBQ With Industry Website</b>
+//             </List.Item>
+//         </List>
+//     </div>
+// )
 
 const OpenRow = ({ rowName }) => {
     if(rowName == 'Freshman 101 Slides') {
@@ -241,8 +241,8 @@ const OpenRow = ({ rowName }) => {
     if(rowName == 'GBM Slides') {
         return <GBMSlidesSegment />
     } 
-    if(rowName == 'Corporate')
-        return <CorporateSegment />
+    // if(rowName == 'Corporate')
+    //     return <CorporateSegment />
 }
 
 
@@ -250,7 +250,7 @@ const panes = [
     { menuItem: 'GBM Slides', render: () => <Tab.Pane><OpenRow rowName={ 'GBM Slides' }/></Tab.Pane> },
     { menuItem: 'Freshman 101 Slides', render: () => <Tab.Pane><OpenRow rowName={ 'Freshman 101 Slides' }/></Tab.Pane> },
     { menuItem: 'SHPE UF Media', render: () => <Tab.Pane><OpenRow rowName={ 'SHPE UF Media' }/></Tab.Pane> },
-    { menuItem: 'Corporate', render: () => <Tab.Pane><OpenRow rowName={ 'Corporate' }/></Tab.Pane> },
+    //{ menuItem: 'Corporate', render: () => <Tab.Pane><OpenRow rowName={ 'Corporate' }/></Tab.Pane> },
   ]
 
 export default class ResourcesMenu extends Component {
