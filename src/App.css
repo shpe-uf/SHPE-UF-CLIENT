@@ -145,8 +145,15 @@ h6 {
   font-family: "body-font" !important;
 }
 
+.ui.modal > .actions {
+  padding: 1.5rem 1.5rem;
+}
+
 .ui.modal > .header {
   padding: 16px !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .ui.modal > .content {

@@ -1,7 +1,6 @@
 import React from "react";
 import { Card } from "semantic-ui-react";
 import CabinetModal from "../components/CabinetModal";
-import PresidentModal from "../components/PresidentModal";
 
 import graduatePositions from "../assets/options/gradCabinet.json";
 import secretaryPositions from "../assets/options/secretary.json";
@@ -12,39 +11,35 @@ import corporatePositions from "../assets/options/corporate.json";
 import externalPositions from "../assets/options/external.json";
 import internalPositions from "../assets/options/internal.json";
 
-import eboard from "../assets/eboard"
+import eboard from "../assets/eboard";
 
 function cabinet(cabinet, description, email, pic, json) {
   return CabinetModal(cabinet, description, email, pic, json);
 }
 
-function prezModal(cabinet, description, email, pic) {
-  return PresidentModal(cabinet, description, email, pic);
-}
-
 const presidentDescription = (
-  <div>
+  <span>
     Responsibilities: The SHPE-UF president is responsible for overseeing all
     events held by the chapter and in charge of heading the rest of eboard
     through their endeavors. Additionally, the president serves as a liaison
     between our chapter and SHPE at the regional and National level.
-  </div>
+  </span>
 );
 
 const graduateDescription = (
-  <div>
+  <span>
     Responsibilities: Manage events, workshops, and informational sessions to
-    help members obtain undergraduate research opportunities. Aid in the academic
-    development of members looking to pursue a graduate education. Bridge the
-    gap between undergraduate and graduate members by providing more opportunities
-    for interaction. Organize events that bolster graduate student involvement in
-    SHPE and in other organizations on campus. Use events as possible gateways to
-    recruit new graduate members.
-  </div>
+    help members obtain undergraduate research opportunities. Aid in the
+    academic development of members looking to pursue a graduate education.
+    Bridge the gap between undergraduate and graduate members by providing more
+    opportunities for interaction. Organize events that bolster graduate student
+    involvement in SHPE and in other organizations on campus. Use events as
+    possible gateways to recruit new graduate members.
+  </span>
 );
 
 const secretaryDescription = (
-  <div>
+  <span>
     Responsibilities: Serve as a point of contact between UF and the
     organization regarding guidelines, rules and logistics for events/programs.
     Manage our Alumni LinkedIn network to keep our graduates on the loop and
@@ -54,21 +49,21 @@ const secretaryDescription = (
     newsletter, yearbook,alumni relations, and cabinet liaison) to ensure
     everything is done on time. Secretary Qualities: detail-oriented, time
     management, organization and diligence
-  </div>
+  </span>
 );
 
 const treasurerDescription = (
-  <div>
+  <span>
     Responsibilities: Create and monitor budgets for each cabinet Manage all
     reimbursements, including National Convention reimbursements Student
     Government Coordinate budget request process each semester Submit SAR forms
     and teach others how to do so Order food for all General Body Meetings Serve
     as point of contact for any financial matters regarding SHPE
-  </div>
+  </span>
 );
 
 const marketingDescription = (
-  <div>
+  <span>
     Responsibilities: Serve as a point of communication between cabinet, other
     cabinets, new members and other orgs Manage and delegate responsibilities in
     each mini-cabinet (social media, recruitment, podcast, photography, video,
@@ -77,22 +72,22 @@ const marketingDescription = (
     understanding of everything SHPE and each cabinet has to offer as well as be
     up to date on all events Marketing Mindset: People, Publicity, Profit IN
     THAT ORDER Face of SHPE Part Two: But Now the Stakes are Lower
-  </div>
+  </span>
 );
 
 const techDescription = (
-  <div>
-  Responsibilities: Spearhead implementation days for prospective projects,
-  including room reservations, tool inventory, and meeting tasks XTreme
-  Engineering SHPE’s Hackathon Design Team Project Lead SHPE + SHPE JR Website
-  Coding Interview Prep Collaborate with organizations on campus for tech
-  projects Plan project details for the upcoming academic year Tech workshop
-  series throughout Fall and Spring semesters
-  </div>
+  <span>
+    Responsibilities: Spearhead implementation days for prospective projects,
+    including room reservations, tool inventory, and meeting tasks XTreme
+    Engineering SHPE’s Hackathon Design Team Project Lead SHPE + SHPE JR Website
+    Coding Interview Prep Collaborate with organizations on campus for tech
+    projects Plan project details for the upcoming academic year Tech workshop
+    series throughout Fall and Spring semesters
+  </span>
 );
 
 const corporateDescription = (
-  <div>
+  <span>
     Responsibilities: Establish and maintain relationships between SHPE-UF and
     corporate sponsors Prepare Corporate Package and establish connections over
     the summer via email and video call Coordinate/plan info sessions and
@@ -101,11 +96,11 @@ const corporateDescription = (
     and Spring) Prepare SHPE-UF members for SHPE National Convention Provide
     opportunities for professionalism and growth to chapter members (workshops,
     internships, info sessions, etc.) (New) Oversee LYLP in the Spring semester
-  </div>
+  </span>
 );
 
 const externalDescription = (
-  <div>
+  <span>
     Responsibilities: Manage and guide 20+ directors for the following events
     and programs: SHPE Jr. (Middle and High School), MentorSHPE Jr., ShadowSHPE,
     TeXternal, PartnerSHPE, GFT (Spring only). Meet with each program/event
@@ -120,11 +115,11 @@ const externalDescription = (
     Ambassadors early in the school year. Act as a liaison and representative
     with: SHPE Jr. National and Regional Officers. New high schools and middle
     schools.
-  </div>
+  </span>
 );
 
 const internalDescription = (
-  <div>
+  <span>
     Responsibilities: Plan, budget, market, and execute all internal events for
     SHPE UF students by communicating with the treasurer and marketing VP
     Socials, bonding days, banquets, and trips Manage FYLP and MentorSHPE
@@ -132,7 +127,7 @@ const internalDescription = (
     timely budgeted, planned, and marketed Stadiums, Esports, WISDI, Events,
     FYLP, MentorSHPE Important qualities: punctuality, organization,
     communication
-  </div>
+  </span>
 );
 
 function EBoardCards() {
@@ -142,11 +137,12 @@ function EBoardCards() {
         image={eboard.president.image}
         header={eboard.president.name}
         meta="President"
-        extra={prezModal(
+        extra={cabinet(
           "President",
           presidentDescription,
           eboard.president.email,
-          eboard.president.image
+          eboard.president.image,
+          null
         )}
       />
       <Card

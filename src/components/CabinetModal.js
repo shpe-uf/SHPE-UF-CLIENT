@@ -22,7 +22,10 @@ function CabinetModal(cabinet, description, cabinetEmail, pic, json) {
         </Grid>
       }
     >
-      <Modal.Header>{cabinet}</Modal.Header>
+      <Modal.Header>
+        {cabinet}
+        <Button icon="close" color="grey" onClick={() => setOpen(false)} />
+      </Modal.Header>
       <Modal.Content image>
         <Grid>
           <Grid.Column width={5}>
@@ -35,10 +38,13 @@ function CabinetModal(cabinet, description, cabinetEmail, pic, json) {
             <p>{description}</p>
           </Grid.Column>
 
-          <Grid.Column width={16}>
-            <Header>Director Positions</Header>
-            <Accordion defaultActiveIndex={0} panels={json} />
-          </Grid.Column>
+          {/* President Modal does not contain director positions */}
+          {json ? (
+            <Grid.Column width={16}>
+              <Header>Director Positions</Header>
+              <Accordion defaultActiveIndex={0} panels={json} />
+            </Grid.Column>
+          ) : null}
         </Grid>
       </Modal.Content>
       <Modal.Actions>
@@ -48,14 +54,6 @@ function CabinetModal(cabinet, description, cabinetEmail, pic, json) {
             Contact via email
           </a>
         }
-
-        <Button
-          content="Close"
-          labelPosition="right"
-          icon="checkmark"
-          onClick={() => setOpen(false)}
-          positive
-        />
       </Modal.Actions>
     </Modal>
   );
