@@ -12,6 +12,9 @@ import gql from "graphql-tag";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { useForm } from "../util/hooks";
 
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import Title from "../components/Title";
 import EventsAccordion from "../components/Events/EventsAccordion";
 
@@ -73,6 +76,7 @@ function Events() {
       }
       setErrors(false);
       setCreateEventModal(false);
+      toast.success('Event created');
     },
 
     onError(err) {
@@ -93,6 +97,7 @@ function Events() {
         <Grid>
           <Grid.Row>
             <Grid.Column>
+            <div>
               <Button
                 content="Create Event"
                 icon="pencil"
@@ -100,6 +105,8 @@ function Events() {
                 onClick={() => openModal("createEvent")}
                 floated="left"
               />
+              <ToastContainer />
+                 </div>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>

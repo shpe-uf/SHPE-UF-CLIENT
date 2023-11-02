@@ -94,6 +94,9 @@ function Points() {
       setErrors(false);
       setRedeemPointsModal(false);
       updateGetUser(userData);
+      toast.success("Point(s) redeemed succesfully", {
+        position: toast.POSITION.BOTTOM_CENTER,
+      });
     },
 
     onError(err) {
