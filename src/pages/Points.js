@@ -338,7 +338,7 @@ const FETCH_USER_QUERY = gql`
 
 const REDEEM_POINTS_MUTATION = gql`
   mutation redeemPoints($code: String!, $username: String!, $guests: Int!) {
-    redeemPoints(
+    redeemPoints( 
       redeemPointsInput: { code: $code, username: $username, guests: $guests }
     ) {
       points

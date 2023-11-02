@@ -9,7 +9,9 @@ import {
   Segment,
   Tab,
 } from "semantic-ui-react";
-import { useQuery } from "@apollo/react-hooks";
+
+import gql from "graphql-tag";
+import { useQuery, useMutation } from "@apollo/react-hooks";
 
 import Title from "../components/Title";
 import MembershipTable from "../components/MembershipTable";
@@ -89,6 +91,10 @@ function Archives() {
 
   const [deleteSHPEModal, setDeleteSHPEModal] = useState(false);
   const [deleteDoneModal, setDeleteDoneModal] = useState(false);
+
+  const [resetFall] = useMutation(RESET_PERCENTILE_MUTATION);
+  const [resetSpring] = useMutation(RESET_PERCENTILE_MUTATION);
+  const [resetSummer] = useMutation(RESET_PERCENTILE_MUTATION);
 
   const openModal = (name) => {
     if (name === "deleteSHPE") {
@@ -218,6 +224,71 @@ function Archives() {
     ),
   };
 
+  const percentilePane = {
+    menuItem: { content: "Reset Percentiles", icon: "warning sign" },
+    render: () => (
+      <Tab.Pane>
+        <Grid columns={3}>
+          <Grid.Row>
+            <h2>Reset Everyone's Percentiles</h2>
+          </Grid.Row>
+          <Grid.Row>
+            <p>
+              By pressing the Reset Percentiles button, you will permanently
+              delete all the percentiles in this website. Once deleted, there is
+              no coming back. Please make sure before deleting them.
+            </p>
+            <Grid.Column>
+              <h2>Fall Semester</h2>
+              <Button
+                color="red"
+                onClick={async () => {
+                  await resetFall({
+                    variables: {
+                      semester: "fallPercentile",
+                    },
+                  });
+                }}
+              >
+                Reset Fall Percentiles
+              </Button>
+            </Grid.Column>
+            <Grid.Column>
+              <h2>Spring Semester</h2>
+              <Button
+                color="red"
+                onClick={async () => {
+                  await resetSpring({
+                    variables: {
+                      semester: "springPercentile",
+                    },
+                  });
+                }}
+              >
+                Reset Spring Percentiles
+              </Button>
+            </Grid.Column>
+            <Grid.Column>
+              <h2>Summer Semester</h2>
+              <Button
+                color="red"
+                onClick={async () => {
+                  await resetSummer({
+                    variables: {
+                      semester: "summerPercentile",
+                    },
+                  });
+                }}
+              >
+                Reset Summer Percentiles
+              </Button>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </Tab.Pane>
+    ),
+  };
+
   const dangerPane = {
     menuItem: { content: "Danger Zone", icon: "warning sign" },
     render: () => (
@@ -264,6 +335,7 @@ function Archives() {
               listServPane,
               graduatingPane,
               alumniPane,
+              percentilePane,
               dangerPane,
             ]}
           />
@@ -343,5 +415,13 @@ function Archives() {
     </div>
   );
 }
+
+const RESET_PERCENTILE_MUTATION = gql`
+  mutation resetPercentile($semester: String!) {
+    resetPercentile(resetPercentile: { semester: $semester }) {
+      percentile
+    }
+  }
+`;
 
 export default Archives;
