@@ -37,14 +37,6 @@ function CabinetModal(cabinet, description, cabinetEmail, pic, json) {
 
             <p>{description}</p>
           </Grid.Column>
-
-          {/* President Modal does not contain director positions */}
-          {json ? (
-            <Grid.Column width={16}>
-              <Header>Director Positions</Header>
-              <Accordion defaultActiveIndex={0} panels={json} />
-            </Grid.Column>
-          ) : null}
         </Grid>
       </Modal.Content>
       <Modal.Actions>
