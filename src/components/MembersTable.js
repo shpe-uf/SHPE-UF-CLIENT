@@ -6,29 +6,29 @@ import {
   Icon,
   Button,
   Modal,
-  Grid
+  Grid,
 } from "semantic-ui-react";
 
 import UserProfile from "./UserProfile";
 import PermissionsForm from "./PermissionsForm";
 import PointsTable from "./UserEventsTable";
 
-function MembersTable({ users, refetch}) {
+function MembersTable({ users, refetch }) {
   const [userInfoModal, setUserInfoModal] = useState(false);
   const [userInfo, setUserInfo] = useState({});
   const [errors, setErrors] = useState({});
 
-  const openModal = name => {
+  const openModal = (name) => {
     if (name === "userInfo") {
       setUserInfoModal(true);
     }
   };
 
-  const closeModal = name => {
+  const closeModal = (name) => {
     if (name === "userInfo") {
       setUserInfo({});
       setUserInfoModal(false);
-      refetch()
+      refetch();
     }
   };
 
@@ -40,57 +40,49 @@ function MembersTable({ users, refetch}) {
   const UserProfileModal = () => {
     return (
       <Modal
-          open={userInfoModal}
-          size="large"
-          closeOnEscape={true}
-          closeOnDimmerClick={false}
-        >
-          <Modal.Header>
-            <h2>Member Info</h2>
-          </Modal.Header>
-          <Modal.Content>
-              <>
-                <UserProfile user={userInfo} isPublic={false}>
-                  <PermissionsForm userInfo={userInfo} />
-                </UserProfile>
-                <Grid>
-                  <Grid.Row>
-                    <Grid.Column>
-                      {Object.keys(errors).length > 0 && (
-                        <div className="ui error message">
-                          <ul className="list">
-                            {Object.values(errors).map(value => (
-                              <li key={value}>{value}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                    </Grid.Column>
-                  </Grid.Row>
-                  <Grid.Row>
-                    <Grid.Column>
-                      <PointsTable user={userInfo} />
-                    </Grid.Column>
-                  </Grid.Row>
-                </Grid>
-              </>
+        open={userInfoModal}
+        size="large"
+        closeOnEscape={true}
+        closeOnDimmerClick={false}
+      >
+        <Modal.Header>
+          <h2>Member Info</h2>
+          <Button
+            icon="close"
+            color="grey"
+            onClick={() => closeModal("userInfo")}
+          />
+        </Modal.Header>
+        <Modal.Content>
+          <>
+            <UserProfile user={userInfo} isPublic={false}>
+              <PermissionsForm userInfo={userInfo} />
+            </UserProfile>
             <Grid>
               <Grid.Row>
                 <Grid.Column>
-                  <Button
-                    type="reset"
-                    color="grey"
-                    onClick={() => closeModal("userInfo")}
-                  >
-                    Close
-                  </Button>
+                  {Object.keys(errors).length > 0 && (
+                    <div className="ui error message">
+                      <ul className="list">
+                        {Object.values(errors).map((value) => (
+                          <li key={value}>{value}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </Grid.Column>
+              </Grid.Row>
+              <Grid.Row>
+                <Grid.Column>
+                  <PointsTable user={userInfo} />
                 </Grid.Column>
               </Grid.Row>
             </Grid>
-          </Modal.Content>
-        </Modal>
-      )
-  }
+          </>
+        </Modal.Content>
+      </Modal>
+    );
+  };
 
   return (
     <>
@@ -151,7 +143,7 @@ function MembersTable({ users, refetch}) {
               ))}
           </Table.Body>
         </Table>
-        {userInfoModal && (<UserProfileModal/>)}
+        {userInfoModal && <UserProfileModal />}
       </div>
     </>
   );
