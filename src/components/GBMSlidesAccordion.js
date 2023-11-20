@@ -12,7 +12,9 @@ const slides = {
     I4:"https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Fall+2023+GBM+4+Image.png",
     P4:"https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Fall+2023+GBM+4.pdf",
     I5:"https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Fall+2023+GBM+5+Image.png",
-    P5: "https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Fall+2023+GBM+5.pdf"
+    P5:"https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Fall+2023+GBM+5.pdf",
+    I6:"https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Fall+2023+GBM+6+Image.png",
+    P6:"https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Fall+2023+GBM+6.pdf"
   }
   // fall: {
   //   I1:"https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Fall+2022+GBM+1.png",
@@ -98,6 +100,11 @@ export default class GBMSlidesAccordion extends Component {
                 <b>GBM 5</b>
                 <Divider horizontal/>
                 <Image src={slides.fall2023.I5} as="a" size="medium" href={slides.fall2023.P5} target="_blank"/>   
+              </Grid.Column>
+              <Grid.Column>
+                <b>GBM 6</b>
+                <Divider horizontal/>
+                <Image src={slides.fall2023.I6} as="a" size="medium" href={slides.fall2023.P6} target="_blank"/>   
               </Grid.Column>
             </Grid.Row>
         </Grid>
