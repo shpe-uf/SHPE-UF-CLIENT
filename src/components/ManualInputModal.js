@@ -125,19 +125,21 @@ const MANUAL_INPUT_MUTATION = gql`
     manualInput(
       manualInputInput: { username: $username, eventName: $eventName }
     ) {
+      id
       name
       code
       category
       expiration
-      semester
       request
-      attendance
       points
+      attendance
+      semester
+      createdAt
       users {
+        email
+        username
         firstName
         lastName
-        username
-        email
       }
     }
   }
