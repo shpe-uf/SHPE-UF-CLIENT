@@ -231,6 +231,40 @@ const CorporateSegment = () => (
     </div>
 )
 
+const LinksSegment = () => (
+    <div>
+        <br/>
+        <b>Checkout some of our additional resources with these links!</b>
+        <Divider/>
+        <List animated>
+            <List.Item href='https://linktr.ee/shpeuf?utm_source=linktree_profile_share&ltsid=606e08cd-0cad-412b-a9f8-252541adacc8 ' target='_blank'>
+                <b>Central SHPE UF Linktree</b>
+            </List.Item>
+            <List.Item href='https://linktr.ee/shpeufconvention' target='_blank'>
+                <b>National Convention Linktree</b>
+            </List.Item>
+            <List.Item href='https://linktr.ee/shpeufbootcamp' target='_blank'>
+                <b>Professional Development & Resources</b>
+            </List.Item>
+            <List.Item href='https://drive.google.com/drive/folders/1AP0N79ZLef9ilpCrp_hZR6uxHCGJoUvX' target='_blank'>
+                <b>Academic SHPEducation Resources</b>
+            </List.Item>
+            <List.Item href='https://linktr.ee/gradshpeuf' target='_blank'>
+                <b>Graduate School & Research Resources</b>
+            </List.Item>
+            <List.Item href='https://drive.google.com/drive/folders/1PPqsURVaA1sOufVkdfjrgcwaXpGocBSO' target='_blank'>
+                <b>SHPE Jr & Highschool Development Resources</b>
+            </List.Item>
+            <List.Item href='https://linktr.ee/shpeufchats' target='_blank'>
+                <b>SHPE Whatsapp Group Chats</b>
+            </List.Item>
+            <List.Item href='https://linktr.ee/shpeufphotos' target='_blank'>
+                <b>Event Photos</b>
+            </List.Item>
+        </List>
+    </div>
+)
+
 const OpenRow = ({ rowName }) => {
     if(rowName == 'Freshman 101 Slides') {
         return <F101Segment />
@@ -241,8 +275,12 @@ const OpenRow = ({ rowName }) => {
     if(rowName == 'GBM Slides') {
         return <GBMSlidesSegment />
     } 
-    if(rowName == 'Corporate')
+    if(rowName == 'Corporate') {
         return <CorporateSegment />
+    }
+    if(rowName == 'Links') {
+        return <LinksSegment />
+    }
 }
 
 
@@ -251,6 +289,7 @@ const panes = [
     { menuItem: 'Freshman 101 Slides', render: () => <Tab.Pane><OpenRow rowName={ 'Freshman 101 Slides' }/></Tab.Pane> },
     { menuItem: 'SHPE UF Media', render: () => <Tab.Pane><OpenRow rowName={ 'SHPE UF Media' }/></Tab.Pane> },
     { menuItem: 'Corporate', render: () => <Tab.Pane><OpenRow rowName={ 'Corporate' }/></Tab.Pane> },
+    { menuItem: 'Links', render: () => <Tab.Pane><OpenRow rowName={ 'Links' }/></Tab.Pane> },
   ]
 
 export default class ResourcesMenu extends Component {
