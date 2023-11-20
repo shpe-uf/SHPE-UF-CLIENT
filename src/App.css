@@ -537,13 +537,23 @@ h5 {
 }
 
 .points-podium {
-  font-family: "digital-font" !important;
+  font-family: "heading-font" !important;
   font-size: 3rem !important;
   text-transform: uppercase;
   letter-spacing: 3px;
   text-align: center;
   margin: 0px !important;
   color: var(--white);
+}
+
+.points-podium-header {
+  font-family: "heading-font" !important;
+  font-size: 2rem !important;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-align: center;
+  margin: 0px !important;
+  color: var(--accent-1-light-2);
 }
 
 .points-header {
@@ -557,13 +567,13 @@ h5 {
 }
 
 .points-podium-inverted {
-  font-family: "digital-font" !important;
-  font-size: 3rem !important;
+  font-family: "heading-font" !important;
+  font-size: 1rem !important;
   text-transform: uppercase;
   letter-spacing: 3px;
   text-align: center;
   margin: 0px !important;
-  color: var(--black);
+  color: var(--accent-1-light-2);
 }
 
 .fall {

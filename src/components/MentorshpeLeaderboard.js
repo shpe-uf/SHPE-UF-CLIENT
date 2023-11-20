@@ -35,82 +35,80 @@ const MentorshpeLeaderboard = () => {
 
   return (
     <div>
-      <h1>Top 10 Scores</h1>
       <Responsive minWidth={768}>
         <Grid columns={3}>
           <Grid.Row>
             <Grid.Column>
               <Segment vertical padded='very'></Segment>
                 <Segment vertical>
-                  <p className="points-podium-inverted">{secondPlace[0]}</p>
+                  <p className="points-podium-header">{secondPlace[0]}</p>
                 </Segment>
-                <div className="winter">
-                <Segment.Inline vertical textAlign='center'>
-                <Segment circular style={square} inverted color="grey">
+                <div className="summer">
+                <Segment vertical textAlign='center'>
                   <p className="points-podium">
                     2
                   </p>
-                  </Segment>
-                </Segment.Inline>
-                <Segment vertical>
-                  <p className="points-number">
-                    {secondPlace[1]}
-                  </p>
                 </Segment>
+                
                 <Segment vertical padded='very'></Segment>
                 </div>
+                <Segment vertical>
+                  <p className="points-podium-inverted">
+                    {secondPlace[1]} Points
+                  </p>
+                </Segment>
+                
             </Grid.Column>
             <Grid.Column textAlign='center'>
                 <Segment vertical>
-                  <p className="points-podium-inverted">{firstPlace[0]}</p>
+                  <p className="points-podium-header">{firstPlace[0]}</p>
                 </Segment>
-                 <div className="winter">
-                <Segment.Inline vertical textAlign='center'>
-                  <Segment circular style={square} inverted color="yellow">
+                 <div className="summer">
+                <Segment vertical textAlign='center'>
                   <p className="points-podium">
                     1
                     </p>
-                    </Segment>
-                </Segment.Inline>
-                <Segment vertical>
-                  <p className="points-number">
-                    {firstPlace[1]}
-                  </p>
                 </Segment>
                 <Segment vertical padded='very'></Segment>
                 <Segment vertical padded='very'></Segment>
               </div>
+
+              <Segment vertical>
+                  <p className="points-podium-inverted">
+                    {firstPlace[1]} Points
+                  </p>
+                </Segment>
             </Grid.Column>
             <Grid.Column>
             <Segment vertical padded='very'></Segment>
             <Segment vertical padded='very'></Segment>
                 <Segment vertical>
-                  <p className="points-podium-inverted">{thirdPlace[0]}</p>
+                  <p className="points-podium-header">{thirdPlace[0]}</p>
                 </Segment>
-                <div className="winter">
-                <Segment.Inline vertical>
-                <Segment circular style={square} inverted color="orange">
+                <div className="summer">
+                <Segment vertical>
                   <p className="points-podium">
                     3
                   </p>
-                  </Segment>
-                </Segment.Inline>
-                <Segment vertical>
-                  <p className="points-number">
-                  {thirdPlace[1]}
-                  </p>
                 </Segment>
               </div>
+
+              <Segment vertical>
+                  <p className="points-podium-inverted">
+                  {thirdPlace[1]} Points
+                  </p>
+                </Segment>
             </Grid.Column>
           </Grid.Row>
         </Grid>
       </Responsive>
       <ul>
+      <h1>Teams 4-10</h1>
       <Table striped selectable unstackable>
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell>Rank</Table.HeaderCell>
-              <Table.HeaderCell>Pair Hashtag</Table.HeaderCell>
+              <Table.HeaderCell>#</Table.HeaderCell>
+              <Table.HeaderCell>Team Name</Table.HeaderCell>
               <Table.HeaderCell textAlign="left">Points</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
