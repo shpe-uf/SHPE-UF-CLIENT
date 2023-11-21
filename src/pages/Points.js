@@ -19,6 +19,7 @@ import { useQuery, useMutation } from "@apollo/react-hooks";
 import { useForm } from "../util/hooks";
 import { AuthContext } from "../context/auth";
 
+import MentorshpeLeaderboard from "../components/MentorshpeLeaderboard";
 import Title from "../components/Title";
 import PointsBar from "../components/PointsBar";
 import UserEventsTable from "../components/UserEventsTable";
@@ -134,6 +135,11 @@ function Points() {
           <Menu.Item
             name="Your Points"
             active={activeItem === "Your Points"}
+            onClick={handleItemClick}
+          />
+          <Menu.Item
+            name="MentorSHPE"
+            active={activeItem === "MentorSHPE"}
             onClick={handleItemClick}
           />
           {/*<Menu.Item
@@ -260,6 +266,11 @@ function Points() {
             </Modal>
           </Segment>
         )}
+        {activeItem === "MentorSHPE" && (
+          <Segment attached="bottom">
+            <MentorshpeLeaderboard></MentorshpeLeaderboard>
+          </Segment>
+        )}
         {activeItem === "Tasks" && (
           <Segment attached="bottom">
             <Grid stackable>
@@ -338,7 +349,7 @@ const FETCH_USER_QUERY = gql`
 
 const REDEEM_POINTS_MUTATION = gql`
   mutation redeemPoints($code: String!, $username: String!, $guests: Int!) {
-    redeemPoints(
+    redeemPoints( 
       redeemPointsInput: { code: $code, username: $username, guests: $guests }
     ) {
       points
