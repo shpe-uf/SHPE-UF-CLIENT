@@ -19,11 +19,13 @@ function MyCalendar() {
     function showEvent(event){
         setEvent(event);
         setOpenModal(!openModal);
+        console.log('Current Event:', event);
     }
  
     function getAllEvents(){
         const oneYearAgo = new Date();
         oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+        console.log('https://www.googleapis.com/calendar/v3/calendars/'+calendarId+'/events?timeMin='+oneYearAgo.toISOString()+'&key='+API_KEY);
         fetch('https://www.googleapis.com/calendar/v3/calendars/'+calendarId+'/events?timeMin='+oneYearAgo.toISOString()+'&key='+API_KEY)
             .then(response => response.json())
             .then(data => setEvents(data.items));
@@ -37,6 +39,7 @@ function MyCalendar() {
     }
 
     function setEvents(dataItems){
+        console.log(allEvents);
         var allEvents = [];
         let allday = false;
         for(var i =0; i < dataItems.length; i++){
@@ -52,11 +55,12 @@ function MyCalendar() {
                 end: allday
                 ? fixAllDayEventHack(dataItems[i].end.date)
                 : new Date(dataItems[i].end.dateTime),
-                desc: dataItems[i].description ? dataItems[i].description : "",
+                desc: dataItems[i].description ? dataItems[i].description : "No description available",
                 resource: dataItems[i].htmlLink,
                 color: "ff0000",
             });
         }
+        console.log('All Events:', allEvents);
         getEvents(allEvents);
     }
 
@@ -82,9 +86,25 @@ function MyCalendar() {
             >
             <Modal.Header>{currEvent.title}</Modal.Header>
             <Modal.Content>
-                <Modal.Description>
-                <div style={{padding: '17px'}}>{ReactHTMLParser (currEvent.desc)}</div>
-                </Modal.Description>
+            <Modal.Content>
+    <Modal.Description>
+        <div style={{padding: '1% 10%' }}>
+            <strong>Description: </strong>
+            {ReactHTMLParser(currEvent.desc)}
+        </div>
+        <div style={{padding: '1% 10%' }}>
+        <div>
+        <strong>Start Time:</strong>{' '}
+        {moment(currEvent.start).format('MMMM Do YYYY, h:mm a')}
+    </div>
+    <div>
+        <strong>End Time:</strong>{' '}
+        {moment(currEvent.end).format('MMMM Do YYYY, h:mm a')}
+    </div>
+        </div>
+    </Modal.Description>
+</Modal.Content>
+
             </Modal.Content>
             <Modal.Actions>
                 <Button color='red' onClick={() => setOpenModal(false)}>
@@ -99,4 +119,3 @@ function MyCalendar() {
     )
 }
 export default MyCalendar;
- 
