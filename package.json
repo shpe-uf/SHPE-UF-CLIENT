@@ -25,6 +25,7 @@
     "react-csv": "^1.1.1",
     "react-dom": "^16.9.0",
     "react-html-parser": "^2.0.2",
+    "react-icons": "^4.12.0",
     "react-image-crop": "^8.6.5",
     "react-mapbox-gl": "^4.7.3",
     "react-router-dom": "^5.1.2",
@@ -33,7 +34,7 @@
     "react-toastify": "^5.4.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.88.2",
-    "victory": "^33.1.1"
+    "victory": "^36.6.12"
   },
   "scripts": {
     "start": "react-scripts start",
