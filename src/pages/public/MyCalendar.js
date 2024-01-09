@@ -89,7 +89,7 @@ function MyCalendar() {
     <Modal.Description>
         <div style={{padding: '1% 10%' }}>
             <strong>Description: </strong>
-            {ReactHTMLParser(currEvent.desc)}
+            {currEvent.desc}
         </div>
         <div style={{padding: '1% 10%' }}>
         <div>
