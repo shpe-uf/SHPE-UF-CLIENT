@@ -81,158 +81,169 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Home/>} />
             <Route exact path="/login"
-              component={
+              element={
                 <AuthRoute>
                   <Login/>
                 </AuthRoute>}
             />
             <Route exact path="/register"
-              component={
+              element={
                 <AuthRoute>
                   <Register/>
                 </AuthRoute>}
             />
-            <Route exact path="/register/alumni" component={RegisterAlumni} />
-            <Route exact path="/about" component={About} />
-            <Route exact path="/alumni" component={Alumni} />
-            <Route exact path="/eboard" component={EBoard} />
-            <Route exact path="/devteam" component={DevTeam} />
-            <Route exact path="/shpejr" component={ShpeJr} />
-            <Route exact path="/sponsors" component={Sponsors} />
-            <Route exact path="/contactus" component={ContactUs} />
-            <Route exact path="/calendar" component={MyCalendar} />
-            <Route exact path="/resources" component={Resources}/>
+            <Route exact path="/register/alumni" element={<RegisterAlumni/>} />
+            <Route exact path="/about" element={<About/>} />
+            <Route exact path="/alumni" element={<Alumni/>} />
+            <Route exact path="/eboard" element={<EBoard/>} />
+            <Route exact path="/devteam" element={<DevTeam/>} />
+            <Route exact path="/shpejr" element={<ShpeJr/>} />
+            <Route exact path="/sponsors" element={<Sponsors/>} />
+            <Route exact path="/contactus" element={<ContactUs/>} />
+            <Route exact path="/calendar" element={<MyCalendar/>} />
+            <Route exact path="/resources" element={<Resources/>}/>
             <Route exact path="/corporations"
-              component={
+              element={
                 <UserRoute>
                   <Corporations/>
                 </UserRoute>}
             />
-            <Route exact path="/reset/:token" component={ResetPassword} />
-            <Route exact path="/forgot" component={ForgotPassword} />
-            <Route exact path="/confirm/:id" component={Confirm} />
+            <Route exact path="/reset/:token" element={<ResetPassword/>} />
+            <Route exact path="/forgot" element={<ForgotPassword/>} />
+            <Route exact path="/confirm/:id" element={<Confirm/>} />
             <Route exact
               path="/profile"
-              component={
+              element={
                 <UserRoute>
                   <Profile/>
                 </UserRoute>}
             />
             <Route exact path="/points"
-              component={
+              element={
                 <UserRoute>
                   <Points/>
                 </UserRoute>}
             />
             <Route exact path="/alumnidirectory"
-              component={
+              element={
               <UserRoute>
                 <AlumniDirectory/>
               </UserRoute>}
             />
             <Route exact path="/reimbursementrequest"
-              component={
+              element={
                 <UserRoute
                   element={<ReimbursementRequest/>} 
                   user={decodedToken}
                 />}
             />
             <Route exact path="/shpeitonetwork"
-              component={
+              element={
                 <UserRoute>
                   <ShpeitoNetwork/>
                 </UserRoute>}
             />
             <Route exact path="/mentorshpe"
-              component={
+              element={
               <UserRoute>
                 <MentorSHPE/>
               </UserRoute>}
             />
             <Route exact path="/shperentals"
-              component={
+              element={
                 <UserRoute>
                   <ShpeRentals/>
                 </UserRoute>}
             />
             <Route exact path="/admin"
-              component={
-                <AdminRoute
-                  component={<Admin permission={permission}/>}
-                  security="admin"/>}
+              element={
+                <AdminRoute security="admin" permission={permission}>
+                  <Admin permission={permission}/>
+                </AdminRoute>}
             />
             <Route exact path="/admin/events" 
-              component={
+              element={
                 <AdminRoute
-                  component={<Events/>}
                   permission={permission}
-                  security="events"/>}
+                  security="events">
+                    <Events/>
+                </AdminRoute>}
             />
             <Route exact path="/admin/tasks"
-              component={
+              element={
                 <AdminRoute
-                  component={<Tasks/>}
                   permission={permission}
                   security="tasks"
-                />}
+                >
+                  <Tasks/>
+                </AdminRoute>}
             />
             <Route exact path="/admin/admin-resources"
-              component={
+              element={
                 <AdminRoute
-                  component={<AdminResources/>}
                   permission={permission}
                   security="adminresources"
-                />}
+                >
+                  <AdminResources/>
+                </AdminRoute>}
             />
             <Route exact path="/admin/members"
-              component={
+              element={
                 <AdminRoute
-                  component={<Members/>}
                   permission={permission}
                   security="members"
-                />}
+                >
+                  <Members/>
+                </AdminRoute>}
             />
             <Route exact path="/admin/requests"
-              component={
-              <AdminRoute
-                component={<Requests/>}
-                permission={permission}
-                security="requests"
-              />}
+              element={
+                <AdminRoute
+                  permission={permission}
+                  security="requests"
+                >
+                  <Requests/>
+                </AdminRoute>}
             />
             <Route exact path="/admin/statistics"
-              component={
+              element={
                 <AdminRoute 
-                  component={<Statistics/>}
                   permission={permission}
-                  security="statistics"/>}
+                  security="statistics"
+                >
+                  <Statistics/>
+                </AdminRoute>}
             />
             <Route exact path="/admin/archives"
-              component={
+              element={
                 <AdminRoute
-                  component={<Archives/>}
-                  permission={permission}/>}
+                  permission={permission}>
+                  <Archives/>
+                </AdminRoute>}
             />
             <Route exact path="/admin/corporatedatabase"
-              component={
+              element={
                 <AdminRoute
-                  component={<CorporateDatabase/>}
                   permission={permission}
-                  security="corporatedatabase"/>}
+                  security="corporatedatabase">
+                    <CorporateDatabase/>
+                </AdminRoute>}
             />
             <Route exact path="/admin/reimbursements"
-              component={
+              element={
                 <AdminRoute
-                component={<Reimbursements/>}
-                permission={permission}
-                security="reimbursements"/>}
+                  permission={permission}
+                  security="reimbursements">
+                    <Reimbursements/>
+                </AdminRoute>}
             />
             <Route exact path="/admin/receipts"
-              component={
+              element={
                 <AdminRoute
-                component={<RentalAdmin/>}
                 permission={permission}
-                security="rental"/>}
+                security="rental">
+                  <RentalAdmin/>
+                </AdminRoute>}
             />
           </Routes>
           </div>

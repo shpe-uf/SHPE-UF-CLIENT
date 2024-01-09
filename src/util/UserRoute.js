@@ -2,17 +2,10 @@ import React, { useContext } from "react";
 import { Route, Navigate } from "react-router-dom";
 import { AuthContext } from "../context/auth";
 
-function UserRoute({ component: Component, ...rest }) {
+function UserRoute({ children }) {
   const { user } = useContext(AuthContext);
 
-  return (
-    <Route
-      {...rest}
-      component={props =>
-        user ? <Component {...props}/> : <Navigate to="/" />
-      }
-    />
-  )
+  return user ? children : <Navigate to="/" />
 }
 
 export default UserRoute;
