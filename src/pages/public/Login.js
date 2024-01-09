@@ -45,7 +45,7 @@ function Login(props) {
   return (
     <div className="login">
       <div className="overlay-login">
-        <Media greaterThan="computer">
+        <Media greaterThanOrEqual="computer">
           <Container>
             <Grid>
               <Grid.Row centered>
@@ -185,7 +185,7 @@ function Login(props) {
             </Grid>
           </Container>
         </Media>
-        <Media at="mobile">
+        <Media lessThan="mobile">
           <Container>
             <Grid>
               <Grid.Row centered>
