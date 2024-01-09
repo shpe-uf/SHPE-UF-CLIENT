@@ -4,7 +4,7 @@ import ReceiptTable from "../components/ReceiptTable";
 import { Container, Tab, Loader } from "semantic-ui-react";
 
 import { FETCH_RECEIPTS_QUERY } from "../util/graphql";
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery } from "@apollo/client";
 
 function RentalAdmin() {
   let receipts = [];

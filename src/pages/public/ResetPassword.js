@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Form, Button, Container, Segment, Grid, Responsive } from "semantic-ui-react";
+import { Form, Button, Container, Segment, Grid } from "semantic-ui-react";
+import { Media } from "../../Media";
 import gql from "graphql-tag";
-import { useMutation } from "@apollo/react-hooks";
+import { useMutation } from "@apollo/client";
 
 import { useForm } from "../../util/hooks";
 
@@ -33,7 +34,7 @@ function ResetPassword(props){
   return (
     <div className="reset">
       <div className="overlay-reset">
-        <Responsive {...Responsive.onlyComputer}>
+        <Media greaterThanOrEqual="computer">
           <Container>
             <Grid>
               <Grid.Row centered>
@@ -83,8 +84,8 @@ function ResetPassword(props){
               </Grid.Row>
             </Grid>
           </Container>
-        </Responsive>
-        <Responsive {...Responsive.onlyTablet}>
+        </Media>
+        <Media at="tablet">
           <Container>
             <Grid>
               <Grid.Row centered>
@@ -134,8 +135,8 @@ function ResetPassword(props){
               </Grid.Row>
             </Grid>
           </Container>
-        </Responsive>
-        <Responsive {...Responsive.onlyMobile}>
+        </Media>
+        <Media lessThan="tablet">
           <Container>
             <Grid>
               <Grid.Row centered>
@@ -185,7 +186,7 @@ function ResetPassword(props){
               </Grid.Row>
             </Grid>
           </Container>
-        </Responsive>
+        </Media>
       </div>
     </div>
   );

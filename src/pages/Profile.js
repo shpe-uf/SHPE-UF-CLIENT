@@ -12,7 +12,7 @@ import {
   Label,
 } from "semantic-ui-react";
 import { ToastContainer, toast } from "react-toastify";
-import { useQuery, useMutation } from "@apollo/react-hooks";
+import { useQuery, useMutation } from "@apollo/client";
 import { useForm } from "../util/hooks";
 import { AuthContext } from "../context/auth";
 

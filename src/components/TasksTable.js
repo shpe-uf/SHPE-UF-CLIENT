@@ -11,7 +11,7 @@ import {
   Table,
 } from "semantic-ui-react";
 import gql from "graphql-tag";
-import { useMutation } from "@apollo/react-hooks";
+import { useMutation } from "@apollo/client";
 import { CSVLink } from "react-csv";
 
 import { FETCH_TASKS_QUERY } from "../util/graphql";

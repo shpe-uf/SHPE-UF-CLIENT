@@ -9,7 +9,7 @@ import {
   Loader,
 } from "semantic-ui-react";
 import gql from "graphql-tag";
-import { useQuery, useMutation } from "@apollo/react-hooks";
+import { useQuery, useMutation } from "@apollo/client";
 import { useForm } from "../util/hooks";
 
 import Title from "../components/Title";

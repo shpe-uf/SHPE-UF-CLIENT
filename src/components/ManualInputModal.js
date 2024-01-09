@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Grid, Button, Dropdown, Divider } from 'semantic-ui-react';
-import { useQuery, useMutation } from '@apollo/react-hooks';
+import { useQuery, useMutation } from '@apollo/client';
 import { FETCH_USERS_QUERY, FETCH_EVENTS_QUERY, FETCH_TASKS_QUERY } from '../util/graphql';
 import gql from 'graphql-tag';
 

@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery } from "@apollo/client";
 import {
   Menu,
   Container,
-  Responsive,
   Accordion,
   Icon,
   Segment,
   Grid,
 } from "semantic-ui-react";
+import { Media } from "../Media";
 import StatisticDisplay from "../components/StatisticDisplay";
 import Title from "../components/Title";
 
@@ -68,7 +68,7 @@ function Statistics() {
         <Grid>
           <Grid.Row>
             <Grid.Column>
-              <Responsive minWidth={992}>
+              <Media greaterThanOrEqual="computer">
                 <Menu fluid widths={5}>
                   <Menu.Item
                     name="Major"
@@ -121,9 +121,9 @@ function Statistics() {
                     <StatisticDisplay statData={ethnicityData} />
                   </Segment>
                 )}
-              </Responsive>
+              </Media>
 
-              <Responsive maxWidth={991}>
+              <Media lessThan="computer">
                 <Accordion fluid styled>
                   <Accordion.Title
                     name="Major"
@@ -185,7 +185,7 @@ function Statistics() {
                     <StatisticDisplay statData={ethnicityData} />
                   </Accordion.Content>
                 </Accordion>
-              </Responsive>
+              </Media>
             </Grid.Column>
           </Grid.Row>
         </Grid>

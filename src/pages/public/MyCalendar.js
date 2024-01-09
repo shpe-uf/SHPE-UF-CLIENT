@@ -3,10 +3,9 @@ import { Calendar, momentLocalizer} from 'react-big-calendar';
 import {Button, Modal} from 'semantic-ui-react';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import ReactHTMLParser from 'react-html-parser'; 
+import ReactHTMLParser from 'html-react-parser'; 
  
 const localizer = momentLocalizer(moment);
-require('dotenv').config(); 
 
 function MyCalendar() {
 
@@ -90,7 +89,7 @@ function MyCalendar() {
     <Modal.Description>
         <div style={{padding: '1% 10%' }}>
             <strong>Description: </strong>
-            {ReactHTMLParser(currEvent.desc)}
+            {currEvent.desc}
         </div>
         <div style={{padding: '1% 10%' }}>
         <div>

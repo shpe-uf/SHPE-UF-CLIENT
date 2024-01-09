@@ -3,10 +3,10 @@ import {
   Menu,
   Container,
   Dropdown,
-  Responsive,
   Button,
   Icon
 } from "semantic-ui-react";
+import { Media } from "../Media";
 import { Link } from "react-router-dom";
 
 import { AuthContext } from "../context/auth";
@@ -18,7 +18,7 @@ function MenuBar({permission}) {
 
   return (
     <>
-      <Responsive minWidth={992}>
+      <Media greaterThanOrEqual="computer">
         <Menu inverted>
           <Container>
             <Menu.Item className="brand-logo" as={Link} to="/">
@@ -107,9 +107,9 @@ function MenuBar({permission}) {
             </Menu.Menu>
           </Container>
         </Menu>
-      </Responsive>
+      </Media>
 
-      <Responsive maxWidth={991}>
+      <Media lessThan="computer">
         <Menu inverted>
           <Container>
                 <Dropdown
@@ -208,7 +208,7 @@ function MenuBar({permission}) {
             </Menu.Menu>
           </Container>
         </Menu>
-      </Responsive>
+      </Media>
     </>
   );
 }

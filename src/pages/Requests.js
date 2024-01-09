@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, Grid, Input } from "semantic-ui-react";
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery } from "@apollo/client";
 
 import { FETCH_REQUESTS_QUERY } from "../util/graphql";
 

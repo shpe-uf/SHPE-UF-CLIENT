@@ -1,6 +1,6 @@
 import React from "react";
-import { Container, Grid, Card, Responsive, Menu, MenuItem, Divider } from "semantic-ui-react";
-
+import { Container, Grid, Card, Divider } from "semantic-ui-react";
+import { Media } from "../../Media"
 import ResourcesCards from "../../components/ResourcesCards"
 import ResourcesMenu from "../../components/ResourcesMenu";
 
@@ -24,19 +24,10 @@ function Resources() {
             <Divider horizontal><h2>Additional Resources</h2></Divider>
             </Grid.Column>
             </Grid.Row>
-        <Responsive maxWidth={991}>
           <Card.Group itemsPerRow={4} centered doubling>
             <ResourcesCards />
           </Card.Group>
-        </Responsive>
         </Grid>
-      <Container>
-        <Responsive minWidth={992}>
-          <Card.Group itemsPerRow={4} centered doubling>
-            <ResourcesCards />
-          </Card.Group>
-        </Responsive>
-      </Container>
     </div>
   );
 }

@@ -12,7 +12,7 @@ import {
   Grid,
 } from "semantic-ui-react";
 import gql from "graphql-tag";
-import { useMutation } from "@apollo/react-hooks";
+import { useMutation } from "@apollo/client";
 import moment from "moment";
 import { CSVLink } from "react-csv";
 

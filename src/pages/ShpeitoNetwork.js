@@ -8,9 +8,9 @@ import {
   Button,
   Modal,
   Loader,
-  Responsive,
 } from "semantic-ui-react";
-import { useQuery } from "@apollo/react-hooks";
+import { Media } from "../Media";
+import { useQuery } from "@apollo/client";
 import { FETCH_USERS_QUERY } from "../util/graphql";
 
 import Title from "../components/Title";
@@ -94,7 +94,7 @@ function ShpeitoNetwork(props) {
     return (
       <>
         <p></p>
-        <Responsive minWidth="1200">
+        <Media greaterThanOrEqual="largeScreen">
           <Segment>
             <Card.Group itemsPerRow="4">
               {users.map((shpeito) => (
@@ -138,8 +138,8 @@ function ShpeitoNetwork(props) {
               ))}
             </Card.Group>
           </Segment>
-        </Responsive>
-        <Responsive maxWidth="1199">
+        </Media>
+        <Media lessThan="largeScreen">
           <Segment>
             <Card.Group itemsPerRow="1">
               {users.map((shpeito) => (
@@ -183,7 +183,7 @@ function ShpeitoNetwork(props) {
               ))}
             </Card.Group>
           </Segment>
-        </Responsive>
+        </Media>
       </>
     );
   }

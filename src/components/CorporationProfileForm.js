@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Image, Button, Form } from "semantic-ui-react";
-import { useMutation } from "@apollo/react-hooks";
+import { useMutation } from "@apollo/client";
 import gql from "graphql-tag";
 import ImageCrop from "./ImageCrop";
 

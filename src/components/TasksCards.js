@@ -6,12 +6,11 @@ import {
   Header,
   Grid,
   Card,
-  Responsive,
 } from "semantic-ui-react";
-
+import { Media } from "../Media";
 import "react-toastify/dist/ReactToastify.css";
 
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery } from "@apollo/client";
 
 import TaskCard from "../components/TaskCard";
 
@@ -42,21 +41,21 @@ function TasksCards({ user, refetch }) {
         </Segment>
       ) : (
         <Grid.Row centered="centered">
-          <Responsive {...Responsive.onlyComputer}>
+          <Media greaterThan="computer">
             <Card.Group itemsPerRow={3}>
               <TaskCard user={user} refetch={refetch} />
             </Card.Group>
-          </Responsive>
-          <Responsive {...Responsive.onlyTablet}>
+          </Media>
+          <Media at="tablet">
             <Card.Group itemsPerRow={2}>
               <TaskCard user={user} refetch={refetch} />
             </Card.Group>
-          </Responsive>
-          <Responsive {...Responsive.onlyMobile}>
+          </Media>
+          <Media lessThan="tablet">
             <Card.Group itemsPerRow={1}>
               <TaskCard user={user} refetch={refetch} />
             </Card.Group>
-          </Responsive>
+          </Media>
         </Grid.Row>
       )}{" "}
     </>

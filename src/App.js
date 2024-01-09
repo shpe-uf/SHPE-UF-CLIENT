@@ -1,5 +1,6 @@
 import React from "react";
-import { Redirect, BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import { Navigate, BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import { MediaContextProvider } from "./Media"
 
 import "semantic-ui-css/semantic.min.css";
 import "./App.css";
@@ -46,9 +47,9 @@ import ShpeitoNetwork from "./pages/ShpeitoNetwork";
 import RentalAdmin from "./pages/RentalAdmin";
 import ShpeRentals from "./pages/ShpeRentals";
 import MentorSHPE from "./pages/MentorShpe";
-import jwtDecode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import gql from "graphql-tag";
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery } from "@apollo/client";
 import AdminResources from "./pages/AdminResources";
 
 function App() {
@@ -73,52 +74,182 @@ function App() {
 
   return (
     <AuthProvider>
-      <Router>
-        <div style={{minHeight: "calc(100vh - 66px"}}>
-        <MenuBar permission={permission}/>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <AuthRoute exact path="/login" component={Login} />
-          <AuthRoute exact path="/register" component={Register} />
-          <Route exact path="/register/alumni" component={RegisterAlumni} />
-          <Route exact path="/about" component={About} />
-          <Route exact path="/alumni" component={Alumni} />
-          <Route exact path="/eboard" component={EBoard} />
-          <Route exact path="/devteam" component={DevTeam} />
-          <Route exact path="/shpejr" component={ShpeJr} />
-          <Route exact path="/sponsors" component={Sponsors} />
-          <Route exact path="/contactus" component={ContactUs} />
-          <Route exact path="/calendar" component={MyCalendar} />
-          <Route exact path="/resources" component={Resources}/>
-          <UserRoute exact path="/corporations" component={Corporations} />
-          <Route exact path="/reset/:token" component={ResetPassword} />
-          <Route exact path="/forgot" component={ForgotPassword} />
-          <Route exact path="/confirm/:id" component={Confirm} />
-          <UserRoute exact path="/profile" component={Profile} />
-          <UserRoute exact path="/points" component={Points} />
-          <UserRoute exact path="/alumnidirectory" component={AlumniDirectory} />
-          <UserRoute exact path="/reimbursementrequest" component={() => <ReimbursementRequest user={decodedToken}/>} />
-          <UserRoute exact path="/shpeitonetwork" component={ShpeitoNetwork}/>
-          <UserRoute exact path="/mentorshpe" component={MentorSHPE}/>
-          <UserRoute exact path="/shperentals" component={ShpeRentals} />
-          <AdminRoute exact path="/admin" component={() => <Admin permission={permission}/>} permission={permission} security="admin"/>
-          <AdminRoute exact path="/admin/events" component={Events} permission={permission} security="events"/>
-          <AdminRoute exact path="/admin/tasks" component={Tasks} permission={permission} security="tasks"/>
-          <AdminRoute exact path="/admin/admin-resources" component={AdminResources} permission={permission} security="adminresources"/>
-          <AdminRoute exact path="/admin/members" component={Members} permission={permission} security="members"/>
-          <AdminRoute exact path="/admin/requests" component={Requests} permission={permission} security="requests"/>
-          <AdminRoute exact path="/admin/statistics" component={Statistics} permission={permission} security="statistics"/>
-          <AdminRoute exact path="/admin/archives" component={Archives} permission={permission}/>
-          <AdminRoute exact path="/admin/corporatedatabase" component={CorporateDatabase} permission={permission} security="corporatedatabase"/>
-          <AdminRoute exact path="/admin/reimbursements" component={Reimbursements} permission={permission} security="reimbursements"/>
-          <AdminRoute exact path="/admin/receipts" component={RentalAdmin} permission={permission} security="rental"/>
-          <Route>
-            <Redirect to="/"/>
-          </Route>
-        </Switch>
-        </div>
-        <Footer />
-      </Router>
+      <MediaContextProvider>  
+        <Router>
+          <div style={{minHeight: "calc(100vh - 66px"}}>
+          <MenuBar permission={permission}/>
+          <Routes>
+            <Route exact path="/" element={<Home/>} />
+            <Route exact path="/login"
+              element={
+                <AuthRoute>
+                  <Login/>
+                </AuthRoute>}
+            />
+            <Route exact path="/register"
+              element={
+                <AuthRoute>
+                  <Register/>
+                </AuthRoute>}
+            />
+            <Route exact path="/register/alumni" element={<RegisterAlumni/>} />
+            <Route exact path="/about" element={<About/>} />
+            <Route exact path="/alumni" element={<Alumni/>} />
+            <Route exact path="/eboard" element={<EBoard/>} />
+            <Route exact path="/devteam" element={<DevTeam/>} />
+            <Route exact path="/shpejr" element={<ShpeJr/>} />
+            <Route exact path="/sponsors" element={<Sponsors/>} />
+            <Route exact path="/contactus" element={<ContactUs/>} />
+            <Route exact path="/calendar" element={<MyCalendar/>} />
+            <Route exact path="/resources" element={<Resources/>}/>
+            <Route exact path="/corporations"
+              element={
+                <UserRoute>
+                  <Corporations/>
+                </UserRoute>}
+            />
+            <Route exact path="/reset/:token" element={<ResetPassword/>} />
+            <Route exact path="/forgot" element={<ForgotPassword/>} />
+            <Route exact path="/confirm/:id" element={<Confirm/>} />
+            <Route exact
+              path="/profile"
+              element={
+                <UserRoute>
+                  <Profile/>
+                </UserRoute>}
+            />
+            <Route exact path="/points"
+              element={
+                <UserRoute>
+                  <Points/>
+                </UserRoute>}
+            />
+            <Route exact path="/alumnidirectory"
+              element={
+              <UserRoute>
+                <AlumniDirectory/>
+              </UserRoute>}
+            />
+            <Route exact path="/reimbursementrequest"
+              element={
+                <UserRoute
+                  element={<ReimbursementRequest/>} 
+                  user={decodedToken}
+                />}
+            />
+            <Route exact path="/shpeitonetwork"
+              element={
+                <UserRoute>
+                  <ShpeitoNetwork/>
+                </UserRoute>}
+            />
+            <Route exact path="/mentorshpe"
+              element={
+              <UserRoute>
+                <MentorSHPE/>
+              </UserRoute>}
+            />
+            <Route exact path="/shperentals"
+              element={
+                <UserRoute>
+                  <ShpeRentals/>
+                </UserRoute>}
+            />
+            <Route exact path="/admin"
+              element={
+                <AdminRoute security="admin" permission={permission}>
+                  <Admin permission={permission}/>
+                </AdminRoute>}
+            />
+            <Route exact path="/admin/events" 
+              element={
+                <AdminRoute
+                  permission={permission}
+                  security="events">
+                    <Events/>
+                </AdminRoute>}
+            />
+            <Route exact path="/admin/tasks"
+              element={
+                <AdminRoute
+                  permission={permission}
+                  security="tasks"
+                >
+                  <Tasks/>
+                </AdminRoute>}
+            />
+            <Route exact path="/admin/admin-resources"
+              element={
+                <AdminRoute
+                  permission={permission}
+                  security="adminresources"
+                >
+                  <AdminResources/>
+                </AdminRoute>}
+            />
+            <Route exact path="/admin/members"
+              element={
+                <AdminRoute
+                  permission={permission}
+                  security="members"
+                >
+                  <Members/>
+                </AdminRoute>}
+            />
+            <Route exact path="/admin/requests"
+              element={
+                <AdminRoute
+                  permission={permission}
+                  security="requests"
+                >
+                  <Requests/>
+                </AdminRoute>}
+            />
+            <Route exact path="/admin/statistics"
+              element={
+                <AdminRoute 
+                  permission={permission}
+                  security="statistics"
+                >
+                  <Statistics/>
+                </AdminRoute>}
+            />
+            <Route exact path="/admin/archives"
+              element={
+                <AdminRoute
+                  permission={permission}>
+                  <Archives/>
+                </AdminRoute>}
+            />
+            <Route exact path="/admin/corporatedatabase"
+              element={
+                <AdminRoute
+                  permission={permission}
+                  security="corporatedatabase">
+                    <CorporateDatabase/>
+                </AdminRoute>}
+            />
+            <Route exact path="/admin/reimbursements"
+              element={
+                <AdminRoute
+                  permission={permission}
+                  security="reimbursements">
+                    <Reimbursements/>
+                </AdminRoute>}
+            />
+            <Route exact path="/admin/receipts"
+              element={
+                <AdminRoute
+                permission={permission}
+                security="rental">
+                  <RentalAdmin/>
+                </AdminRoute>}
+            />
+          </Routes>
+          </div>
+          <Footer />
+        </Router>
+      </MediaContextProvider>
     </AuthProvider>
   );
 }

@@ -1,5 +1,6 @@
 import React from 'react';
-import {Card, Container, Responsive } from 'semantic-ui-react'
+import { Card, Container } from 'semantic-ui-react';
+import { Media } from "../Media"; 
 import JrSchoolCards from './JrSchoolCards';
 
 const SJrSchools = () =>{
@@ -8,16 +9,16 @@ const SJrSchools = () =>{
       <h2> Partner Schools</h2>
       <br></br>
      <Container>
-      <Responsive minWidth={992}>
+      <Media greaterThanOrEqual="computer">
         <Card.Group itemsPerRow={3}>
           <JrSchoolCards/>
         </Card.Group>
-      </Responsive>
-      <Responsive maxWidth={991}>
+      </Media>
+      <Media lessThan="computer">
         <Card.Group itemsPerRow={1}>
           <JrSchoolCards/>
         </Card.Group>
-      </Responsive>
+      </Media>
      </Container>
     </div>
   );

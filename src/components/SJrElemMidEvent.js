@@ -2,8 +2,8 @@ import React from "react"
 import {
   Container,
   Grid,
-  Responsive,
 } from "semantic-ui-react";
+import { Media } from "../Media";
 import JrEventModal from "./JrEventModal";
 import JrSlideshow from "./JrSlideshow";
 
@@ -120,7 +120,7 @@ const SJrElemMidEvent = () => {
       </p>
       <div className='SJrElemMidEvent'>
         <div>
-          <Responsive minWidth={992}>
+          <Media greaterThanOrEqual="computer">
             <Grid columns={2}>
               <Grid.Column width={8}>
                 {Events()}
@@ -129,14 +129,14 @@ const SJrElemMidEvent = () => {
                 {slideshow(slideDeck)}
               </Grid.Column>
             </Grid>
-          </Responsive>
-          <Responsive maxWidth={991}>
+          </Media>
+          <Media lessThan="computer">
             <Grid>
               <Grid.Column>
                 {Events()}
               </Grid.Column>
             </Grid>
-          </Responsive>
+          </Media>
         </div>
       </div>
     </Container>

@@ -5,9 +5,9 @@ import {
   Container,
   Segment,
   Grid,
-  Responsive,
 } from "semantic-ui-react";
-import { useMutation } from "@apollo/react-hooks";
+import { Media } from "../../Media";
+import { useMutation } from "@apollo/client";
 import gql from "graphql-tag";
 
 import { AuthContext } from "../../context/auth";
@@ -45,7 +45,7 @@ function Login(props) {
   return (
     <div className="login">
       <div className="overlay-login">
-        <Responsive {...Responsive.onlyComputer}>
+        <Media greaterThanOrEqual="computer">
           <Container>
             <Grid>
               <Grid.Row centered>
@@ -114,8 +114,8 @@ function Login(props) {
               </Grid.Row>
             </Grid>
           </Container>
-        </Responsive>
-        <Responsive {...Responsive.onlyTablet}>
+        </Media>
+        <Media at="tablet">
           <Container>
             <Grid>
               <Grid.Row centered>
@@ -184,8 +184,8 @@ function Login(props) {
               </Grid.Row>
             </Grid>
           </Container>
-        </Responsive>
-        <Responsive {...Responsive.onlyMobile}>
+        </Media>
+        <Media lessThan="tablet">
           <Container>
             <Grid>
               <Grid.Row centered>
@@ -254,7 +254,7 @@ function Login(props) {
               </Grid.Row>
             </Grid>
           </Container>
-        </Responsive>
+        </Media>
       </div>
     </div>
   );

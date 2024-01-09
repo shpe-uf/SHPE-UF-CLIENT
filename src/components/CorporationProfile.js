@@ -6,10 +6,10 @@ import {
   List,
   Divider,
   Container,
-  Responsive,
   Icon,
   Label,
 } from "semantic-ui-react";
+import { Media } from "../Media"
 
 function CorporationProfile({ corporation }) {
   return (
@@ -24,7 +24,7 @@ function CorporationProfile({ corporation }) {
             </p>
             <Image src={corporation.logo} size="large"></Image>
             <Divider hidden />
-            <Responsive minWidth={768} maxWidth={999} as={Container}>
+            <Media at="tablet" as={Container}>
               <Button href={corporation.applyLink} positive floated="left">
                 <Icon name="paper plane" size="massive" />
               </Button>
@@ -32,8 +32,8 @@ function CorporationProfile({ corporation }) {
               <Button href={corporation.newsLink} color="blue" floated="right">
                 <Icon name="newspaper outline" size="massive" />
               </Button>
-            </Responsive>
-            <Responsive minWidth={360} maxWidth={766}>
+            </Media>
+            <Media lessThan="tablet">
               <Button
                 href={corporation.applyLink}
                 icon="paper plane"
@@ -49,8 +49,8 @@ function CorporationProfile({ corporation }) {
                 content="News"
                 floated="right"
               />
-            </Responsive>
-            <Responsive minWidth={1000}>
+            </Media>
+            <Media greaterThanOrEqual="computer">
               <Button
                 href={corporation.applyLink}
                 icon="paper plane"
@@ -67,7 +67,7 @@ function CorporationProfile({ corporation }) {
                 content="News"
                 floated="right"
               />
-            </Responsive>
+            </Media>
             <h4>Additional Information</h4>
             <List>
               <List.Item>

@@ -5,10 +5,10 @@ import {
   Container,
   Segment,
   Message,
-  Responsive,
   Grid
 } from "semantic-ui-react";
-import { useMutation } from "@apollo/react-hooks";
+import { Media } from "../../Media";
+import { useMutation } from "@apollo/client";
 import gql from "graphql-tag";
 
 import { useForm } from "../../util/hooks";
@@ -268,7 +268,7 @@ function RegisterAlumni(props) {
             </Segment.Group>
           ) : (
             <>
-              <Responsive {...Responsive.onlyComputer}>
+              <Media greaterThanOrEqual="computer">
                 <Grid>
                   <Grid.Row centered>
                     <Grid.Column width={8}>
@@ -286,8 +286,8 @@ function RegisterAlumni(props) {
                     </Grid.Column>
                   </Grid.Row>
                 </Grid>
-              </Responsive>
-              <Responsive {...Responsive.onlyTablet}>
+              </Media>
+              <Media at="tablet">
                 <Grid>
                   <Grid.Row centered>
                     <Grid.Column width={12}>
@@ -305,8 +305,8 @@ function RegisterAlumni(props) {
                     </Grid.Column>
                   </Grid.Row>
                 </Grid>
-              </Responsive>
-              <Responsive {...Responsive.onlyMobile}>
+              </Media>
+              <Media lessThan="tablet">
                 <Grid>
                   <Grid.Row centered>
                     <Grid.Column width={16}>
@@ -324,7 +324,7 @@ function RegisterAlumni(props) {
                     </Grid.Column>
                   </Grid.Row>
                 </Grid>
-              </Responsive>
+              </Media>
             </>
           )}
         </Container>

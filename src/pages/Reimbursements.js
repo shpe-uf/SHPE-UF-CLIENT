@@ -11,7 +11,7 @@ import {
   Input,
   Popup,
 } from "semantic-ui-react";
-import { useQuery, useMutation } from "@apollo/react-hooks";
+import { useQuery, useMutation } from "@apollo/client";
 import { CSVLink } from "react-csv";
 
 import Title from "../components/Title";
