@@ -50,7 +50,7 @@ function BookmarkedTasksCards({ user, refetch }) {
         </Segment>
       ) : (
         <Grid.Row centered="centered">
-          <Media at="computer">
+          <Media greaterThanOrEqual="computer">
             <Card.Group itemsPerRow={3}>
               <BookmarkedTaskCard user={user} refetch={refetch} />
             </Card.Group>
@@ -60,7 +60,7 @@ function BookmarkedTasksCards({ user, refetch }) {
               <BookmarkedTaskCard user={user} refetch={refetch} />
             </Card.Group>
           </Media>
-          <Media at="mobile">
+          <Media lessThan="tablet">
             <Card.Group itemsPerRow={1}>
               <BookmarkedTaskCard user={user} refetch={refetch} />
             </Card.Group>

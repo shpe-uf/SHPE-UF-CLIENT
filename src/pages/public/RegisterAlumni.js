@@ -268,7 +268,7 @@ function RegisterAlumni(props) {
             </Segment.Group>
           ) : (
             <>
-              <Media at="Computer">
+              <Media greaterThanOrEqual="computer">
                 <Grid>
                   <Grid.Row centered>
                     <Grid.Column width={8}>
@@ -306,7 +306,7 @@ function RegisterAlumni(props) {
                   </Grid.Row>
                 </Grid>
               </Media>
-              <Media at="mobile">
+              <Media lessThan="tablet">
                 <Grid>
                   <Grid.Row centered>
                     <Grid.Column width={16}>

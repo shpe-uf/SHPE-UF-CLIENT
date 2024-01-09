@@ -94,7 +94,7 @@ function ShpeitoNetwork(props) {
     return (
       <>
         <p></p>
-        <Media greaterThan="largeScreen">
+        <Media greaterThanOrEqual="largeScreen">
           <Segment>
             <Card.Group itemsPerRow="4">
               {users.map((shpeito) => (

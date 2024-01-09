@@ -12,7 +12,7 @@ function Admin({permission}) {
     <div className="body">
       <Title title="Admin Panel" />
       <Container>
-        <Media greaterThan="computer">
+        <Media greaterThanOrEqual="computer">
           <Grid columns={3}>
             <AdminPanel permission={permission}/>
           </Grid>
@@ -22,7 +22,7 @@ function Admin({permission}) {
             <AdminPanel permission={permission}/>
           </Grid>
         </Media>
-        <Media at="mobile">
+        <Media lessThan="tablet">
           <Grid columns={1}>
             <AdminPanel permission={permission}/>
           </Grid>

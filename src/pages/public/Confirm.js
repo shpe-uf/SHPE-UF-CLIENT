@@ -73,7 +73,7 @@ function Confirm(props){
                 </Grid>
               </Container>
             </Media>
-            <Media at="mobile">
+            <Media lessThan="tablet">
               <Container>
                 <Grid>
                   <Grid.Row centered>

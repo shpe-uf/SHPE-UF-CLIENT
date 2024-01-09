@@ -185,7 +185,7 @@ function Login(props) {
             </Grid>
           </Container>
         </Media>
-        <Media lessThan="mobile">
+        <Media lessThan="tablet">
           <Container>
             <Grid>
               <Grid.Row centered>

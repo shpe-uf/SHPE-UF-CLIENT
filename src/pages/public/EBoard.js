@@ -15,7 +15,7 @@ function EBoard() {
       </div>
 
       <Container>
-        <Media greaterThan="computer">
+        <Media greaterThanOrEqual="computer">
           <Card.Group itemsPerRow={3}>
             <EBoardCards />
           </Card.Group>

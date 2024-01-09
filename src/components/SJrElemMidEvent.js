@@ -120,7 +120,7 @@ const SJrElemMidEvent = () => {
       </p>
       <div className='SJrElemMidEvent'>
         <div>
-          <Media greaterThan="computer">
+          <Media greaterThanOrEqual="computer">
             <Grid columns={2}>
               <Grid.Column width={8}>
                 {Events()}

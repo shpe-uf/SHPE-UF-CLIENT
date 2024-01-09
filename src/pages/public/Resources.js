@@ -24,19 +24,10 @@ function Resources() {
             <Divider horizontal><h2>Additional Resources</h2></Divider>
             </Grid.Column>
             </Grid.Row>
-        <Media lessThan="computer">
           <Card.Group itemsPerRow={4} centered doubling>
             <ResourcesCards />
           </Card.Group>
-        </Media>
         </Grid>
-      <Container>
-        <Media greaterThanOrEqual="computer">
-          <Card.Group itemsPerRow={4} centered doubling>
-            <ResourcesCards />
-          </Card.Group>
-        </Media>
-      </Container>
     </div>
   );
 }

@@ -15,7 +15,7 @@ function DevTeam() {
       </div>
 
       <Container>
-        <Media greaterThan="computer">
+        <Media greaterThanOrEqual="computer">
           <Card.Group itemsPerRow={3}>
             <DevTeamCards />
           </Card.Group>

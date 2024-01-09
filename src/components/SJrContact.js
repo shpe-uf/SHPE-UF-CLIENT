@@ -37,7 +37,7 @@ const SJrContact = () =>{
       <h1>
         Contact Us
       </h1>
-      <Media greaterThan="computer">
+      <Media greaterThanOrEqual="computer">
       <Grid divided='vertically'>
         <Grid.Row columns={2}>
           <Grid.Column style={{ display:'flex', alignItems:'center'}}>

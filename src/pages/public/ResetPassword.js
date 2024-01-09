@@ -34,7 +34,7 @@ function ResetPassword(props){
   return (
     <div className="reset">
       <div className="overlay-reset">
-        <Media at="computer">
+        <Media greaterThanOrEqual="computer">
           <Container>
             <Grid>
               <Grid.Row centered>
@@ -136,7 +136,7 @@ function ResetPassword(props){
             </Grid>
           </Container>
         </Media>
-        <Media at="mobile">
+        <Media lessThan="tablet">
           <Container>
             <Grid>
               <Grid.Row centered>

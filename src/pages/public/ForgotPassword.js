@@ -39,7 +39,7 @@ function ForgotPassword(props){
   return (
     <div className="reset">
       <div className="overlay-reset">
-        <Media greaterThan="computer">
+        <Media greaterThanOrEqual="computer">
           <Container>
             <Grid>
               <Grid.Row centered>
@@ -137,7 +137,7 @@ function ForgotPassword(props){
             </Grid>
           </Container>
         </Media>
-        <Media at="mobile">
+        <Media lessThan="tablet">
           <Container>
             <Grid>
               <Grid.Row centered>

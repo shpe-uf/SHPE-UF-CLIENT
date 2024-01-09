@@ -51,7 +51,7 @@ function TasksCards({ user, refetch }) {
               <TaskCard user={user} refetch={refetch} />
             </Card.Group>
           </Media>
-          <Media at="mobile">
+          <Media lessThan="tablet">
             <Card.Group itemsPerRow={1}>
               <TaskCard user={user} refetch={refetch} />
             </Card.Group>

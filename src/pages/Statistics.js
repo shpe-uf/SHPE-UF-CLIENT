@@ -68,7 +68,7 @@ function Statistics() {
         <Grid>
           <Grid.Row>
             <Grid.Column>
-              <Media greaterThan="computer">
+              <Media greaterThanOrEqual="computer">
                 <Menu fluid widths={5}>
                   <Menu.Item
                     name="Major"

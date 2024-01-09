@@ -9,7 +9,7 @@ const SJrSchools = () =>{
       <h2> Partner Schools</h2>
       <br></br>
      <Container>
-      <Media greaterThan="computer">
+      <Media greaterThanOrEqual="computer">
         <Card.Group itemsPerRow={3}>
           <JrSchoolCards/>
         </Card.Group>

@@ -24,7 +24,7 @@ function CorporationProfile({ corporation }) {
             </p>
             <Image src={corporation.logo} size="large"></Image>
             <Divider hidden />
-            <Media at="computer" as={Container}>
+            <Media at="tablet" as={Container}>
               <Button href={corporation.applyLink} positive floated="left">
                 <Icon name="paper plane" size="massive" />
               </Button>
@@ -33,7 +33,7 @@ function CorporationProfile({ corporation }) {
                 <Icon name="newspaper outline" size="massive" />
               </Button>
             </Media>
-            <Media at="tablet">
+            <Media lessThan="tablet">
               <Button
                 href={corporation.applyLink}
                 icon="paper plane"
@@ -50,7 +50,7 @@ function CorporationProfile({ corporation }) {
                 floated="right"
               />
             </Media>
-            <Media at="computer">
+            <Media greaterThanOrEqual="computer">
               <Button
                 href={corporation.applyLink}
                 icon="paper plane"

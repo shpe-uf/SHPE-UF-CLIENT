@@ -5,7 +5,7 @@ import { Media } from "../Media"
 function PointsBar({ user }) {
   return (
     <>
-      <Media at="tablet">
+      <Media greaterThanOrEqual="tablet">
         <Grid columns={3}>
           <Grid.Row>
             <Grid.Column>
@@ -62,7 +62,7 @@ function PointsBar({ user }) {
           </Grid.Row>
         </Grid>
       </Media>
-      <Media at="tablet">
+      <Media lessThan="tablet">
         <Grid>
           <Grid.Row>
             <Grid.Column>
