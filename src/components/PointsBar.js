@@ -1,10 +1,11 @@
 import React from "react";
-import { Grid, Responsive, Segment } from "semantic-ui-react";
+import { Grid,  Segment } from "semantic-ui-react";
+import { Media } from "../Media"
 
 function PointsBar({ user }) {
   return (
     <>
-      <Responsive minWidth={768}>
+      <Media at="tablet">
         <Grid columns={3}>
           <Grid.Row>
             <Grid.Column>
@@ -60,8 +61,8 @@ function PointsBar({ user }) {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-      </Responsive>
-      <Responsive maxWidth={767}>
+      </Media>
+      <Media at="tablet">
         <Grid>
           <Grid.Row>
             <Grid.Column>
@@ -121,7 +122,7 @@ function PointsBar({ user }) {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-      </Responsive>
+      </Media>
     </>
   );
 }

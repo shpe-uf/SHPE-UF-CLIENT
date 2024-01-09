@@ -9,7 +9,7 @@ import {
   Segment,
   Loader,
 } from "semantic-ui-react";
-import { useQuery, useMutation } from "@apollo/react-hooks";
+import { useQuery, useMutation } from "@apollo/client";
 import CorporationProfile from "../components/CorporationProfile";
 import Title from "../components/Title";
 import CorporateCard from "../components/CorporateCard";

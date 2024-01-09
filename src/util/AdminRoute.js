@@ -1,14 +1,14 @@
 import React from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Route, Navigate } from "react-router-dom";
 
 function AdminRoute({ component: Component, permission, security, ...rest }) {
   return (
     <Route
       {...rest}
-      render={props =>
+      component={props =>
         <>
         {(permission.includes('super') || permission.includes(security)) && <Component {...props}/>}
-        {(permission !== "" && (!permission.includes('super') && !permission.includes(security))) && <Redirect to="/"/>}
+        {(permission !== "" && (!permission.includes('super') && !permission.includes(security))) && <Navigate to="/"/>}
         </>
       }
     />

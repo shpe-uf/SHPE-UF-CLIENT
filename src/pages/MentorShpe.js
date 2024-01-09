@@ -2,7 +2,7 @@ import React from "react";
 import {
   Container,
   Grid,
-  Responsive,
+  
   Image
 } from "semantic-ui-react";
 

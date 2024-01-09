@@ -9,7 +9,7 @@ import {
   Image,
 } from "semantic-ui-react";
 import gql from "graphql-tag";
-import { useQuery, useMutation } from "@apollo/react-hooks";
+import { useQuery, useMutation } from "@apollo/client";
 import { CSVLink } from "react-csv";
 
 import { useForm } from "../util/hooks";

@@ -1,5 +1,6 @@
 import React from 'react'
-import { Card, Modal, Grid, Button, Icon, Responsive} from "semantic-ui-react";
+import { Card, Modal, Grid, Button, Icon } from "semantic-ui-react";
+import { Media } from "../Media";
 
 function contact(email) {
   return JRModal(contact, email);
@@ -36,7 +37,7 @@ const SJrContact = () =>{
       <h1>
         Contact Us
       </h1>
-      <Responsive minWidth={992}>
+      <Media greaterThan="computer">
       <Grid divided='vertically'>
         <Grid.Row columns={2}>
           <Grid.Column style={{ display:'flex', alignItems:'center'}}>
@@ -73,9 +74,9 @@ const SJrContact = () =>{
           </Grid.Column>
         </Grid.Row>
       </Grid>
-      </Responsive>
+      </Media>
 
-      <Responsive maxWidth={991}>
+      <Media lessThan="computer">
       <Grid divided='vertically'>
         <Grid.Row columns={1}>
           <Grid.Column style={{ display:'flex', alignItems:'center'}}>
@@ -112,7 +113,7 @@ const SJrContact = () =>{
           </Grid.Column>
         </Grid.Row>
       </Grid>
-      </Responsive>
+      </Media>
     </div>
   );
 };

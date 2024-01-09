@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Card, Button, Icon } from "semantic-ui-react";
-import { useQuery, useMutation } from "@apollo/react-hooks";
+import { useQuery, useMutation } from "@apollo/client";
 import gql from "graphql-tag";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

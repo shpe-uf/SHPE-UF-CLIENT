@@ -1,6 +1,6 @@
 import React from "react";
-import { Container, Card, Responsive } from "semantic-ui-react";
-
+import { Container, Card } from "semantic-ui-react";
+import { Media } from "../../Media";
 import DevTeamCards from "../../components/DevTeamCards";
 
 function DevTeam() {
@@ -15,16 +15,16 @@ function DevTeam() {
       </div>
 
       <Container>
-        <Responsive minWidth={992}>
+        <Media greaterThan="computer">
           <Card.Group itemsPerRow={3}>
             <DevTeamCards />
           </Card.Group>
-        </Responsive>
-        <Responsive maxWidth={991}>
+        </Media>
+        <Media lessThan="computer">
           <Card.Group itemsPerRow={1}>
             <DevTeamCards />
           </Card.Group>
-        </Responsive>
+        </Media>
       </Container>
     </div>
   );

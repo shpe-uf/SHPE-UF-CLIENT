@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Grid } from "semantic-ui-react";
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery } from "@apollo/client";
 
 import Title from "../components/Title";
 import AlumniMap from "../components/AlumniMap";

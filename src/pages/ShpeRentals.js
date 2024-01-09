@@ -12,7 +12,7 @@ import {
   Dropdown,
   Segment,
 } from "semantic-ui-react";
-import { useQuery, useMutation } from "@apollo/react-hooks";
+import { useQuery, useMutation } from "@apollo/client";
 
 import rentalCategories from "../assets/options/rentalCategories.json";
 

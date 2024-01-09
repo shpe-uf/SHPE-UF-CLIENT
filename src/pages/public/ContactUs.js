@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Container, Grid, Form, Button } from "semantic-ui-react";
 import { useForm } from "../../util/hooks";
 import gql from "graphql-tag";
-import { useMutation } from "@apollo/react-hooks";
+import { useMutation } from "@apollo/client";
 import { ToastContainer, toast } from "react-toastify";
 
 function ContactUs() {

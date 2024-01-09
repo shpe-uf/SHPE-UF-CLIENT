@@ -17,7 +17,7 @@ import {
 } from "semantic-ui-react";
 
 import { AuthContext } from "../context/auth";
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery } from "@apollo/client";
 import gql from "graphql-tag";
 
 import checkmark from "../assets/images/checkmark.svg";

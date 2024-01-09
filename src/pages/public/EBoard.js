@@ -1,6 +1,6 @@
 import React from "react";
-import { Container, Card, Responsive } from "semantic-ui-react";
-
+import { Container, Card } from "semantic-ui-react";
+import { Media } from "../../Media";
 import EBoardCards from "../../components/EBoardCards";
 
 function EBoard() {
@@ -15,16 +15,16 @@ function EBoard() {
       </div>
 
       <Container>
-        <Responsive minWidth={992}>
+        <Media greaterThan="computer">
           <Card.Group itemsPerRow={3}>
             <EBoardCards />
           </Card.Group>
-        </Responsive>
-        <Responsive maxWidth={991}>
+        </Media>
+        <Media lessThan="computer">
           <Card.Group itemsPerRow={1}>
             <EBoardCards />
           </Card.Group>
-        </Responsive>
+        </Media>
       </Container>
     </div>
   );

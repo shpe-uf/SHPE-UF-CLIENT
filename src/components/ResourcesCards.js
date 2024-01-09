@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Dropdown, Grid, Icon, Image } from "semantic-ui-react";
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery } from "@apollo/client";
 import { FETCH_RESOURCES_QUERY } from "../util/graphql";
 
 import eboard from "../assets/eboard";

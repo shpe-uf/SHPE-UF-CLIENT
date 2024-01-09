@@ -9,7 +9,7 @@ import {
   Segment,
   Tab,
 } from "semantic-ui-react";
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery } from "@apollo/client";
 
 import Title from "../components/Title";
 import MembershipTable from "../components/MembershipTable";

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Grid, Table, Button, Icon, Confirm } from 'semantic-ui-react'
-import { useMutation } from '@apollo/react-hooks';
+import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
 
 function ReceiptTable(props) {

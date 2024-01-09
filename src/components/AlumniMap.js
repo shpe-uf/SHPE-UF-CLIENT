@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Divider } from "semantic-ui-react";
-import ReactMapboxGl, { Layer, Feature, Popup } from "react-mapbox-gl";
+import ReactMapboxGl, { Layer, Marker, Popup } from "react-map-gl";
 
 function AlumniMap({ alumnis }) {
   const [alumniOpen, setAlumniOpen] = useState({});
@@ -41,7 +41,7 @@ function AlumniMap({ alumnis }) {
               type="symbol"
               layout={{ "icon-image": "star-15", "icon-size": 1 }}
             >
-              <Feature
+              <Marker
                 coordinates={[
                   alumni.coordinates.longitude,
                   alumni.coordinates.latitude,
@@ -57,7 +57,7 @@ function AlumniMap({ alumnis }) {
                   alumni.coordinates.latitude,
                 ]}
               >
-                <b className="no-margin" className="accent-1-text">
+                <b className="no-margin">
                   {alumni.lastName.toUpperCase()},{" "}
                   {alumni.firstName.toUpperCase()}
                 </b>

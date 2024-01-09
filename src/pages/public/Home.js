@@ -5,15 +5,13 @@ import {
   Divider,
   Grid,
   Image,
-  Responsive,
 } from "semantic-ui-react";
-
+import { Media } from "../../Media";
 import {home1, home2, home3} from "../../assets/images/home"
 
 function Home() {
   return (
     <div>
-      <Responsive>
         <div className="masthead masthead-home">
           <div className="overlay-home">
             <Container>
@@ -31,7 +29,6 @@ function Home() {
             </Container>
           </div>
         </div>
-      </Responsive>
       
 
       <div className="masthead masthead-quote">

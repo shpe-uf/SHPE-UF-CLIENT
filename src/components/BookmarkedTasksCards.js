@@ -5,15 +5,15 @@ import {
   Segment,
   Header,
   Grid,
-  Card,
-  Responsive,
+  Card
 } from "semantic-ui-react";
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery } from "@apollo/client";
 import "react-toastify/dist/ReactToastify.css";
 
 import { AuthContext } from "../context/auth";
 import BookmarkedTaskCard from "../components/BookmarkedTaskCard";
 import { FETCH_TASKS_QUERY } from "../util/graphql";
+import { Media } from "../Media"
 
 function BookmarkedTasksCards({ user, refetch }) {
   const { loading, data } = useQuery(FETCH_TASKS_QUERY);
@@ -50,21 +50,21 @@ function BookmarkedTasksCards({ user, refetch }) {
         </Segment>
       ) : (
         <Grid.Row centered="centered">
-          <Responsive {...Responsive.onlyComputer}>
+          <Media at="computer">
             <Card.Group itemsPerRow={3}>
               <BookmarkedTaskCard user={user} refetch={refetch} />
             </Card.Group>
-          </Responsive>
-          <Responsive {...Responsive.onlyTablet}>
+          </Media>
+          <Media at="tablet">
             <Card.Group itemsPerRow={2}>
               <BookmarkedTaskCard user={user} refetch={refetch} />
             </Card.Group>
-          </Responsive>
-          <Responsive {...Responsive.onlyMobile}>
+          </Media>
+          <Media at="mobile">
             <Card.Group itemsPerRow={1}>
               <BookmarkedTaskCard user={user} refetch={refetch} />
             </Card.Group>
-          </Responsive>
+          </Media>
         </Grid.Row>
       )}{" "}
     </>

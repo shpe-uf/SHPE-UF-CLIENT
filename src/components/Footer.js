@@ -1,10 +1,10 @@
 import React from "react";
-import { Container, Grid, Icon, Responsive } from "semantic-ui-react";
-
+import { Container, Grid, Icon } from "semantic-ui-react";
+import { Media } from "../Media"
 function Footer() {
   return (
     <footer>
-      <Responsive minWidth={992}>
+      <Media greaterThanOrEqual="computer">
         <Container>
           <Grid>
             <Grid.Row className="no-padding">
@@ -37,9 +37,9 @@ function Footer() {
             </Grid.Row>
           </Grid>
         </Container>
-      </Responsive>
+      </Media>
 
-      <Responsive maxWidth={991}>
+      <Media lessThan="computer">
         <Container>
           <Grid>
             <Grid.Row className="row-footer-mobile">
@@ -74,7 +74,7 @@ function Footer() {
             </Grid.Row>
           </Grid>
         </Container>
-      </Responsive>
+      </Media>
     </footer>
   );
 }

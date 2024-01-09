@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Grid, Loader } from "semantic-ui-react";
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery } from "@apollo/client";
 
 import Title from "../components/Title";
 import MembersTable from "../components/MembersTable";

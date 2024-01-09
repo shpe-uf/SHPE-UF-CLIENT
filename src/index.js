@@ -1,8 +1,10 @@
-import ReactDOM from "react-dom";
 import * as serviceWorker from "./serviceWorker";
 import ApolloProvider from "./ApolloProvider";
+import { createRoot } from "react-dom/client";
 
-ReactDOM.render(ApolloProvider, document.getElementById("root"));
+const container = document.getElementById('root');
+const root = createRoot(container);
+root.render(ApolloProvider);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
