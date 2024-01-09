@@ -82,7 +82,7 @@ function MyCalendar() {
             <Modal.Header>{currEvent.title}</Modal.Header>
             <Modal.Content>
                 <Modal.Description>
-                <div style={{padding: '17px'}}>{ReactHTMLParser (currEvent.desc)}</div>
+                <div style={{padding: '17px'}}>{currEvent.desc}</div>
                 </Modal.Description>
             </Modal.Content>
             <Modal.Actions>
