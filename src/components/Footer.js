@@ -45,7 +45,7 @@ function Footer() {
                 </a>
               </Grid.Column>
               <Grid.Column width={8} textAlign="right">
-                <p>© Copyright 2022. All Rights Reserved.</p>
+                <p>© Copyright 2023. All Rights Reserved.</p>
               </Grid.Column>
             </Grid.Row>
           </Grid>
@@ -93,7 +93,7 @@ function Footer() {
             </Grid.Row>
             <Grid.Row className="row-footer-mobile">
               <Grid.Column textAlign="center" width={16}>
-                <p>© Copyright 2022. All Rights Reserved.</p>
+                <p>© Copyright 2023. All Rights Reserved.</p>
               </Grid.Column>
             </Grid.Row>
           </Grid>
