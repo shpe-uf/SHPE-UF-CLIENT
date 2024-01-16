@@ -1,26 +1,29 @@
-import React, { useState, useEffect } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import gql from "graphql-tag";
 import { useMutation } from "@apollo/client";
 import { Segment, Dimmer, Loader, Container, Grid } from "semantic-ui-react";
 import { Media } from "../../Media";
+import { useParams } from 'react-router-dom';
 
-function Confirm(props){
+function Confirm(){
   const [confirming, setConfirming] = useState(false);
+  
+  const value = useParams();
 
-  const value  = {
-    id: props.match.params.id
-  };
+  const [confirmMutation] = useMutation(CONFIRM_USER);
 
-  const [confirm] = useMutation(CONFIRM_USER, {
-    onCompleted(){
-      setConfirming(false);
-    },
-    variables: value
-  });
+  const confirm = useCallback(() => {
+    confirmMutation({
+      variables: value,
+      onCompleted: () => {
+        setConfirming(false);
+      }
+    })
+  }, [confirmMutation, value]);
 
   useEffect(() => {
     confirm();
-  });
+  }, [confirm]);
 
   return(
 
