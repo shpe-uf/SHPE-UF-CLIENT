@@ -31,6 +31,14 @@ function EventsTable({ events }) {
 
   const [removeUserFromEvent] = useMutation(REMOVE_USER_MUTATION, {
     update(cache, { data: { removeUserFromEvent } }) {
+      setEventAttendance((prevEventAttendance)=> {
+        const updatedUsers = removeUserFromEvent.users;
+        return {
+          ...prevEventAttendance,
+          users: updatedUsers,
+          attendance: updatedUsers.length,
+        };
+      });
       const { getEvents } = cache.readQuery({ query: FETCH_EVENTS_QUERY });
 
       getEvents.forEach((event, pos) => {
