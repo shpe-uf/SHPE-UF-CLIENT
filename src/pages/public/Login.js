@@ -12,9 +12,11 @@ import gql from "graphql-tag";
 
 import { AuthContext } from "../../context/auth";
 import { useForm } from "../../util/hooks";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function Login(props) {
+  const history = useNavigate();
+
   const context = useContext(AuthContext);
   const [errors, setErrors] = useState({});
 
@@ -27,7 +29,7 @@ function Login(props) {
   const [loginUser, { loading }] = useMutation(LOGIN_USER, {
     update(_, { data: { login: userData } }) {
       context.login(userData);
-      props.history.push("/points");
+      history("/points");
       window.location.reload();
     },
 

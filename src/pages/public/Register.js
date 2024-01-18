@@ -14,6 +14,8 @@ import gql from "graphql-tag";
 
 import { useForm } from "../../util/hooks";
 
+import { useNavigate } from "react-router-dom";
+
 import majorOptions from "../../assets/options/major.json";
 import yearOptions from "../../assets/options/year.json";
 import graduatingOptions from "../../assets/options/graduating.json";
@@ -22,12 +24,14 @@ import ethnicityOptions from "../../assets/options/ethnicity.json";
 import sexOptions from "../../assets/options/sex.json";
 
 function Register(props) {
+  const history = useNavigate();
+
   const [errors, setErrors] = useState({});
   const [openModal, setOpenModal] = useState(false);
 
   const handleClose = () => {
     setOpenModal(false);
-    props.history.push("/login");
+    history("/login");
   };
 
   const { onChange, onSubmit, values } = useForm(registerUser, {
