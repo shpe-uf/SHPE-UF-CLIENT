@@ -3,6 +3,7 @@ import { Form, Button, Container, Segment, Grid } from "semantic-ui-react";
 import { Media } from "../../Media";
 import gql from "graphql-tag";
 import { useMutation } from "@apollo/client";
+import { useParams } from 'react-router-dom';
 
 import { useForm } from "../../util/hooks";
 
@@ -10,10 +11,12 @@ function ResetPassword(props){
 
   const [errors, setErrors] = useState({});
 
+  const value = useParams();
+
   const { onChange, onSubmit, values } = useForm(callback, {
     password: "",
     confirmPassword: "",
-    token: props.match.params.token
+    token: value.token
   });
 
 
