@@ -104,9 +104,6 @@ function Events () {
           <Grid.Row className="JrEventButton">
             {event("STEM Fairs", event4, modal_4)}
           </Grid.Row>
-          <Grid.Row className="JrEventButton">
-            {event("Pathway to College Tips")}
-          </Grid.Row>
         </Grid.Column>
       </Grid>
     </>
