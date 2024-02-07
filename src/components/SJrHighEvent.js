@@ -33,11 +33,6 @@ const event1 = (
        <li>How to apply to college, scholarships, and tips to succeed during the application process. <br/></li>
        <li>Interactive bowling social to meet other students and current SHPE UF members <br/></li><br/>
     Students have to pay an attendance fee for the conference, but have transportation, boarding, and meals covered for during their visit. 
-
-
-
-
-
   </div>
 );
 
@@ -67,16 +62,6 @@ const event4 = (
   <div>
     STEM Fair is a yearly event aimed at providing students with a wide variety of activities to learn about 
     multiple engineering fields in a span of two hours while conducting an engineering challenge. 
-
-  </div>
-);
-
-const event5 = (
-  <div>
-    STEM Carnival is an event hosted by CW Norton 
-    Elementary aimed at having a fun carnival experience 
-    for the students, while creating interactive activities 
-    for students to enjoy a field day with their families. 
   </div>
 );
 
