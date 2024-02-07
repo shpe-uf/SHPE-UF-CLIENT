@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import {
   Grid,
   Container,
@@ -60,11 +60,13 @@ function Points() {
   let data = userQuery.data;
   let loadingUser = userQuery.loading;
   let refetch = userQuery.refetch;
-  let user = null;
+  const [user, setUser] = useState(null)
 
-  if (data && data.getUser) {
-    user = data.getUser;
-  }
+  useEffect(() => {
+    if (data && data.getUser) {
+      setUser(data.getUser);
+    }
+  }, [data]);
 
   const [redeemPointsModal, setRedeemPointsModal] = useState(false);
 
@@ -109,18 +111,20 @@ function Points() {
   }
 
   function updateGetUser(userData) {
-    user.fallPoints = userData.fallPoints;
-    user.springPoints = userData.springPoints;
-    user.summerPoints = userData.summerPoints;
-    user.events = userData.events;
-    user.tasks = userData.tasks;
-    user.message = userData.message;
+    const updatedUser = { ...user };
+    updatedUser.fallPoints = userData.fallPoints;
+    updatedUser.springPoints = userData.springPoints;
+    updatedUser.summerPoints = userData.summerPoints;
+    updatedUser.events = userData.events;
+    updatedUser.tasks = userData.tasks;
+    updatedUser.message = userData.message;
 
-    if (user.message !== "") {
-      toast.warn(user.message, {
+    if (updatedUser.message !== "") {
+      toast.warn(updatedUser.message, {
         position: toast.POSITION.BOTTOM_CENTER,
       });
     }
+    setUser(updatedUser);
   }
 
   return (
