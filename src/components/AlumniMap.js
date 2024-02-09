@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Divider } from "semantic-ui-react";
-import ReactMapboxGl, { Layer, Marker, Popup } from "react-map-gl";
+import ReactMapboxGl, { Layer, Marker, Popup } from "react-mapbox-gl";
 
 function AlumniMap({ alumnis }) {
   const [alumniOpen, setAlumniOpen] = useState({});
