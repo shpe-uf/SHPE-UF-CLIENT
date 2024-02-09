@@ -125,9 +125,9 @@ function MenuBar({permission}) {
                     <Dropdown.Item as={Link} to="/about">
                       About Us
                     </Dropdown.Item>
-                    <Dropdown.Item as={Link} to="/alumni">
+                    {/*<Dropdown.Item as={Link} to="/alumni">
                       Alumni
-                    </Dropdown.Item>
+              </Dropdown.Item>*/}
                     <Dropdown.Item as={Link} to="/eboard">
                       E-Board
                     </Dropdown.Item>
