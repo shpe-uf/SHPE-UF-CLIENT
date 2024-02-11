@@ -1,61 +1,57 @@
-import React, { useState } from "react";
-import { Divider } from "semantic-ui-react";
-import ReactMapboxGl, { Layer, Marker, Popup } from "react-mapbox-gl";
+import React, { useRef, useState } from "react";
+import { Divider, Icon } from "semantic-ui-react";
+import Map, { MapRef, Marker, Popup } from "react-map-gl";
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 function AlumniMap({ alumnis }) {
   const [alumniOpen, setAlumniOpen] = useState({});
   const [center, setCenter] = useState([-96, 38]);
   const [zoom, setZoom] = useState([3.5]);
 
-  const Map = ReactMapboxGl({
-    accessToken:
-      "pk.eyJ1IjoiY2Vjcmlnb3BlIiwiYSI6ImNrMzRxMDAwdTB6cHUzY3Myd3ZjeWhhdzkifQ.uND4rBRWT0KBJoDFt_xhMQ",
-  });
+  const mapRef = useRef();
 
   function handleAlumniPopup(alumni) {
     if (alumni.email === alumniOpen.email) {
       setAlumniOpen({});
-      setCenter([-96, 38]);
-      setZoom([3.5]);
     } else {
       setAlumniOpen(alumni);
-      setCenter([alumni.coordinates.longitude, alumni.coordinates.latitude]);
-      setZoom([12]);
+      mapRef.current?.flyTo({center: [alumni.coordinates.longitude, alumni.coordinates.latitude], duration: 1250});
     }
   }
 
   return (
     <Map
-      style="mapbox://styles/cecrigope/ck36yhbkr6ytf1cmmvrvzpffo"
-      containerStyle={{
+      ref={mapRef}
+      mapboxAccessToken="pk.eyJ1IjoiY2Vjcmlnb3BlIiwiYSI6ImNrMzRxMDAwdTB6cHUzY3Myd3ZjeWhhdzkifQ.uND4rBRWT0KBJoDFt_xhMQ"
+      mapStyle="mapbox://styles/cecrigope/ck36yhbkr6ytf1cmmvrvzpffo"
+      style={{
         height: "600px",
         width: "100%",
       }}
-      center={center}
-      zoom={zoom}
+      initialViewState={{
+        longitude: center[0],
+        latitude: center[1],
+        zoom: zoom
+      }}
+      attributionControl={false}
     >
       {alumnis &&
         alumnis.map((alumni, index) => (
           <div key={index}>
-            <Layer
-              type="symbol"
-              layout={{ "icon-image": "star-15", "icon-size": 1 }}
+            <Marker
+              longitude={Number(alumni.coordinates.longitude)}
+              latitude={Number(alumni.coordinates.latitude)}
+              anchor='bottom'
+              onClick={(e) =>  {e.originalEvent.stopPropagation();
+                handleAlumniPopup(alumni)
+              }}
             >
-              <Marker
-                coordinates={[
-                  alumni.coordinates.longitude,
-                  alumni.coordinates.latitude,
-                ]}
-                onClick={() => handleAlumniPopup(alumni)}
-              />
-            </Layer>
+            </Marker>
             {alumniOpen.email === alumni.email && (
               <Popup
-                anchor="bottom-left"
-                coordinates={[
-                  alumni.coordinates.longitude,
-                  alumni.coordinates.latitude,
-                ]}
+                anchor="top"
+                longitude={Number(alumni.coordinates.longitude)}
+                latitude={Number(alumni.coordinates.latitude)}
               >
                 <b className="no-margin">
                   {alumni.lastName.toUpperCase()},{" "}
