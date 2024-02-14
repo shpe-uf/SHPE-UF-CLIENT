@@ -73,9 +73,9 @@ function App() {
   }
 
   return (
-    <AuthProvider>
+    <Router>
+      <AuthProvider>
       <MediaContextProvider>  
-        <Router>
           <div style={{minHeight: "calc(100vh - 66px"}}>
           <MenuBar permission={permission}/>
           <Routes>
@@ -248,9 +248,9 @@ function App() {
           </Routes>
           </div>
           <Footer />
-        </Router>
       </MediaContextProvider>
     </AuthProvider>
+    </Router>
   );
 }
 
