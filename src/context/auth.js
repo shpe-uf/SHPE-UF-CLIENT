@@ -1,9 +1,12 @@
 import React, { useReducer, createContext } from "react";
 import { jwtDecode } from "jwt-decode";
+import { createBrowserHistory } from "history";
 
 const initialState = {
   user: null
 }
+
+const history = createBrowserHistory();
 
 if (localStorage.getItem("jwtToken")) {
   const decodedToken = jwtDecode(localStorage.getItem("jwtToken"));
@@ -58,6 +61,8 @@ function AuthProvider(props) {
     dispatch({
       type: "LOGOUT"
     });
+    history.push("/login");
+    window.location.reload();
   }
 
   return (
