@@ -1,5 +1,6 @@
 import React, { useReducer, createContext } from "react";
 import { jwtDecode } from "jwt-decode";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const initialState = {
   user: null
@@ -43,6 +44,7 @@ function authReducer(state, action) {
 
 function AuthProvider(props) {
   const [state, dispatch] = useReducer(authReducer, initialState);
+  const navigate = useNavigate();
   
   function login(userData) {
     localStorage.setItem("jwtToken", userData.token);
@@ -58,6 +60,8 @@ function AuthProvider(props) {
     dispatch({
       type: "LOGOUT"
     });
+    navigate("/login")
+    window.location.reload();
   }
 
   return (
