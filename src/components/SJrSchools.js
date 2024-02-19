@@ -10,7 +10,7 @@ const SJrSchools = () =>{
       <br></br>
      <Container>
       <Media greaterThanOrEqual="computer">
-        <Card.Group itemsPerRow={3}>
+        <Card.Group itemsPerRow={3} centered>
           <JrSchoolCards/>
         </Card.Group>
       </Media>

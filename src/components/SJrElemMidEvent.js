@@ -32,34 +32,36 @@ const slideDeck = [
 
 const event1 = (
   <div>
-    Our SHPE Jr Elementary/Middle school director hand picks 
-    events for each STEM day oriented towards in class topics 
-    and varying engineering fields to create an interactive, 
-    yet informative, environment for students. Hands-on 
-    experience for each student is fostered through the 
-    multiple activities administered throughout the 
-    duration of the event. 
+    Our SHPE Jr Elementary/Middle school director hand-picks 
+    events for each STEM day oriented towards varying 
+    engineering fields to create an interactive, 
+    yet informative, environment for students. Students get
+    hands-on experience in multiple engineering fields
+    through activities like:
+    
+    <br></br>
+    <br></br>- Building Mini Catapults
+    <br></br>- Thanksgiving "turkey trap"
+    <br></br>- Extracting Strawberry DNA
+    <br></br>- Building Mini Satellites
+    <br></br>- Oil Spills Activity
+
   </div>
 );
 
 const event2 = (
   <div>
-    Students are paired with University of Florida SHPE 
-    Engineering students to aid in class-work, discuss 
-    hobbies, and join in interactive activities during lunch 
-    meeting times.<br/><br/>
-
-    Mentorship requirements and meeting days can be adjusted 
-    based on school and goals the teacher would like to 
-    attain through the mentorship program.
+    Year-long mentorship program at Idylwild Elementary School
+     in which we pair SHPE members with an elementary school 
+     student to serve as guides and role models for the children
   </div>
 );
 
 const event3 = (
   <div>
-    SHPE volunteers come into existing robotics clubs at 
-    school to help with design development, coding, and 
-    preparation for competitions. 
+    Assist students who are part of the Robotics club at 
+    Idylwild Elementary School with designing and building 
+    their robotics projects
   </div>
 );
 
@@ -74,8 +76,7 @@ const event4 = (
 
 const event5 = (
   <div>
-    STEM Carnival is an event hosted by CW Norton 
-    Elementary aimed at having a fun carnival experience 
+    STEM Carnival is an event hosted by Idywild Elementary aimed at having a fun carnival experience 
     for the students, while creating interactive activities 
     for students to enjoy a field day with their families. 
   </div>
