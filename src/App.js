@@ -67,6 +67,10 @@ function App() {
 
   var permission = "";
 
+  if(localStorage.getItem("permission")) {
+    permission = localStorage.getItem("permission");
+  }
+
   if (data && data.getUser)
   {
     permission = data.getUser.permission;

@@ -29,6 +29,7 @@ function Login(props) {
     update(_, { data: { login: userData } }) {
       context.login(userData);
       navigate("/points");
+      navigate(0);
     },
 
     onError(err) {
@@ -268,6 +269,7 @@ const LOGIN_USER = gql`
       username
       createdAt
       token
+      permission
     }
   }
 `;
