@@ -8,14 +8,15 @@ import JrEventModal from "./JrEventModal";
 import JrSlideshow from "./JrSlideshow";
 import { Breadcrumb } from "react-bootstrap";
 
-const slide_1 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/elemid-slide-1.JPG'
-const slide_2 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/elemid-slide-2.JPG'
-const slide_3 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/elemid-slide-3.JPG'
-const modal_1 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/elemid-modal-1.JPG'
-const modal_2 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/elemid-modal-2.JPG'
-const modal_3 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/elemid-modal-3.JPG'
-const modal_4 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/elemid-modal-4.JPG'
-const modal_5 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/elemid-modal-5.JPG'
+const slide_1 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/shadowSHPE_slide1.JPG'
+const slide_2 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/shadowSHPE_slide2.JPG'
+const slide_3 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/shadowSHPE_slide3.JPG'
+
+const shadowshpe_img = 'https://shpeuf.s3.amazonaws.com/public/shpejr/shadowSHPE.JPG'
+const mentorship_img = 'https://shpeuf.s3.amazonaws.com/public/shpejr/mentorship_jr.JPG'
+const workshops_img = 'https://shpeuf.s3.amazonaws.com/public/shpejr/stem_workshops.JPG'
+const chapters_img = 'https://shpeuf.s3.amazonaws.com/public/shpejr/chapters.JPG'
+
 const slideDeck = [
   slide_1,
   slide_2,
@@ -75,16 +76,16 @@ function Events () {
       <Grid>
         <Grid.Column>
           <Grid.Row className="JrEventButton">
-            {event("SHPE Region 7 Jr. Conference", event1, modal_1)}
+            {event("SHPE Region 7 Jr. Conference", event1, shadowshpe_img)}
           </Grid.Row>
           <Grid.Row className="JrEventButton">
-            {event("MentorSHPE Jr.", event2, modal_2)}
+            {event("MentorSHPE Jr.", event2, mentorship_img)}
           </Grid.Row>
           <Grid.Row className="JrEventButton">
-            {event("STEM Workshops", event3, modal_3)}
+            {event("STEM Workshops", event3, workshops_img)}
           </Grid.Row>
           <Grid.Row className="JrEventButton">
-            {event("SHPE Chapters", event4, modal_4)}
+            {event("SHPE Chapters", event4, chapters_img)}
           </Grid.Row>
         </Grid.Column>
       </Grid>
@@ -97,13 +98,6 @@ const SJrHighEvent = () =>{
   return(
     <Container>
     <h1>Events</h1>
-    <p>
-      SHPE JR is a subset of our university
-      organization that does the following loren
-      ipsum dolor sit amet consecteur We host this, 
-      that, that , that etc. etc. need someone to write
-      an about statement
-    </p>
     <div className='SJrElemMidEvent'>
       <div>
         <Media greaterThanOrEqual="computer">

@@ -10,11 +10,12 @@ import JrSlideshow from "./JrSlideshow";
 const slide_1 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/elemid-slide-1.JPG'
 const slide_2 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/elemid-slide-2.JPG'
 const slide_3 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/elemid-slide-3.JPG'
-const modal_1 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/elemid-modal-1.JPG'
-const modal_2 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/elemid-modal-2.JPG'
-const modal_3 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/elemid-modal-3.JPG'
-const modal_4 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/elemid-modal-4.JPG'
-const modal_5 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/elemid-modal-5.JPG'
+
+const stem_days_img = 'https://shpeuf.s3.amazonaws.com/public/shpejr/stem_days.JPG'
+const mentorship_img = 'https://shpeuf.s3.amazonaws.com/public/shpejr/mentorship_jrjr.jpg'
+const robotics_img = 'https://shpeuf.s3.amazonaws.com/public/shpejr/robotics.JPG'
+const steam_night_img = 'https://shpeuf.s3.amazonaws.com/public/shpejr/steam_night.JPG'
+const stem_carnival_img = 'https://shpeuf.s3.amazonaws.com/public/shpejr/stem_carnival.jpg'
 
 function event(event, description, pic){
   return JrEventModal(event, description, pic);
@@ -88,19 +89,19 @@ function Events () {
       <Grid>
         <Grid.Column>
           <Grid.Row className="JrEventButton">
-            {event("STEM Days", event1, modal_1)}
+            {event("STEM Days", event1, stem_days_img)}
           </Grid.Row>
           <Grid.Row className="JrEventButton">
-            {event("Mentorship Program", event2, modal_2)}
+            {event("Mentorship Program", event2, mentorship_img)}
           </Grid.Row>
           <Grid.Row className="JrEventButton">
-            {event("Robotics Program", event3, modal_3)}
+            {event("Robotics Program", event3, robotics_img)}
           </Grid.Row>
           <Grid.Row className="JrEventButton">
-            {event("STEAM Night", event4, modal_4)}
+            {event("STEAM Night", event4, steam_night_img)}
           </Grid.Row>
           <Grid.Row className="JrEventButton">
-            {event("STEM Carnival", event5, modal_5)}
+            {event("STEM Carnival", event5, stem_carnival_img)}
           </Grid.Row>
         </Grid.Column>
       </Grid>
@@ -112,13 +113,6 @@ const SJrElemMidEvent = () => {
   return(
     <Container>
       <h1>Events</h1>
-      <p>
-        SHPE JR is a subset of our university
-        organization that does the following loren
-        ipsum dolor sit amet consecteur We host this, 
-        that, that , that etc. etc. need someone to write
-        an about statement
-      </p>
       <div className='SJrElemMidEvent'>
         <div>
           <Media greaterThanOrEqual="computer">
