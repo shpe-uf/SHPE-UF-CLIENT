@@ -24,16 +24,19 @@ const slideDeck = [
 ];
 
 const event1 = (
-  <div>
+  <div className="SJrHighEventList">
        Annual 2-day event hosted at UF where we bring students from various different high schools across Florida
         to explore UF, its engineering programs, and learn more about SHPE. Activities Include: <br/>
        <br/>
-       <li>UF Campus Tours<br/></li>
-       <li>Research Lab Tours and Presentation<br/> </li>
-       <li>Interactive STEM Challenges <br/></li>
-       <li>College panel with SHPE UF students to ask about advice, tips, and most important things to expect in a student’s college life. <br/></li>
-       <li>Engineering Majors Fair to speak with student representatives from diffrent majors and learn about what they each do <br/></li>
-       <li>Social events to meet, interact, and learn from current SHPE UF students<br/></li><br/>
+
+    <ul>
+       <li>UF Campus Tours</li>
+       <li>Research Lab Tours and Presentation </li>
+       <li>Interactive STEM Challenges </li> 
+       <li>College panel with SHPE UF students to ask about advice, tips, and most important things to expect in a student’s college life </li>
+       <li>Engineering Majors Fair to speak with student representatives from diffrent majors and learn about what they each do </li>
+       <li>Social events to meet, interact, and learn from current SHPE UF students</li>
+    </ul> <br></br>
     Students have to pay an attendance fee for the conference, but have transportation, boarding, and meals covered for during their visit. 
   </div>
 );
@@ -97,7 +100,7 @@ function Events () {
 const SJrHighEvent = () =>{
   return(
     <Container>
-    <h1>Events</h1>
+    <h1>High School Events</h1>
     <div className='SJrElemMidEvent'>
       <div>
         <Media greaterThanOrEqual="computer">

@@ -40,12 +40,12 @@ const event1 = (
     hands-on experience in multiple engineering fields
     through activities like:
     
-    <br></br>
-    <br></br>- Building Mini Catapults
-    <br></br>- Thanksgiving "turkey trap"
-    <br></br>- Extracting Strawberry DNA
-    <br></br>- Building Mini Satellites
-    <br></br>- Oil Spills Activity
+    <br></br><br></br>
+    <li>Building Mini Catapults</li>
+    <li>Thanksgiving "turkey trap"</li>
+    <li>Extracting Strawberry DNA</li>
+    <li>Building Mini Satellites</li>
+    <li>Oil Spills Activity</li>
 
   </div>
 );
@@ -112,7 +112,7 @@ function Events () {
 const SJrElemMidEvent = () => {
   return(
     <Container>
-      <h1>Events</h1>
+      <h1>K-8 Events</h1>
       <div className='SJrElemMidEvent'>
         <div>
           <Media greaterThanOrEqual="computer">
