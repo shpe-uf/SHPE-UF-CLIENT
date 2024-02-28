@@ -71,11 +71,6 @@ function App() {
     permission = localStorage.getItem("permission");
   }
 
-  if (data && data.getUser)
-  {
-    permission = data.getUser.permission;
-  }
-
   return (
     <Router>
       <AuthProvider>
