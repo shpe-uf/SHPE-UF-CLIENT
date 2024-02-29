@@ -86,6 +86,11 @@ function Events() {
     createEvent();
   }
 
+  function getPoints(key) {
+    const item = categoryOptions.find((item) => item.key === key);
+    return item.points === 0 ? "" : item.points;
+  }
+
   return (
     <>
       <Title title="Events" adminPath={window.location.pathname} />
@@ -165,33 +170,20 @@ function Events() {
                     onChange={onChange}
                   >
                     {categoryOptions.map((category) =>
-                      category.points === 0 ? (
-                        <option value={category.value} key={category.key}>
-                          {category.value}
-                        </option>
-                      ) : (
-                        <option value={category.value} key={category.key}>
-                          {category.value} ({category.points})
-                        </option>
-                      )
+                      <option value={category.value} key={category.key}>
+                        {category.value}
+                      </option>
                     )}
                   </Form.Field>
-                  {values.category === "Miscellaneous" ? (
-                    <Form.Input
+                  <Form.Input
                       type="text"
                       label="Points"
                       name="points"
-                      value={
-                        values.category === "Miscellaneous"
-                          ? values.points
-                          : "0"
-                      }
+                      value = {values.points}
+                      placeholder={getPoints(values.category)}
                       error={errors.points ? true : false}
                       onChange={onChange}
                     />
-                  ) : (
-                    <></>
-                  )}
                   <Form.Field
                     control="select"
                     label="Expires in"
