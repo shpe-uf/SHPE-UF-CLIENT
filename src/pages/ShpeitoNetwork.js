@@ -19,18 +19,6 @@ import UserProfile from "../components/UserProfile";
 import placeholder from "../assets/images/placeholder.png";
 
 function ShpeitoNetwork(props) {
-  const [filter, setFilter] = useState(
-    new Filter({
-      name: [],
-      major: [],
-      year: [],
-      graduating: [],
-      country: [],
-      classes: [],
-      internships: [],
-    })
-  );
-
   let usersQuery = useQuery(FETCH_USERS_QUERY, {});
   let data = usersQuery.data;
   let loading = usersQuery.loading;
@@ -85,6 +73,18 @@ function ShpeitoNetwork(props) {
       );
     });
   }
+
+  const [filter, setFilter] = useState(
+    new Filter({
+      name: [],
+      major: [],
+      year: [],
+      graduating: [],
+      country: [],
+      classes: [],
+      internships: [],
+    })
+  );
 
   function getUsers(newFilter) {
     setFilter(new Filter(newFilter));
