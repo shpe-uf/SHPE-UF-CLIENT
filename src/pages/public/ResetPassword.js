@@ -3,7 +3,7 @@ import { Form, Button, Container, Segment, Grid } from "semantic-ui-react";
 import { Media } from "../../Media";
 import gql from "graphql-tag";
 import { useMutation } from "@apollo/client";
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { useForm } from "../../util/hooks";
 
@@ -11,6 +11,7 @@ function ResetPassword(props){
 
   const [errors, setErrors] = useState({});
 
+  const navigate = useNavigate();
   const value = useParams();
 
   const { onChange, onSubmit, values } = useForm(callback, {
@@ -25,7 +26,7 @@ function ResetPassword(props){
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
     },
     onCompleted(){
-      props.history.push("/login");
+      navigate("/login");
     },
     variables: values
   });
