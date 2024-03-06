@@ -10,6 +10,8 @@ import {
   Icon,
 } from "semantic-ui-react";
 import { useMutation } from "@apollo/client";
+import { useNavigate } from 'react-router-dom';
+
 import gql from "graphql-tag";
 
 import { useForm } from "../../util/hooks";
@@ -24,10 +26,11 @@ import sexOptions from "../../assets/options/sex.json";
 function Register(props) {
   const [errors, setErrors] = useState({});
   const [openModal, setOpenModal] = useState(false);
+  const navigate = useNavigate();
 
   const handleClose = () => {
     setOpenModal(false);
-    props.history.push("/login");
+    navigate("/login");
   };
 
   const { onChange, onSubmit, values } = useForm(registerUser, {
