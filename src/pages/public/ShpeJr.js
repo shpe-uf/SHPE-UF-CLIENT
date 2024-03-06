@@ -18,13 +18,15 @@ function ShpeJr(){
         <Container>
             <div align = "center">
                 <h2 >Welcome</h2>
-                <p style={{color:'rgb(0, 77, 115)', fontWeight:'bold', fontSize:'85px'}}>Lorem ipsum dolor sit amet, consectetur 
-                    adipiscing elit, sed do eiusmod tempor 
-                    incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, 
-                    quis nostrud exercitation ullamco 
-                    laboris nisi ut aliquip ex ea commodo consequat!
-                    This will be text Isa wants for the welcome message </p>
+                <p style={{color:'rgb(0, 77, 115)', fontWeight:'bold', fontSize:'85px'}}>
+                  SHPE Jr. is our organization’s K-12 outreach program, which aims to increase 
+                  student awareness and interest in STEM among various elementary, middle, 
+                  and high schools across Florida. Through interactive STEM workshops,
+                   presentations, and student mentoring, we hope to incentivize our future 
+                   generation to pursue careers within science and engineering. With the help
+                    of our SHPE volunteers, we host various different events every month in 
+                    our partner schools. Join us today!
+                </p>
             </div>
        
         </Container>

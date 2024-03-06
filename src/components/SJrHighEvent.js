@@ -8,14 +8,15 @@ import JrEventModal from "./JrEventModal";
 import JrSlideshow from "./JrSlideshow";
 import { Breadcrumb } from "react-bootstrap";
 
-const slide_1 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/elemid-slide-1.JPG'
-const slide_2 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/elemid-slide-2.JPG'
-const slide_3 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/elemid-slide-3.JPG'
-const modal_1 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/elemid-modal-1.JPG'
-const modal_2 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/elemid-modal-2.JPG'
-const modal_3 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/elemid-modal-3.JPG'
-const modal_4 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/elemid-modal-4.JPG'
-const modal_5 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/elemid-modal-5.JPG'
+const slide_1 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/shadowSHPE_slide1.JPG'
+const slide_2 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/shadowSHPE_slide2.JPG'
+const slide_3 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/shadowSHPE_slide3.JPG'
+
+const shadowshpe_img = 'https://shpeuf.s3.amazonaws.com/public/shpejr/shadowSHPE.JPG'
+const mentorship_img = 'https://shpeuf.s3.amazonaws.com/public/shpejr/mentorship_jr.JPG'
+const workshops_img = 'https://shpeuf.s3.amazonaws.com/public/shpejr/stem_workshops.JPG'
+const chapters_img = 'https://shpeuf.s3.amazonaws.com/public/shpejr/chapters.JPG'
+
 const slideDeck = [
   slide_1,
   slide_2,
@@ -23,45 +24,45 @@ const slideDeck = [
 ];
 
 const event1 = (
-  <div>
-    SHPE Region 7 Jr Conference is a two-day event hosted by SHPE UF where students across Florida and SHPE Region 7 Jr chapters can attend to learn about:<br/>
-       <li>UF Campus<br/></li>
-       <li> Lab Research opportunities during undergraduate career<br/> </li>
-      <li>Interactive STEM Challenge <br/></li>
-       <li>College panel with SHPE UF students to ask about advice, tips, and most important things to expect in a student’s college life. <br/></li>
-       <li>Photo opportunities<br/></li>
-       <li>How to apply to college, scholarships, and tips to succeed during the application process. <br/></li>
-       <li>Interactive bowling social to meet other students and current SHPE UF members <br/></li><br/>
+  <div className="SJrHighEventList">
+       Annual 2-day event hosted at UF where we bring students from various different high schools across Florida
+        to explore UF, its engineering programs, and learn more about SHPE. Activities Include: <br/>
+       <br/>
+
+    <ul>
+       <li>UF Campus Tours</li>
+       <li>Research Lab Tours and Presentation </li>
+       <li>Interactive STEM Challenges </li> 
+       <li>College panel with SHPE UF students to ask about advice, tips, and most important things to expect in a student’s college life </li>
+       <li>Engineering Majors Fair to speak with student representatives from diffrent majors and learn about what they each do </li>
+       <li>Social events to meet, interact, and learn from current SHPE UF students</li>
+    </ul> <br></br>
     Students have to pay an attendance fee for the conference, but have transportation, boarding, and meals covered for during their visit. 
   </div>
 );
 
 const event2 = (
   <div>
-    Students are paired with University of Florida SHPE Engineering students to aid in class-work,
-    discuss hobbies, and join in interactive activities during lunch meeting times.<br/><br/>
-
-    Mentorship requirements and meeting days can be adjusted based on school and goals the teacher
-    would like to attain through the mentorship program. <br/><br/>
-
-    Mentorship program will also have bi-weekly challenges for the mentor-mentee pairs to complete 
-    and win points for an end of semester prize! 
+    Mentorship program established between SHPE UF and CBHS in which SHPE members are paired with 
+    CBHS students to help them navigate college planning and college apps<br/><br/>
   </div>
 );
 
 const event3 = (
   <div>
-    Our SHPE High School directors hand pick events for each STEM day oriented towards in class topics 
-    and varying engineering fields to create an interactive, yet informative, environment for students. 
-    Hands-on experience for each student is fostered through the multiple activities administered throughout 
-    the duration of the event. 
+    Workshops designed by SHPE UF Jr. alongside the SHPE Jr. chapters aimed to get students more
+    involved in STEM through interactive activities such as: <br/>
+    <br/>
+    <li>Building Bottle Rocket Launchers</li>
+    <li>Scratch Programming Workshops</li>
+    <li>Making Mini-Catapults</li>
   </div>
 );
 
 const event4 = (
   <div>
-    STEM Fair is a yearly event aimed at providing students with a wide variety of activities to learn about 
-    multiple engineering fields in a span of two hours while conducting an engineering challenge. 
+    <li>Assist CBHS with running their SHPE Jr. chapter by themselves</li>
+    <li>Provide resources for students’ professional development such as FinanceSHPE workshops</li>
   </div>
 );
 
@@ -78,16 +79,16 @@ function Events () {
       <Grid>
         <Grid.Column>
           <Grid.Row className="JrEventButton">
-            {event("SHPE Region 7 Junior Conference", event1, modal_1)}
+            {event("SHPE Region 7 Jr. Conference", event1, shadowshpe_img)}
           </Grid.Row>
           <Grid.Row className="JrEventButton">
-            {event("Mentorship", event2, modal_2)}
+            {event("MentorSHPE Jr.", event2, mentorship_img)}
           </Grid.Row>
           <Grid.Row className="JrEventButton">
-            {event("STEM Activities", event3, modal_3)}
+            {event("STEM Workshops", event3, workshops_img)}
           </Grid.Row>
           <Grid.Row className="JrEventButton">
-            {event("STEM Fairs", event4, modal_4)}
+            {event("SHPE Chapters", event4, chapters_img)}
           </Grid.Row>
         </Grid.Column>
       </Grid>
@@ -99,14 +100,7 @@ function Events () {
 const SJrHighEvent = () =>{
   return(
     <Container>
-    <h1>Events</h1>
-    <p>
-      SHPE JR is a subset of our university
-      organization that does the following loren
-      ipsum dolor sit amet consecteur We host this, 
-      that, that , that etc. etc. need someone to write
-      an about statement
-    </p>
+    <h1>High School Events</h1>
     <div className='SJrElemMidEvent'>
       <div>
         <Media greaterThanOrEqual="computer">

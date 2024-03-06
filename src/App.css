@@ -927,3 +927,10 @@ ul.nav li.active {
 .slideshowDot.active {
   background-color: var(--accent-1);
 }
+
+.SJrHighEventList ul {
+  list-style-type: disc; 
+  padding: 0; 
+  margin: 0; 
+  margin-left: 1em
+}
