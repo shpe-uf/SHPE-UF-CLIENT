@@ -1,0 +1,163 @@
+[
+  {
+    "label": "Who we are",
+    "dropdownSections": [
+      {
+        "label": "Our Group",
+        "links": [
+          {   "label": "The Chapter", "path": "/about" },
+          {   "label": "Sponsors", "path": "/sponsors" },
+          {   "label": "Alumni", "path": "/alumni" }
+        ]
+      },
+      {
+        "label": "Teams",
+        "links": [
+          {   "label": "E-Board", "path": "/eboard" },
+          {   "label": "Dev Team", "path": "/devteam" }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "What we do",
+    "dropdownSections": [
+      {
+        "label": "Programs & Leadership Opportunities",
+        "links": [
+          {   "label": "Director Positions", "path": "#" },
+          {   "label": "MentorSHPE", "path": "#" },
+          {   "label": "First Year Leadership Program", "path": "#" },
+          {   "label": "Design Teams", "path": "#" },
+          {   "label": "SHPE Jr. Programs", "path": "#" },
+          {   "label": "Goals for Tomorrow Scholarship", "path": "#" }
+        ]
+      },
+      {
+        "label": "Resources & Development",
+        "links": [
+          {   "label": "Professional & Corporate Affairs", "path": "#" },
+          {   "label": "Academics", "path": "#" },
+          {   "label": "Research", "path": "#" },
+          {   "label": "Graduate School", "path": "#" },
+          {   "label": "K-12", "path": "#" },
+          {   "label": "Transfer Students", "path": "#" }
+        ]
+      },
+      {
+        "label": "Community Building",
+        "links": [
+          {   "label": "Social Events", "path": "#" },
+          {   "label": "Hispanic Culture Promotion", "path": "#" },
+          {   "label": "SHPE Hangouts", "path": "#" },
+          {   "label": "Member Culture", "path": "#" }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "Resources",
+    "dropdownSections": [
+      {
+         
+        "label": "Professional",
+        "links": [
+          {   "label": "Bootcamp", "path": "#" },
+          {   "label": "Resume Drive", "path": "#" },
+          {   "label": "LinkedIn Network", "path": "#" },
+          {   "label": "BBQ with Industry", "path": "https://shpebbq.com/index.html", "target": "_blank" }
+        ]
+      },
+      {
+         
+        "label": "Academic",
+        "links": [
+          {   "label": "Tutors", "path": "#" },
+          {   "label": "Study Spaces", "path": "#" },
+          {   "label": "Major Guides", "path": "#" }
+        ]
+      },
+      {
+         
+        "label": "Graduate",
+        "links": [
+          {   "label": "Research Basics", "path": "#" },
+          {   "label": "Research 101", "path": "#" }
+        ]
+      },
+      {
+         
+        "label": "SHPE Jr.",
+        "links": [
+          {   "label": "High School Resources", "path": "#" },
+          {   "label": "Website", "path": "#" }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "Get Involved",
+    "dropdownSections": [
+      {
+         
+        "label": "Membership",
+        "links": [
+          {  "label": "SHPE National Membership", "path": "#" },
+          {   "label": "New Member Interest Form", "path": "/sponsors" },
+          {   "label": "New Member Website", "path": "#" },
+          {   "label": "How to Get Involved & Stay Up to Date", "path": "#" }
+        ]
+      },
+      {
+         
+        "label": "Socials",
+        "links": [
+          {   "label": "Instagram", "path": "https://www.instagram.com/shpeuf", "target": "_blank"},
+          {   "label": "WhatsApp Announcements Chat", "path": "https://linktr.ee/shpeufchats", "target": "_blank"},
+          {   "label": "Newsletter", "path": "https://docs.google.com/forms/d/e/1FAIpQLScjgBN4otaN0Za6pAv-GZf6BbmGGTxvf8sQ82e-SWACbYxTZQ/viewform", "target": "_blank"},
+          {   "label": "SHPE UF Linktree", "path": "https://linktr.ee/shpeuf", "target": "_blank"}
+        ]
+      }
+    ]
+  },
+  {
+    "label": "Convention",
+    "dropdownSections": [
+      {
+         
+        "label": "Convention",
+        "links": [
+          {  "label": "Welcome", "path": "#" },
+          {   "label": "Annual Info", "path": "#" }
+        ]
+      }
+    ]
+  },
+  {
+    "label": "Applications",
+    "dropdownSections": [
+      {
+         
+        "label": "Director Positions",
+        "links": [
+          {  "label": "Graduate Cabinet", "path": "#" },
+          {  "label": "Secretary Cabinet", "path": "#" },
+          {  "label": "Technology Cabinet", "path": "#" },
+          {  "label": "Marketing Cabinet", "path": "#" },
+          {  "label": "External Cabinet", "path": "#" },
+          {  "label": "Internal Cabinet", "path": "#" },
+          {  "label": "Corporate Cabinet", "path": "#" },
+          {  "label": "Treasury Cabinet", "path": "#" }
+        ]
+      },
+      {
+         
+        "label": "Program Applications",
+        "links": [
+          {   "label": "MentorSHPE", "path": "#" },
+          {   "label": "First Year Leadership Program", "path": "#" }
+        ]
+      }
+    ]
+  }
+]
