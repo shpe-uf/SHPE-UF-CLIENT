@@ -1117,7 +1117,7 @@ ul.nav li.active {
   flex-shrink: 0;
   width: 5rem;
   height: 100%;
-  margin-left: 0.4rem !important;
+  margin-left: 0.35rem !important;
   align-items: center !important;
   justify-content: center !important;
   background-color: var(--accent-1) !important;
