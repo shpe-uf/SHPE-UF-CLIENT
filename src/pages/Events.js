@@ -50,7 +50,7 @@ function Events() {
 
   const [createEventModal, setCreateEventModal] = useState(false);
 
-  const { values, onChange, onSubmit } = useForm(createEventCallback, {
+  const { values, onChange, onSubmit, setValues } = useForm(createEventCallback, {
     name: "",
     code: "",
     category: "",
@@ -167,7 +167,14 @@ function Events() {
                     name="category"
                     value={values.category}
                     error={errors.category ? true : false}
-                    onChange={onChange}
+                    onChange={(e) => {
+                      const { name, value } = e.target;
+                      setValues({
+                        ...values,
+                        category: value,
+                        points: getPoints(value)
+                      })
+                    }}
                   >
                     {categoryOptions.map((category) =>
                       <option value={category.value} key={category.key}>
@@ -180,7 +187,6 @@ function Events() {
                       label="Points"
                       name="points"
                       value = {values.points}
-                      placeholder={getPoints(values.category)}
                       error={errors.points ? true : false}
                       onChange={onChange}
                     />
