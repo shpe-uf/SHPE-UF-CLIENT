@@ -163,11 +163,6 @@ textarea {
   padding: 0px !important;
 }
 
-.logout {
-  color: rgb(255, 0, 0) !important;
-  font-weight: bold;
-}
-
 .ui.grid {
   margin: 0px !important;
 }
@@ -235,7 +230,7 @@ textarea {
   height: 2px !important;
   bottom: -12px !important;
   right: 0 !important;
-  background-color: white !important;
+  background-color: white;
   width: 0;
   transition: width 0.2s ease-in-out !important;
 }
@@ -1186,6 +1181,34 @@ ul.nav li.active {
   border-radius: 0.15rem;
   transform: translateY(0.75rem);
   transition: transform 0.25s;
+}
+
+.logout {
+  display: inline-block !important;
+  position: relative !important;
+  padding-bottom: 3px !important;
+  line-height: 0;
+  color: rgb(255,0,0) !important;
+  font-weight: bold !important;
+  transition: 0.2s;
+}
+
+.logout::before {
+  content: "" !important;
+  position: absolute !important;
+  height: 4px !important;
+  bottom: -1px !important;
+  right: 0 !important;
+  background-color: rgb(255, 0, 0) !important;
+  width: 0 !important;
+  transition: width 0.2s ease-in-out !important;
+}
+
+.logout:hover::before {
+  width: 100% !important;
+  height: 2px !important;
+  left: 0 !important;
+  right: auto;
 }
 
 .divider {
