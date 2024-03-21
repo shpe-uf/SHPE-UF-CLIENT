@@ -376,6 +376,8 @@ textarea {
 
 .nav-dropdown {
   background: var(--primary) !important;
+  position: absolute;
+  width: 100%;
   display: flex;
   gap: 4rem;
   padding: 3rem;
