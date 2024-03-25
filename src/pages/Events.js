@@ -50,7 +50,7 @@ function Events() {
 
   const [createEventModal, setCreateEventModal] = useState(false);
 
-  const { values, onChange, onSubmit } = useForm(createEventCallback, {
+  const { values, onChange, onSubmit, setValues } = useForm(createEventCallback, {
     name: "",
     code: "",
     category: "",
@@ -84,6 +84,11 @@ function Events() {
 
   function createEventCallback() {
     createEvent();
+  }
+
+  function getPoints(key) {
+    const item = categoryOptions.find((item) => item.key === key);
+    return item.points === 0 ? "" : item.points;
   }
 
   return (
@@ -162,36 +167,29 @@ function Events() {
                     name="category"
                     value={values.category}
                     error={errors.category ? true : false}
-                    onChange={onChange}
+                    onChange={(e) => {
+                      const { name, value } = e.target;
+                      setValues({
+                        ...values,
+                        category: value,
+                        points: getPoints(value)
+                      })
+                    }}
                   >
                     {categoryOptions.map((category) =>
-                      category.points === 0 ? (
-                        <option value={category.value} key={category.key}>
-                          {category.value}
-                        </option>
-                      ) : (
-                        <option value={category.value} key={category.key}>
-                          {category.value} ({category.points})
-                        </option>
-                      )
+                      <option value={category.value} key={category.key}>
+                        {category.value}
+                      </option>
                     )}
                   </Form.Field>
-                  {values.category === "Miscellaneous" ? (
-                    <Form.Input
+                  <Form.Input
                       type="text"
                       label="Points"
                       name="points"
-                      value={
-                        values.category === "Miscellaneous"
-                          ? values.points
-                          : "0"
-                      }
+                      value = {values.points}
                       error={errors.points ? true : false}
                       onChange={onChange}
                     />
-                  ) : (
-                    <></>
-                  )}
                   <Form.Field
                     control="select"
                     label="Expires in"
