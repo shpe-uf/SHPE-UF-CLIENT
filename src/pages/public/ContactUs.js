@@ -110,6 +110,7 @@ function ContactUs() {
                     <option value="Suggestion">Provide a suggestion</option>
                     <option value="Question">Ask a question</option>
                     <option value="Bug">Report a problem</option>
+                    <option value="Concern">Account concerns (activation/deletion/questions)</option>
                   </Form.Field>
                 </Form.Group>
                 <Form.TextArea
