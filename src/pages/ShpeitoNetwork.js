@@ -24,6 +24,18 @@ function ShpeitoNetwork(props) {
   let loading = usersQuery.loading;
   let users = [];
 
+  const [filter, setFilter] = useState(
+    new Filter({
+      name: [],
+      major: [],
+      year: [],
+      graduating: [],
+      country: [],
+      classes: [],
+      internships: [],
+    })
+  );
+
   if (data && data.getUsers) {
     users = data.getUsers;
   }
@@ -73,18 +85,6 @@ function ShpeitoNetwork(props) {
       );
     });
   }
-
-  const [filter, setFilter] = useState(
-    new Filter({
-      name: [],
-      major: [],
-      year: [],
-      graduating: [],
-      country: [],
-      classes: [],
-      internships: [],
-    })
-  );
 
   function getUsers(newFilter) {
     setFilter(new Filter(newFilter));
