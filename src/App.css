@@ -161,7 +161,7 @@ h6 {
 }
 
 .logout {
-  color: rgb(255, 0, 0) !important;
+  color: rgb(255, 118, 51) !important;
   font-weight: bold;
 }
 
@@ -926,4 +926,88 @@ ul.nav li.active {
 
 .slideshowDot.active {
   background-color: var(--accent-1);
+}
+
+
+.closeButton {
+  position: absolute;
+  top: 0;
+  right: 0; 
+  background-color: rgb(0, 77, 115) !important;
+  color: white;
+  border: none;
+  font-size: 20px !important;
+  height: 100px;
+  width: 100px;
+}
+
+.profile-view {
+  background-color: rgba(0, 77, 115, 1);
+  position: absolute;
+  left: 65%;
+  top: 1%; 
+}
+
+.backButton {
+  position: absolute;
+  top: 0;
+  left: 0; 
+  background-color: rgb(0, 77, 115) !important;
+  color: white;
+  border: none;
+  font-size: 20px !important;
+  height: 100px;
+  width: 100px;
+}
+
+.mobileMenuItems{
+  padding-top: 10%;
+  padding-left: 10%;
+  color: white;
+  font-size: 20px !important;
+}
+
+.Links a{
+  color: white;
+  padding-left: 10%;
+  padding-bottom: 2%;
+  display: inline-block;
+}
+
+.subHeadings {
+  color: rgb(255, 128, 0);
+  font-size: 20px !important;
+  padding-left: 10%;
+  padding-bottom: 2%;
+  padding-top: 3%;
+}
+
+.subHeadings a{
+  color: rgb(255, 128, 0);
+  font-size: 20px !important;
+}
+
+.Headings {
+  color: white;
+  font-size: 25px !important;
+  padding-top: 100px;
+  padding-left: 10%;
+  padding-bottom: 5%;
+}
+
+.dropdown-item-text{
+  color: white !important; /* Using !important to ensure overriding any default styles */
+}
+
+
+.imagepp {
+    width: 60px;  /* Adjust the width as needed */
+    height: 60px; /* Adjust the height as needed */
+    background-image: url("./assets/images/shpelogo.png");
+    background-size: cover;  /* This ensures the image covers the entire div */
+    background-position: center;
+    margin-left: 5%; /* Pushes the div to the right */
+    margin-right: 0; /* Ensures it aligns right */
+    display: block;
+  
 }
