@@ -1,7 +1,7 @@
 export const PERMISSIONS = {
     ADMIN: 'admin',
     SUPER: 'admin-super',
-    MEMBERS: 'members',
+    MEMBER: 'member',
     EVENTS: 'events',
     TASKS: 'tasks',
     REQUESTS: 'requests',
