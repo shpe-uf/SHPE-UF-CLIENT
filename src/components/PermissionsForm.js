@@ -62,6 +62,12 @@ export default function PermissionsForm({userInfo, refetch}) {
             }
         }
 
+        // In this scenario, if a user is already a super admin, but is demoted to any other permission,
+        // then they lose their super admin role in favor of the diminished role.
+        if (name !== PERMISSIONS.SUPER && tempPermissions.includes(PERMISSIONS.SUPER)) {
+            tempPermissions = name;
+        }
+
         // In this scenario, if a user is simply a member and they are granted any other permission (an admin role), then they lose
         // their member permission in favor of the higher admin role. The inverse is true if a user is demoted to member only.
         if (name !== PERMISSIONS.MEMBER && tempPermissions.includes(PERMISSIONS.MEMBER)) {
@@ -102,7 +108,6 @@ export default function PermissionsForm({userInfo, refetch}) {
             permission: permissions
         }
         setOriginalPermissions(permissions.split("-"));
-        console.log(values);
         changePermissionMutation({variables: values})
     }
 
@@ -119,8 +124,7 @@ export default function PermissionsForm({userInfo, refetch}) {
                         <Form.Group>
                             <Form.Radio
                                 toggle
-                                disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)
-                                    || permissions.includes(PERMISSIONS.SUPER)}
+                                disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)}
                                 name={PERMISSIONS.TASKS}
                                 checked={permissions.includes(PERMISSIONS.TASKS)
                                     && !permissions.includes(PERMISSIONS.SUPER)}
@@ -129,8 +133,7 @@ export default function PermissionsForm({userInfo, refetch}) {
                             />
                             <Form.Radio
                                 toggle
-                                disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)
-                                    || permissions.includes(PERMISSIONS.SUPER)}
+                                disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)}
                                 name={PERMISSIONS.REQUESTS}
                                 checked={permissions.includes(PERMISSIONS.REQUESTS)
                                     && !permissions.includes(PERMISSIONS.SUPER)}
@@ -141,8 +144,7 @@ export default function PermissionsForm({userInfo, refetch}) {
                         <Form.Group>
                             <Form.Radio
                                 toggle
-                                disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)
-                                    || permissions.includes(PERMISSIONS.SUPER)}
+                                disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)}
                                 name={PERMISSIONS.EVENTS}
                                 checked={permissions.includes(PERMISSIONS.EVENTS)
                                     && !permissions.includes(PERMISSIONS.SUPER)}
@@ -161,8 +163,7 @@ export default function PermissionsForm({userInfo, refetch}) {
                         <Form.Group>
                             <Form.Radio
                                 toggle
-                                disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)
-                                    || permissions.includes(PERMISSIONS.SUPER)}
+                                disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)}
                                 name={PERMISSIONS.STATS}
                                 checked={permissions.includes(PERMISSIONS.STATS)
                                     && !permissions.includes(PERMISSIONS.SUPER)}
@@ -171,8 +172,7 @@ export default function PermissionsForm({userInfo, refetch}) {
                             />
                             <Form.Radio
                                 toggle
-                                disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)
-                                    || permissions.includes(PERMISSIONS.SUPER)}
+                                disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)}
                                 name={PERMISSIONS.REIMB}
                                 checked={permissions.includes(PERMISSIONS.REIMB)
                                     && !permissions.includes(PERMISSIONS.SUPER)}
@@ -183,8 +183,7 @@ export default function PermissionsForm({userInfo, refetch}) {
                         <Form.Group>
                             <Form.Radio
                                 toggle
-                                disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)
-                                    || permissions.includes(PERMISSIONS.SUPER)}
+                                disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)}
                                 name={PERMISSIONS.MEMBER}
                                 checked={permissions.includes(PERMISSIONS.MEMBER)
                                     && !permissions.includes(PERMISSIONS.SUPER)}
@@ -193,8 +192,7 @@ export default function PermissionsForm({userInfo, refetch}) {
                             />
                             <Form.Radio
                                 toggle
-                                disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)
-                                    || permissions.includes(PERMISSIONS.SUPER)}
+                                disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)}
                                 name={PERMISSIONS.CORP}
                                 checked={permissions.includes(PERMISSIONS.CORP)
                                     && !permissions.includes(PERMISSIONS.SUPER)}
