@@ -55,7 +55,7 @@ export default function PermissionsForm({userInfo, refetch}) {
             }
         } else {
             if (name === PERMISSIONS.SUPER) {
-                tempPermissions = userInfo.permission;
+                tempPermissions = userInfo.permission.includes(PERMISSIONS.SUPER) ? '' : userInfo.permission;
             } else {
                 tempPermissions = permissions.replaceAll(re1, '-')
                 tempPermissions = permissions.replaceAll(re2, '')
