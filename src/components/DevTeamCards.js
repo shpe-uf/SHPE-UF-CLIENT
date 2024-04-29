@@ -16,8 +16,12 @@ const team = {
   jackie: "https://shpeuf.s3.amazonaws.com/public/team/Jackie.png",
   daniel: "https://shpeuf.s3.amazonaws.com/public/team/Daniel.png",
   marvin: "https://shpeuf.s3.amazonaws.com/public/team/Marvin.png",
-  oscar: "https://shpeuf.s3.amazonaws.com/public/team/Oscar.png"
-
+  oscar: "https://shpeuf.s3.amazonaws.com/public/team/Oscar.png",
+  //Using Oscar's placeholder image for all of us for the time being. 
+  hector: "https://shpeuf.s3.amazonaws.com/public/team/Oscar.png",
+  eduardo: "https://shpeuf.s3.amazonaws.com/public/team/Oscar.png",
+  rachel: "https://shpeuf.s3.amazonaws.com/public/team/Oscar.png",
+  isamarin: "https://shpeuf.s3.amazonaws.com/public/team/Oscar.png"
 }
 
 function DevTeamCards() {
@@ -38,6 +42,10 @@ function DevTeamCards() {
         <Card fluid image={team.daniel} header="Daniel Permane" meta="Junior Developer" />
         <Card fluid image={team.marvin} header="Marvin Howell Aguirre" meta="Junior Developer" />
         <Card fluid image={team.oscar} header="Oscar Delapresa" meta="Junior Developer" />
+        <Card fluid image={team.hector} header="Hector Borjas" meta="Junior Developer" />
+        <Card fluid image={team.eduardo} header="Eduardo Peña" meta="Junior Developer" />
+        <Card fluid image={team.rachel} header="Rachel Ponce" meta="Junior Developer" />
+        <Card fluid image={team.isamarin} header="Isabella Marin" meta="Junior Developer" />
     </>
   );
 }
