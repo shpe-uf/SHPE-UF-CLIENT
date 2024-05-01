@@ -22,7 +22,7 @@ function DevTeam() {
         </Media>
         <Media lessThan="computer">
           <Card.Group itemsPerRow={1}>
-            <DevTeamCards />
+            <DevTeamCards />``
           </Card.Group>
         </Media>
       </Container>
