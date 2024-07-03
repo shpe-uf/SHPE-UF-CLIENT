@@ -33,13 +33,13 @@ const F101Segment = () => (
             <h6>Getting Ready For UF</h6>
             <Image src={Freshman1011} as="a" size="medium" href="https://28d1f378-e21f-4379-a063-11326d549c54.filesusr.com/ugd/4f1a8d_c768d6e0b4e2454fba4d3dc890b27041.pdf" target="_blank"/>
             <Divider/>
-            <Button as='a' href='https://28d1f378-e21f-4379-a063-11326d549c54.filesusr.com/ugd/4f1a8d_c768d6e0b4e2454fba4d3dc890b27041.pdf' target="_blank"><Icon name='download'/>Download Here</Button>
+            <Button as='a' href='https://drive.google.com/file/d/1DnOL12oH4TSavsWHeANIKwDtNP6UphTw/view' target="_blank"><Icon name='download'/>Download Here</Button>
         </Grid.Column>
         <Grid.Column width={5}>
             <h6>Guide to Your First Semester</h6>
             <Image src={Freshman1012} as="a" href='https://drive.google.com/file/d/1GhlijXnAnWzLeJmkvjgVfX1A7hky8ave/view' target="_blank" size="medium" />
             <Divider/>
-            <Button as='a' href='https://drive.google.com/file/d/1GhlijXnAnWzLeJmkvjgVfX1A7hky8ave/view' target="_blank"><Icon name='download'/>Download here</Button>
+            <Button as='a' href='https://drive.google.com/file/d/1C9MfDgC4eeU2waOI6f8vD8W4z9VTXNOr/view' target="_blank"><Icon name='download'/>Download here</Button>
             </Grid.Column>
         <Grid.Column width={5}>
             <h6>Keep an eye out for more coming in the future.</h6>
