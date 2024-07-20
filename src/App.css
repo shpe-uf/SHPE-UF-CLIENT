@@ -934,3 +934,97 @@ ul.nav li.active {
   margin: 0; 
   margin-left: 1em
 }
+
+.App {
+  text-align: center;
+}
+
+.podium {
+  margin-top: 20rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 100%;
+  color: white;
+  flex-direction: row;
+}
+
+.container {
+  justify-content: center;
+  display: flex;
+}
+
+.rank {
+  color: black;
+  display: flex;
+  flex: 1;
+  padding-top: 5%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.label {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.points {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1rem;
+  color: white;
+  background-color: #e64c00;
+  padding: 4rem;
+  font-size: 2rem;
+}
+
+.rank-column {
+  height: 100%;
+  padding: 5vw;
+  text-align: center;
+  font-size: 2.5rem;
+  color: white;
+  background-color: #e64c00;
+}
+
+#l-two {
+  margin-top: 5rem;
+}
+
+#l-three {
+  margin-top: 18rem;
+}
+
+#one {
+  order: 2;
+}
+
+#two {
+  order: 1;
+}
+
+#three {
+  order: 3;
+}
+
+@media screen and (max-width: 600px) {
+  .podium * {
+    font-size: 5vw;
+  }
+
+  .rank * {
+    padding: 10vw;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .podium * {
+    font-size: 5vw;
+  }
+
+  .container {
+    width: 100%;
+    justify-content: center;
+  }
+}
