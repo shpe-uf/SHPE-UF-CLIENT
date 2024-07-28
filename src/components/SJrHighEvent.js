@@ -66,6 +66,14 @@ const event4 = (
   </div>
 );
 
+const event5 = (
+  <div>
+    Virtual sessions designed to provide high school students with valuable 
+    insights into STEM careers. Participants will have the opportunity to interact with professionals, 
+    learn about engineering fields, and receive guidance on academic success and career development.
+  </div>
+);
+
 function event(event, description, pic){
   return JrEventModal(event, description, pic);
 }
@@ -89,6 +97,9 @@ function Events () {
           </Grid.Row>
           <Grid.Row className="JrEventButton">
             {event("SHPE Chapters", event4, chapters_img)}
+          </Grid.Row>
+          <Grid.Row className="JrEventButton">
+            {event("SHPE Jr. Virtual Info", event5, chapters_img)}
           </Grid.Row>
         </Grid.Column>
       </Grid>
