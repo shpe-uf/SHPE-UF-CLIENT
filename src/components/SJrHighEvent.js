@@ -68,9 +68,10 @@ const event4 = (
 
 const event5 = (
   <div>
-    Virtual sessions designed to provide high school students with valuable 
-    insights into STEM careers. Participants will have the opportunity to interact with professionals, 
-    learn about engineering fields, and receive guidance on academic success and career development.
+    This event consists of  virtual sessions designed to provide high school students with 
+    valuable information on pursuing an academic career in STEM and how to prepare for college. 
+    Students will get the chance to learn about the college admission process and will receive 
+    guidance on academic success and career development in STEM.
   </div>
 );
 
