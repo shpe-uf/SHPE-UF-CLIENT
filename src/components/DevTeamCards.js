@@ -26,20 +26,15 @@ const team = {
 function DevTeamCards() {
   return (
     <>
-        <Card fluid image={team.omar} header="Omar Collado" meta="Scrum Master" />
-        <Card fluid image={team.jesus} header="Jesus Jurado" meta="Project Manager" />
-        <Card fluid image={team.isabella} header="Isabella Roman" meta="Junior Project Manager" />
+        <Card fluid image={team.daniel} header="Daniel Permane" meta="Scrum Master" />
+        <Card fluid image={team.jackie} header="Jackie Jurado" meta="Project Manager" />
+        <Card fluid image={team.hector} header="Hector Borjas" meta="Junior Project Manager" />
         <Card fluid image={team.ju} header="Julia Chancey" meta="Senior Developer" />
-        <Card fluid image={team.mateo} header="Mateo Slivka" meta="Senior Developer" />
-        <Card fluid image={team.jorge} header="Jorge Ramirez" meta="Junior Developer" />
-        <Card fluid image={team.daniel} header="Daniel Permane" meta="Junior Developer" />
-        <Card fluid image={team.oscar} header="Oscar Delapresa" meta="Junior Developer" />
-        <Card fluid image={team.hector} header="Hector Borjas" meta="Junior Developer" />
+        <Card fluid image={team.oscar} header="Oscar Delapresa" meta="Senior Developer" />
+        <Card fluid image={team.marvin} header="Marvin Howell Aguirre" meta="Senior Developer" />
         <Card fluid image={team.rachel} header="Rachel Ponce" meta="Junior Developer" />
         <Card fluid image={team.eduardo} header="Eduardo Peña" meta="Junior Developer" />
-        <Card fluid image={team.jackie} header="Jackie Jurado" meta="Junior Developer" />
-        <Card fluid image={team.marvin} header="Marvin Howell Aguirre" meta="Junior Developer" />
-        <Card fluid image={team.isamarin} header="Isabella Marin" meta="Junior Developer" />
+        <Card fluid image={team.isamarin} header="Isabella Marin" meta="Junior Developer" />        
     </>
   );
 }
