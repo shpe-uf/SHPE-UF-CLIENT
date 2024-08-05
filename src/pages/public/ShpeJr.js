@@ -2,7 +2,7 @@ import React, { Children } from "react";
 import { Container } from "semantic-ui-react";
 import { Link } from 'react-router-dom';
 import { useState } from "react";
-import JrTabs from "../../components/JrTabs";
+import JrTabs from "../../components/ShpeJr/JrTabs";
 
 function ShpeJr(){
 

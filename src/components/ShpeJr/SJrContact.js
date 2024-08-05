@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card, Modal, Grid, Button, Icon } from "semantic-ui-react";
-import { Media } from "../Media";
+import { Media } from "../../Media";
 
 function contact(email) {
   return JRModal(contact, email);
