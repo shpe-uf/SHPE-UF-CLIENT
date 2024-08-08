@@ -1,67 +1,62 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Image, Button, Form } from "semantic-ui-react";
 import { useMutation } from "@apollo/client";
 import gql from "graphql-tag";
 import ImageCrop from "./ImageCrop";
-
 import { useForm } from "../util/hooks";
 import majorOptions from "../assets/options/major.json";
 import industryOptions from "../assets/options/industry.json";
 
 function CorporationProfileForm({ corporation, closeModal, refetch }) {
-  //State for error handling
+  // State for error handling
   const [errors, setErrors] = useState({});
 
-  // State to keep track of majors and corporations so that they show up in real time when added
-  // or removed from the form
+  // State to keep track of majors and industries
   const [majors, setMajors] = useState(corporation.majors);
   const [industries, setIndustries] = useState(corporation.industries);
 
-  //State for image handling
-  var [logoFile, setLogoFile] = useState("");
-  let originalLogo = {};
+  // State for image handling
+  const [logoFile, setLogoFile] = useState("");
 
-  function logoSelectedHandler(event) {
-    if (event.target.files.length > 0) {
-      var a = new FileReader();
-      a.readAsDataURL(event.target.files[0]);
-      a.onload = function (e) {
-        values.logo = e.target.result;
-        setLogoFile(e.target.result);
-      };
-    } else {
-      setLogoFile(originalLogo);
-      values.logo = originalLogo;
+  const { onChange, onSubmit, values, setValues } = useForm(
+    modifyCorporationCallback,
+    {
+      id: corporation.id,
+      name: corporation.name,
+      logo: corporation.logo,
+      slogan: corporation.slogan,
+      majors: corporation.majors,
+      industries: corporation.industries,
+      overview: corporation.overview,
+      mission: corporation.mission,
+      goals: corporation.goals,
+      businessModel: corporation.businessModel,
+      newsLink: corporation.newsLink,
+      applyLink: corporation.applyLink,
+      academia: corporation.academia.toString(),
+      govContractor: corporation.govContractor.toString(),
+      nonProfit: corporation.nonProfit.toString(),
+      visaSponsor: corporation.visaSponsor.toString(),
+      shpeSponsor: corporation.shpeSponsor.toString(),
+      industryPartnership: corporation.industryPartnership.toString(),
+      fallBBQ: corporation.fallBBQ.toString(),
+      springBBQ: corporation.springBBQ.toString(),
+      nationalConvention: corporation.nationalConvention.toString(),
+      recruitmentDay: corporation.recruitmentDay.toString(),
+      signUpLink: corporation.signUpLink,
     }
-  }
+  );
 
-  const { onChange, onSubmit, values } = useForm(modifyCorporationCallback, {
-    id: corporation.id,
-    name: corporation.name,
-    logo: corporation.logo,
-    slogan: corporation.slogan,
-    majors: corporation.majors,
-    industries: corporation.industries,
-    overview: corporation.overview,
-    mission: corporation.mission,
-    goals: corporation.goals,
-    businessModel: corporation.businessModel,
-    newsLink: corporation.newsLink,
-    applyLink: corporation.applyLink,
-    academia: corporation.academia.toString(),
-    govContractor: corporation.govContractor.toString(),
-    nonProfit: corporation.nonProfit.toString(),
-    visaSponsor: corporation.visaSponsor.toString(),
-    shpeSponsor: corporation.shpeSponsor.toString(),
-    industryPartnership: corporation.industryPartnership.toString(),
-    fallBBQ: corporation.fallBBQ.toString(),
-    springBBQ: corporation.springBBQ.toString(),
-    nationalConvention: corporation.nationalConvention.toString(),
-  });
+  // Reset form states when the modal is opened
+  useEffect(() => {
+    resetFormState();
+  }, [corporation]);
 
   const [editCorporationProfile, { loading }] = useMutation(EDIT_CORPORATION, {
     update(_, { data: { editCorporation: corporationData } }) {
       setErrors(false);
+      refetch();
+      closeModal("editCorporation");
     },
     onError(err) {
       console.log(err.graphQLErrors[0].extensions.exception.errors);
@@ -70,11 +65,25 @@ function CorporationProfileForm({ corporation, closeModal, refetch }) {
     variables: values,
   });
 
+  function resetFormState() {
+    setLogoFile(corporation.logo || ""); // Reset logo file
+    setMajors(corporation.majors || []); // Reset majors
+    setIndustries(corporation.industries || []); // Reset industries
+    setValues({
+      ...values,
+      logo: corporation.logo || "",
+      majors: corporation.majors || [],
+      industries: corporation.industries || [],
+    });
+  }
+
   async function modifyCorporationCallback() {
-    await editCorporationProfile();
-    refetch();
-    if (!errors) {
-      closeModal("editCorporation");
+    try {
+      await editCorporationProfile();
+    } catch (err) {
+      console.error("Error during mutation:", err);
+      const errors = err.graphQLErrors[0]?.extensions?.exception?.errors || {};
+      setErrors(errors);
     }
   }
 
@@ -142,14 +151,14 @@ function CorporationProfileForm({ corporation, closeModal, refetch }) {
             fluid
             multiple
             selection
-            value={majors} //take display data from the state
+            value={majors}
             options={majorOptions}
             onChange={(param, data) => {
-              setMajors(data.value); //update the majors state
-              values.majors = data.value; //update the values with the current data
+              setMajors(data.value);
+              values.majors = data.value;
             }}
             error={errors.majors ? true : false}
-          ></Form.Dropdown>
+          />
           <Form.Dropdown
             label="Industries"
             name="industries"
@@ -157,11 +166,11 @@ function CorporationProfileForm({ corporation, closeModal, refetch }) {
             fluid
             multiple
             selection
-            value={industries} //take display data from the state
+            value={industries}
             options={industryOptions}
             onChange={(param, data) => {
-              setIndustries(data.value); //update the industries state
-              values.industries = data.value; //update the values with the current data
+              setIndustries(data.value);
+              values.industries = data.value;
             }}
             error={errors.industries ? true : false}
           />
@@ -227,8 +236,8 @@ function CorporationProfileForm({ corporation, closeModal, refetch }) {
             <input
               type="checkbox"
               name="academia"
-              defaultChecked={values.academia === "true" ? true : false}
-              value={values.academia === "true" ? false : true}
+              defaultChecked={values.academia === "true"}
+              value={values.academia === "true" ? "false" : "true"}
               onChange={onChange}
             />
             <label>Academia?</label>
@@ -239,8 +248,8 @@ function CorporationProfileForm({ corporation, closeModal, refetch }) {
             <input
               type="checkbox"
               name="govContractor"
-              defaultChecked={values.govContractor === "true" ? true : false}
-              value={values.govContractor === "true" ? false : true}
+              defaultChecked={values.govContractor === "true"}
+              value={values.govContractor === "true" ? "false" : "true"}
               onChange={onChange}
             />
             <label>Government Contractor?</label>
@@ -251,11 +260,11 @@ function CorporationProfileForm({ corporation, closeModal, refetch }) {
             <input
               type="checkbox"
               name="nonProfit"
-              defaultChecked={values.nonProfit === "true" ? true : false}
-              value={values.nonProfit === "true" ? false : true}
+              defaultChecked={values.nonProfit === "true"}
+              value={values.nonProfit === "true" ? "false" : "true"}
               onChange={onChange}
             />
-            <label>Non profit?</label>
+            <label>Non-profit?</label>
           </div>
         </Form.Field>
         <Form.Field>
@@ -263,8 +272,8 @@ function CorporationProfileForm({ corporation, closeModal, refetch }) {
             <input
               type="checkbox"
               name="visaSponsor"
-              defaultChecked={values.visaSponsor === "true" ? true : false}
-              value={values.visaSponsor === "true" ? false : true}
+              defaultChecked={values.visaSponsor === "true"}
+              value={values.visaSponsor === "true" ? "false" : "true"}
               onChange={onChange}
             />
             <label>Visa Sponsor?</label>
@@ -275,11 +284,11 @@ function CorporationProfileForm({ corporation, closeModal, refetch }) {
             <input
               type="checkbox"
               name="shpeSponsor"
-              defaultChecked={values.shpeSponsor === "true" ? true : false}
-              value={values.shpeSponsor === "true" ? false : true}
+              defaultChecked={values.shpeSponsor === "true"}
+              value={values.shpeSponsor === "true" ? "false" : "true"}
               onChange={onChange}
             />
-            <label>SHPE UF Sponsor?</label>
+            <label>SHPE Sponsor?</label>
           </div>
         </Form.Field>
         <Form.Field>
@@ -287,13 +296,11 @@ function CorporationProfileForm({ corporation, closeModal, refetch }) {
             <input
               type="checkbox"
               name="industryPartnership"
-              defaultChecked={
-                values.industryPartnership === "true" ? true : false
-              }
-              value={values.industryPartnership === "true" ? false : true}
+              defaultChecked={values.industryPartnership === "true"}
+              value={values.industryPartnership === "true" ? "false" : "true"}
               onChange={onChange}
             />
-            <label>Industry Partner?</label>
+            <label>Industry Partnership?</label>
           </div>
         </Form.Field>
         <Form.Field>
@@ -301,11 +308,11 @@ function CorporationProfileForm({ corporation, closeModal, refetch }) {
             <input
               type="checkbox"
               name="fallBBQ"
-              defaultChecked={values.fallBBQ === "true" ? true : false}
-              value={values.fallBBQ === "true" ? false : true}
+              defaultChecked={values.fallBBQ === "true"}
+              value={values.fallBBQ === "true" ? "false" : "true"}
               onChange={onChange}
             />
-            <label>Attending Fall BBQ?</label>
+            <label>Fall BBQ?</label>
           </div>
         </Form.Field>
         <Form.Field>
@@ -313,11 +320,11 @@ function CorporationProfileForm({ corporation, closeModal, refetch }) {
             <input
               type="checkbox"
               name="springBBQ"
-              defaultChecked={values.springBBQ === "true" ? true : false}
-              value={values.springBBQ === "true" ? false : true}
+              defaultChecked={values.springBBQ === "true"}
+              value={values.springBBQ === "true" ? "false" : "true"}
               onChange={onChange}
             />
-            <label>Attending Spring BBQ?</label>
+            <label>Spring BBQ?</label>
           </div>
         </Form.Field>
         <Form.Field>
@@ -325,24 +332,36 @@ function CorporationProfileForm({ corporation, closeModal, refetch }) {
             <input
               type="checkbox"
               name="nationalConvention"
-              defaultChecked={
-                values.nationalConvention === "true" ? true : false
-              }
-              value={values.nationalConvention === "true" ? false : true}
+              defaultChecked={values.nationalConvention === "true"}
+              value={values.nationalConvention === "true" ? "false" : "true"}
               onChange={onChange}
             />
-            <label>Attending SHPE National Convention?</label>
+            <label>National Convention?</label>
           </div>
         </Form.Field>
-        <Button
-          type="reset"
-          color="grey"
-          onClick={() => closeModal("editCorporation")}
-        >
-          Cancel
-        </Button>
-        <Button type="submit" floated="right">
-          Accept
+        <Form.Field>
+          <div className="ui toggle checkbox">
+            <input
+              type="checkbox"
+              name="recruitmentDay"
+              defaultChecked={values.recruitmentDay === "true"}
+              value={values.recruitmentDay === "true" ? "false" : "true"}
+              onChange={onChange}
+            />
+            <label>Recruitment Day?</label>
+          </div>
+        </Form.Field>
+        <Form.Input
+          type="text"
+          required={true}
+          label="Sign-up Link"
+          name="signUpLink"
+          value={values.signUpLink}
+          error={errors.signUpLink ? true : false}
+          onChange={onChange}
+        />
+        <Button type="submit" primary>
+          Submit
         </Button>
       </Form>
     </>
@@ -350,13 +369,13 @@ function CorporationProfileForm({ corporation, closeModal, refetch }) {
 }
 
 const EDIT_CORPORATION = gql`
-  mutation editCorporation(
+  mutation EditCorporation(
     $id: ID!
     $name: String!
-    $logo: String!
+    $logo: String
     $slogan: String!
-    $majors: [String!]!
-    $industries: [String!]!
+    $majors: [String]
+    $industries: [String]
     $overview: String!
     $mission: String!
     $goals: String!
@@ -372,6 +391,8 @@ const EDIT_CORPORATION = gql`
     $fallBBQ: String!
     $springBBQ: String!
     $nationalConvention: String!
+    $recruitmentDay: String!
+    $signUpLink: String!
   ) {
     editCorporation(
       editCorporationInput: {
@@ -396,9 +417,33 @@ const EDIT_CORPORATION = gql`
         fallBBQ: $fallBBQ
         springBBQ: $springBBQ
         nationalConvention: $nationalConvention
+        recruitmentDay: $recruitmentDay
+        signUpLink: $signUpLink
       }
     ) {
+      id
       name
+      logo
+      slogan
+      majors
+      industries
+      overview
+      mission
+      goals
+      businessModel
+      newsLink
+      applyLink
+      academia
+      govContractor
+      nonProfit
+      visaSponsor
+      shpeSponsor
+      industryPartnership
+      fallBBQ
+      springBBQ
+      nationalConvention
+      recruitmentDay
+      signUpLink
     }
   }
 `;

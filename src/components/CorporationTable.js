@@ -157,6 +157,7 @@ function CorporationTable({ corporations, refetch }) {
                 <Table.HeaderCell textAlign="center">Fall BBQ</Table.HeaderCell>
                 <Table.HeaderCell textAlign="center">Spring BBQ</Table.HeaderCell>
                 <Table.HeaderCell textAlign="center">National Convention</Table.HeaderCell>
+                <Table.HeaderCell textAlign="center">Recruitment Days</Table.HeaderCell>
                 <Table.HeaderCell textAlign="center">View/Edit</Table.HeaderCell>
                 <Table.HeaderCell textAlign="center">Delete</Table.HeaderCell>
               </Table.Row>
@@ -196,6 +197,13 @@ function CorporationTable({ corporations, refetch }) {
                     </Table.Cell>
                     <Table.Cell textAlign="center">
                       {corporation.nationalConvention === true ? (
+                        <Icon className="request-true" name="check" />
+                      ) : (
+                        <Icon className="request-false" name="x" />
+                      )}
+                    </Table.Cell>
+                    <Table.Cell textAlign="center">
+                      {corporation.recruitmentDay === true ? (
                         <Icon className="request-true" name="check" />
                       ) : (
                         <Icon className="request-false" name="x" />
