@@ -11,7 +11,6 @@ import {
 
 function DeleteModal(props) {
   const [userInput, setUserInput] = useState("");
-  console.log(props.deleteId);
 
   const [deleteResourceMutation] = useMutation(DELETE_RESOURCE, {
     update(cache, { data: { deleteResource } }) {
@@ -171,6 +170,8 @@ const DELETE_CORPORATION_MUTATION = gql`
       fallBBQ
       springBBQ
       nationalConvention
+      recruitmentDay
+      signUpLink
     }
   }
 `;

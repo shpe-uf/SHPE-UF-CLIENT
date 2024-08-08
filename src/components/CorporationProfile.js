@@ -67,6 +67,7 @@ function CorporationProfile({ corporation }) {
                 content="News"
                 floated="right"
               />
+              
             </Media>
             <h4>Additional Information</h4>
             <List>
@@ -133,6 +134,13 @@ function CorporationProfile({ corporation }) {
                 />
                 <List.Content> Attending SHPE National Convention</List.Content>
               </List.Item>
+              <List.Item>
+                <List.Icon
+                  name={corporation.recruitmentDay ? "check" : "cancel"}
+                  color={corporation.recruitmentDay ? "green" : "red"}
+                />
+                <List.Content> Hosting Recruitment Day</List.Content>
+              </List.Item>
             </List>
           </Grid.Column>
 
@@ -161,6 +169,21 @@ function CorporationProfile({ corporation }) {
                   <Label key={index}>{industry}</Label>
                 ))}
             </Label.Group>
+            {
+                corporation.recruitmentDay === true ?
+                <Label.Group>
+                  <h4>Recruitment Day Sign Up</h4>
+                  <Button
+                    href={corporation.signUpLink}
+                    icon="calendar alternate"
+                    labelPosition="right"
+                    content="Sign Up"
+                    floated="left"
+                  />
+                </Label.Group>
+                
+                : null
+              }    
           </Grid.Column>
         </Grid.Row>
       </Grid>

@@ -12,6 +12,7 @@ function CorporationFilter(props) {
   const [fallBBQ, setFallBBQ] = useState(false);
   const [springBBQ, setSpringBBQ] = useState(false);
   const [nationalConvention, setNationalConvention] = useState(false);
+  const [recruitmentDay, setrecruitmentDay] = useState(false);
 
   function sendFilter() {
     props.getCorporations({
@@ -24,6 +25,7 @@ function CorporationFilter(props) {
       fallBBQ: fallBBQ,
       springBBQ: springBBQ,
       nationalConvention: nationalConvention,
+      recruitmentDay: recruitmentDay,
     })
     props.close();
   }
@@ -89,6 +91,12 @@ function CorporationFilter(props) {
               label='Attending SHPE National Convention'
               onChange={(_,data) => setNationalConvention(data.checked)}
               defaultChecked={props.filter.nationalConvention}
+            />
+            <Form.Radio
+              toggle
+              label='Hosting Recruitment Day'
+              onChange={(_,data) => setrecruitmentDay(data.checked)}
+              defaultChecked={props.filter.recruitmentDay}
             />
           </Form>
         </Grid.Column>

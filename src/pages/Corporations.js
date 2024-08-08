@@ -37,6 +37,7 @@ function Corporations(props) {
       fallBBQ: false,
       springBBQ: false,
       nationalConvention: false,
+      recruitmentDay: false,
     })
   );
 
@@ -81,6 +82,7 @@ function Corporations(props) {
         if (filter.fallBBQ) if (corp.fallBBQ) return true;
         if (filter.springBBQ) if (corp.springBBQ) return true;
         if (filter.nationalConvention) if (corp.nationalConvention) return true;
+        if (filter.recruitmentDay) if (corp.recruitmentDay) return true;
         return false;
       });
   }
@@ -104,25 +106,66 @@ function Corporations(props) {
   const [bookmark] = useMutation(BOOKMARK_MUTATION);
   const [deleteBookmark] = useMutation(DELETE_BOOKMARK_MUTATION);
 
-  const removeBookmark = (corpName, username) => {
-    deleteBookmark({
-      variables: {
-        company: corpName,
-        username: username,
-      },
-    });
-    user.bookmarks.splice(user.bookmarks.indexOf(corpName), 1);
-  };
-
   const addBookmark = (corpName, username) => {
     bookmark({
       variables: {
         company: corpName,
         username: username,
       },
+      update(cache, { data: { bookmark } }) {
+        try {
+          const { getUser } = cache.readQuery({
+            query: FETCH_USER_QUERY,
+            variables: { userId: id },
+          }) || { getUser: { bookmarks: [] } }; // Fallback to empty bookmarks array if data is null
+  
+          cache.writeQuery({
+            query: FETCH_USER_QUERY,
+            variables: { userId: id },
+            data: {
+              getUser: {
+                ...getUser,
+                bookmarks: [...getUser.bookmarks, corpName],
+              },
+            },
+          });
+        } catch (error) {
+          console.error("Error updating cache:", error);
+        }
+      },
     });
-    user.bookmarks.push(corpName);
   };
+  
+  const removeBookmark = (corpName, username) => {
+    deleteBookmark({
+      variables: {
+        company: corpName,
+        username: username,
+      },
+      update(cache, { data: { deleteBookmark } }) {
+        try {
+          const { getUser } = cache.readQuery({
+            query: FETCH_USER_QUERY,
+            variables: { userId: id },
+          }) || { getUser: { bookmarks: [] } }; // Fallback to empty bookmarks array if data is null
+  
+          cache.writeQuery({
+            query: FETCH_USER_QUERY,
+            variables: { userId: id },
+            data: {
+              getUser: {
+                ...getUser,
+                bookmarks: getUser.bookmarks.filter((bookmark) => bookmark !== corpName),
+              },
+            },
+          });
+        } catch (error) {
+          console.error("Error updating cache:", error);
+        }
+      },
+    });
+  };
+  
 
   var corporationPane = {
     menuItem: { content: "Corporations", icon: "building outline" },
@@ -365,6 +408,7 @@ class Filter {
     this.fallBBQ = filter.fallBBQ;
     this.springBBQ = filter.springBBQ;
     this.nationalConvention = filter.nationalConvention;
+    this.recruitmentDay = filter.recruitmentDay
   }
 }
 
