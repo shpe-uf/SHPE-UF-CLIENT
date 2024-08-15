@@ -21,7 +21,7 @@ function JrSchoolModal(schoolName, description, pic){
                 </Grid>
               }
         >
-        <Modal.Header>{schoolName}</Modal.Header>
+        <Modal.Header>{schoolName} <Button icon="close" color="grey" onClick={() => setOpen(false)} /></Modal.Header>
         <Modal.Content image>
             <Grid>
                 <Grid.Column width = {5}>
@@ -33,16 +33,6 @@ function JrSchoolModal(schoolName, description, pic){
                 </Grid.Column>
             </Grid>
         </Modal.Content>
-        <Modal.Actions>
-            <Button
-                content = "Close"
-                labelPosition="right"
-                icon = "checkmark"
-                onClick={()=> setOpen(false)}
-                positive
-            />
-        </Modal.Actions>
-
         </Modal>
 
     );

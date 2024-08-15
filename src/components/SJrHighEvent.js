@@ -68,7 +68,7 @@ const event4 = (
 
 const event5 = (
   <div>
-    This event consists of  virtual sessions designed to provide high school students with 
+    This event consists of virtual sessions designed to provide high school students with 
     valuable information on pursuing an academic career in STEM and how to prepare for college. 
     Students will get the chance to learn about the college admission process and will receive 
     guidance on academic success and career development in STEM.
