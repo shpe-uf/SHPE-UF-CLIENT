@@ -1,5 +1,7 @@
 import React from "react";
-import { Container, Grid, Image } from "semantic-ui-react";
+import { Container, Grid, Image, Card, Modal, Button, Icon } from "semantic-ui-react";
+import { Link } from "react-router-dom";
+
 
 import sponsors from "../../assets/images/sponsors"
 
@@ -9,13 +11,33 @@ function Sponsors() {
       <div className="masthead masthead-sponsors">
         <div className="overlay-blue">
           <Container>
-            <h1 className="masthead-title text-white">Sponsors</h1>
+            <h1 className="masthead-title text-white">Partners</h1>
           </Container>
         </div>
       </div>
 
+      {/* Temporary while partner list updates for 24-25 school year */}
+
       <Container>
-        {/* PLATINUM SPONSORS*/}
+      <Grid>
+          <Grid.Row>
+            <Grid.Column>
+                <div align="center">
+
+                <h2 className="no-margin">24-25 Partners Coming Soon</h2>
+
+                <h4 className = "accent-2-text"> Interested in becoming a partner?</h4>
+
+                <Button as={Link} to="mailto:vpcorporate.shpeuf@gmail.com">Contact us</Button>
+                
+              </div>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+
+        
+        
+        {/*
         <Grid stackable columns={3}>
           <h2 className="no-margin">Platinum Level</h2>
           <Grid.Row className="sponsor-padding">
@@ -31,8 +53,9 @@ function Sponsors() {
             </Grid.Column>
           </Grid.Row>
         </Grid>
+        
 
-        {/* GOLD SPONSORS*/}
+        
         <Grid stackable columns={3}>
           <h2 className="no-margin">Gold Level</h2>
           <Grid.Row className="sponsor-padding">
@@ -48,7 +71,7 @@ function Sponsors() {
           </Grid.Row>
         </Grid>
 
-        {/* SILVER SPONSORS */}
+        
         <Grid stackable columns={4}>
           <h2 className="no-margin">Silver Level</h2>
           <Grid.Row className="sponsor-padding">
@@ -91,7 +114,7 @@ function Sponsors() {
           </Grid.Row>
         </Grid>
 
-        {/* BRONZE SPONSORS */}
+        
         <Grid stackable columns={5}>
           <h2 className="no-margin">Bronze Level</h2>
           <Grid.Row className="sponsor-padding">
@@ -313,6 +336,8 @@ function Sponsors() {
             </Grid.Column>
           </Grid.Row>
         </Grid>
+        
+        */}
       </Container>
     </div>
   );
