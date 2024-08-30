@@ -10,7 +10,6 @@ const img4 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/Hialeah_Gardens_High
 const img5 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/pkyHigh.jpg'
 const img6 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/Cypress_Bay.jpg'
 const img7 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/Central_High_School_Front.jpg'
-const img8 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/Materacademyhigh.jpg'
 
 function partnerMod(schoolName, description, pic){
     return JrSchoolModal(schoolName,description,pic);
@@ -65,22 +64,15 @@ function partnerMod(schoolName, description, pic){
     </div>
 
   );
-  const NorthFloridaCentralDescription = (
+  const NorthCentralFloridaDescription = (
     <div>
-        North Florida Central High School is located in Gainesville, Florida. Our SHPEJr chapter 
+        North Central Florida High School is located in Gainesville, Florida. Our SHPEJr chapter 
         hosts events such as STEM days with their students! 
         Check out our High School Events for more info 
     </div>
 
   );
-  const MaterAcademyDescription = (
-    <div>
-        Mater Academy High School is located in Gainesville, Florida. Our SHPEJr chapter 
-        hosts events such as STEM days with their students! 
-        Check out our High School Events for more info 
-    </div>
-
-  );
+  
 
 function JrSchoolCards(){
     return (
@@ -148,24 +140,15 @@ function JrSchoolCards(){
         />
          <Card
             image = {img7}
-            header = "North Florida Central"
+            header = "North Central Florida"
             meta = "High School"
             extra ={partnerMod(
-                "North Florida Central High School",
-                NorthFloridaCentralDescription,
+                "North Central Florida High School",
+                NorthCentralFloridaDescription,
                 img7
             )}
         />
-         <Card
-            image = {img8}
-            header = "Mater Academy"
-            meta = "High School"
-            extra ={partnerMod(
-                "Mater Academy High School",
-                MaterAcademyDescription,
-                img8
-            )}
-        />
+         
         </>
     );
 }
