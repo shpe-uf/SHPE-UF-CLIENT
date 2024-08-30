@@ -1,6 +1,6 @@
 import React from "react";
 import { Card } from "semantic-ui-react";
-import emptyImg from "../assets/images/placeholder.png";
+import emptyImg from "../../assets/images/placeholder.png";
 import JrSchoolModal from "./JrSchoolModal";
 
 const img1 = 'https://shpeuf.s3.amazonaws.com/public/shpejr/Norton.jpg'

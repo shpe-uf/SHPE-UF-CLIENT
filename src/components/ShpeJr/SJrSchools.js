@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Container } from 'semantic-ui-react';
-import { Media } from "../Media"; 
+import { Media } from "../../Media"; 
 import JrSchoolCards from './JrSchoolCards';
 
 const SJrSchools = () =>{
