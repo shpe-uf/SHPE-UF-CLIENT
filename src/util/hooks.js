@@ -7,10 +7,16 @@ export const useForm = (callback, initialState = {}) => {
     setValues({ ...values, [event.target.name]: event.target.value });
   };
 
-  const onSubmit = (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault();
-    callback();
+    try {
+      await callback();
+    } catch (err) {
+      console.error("Error during submission:", err);
+    }
   };
+  
+
   
   return {
     onChange,

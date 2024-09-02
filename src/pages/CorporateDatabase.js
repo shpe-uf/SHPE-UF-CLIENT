@@ -60,24 +60,34 @@ function CorporateDatabase() {
     fallBBQ: "false",
     springBBQ: "false",
     nationalConvention: "false",
+    recruitmentDay: "false",
+    signUpLink: "",
   });
 
   const [addCorporation, { loading }] = useMutation(CREATE_CORPORATION, {
     update(_, { data: { createCorporation: corporationData } }) {
-      corporations = corporationData;
-      // setDisplayCorporations(corporations);
+      // Optionally, set state with the new corporation data here
       closeModal();
       setErrors(false);
     },
     onError(err) {
-      setErrors(err.graphQLErrors[0].extensions.exception.errors);
+      const errorDetails =
+        err.graphQLErrors?.[0]?.extensions?.exception?.errors || {};
+      console.error("GraphQL error:", errorDetails);
+  
+      setErrors(errorDetails);
     },
     variables: values,
   });
 
   async function createCorporation() {
-    await addCorporation();
-    refetch();
+    try {
+      await addCorporation();
+      closeModal();
+      refetch();
+    } catch (error) {
+      console.error("Error creating corporation:", error);
+    }
   }
 
   //#region MODALS
@@ -107,6 +117,8 @@ function CorporateDatabase() {
     values.fallBBQ = "false";
     values.springBBQ = "false";
     values.nationalConvention = "false";
+    values.recruitmentDay = "false";
+    values.signUpLink = ""
     setErrors(false);
     setAddCorporationModal(false);
   };
@@ -123,6 +135,7 @@ function CorporateDatabase() {
     { label: "NewsLink", key: "businessModel" },
     { label: "Apply Link", key: "newsLink" },
     { label: "National Convention Attendee", key: "applyLink" },
+    { label: "Recruitment Days", key: "recruitmentDay"},
   ];
 
   const addModal = (
@@ -152,11 +165,11 @@ function CorporateDatabase() {
               noValidate
               className={loading ? "loading" : ""}
             >
-              {logoFile === "" ? (
+              {logoFile ? (
                 <Image
                   fluid
                   rounded
-                  src={placeholder}
+                  src={logoFile}
                   className="image-profile"
                   style={{ marginBottom: 16 }}
                 />
@@ -164,7 +177,7 @@ function CorporateDatabase() {
                 <Image
                   fluid
                   rounded
-                  src={logoFile}
+                  src={placeholder}
                   className="image-profile"
                   style={{ marginBottom: 16 }}
                 />
@@ -367,6 +380,29 @@ function CorporateDatabase() {
                   <label>Attending SHPE National Convention?</label>
                 </div>
               </Form.Field>
+              <Form.Field>
+                <div className="ui toggle checkbox">
+                  <input
+                    type="checkbox"
+                    name="recruitmentDay"
+                    value={values.recruitmentDay === "true" ? false : true}
+                    onChange={onChange}
+                  />
+                  <label>Hosting Recruitment Day?</label>
+                </div>
+              </Form.Field>
+              {
+                values.recruitmentDay === "true" ?
+                <Form.Group widths="equal">
+                <Form.Input
+                  type="text"
+                  label="Sign Up Link"
+                  name="signUpLink"
+                  value={values.signUpLink}
+                  error={errors.signUpLink ? true : false}
+                  onChange={onChange}
+                /> </Form.Group>: null
+              }
               <Button type="reset" color="grey" onClick={() => closeModal()}>
                 Cancel
               </Button>
@@ -444,6 +480,8 @@ const CREATE_CORPORATION = gql`
     $fallBBQ: String!
     $springBBQ: String!
     $nationalConvention: String!
+    $recruitmentDay: String!
+    $signUpLink: String
   ) {
     createCorporation(
       createCorporationInput: {
@@ -467,6 +505,8 @@ const CREATE_CORPORATION = gql`
         fallBBQ: $fallBBQ
         springBBQ: $springBBQ
         nationalConvention: $nationalConvention
+        recruitmentDay: $recruitmentDay
+        signUpLink: $signUpLink
       }
     ) {
       name

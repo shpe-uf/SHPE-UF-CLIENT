@@ -116,6 +116,8 @@ export const FETCH_CORPORATIONS_QUERY = gql`
       fallBBQ
       springBBQ
       nationalConvention
+      recruitmentDay
+      signUpLink
     }
   }
 `;
