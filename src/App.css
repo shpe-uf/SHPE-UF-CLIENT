@@ -818,6 +818,30 @@ div::-webkit-scrollbar-thumb {
   position: absolute
 }
 
+.DevTeamTabs {
+  width: 100%;
+  height: auto;
+  min-height: 400px;
+  background:aliceblue;
+  margin: 3.5rem auto 1.5rem;
+  padding: 2rem 1rem;
+  color:  rgb(0, 77, 115);
+  border-radius: 1rem;
+  @media (max-width: 780px) {
+    padding: 2rem 0;
+  }
+ }
+
+ .DevTeamTabContent {
+  font-size: 2rem;
+  text-align: center;
+}
+
+ #IOSTeam {
+  color:"green";
+  text-transform: none !important;
+ }
+
 .JrTabs {
   width: 90%;
   height: auto;
