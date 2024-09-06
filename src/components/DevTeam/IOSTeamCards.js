@@ -19,7 +19,7 @@ function DevTeamCards() {
     <>
         <Card fluid image={team.daniel} header="Daniel Parra" meta="Scrum Master" />
         <Card fluid image={team.ashley} header="Ashley Guerra" meta="Project Manager" />    
-        <Card fluid image={team.david_denis} header="David Penis" meta="iOS Developer" />     
+        <Card fluid image={team.david_denis} header="David Denis" meta="iOS Developer" />     
         <Card fluid image={team.mazin} header="Mazin Saleh" meta="iOS Developer" />   
         <Card fluid image={team.vivian} header="Vivian Rincon" meta="iOS Developer" />   
         <Card fluid image={team.simar} header="Simar Kheptal" meta="iOS Developer" />   
