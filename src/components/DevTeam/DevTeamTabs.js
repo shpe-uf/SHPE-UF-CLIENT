@@ -6,7 +6,7 @@ import IOSTeam from "./iOSTeam";
 import AndroidTeam from "./AndroidTeam";
 
 const DevTeamTabs = () => {
-  const [activeTab, setActiveTab] = useState("tab1");
+  const [activeTab, setActiveTab] = useState("tab2");
   return (
     
     <div className="DevTeamTabs">

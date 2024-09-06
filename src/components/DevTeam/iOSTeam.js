@@ -6,7 +6,7 @@ import DevTeamCards from './IOSTeamCards';
 const IOSTeam = () =>{  //ios written as IOS because iOS would not work :(
   return(
     <div id='iOSTeam'>
-      <h2 id="IOSTeam" text-transform="none"> iOS Team</h2>
+      <h2 id="IOSTeam" text-transform="none"> iOS TEAM</h2>
       <br></br>
      <Container>
       <Media greaterThanOrEqual="computer">
