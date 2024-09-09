@@ -107,7 +107,7 @@ const SJrContact = () =>{
                 image={"https://shpeuf.s3.amazonaws.com/public/shpejr/shpeJrChair.jpg"}
                 header="Maria Isabel Herreros"
                 meta="SHPE JR Chair"
-                extra={contact("jrchair.shpeuf@gmail.com")}   
+                extra={contact("shpejrchair.shpeuf@gmail.com")}   
               />
             </Card.Group>
           </Grid.Column>
