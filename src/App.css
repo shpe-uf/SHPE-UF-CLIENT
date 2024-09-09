@@ -856,11 +856,11 @@ div::-webkit-scrollbar-thumb {
   }
  }
 
+
  ul.nav {
   width: 69%;
   margin: 0 auto 2rem;
   display: flex;
-  align-items: center;
   justify-content: space-between;
   border: 1px solid #39A2DB;
   border-radius: 2rem;
@@ -874,6 +874,9 @@ ul.nav li {
   padding: 1rem;
   list-style: none;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   transition: all 0.7s;
   border-left: ipx solid #39A2DB;
