@@ -10,6 +10,8 @@ const Podcast = "https://shpeuf.s3.amazonaws.com/public/resources/SHPECast.jpg";
 const Spotify = "https://shpeuf.s3.amazonaws.com/public/resources/spotify.jpg";
 const Stitcher = "https://shpeuf.s3.amazonaws.com/public/resources/stitcher.png";
 const CrashCourse = "https://shpeuf.s3.amazonaws.com/public/resources/ConventionCrashCourse.jpg";
+const GradSHPEresearch = "https://shpeuf.s3.amazonaws.com/public/resources/GradSHPEresearch.png";
+const GradSHPEschool = "https://shpeuf.s3.amazonaws.com/public/resources/GradSHPEschool.png"
 
 const GBMSlidesSegment = () => (
     <div>
@@ -265,6 +267,30 @@ const LinksSegment = () => (
     </div>
 )
 
+const GradSegment = () => (
+    <div>
+    <br/>
+    <b>Want to delve deeper into the wonderful world of research and graduate studies? These documents will answer all of your questions when it comes to getting involved and succeeding as a researcher or graduate student!</b>
+    <Grid divided centered>
+        <Grid.Column width={5}>
+            <h6>Research Essentials</h6>
+            <Image src={GradSHPEresearch} as="a" size="medium" href="https://drive.google.com/file/d/1DnOL12oH4TSavsWHeANIKwDtNP6UphTw/view" target="_blank"/>
+            <Divider/>
+            <Button as='a' href='https://drive.google.com/file/d/1DnOL12oH4TSavsWHeANIKwDtNP6UphTw/view' target="_blank"><Icon name='download'/>Download Here</Button>
+        </Grid.Column>
+        <Grid.Column width={5}>
+            <h6>Gradschool Essentials</h6>
+            <Image src={GradSHPEschool} as="a" href='https://drive.google.com/file/d/1C9MfDgC4eeU2waOI6f8vD8W4z9VTXNOr/view' target="_blank" size="medium" />
+            <Divider/>
+            <Button as='a' href='https://drive.google.com/file/d/1C9MfDgC4eeU2waOI6f8vD8W4z9VTXNOr/view' target="_blank"><Icon name='download'/>Download here</Button>
+            </Grid.Column>
+        {/*<Grid.Column width={5}>
+            <h6>Keep an eye out for more coming in the future.</h6>
+        </Grid.Column>*/}
+    </Grid>
+    </div>
+)
+
 const OpenRow = ({ rowName }) => {
     if(rowName == 'Freshman 101 Slides') {
         return <F101Segment />
@@ -280,15 +306,20 @@ const OpenRow = ({ rowName }) => {
     if(rowName == 'Links') {
         return <LinksSegment />
     }
+    if(rowName == 'GradSHPE 101') {
+        return <GradSegment />
+    }
 }
 
 
 const panes = [
     { menuItem: 'GBM Slides', render: () => <Tab.Pane><OpenRow rowName={ 'GBM Slides' }/></Tab.Pane> },
     { menuItem: 'Freshman 101 Slides', render: () => <Tab.Pane><OpenRow rowName={ 'Freshman 101 Slides' }/></Tab.Pane> },
+    { menuItem: 'GradSHPE 101', render: () => <Tab.Pane><OpenRow rowName={ 'GradSHPE 101' }/></Tab.Pane> },
     { menuItem: 'SHPE UF Media', render: () => <Tab.Pane><OpenRow rowName={ 'SHPE UF Media' }/></Tab.Pane> },
     //{ menuItem: 'Corporate', render: () => <Tab.Pane><OpenRow rowName={ 'Corporate' }/></Tab.Pane> },
     { menuItem: 'Links', render: () => <Tab.Pane><OpenRow rowName={ 'Links' }/></Tab.Pane> },
+    
   ]
 
 export default class ResourcesMenu extends Component {
