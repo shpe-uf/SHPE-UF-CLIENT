@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card, Modal, Grid, Button, Icon } from "semantic-ui-react";
-import { Media } from "../Media";
+import { Media } from "../../Media";
 
 function contact(email) {
   return JRModal(contact, email);
@@ -49,7 +49,7 @@ const SJrContact = () =>{
             <Card.Group centered itemsPerRow={1.1}>
               <Card
                 image={"https://shpeuf.s3.amazonaws.com/public/eboard/VPExternal"}
-                header="Malena Gonzales Fernandez"
+                header="Sebastian Sobrino"
                 meta="VP of External Affairs"
                 extra={contact("vpexternal.shpeuf@gmail.com")}    
               />
@@ -65,8 +65,8 @@ const SJrContact = () =>{
           <Grid.Column>
             <Card.Group centered itemsPerRow={1.1}>
               <Card
-                image={"https://shpeuf.s3.amazonaws.com/public/shpejr/shpeJrChair.jpeg"}
-                header="Camille Grimaldi"
+                image={"https://shpeuf.s3.amazonaws.com/public/shpejr/shpeJrChair.jpg"}
+                header="Maria Isabel Herreros"
                 meta="SHPE JR Chair"
                 extra={contact("jrchair.shpeuf@gmail.com")}   
               />
@@ -88,7 +88,7 @@ const SJrContact = () =>{
             <Card.Group centered itemsPerRow={1.1}>
               <Card
                 image={"https://shpeuf.s3.amazonaws.com/public/eboard/VPExternal"}
-                header="Malena Gonzales Fernandez"
+                header="Sebastian Sobrino"
                 meta="VP of External Affairs"
                 extra={contact("vpexternal.shpeuf@gmail.com")}    
               />
@@ -104,8 +104,8 @@ const SJrContact = () =>{
           <Grid.Column>
             <Card.Group centered itemsPerRow={1.1}>
               <Card
-                image={"https://shpeuf.s3.amazonaws.com/public/shpejr/shpeJrChair.jpeg"}
-                header="Camille Grimaldi"
+                image={"https://shpeuf.s3.amazonaws.com/public/shpejr/shpeJrChair.jpg"}
+                header="Maria Isabel Herreros"
                 meta="SHPE JR Chair"
                 extra={contact("jrchair.shpeuf@gmail.com")}   
               />

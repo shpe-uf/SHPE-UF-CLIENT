@@ -37,7 +37,7 @@ function MenuBar({permission}) {
               Dev Team
             </Menu.Item>
             <Menu.Item as={Link} to="/sponsors">
-              Sponsors
+              Partners
             </Menu.Item>
             <Menu.Item as={Link} to="/calendar">
               Calendar
@@ -135,7 +135,7 @@ function MenuBar({permission}) {
                       Dev Team
                     </Dropdown.Item>
                     <Dropdown.Item as={Link} to="/sponsors">
-                      Sponsors
+                      Partners
                     </Dropdown.Item>
                     <Dropdown.Item as={Link} to="/calendar">
                       Calendar

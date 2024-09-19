@@ -1,92 +1,96 @@
-import React, { useState } from 'react';
-import { Form, Button } from 'semantic-ui-react';
-
-import ReactCrop from 'react-image-crop';
-import 'react-image-crop/dist/ReactCrop.css';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
+import { Button } from 'semantic-ui-react';
+import Cropper from 'react-cropper';
+import 'cropperjs/dist/cropper.css';
 
 function ImageCrop(props) {
-
   const [cropPhoto, setCropPhoto] = useState(null);
   const [croppedUrl, setCroppedUrl] = useState(null);
-  const [crop, setCrop] = useState({unit: '%', width: 30, aspect: 1/1});
-  const [imageRef, setImageRef] = useState(null);
+  const cropperRef = useRef(null);
 
-  function photoSelectedHandler(event) {
+  const photoSelectedHandler = useCallback((event) => {
     if (event.target.files.length > 0) {
-      let a = new FileReader();
-      a.readAsDataURL(event.target.files[0]);
-      a.onload = function (e) {
-        setCropPhoto(e.target.result);
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setCropPhoto(reader.result);
       };
+      reader.readAsDataURL(file);
     }
-  }
+  }, []);
 
-  function setImage() {
-    setCrop({unit: '%', width: 30, aspect: 1/1});
+  const cropImage = () => {
+    const cropper = cropperRef.current?.cropper;
+
+    if (cropper) {
+      const canvas = cropper.getCroppedCanvas();
+      if (canvas) {
+        const url = canvas.toDataURL();
+        setCroppedUrl(url);
+        return url;
+      }
+    }
+    return null;
+  };
+
+  const setImage = () => {
+    const croppedUrl = cropImage();
+    if (croppedUrl) {
+      if (props.type === 'corporation') {
+        props.values.logo = croppedUrl;
+        props.setPhotoFile(croppedUrl);
+      } else if (props.type === 'profile') {
+        props.values.photo = croppedUrl;
+        props.setPhotoFile(croppedUrl);
+      } else if (props.type === 'reimbursementR') {
+        props.values.receiptPhoto = croppedUrl;
+        props.setPhotoFile(croppedUrl);
+      } else if (props.type === 'reimbursementF') {
+        props.values.eventFlyer = croppedUrl;
+        props.setPhotoFile(croppedUrl);
+      }
+      setCropPhoto(null); // Clear crop photo to hide the cropper
+    }
+  };
+
+  // Reset crop photo and cropped URL when props change
+  useEffect(() => {
     setCropPhoto(null);
-    if (props.type === 'corporation') {
-      props.values.logo = croppedUrl;
-      props.setPhotoFile(croppedUrl);
-    } else if(props.type === 'profile') {
-      props.values.photo = croppedUrl;
-      props.setPhotoFile(croppedUrl);
-    } else if(props.type === 'reimbursementR') {
-      props.values.receiptPhoto = croppedUrl;
-      props.setPhotoFile(croppedUrl);
-    }  else if(props.type === 'reimbursementF') {
-      props.values.eventFlyer = croppedUrl;
-      props.setPhotoFile(croppedUrl);
-    }
-  }
-
-  function getCroppedImg(image, crop) {
-      const canvas = document.createElement("canvas");
-      const scaleX = image.naturalWidth / image.width;
-      const scaleY = image.naturalHeight / image.height;
-      canvas.width = crop.width;
-      canvas.height = crop.height;
-      const ctx = canvas.getContext("2d");
-      
-      ctx.drawImage(
-        image,
-        crop.x * scaleX,
-        crop.y * scaleY,
-        crop.width * scaleX,
-        crop.height * scaleY,
-        0,
-        0,
-        crop.width,
-        crop.height
-      )
-      setCroppedUrl(canvas.toDataURL("image/jpeg"))
-  }
+    setCroppedUrl(null);
+  }, [props.values.logo, props.type]);
 
   return (
     <>
-      <Form.Input
+      <input
         type="file"
-        label="Photo"
-        error={props.errors.photo ? true : false}
-        onChange={(() => props.onChange, photoSelectedHandler)}
+        accept="image/*"
+        onChange={photoSelectedHandler}
       />
-      {cropPhoto && 
+      {cropPhoto && (
         <>
-          <ReactCrop
+          <Cropper
             src={cropPhoto}
-            crop={crop}
-            onImageLoaded={(photo) => setImageRef(photo)}
-            onComplete={(crop) => (imageRef && crop.width && crop.height) && getCroppedImg(imageRef, crop)}
-            onChange={(crop) => setCrop(crop)}
+            style={{ height: 400, width: '100%' }}
+            initialAspectRatio={1}
+            aspectRatio={1}
+            guides={false}
+            ref={cropperRef}
           />
           <Button
-            onClick={()=>setImage()}
+            type="button"
+            onClick={setImage}
           >
             Select
           </Button>
         </>
-      }
+      )}
+      {croppedUrl && (
+        <div>
+          <img src={croppedUrl} alt="Cropped" style={{ width: '100%' }} />
+        </div>
+      )}
     </>
-  )
+  );
 }
 
 export default ImageCrop;

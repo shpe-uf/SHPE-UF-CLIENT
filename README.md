@@ -1,5 +1,7 @@
 # SHPE UF Client
 
+![alt text](https://shpeuf.s3.amazonaws.com/public/misc/logo_horizontal.png "SHPE logo")
+
 This repository is the frontend code for the [SHPE UF website](https://membershpeuf.netlify.app).
 SHPE, also known as the Society of Hispanic Professional Engineers, is a Hispanic community at the
 University of Florida that strives to reach its fullest potential by impacting the world through STEM
