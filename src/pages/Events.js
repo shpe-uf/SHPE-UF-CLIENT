@@ -155,6 +155,14 @@ function Events() {
                   />
                   <Form.Input
                     type="text"
+                    label="Length of The Event"
+                    name="event length"
+                    value={values.length}
+                    error={errors.length ? true : false}
+                    onChange={onChange}
+                  />
+                  <Form.Input
+                    type="text"
                     label="Code"
                     name="code"
                     value={values.code}
@@ -190,6 +198,14 @@ function Events() {
                       error={errors.points ? true : false}
                       onChange={onChange}
                     />
+                  <Form.Input
+                    type="text"
+                    label="Hour-to-Shpoint Ratio"
+                    name="ratio"
+                    value={values.ratio}
+                    error={errors.ratio ? true : false}
+                    onChange={onChange}
+                  />
                   <Form.Field
                     control="select"
                     label="Expires in"
