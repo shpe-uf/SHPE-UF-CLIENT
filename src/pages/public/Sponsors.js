@@ -39,6 +39,21 @@ function Sponsors() {
               <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/Accenture.png"/>
               <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/Bloomberg.png"/>
               <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/GE-Aerospace.png"/>
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/PepsiCo.jpg"/>
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/pgnew.jpg"/>
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/Southern-Company.png"/>
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/Trinity-Consultants.png"/>
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/Micron.png"/>
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/Medtronic.png"/>
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/lockheed.png"/>
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/ExxonMobil.png"/>
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/WT.jpg"/>
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/sandia.png"/>
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/ABB.jpg"/>
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/nvidia(1).png"/>
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/wade-trim.png"/>
+
+
               </ImageGroup>
             </Grid.Row>
           <h2 style={{color: "#CE8946"}}>Bronze partners</h2>
@@ -54,6 +69,7 @@ function Sponsors() {
               <Image size="medium" src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/Microsoft.jpg"/>
               <Image size="medium" src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/UKG.png"/>
               <Image size="medium" src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/LJA.jpg"/>
+              <Image size="medium" src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/Honeywell.png"/>
               </ImageGroup>
             </Grid.Row>
       </Grid>
