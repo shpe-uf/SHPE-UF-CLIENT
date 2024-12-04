@@ -79,7 +79,7 @@ function DeleteModal(props) {
             All users who completed this will lose the points they received for
             it
           </li>
-          <li>This item will be permenantly deleted</li>
+          <li>This item will be permanently deleted</li>
         </ul>
         <p>
           To delete enter the name of the {props.type} ({props.deleteItem}) and
