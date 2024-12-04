@@ -149,6 +149,8 @@ function Events() {
                 <br/>
                 <b>Category:</b> {priorEventInfo.category}
                 <br/>
+                <b>Points:</b> {priorEventInfo.points}
+                <br/>
                 <b>Code:</b> {priorEventInfo.code}
               </Grid.Column>
             </Grid.Row>
