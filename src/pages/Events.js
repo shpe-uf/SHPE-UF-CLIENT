@@ -14,6 +14,7 @@ import { useForm } from "../util/hooks";
 
 import Title from "../components/Title";
 import EventsAccordion from "../components/Events/EventsAccordion";
+import { QRCodeSVG } from 'qrcode.react';
 
 import { FETCH_EVENTS_QUERY } from "../util/graphql";
 
@@ -32,6 +33,8 @@ function Events() {
   const openModal = (name) => {
     if (name === "createEvent") {
       setCreateEventModal(true);
+    } else if (name === "confirmEvent") {
+      setConfirmEventModal(true);
     }
   };
 
@@ -45,10 +48,14 @@ function Events() {
       values.request = "false";
       setErrors(false);
       setCreateEventModal(false);
+    } else if (name === "confirmEvent") {
+      setConfirmEventModal(false);
     }
   };
 
   const [createEventModal, setCreateEventModal] = useState(false);
+  const [confirmEventModal, setConfirmEventModal] = useState(false);
+  const [priorEventInfo, setPriorEventInfo] = useState({})
 
   const { values, onChange, onSubmit, setValues } = useForm(createEventCallback, {
     name: "",
@@ -61,6 +68,10 @@ function Events() {
 
   const [createEvent, { loading }] = useMutation(CREATE_EVENT_MUTATION, {
     update(_, { data: { createEvent: eventsData } }) {
+      setPriorEventInfo({...values})
+      console.log(priorEventInfo)
+      console.log(values)
+      console.log(typeof values)
       values.name = "";
       values.code = "";
       values.category = "";
@@ -72,7 +83,8 @@ function Events() {
         events.push(eventsData[i]);
       }
       setErrors(false);
-      setCreateEventModal(false);
+      setCreateEventModal(false)
+      setConfirmEventModal(true);
     },
 
     onError(err) {
@@ -118,6 +130,41 @@ function Events() {
         </Grid>
       </Container>
 
+      { /* Confirmation Modal */ }
+
+      <Modal
+        open={confirmEventModal}
+        size="tiny"
+        dimmer={false}
+        closeOnEscape={true}
+        closeOnDimmerClick={false}
+      >
+        <Modal.Header>
+          <h2>Event Created</h2>
+          <Button icon="close" color="grey" onClick={() => closeModal('confirmEvent')} />
+        </Modal.Header>
+        <Modal.Content>
+          <Grid>
+            <Grid.Row>
+              <Grid.Column>
+                <p>Your event was successfully created.</p>
+                <b>Name:</b> {priorEventInfo.name}
+                <br/>
+                <b>Code:</b> {priorEventInfo.code}
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column>
+                <b>QR Code:</b>
+                <br/>
+                <br/>
+                <QRCodeSVG value={`[SHPE]:${priorEventInfo.code}`} size={200}/>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Modal.Content>
+      </Modal>
+
       <Modal
         open={createEventModal}
         size="tiny"
@@ -126,9 +173,10 @@ function Events() {
       >
         <Modal.Header>
           <h2>Create Event</h2>
+          <Button icon="close" color="grey" onClick={() => closeModal('createEvent')}/>
         </Modal.Header>
         <Modal.Content>
-          <Grid>
+         <Grid>
             <Grid.Row>
               <Grid.Column>
                 {Object.keys(errors).length > 0 && (
@@ -215,14 +263,7 @@ function Events() {
                       <label>Request?</label>
                     </div>
                   </Form.Field>
-                  <Button
-                    type="reset"
-                    color="grey"
-                    onClick={() => closeModal("createEvent")}
-                  >
-                    Cancel
-                  </Button>
-                  <Button type="submit" floated="right">
+                  <Button type="submit">
                     Create
                   </Button>
                 </Form>
