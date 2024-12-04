@@ -69,9 +69,7 @@ function Events() {
   const [createEvent, { loading }] = useMutation(CREATE_EVENT_MUTATION, {
     update(_, { data: { createEvent: eventsData } }) {
       setPriorEventInfo({...values})
-      console.log(priorEventInfo)
-      console.log(values)
-      console.log(typeof values)
+      setConfirmEventModal(true)
       values.name = "";
       values.code = "";
       values.category = "";
@@ -84,7 +82,6 @@ function Events() {
       }
       setErrors(false);
       setCreateEventModal(false)
-      setConfirmEventModal(true);
     },
 
     onError(err) {
@@ -149,6 +146,8 @@ function Events() {
               <Grid.Column>
                 <p>Your event was successfully created.</p>
                 <b>Name:</b> {priorEventInfo.name}
+                <br/>
+                <b>Category:</b> {priorEventInfo.category}
                 <br/>
                 <b>Code:</b> {priorEventInfo.code}
               </Grid.Column>
