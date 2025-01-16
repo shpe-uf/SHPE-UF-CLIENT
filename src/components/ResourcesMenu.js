@@ -319,7 +319,7 @@ const OpenRow = ({ rowName }) => {
     if(rowName == 'GradSHPE 101') {
         return <GradSegment />
     }
-    if (rowName == 'SHPE UF By Laws'){
+    if (rowName == 'SHPE UF ByLaws'){
         return <ChapterByLawsSegment/>
     }
 }
