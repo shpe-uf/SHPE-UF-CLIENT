@@ -159,7 +159,7 @@ function Events() {
                 <b>QR Code:</b>
                 <br/>
                 <br/>
-                <QRCodeSVG value={`[SHPE]:${priorEventInfo.code}`} size={200}/>
+                <QRCodeSVG value={`[SHPEUF]:${priorEventInfo.code}`} size={200}/>
               </Grid.Column>
             </Grid.Row>
           </Grid>
