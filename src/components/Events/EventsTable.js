@@ -206,7 +206,7 @@ function EventsTable({ events }) {
                 <b>QR Code:</b>
                 <br/>
                 <br/>
-                <QRCodeSVG value={`[SHPE]:${eventAttendance.code}`}/>
+                <QRCodeSVG value={`[SHPEUF]:${eventAttendance.code}`}/>
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>
