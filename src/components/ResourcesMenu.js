@@ -291,6 +291,16 @@ const GradSegment = () => (
     </div>
 )
 
+const ChapterByLawsSegment = () => (
+    <div>
+        <br/>
+        <Grid divided centered>
+            <iframe width="100%" height="500"  src="https://docs.google.com/document/d/e/2PACX-1vQBBrxARYgUI0p28xpkNS5G1P8_ngIt_W8qBMncPLpxhWZR-45HC4lhbIALmThwwg/pub?embedded=true"></iframe>
+        </Grid>
+    </div>
+    
+)
+
 const OpenRow = ({ rowName }) => {
     if(rowName == 'Freshman 101 Slides') {
         return <F101Segment />
@@ -309,6 +319,9 @@ const OpenRow = ({ rowName }) => {
     if(rowName == 'GradSHPE 101') {
         return <GradSegment />
     }
+    if (rowName == 'SHPE UF ByLaws'){
+        return <ChapterByLawsSegment/>
+    }
 }
 
 
@@ -319,6 +332,7 @@ const panes = [
     { menuItem: 'SHPE UF Media', render: () => <Tab.Pane><OpenRow rowName={ 'SHPE UF Media' }/></Tab.Pane> },
     //{ menuItem: 'Corporate', render: () => <Tab.Pane><OpenRow rowName={ 'Corporate' }/></Tab.Pane> },
     { menuItem: 'Links', render: () => <Tab.Pane><OpenRow rowName={ 'Links' }/></Tab.Pane> },
+    { menuItem: 'SHPE UF Bylaws', render: () => <Tab.Pane><OpenRow rowName={ 'SHPE UF Bylaws' }/></Tab.Pane> },
     
   ]
 
