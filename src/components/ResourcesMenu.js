@@ -1,6 +1,7 @@
-import React,{Component} from 'react'
+import React, {Component} from 'react'
 import { Header, Menu, Segment, Image, Grid, Icon, Button, Divider, Message, Embed, List, Tab, Container } from 'semantic-ui-react';
 import GBMSlidesAccordion from './GBMSlidesAccordion';
+import '../App.css'; 
 import PhotosDisplay from './PhotosDisplay';
 
 const Freshman1011 = "https://shpeuf.s3.amazonaws.com/public/resources/F1011.jpg";
@@ -29,20 +30,50 @@ const GBMSlidesSegment = () => (
 const F101Segment = () => (
     <div>
     <br/>
-    <b>We know entering college can be a both exciting and overwhelming experience, so we got you covered! SHPE UF has put together this Freshman 101 Document Series with everything you should know as an incoming Gator. Learn from our members advice and what they wish they knew as first years!</b>
+    <b>We know entering college can be a both exciting and overwhelming experience, so we got you covered!
+        SHPE UF has put together this Freshman 101 Document Series with everything you should know as an incoming Gator. 
+        Learn from our members advice and what they wish they knew as first years!</b>
+
     <Grid divided centered>
-        <Grid.Column width={5}>
+        <Grid.Column width={5} textAlign='center'>
             <h6>Getting Ready For UF</h6>
-            <Image src={Freshman1011} as="a" size="medium" href="https://drive.google.com/file/d/1DnOL12oH4TSavsWHeANIKwDtNP6UphTw/view" target="_blank"/>
+
+            <Image src={Freshman1011} id="centered-img"
+            
+            as="a" 
+            size="medium" 
+            href="https://drive.google.com/file/d/1DnOL12oH4TSavsWHeANIKwDtNP6UphTw/view" 
+            target="_blank"
+            />
+
             <Divider/>
-            <Button as='a' href='https://drive.google.com/file/d/1DnOL12oH4TSavsWHeANIKwDtNP6UphTw/view' target="_blank"><Icon name='download'/>Download Here</Button>
+
+            <Button as='a' 
+            href='https://drive.google.com/file/d/1DnOL12oH4TSavsWHeANIKwDtNP6UphTw/view' 
+            target="_blank"><Icon name='download'/>Download Here</Button>
+
         </Grid.Column>
-        <Grid.Column width={5}>
+
+        <Grid.Column width={5} textAlign='center'>
+    
             <h6>Guide to Your First Semester</h6>
-            <Image src={Freshman1012} as="a" href='https://drive.google.com/file/d/1C9MfDgC4eeU2waOI6f8vD8W4z9VTXNOr/view' target="_blank" size="medium" />
+            <Image src={Freshman1012} id="centered-img"
+            as="a" 
+            href='https://drive.google.com/file/d/1C9MfDgC4eeU2waOI6f8vD8W4z9VTXNOr/view'
+            target="_blank" 
+            size="medium"
+            centered
+            />
+
+            
+
             <Divider/>
-            <Button as='a' href='https://drive.google.com/file/d/1C9MfDgC4eeU2waOI6f8vD8W4z9VTXNOr/view' target="_blank"><Icon name='download'/>Download here</Button>
-            </Grid.Column>
+
+            <Button as='a' href='https://drive.google.com/file/d/1C9MfDgC4eeU2waOI6f8vD8W4z9VTXNOr/view' 
+            target="_blank"><Icon name='download'/>Download here</Button>
+
+        </Grid.Column>
+
         <Grid.Column width={5}>
             <h6>Keep an eye out for more coming in the future.</h6>
         </Grid.Column>
@@ -272,21 +303,21 @@ const GradSegment = () => (
     <br/>
     <b>Want to delve deeper into the wonderful world of research and graduate studies? These documents will answer all of your questions when it comes to getting involved and succeeding as a researcher or graduate student!</b>
     <Grid divided centered>
-        <Grid.Column width={5}>
+        <Grid.Column width={5} textAlign='center'>
             <h6>Research Essentials</h6>
-            <Image src={GradSHPEresearch} as="a" size="medium" href="https://drive.google.com/file/d/19sO_QNUR64oGxbp3293Dy2ltChsAAUW-/view" target="_blank"/>
-            <Divider/>
+            <Image src={GradSHPEresearch} id='centered-img' as="a" size="medium" href="https://drive.google.com/file/d/19sO_QNUR64oGxbp3293Dy2ltChsAAUW-/view" target="_blank"/>
+            <Divider/> 
             <Button as='a' href='https://drive.google.com/file/d/19sO_QNUR64oGxbp3293Dy2ltChsAAUW-/view' target="_blank"><Icon name='download'/>Download Here</Button>
         </Grid.Column>
-        <Grid.Column width={5}>
+        <Grid.Column width={5} textAlign='center'>
             <h6>Gradschool Essentials</h6>
-            <Image src={GradSHPEschool} as="a" href='https://drive.google.com/file/d/1iytv-CCITpX3xkSKI6kfkI1P09mbpxKc/view?usp=sharing' target="_blank" size="medium" />
+            <Image src={GradSHPEschool} id='centered-img' as="a" href='https://drive.google.com/file/d/1iytv-CCITpX3xkSKI6kfkI1P09mbpxKc/view?usp=sharing' target="_blank" size="medium"/>
             <Divider/>
             <Button as='a' href='https://drive.google.com/file/d/1iytv-CCITpX3xkSKI6kfkI1P09mbpxKc/view?usp=sharing' target="_blank"><Icon name='download'/>Download here</Button>
             </Grid.Column>
-        {/*<Grid.Column width={5}>
+        {/* <Grid.Column width={5}>
             <h6>Keep an eye out for more coming in the future.</h6>
-        </Grid.Column>*/}
+        </Grid.Column> */}
     </Grid>
     </div>
 )
