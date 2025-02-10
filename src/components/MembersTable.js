@@ -49,7 +49,7 @@ function MembersTable({ users, refetch }) {
           <h2>Member Info</h2>
           <Button
             icon="close"
-            color="grey"
+            color="red"
             onClick={() => closeModal("userInfo")}
           />
         </Modal.Header>

@@ -24,7 +24,7 @@ function CabinetModal(cabinet, description, cabinetEmail, pic, json) {
     >
       <Modal.Header>
         {cabinet}
-        <Button icon="close" color="grey" onClick={() => setOpen(false)} />
+        <Button icon="close" color="red" onClick={() => setOpen(false)} />
       </Modal.Header>
       <Modal.Content image>
         <Grid>
