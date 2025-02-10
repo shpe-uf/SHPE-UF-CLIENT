@@ -37,6 +37,16 @@ export const FETCH_USERS_QUERY = gql`
   }
 `;
 
+export const FETCH_PARTNERS_QUERY = gql`
+  {
+    getPartners {
+      name
+      photo
+      tier
+    }
+  }
+`;
+
 export const FETCH_EVENTS_QUERY = gql`
   {
     getEventsReversed {
