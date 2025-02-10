@@ -447,7 +447,7 @@ function Profile() {
                   <br />
                   <Button
                     type="reset"
-                    color="grey"
+                    color="red"
                     onClick={() => closeModal("editProfile")}
                   >
                     Cancel

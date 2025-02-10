@@ -22,7 +22,7 @@ function JrEventModal(event, description, pic) {
         </Grid>
       }
     >
-      <Modal.Header>{event} <Button icon="close" color="grey" onClick={() => setOpen(false)}></Button></Modal.Header>
+      <Modal.Header>{event} <Button icon="close" color="red" onClick={() => setOpen(false)}></Button></Modal.Header>
       <Modal.Content image>
         <Grid>
           <Grid.Column width={5}>

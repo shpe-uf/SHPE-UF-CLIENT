@@ -403,7 +403,7 @@ function CorporateDatabase() {
                   onChange={onChange}
                 /> </Form.Group>: null
               }
-              <Button type="reset" color="grey" onClick={() => closeModal()}>
+              <Button type="reset" color="red" onClick={() => closeModal()}>
                 Cancel
               </Button>
               <Button type="submit" floated="right">
