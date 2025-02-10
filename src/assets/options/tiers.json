@@ -1,0 +1,22 @@
+[
+  {
+    "key": "Platinum",
+    "value": "Platinum",
+    "text": "Platinum"
+  },
+  {
+    "key": "Gold",
+    "value": "Gold",
+    "text": "Gold"
+  },
+  {
+    "key": "Silver",
+    "value": "Silver",
+    "text": "Silver"
+  },
+  {
+    "key": "Bronze",
+    "value": "Bronze",
+    "text": "Bronze"
+  }
+]
