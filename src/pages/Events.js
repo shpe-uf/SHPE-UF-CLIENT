@@ -42,8 +42,10 @@ function Events() {
     if (name === "createEvent") {
       values.name = "";
       values.code = "";
+      values.hours = "";
       values.category = "";
       values.points = "";
+      values.ratio = "";
       values.expiration = "";
       values.request = "false";
       setErrors(false);
@@ -65,7 +67,7 @@ function Events() {
     points: "",
     request: "false",
   });
-
+  
   const [createEvent, { loading }] = useMutation(CREATE_EVENT_MUTATION, {
     update(_, { data: { createEvent: eventsData } }) {
       setPriorEventInfo({...values})
@@ -100,6 +102,18 @@ function Events() {
     return item.points === 0 ? "" : item.points;
   }
 
+  const options = [
+    { key: '1', value: '1', text: '1' },
+    { key: '2', value: '2', text: '2' },
+    { key: '3', value: '3', text: '3' },
+    { key: '4', value: '4', text: '4' },
+    { key: '5', value: '5', text: '5' },
+    { key: '6', value: '6', text: '6' },
+    { key: '7', value: '7', text: '7' },
+    { key: '8', value: '8', text: '8' },
+    { key: '9', value: '9', text: '9' },
+    { key: '10', value: '10', text: '10' }
+  ]
   return (
     <>
       <Title title="Events" adminPath={window.location.pathname} />
@@ -231,6 +245,28 @@ function Events() {
                       </option>
                     )}
                   </Form.Field>
+                  {values.category === "Volunteering" &&
+                  <>
+                  <Form.Select
+                    label="Length of the Event (Hours)"
+                    options={options}
+                    name="Length"
+                    value={values.hours}
+                    onChange={(e) => {setValues({
+                      ...values,
+                      hours: e.target.innerText
+                    })}}
+                  />
+                  <Form.Input
+                      type="text"
+                      label="Hour-to-Shpoint Ratio"
+                      name="ratio"
+                      value={values.ratio}
+                      error={errors.ratio ? true : false}
+                      onChange={onChange}
+                  />
+                  </>      
+                   }
                   <Form.Input
                       type="text"
                       label="Points"
