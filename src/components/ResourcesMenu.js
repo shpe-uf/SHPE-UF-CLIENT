@@ -4,28 +4,38 @@ import GBMSlidesAccordion from './GBMSlidesAccordion';
 import '../App.css'; 
 import PhotosDisplay from './PhotosDisplay';
 
-const Freshman1011 = "https://shpeuf.s3.amazonaws.com/public/resources/F1011.jpg";
-const Freshman1012 = "https://shpeuf.s3.amazonaws.com/public/resources/F1012.jpg";
-const Playlist = "https://shpeuf.s3.amazonaws.com/public/resources/playlist.jpg";
+const Freshman1011 =
+  "https://shpeuf.s3.amazonaws.com/public/resources/F1011.jpg";
+const Freshman1012 =
+  "https://shpeuf.s3.amazonaws.com/public/resources/F1012.jpg";
+const Playlist =
+  "https://shpeuf.s3.amazonaws.com/public/resources/playlist.jpg";
 const Podcast = "https://shpeuf.s3.amazonaws.com/public/resources/SHPECast.jpg";
 const Spotify = "https://shpeuf.s3.amazonaws.com/public/resources/spotify.jpg";
-const Stitcher = "https://shpeuf.s3.amazonaws.com/public/resources/stitcher.png";
-const CrashCourse = "https://shpeuf.s3.amazonaws.com/public/resources/ConventionCrashCourse.jpg";
-const GradSHPEresearch = "https://shpeuf.s3.amazonaws.com/public/resources/GradSHPEresearch.png";
-const GradSHPEschool = "https://shpeuf.s3.amazonaws.com/public/resources/GradSHPEschool.png"
+const Stitcher =
+  "https://shpeuf.s3.amazonaws.com/public/resources/stitcher.png";
+const CrashCourse =
+  "https://shpeuf.s3.amazonaws.com/public/resources/ConventionCrashCourse.jpg";
+const GradSHPEresearch =
+  "https://shpeuf.s3.amazonaws.com/public/resources/GradSHPEresearch.png";
+const GradSHPEschool =
+  "https://shpeuf.s3.amazonaws.com/public/resources/GradSHPEschool.png";
 
 const GBMSlidesSegment = () => (
-    <div>
-        <br/>
-        <b>Missed a GBM or want to see any slides again? Find all the slides from this year's SHPE UF GBMs here.</b>
-        <Grid divided centered>
-            <Grid.Column width={10}>
-                <GBMSlidesAccordion/>
-            </Grid.Column>
-        </Grid>
-    </div>
-    
-)
+  <div>
+    <br />
+    <b>
+      Missed a GBM or want to see any slides again? Find all the slides from
+      this year's SHPE UF GBMs here.
+    </b>
+    <Grid divided centered>
+      <Grid.Column width={10}>
+        <GBMSlidesAccordion semesterYear="Fall 2023" />
+        <GBMSlidesAccordion semesterYear="Spring 2024" />
+      </Grid.Column>
+    </Grid>
+  </div>
+);
 
 const F101Segment = () => (
     <div>
@@ -78,58 +88,108 @@ const F101Segment = () => (
             <h6>Keep an eye out for more coming in the future.</h6>
         </Grid.Column>
     </Grid>
-    </div>
-)
+  </div>
+);
 
-const MediaSegment = ( ) => (
-    <div>
-    <Header block color='blue'>Playlist and Podcast</Header>
+const MediaSegment = () => (
+  <div>
+    <Header block color="blue">
+      Playlist and Podcast
+    </Header>
     <Grid divided stackable>
-        <Grid.Column width={5}>
-            <h4>SHPlaylist Vol2: Volvimos</h4>
-            <Image src={Playlist} as="a" size="medium" href="https://open.spotify.com/playlist/0n5zoBgHE6CEnaZKAa6oSK" target="_blank"/>
-            <br/>
-            <b>Enjoy the official SHPE UF curated playlist</b>
-            <a class="extra" href="https://open.spotify.com/playlist/0n5zoBgHE6CEnaZKAa6oSK" target="_blank"><b> here!</b></a>
-        </Grid.Column>
-        <Grid.Column width={5}>
-            <h4>SHPECast: Beyond Engineering</h4>
-            <Image src={Podcast} as="a" size="medium" href="https://open.spotify.com/show/5RRjRsetNYP2UYDXr6hlsC" target="_blank"/>
-            <br/>
-            <b>In SHPECast: Beyond Engineering, University of Florida's SHPEitos talk about topics that go beyond engineering, give advice, and have fun with their SHPE Familia.</b>
-            <br/>
-            <Menu compact>
-                <Menu.Item href='https://open.spotify.com/show/5RRjRsetNYP2UYDXr6hlsC' target='_blank'>
-                    <Image src={Spotify} avatar/>
-                    <b>Spotify</b>
-                </Menu.Item>
-                <Menu.Item href='https://listen.stitcher.com/yvap/?af_dp=stitcher://show/657597&af_web_dp=https://www.stitcher.com/show/657597' target='_blank'>
-                    <Image src={Stitcher} avatar/>
-                    <b>Stitcher</b>
-                </Menu.Item>
-            </Menu>
-        </Grid.Column>
-        <Grid.Column width={5}>
-            <h4>Episodes</h4>
-                <List divided relaxed>
-                    <List.Item href='https://open.spotify.com/episode/7HLm0AsslxrRNGU2PEfh2u?si=707f1ebe40994a8b' target='_blank'>
-                        <List.Icon name='spotify' color='black'/>
-                        <List.Content><b># 4- SHPEitos Abroad: Insider Scoop</b></List.Content>
-                    </List.Item>    
-                    <List.Item href='https://open.spotify.com/episode/3Qn5iGwCRDFcmLb7NfcGTF?si=4b1fecd077bb423e' target='_blank'>
-                        <List.Icon name='spotify' color='black'/>
-                        <List.Content><b># 3- From Directors to E-board: The Experience</b></List.Content>
-                    </List.Item>             
-                    <List.Item href='https://open.spotify.com/episode/1BB4kWtxklQNztzt8RLUV7?si=6f3dfeaf3c15422f' target='_blank'>
-                        <List.Icon name='spotify' color='black'/>
-                        <List.Content><b># 2- What Had Happened Was: Crazy Stories</b></List.Content>
-                    </List.Item>  
-                    <List.Item href='https://open.spotify.com/episode/4jx5Gp9tpZyHKwvAbm7xCC?si=4ed1766417054c9a' target='_blank'>
-                        <List.Icon name='spotify' color='black'/>
-                        <List.Content><b># 1- Transitioning to College: Perfectly Imperfect</b></List.Content>
-                    </List.Item>  
-                </List>
-        </Grid.Column>
+      <Grid.Column width={5}>
+        <h4>SHPlaylist Vol2: Volvimos</h4>
+        <Image
+          src={Playlist}
+          as="a"
+          size="medium"
+          href="https://open.spotify.com/playlist/0n5zoBgHE6CEnaZKAa6oSK"
+          target="_blank"
+        />
+        <br />
+        <b>Enjoy the official SHPE UF curated playlist</b>
+        <a
+          class="extra"
+          href="https://open.spotify.com/playlist/0n5zoBgHE6CEnaZKAa6oSK"
+          target="_blank"
+        >
+          <b> here!</b>
+        </a>
+      </Grid.Column>
+      <Grid.Column width={5}>
+        <h4>SHPECast: Beyond Engineering</h4>
+        <Image
+          src={Podcast}
+          as="a"
+          size="medium"
+          href="https://open.spotify.com/show/5RRjRsetNYP2UYDXr6hlsC"
+          target="_blank"
+        />
+        <br />
+        <b>
+          In SHPECast: Beyond Engineering, University of Florida's SHPEitos talk
+          about topics that go beyond engineering, give advice, and have fun
+          with their SHPE Familia.
+        </b>
+        <br />
+        <Menu compact>
+          <Menu.Item
+            href="https://open.spotify.com/show/5RRjRsetNYP2UYDXr6hlsC"
+            target="_blank"
+          >
+            <Image src={Spotify} avatar />
+            <b>Spotify</b>
+          </Menu.Item>
+          <Menu.Item
+            href="https://listen.stitcher.com/yvap/?af_dp=stitcher://show/657597&af_web_dp=https://www.stitcher.com/show/657597"
+            target="_blank"
+          >
+            <Image src={Stitcher} avatar />
+            <b>Stitcher</b>
+          </Menu.Item>
+        </Menu>
+      </Grid.Column>
+      <Grid.Column width={5}>
+        <h4>Episodes</h4>
+        <List divided relaxed>
+          <List.Item
+            href="https://open.spotify.com/episode/7HLm0AsslxrRNGU2PEfh2u?si=707f1ebe40994a8b"
+            target="_blank"
+          >
+            <List.Icon name="spotify" color="black" />
+            <List.Content>
+              <b># 4- SHPEitos Abroad: Insider Scoop</b>
+            </List.Content>
+          </List.Item>
+          <List.Item
+            href="https://open.spotify.com/episode/3Qn5iGwCRDFcmLb7NfcGTF?si=4b1fecd077bb423e"
+            target="_blank"
+          >
+            <List.Icon name="spotify" color="black" />
+            <List.Content>
+              <b># 3- From Directors to E-board: The Experience</b>
+            </List.Content>
+          </List.Item>
+          <List.Item
+            href="https://open.spotify.com/episode/1BB4kWtxklQNztzt8RLUV7?si=6f3dfeaf3c15422f"
+            target="_blank"
+          >
+            <List.Icon name="spotify" color="black" />
+            <List.Content>
+              <b># 2- What Had Happened Was: Crazy Stories</b>
+            </List.Content>
+          </List.Item>
+          <List.Item
+            href="https://open.spotify.com/episode/4jx5Gp9tpZyHKwvAbm7xCC?si=4ed1766417054c9a"
+            target="_blank"
+          >
+            <List.Icon name="spotify" color="black" />
+            <List.Content>
+              <b># 1- Transitioning to College: Perfectly Imperfect</b>
+            </List.Content>
+          </List.Item>
+        </List>
+      </Grid.Column>
     </Grid>
     {/* <Header block color='blue'>Photos</Header>
     <b>See photos from various SHPE UF events!</b>
@@ -223,8 +283,8 @@ const MediaSegment = ( ) => (
             <PhotosDisplay/>
         </Grid.Column>
     </Grid> */}
-    </div>
-)
+  </div>
+);
 
 // const CorporateSegment = () => (
 //     <div>
@@ -265,43 +325,56 @@ const MediaSegment = ( ) => (
 // )
 
 const LinksSegment = () => (
-    <div>
-        <br/>
-        <b>Checkout some of our additional resources with these links!</b>
-        <Divider/>
-        <List animated>
-            <List.Item href='https://linktr.ee/shpeuf?utm_source=linktree_profile_share&ltsid=606e08cd-0cad-412b-a9f8-252541adacc8 ' target='_blank'>
-                <b>Central SHPE UF Linktree</b>
-            </List.Item>
-            <List.Item href='https://linktr.ee/shpeufconvention' target='_blank'>
-                <b>National Convention Linktree</b>
-            </List.Item>
-            <List.Item href='https://linktr.ee/shpeufbootcamp' target='_blank'>
-                <b>Professional Development & Resources</b>
-            </List.Item>
-            <List.Item href='https://drive.google.com/drive/folders/1AP0N79ZLef9ilpCrp_hZR6uxHCGJoUvX' target='_blank'>
-                <b>Academic SHPEducation Resources</b>
-            </List.Item>
-            <List.Item href='https://linktr.ee/gradshpeuf' target='_blank'>
-                <b>Graduate School & Research Resources</b>
-            </List.Item>
-            <List.Item href='https://drive.google.com/drive/folders/1PPqsURVaA1sOufVkdfjrgcwaXpGocBSO' target='_blank'>
-                <b>SHPE Jr & Highschool Development Resources</b>
-            </List.Item>
-            <List.Item href='https://linktr.ee/shpeufchats' target='_blank'>
-                <b>SHPE Whatsapp Group Chats</b>
-            </List.Item>
-            <List.Item href='https://linktr.ee/shpeufphotos' target='_blank'>
-                <b>Event Photos</b>
-            </List.Item>
-        </List>
-    </div>
-)
+  <div>
+    <br />
+    <b>Checkout some of our additional resources with these links!</b>
+    <Divider />
+    <List animated>
+      <List.Item
+        href="https://linktr.ee/shpeuf?utm_source=linktree_profile_share&ltsid=606e08cd-0cad-412b-a9f8-252541adacc8 "
+        target="_blank"
+      >
+        <b>Central SHPE UF Linktree</b>
+      </List.Item>
+      <List.Item href="https://linktr.ee/shpeufconvention" target="_blank">
+        <b>National Convention Linktree</b>
+      </List.Item>
+      <List.Item href="https://linktr.ee/shpeufbootcamp" target="_blank">
+        <b>Professional Development & Resources</b>
+      </List.Item>
+      <List.Item
+        href="https://drive.google.com/drive/folders/1AP0N79ZLef9ilpCrp_hZR6uxHCGJoUvX"
+        target="_blank"
+      >
+        <b>Academic SHPEducation Resources</b>
+      </List.Item>
+      <List.Item href="https://linktr.ee/gradshpeuf" target="_blank">
+        <b>Graduate School & Research Resources</b>
+      </List.Item>
+      <List.Item
+        href="https://drive.google.com/drive/folders/1PPqsURVaA1sOufVkdfjrgcwaXpGocBSO"
+        target="_blank"
+      >
+        <b>SHPE Jr & Highschool Development Resources</b>
+      </List.Item>
+      <List.Item href="https://linktr.ee/shpeufchats" target="_blank">
+        <b>SHPE Whatsapp Group Chats</b>
+      </List.Item>
+      <List.Item href="https://linktr.ee/shpeufphotos" target="_blank">
+        <b>Event Photos</b>
+      </List.Item>
+    </List>
+  </div>
+);
 
 const GradSegment = () => (
-    <div>
-    <br/>
-    <b>Want to delve deeper into the wonderful world of research and graduate studies? These documents will answer all of your questions when it comes to getting involved and succeeding as a researcher or graduate student!</b>
+  <div>
+    <br />
+    <b>
+      Want to delve deeper into the wonderful world of research and graduate
+      studies? These documents will answer all of your questions when it comes
+      to getting involved and succeeding as a researcher or graduate student!
+    </b>
     <Grid divided centered>
         <Grid.Column width={5} textAlign='center'>
             <h6>Research Essentials</h6>
@@ -319,49 +392,108 @@ const GradSegment = () => (
             <h6>Keep an eye out for more coming in the future.</h6>
         </Grid.Column> */}
     </Grid>
-    </div>
-)
+  </div>
+);
+
+const ChapterByLawsSegment = () => (
+  <div>
+    <br />
+    <Grid divided centered>
+      <iframe
+        width="100%"
+        height="500"
+        src="https://docs.google.com/document/d/e/2PACX-1vQBBrxARYgUI0p28xpkNS5G1P8_ngIt_W8qBMncPLpxhWZR-45HC4lhbIALmThwwg/pub?embedded=true"
+      ></iframe>
+    </Grid>
+  </div>
+);
 
 const OpenRow = ({ rowName }) => {
-    if(rowName == 'Freshman 101 Slides') {
-        return <F101Segment />
-    } 
-    if(rowName == 'SHPE UF Media') {
-        return <MediaSegment/>
-    } 
-    if(rowName == 'GBM Slides') {
-        return <GBMSlidesSegment />
-    } 
-    // if(rowName == 'Corporate')
-    //     return <CorporateSegment />
-    if(rowName == 'Links') {
-        return <LinksSegment />
-    }
-    if(rowName == 'GradSHPE 101') {
-        return <GradSegment />
-    }
-}
-
+  if (rowName == "Freshman 101 Slides") {
+    return <F101Segment />;
+  }
+  if (rowName == "SHPE UF Media") {
+    return <MediaSegment />;
+  }
+  if (rowName == "GBM Slides") {
+    return <GBMSlidesSegment />;
+  }
+  // if(rowName == 'Corporate')
+  //     return <CorporateSegment />
+  if (rowName == "Links") {
+    return <LinksSegment />;
+  }
+  if (rowName == "GradSHPE 101") {
+    return <GradSegment />;
+  }
+  if (rowName == "SHPE UF ByLaws") {
+    return <ChapterByLawsSegment />;
+  }
+};
 
 const panes = [
-    { menuItem: 'GBM Slides', render: () => <Tab.Pane><OpenRow rowName={ 'GBM Slides' }/></Tab.Pane> },
-    { menuItem: 'Freshman 101 Slides', render: () => <Tab.Pane><OpenRow rowName={ 'Freshman 101 Slides' }/></Tab.Pane> },
-    { menuItem: 'GradSHPE 101', render: () => <Tab.Pane><OpenRow rowName={ 'GradSHPE 101' }/></Tab.Pane> },
-    { menuItem: 'SHPE UF Media', render: () => <Tab.Pane><OpenRow rowName={ 'SHPE UF Media' }/></Tab.Pane> },
-    //{ menuItem: 'Corporate', render: () => <Tab.Pane><OpenRow rowName={ 'Corporate' }/></Tab.Pane> },
-    { menuItem: 'Links', render: () => <Tab.Pane><OpenRow rowName={ 'Links' }/></Tab.Pane> },
-    
-  ]
+  {
+    menuItem: "GBM Slides",
+    render: () => (
+      <Tab.Pane>
+        <OpenRow rowName={"GBM Slides"} />
+      </Tab.Pane>
+    ),
+  },
+  {
+    menuItem: "Freshman 101 Slides",
+    render: () => (
+      <Tab.Pane>
+        <OpenRow rowName={"Freshman 101 Slides"} />
+      </Tab.Pane>
+    ),
+  },
+  {
+    menuItem: "GradSHPE 101",
+    render: () => (
+      <Tab.Pane>
+        <OpenRow rowName={"GradSHPE 101"} />
+      </Tab.Pane>
+    ),
+  },
+  {
+    menuItem: "SHPE UF Media",
+    render: () => (
+      <Tab.Pane>
+        <OpenRow rowName={"SHPE UF Media"} />
+      </Tab.Pane>
+    ),
+  },
+  //{ menuItem: 'Corporate', render: () => <Tab.Pane><OpenRow rowName={ 'Corporate' }/></Tab.Pane> },
+  {
+    menuItem: "Links",
+    render: () => (
+      <Tab.Pane>
+        <OpenRow rowName={"Links"} />
+      </Tab.Pane>
+    ),
+  },
+  {
+    menuItem: "SHPE UF Bylaws",
+    render: () => (
+      <Tab.Pane>
+        <OpenRow rowName={"SHPE UF Bylaws"} />
+      </Tab.Pane>
+    ),
+  },
+];
 
 export default class ResourcesMenu extends Component {
-    
-    render() {
-        return (
-            <div class="wrap">
-                <Container stackable>
-                    <Tab menu={{ stackable: true, tabular: true, attached: true }} panes={panes}/>
-                </Container>
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div class="wrap">
+        <Container stackable>
+          <Tab
+            menu={{ stackable: true, tabular: true, attached: true }}
+            panes={panes}
+          />
+        </Container>
+      </div>
+    );
+  }
 }
