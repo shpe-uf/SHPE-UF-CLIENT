@@ -37,8 +37,6 @@
     "semantic-ui-css": "^2.5.0",
     "semantic-ui-react": "^2.1.5",
     "victory": "^36.7.0",
-    "webpack": "^5.97.1",
-    "webpack-dev-server": "^5.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
