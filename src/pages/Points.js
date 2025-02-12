@@ -245,7 +245,7 @@ function Points() {
 
                         <Button
                           type="reset"
-                          color="grey"
+                          color="red"
                           onClick={() => [
                             closeModal("redeemPoints"),
                             setGuestCount((guestCount = 0)),

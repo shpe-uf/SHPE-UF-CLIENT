@@ -21,7 +21,7 @@ function JrSchoolModal(schoolName, description, pic){
                 </Grid>
               }
         >
-        <Modal.Header>{schoolName} <Button icon="close" color="grey" onClick={() => setOpen(false)} /></Modal.Header>
+        <Modal.Header>{schoolName} <Button icon="close" color="red" onClick={() => setOpen(false)} /></Modal.Header>
         <Modal.Content image>
             <Grid>
                 <Grid.Column width = {5}>

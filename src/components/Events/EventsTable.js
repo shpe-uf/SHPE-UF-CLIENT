@@ -18,7 +18,8 @@ import { CSVLink } from "react-csv";
 
 import { FETCH_EVENTS_QUERY } from "../../util/graphql";
 import ManualInputModal from "../ManualInputModal";
-import DeleteModal from "../DeleteModal"
+import DeleteModal from "../DeleteModal";
+import { QRCodeSVG } from 'qrcode.react';
 
 function EventsTable({ events }) {
   const [manualInputModal, setManualInputModal] = useState(false);
@@ -193,11 +194,20 @@ function EventsTable({ events }) {
       >
         <Modal.Header>
           <h2>Event Information</h2>
+          <Button icon="close" color="grey" onClick={() => setEventInfoModal(false)} />
         </Modal.Header>
         <Modal.Content>
           <Grid>
             <Grid.Row>
-              <Grid.Column>Code: {eventAttendance.code}</Grid.Column>
+              <Grid.Column><b>Code:</b> {eventAttendance.code}</Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column>
+                <b>QR Code:</b>
+                <br/>
+                <br/>
+                <QRCodeSVG value={`[SHPEUF]:${eventAttendance.code}`}/>
+              </Grid.Column>
             </Grid.Row>
             <Grid.Row>
               <Grid.Column>
@@ -255,20 +265,12 @@ function EventsTable({ events }) {
                     </Table>
                   </div>
                 )}
-                <Button
-                  type="reset"
-                  color="grey"
-                  onClick={() => setEventInfoModal(false)}
-                >
-                  Close
-                </Button>
                 <CSVLink
                   data={populateCSV(eventAttendance.users)}
                   filename={eventAttendance.name + ".csv"}
                 >
                   <Button
                     color="green"
-                    floated="right"
                   >
                     Download as CSV
                   </Button>

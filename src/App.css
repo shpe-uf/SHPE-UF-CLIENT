@@ -1055,3 +1055,9 @@ ul.nav li.active {
     justify-content: center;
   }
 }
+
+#centered-img {
+    display: flex;
+    justify-content: center;
+}
+

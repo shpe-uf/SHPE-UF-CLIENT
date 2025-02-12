@@ -23,9 +23,9 @@ function ImageCrop(props) {
     const cropper = cropperRef.current?.cropper;
 
     if (cropper) {
-      const canvas = cropper.getCroppedCanvas();
+      const canvas = cropper.getCroppedCanvas({ width: 500, height: 500 });
       if (canvas) {
-        const url = canvas.toDataURL();
+        const url = canvas.toDataURL('image/jpeg', 0.5);
         setCroppedUrl(url);
         return url;
       }
@@ -47,6 +47,9 @@ function ImageCrop(props) {
         props.setPhotoFile(croppedUrl);
       } else if (props.type === 'reimbursementF') {
         props.values.eventFlyer = croppedUrl;
+        props.setPhotoFile(croppedUrl);
+      } else if (props.type === 'partner') {
+        props.values.photo = croppedUrl;
         props.setPhotoFile(croppedUrl);
       }
       setCropPhoto(null); // Clear crop photo to hide the cropper
