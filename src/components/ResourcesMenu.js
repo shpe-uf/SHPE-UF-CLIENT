@@ -426,7 +426,7 @@ const OpenRow = ({ rowName }) => {
   if (rowName == "GradSHPE 101") {
     return <GradSegment />;
   }
-  if (rowName == "SHPE UF ByLaws") {
+  if (rowName == "SHPE UF Bylaws") {
     return <ChapterByLawsSegment />;
   }
 };
