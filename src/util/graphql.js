@@ -5,7 +5,7 @@ export const FETCH_USERS_QUERY = gql`
     getUsers {
       firstName
       lastName
-      photo
+      # photo
       major
       year
       graduating
@@ -107,7 +107,7 @@ export const FETCH_CORPORATIONS_QUERY = gql`
     getCorporations {
       id
       name
-      logo
+      # logo
       slogan
       majors
       industries

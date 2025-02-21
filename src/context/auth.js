@@ -1,6 +1,7 @@
 import React, { useReducer, createContext } from "react";
 import { jwtDecode } from "jwt-decode";
 import { NavLink, useNavigate } from "react-router-dom";
+import { getSignedCookie } from "../util/S3PresignedURL"
 
 const initialState = {
   user: null
@@ -11,7 +12,7 @@ if (localStorage.getItem("jwtToken")) {
 
   localStorage.setItem('permission', decodedToken.permission);
 
-  if (decodedToken.exp*1000 < Date.now()) {
+  if (decodedToken.exp * 1000 < Date.now()) {
     localStorage.removeItem("jwtToken");
     // localStorage.removeItem('permission');
   } else {
@@ -21,8 +22,8 @@ if (localStorage.getItem("jwtToken")) {
 
 const AuthContext = createContext({
   user: null,
-  login: userData => {},
-  logout: () => {}
+  login: userData => { },
+  logout: () => { }
 });
 
 function authReducer(state, action) {
@@ -45,8 +46,18 @@ function authReducer(state, action) {
 function AuthProvider(props) {
   const [state, dispatch] = useReducer(authReducer, initialState);
   const navigate = useNavigate();
-  
+
   function login(userData) {
+    getSignedCookie(
+      "24h",
+      userData.token
+    ).then(sc => {
+      console.log("Signed Cookie Data:" + sc)
+    }).catch(error => {
+      console.error(error)
+    })
+    console.log("hiiii")
+
     localStorage.setItem("jwtToken", userData.token);
     localStorage.setItem("permission", userData.permission);
     dispatch({

@@ -13,7 +13,7 @@ function UserProfile({ user, children, isPublic }) {
             <Image
               rounded
               size={children ? "medium" : "huge"}
-              src={user.photo}
+              src={`${process.env.REACT_APP_CLOUDFRONT_URL}profile-pictures/${user.username}.jpg`}
               className="image-profile"
             />
           ) : (

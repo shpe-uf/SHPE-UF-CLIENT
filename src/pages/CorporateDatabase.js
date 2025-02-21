@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import {
   Grid,
   Container,
@@ -8,9 +9,11 @@ import {
   Modal,
   Image,
 } from "semantic-ui-react";
+
 import gql from "graphql-tag";
 import { useQuery, useMutation } from "@apollo/client";
 import { CSVLink } from "react-csv";
+import { Buffer } from "buffer";
 
 import { useForm } from "../util/hooks";
 import { FETCH_CORPORATIONS_QUERY } from "../util/graphql";
@@ -19,6 +22,8 @@ import majorOptions from "../assets/options/major.json";
 import partnerTiers from "../assets/options/tiers.json";
 import industryOptions from "../assets/options/industry.json";
 import placeholder from "../assets/images/placeholder.png";
+
+import { handleUpload } from "../util/S3PresignedURL"
 
 import Title from "../components/Title";
 import CorporationTable from "../components/CorporationTable";
@@ -70,13 +75,26 @@ function CorporateDatabase() {
   const [addCorporation, { loading }] = useMutation(CREATE_CORPORATION, {
     update(_, { data: { createCorporation: corporationData } }) {
       // Optionally, set state with the new corporation data here
+
+      // AWS Bucket Upload
+      handleUpload(
+        "shpeuf-corporations",
+        {
+          name: `corporation-logos/${corporationData.id}`,
+          data: Buffer.from(values.logo.split(",")[1], "base64")
+        },
+        localStorage.getItem("jwtToken")
+      )
+
       closeModal();
       setErrors(false);
     },
     onError(err) {
       const errorDetails =
         err.graphQLErrors?.[0]?.extensions?.exception?.errors || {};
+
       console.error("GraphQL error:", errorDetails);
+      console.error(JSON.stringify(err))
 
       setErrors(errorDetails);
     },
@@ -598,7 +616,7 @@ function CorporateDatabase() {
 const CREATE_CORPORATION = gql`
   mutation createCorporation(
     $name: String!
-    $logo: String!
+    # $logo: String!
     $slogan: String!
     $majors: [String!]!
     $industries: [String!]!
@@ -623,7 +641,7 @@ const CREATE_CORPORATION = gql`
     createCorporation(
       createCorporationInput: {
         name: $name
-        logo: $logo
+        # logo: $logo
         slogan: $slogan
         majors: $majors
         industries: $industries
@@ -646,6 +664,7 @@ const CREATE_CORPORATION = gql`
         signUpLink: $signUpLink
       }
     ) {
+      id
       name
     }
   }
