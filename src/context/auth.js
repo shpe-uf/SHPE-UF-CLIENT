@@ -1,7 +1,6 @@
 import React, { useReducer, createContext } from "react";
 import { jwtDecode } from "jwt-decode";
 import { NavLink, useNavigate } from "react-router-dom";
-import { getSignedCookie } from "../util/S3PresignedURL"
 
 const initialState = {
   user: null
@@ -48,16 +47,6 @@ function AuthProvider(props) {
   const navigate = useNavigate();
 
   function login(userData) {
-    getSignedCookie(
-      "24h",
-      userData.token
-    ).then(sc => {
-      console.log("Signed Cookie Data:" + sc)
-    }).catch(error => {
-      console.error(error)
-    })
-    console.log("hiiii")
-
     localStorage.setItem("jwtToken", userData.token);
     localStorage.setItem("permission", userData.permission);
     dispatch({

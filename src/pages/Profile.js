@@ -151,7 +151,6 @@ function Profile() {
     )
 
     if (photoFile != user.photo) values.photo = `${process.env.REACT_APP_CLOUDFRONT_URL}profile-pictures/${user.username}.jpg`;
-    console.log("values: ", values)
 
     editProfile();
   }
