@@ -49,6 +49,8 @@ export const getPresignedUrl = async (bucket, objectKey, method, jwtToken) => {
 };
 
 export const handleUpload = async (bucket, file, jwtToken) => {
+  console.log(`${bucket}, ${JSON.stringify(file)}`)
+
   try {
     const presignedUrl = await getPresignedUrl(bucket, file.name, "POST", jwtToken);
     const response = await fetch(presignedUrl, {
