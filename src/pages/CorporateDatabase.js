@@ -13,7 +13,6 @@ import {
 import gql from "graphql-tag";
 import { useQuery, useMutation } from "@apollo/client";
 import { CSVLink } from "react-csv";
-import { Buffer } from "buffer";
 
 import { useForm } from "../util/hooks";
 import { FETCH_CORPORATIONS_QUERY } from "../util/graphql";
@@ -82,8 +81,7 @@ function CorporateDatabase() {
         {
           name: `corporation-logos/${corporationData.id}`,
           data: values.logo
-        },
-        localStorage.getItem("jwtToken")
+        }
       )
 
       closeModal();

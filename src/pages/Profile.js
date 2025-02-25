@@ -140,17 +140,19 @@ function Profile() {
     values.internships = miscInfo.internships;
     values.socialMedia = miscInfo.socialMedia;
 
-    // AWS Bucket Upload
-    handleUpload(
-      "shpeuf-profile-pictures",
-      {
-        name: `profile-pictures/${user.username}.jpg`,
-        data: values.photo
-      },
-      localStorage.getItem("jwtToken")
-    )
 
-    if (photoFile != user.photo) values.photo = `${process.env.REACT_APP_CLOUDFRONT_URL}profile-pictures/${user.username}.jpg`;
+    if (photoFile != user.photo) {
+      // AWS Bucket Upload
+      handleUpload(
+        "shpeuf-profile-pictures",
+        {
+          name: `profile-pictures/${user.username}.jpg`,
+          data: values.photo
+        }
+      )
+
+      values.photo = `${process.env.REACT_APP_CLOUDFRONT_URL}profile-pictures/${user.username}.jpg`
+    }
 
     editProfile();
   }

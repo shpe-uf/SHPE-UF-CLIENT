@@ -1,8 +1,9 @@
 import { Buffer } from "buffer"
 
+const jwtToken = localStorage.getItem('jwtToken')
 const API_URL = 'https://fcx3gq72ig.execute-api.us-east-1.amazonaws.com';
 
-export const getSignedCookie = async (time, jwtToken) => {
+export const getSignedCookie = async (time) => {
   try {
     const response = await fetch(`${API_URL}/GenerateSignedCookie?time=${time}`, {
       method: "GET",
@@ -25,7 +26,7 @@ export const getSignedCookie = async (time, jwtToken) => {
   }
 };
 
-export const getPresignedUrl = async (bucket, objectKey, method, jwtToken) => {
+export const getPresignedUrl = async (bucket, objectKey, method) => {
   try {
     const response = await fetch(`${API_URL}/GenerateS3PresignedUrl`, {
       method,
@@ -48,7 +49,7 @@ export const getPresignedUrl = async (bucket, objectKey, method, jwtToken) => {
   }
 };
 
-export const handleUpload = async (bucket, file, jwtToken) => {
+export const handleUpload = async (bucket, file) => {
   console.log(`${bucket}, ${JSON.stringify(file)}`)
 
   try {
@@ -73,7 +74,7 @@ export const handleUpload = async (bucket, file, jwtToken) => {
   }
 };
 
-export const handleDelete = async (bucket, objectKey, jwtToken) => {
+export const handleDelete = async (bucket, objectKey) => {
   try {
     const presignedUrl = await getPresignedUrl(bucket, objectKey, "DELETE", jwtToken);
     const response = await fetch(presignedUrl, {
