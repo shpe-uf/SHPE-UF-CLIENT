@@ -15,6 +15,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { useQuery, useMutation } from "@apollo/client";
 import { useForm } from "../util/hooks";
 import { AuthContext } from "../context/auth";
+import { handleUpload } from "../util/S3PresignedURL"
 
 import Title from "../components/Title";
 import UserProfile from "../components/UserProfile";
@@ -108,7 +109,7 @@ function Profile() {
     update(_, { data: { editUserProfile: userData } }) {
       user.firstName = userData.firstName;
       user.lastName = userData.lastName;
-      user.photo = userData.photo;
+      user.photo = `${process.env.REACT_APP_CLOUDFRONT_URL}profile-pictures/${user.username}.jpg`;
       user.major = userData.major;
       user.year = userData.year;
       user.graduating = userData.graduating;
@@ -118,6 +119,8 @@ function Profile() {
       user.classes = userData.classes;
       user.internships = userData.internships;
       user.socialMedia = userData.socialMedia;
+
+
       toast.success("Your profile has been updated.", {
         position: toast.POSITION.BOTTOM_CENTER,
       });
@@ -136,6 +139,20 @@ function Profile() {
     values.classes = miscInfo.classes;
     values.internships = miscInfo.internships;
     values.socialMedia = miscInfo.socialMedia;
+
+    if (photoFile != user.photo) values.photo = `${process.env.REACT_APP_CLOUDFRONT_URL}profile-pictures/${user.username}.jpg`;
+    console.log("values: ", values)
+
+    // AWS Bucket Upload
+    handleUpload(
+      "shpeuf-profile-pictures",
+      {
+        name: `profile-pictures/${user.username}.jpg`,
+        data: `${values.photo}`
+      },
+      localStorage.getItem("jwtToken")
+    )
+
     editProfile();
   }
 

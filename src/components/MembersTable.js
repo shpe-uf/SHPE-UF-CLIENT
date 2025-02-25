@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  Table,
   Dimmer,
   Loader,
   Icon,
@@ -8,6 +7,9 @@ import {
   Modal,
   Grid,
 } from "semantic-ui-react";
+import '../App.css';
+import { FixedSizeList as List } from "react-window";
+import AutoSizer from "react-virtualized-auto-sizer";
 
 import UserProfile from "./UserProfile";
 import PermissionsForm from "./PermissionsForm";
@@ -36,6 +38,47 @@ function MembersTable({ users, refetch }) {
     setUserInfo(userInfo);
     setErrors({});
   }
+
+  const Row = ({ index, style }) => {
+    const user = users[index];
+
+    return (
+      <div
+        style={{
+          ...style,
+          display: "grid",
+          gridTemplateColumns: "2fr 2fr 3fr 1fr 1fr 1fr 1fr 1fr",
+          alignItems: "center",
+          boxSizing: "border-box",
+          padding: "0.5rem",
+          borderBottom: "1px solid #ddd",
+        }}
+      >
+        <div>
+          {user.lastName}, {user.firstName}
+        </div>
+        <div>{user.username}</div>
+        <div>{user.email}</div>
+
+        <div style={{ textAlign: "center" }}>{user.fallPoints}</div>
+        <div style={{ textAlign: "center" }}>{user.springPoints}</div>
+        <div style={{ textAlign: "center" }}>{user.summerPoints}</div>
+        <div style={{ textAlign: "center" }}>{user.points}</div>
+
+        <div style={{ textAlign: "center" }}>
+          <Button
+            icon
+            onClick={() => {
+              getUserInfo(user);
+              openModal("userInfo");
+            }}
+          >
+            <Icon name="info" />
+          </Button>
+        </div>
+      </div>
+    );
+  };
 
   const UserProfileModal = () => {
     return (
@@ -87,62 +130,50 @@ function MembersTable({ users, refetch }) {
   return (
     <>
       <div className="table-responsive">
-        <Dimmer active={users ? false : true} inverted>
+        <Dimmer active={!users} inverted>
           <Loader />
         </Dimmer>
-        <Table striped selectable unstackable>
-          <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell>Name</Table.HeaderCell>
-              <Table.HeaderCell>Username</Table.HeaderCell>
-              <Table.HeaderCell>Email</Table.HeaderCell>
-              <Table.HeaderCell textAlign="center">
-                Fall Points
-              </Table.HeaderCell>
-              <Table.HeaderCell textAlign="center">
-                Spring Points
-              </Table.HeaderCell>
-              <Table.HeaderCell textAlign="center">
-                Summer Points
-              </Table.HeaderCell>
-              <Table.HeaderCell textAlign="center">
-                Total Points
-              </Table.HeaderCell>
-              <Table.HeaderCell textAlign="center">Info</Table.HeaderCell>
-            </Table.Row>
-          </Table.Header>
-          <Table.Body>
-            {users &&
-              users.map((user, index) => (
-                <Table.Row key={index}>
-                  <Table.Cell>
-                    {user.lastName}, {user.firstName}
-                  </Table.Cell>
-                  <Table.Cell>{user.username}</Table.Cell>
-                  <Table.Cell>{user.email}</Table.Cell>
-                  <Table.Cell textAlign="center">{user.fallPoints}</Table.Cell>
-                  <Table.Cell textAlign="center">
-                    {user.springPoints}
-                  </Table.Cell>
-                  <Table.Cell textAlign="center">
-                    {user.summerPoints}
-                  </Table.Cell>
-                  <Table.Cell textAlign="center">{user.points}</Table.Cell>
-                  <Table.Cell textAlign="center">
-                    <Button
-                      icon
-                      onClick={() => {
-                        getUserInfo(user);
-                        openModal("userInfo");
-                      }}
-                    >
-                      <Icon name="info" />
-                    </Button>
-                  </Table.Cell>
-                </Table.Row>
-              ))}
-          </Table.Body>
-        </Table>
+
+        <div className="ui striped selectable unstackable table" style={{ width: "100%" }}>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "2fr 2fr 3fr 1fr 1fr 1fr 1fr 1fr",
+              fontWeight: "bold",
+              padding: "0.5rem",
+              borderBottom: "2px solid #000",
+              boxSizing: "border-box",
+            }}
+          >
+            <div>Name</div>
+            <div>Username</div>
+            <div>Email</div>
+            <div style={{ textAlign: "center" }}>Fall Points</div>
+            <div style={{ textAlign: "center" }}>Spring Points</div>
+            <div style={{ textAlign: "center" }}>Summer Points</div>
+            <div style={{ textAlign: "center" }}>Total Points</div>
+            <div style={{ textAlign: "center" }}>Info</div>
+          </div>
+
+          {users && (
+            <div style={{ height: 500 }}>
+              <AutoSizer>
+                {({ width, height }) => (
+                  <List
+                    height={height}
+                    itemCount={users.length}
+                    itemSize={50}
+                    width={width}
+                  >
+                    {Row}
+                  </List>
+                )}
+              </AutoSizer>
+            </div>
+          )}
+        </div>
+
         {userInfoModal && <UserProfileModal />}
       </div>
     </>

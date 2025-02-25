@@ -1,3 +1,5 @@
+import { Buffer } from "buffer"
+
 const API_URL = 'https://fcx3gq72ig.execute-api.us-east-1.amazonaws.com';
 
 export const getSignedCookie = async (time, jwtToken) => {
@@ -54,7 +56,7 @@ export const handleUpload = async (bucket, file, jwtToken) => {
       headers: {
         "Content-Type": "image/jpeg"
       },
-      body: file.data,
+      body: Buffer.from(file.data.split(",")[1], "base64")
     });
 
     if (!response.ok) {
@@ -87,4 +89,14 @@ export const handleDelete = async (bucket, objectKey, jwtToken) => {
     throw error;
   }
 };
+
+export const checkLink = async (url) => {
+  try {
+    const response = await fetch(url, { method: 'GET' })
+    return response.status
+  }
+  catch (error) {
+    return error
+  }
+}
 

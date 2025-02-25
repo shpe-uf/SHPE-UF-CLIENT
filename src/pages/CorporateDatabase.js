@@ -81,7 +81,7 @@ function CorporateDatabase() {
         "shpeuf-corporations",
         {
           name: `corporation-logos/${corporationData.id}`,
-          data: Buffer.from(values.logo.split(",")[1], "base64")
+          data: values.logo
         },
         localStorage.getItem("jwtToken")
       )
