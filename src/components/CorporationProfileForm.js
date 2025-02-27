@@ -3,7 +3,10 @@ import { Image, Button, Form } from "semantic-ui-react";
 import { useMutation } from "@apollo/client";
 import gql from "graphql-tag";
 import ImageCrop from "./ImageCrop";
+
 import { useForm } from "../util/hooks";
+import { handleUpload } from "../util/S3PresignedURL"
+
 import majorOptions from "../assets/options/major.json";
 import industryOptions from "../assets/options/industry.json";
 
@@ -18,12 +21,13 @@ function CorporationProfileForm({ corporation, closeModal, refetch }) {
   // State for image handling
   const [logoFile, setLogoFile] = useState("");
 
+  const logoURL = `${process.env.REACT_APP_CLOUDFRONT_URL}corporation-logos/${corporation.id}`
+
   const { onChange, onSubmit, values, setValues } = useForm(
     modifyCorporationCallback,
     {
       id: corporation.id,
       name: corporation.name,
-      logo: corporation.logo,
       slogan: corporation.slogan,
       majors: corporation.majors,
       industries: corporation.industries,
@@ -59,19 +63,20 @@ function CorporationProfileForm({ corporation, closeModal, refetch }) {
       closeModal("editCorporation");
     },
     onError(err) {
-      console.log(err.graphQLErrors[0].extensions.exception.errors);
-      setErrors(err.graphQLErrors[0].extensions.exception.errors);
+      console.log(err)
+      const errors = err.graphQLErrors?.[0]?.extensions?.exception?.errors || {};
+      setErrors(errors);
     },
     variables: values,
   });
 
   function resetFormState() {
-    setLogoFile(corporation.logo || ""); // Reset logo file
+    setLogoFile(""); // Reset logo file
     setMajors(corporation.majors || []); // Reset majors
     setIndustries(corporation.industries || []); // Reset industries
     setValues({
       ...values,
-      logo: corporation.logo || "",
+      logo: logoURL || "",
       majors: corporation.majors || [],
       industries: corporation.industries || [],
     });
@@ -79,10 +84,20 @@ function CorporationProfileForm({ corporation, closeModal, refetch }) {
 
   async function modifyCorporationCallback() {
     try {
+      if (logoFile) {
+        console.log("logoFile: " + logoFile)
+        handleUpload(
+          "shpeuf-corporations",
+          {
+            name: `corporation-logos/${corporation.id}`,
+            data: logoFile
+          }
+        )
+      }
       await editCorporationProfile();
     } catch (err) {
       console.error("Error during mutation:", err);
-      const errors = err.graphQLErrors[0]?.extensions?.exception?.errors || {};
+      const errors = err.graphQLErrors?.[0]?.extensions?.exception?.errors || {};
       setErrors(errors);
     }
   }
@@ -103,7 +118,7 @@ function CorporationProfileForm({ corporation, closeModal, refetch }) {
           <Image
             fluid
             rounded
-            src={corporation.logo}
+            src={logoURL}
             className="image-profile"
             style={{ marginBottom: 16 }}
           />
@@ -372,10 +387,9 @@ const EDIT_CORPORATION = gql`
   mutation EditCorporation(
     $id: ID!
     $name: String!
-    $logo: String
     $slogan: String!
-    $majors: [String]
-    $industries: [String]
+    $majors: [String!]!
+    $industries: [String!]!
     $overview: String!
     $mission: String!
     $goals: String!
@@ -398,7 +412,6 @@ const EDIT_CORPORATION = gql`
       editCorporationInput: {
         id: $id
         name: $name
-        logo: $logo
         slogan: $slogan
         majors: $majors
         industries: $industries
@@ -423,7 +436,6 @@ const EDIT_CORPORATION = gql`
     ) {
       id
       name
-      logo
       slogan
       majors
       industries

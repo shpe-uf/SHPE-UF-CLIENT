@@ -9,11 +9,12 @@ function UserProfile({ user, children, isPublic }) {
     <Grid columns={2} doubling>
       <Grid.Row>
         <Grid.Column>
+          {console.log("User's photo: ", user.photo)}
           {user && user.photo !== "" ? (
             <Image
               rounded
               size={children ? "medium" : "huge"}
-              src={user.photo}
+              src={`${user.photo}?t=${new Date().getTime()}`}
               className="image-profile"
             />
           ) : (

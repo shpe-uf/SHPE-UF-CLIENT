@@ -22,7 +22,7 @@ function CorporationProfile({ corporation }) {
             <p>
               <i>"{corporation.slogan}"</i>
             </p>
-            <Image src={`${process.env.REACT_APP_CLOUDFRONT_URL}corporation-logos/${corporation.id}`} size="large"></Image>
+            <Image src={`${process.env.REACT_APP_CLOUDFRONT_URL}corporation-logos/${corporation.id}?t=${Date.getTime()}`} size="large"></Image>
             <Divider hidden />
             <Media at="tablet" as={Container}>
               <Button href={corporation.applyLink} positive floated="left">

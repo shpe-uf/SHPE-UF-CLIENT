@@ -79,7 +79,7 @@ function Profile() {
       socialMedia: user.socialMedia.slice(),
     });
     setEditProfileModal(true);
-    setPhotoFile(user.photo);
+    setPhotoFile(`${process.env.REACT_APP_CLOUDFRONT_URL}profile-pictures/${user.username}.jpg?t=${new Date().getTime()}`)
   }
 
   const closeModal = (name) => {
@@ -109,7 +109,8 @@ function Profile() {
     update(_, { data: { editUserProfile: userData } }) {
       user.firstName = userData.firstName;
       user.lastName = userData.lastName;
-      user.photo = `${process.env.REACT_APP_CLOUDFRONT_URL}profile-pictures/${user.username}.jpg`;
+      user.username = userData.username;
+      user.photo = userData.photo;
       user.major = userData.major;
       user.year = userData.year;
       user.graduating = userData.graduating;
@@ -152,6 +153,8 @@ function Profile() {
       )
 
       values.photo = `${process.env.REACT_APP_CLOUDFRONT_URL}profile-pictures/${user.username}.jpg`
+
+      setPhotoFile(`${process.env.REACT_APP_CLOUDFRONT_URL}profile-pictures/${user.username}.jpg?t=${new Date().getTime()}`)
     }
 
     editProfile();
@@ -256,6 +259,7 @@ function Profile() {
                       style={{ marginBottom: 16 }}
                     />
                   )}
+                  {console.log(`photoFile: ${photoFile}`)}
                   <ImageCrop
                     setPhotoFile={setPhotoFile}
                     values={values}
@@ -485,30 +489,30 @@ function Profile() {
 
 const FETCH_USER_QUERY = gql`
   query getUser($userId: ID!) {
-    getUser(userId: $userId) {
-      firstName
-      lastName
-      photo
-      username
-      email
-      major
-      year
-      graduating
-      country
-      ethnicity
-      sex
-      createdAt
-      permission
-      classes
-      internships
-      socialMedia
-    }
-  }
-`;
+        getUser(userId: $userId) {
+          firstName
+          lastName
+          photo
+          username
+          email
+          major
+          year
+          graduating
+          country
+          ethnicity
+          sex
+          createdAt
+          permission
+          classes
+          internships
+          socialMedia
+        }
+      }
+      `;
 
 const EDIT_USER_PROFILE = gql`
   mutation editUserProfile(
-    $email: String!
+        $email: String!
     $firstName: String!
     $lastName: String!
     $photo: String!
@@ -521,10 +525,10 @@ const EDIT_USER_PROFILE = gql`
     $classes: [String]
     $internships: [String]
     $socialMedia: [String]
-  ) {
-    editUserProfile(
-      editUserProfileInput: {
-        email: $email
+      ) {
+        editUserProfile(
+          editUserProfileInput: {
+          email: $email
         firstName: $firstName
         lastName: $lastName
         photo: $photo
@@ -537,26 +541,26 @@ const EDIT_USER_PROFILE = gql`
         classes: $classes
         internships: $internships
         socialMedia: $socialMedia
+        }
+        ) {
+          firstName
+          lastName
+          photo
+          username
+          email
+          major
+          year
+          graduating
+          country
+          ethnicity
+          sex
+          createdAt
+          permission
+          classes
+          internships
+          socialMedia
+        }
       }
-    ) {
-      firstName
-      lastName
-      photo
-      username
-      email
-      major
-      year
-      graduating
-      country
-      ethnicity
-      sex
-      createdAt
-      permission
-      classes
-      internships
-      socialMedia
-    }
-  }
-`;
+      `;
 
 export default Profile;

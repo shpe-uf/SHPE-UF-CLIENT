@@ -7,7 +7,7 @@ export default function CorporateCard({ corporation, children }) {
             raised
             className='card-team'
         >
-            <Image className='corp-logo' src={`${process.env.REACT_APP_CLOUDFRONT_URL}corporation-logos/${corporation.id}`} />
+            <Image className='corp-logo' src={`${process.env.REACT_APP_CLOUDFRONT_URL}corporation-logos/${corporation.id}?t=${Date.getTime()}`} />
             <Card.Content textAlign='left'>
                 <Header>{corporation.name}</Header>
             </Card.Content>
