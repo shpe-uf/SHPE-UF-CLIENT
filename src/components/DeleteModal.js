@@ -9,6 +9,8 @@ import {
   FETCH_RESOURCES_QUERY
 } from "../util/graphql";
 
+import { handleDelete } from "../util/S3PresignedURL"
+
 function DeleteModal(props) {
   const [userInput, setUserInput] = useState("");
 
@@ -36,6 +38,13 @@ function DeleteModal(props) {
         query: FETCH_CORPORATIONS_QUERY,
         data: { getCorporations: deleteCorporation },
       });
+
+      // AWS Bucket Delete Logo
+      handleDelete(
+        "shpeuf-corporations",
+        `corporation-logos/${props.deleteId}`,
+        localStorage.getItem("jwtToken")
+      )
     },
   });
 
@@ -151,7 +160,7 @@ const DELETE_CORPORATION_MUTATION = gql`
     deleteCorporation(corporationId: $corporationId) {
       id
       name
-      logo
+      # logo
       slogan
       majors
       industries

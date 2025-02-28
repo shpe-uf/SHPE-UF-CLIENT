@@ -1,13 +1,13 @@
 import React from "react";
-import {Card, Image, Header} from "semantic-ui-react"
+import { Card, Image, Header } from "semantic-ui-react"
 
-export default function CorporateCard ({corporation,children}) {
+export default function CorporateCard({ corporation, children }) {
     return (
-        <Card 
+        <Card
             raised
             className='card-team'
         >
-            <Image className='corp-logo' src={corporation.logo}/>
+            <Image className='corp-logo' src={`${process.env.REACT_APP_CLOUDFRONT_URL}corporation-logos/${corporation.id}?t=${Date.getTime()}`} />
             <Card.Content textAlign='left'>
                 <Header>{corporation.name}</Header>
             </Card.Content>

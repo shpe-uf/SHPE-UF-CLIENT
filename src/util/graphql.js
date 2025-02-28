@@ -107,7 +107,7 @@ export const FETCH_CORPORATIONS_QUERY = gql`
     getCorporations {
       id
       name
-      logo
+      # logo
       slogan
       majors
       industries

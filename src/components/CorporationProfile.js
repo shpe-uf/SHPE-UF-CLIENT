@@ -22,7 +22,7 @@ function CorporationProfile({ corporation }) {
             <p>
               <i>"{corporation.slogan}"</i>
             </p>
-            <Image src={corporation.logo} size="large"></Image>
+            <Image src={`${process.env.REACT_APP_CLOUDFRONT_URL}corporation-logos/${corporation.id}?t=${Date.getTime()}`} size="large"></Image>
             <Divider hidden />
             <Media at="tablet" as={Container}>
               <Button href={corporation.applyLink} positive floated="left">
@@ -57,7 +57,7 @@ function CorporationProfile({ corporation }) {
                 labelPosition="right"
                 positive
                 content="Apply"
-                // floated='left'
+              // floated='left'
               />
               <Button
                 href={corporation.newsLink}
@@ -67,7 +67,7 @@ function CorporationProfile({ corporation }) {
                 content="News"
                 floated="right"
               />
-              
+
             </Media>
             <h4>Additional Information</h4>
             <List>
@@ -170,7 +170,7 @@ function CorporationProfile({ corporation }) {
                 ))}
             </Label.Group>
             {
-                corporation.recruitmentDay === true ?
+              corporation.recruitmentDay === true ?
                 <Label.Group>
                   <h4>Recruitment Day Sign Up</h4>
                   <Button
@@ -181,9 +181,9 @@ function CorporationProfile({ corporation }) {
                     floated="left"
                   />
                 </Label.Group>
-                
+
                 : null
-              }    
+            }
           </Grid.Column>
         </Grid.Row>
       </Grid>

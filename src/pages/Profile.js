@@ -15,6 +15,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { useQuery, useMutation } from "@apollo/client";
 import { useForm } from "../util/hooks";
 import { AuthContext } from "../context/auth";
+import { handleUpload } from "../util/S3PresignedURL"
 
 import Title from "../components/Title";
 import UserProfile from "../components/UserProfile";
@@ -78,7 +79,7 @@ function Profile() {
       socialMedia: user.socialMedia.slice(),
     });
     setEditProfileModal(true);
-    setPhotoFile(user.photo);
+    setPhotoFile(`${process.env.REACT_APP_CLOUDFRONT_URL}profile-pictures/${user.username}.jpg?t=${new Date().getTime()}`)
   }
 
   const closeModal = (name) => {
@@ -108,6 +109,7 @@ function Profile() {
     update(_, { data: { editUserProfile: userData } }) {
       user.firstName = userData.firstName;
       user.lastName = userData.lastName;
+      user.username = userData.username;
       user.photo = userData.photo;
       user.major = userData.major;
       user.year = userData.year;
@@ -118,6 +120,8 @@ function Profile() {
       user.classes = userData.classes;
       user.internships = userData.internships;
       user.socialMedia = userData.socialMedia;
+
+
       toast.success("Your profile has been updated.", {
         position: toast.POSITION.BOTTOM_CENTER,
       });
@@ -136,6 +140,23 @@ function Profile() {
     values.classes = miscInfo.classes;
     values.internships = miscInfo.internships;
     values.socialMedia = miscInfo.socialMedia;
+
+
+    if (photoFile != user.photo) {
+      // AWS Bucket Upload
+      handleUpload(
+        "shpeuf-profile-pictures",
+        {
+          name: `profile-pictures/${user.username}.jpg`,
+          data: values.photo
+        }
+      )
+
+      values.photo = `${process.env.REACT_APP_CLOUDFRONT_URL}profile-pictures/${user.username}.jpg`
+
+      setPhotoFile(`${process.env.REACT_APP_CLOUDFRONT_URL}profile-pictures/${user.username}.jpg?t=${new Date().getTime()}`)
+    }
+
     editProfile();
   }
 
@@ -238,6 +259,7 @@ function Profile() {
                       style={{ marginBottom: 16 }}
                     />
                   )}
+                  {console.log(`photoFile: ${photoFile}`)}
                   <ImageCrop
                     setPhotoFile={setPhotoFile}
                     values={values}
@@ -467,30 +489,30 @@ function Profile() {
 
 const FETCH_USER_QUERY = gql`
   query getUser($userId: ID!) {
-    getUser(userId: $userId) {
-      firstName
-      lastName
-      photo
-      username
-      email
-      major
-      year
-      graduating
-      country
-      ethnicity
-      sex
-      createdAt
-      permission
-      classes
-      internships
-      socialMedia
-    }
-  }
-`;
+        getUser(userId: $userId) {
+          firstName
+          lastName
+          photo
+          username
+          email
+          major
+          year
+          graduating
+          country
+          ethnicity
+          sex
+          createdAt
+          permission
+          classes
+          internships
+          socialMedia
+        }
+      }
+      `;
 
 const EDIT_USER_PROFILE = gql`
   mutation editUserProfile(
-    $email: String!
+        $email: String!
     $firstName: String!
     $lastName: String!
     $photo: String!
@@ -503,10 +525,10 @@ const EDIT_USER_PROFILE = gql`
     $classes: [String]
     $internships: [String]
     $socialMedia: [String]
-  ) {
-    editUserProfile(
-      editUserProfileInput: {
-        email: $email
+      ) {
+        editUserProfile(
+          editUserProfileInput: {
+          email: $email
         firstName: $firstName
         lastName: $lastName
         photo: $photo
@@ -519,26 +541,26 @@ const EDIT_USER_PROFILE = gql`
         classes: $classes
         internships: $internships
         socialMedia: $socialMedia
+        }
+        ) {
+          firstName
+          lastName
+          photo
+          username
+          email
+          major
+          year
+          graduating
+          country
+          ethnicity
+          sex
+          createdAt
+          permission
+          classes
+          internships
+          socialMedia
+        }
       }
-    ) {
-      firstName
-      lastName
-      photo
-      username
-      email
-      major
-      year
-      graduating
-      country
-      ethnicity
-      sex
-      createdAt
-      permission
-      classes
-      internships
-      socialMedia
-    }
-  }
-`;
+      `;
 
 export default Profile;

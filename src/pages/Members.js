@@ -33,7 +33,7 @@ function Members() {
   );
 
   if (!loading && data) {
-    users = data.getUsers.filter(function (user) {
+    users = data.getUsers.filter(function(user) {
       let fullName = user.firstName.concat(" ").concat(user.lastName);
       let allInternships = user.internships.toString();
       let allClasses = user.classes.toString();
@@ -52,28 +52,28 @@ function Members() {
         (filter.internships.length === 0
           ? true
           : filter.internships
-              .map((n) =>
-                allInternships.toLowerCase().includes(n.toLowerCase())
-              )
-              .includes(true)) &&
+            .map((n) =>
+              allInternships.toLowerCase().includes(n.toLowerCase())
+            )
+            .includes(true)) &&
         (filter.classes.length === 0
           ? true
           : filter.classes
-              .map((n) => allClasses.toLowerCase().includes(n.toLowerCase()))
-              .includes(true)) &&
+            .map((n) => allClasses.toLowerCase().includes(n.toLowerCase()))
+            .includes(true)) &&
         (filter.name.length === 0
           ? true
           : filter.name
-              .map((n) =>
-                user.firstName.toLowerCase().includes(n.toLowerCase())
-              )
-              .includes(true) ||
-            filter.name
-              .map((n) => user.lastName.toLowerCase().includes(n.toLowerCase()))
-              .includes(true) ||
-            filter.name
-              .map((n) => fullName.toLowerCase().includes(n.toLowerCase()))
-              .includes(true))
+            .map((n) =>
+              user.firstName.toLowerCase().includes(n.toLowerCase())
+            )
+            .includes(true) ||
+          filter.name
+            .map((n) => user.lastName.toLowerCase().includes(n.toLowerCase()))
+            .includes(true) ||
+          filter.name
+            .map((n) => fullName.toLowerCase().includes(n.toLowerCase()))
+            .includes(true))
       );
     });
   }
@@ -86,11 +86,11 @@ function Members() {
     <>
       <Title title="Members" adminPath={window.location.pathname} />
       <Container className="body">
-      <FilterSelection getUsers={getUsers} />
+        <FilterSelection getUsers={getUsers} />
         <Grid>
           <Grid.Row>
             <Grid.Column>
-              {loading | !data ? (
+              {loading || !data ? (
                 <div style={{ marginTop: "300px" }}>
                   <Loader active>Loading users, please wait...</Loader>
                 </div>
