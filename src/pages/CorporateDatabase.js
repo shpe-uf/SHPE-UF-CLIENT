@@ -37,12 +37,57 @@ function CorporateDatabase() {
   let corporations = data ? data.getCorporations : [];
   let reimbursements = data ? data.getCorporations : [];
 
-  // if (data) {
-  //   corporations = data.getCorporations;
-  // setDisplayCorporations({corporations});
-  // }
+  const requiredFields = [
+    "name",
+    "logo",
+    "slogan",
+    "majors",
+    "industries",
+    "overview",
+    "mission",
+    "goals",
+    "businessModel",
+    "newsLink",
+    "applyLink",
+    "academia",
+    "govContractor",
+    "nonProfit",
+    "visaSponsor",
+    "shpeSponsor",
+    "industryPartnership",
+    "fallBBQ",
+    "springBBQ", 
+    "nationalConvention",
+    "recruitmentDay",
+    "signUpLink"
+  ];
 
-  const { onChange, onSubmit, values } = useForm(createCorporation, {
+  const validateFields = () => {
+    const validationErrors = {};
+
+    for (let i = 0; i < requiredFields.length; i++){
+      const field = requiredFields[i];
+      if (field === "majors" || field === "industries") {
+        if (!values[field] || values[field].length === 0) {
+          validationErrors[field] = "Invalid input: All fields must be filled out.";
+        }
+      } else {
+        if (!values[field] || values[field].trim() === "") {
+          validationErrors[field] = "Invalid input: All fields must be filled out.";
+        }
+      }
+    }
+
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length > 0){
+      return;
+    }
+
+    createCorporation();
+  };
+
+  const { onChange, onSubmit, values } = useForm(validateFields, {
     name: "",
     logo: "",
     slogan: "",
@@ -437,18 +482,16 @@ function CorporateDatabase() {
                   <label>Hosting Recruitment Day?</label>
                 </div>
               </Form.Field>
-              {
-                values.recruitmentDay === "true" ?
-                  <Form.Group widths="equal">
-                    <Form.Input
-                      type="text"
-                      label="Sign Up Link"
-                      name="signUpLink"
-                      value={values.signUpLink}
-                      error={errors.signUpLink ? true : false}
-                      onChange={onChange}
-                    /> </Form.Group> : null
-              }
+              <Form.Group widths="equal">
+                <Form.Input
+                  type="text"
+                  label="Sign Up Link"
+                  name="signUpLink"
+                  value={values.signUpLink}
+                  error={errors.signUpLink ? true : false}
+                  onChange={onChange}
+                /> 
+              </Form.Group>
               <Button type="reset" color="red" onClick={() => closeModal()}>
                 Cancel
               </Button>
