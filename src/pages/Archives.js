@@ -14,6 +14,7 @@ import { useQuery } from "@apollo/client";
 import Title from "../components/Title";
 import MembershipTable from "../components/MembershipTable";
 import ListServTable from "../components/ListServTable";
+import RankingMembership from "../components/RankingMembership";
 import GraduatingTable from "../components/GraduatingTable";
 import AlumniTable from "../components/AlumniTable";
 
@@ -89,6 +90,7 @@ function Archives() {
 
   const [deleteSHPEModal, setDeleteSHPEModal] = useState(false);
   const [deleteDoneModal, setDeleteDoneModal] = useState(false);
+  const [pointType, setPointType] = useState("fall")
 
   const openModal = (name) => {
     if (name === "deleteSHPE") {
@@ -128,7 +130,35 @@ function Archives() {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column>
-              <MembershipTable users={users} />
+              <MembershipTable users={users}/>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </Tab.Pane>
+    ),
+  };
+
+  const RankingsPane = {
+    menuItem: { content: "Ranking", icon: "users" },
+    render: () => (
+      <Tab.Pane>
+        <Grid>
+          <Grid.Row>
+            <Grid.Column>
+            <Button color="red" floated="left" onClick={() => setPointType("fall")}>
+                Fall Points
+              </Button>
+              <Button color="green" floated="left" onClick={() => setPointType("spring")}>
+                Spring Points
+              </Button>
+              <Button color="yellow" floated="left" onClick={() => setPointType("summer")}>
+                Summer Points
+              </Button>
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column>
+              <RankingMembership users={users} points={pointType} />
             </Grid.Column>
           </Grid.Row>
         </Grid>
@@ -261,6 +291,7 @@ function Archives() {
             // onTabChange={onTabChange}
             panes={[
               membershipPane,
+              RankingsPane,
               listServPane,
               graduatingPane,
               alumniPane,
