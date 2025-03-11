@@ -72,6 +72,9 @@ function CorporateDatabase() {
           validationErrors[field] = "Invalid input: All fields must be filled out.";
         }
       } else {
+        if (field === "signUpLink" && values.recruitmentDay === "false") {
+          continue;
+        }
         if (!values[field] || values[field].trim() === "") {
           validationErrors[field] = "Invalid input: All fields must be filled out.";
         }
@@ -482,16 +485,18 @@ function CorporateDatabase() {
                   <label>Hosting Recruitment Day?</label>
                 </div>
               </Form.Field>
-              <Form.Group widths="equal">
-                <Form.Input
-                  type="text"
-                  label="Sign Up Link"
-                  name="signUpLink"
-                  value={values.signUpLink}
-                  error={errors.signUpLink ? true : false}
-                  onChange={onChange}
-                /> 
-              </Form.Group>
+              {
+                values.recruitmentDay === "true" ?
+                  <Form.Group widths="equal">
+                    <Form.Input
+                      type="text"
+                      label="Sign Up Link"
+                      name="signUpLink"
+                      value={values.signUpLink}
+                      error={errors.signUpLink ? true : false}
+                      onChange={onChange}
+                    /> </Form.Group> : null
+              }
               <Button type="reset" color="red" onClick={() => closeModal()}>
                 Cancel
               </Button>
