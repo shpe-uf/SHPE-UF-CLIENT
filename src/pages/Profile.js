@@ -105,19 +105,25 @@ function Profile() {
   });
 
   const [editProfile, { loading }] = useMutation(EDIT_USER_PROFILE, {
-    update(_, { data: { editUserProfile: userData } }) {
-      user.firstName = userData.firstName;
-      user.lastName = userData.lastName;
-      user.photo = userData.photo;
-      user.major = userData.major;
-      user.year = userData.year;
-      user.graduating = userData.graduating;
-      user.country = userData.country;
-      user.ethnicity = userData.ethnicity;
-      user.sex = userData.sex;
-      user.classes = userData.classes;
-      user.internships = userData.internships;
-      user.socialMedia = userData.socialMedia;
+    update(cache, { data: { editUserProfile: userData } }) {
+      cache.modify({
+        id: cache.identify(userData), // Identify the user object in the cache
+        fields: {
+          firstName: () => userData.firstName,
+          lastName: () => userData.lastName,
+          photo: () => userData.photo,
+          major: () => userData.major,
+          year: () => userData.year,
+          graduating: () => userData.graduating,
+          country: () => userData.country,
+          ethnicity: () => userData.ethnicity,
+          sex: () => userData.sex,
+          classes: () => userData.classes,
+          internships: () => userData.internships,
+          socialMedia: () => userData.socialMedia,
+        },
+      });
+
       toast.success("Your profile has been updated.", {
         position: toast.POSITION.BOTTOM_CENTER,
       });
@@ -126,6 +132,10 @@ function Profile() {
     },
 
     onError(err) {
+      toast.error(`ERROR: Review your input and try again.`, {
+        position: toast.POSITION.BOTTOM_CENTER,
+      });
+
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
     },
 
