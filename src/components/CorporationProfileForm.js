@@ -360,9 +360,18 @@ function CorporationProfileForm({ corporation, closeModal, refetch }) {
           error={errors.signUpLink ? true : false}
           onChange={onChange}
         />
+        <div style={{ display: "flex", justifyContent: "space-between", marginTop: 16 }}>
+        <Button
+          type="reset"
+          color="red"
+          onClick={() => closeModal("editCorporation")}
+        >
+          Cancel
+        </Button>
         <Button type="submit" primary>
           Submit
         </Button>
+      </div>
       </Form>
     </>
   );
