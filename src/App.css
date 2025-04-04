@@ -109,8 +109,12 @@ h5 {
   margin-bottom: 8px;
 }
 
+
 h1 {
   font-size: 3rem !important;
+  
+  transform: translateY(-35px);
+
 }
 
 h2 {
@@ -251,56 +255,73 @@ h6 {
 
 .masthead-home {
   background: url(https://shpeuf.s3.amazonaws.com/public/home/home-bg.jpg) !important;
-  border-radius: 0px;
   background-position: 50% 155% !important;
-  background-attachment: fixed !important;
+  border-radius: 0px;
+  background-attachment: fixed!important;
   background-repeat: no-repeat !important;
-  background-size: cover !important;
+  background-size: cover !important; 
 }
 
 .masthead-team {
   background: url(https://shpeuf.s3.amazonaws.com/public/misc/team.jpg) !important;
-  border-radius: 0px;
   background-position: 50% 50% !important;
-  background-attachment: fixed !important;
+  border-radius: 0px;
+  background-attachment: fixed!important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
+  clip-path: polygon(0 0, 100% 0%, 100% 61.54%, 0 100%); 
 }
 
 .masthead-eboard {
   background: url(https://shpeuf.s3.amazonaws.com/public/eboard/eboardMini) !important;
-  border-radius: 0px;
   background-position: 50% 250% !important;
-  background-attachment: fixed !important;
+  border-radius: 0px;
+  background-attachment: fixed!important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
+  clip-path: polygon(0 0, 100% 0%, 100% 61.54%, 0 100%); 
 }
 
 .masthead-about {
-  background: url(https://shpeuf.s3.amazonaws.com/public/about/about.jpg) !important;
+  background: url(https://shpeuf.s3.us-east-1.amazonaws.com/public/about/aboutRedesign.jpeg) !important;
+  background-position: 50% 0% !important;
   border-radius: 0px;
-  background-position: 75% 75% !important;
-  background-attachment: fixed !important;
+  background-attachment: fixed!important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
+  clip-path: polygon(0 0, 100% 0%, 100% 84.54%, 0 100%); 
+}
+
+@media only screen and (min-width: 850px) {
+  .masthead-about {
+    background: url(https://shpeuf.s3.us-east-1.amazonaws.com/public/about/aboutRedesign.jpeg) !important;
+    background-position: 50% 0% !important;
+    border-radius: 0px;
+    background-attachment: fixed!important;
+    background-repeat: no-repeat !important;
+    background-size: 130% !important;
+    clip-path: polygon(0 0, 100% 0%, 100% 60.54%, 0 100%); 
+  }
 }
 
 .masthead-alumni {
   background: url(https://shpeuf.s3.amazonaws.com/public/misc/alumni.jpg) !important;
-  border-radius: 0px;
   background-position: 50% 50% !important;
-  background-attachment: fixed !important;
+  border-radius: 0px;
+  background-attachment: fixed!important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
+  clip-path: polygon(0 0, 100% 0%, 100% 61.54%, 0 100%); 
 }
 
 .masthead-sponsors {
   background: url(https://shpeuf.s3.amazonaws.com/public/misc/sponsors.jpg) !important;
-  border-radius: 0px;
   background-position: 50% 50% !important;
-  background-attachment: fixed !important;
+  border-radius: 0px;
+  background-attachment: fixed!important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
+  clip-path: polygon(0 0, 100% 0%, 100% 61.54%, 0 100%); 
 }
 
 .masthead-resources {
@@ -310,13 +331,22 @@ h6 {
   background-attachment: scroll !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
+  clip-path: polygon(0 0, 100% 0%, 100% 61.54%, 0 100%); 
 }
 
 .masthead-contactus {
   background: url(https://shpeuf.s3.amazonaws.com/public/misc/contact-us-1.JPG) !important;
-  border-radius: 0px;
   background-position: 50% 50% !important;
-  background-attachment: fixed !important;
+  border-radius: 0px;
+  background-attachment: fixed!important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  clip-path: polygon(0 0, 100% 0%, 100% 61.54%, 0 100%); 
+}
+
+.masthead-general{
+  border-radius: 0px;
+  background-attachment: fixed!important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
 }
@@ -335,7 +365,7 @@ h6 {
 
 .masthead-title {
   margin: 0px;
-  font-size: 3.5rem !important;
+  font-size: 4rem !important;
 }
 
 .background-grey {
