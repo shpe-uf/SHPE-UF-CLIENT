@@ -344,13 +344,6 @@ h6 {
   clip-path: polygon(0 0, 100% 0%, 100% 61.54%, 0 100%); 
 }
 
-.masthead-general{
-  border-radius: 0px;
-  background-attachment: fixed!important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-}
-
 .masthead-application {
   padding: 64px 0px 4px 0px;
   text-align: left;
