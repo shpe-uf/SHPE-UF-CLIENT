@@ -47,6 +47,7 @@ import ShpeitoNetwork from "./pages/ShpeitoNetwork";
 import RentalAdmin from "./pages/RentalAdmin";
 import ShpeRentals from "./pages/ShpeRentals";
 import MentorSHPE from "./pages/MentorShpe";
+import Volunteering from "./pages/Volunteering";
 import { jwtDecode } from "jwt-decode";
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/client";
@@ -152,6 +153,12 @@ function App() {
               element={
                 <UserRoute>
                   <ShpeRentals/>
+                </UserRoute>}
+            />
+            <Route exact path="/volunteering"
+              element={
+                <UserRoute>
+                  <Volunteering/>
                 </UserRoute>}
             />
             <Route exact path="/admin"
