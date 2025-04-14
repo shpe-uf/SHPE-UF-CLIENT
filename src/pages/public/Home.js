@@ -8,6 +8,7 @@ import {
 } from "semantic-ui-react";
 import { Media } from "../../Media";
 import {home1, home2, home3} from "../../assets/images/home"
+import HomeSlideshow from "../../components/HomeSlideshow";
 
 function Home() {
   return (
@@ -129,6 +130,11 @@ function Home() {
           </h4>
         </Container>
       </div>
+
+      <div>
+        <HomeSlideshow />
+      </div>
+      
     </div>
   );
 }
