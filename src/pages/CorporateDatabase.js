@@ -20,9 +20,9 @@ import partnerTiers from "../assets/options/tiers.json";
 import industryOptions from "../assets/options/industry.json";
 import placeholder from "../assets/images/placeholder.png";
 
-import Title from "../components/Title";
-import CorporationTable from "../components/CorporationTable";
-import ImageCrop from "../components/ImageCrop";
+import Title from "../components/FrontPage/Title";
+import CorporationTable from "../components/Corporations/CorporationTable";
+import ImageCrop from "../components/Profile/ImageCrop";
 
 function CorporateDatabase() {
   const [errors, setErrors] = useState({});

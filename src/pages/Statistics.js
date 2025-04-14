@@ -10,8 +10,8 @@ import {
   Grid,
 } from "semantic-ui-react";
 import { Media } from "../Media";
-import StatisticDisplay from "../components/StatisticDisplay";
-import Title from "../components/Title";
+import StatisticDisplay from "../components/Statistics/StatisticDisplay";
+import Title from "../components/FrontPage/Title";
 
 import {
   MAJOR_STAT,

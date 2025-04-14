@@ -3,9 +3,9 @@ import { Image, Button, Form } from "semantic-ui-react";
 import { useMutation } from "@apollo/client";
 import gql from "graphql-tag";
 import ImageCrop from "./ImageCrop";
-import { useForm } from "../util/hooks";
-import majorOptions from "../assets/options/major.json";
-import industryOptions from "../assets/options/industry.json";
+import { useForm } from "../../util/hooks";
+import majorOptions from "../../assets/options/major.json";
+import industryOptions from "../../assets/options/industry.json";
 
 function CorporationProfileForm({ corporation, closeModal, refetch }) {
   // State for error handling

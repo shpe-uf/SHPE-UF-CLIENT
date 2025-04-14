@@ -6,7 +6,7 @@ import {
   Image
 } from "semantic-ui-react";
 
-import Title from "../components/Title";
+import Title from "../components/FrontPage/Title";
 
 
 function MentorSHPE(){

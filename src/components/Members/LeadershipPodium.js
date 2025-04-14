@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../App.css";
+import "../../App.css";
 import { csv } from "d3-request";
 import url from "./test.csv"; // Change csv file name and location when used.
 

@@ -12,7 +12,7 @@ import gql from "graphql-tag";
 import { useQuery, useMutation } from "@apollo/client";
 import { useForm } from "../util/hooks";
 
-import Title from "../components/Title";
+import Title from "../components/FrontPage/Title";
 import EventsAccordion from "../components/Events/EventsAccordion";
 import { QRCodeSVG } from 'qrcode.react';
 

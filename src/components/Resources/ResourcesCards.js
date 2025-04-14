@@ -1,9 +1,9 @@
 import React from "react";
 import { Card, Dropdown, Grid, Icon, Image } from "semantic-ui-react";
 import { useQuery } from "@apollo/client";
-import { FETCH_RESOURCES_QUERY } from "../util/graphql";
+import { FETCH_RESOURCES_QUERY } from "../../util/graphql";
 
-import eboard from "../assets/eboard";
+import eboard from "../../assets/eboard";
 
 const National = "https://shpeuf.s3.amazonaws.com/public/resources/national.jpg";
 const NewMember = "https://shpeuf.s3.amazonaws.com/public/resources/newmember.jpeg";

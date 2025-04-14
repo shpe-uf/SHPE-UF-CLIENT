@@ -14,7 +14,7 @@ import {
 import { useQuery, useMutation } from "@apollo/client";
 import { CSVLink } from "react-csv";
 
-import Title from "../components/Title";
+import Title from "../components/FrontPage/Title";
 import gql from "graphql-tag";
 
 import { FETCH_REIMBURSEMENTS_QUERY } from "../util/graphql";

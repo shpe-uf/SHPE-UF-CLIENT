@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Container, Grid, Loader } from "semantic-ui-react";
 import { useQuery } from "@apollo/client";
 
-import Title from "../components/Title";
-import MembersTable from "../components/MembersTable";
-import FilterSelection from "../components/FilterSelection";
+import Title from "../components/FrontPage/Title";
+import MembersTable from "../components/Members/MembersTable";
+import FilterSelection from "../components/Profile/FilterSelection";
 
 import { FETCH_USERS_QUERY } from "../util/graphql";
 

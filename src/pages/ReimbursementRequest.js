@@ -6,9 +6,9 @@ import gql from "graphql-tag";
 
 import { useForm } from "../util/hooks";
 
-import Title from "../components/Title";
+import Title from "../components/FrontPage/Title";
 import { Text } from "victory";
-import ImageCrop from "../components/ImageCrop";
+import ImageCrop from "../components/Profile/ImageCrop";
 import { treasurerEmail } from "../assets/eboard";
 
 const receipt = "https://shpeuf.s3.amazonaws.com/public/misc/receipt.jpg"

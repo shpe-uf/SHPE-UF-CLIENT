@@ -9,9 +9,9 @@ import {
   Grid,
 } from "semantic-ui-react";
 
-import UserProfile from "./UserProfile";
+import UserProfile from "../Profile/UserProfile";
 import PermissionsForm from "./PermissionsForm";
-import PointsTable from "./UserEventsTable";
+import PointsTable from "../Points/UserEventsTable";
 
 function MembersTable({ users, refetch }) {
   const [userInfoModal, setUserInfoModal] = useState(false);

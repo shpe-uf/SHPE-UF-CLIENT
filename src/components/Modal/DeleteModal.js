@@ -7,7 +7,7 @@ import {
   FETCH_CORPORATIONS_QUERY,
   FETCH_EVENTS_QUERY,
   FETCH_RESOURCES_QUERY
-} from "../util/graphql";
+} from "../../util/graphql";
 
 function DeleteModal(props) {
   const [userInput, setUserInput] = useState("");

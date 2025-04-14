@@ -7,14 +7,14 @@ import {
   Grid,
   Card,
 } from "semantic-ui-react";
-import { Media } from "../Media";
+import { Media } from "../../Media";
 import "react-toastify/dist/ReactToastify.css";
 
 import { useQuery } from "@apollo/client";
 
-import TaskCard from "../components/TaskCard";
+import TaskCard from "./TaskCard";
 
-import { FETCH_TASKS_QUERY } from "../util/graphql";
+import { FETCH_TASKS_QUERY } from "../../util/graphql";
 
 function TasksCards({ user, refetch }) {
   let tasks = [];

@@ -11,9 +11,9 @@ import {
   Grid
 }from "semantic-ui-react";
 
-import CorporationProfile from "../components/CorporationProfile";
-import CorporationProfileForm from "../components/CorporationProfileForm";
-import DeleteModal from "./DeleteModal";
+import CorporationProfile from "./CorporationProfile";
+import CorporationProfileForm from "../Profile/CorporationProfileForm";
+import DeleteModal from "../Modal/DeleteModal";
 
 
 function CorporationTable({ corporations, refetch }) {

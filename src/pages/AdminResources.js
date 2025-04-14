@@ -4,8 +4,8 @@ import gql from "graphql-tag";
 import { useQuery, useMutation } from "@apollo/client";
 import { useForm } from "../util/hooks";
 
-import Title from "../components/Title";
-import ResourcesTable from "../components/ResourcesTable";
+import Title from "../components/FrontPage/Title";
+import ResourcesTable from "../components/Admin/ResourcesTable";
 
 import { FETCH_RESOURCES_QUERY } from "../util/graphql";
 

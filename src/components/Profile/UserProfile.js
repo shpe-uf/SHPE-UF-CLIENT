@@ -2,7 +2,7 @@ import React from "react";
 import { Grid, Image, Table } from "semantic-ui-react";
 import moment from "moment";
 
-import placeholder from "../assets/images/placeholder.png";
+import placeholder from "../../assets/images/placeholder.png";
 
 function UserProfile({ user, children, isPublic }) {
   return (

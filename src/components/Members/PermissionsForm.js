@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
-import { AuthContext } from "../context/auth";
+import { AuthContext } from "../../context/auth";
 import { useMutation, useQuery } from "@apollo/client";
 import gql from "graphql-tag"
 
 import {Grid, Form, Button, Message} from "semantic-ui-react";
-import { PERMISSIONS } from "../util/permissions";
+import { PERMISSIONS } from "../../util/permissions";
 
 
 export default function PermissionsForm({userInfo, refetch}) {

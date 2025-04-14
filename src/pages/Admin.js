@@ -4,8 +4,8 @@ import {
   Grid
 } from "semantic-ui-react";
 import { Media } from "../Media";
-import Title from "../components/Title";
-import AdminPanel from "../components/AdminPanel";
+import Title from "../components/FrontPage/Title";
+import AdminPanel from "../components/Admin/AdminPanel";
 
 function Admin({permission}) {
   return (

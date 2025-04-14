@@ -6,10 +6,10 @@ import {
   Button,
   Icon
 } from "semantic-ui-react";
-import { Media } from "../Media";
+import { Media } from "../../Media";
 import { Link } from "react-router-dom";
 
-import { AuthContext } from "../context/auth";
+import { AuthContext } from "../../context/auth";
 
 const logo = "https://shpeuf.s3.amazonaws.com/public/misc/logo.png";
 

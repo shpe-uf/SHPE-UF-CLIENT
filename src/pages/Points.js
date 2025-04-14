@@ -19,12 +19,12 @@ import { useQuery, useMutation } from "@apollo/client";
 import { useForm } from "../util/hooks";
 import { AuthContext } from "../context/auth";
 
-import Title from "../components/Title";
-import PointsBar from "../components/PointsBar";
-import UserEventsTable from "../components/UserEventsTable";
-import UserTasksTable from "../components/UserTasksTable";
-import TasksCards from "../components/TasksCards";
-import BookmarkedTasksCards from "../components/BookmarkedTasksCards";
+import Title from "../components/FrontPage/Title";
+import PointsBar from "../components/Points/PointsBar";
+import UserEventsTable from "../components/Points/UserEventsTable";
+import UserTasksTable from "../components/Points/UserTasksTable";
+import TasksCards from "../components/Points/TasksCards";
+import BookmarkedTasksCards from "../components/Points/BookmarkedTasksCards";
 
 function Points() {
   const [activeItem, setActiveItem] = useState("Your Points");

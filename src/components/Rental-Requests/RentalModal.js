@@ -16,12 +16,12 @@ import {
   List,
 } from "semantic-ui-react";
 
-import { AuthContext } from "../context/auth";
+import { AuthContext } from "../../context/auth";
 import { useQuery } from "@apollo/client";
 import gql from "graphql-tag";
 
-import checkmark from "../assets/images/checkmark.svg";
-import x_icon from "../assets/images/x.svg";
+import checkmark from "../../assets/images/checkmark.svg";
+import x_icon from "../../assets/images/x.svg";
 
 function RentalModal(props) {
   const [rentalState, setRentalState] = useState(0);

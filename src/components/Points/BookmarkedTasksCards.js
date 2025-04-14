@@ -10,10 +10,10 @@ import {
 import { useQuery } from "@apollo/client";
 import "react-toastify/dist/ReactToastify.css";
 
-import { AuthContext } from "../context/auth";
-import BookmarkedTaskCard from "../components/BookmarkedTaskCard";
-import { FETCH_TASKS_QUERY } from "../util/graphql";
-import { Media } from "../Media"
+import { AuthContext } from "../../context/auth";
+import BookmarkedTaskCard from "./BookmarkedTaskCard";
+import { FETCH_TASKS_QUERY } from "../../util/graphql";
+import { Media } from "../../Media"
 
 function BookmarkedTasksCards({ user, refetch }) {
   const { loading, data } = useQuery(FETCH_TASKS_QUERY);

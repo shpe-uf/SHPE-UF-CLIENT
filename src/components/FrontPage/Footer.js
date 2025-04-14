@@ -3,7 +3,7 @@ import { Container, Grid, Icon } from "semantic-ui-react";
 import { AiFillInstagram } from "react-icons/ai";
 import { BiLogoTiktok} from "react-icons/bi";
 import { FaFacebook, FaLinkedin } from "react-icons/fa";
-import { Media } from "../Media"
+import { Media } from "../../Media"
 
 function Footer() {
   return (

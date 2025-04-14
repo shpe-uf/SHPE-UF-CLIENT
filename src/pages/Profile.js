@@ -16,8 +16,8 @@ import { useQuery, useMutation } from "@apollo/client";
 import { useForm } from "../util/hooks";
 import { AuthContext } from "../context/auth";
 
-import Title from "../components/Title";
-import UserProfile from "../components/UserProfile";
+import Title from "../components/FrontPage/Title";
+import UserProfile from "../components/Profile/UserProfile";
 
 import majorOptions from "../assets/options/major.json";
 import yearOptions from "../assets/options/year.json";
@@ -27,7 +27,7 @@ import ethnicityOptions from "../assets/options/ethnicity.json";
 import sexOptions from "../assets/options/sex.json";
 
 import placeholder from "../assets/images/placeholder.png";
-import ImageCrop from "../components/ImageCrop";
+import ImageCrop from "../components/Profile/ImageCrop";
 
 function Profile() {
   const [photoFile, setPhotoFile] = useState("");

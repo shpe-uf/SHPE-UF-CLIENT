@@ -17,8 +17,8 @@ import moment from "moment";
 import { CSVLink } from "react-csv";
 
 import { FETCH_EVENTS_QUERY } from "../../util/graphql";
-import ManualInputModal from "../ManualInputModal";
-import DeleteModal from "../DeleteModal";
+import ManualInputModal from "./ManualInputModal";
+import DeleteModal from "../Modal/DeleteModal";
 import { QRCodeSVG } from 'qrcode.react';
 
 function EventsTable({ events }) {

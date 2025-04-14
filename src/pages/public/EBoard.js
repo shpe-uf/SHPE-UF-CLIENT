@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Card } from "semantic-ui-react";
 import { Media } from "../../Media";
-import EBoardCards from "../../components/EBoardCards";
+import EBoardCards from "../../components/FrontPage/EBoardCards";
 
 function EBoard() {
   return (
