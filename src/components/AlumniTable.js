@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+  Input,
   Table,
   Dimmer,
   Loader,
@@ -8,8 +9,11 @@ import {
   Modal,
   Grid
 } from "semantic-ui-react";
+import AlumniFilterSelection from "../components/AlumniFilterSelection"
+
 
 function AlumniTable({ alumnis }) {
+  const [filter, setFilter] = useState("");
   const [alumniProfileModal, setAlumniProfileModal] = useState(false);
   const [alumniProfile, setAlumniProfile] = useState({});
 
@@ -18,6 +22,8 @@ function AlumniTable({ alumnis }) {
       setAlumniProfileModal(true);
     }
   };
+
+  console.log(alumnis)
 
   const closeModal = name => {
     if (name === "alumniProfile") {
@@ -30,12 +36,21 @@ function AlumniTable({ alumnis }) {
     setAlumniProfile(alumniProfile);
   }
 
+  if (filter !== "")
+    alumnis = alumnis.filter((alumni) => {
+      let alumniName = `${alumni.firstName} ${alumni.lastName}`
+      return (
+        alumniName.toLowerCase().includes(filter)
+      )
+    });
+
   return (
     <>
       <div className="table-responsive">
         <Dimmer active={alumnis ? false : true} inverted>
           <Loader />
         </Dimmer>
+        <AlumniFilterSelection alumni={alumnis} />
         <Table striped selectable unstackable>
           <Table.Header>
             <Table.Row>
