@@ -14,8 +14,8 @@ import gql from "graphql-tag";
 import { useMutation } from "@apollo/client";
 import { CSVLink } from "react-csv";
 
-import { FETCH_TASKS_QUERY } from "../util/graphql";
-import DeleteModal from "./DeleteModal";
+import { FETCH_TASKS_QUERY } from "../../util/graphql";
+import DeleteModal from "../Modal/DeleteModal";
 import ManualInputModal from "./ManualInputModal";
 
 function TasksTable({ tasks }) {

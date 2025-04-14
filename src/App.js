@@ -10,8 +10,8 @@ import AuthRoute from "./util/AuthRoute";
 import UserRoute from "./util/UserRoute";
 import AdminRoute from "./util/AdminRoute";
 
-import MenuBar from "./components/MenuBar";
-import Footer from "./components/Footer";
+import MenuBar from "./components/FrontPage/MenuBar";
+import Footer from "./components/FrontPage/Footer";
 
 import Home from "./pages/public/Home";
 import Login from "./pages/public/Login";

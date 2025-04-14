@@ -11,7 +11,7 @@ import {
   Table,
 } from "semantic-ui-react";
 
-import DeleteModal from "./DeleteModal";
+import DeleteModal from "../Modal/DeleteModal";
 
 function ResourcesTable({ resources }) {
   const [resourceInfoModal, setResourceInfoModal] = useState(false);

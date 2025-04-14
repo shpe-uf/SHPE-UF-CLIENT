@@ -10,15 +10,15 @@ import {
   Loader,
 } from "semantic-ui-react";
 import { useQuery, useMutation } from "@apollo/client";
-import CorporationProfile from "../components/CorporationProfile";
-import Title from "../components/Title";
-import CorporateCard from "../components/CorporateCard";
+import CorporationProfile from "../components/Corporations/CorporationProfile";
+import Title from "../components/FrontPage/Title";
+import CorporateCard from "../components/Corporations/CorporateCard";
 
 import { AuthContext } from "../context/auth";
 
 import gql from "graphql-tag";
 import { FETCH_CORPORATIONS_QUERY } from "../util/graphql";
-import CorporationFilter from "../components/CorporationFilter";
+import CorporationFilter from "../components/Corporations/CorporationFilter";
 
 function Corporations(props) {
   const [viewCorporationModal, setViewCorporationModal] = useState(false);

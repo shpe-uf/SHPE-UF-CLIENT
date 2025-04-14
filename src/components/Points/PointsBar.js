@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid,  Segment } from "semantic-ui-react";
-import { Media } from "../Media"
+import { Media } from "../../Media"
 
 function PointsBar({ user }) {
   return (

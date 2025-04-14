@@ -4,8 +4,8 @@ import { useQuery } from "@apollo/client";
 
 import { FETCH_REQUESTS_QUERY } from "../util/graphql";
 
-import Title from "../components/Title";
-import RequestsTable from "../components/RequestsTable";
+import Title from "../components/FrontPage/Title";
+import RequestsTable from "../components/Rental-Requests/RequestsTable";
 
 function Requests() {
   const [searchTerm, setSearchTerm] = useState("");

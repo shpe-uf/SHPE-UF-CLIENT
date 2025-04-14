@@ -2,9 +2,9 @@ import React from "react";
 import { Container, Grid } from "semantic-ui-react";
 import { useQuery } from "@apollo/client";
 
-import Title from "../components/Title";
-import AlumniMap from "../components/AlumniMap";
-import AlumniTable from "../components/AlumniTable";
+import Title from "../components/FrontPage/Title";
+import AlumniMap from "../components/Alumni/AlumniMap";
+import AlumniTable from "../components/Alumni/AlumniTable";
 
 import { FETCH_ALUMNIS_QUERY } from "../util/graphql";
 

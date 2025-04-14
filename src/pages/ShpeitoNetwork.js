@@ -13,9 +13,9 @@ import { Media } from "../Media";
 import { useQuery } from "@apollo/client";
 import { FETCH_USERS_QUERY } from "../util/graphql";
 
-import Title from "../components/Title";
-import FilterSelection from "../components/FilterSelection";
-import UserProfile from "../components/UserProfile";
+import Title from "../components/FrontPage/Title";
+import FilterSelection from "../components/Profile/FilterSelection";
+import UserProfile from "../components/Profile/UserProfile";
 import placeholder from "../assets/images/placeholder.png";
 
 function ShpeitoNetwork(props) {

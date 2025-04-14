@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { Header, Menu, Segment, Image, Grid, Icon, Button, Divider, Message, Embed, List, Tab, Container } from 'semantic-ui-react';
 import GBMSlidesAccordion from './GBMSlidesAccordion';
-import '../App.css'; 
+import '../../App.css';
 import PhotosDisplay from './PhotosDisplay';
 
 const Freshman1011 =

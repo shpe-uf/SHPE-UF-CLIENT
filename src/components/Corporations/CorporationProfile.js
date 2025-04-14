@@ -9,7 +9,7 @@ import {
   Icon,
   Label,
 } from "semantic-ui-react";
-import { Media } from "../Media"
+import { Media } from "../../Media"
 
 function CorporationProfile({ corporation }) {
   return (

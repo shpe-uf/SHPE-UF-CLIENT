@@ -5,27 +5,21 @@ import gql from "graphql-tag";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { AuthContext } from "../context/auth";
-import { FETCH_TASKS_QUERY } from "../util/graphql";
+import { AuthContext } from "../../context/auth";
+import { FETCH_TASKS_QUERY } from "../../util/graphql";
 
-function TaskCard({ user, refetch }) {
-  const [bookmarkTask] = useMutation(BOOKMARK_TASK_MUTATION);
+function BookmarkedTaskCard({ user, refetch }) {
+  const [unBookmarkTask] = useMutation(UNBOOKMARK_TASK_MUTATION);
 
-  const { data } = useQuery(FETCH_TASKS_QUERY);
+  const { loading, data } = useQuery(FETCH_TASKS_QUERY);
 
-  var allTasks = data ? data.getTasks : [];
-  var tasks = [];
-
-  if (allTasks && user) {
+  const bookmarkedTasks = [];
+  if (!loading) {
+    var tasks = data.getTasks;
     var bookmarkedTaskNames = user.bookmarkedTasks;
-    for (const [_, value] of allTasks.entries()) {
-      const task = value;
-      const taskName = bookmarkedTaskNames.find(
-        (element) => element === task.name
-      );
-      if (!taskName) {
-        tasks.push(task);
-      }
+    for (const [_, value] of bookmarkedTaskNames.entries()) {
+      const task = tasks.find((element) => element.name === value);
+      bookmarkedTasks.push(task);
     }
   }
 
@@ -45,8 +39,8 @@ function TaskCard({ user, refetch }) {
 
   return (
     <>
-      {tasks &&
-        tasks.map((task, index) => (
+      {bookmarkedTasks &&
+        bookmarkedTasks.map((task, index) => (
           <Card color="blue" key={index}>
             <Card.Content>
               <div style={{ float: "left" }}>
@@ -63,7 +57,7 @@ function TaskCard({ user, refetch }) {
                   floated="right"
                   size="big"
                   onClick={async () => {
-                    await bookmarkTask({
+                    await unBookmarkTask({
                       variables: {
                         name: task.name,
                         username: username,
@@ -72,7 +66,7 @@ function TaskCard({ user, refetch }) {
                     refetch();
                   }}
                 >
-                  <Icon name="bookmark outline" />
+                  <Icon name="bookmark" />
                 </Button>
               </div>
             </Card.Content>
@@ -82,7 +76,7 @@ function TaskCard({ user, refetch }) {
                   clear: "left",
                 }}
               >
-                {task.startDate + " - " + task.endDate}
+                {task.startDate}- {task.endDate}
               </Card.Meta>
             </Card.Content>
             <Card.Content>{task.description}</Card.Content>
@@ -109,9 +103,9 @@ function TaskCard({ user, refetch }) {
   );
 }
 
-const BOOKMARK_TASK_MUTATION = gql`
-  mutation bookmarkTask($name: String!, $username: String!) {
-    bookmarkTask(bookmarkTaskInput: { name: $name, username: $username }) {
+const UNBOOKMARK_TASK_MUTATION = gql`
+  mutation unBookmarkTask($name: String!, $username: String!) {
+    unBookmarkTask(unBookmarkTaskInput: { name: $name, username: $username }) {
       bookmarkedTasks
     }
   }
@@ -128,4 +122,4 @@ const REDEEM_TASK_POINTS_MUTATION = gql`
   }
 `;
 
-export default TaskCard;
+export default BookmarkedTaskCard;

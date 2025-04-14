@@ -11,12 +11,12 @@ import {
 } from "semantic-ui-react";
 import { useQuery } from "@apollo/client";
 
-import Title from "../components/Title";
-import MembershipTable from "../components/MembershipTable";
-import ListServTable from "../components/ListServTable";
-import RankingMembership from "../components/RankingMembership";
-import GraduatingTable from "../components/GraduatingTable";
-import AlumniTable from "../components/AlumniTable";
+import Title from "../components/FrontPage/Title";
+import MembershipTable from "../components/Archives/MembershipTable";
+import ListServTable from "../components/Archives/ListServTable";
+import RankingMembership from "../components/Archives/RankingMembership";
+import GraduatingTable from "../components/Archives/GraduatingTable";
+import AlumniTable from "../components/Alumni/AlumniTable";
 
 import { FETCH_USERS_QUERY } from "../util/graphql";
 import { FETCH_ALUMNIS_QUERY } from "../util/graphql";

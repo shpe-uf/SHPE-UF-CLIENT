@@ -1,6 +1,6 @@
 import React from "react";
-import Title from "../components/Title";
-import ReceiptTable from "../components/ReceiptTable";
+import Title from "../components/FrontPage/Title";
+import ReceiptTable from "../components/Rental-Requests/ReceiptTable";
 import { Container, Tab, Loader } from "semantic-ui-react";
 
 import { FETCH_RECEIPTS_QUERY } from "../util/graphql";

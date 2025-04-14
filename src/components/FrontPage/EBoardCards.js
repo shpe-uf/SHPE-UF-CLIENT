@@ -1,6 +1,6 @@
 import React from "react";
 import { Card } from "semantic-ui-react";
-import CabinetModal from "../components/CabinetModal";
+import CabinetModal from "../Modal/CabinetModal";
 
 /*
 
@@ -16,7 +16,7 @@ import externalPositions from "../assets/options/external.json";
 import internalPositions from "../assets/options/internal.json";
 */
 
-import eboard from "../assets/eboard";
+import eboard from "../../assets/eboard";
 
 function cabinet(cabinet, description, email, pic) {
   return CabinetModal(cabinet, description, email, pic);

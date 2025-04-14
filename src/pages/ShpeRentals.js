@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import gql from "graphql-tag";
 
-import Title from "../components/Title";
-import RentalCards from "../components/RentalCards";
-import RentalModal from "../components/RentalModal";
+import Title from "../components/FrontPage/Title";
+import RentalCards from "../components/Rental-Requests/RentalCards";
+import RentalModal from "../components/Rental-Requests/RentalModal";
 import {
   Grid,
   Container,

@@ -4,8 +4,8 @@ import gql from "graphql-tag";
 import { useQuery, useMutation } from "@apollo/client";
 import { useForm } from "../util/hooks";
 
-import Title from "../components/Title";
-import TasksTable from "../components/TasksTable";
+import Title from "../components/FrontPage/Title";
+import TasksTable from "../components/Events/TasksTable";
 
 import { FETCH_TASKS_QUERY } from "../util/graphql";
 
