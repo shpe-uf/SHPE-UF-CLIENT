@@ -50,7 +50,6 @@ function AlumniTable({ alumnis }) {
         <Dimmer active={alumnis ? false : true} inverted>
           <Loader />
         </Dimmer>
-        <AlumniFilterSelection alumni={alumnis} />
         <Table striped selectable unstackable>
           <Table.Header>
             <Table.Row>
