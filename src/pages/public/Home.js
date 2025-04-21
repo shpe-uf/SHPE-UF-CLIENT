@@ -8,10 +8,13 @@ import {
 } from "semantic-ui-react";
 import { Media } from "../../Media";
 import {home1, home2, home3} from "../../assets/images/home"
+import FirstTimeVisitModal from "../../components/FirstTimeVisitModal";
+
 
 function Home() {
   return (
     <div>
+      <FirstTimeVisitModal />
         <div className="masthead masthead-home">
           <div className="overlay-home">
             <Container>
