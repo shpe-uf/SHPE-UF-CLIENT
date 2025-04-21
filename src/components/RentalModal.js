@@ -246,7 +246,7 @@ function RentalModal(props) {
             ) : null}
             <Grid columns={2}>
               <Grid.Column textAlign="center">
-                <Button onClick={() => props.cancelRental()}>Cancel</Button>
+                <Button color="red" onClick={() => props.cancelRental()}>Cancel</Button>
               </Grid.Column>
               <Grid.Column textAlign="center">
                 {rentalState < 2 ? (

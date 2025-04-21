@@ -16,6 +16,7 @@ import { useForm } from "../util/hooks";
 import { FETCH_CORPORATIONS_QUERY } from "../util/graphql";
 
 import majorOptions from "../assets/options/major.json";
+import partnerTiers from "../assets/options/tiers.json";
 import industryOptions from "../assets/options/industry.json";
 import placeholder from "../assets/images/placeholder.png";
 
@@ -26,20 +27,70 @@ import ImageCrop from "../components/ImageCrop";
 function CorporateDatabase() {
   const [errors, setErrors] = useState({});
   const [addCorporationModal, setAddCorporationModal] = useState(false);
+  const [addPartnerModal, setAddPartnerModal] = useState(false)
 
   var [logoFile, setLogoFile] = useState("");
+  var [pLogoFile, pSetLogoFile] = useState("");
 
   //mutation for retrieving company array
   let { data, refetch } = useQuery(FETCH_CORPORATIONS_QUERY);
   let corporations = data ? data.getCorporations : [];
   let reimbursements = data ? data.getCorporations : [];
 
-  // if (data) {
-  //   corporations = data.getCorporations;
-  // setDisplayCorporations({corporations});
-  // }
+  const requiredFields = [
+    "name",
+    "logo",
+    "slogan",
+    "majors",
+    "industries",
+    "overview",
+    "mission",
+    "goals",
+    "businessModel",
+    "newsLink",
+    "applyLink",
+    "academia",
+    "govContractor",
+    "nonProfit",
+    "visaSponsor",
+    "shpeSponsor",
+    "industryPartnership",
+    "fallBBQ",
+    "springBBQ", 
+    "nationalConvention",
+    "recruitmentDay",
+    "signUpLink"
+  ];
 
-  const { onChange, onSubmit, values } = useForm(createCorporation, {
+  const validateFields = () => {
+    const validationErrors = {};
+
+    for (let i = 0; i < requiredFields.length; i++){
+      const field = requiredFields[i];
+      if (field === "majors" || field === "industries") {
+        if (!values[field] || values[field].length === 0) {
+          validationErrors[field] = "Invalid input: All fields must be filled out.";
+        }
+      } else {
+        if (field === "signUpLink" && values.recruitmentDay === "false") {
+          continue;
+        }
+        if (!values[field] || values[field].trim() === "") {
+          validationErrors[field] = "Invalid input: All fields must be filled out.";
+        }
+      }
+    }
+
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length > 0){
+      return;
+    }
+
+    createCorporation();
+  };
+
+  const { onChange, onSubmit, values } = useForm(validateFields, {
     name: "",
     logo: "",
     slogan: "",
@@ -74,7 +125,7 @@ function CorporateDatabase() {
       const errorDetails =
         err.graphQLErrors?.[0]?.extensions?.exception?.errors || {};
       console.error("GraphQL error:", errorDetails);
-  
+
       setErrors(errorDetails);
     },
     variables: values,
@@ -90,11 +141,45 @@ function CorporateDatabase() {
     }
   }
 
+  const { onChange: pOnChange, onSubmit: pOnSubmit, values: pValues } = useForm(createPartner, {
+    name: "",
+    tier: "",
+    photo: "",
+  });
+
+  const [addPartner] = useMutation(CREATE_PARTNER, {
+    update(_) {
+      closePartnerModal();
+      setErrors(false);
+    },
+    onError(err) {
+      const errorDetails =
+        err.graphQLErrors?.[0]?.extensions?.exception?.errors || {};
+      console.error("GraphQL error:", errorDetails);
+
+      setErrors(errorDetails);
+    },
+    variables: pValues,
+  });
+
+  async function createPartner() {
+    try {
+      await addPartner();
+      closePartnerModal();
+      refetch();
+    } catch (error) {
+      console.error("Error creating partner:", error);
+    }
+  }
+
   //#region MODALS
 
   const openModal = () => {
     setAddCorporationModal(true);
   };
+
+  const openPartnerModal = () => setAddPartnerModal(true)
+
 
   const closeModal = () => {
     values.name = "";
@@ -123,6 +208,15 @@ function CorporateDatabase() {
     setAddCorporationModal(false);
   };
 
+  const closePartnerModal = () => {
+    pValues.name = "";
+    pValues.photo = "";
+    pValues.tier = "";
+    setErrors(false);
+    setAddPartnerModal(false);
+  };
+
+
   const corpHeaders = [
     { label: "ID", key: "id" },
     { label: "Company Name", key: "name" },
@@ -135,7 +229,7 @@ function CorporateDatabase() {
     { label: "NewsLink", key: "businessModel" },
     { label: "Apply Link", key: "newsLink" },
     { label: "National Convention Attendee", key: "applyLink" },
-    { label: "Recruitment Days", key: "recruitmentDay"},
+    { label: "Recruitment Days", key: "recruitmentDay" },
   ];
 
   const addModal = (
@@ -393,17 +487,17 @@ function CorporateDatabase() {
               </Form.Field>
               {
                 values.recruitmentDay === "true" ?
-                <Form.Group widths="equal">
-                <Form.Input
-                  type="text"
-                  label="Sign Up Link"
-                  name="signUpLink"
-                  value={values.signUpLink}
-                  error={errors.signUpLink ? true : false}
-                  onChange={onChange}
-                /> </Form.Group>: null
+                  <Form.Group widths="equal">
+                    <Form.Input
+                      type="text"
+                      label="Sign Up Link"
+                      name="signUpLink"
+                      value={values.signUpLink}
+                      error={errors.signUpLink ? true : false}
+                      onChange={onChange}
+                    /> </Form.Group> : null
               }
-              <Button type="reset" color="grey" onClick={() => closeModal()}>
+              <Button type="reset" color="red" onClick={() => closeModal()}>
                 Cancel
               </Button>
               <Button type="submit" floated="right">
@@ -417,6 +511,89 @@ function CorporateDatabase() {
   );
   //#endregion
 
+  const partnerModal = (
+    <Modal
+      open={addPartnerModal}
+      size="tiny"
+      closeOnEscape={true}
+      closeOnDimmerClick={false}
+    >
+      <Modal.Header>
+        <h2>Add Partner</h2>
+        <Button icon="close" color="grey" onClick={() => closePartnerModal()} />
+      </Modal.Header>
+      <Modal.Content>
+        <Segment.Group className="segment-spacing">
+          <Segment>
+            {Object.keys(errors).length > 0 && (
+              <div className="ui error message">
+                <ul className="list">
+                  {Object.values(errors).map((value) => (
+                    <li key={value}>{value}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            <Form
+              onSubmit={pOnSubmit}
+              noValidate
+              className={loading ? "loading" : ""}
+            >
+              {logoFile ? (
+                <Image
+                  fluid
+                  rounded
+                  src={logoFile}
+                  className="image-profile"
+                  style={{ marginBottom: 16 }}
+                />
+              ) : (
+                <Image
+                  fluid
+                  rounded
+                  src={placeholder}
+                  className="image-profile"
+                  style={{ marginBottom: 16 }}
+                />
+              )}
+              <ImageCrop
+                setPhotoFile={pSetLogoFile}
+                values={pValues}
+                onChange={pOnChange}
+                errors={errors}
+                type="partner"
+              />
+              <Form.Input
+                type="text"
+                label="Company Name"
+                name="name"
+                value={pValues.name}
+                error={errors.name ? true : false}
+                onChange={pOnChange}
+              />
+              <Form.Group widths="equal">
+                <Form.Dropdown
+                  label="Tier"
+                  fluid
+                  selection options={partnerTiers}
+                  onChange={(param, data) => {
+                    pValues.tier = data.value;
+                  }}
+                  error={errors.tier ? true : false}
+                ></Form.Dropdown>
+              </Form.Group>
+              <Button type="submit">
+                Add Partner
+              </Button>
+            </Form>
+          </Segment>
+        </Segment.Group>
+      </Modal.Content>
+    </Modal>
+  );
+  //#endregion
+
+
   return (
     <>
       <Title title="Corporate Database" adminPath={window.location.pathname} />
@@ -424,6 +601,13 @@ function CorporateDatabase() {
         <Grid>
           <Grid.Row>
             <Grid.Column>
+              <Button
+                content="Add Partner"
+                icon="add"
+                labelPosition="left"
+                onClick={() => openPartnerModal()}
+                floated="right"
+              />
               <Button
                 content="Add Corporation"
                 icon="add"
@@ -454,6 +638,7 @@ function CorporateDatabase() {
         </Grid>
       </Container>
       {addModal}
+      {partnerModal}
     </>
   );
 }
@@ -510,6 +695,27 @@ const CREATE_CORPORATION = gql`
       }
     ) {
       name
+    }
+  }
+`;
+
+
+const CREATE_PARTNER = gql`
+  mutation createPartner(
+    $name: String!
+    $photo: String!
+    $tier: String!
+  ) {
+    createPartner(
+      createPartnerInput: {
+        name: $name
+        photo: $photo
+        tier: $tier
+      }
+    ) {
+      name
+      photo
+      tier
     }
   }
 `;

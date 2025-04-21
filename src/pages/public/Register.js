@@ -66,14 +66,45 @@ function Register(props) {
 
   return (
     <div className="register">
+      <style>
+        {`
+          #outerModal
+          {
+            display: flex !important;
+          }
+          #content
+          {
+            display: flex !important;
+            justify-content: center !important;
+          }
+        `}
+      </style>
       <div className="overlay-register">
         <Container>
-          <Modal basic open={openModal}>
-            <Header icon>
-              <Icon name="mail outline" />
+
+          <Modal id="outerModal" basic open={openModal}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexDirection: "column",
+            }}
+          >
+            <Header icon
+              style={{
+                display: "flex",
+                gap: "2rem",
+                alignItems: "center",
+              }}
+            >
+              <Icon name="mail outline"
+                style={{
+                  marginTop: "auto",
+                }}
+              />
               Email sent!
             </Header>
-            <Modal.Content>
+            <Modal.Content id="content">
               <p>
                 A link has been sent to your email, please press the confirm
                 link inside to complete registration, thank you!
