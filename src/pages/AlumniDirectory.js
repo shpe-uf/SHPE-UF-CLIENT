@@ -8,11 +8,9 @@ import AlumniFilterSelection from "../components/AlumniFilterSelection";
 import { FETCH_ALUMNIS_QUERY } from "../util/graphql";
 
 export default function AlumniDirectory() {
-  // --- fetch ---
   const { data, loading } = useQuery(FETCH_ALUMNIS_QUERY);
   const alumnis = data?.getAlumnis || [];
 
-  // --- filter state in parent ---
   const [filters, setFilters] = useState({
     Name: [],
     "Undergrad Major": [],
