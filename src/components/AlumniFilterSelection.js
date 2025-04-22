@@ -1,180 +1,90 @@
 import React, { useState, useEffect } from "react";
-import {
-  Dropdown,
-  Container,
-  Label,
-  Grid,
-  Form,
-  Button,
-} from "semantic-ui-react";
-
+import { Dropdown, Form, Button, Icon } from "semantic-ui-react";
 import major from "../assets/options/major.json";
+import "../App.css";
 
-const AlumniFilterSelection = ({ alumni }) => {
-  // Ideally we would want to make the original FilterSelection component customizable for any page or desired filter, but for the purposes of the Alumni Directory UI revamp it was made separately
-
-  const [width, setWidth] = useState(1000);
+export default function AlumniFilterSelection({
+  filters,
+  onAddFilter,
+}) {
   const [category, setCategory] = useState("Name");
-  const [filterListUnsorted, setFilterListUnsorted] = useState([]);
-  const [filters, setFilters] = useState({
-    name: [],
-    undergrad_major: [],
-    grad_major: [],
-    location: [],
-    employer: [],
-    grad_year: []
-  });
   const [filterVal, setFilterVal] = useState("");
+  const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
-    window.addEventListener("resize", resizeWindow.bind(this));
-    return function cleanup() {
-      window.removeEventListener("resize", resizeWindow.bind(this));
-    };
+    const resize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", resize);
+    return () => window.removeEventListener("resize", resize);
   }, []);
 
-  function resizeWindow() {
-    setWidth(window.innerWidth);
-  }
-
-  let fullSelection = {
-    name: "",
-    undergrad_major: major,
-    grad_major: major,
-    location: "",
-    employer: "",
-    grad_year: ""
+  const fullSelection = {
+    Name: "",
+    "Undergrad Major": major,
+    "Grad Major": major,
+    Location: "",
+    Employer: "",
+    "Grad Year": "",
   };
 
-  function addFilter() {
-    if (
-      filterVal &&
-      filterVal !== "" &&
-      !filters[category.toLowerCase()].includes(filterVal)
-    ) {
-      let f = filters;
-      if (category === "Classes") {
-        let newVal = filterVal.replace(/\s+/g, "").toUpperCase();
-        f[category.toLowerCase()].push(newVal);
-      } else {
-        f[category.toLowerCase()].push(filterVal);
-      }
-      setFilters(f);
-      printLabels();
-      alumni(f);
-    }
-  }
+  const dropdownOptions = Object.keys(fullSelection).map(k => ({
+    text: k,
+    value: k,
+  }));
 
-  function deleteFilter(deletedFilter) {
-    let f = filters;
-    let k = Object.keys(f);
-    for (let i = 0; i < k.length; i++) {
-      if (f[k[i]].includes(deletedFilter)) {
-        f[k[i]] = f[k[i]].filter((x) => x !== deletedFilter);
-      }
+  const handleAdd = () => {
+    const val = filterVal.trim();
+    if (!val) return;
+    if (!filters[category].includes(val)) {
+      onAddFilter(category, val);
     }
-    setFilters(f);
-    printLabels();
-    alumni(f);
-  }
-
-  let dropdownOptions = (function() {
-    let optionArray = [];
-    let options = Object.keys(fullSelection);
-    for (let i = 0; i < options.length; i++) {
-      optionArray.push({});
-      optionArray[i].text = optionArray[i].value = options[i];
-    }
-    return optionArray;
-  })();
-
-  function printLabels() {
-    let filterKeys = Object.keys(filters);
-    let list = [];
-    for (let i = 0; i < filterKeys.length; i++) {
-      filters[filterKeys[i]].forEach((element) => {
-        list.push(element);
-      });
-    }
-    setFilterListUnsorted(list);
-  }
+    setFilterVal("");
+  };
 
   return (
-    <Container>
-      <div
-        style={
-          width > 749
-            ? {
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }
-            : {
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              flexFlow: "column nowrap",
-              height: "150px",
-            }
-        }
-      >
-        <div>
-          <Dropdown
-            defaultValue={"Name"}
-            options={dropdownOptions}
-            onChange={(e, data) => {
-              setCategory(data.value);
-            }}
-            selection
-          />
-        </div>
-        <p></p>
-        <div
-          style={{
-            flexGrow: "0.9",
-          }}
-        >
-          {fullSelection[category] === "" ? (
-            <Form>
-              <Form.Field>
-                <input
-                  onChange={(e) => setFilterVal(e.target.value)}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter") addFilter();
-                  }}
-                  placeholder={"Search " + category}
-                />
-              </Form.Field>
-            </Form>
-          ) : (
-            <Dropdown
-              placeholder={"Select " + category}
-              fluid
-              search
-              selection
-              onChange={(e, data) => setFilterVal(data.value)}
-              options={fullSelection[category]}
+    <div
+      className="alumni-filter-section"
+      style={{ padding: "0.2rem", paddingRight: "3rem" }}
+    >
+
+      {fullSelection[category] === "" ? (
+        <Form onSubmit={e => { e.preventDefault(); handleAdd(); }}>
+          <Form.Field>
+            <input
+              className="alumni-filter-input"
+              placeholder={`Search ${category}`}
+              value={filterVal}
+              onChange={e => setFilterVal(e.target.value)}
+              style={{ minWidth: width < 750 ? "160px" : "240px" }}
             />
-          )}
-        </div>
-        <p></p>
-        <Grid.Column>
-          <Button onClick={addFilter}>Enter</Button>
-        </Grid.Column>
-      </div>
-      <br />
-      {filterListUnsorted.map((filter) => (
-        <Label
-          size="tiny"
-          circular
-          content={filter}
-          onRemove={(e, data) => deleteFilter(data.content)}
-          key={filter}
+          </Form.Field>
+        </Form>
+      ) : (
+        <Dropdown
+          className="alumni-filter-input"
+          fluid
+          search
+          selection
+          placeholder={`Select ${category}`}
+          options={fullSelection[category]}
+          value={filterVal}
+          onChange={(_, d) => setFilterVal(d.value)}
+          style={{ minWidth: width < 750 ? "160px" : "240px" }}
         />
-      ))}
-      <p></p>
-    </Container>
+      )}
+
+      <Button icon onClick={handleAdd} className="alumni-filter-btn">
+        <Icon name="search" />
+      </Button>
+
+      <Dropdown
+        className="alumni-dropdown"
+        options={dropdownOptions}
+        value={category}
+        onChange={(_, d) => setCategory(d.value)}
+        selection
+        icon="filter"
+      />
+    </div>
   );
 }
 
-export default AlumniFilterSelection;
