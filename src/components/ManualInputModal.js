@@ -6,7 +6,7 @@ import gql from 'graphql-tag';
 
 function ManualInputModal(props) {
   const [errors, setErrors] = useState({});
-  const [user, setUser] = useState('');
+  const [userArray, setUser] = useState([]);
 
   let users = null;
   let {data} = useQuery(FETCH_USERS_QUERY);
@@ -61,6 +61,13 @@ function ManualInputModal(props) {
     }
   });
 
+  const onSubmit = () => {
+    userArray.forEach(user => {
+      props.type === 'event' && manualInput({variables: {username: user, eventName: props.addObject}})
+      props.type === 'task' && manualTaskInput({variables: {username: user, taskName: props.addObject}})
+    })
+  } 
+  
   return (
     <Modal
       open={props.open}
@@ -90,6 +97,7 @@ function ManualInputModal(props) {
                 fluid
                 search
                 selection
+                multiple 
                 onChange={(_,data) => setUser(data.value)}
               />
               <Divider hidden/>
@@ -106,10 +114,8 @@ function ManualInputModal(props) {
               <Button
                 type="submit"
                 floated="right"
-                onClick={() => {
-                  props.type === 'event' && manualInput({variables: {username: user, eventName: props.addObject}})
-                  props.type === 'task' && manualTaskInput({variables: {username: user, taskName: props.addObject}})
-                }}>
+                onClick={onSubmit}
+                >
                 Submit
               </Button>
             </Grid.Column>

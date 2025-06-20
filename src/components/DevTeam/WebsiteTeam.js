@@ -1,26 +1,26 @@
 import React from 'react';
 import { Card, Container } from 'semantic-ui-react';
-import { Media } from "../Media"; 
-import JrSchoolCards from './JrSchoolCards';
+import { Media } from "../../Media"; 
+import DevTeamCards from './WebsiteTeamCards';
 
-const SJrSchools = () =>{
+const WebsiteTeam = () =>{
   return(
-    <div className='SJrSchools'>
-      <h2> Partner Schools</h2>
+    <div className='WebsiteTeam'>
+      <h2 > Website Team</h2>
       <br></br>
      <Container>
       <Media greaterThanOrEqual="computer">
         <Card.Group itemsPerRow={3} centered>
-          <JrSchoolCards/>
+          <DevTeamCards/>
         </Card.Group>
       </Media>
       <Media lessThan="computer">
         <Card.Group itemsPerRow={1}>
-          <JrSchoolCards/>
+          <DevTeamCards/>
         </Card.Group>
       </Media>
      </Container>
     </div>
   );
 };
-export default SJrSchools;
+export default WebsiteTeam;

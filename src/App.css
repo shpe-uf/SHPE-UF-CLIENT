@@ -999,6 +999,30 @@ div::-webkit-scrollbar-thumb {
   position: absolute;
 }
 
+.DevTeamTabs {
+  width: 100%;
+  height: auto;
+  min-height: 400px;
+  background:aliceblue;
+  margin: 3.5rem auto 1.5rem;
+  padding: 2rem 1rem;
+  color:  rgb(0, 77, 115);
+  border-radius: 1rem;
+  @media (max-width: 780px) {
+    padding: 2rem 0;
+  }
+ }
+
+ .DevTeamTabContent {
+  font-size: 2rem;
+  text-align: center;
+}
+
+ #IOSTeam {
+  color:"green";
+  text-transform: none !important;
+ }
+
 .JrTabs {
   width: 90%;
   height: auto;
@@ -1013,11 +1037,11 @@ div::-webkit-scrollbar-thumb {
   }
 }
 
-ul.nav {
+
+ ul.nav {
   width: 69%;
   margin: 0 auto 2rem;
   display: flex;
-  align-items: center;
   justify-content: space-between;
   border: 1px solid #39a2db;
   border-radius: 2rem;
@@ -1031,6 +1055,9 @@ ul.nav li {
   padding: 1rem;
   list-style: none;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   transition: all 0.7s;
   border-left: ipx solid #39a2db;
@@ -1221,3 +1248,103 @@ ul.nav li.active {
   margin: 0; 
   margin-left: 1em
 }
+
+.App {
+  text-align: center;
+}
+
+.podium {
+  margin-top: 20rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 100%;
+  color: white;
+  flex-direction: row;
+}
+
+.container {
+  justify-content: center;
+  display: flex;
+}
+
+.rank {
+  color: black;
+  display: flex;
+  flex: 1;
+  padding-top: 5%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.label {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.points {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1rem;
+  color: white;
+  background-color: #e64c00;
+  padding: 4rem;
+  font-size: 2rem;
+}
+
+.rank-column {
+  height: 100%;
+  padding: 5vw;
+  text-align: center;
+  font-size: 2.5rem;
+  color: white;
+  background-color: #e64c00;
+}
+
+#l-two {
+  margin-top: 5rem;
+}
+
+#l-three {
+  margin-top: 18rem;
+}
+
+#one {
+  order: 2;
+}
+
+#two {
+  order: 1;
+}
+
+#three {
+  order: 3;
+}
+
+@media screen and (max-width: 600px) {
+  .podium * {
+    font-size: 5vw;
+  }
+
+  .rank * {
+    padding: 10vw;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .podium * {
+    font-size: 5vw;
+  }
+
+  .container {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+#centered-img {
+    display: flex;
+    justify-content: center;
+}
+

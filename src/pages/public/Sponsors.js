@@ -1,319 +1,145 @@
 import React from "react";
-import { Container, Grid, Image } from "semantic-ui-react";
 
-import sponsors from "../../assets/images/sponsors"
+import { useQuery } from '@apollo/client'
+import { FETCH_PARTNERS_QUERY } from '../../util/graphql'
+
+import { Container, Grid, Image, ImageGroup, Modal, Button, Icon, CardContent, CardHeader } from "semantic-ui-react";
+import { Link } from "react-router-dom";
+
+// import sponsors from "../../assets/images/sponsors"
 
 function Sponsors() {
+  const { data } = useQuery(FETCH_PARTNERS_QUERY)
+  const partners = data?.getPartners || []
+
+  const partnersByTier = partners.reduce((accumulator, partner) => {
+    (accumulator[partner.tier] ||= []).push(partner)
+    return accumulator
+  }, {})
+
+  const tierOrder = ["Platinum", "Gold", "Silver", "Bronze"]
+
   return (
     <div className="body">
       <div className="masthead masthead-sponsors">
         <div className="overlay-blue">
           <Container>
-            <h1 className="masthead-title text-white">Sponsors</h1>
+            <h1 className="masthead-title text-white">Partners</h1>
           </Container>
         </div>
       </div>
 
+      {/* Temporary while partner list updates for 24-25 school year */}
+
       <Container>
-        {/* PLATINUM SPONSORS*/}
-        <Grid stackable columns={3}>
-          <h2 className="no-margin">Platinum Level</h2>
-          <Grid.Row className="sponsor-padding">
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                style={{width: '960px', height: 'auto'}}
-                src={sponsors.capitalOne}
-                href="https://www.capitalone.com/"
-                target="_blank"
-                className="sponsor platinum capitalOne"
-              />
-            </Grid.Column>
-          </Grid.Row>
+        <Grid style={{ width: "105%" }}>
+          {
+            tierOrder.filter((tier) => partnersByTier[tier]).map((tier) => {
+              return (
+                <React.Fragment key={tier}>
+                  <h2 style={{
+                    ...(tier === "Gold" && { color: "#d4af37" }),
+                    ...(tier === "Silver" && { color: "silver" }),
+                    ...(tier === "Bronze" && { color: "#CE8946" })
+                  }} >
+                    {tier} Partners</h2>
+                  <Grid.Row style={{
+                    gap: "30px", width: "80% !important",
+                    ...(tier === "Gold" && { filter: "drop-shadow(1px 14px 20px #d4af37)" }),
+                    ...(tier === "Silver" && { filter: "drop-shadow(1px 14px 20px silver)" }),
+                    ...(tier === "Bronze" && { filter: "drop-shadow(1px 14px 20px #CE8946)" })
+                  }}
+                  >
+                    <ImageGroup size="small">
+                      {
+                        partnersByTier[tier].map((partner) => (
+                          <Image key={partner.name} src={partner.photo} />
+                        ))
+                      }
+                    </ImageGroup>
+                  </Grid.Row>
+                </React.Fragment>
+              )
+            })
+          }
         </Grid>
-
-        {/* GOLD SPONSORS*/}
-        <Grid stackable columns={3}>
-          <h2 className="no-margin">Gold Level</h2>
-          <Grid.Row className="sponsor-padding">
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={sponsors.bankOfAmerica}
-                href="https://www.bankofamerica.com/"
-                target="_blank"
-                className="sponsor gold bofa"
-              />
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-
-        {/* SILVER SPONSORS */}
-        <Grid stackable columns={4}>
-          <h2 className="no-margin">Silver Level</h2>
-          <Grid.Row className="sponsor-padding">
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={sponsors.accenture}
-                href="http://accenture.com"
-                target="_blank"
-                className="sponsor silver"
-              />
-            </Grid.Column>
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={sponsors.cap}
-                href="https://www.capfla.com/"
-                target="_blank"
-                className="sponsor silver"
-              />
-            </Grid.Column>
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={sponsors.northrop}
-                href="https://www.northropgrumman.com/"
-                target="_blank"
-                className="sponsor silver"
-              />
-            </Grid.Column>
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={sponsors.lockheed}
-                href="https://www.lockheedmartin.com/"
-                target="_blank"
-                className="sponsor silver"
-              />
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-
-        {/* BRONZE SPONSORS */}
-        <Grid stackable columns={5}>
-          <h2 className="no-margin">Bronze Level</h2>
-          <Grid.Row className="sponsor-padding">
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={sponsors.geAppliances}
-                href="http://geappliances.com"
-                target="_blank"
-                className="sponsor bronze"
-              />
-            </Grid.Column>
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={sponsors.geAviation}
-                href="http://geaerospace.com"
-                target="_blank"
-                className="sponsor bronze"
-              />
-            </Grid.Column>
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={sponsors.geHealthcare}
-                href="http://gehealthcare.com"
-                target="_blank"
-                className="sponsor bronze"
-              />
-            </Grid.Column>
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={sponsors.geVernova}
-                href="http://gevernova.com"
-                target="_blank"
-                className="sponsor bronze"
-              />
-            </Grid.Column>
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={sponsors.generalmills}
-                href="https://www.generalmills.com/"
-                target="_blank"
-                className="sponsor bronze"
-              />
-            </Grid.Column>
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={sponsors.disney}
-                href="http://disney.com"
-                target="_blank"
-                className="sponsor bronze"
-              />
-            </Grid.Column>
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={sponsors.exxonMobil}
-                href="https://www.exxonmobil.com/"
-                target="_blank"
-                className="sponsor bronze"
-              />
-            </Grid.Column>
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={sponsors.bloomberg}
-                href="https://www.bloomberg.com/"
-                target="_blank"
-                className="sponsor bronze"
-              />
-            </Grid.Column>
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={sponsors.southern}
-                href="http://southerncompany.com"
-                target="_blank"
-                className="sponsor bronze"
-              />
-            </Grid.Column>
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={sponsors.lutron}
-                href="http://lutron.com"
-                target="_blank"
-                className="sponsor bronze"
-              />
-            </Grid.Column>
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={sponsors.kiewit}
-                href="https://www.kiewit.com/"
-                target="_blank"
-                className="sponsor bronze"
-              />
-            </Grid.Column>
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={sponsors.pepsico}
-                href="http://pepsico.com"
-                target="_blank"
-                className="sponsor bronze"
-              />
-            </Grid.Column>
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={sponsors.micron}
-                href="https://www.micron.com/"
-                target="_blank"
-                className="sponsor bronze"
-              />
-            </Grid.Column>
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={sponsors.edwardsLifesciences}
-                href="http://edwards.com"
-                target="_blank"
-                className="sponsor bronze"
-              />
-            </Grid.Column>
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={sponsors.jane}
-                href="http://janestreet.com"
-                target="_blank"
-                className="sponsor bronze"
-              />
-            </Grid.Column>
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={sponsors.johnDeere}
-                href="http://johndeere.com"
-                target="_blank"
-                className="sponsor bronze"
-              />
-            </Grid.Column>
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={sponsors.kimleyHorn}
-                href="http://kimleyhorn.com"
-                target="_blank"
-                className="sponsor bronze"
-              />
-            </Grid.Column>
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={sponsors.kpmg}
-                href="http://kpmg.com"
-                target="_blank"
-                className="sponsor bronze"
-              />
-            </Grid.Column>
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={sponsors.l3harris}
-                href="http://l3harris.com"
-                target="_blank"
-                className="sponsor bronze"
-              />
-            </Grid.Column>
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={sponsors.png}
-                href="http://us.pg.com"
-                target="_blank"
-                className="sponsor bronze"
-              />
-            </Grid.Column>
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={sponsors.medtronic}
-                href="http://medtronic.com"
-                target="_blank"
-                className="sponsor bronze"
-              />
-            </Grid.Column>
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={sponsors.trinity}
-                href="http://trinityconsultants.com"
-                target="_blank"
-                className="sponsor bronze"
-              />
-            </Grid.Column>
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={sponsors.turner}
-                href="http://turnerconstruction.com"
-                target="_blank"
-                className="sponsor bronze"
-              />
-            </Grid.Column>
-            <Grid.Column className="card-team">
-              <Image
-                fluid
-                src={sponsors.cdmsmith}
-                href="https://cdmsmith.com/en/"
-                target="_blank"
-                className="sponsor bronze"
-              />
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
+        <br />
+        <br />
+        <div align="center">
+          <h4 className="accent-2-text"> Interested in becoming a partner?</h4>
+          <Button as={Link} to="mailto:vpcorporate.shpeuf@gmail.com">Contact us</Button>
+        </div>
       </Container>
+
+
+      {/*
+
+      Old Partner Entries
+
+      <Container>
+        <Grid style={{ width: "105%" }}>
+          <h2 style={{ color: "#d4af37" }}>Gold Partners</h2>
+          <Grid.Row style={{ gap: "30px", width: "80% !important", filter: "drop-shadow(1px 14px 20px #d4af37)" }}>
+            <ImageGroup size="small">
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/Capital-One.png" />
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/Edwards-Lifesciences.png" />
+            </ImageGroup>
+          </Grid.Row>
+          <h2 style={{ color: "silver" }}>Silver partners</h2>
+          <Grid.Row style={{ gap: "30px", filter: "drop-shadow(1px 14px 20px silver)" }}>
+            <ImageGroup size="small">
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/Blue-Origin.png" />
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/Bank-of-America.png" />
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/CDM-Smith.jpg" />
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/General-Mills.jpg" />
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/Lutron.png" />
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/kimleyHorn.png" />
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/Accenture.png" />
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/Bloomberg.png" />
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/GE-Aerospace.png" />
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/PepsiCo.jpg" />
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/pgnew.jpg" />
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/Southern-Company.png" />
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/Trinity-Consultants.png" />
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/Micron.png" />
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/Medtronic.png" />
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/lockheed.png" />
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/ExxonMobil.png" />
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/WT.jpg" />
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/sandia.png" />
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/ABB.jpg" />
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/nvidia(1).png" />
+              <Image src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/wade-trim.png" />
+
+
+            </ImageGroup>
+          </Grid.Row>
+          <h2 style={{ color: "#CE8946" }}>Bronze partners</h2>
+          <Grid.Row style={{ gap: "30px", filter: "drop-shadow(1px 14px 20px #CE8946)" }}>
+            <ImageGroup size="small">
+              <Image size="medium" src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/Disney.png" />
+              <Image size="medium" src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/Jane-Street.png" />
+              <Image size="medium" src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/JP-Morgan.png" />
+              <Image size="medium" src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/SpaceX.png" />
+              <Image size="medium" src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/Texas-Instruments.png" />
+              <Image size="medium" src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/GE-Vernova.png" />
+              <Image size="medium" src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/Google.jpg" />
+              <Image size="medium" src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/Microsoft.jpg" />
+              <Image size="medium" src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/UKG.png" />
+              <Image size="medium" src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/LJA.jpg" />
+              <Image size="medium" src="https://shpeuf.s3.us-east-1.amazonaws.com/public/sponsors/Honeywell.png" />
+            </ImageGroup>
+          </Grid.Row>
+        </Grid>
+        <br />
+        <br />
+        <div align="center">
+          <h4 className="accent-2-text"> Interested in becoming a partner?</h4>
+          <Button as={Link} to="mailto:vpcorporate.shpeuf@gmail.com">Contact us</Button>
+        </div>
+      </Container>
+    */}
+
     </div>
   );
 }

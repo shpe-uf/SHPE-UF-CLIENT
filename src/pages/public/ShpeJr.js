@@ -1,8 +1,8 @@
 import React, { Children } from "react";
-import { Container } from "semantic-ui-react";
+import { Container, Button } from "semantic-ui-react";
 import { Link } from 'react-router-dom';
 import { useState } from "react";
-import JrTabs from "../../components/JrTabs";
+import JrTabs from "../../components/ShpeJr/JrTabs";
 
 function ShpeJr(){
 
@@ -27,6 +27,9 @@ function ShpeJr(){
                     of our SHPE volunteers, we host various different events every month in 
                     our partner schools. Join us today!
                 </p>
+                <Button as={Link} to="https://linktr.ee/SHPEJr_UF">SHPE Jr Linktree</Button>
+
+                
             </div>
        
         </Container>

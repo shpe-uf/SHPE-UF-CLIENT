@@ -1,46 +1,46 @@
 const eboard = {
     president: {
-        name: "Sofia Serna",
+        name: "Juan Valderrama",
         email: "president.shpeuf@gmail.com",
         image: "https://shpeuf.s3.amazonaws.com/public/eboard/President"
     },
     graduate: {
-        name: "Legasse Remon",
+        name: "Airam Gonzalez",
         email: "graduate.shpeuf@gmail.com",
         image: "https://shpeuf.s3.amazonaws.com/public/eboard/GraduateCoordinator"
     },
     secretary: {
-        name: "Laura Neves",
+        name: "Stephanie Ospina",
         email: "secretary.shpeuf@gmail.com",
         image: "https://shpeuf.s3.amazonaws.com/public/eboard/Secretary"
     },
     treasurer: {
-        name: "Rolando Angulo",
+        name: "Alexander Osterude",
         email: "treasurer.shpeuf@gmail.com",
         image: "https://shpeuf.s3.amazonaws.com/public/eboard/Treasurer"
     },
     marketing: {
-        name: "Joel Aloma-Fernandez",
+        name: "Damariz Gallegos",
         email: "vpmarketing.shpeuf@gmail.com",
         image: "https://shpeuf.s3.amazonaws.com/public/eboard/VPMarketing"
     },
     technology: {
-        name: "Yair Temkin",
+        name: "Isabella Roman Ramirez",
         email: "vptech.shpeuf@gmail.com",
         image: "https://shpeuf.s3.amazonaws.com/public/eboard/VPTechnology"
     },
     corporate: {
-        name: "Gabriel Pascual",
+        name: "Alexandra Tabares",
         email: "vpcorporate.shpeuf@gmail.com",
         image: "https://shpeuf.s3.amazonaws.com/public/eboard/VPCorporate"
     },
     external: {
-        name: "Malena Gonzalez Fernandez",
+        name: "Sebastian Sobrino-Gonzalez",
         email: "vpexternal.shpeuf@gmail.com",
         image: "https://shpeuf.s3.amazonaws.com/public/eboard/VPExternal"
     },
     internal: {
-        name: "Diego Leon",
+        name: "Vanessa Scarpetta",
         email: "vpinternal.shpeuf@gmail.com",
         image: "https://shpeuf.s3.amazonaws.com/public/eboard/VPInternal"
     },

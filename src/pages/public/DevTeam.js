@@ -1,7 +1,8 @@
 import React from "react";
 import { Container, Card } from "semantic-ui-react";
 import { Media } from "../../Media";
-import DevTeamCards from "../../components/DevTeamCards";
+import DevTeamCards from "../../components/DevTeam/WebsiteTeamCards";
+import DevTeamTabs from "../../components/DevTeam/DevTeamTabs";
 
 function DevTeam() {
   return (
@@ -15,17 +16,11 @@ function DevTeam() {
       </div>
 
       <Container>
-        <Media greaterThanOrEqual="computer">
-          <Card.Group itemsPerRow={3}>
-            <DevTeamCards />
-          </Card.Group>
-        </Media>
-        <Media lessThan="computer">
-          <Card.Group itemsPerRow={1}>
-            <DevTeamCards />
-          </Card.Group>
-        </Media>
+        <div>
+          <DevTeamTabs />
+        </div>
       </Container>
+
     </div>
   );
 }

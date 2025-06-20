@@ -37,29 +37,17 @@ export const FETCH_USERS_QUERY = gql`
   }
 `;
 
-export const FETCH_EVENTS_QUERY = gql`
+export const FETCH_PARTNERS_QUERY = gql`
   {
-    getEvents {
-      id
+    getPartners {
       name
-      code
-      category
-      points
-      request
-      attendance
-      expiration
-      semester
-      createdAt
-      users {
-        firstName
-        lastName
-        username
-        email
-      }
+      photo
+      tier
     }
   }
 `;
-export const FETCH_EVENTS_REVERSED_QUERY = gql`
+
+export const FETCH_EVENTS_QUERY = gql`
   {
     getEventsReversed {
       id
@@ -138,6 +126,8 @@ export const FETCH_CORPORATIONS_QUERY = gql`
       fallBBQ
       springBBQ
       nationalConvention
+      recruitmentDay
+      signUpLink
     }
   }
 `;

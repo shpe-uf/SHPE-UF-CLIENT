@@ -96,6 +96,10 @@ function Points() {
       setErrors(false);
       setRedeemPointsModal(false);
       updateGetUser(userData);
+
+      toast.success("Your points have been successfully added!", {
+        position: toast.POSITION.BOTTOM_CENTER,
+      });
     },
 
     onError(err) {
@@ -245,7 +249,7 @@ function Points() {
 
                         <Button
                           type="reset"
-                          color="grey"
+                          color="red"
                           onClick={() => [
                             closeModal("redeemPoints"),
                             setGuestCount((guestCount = 0)),

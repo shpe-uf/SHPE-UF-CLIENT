@@ -19,6 +19,11 @@ import UserProfile from "../components/UserProfile";
 import placeholder from "../assets/images/placeholder.png";
 
 function ShpeitoNetwork(props) {
+  let usersQuery = useQuery(FETCH_USERS_QUERY, {});
+  let data = usersQuery.data;
+  let loading = usersQuery.loading;
+  let users = [];
+
   const [filter, setFilter] = useState(
     new Filter({
       name: [],
@@ -30,11 +35,6 @@ function ShpeitoNetwork(props) {
       internships: [],
     })
   );
-
-  let usersQuery = useQuery(FETCH_USERS_QUERY, {});
-  let data = usersQuery.data;
-  let loading = usersQuery.loading;
-  let users = [];
 
   if (data && data.getUsers) {
     users = data.getUsers;

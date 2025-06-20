@@ -172,8 +172,11 @@ function MenuBar({ permission }) {
                       Dev Team
                     </Dropdown.Item>
                     <Dropdown.Item as={Link} to="/sponsors">
-                      Sponsors
+                      Partners
                     </Dropdown.Item>
+                    <Dropdown.Item as={Link} to="/shpejr">
+                      SHPE Jr
+                    </Dropdown.Item> 
                     <Dropdown.Item as={Link} to="/calendar">
                       Calendar
                     </Dropdown.Item>

@@ -3,7 +3,7 @@ import {
   Container,
   Grid,
 } from "semantic-ui-react";
-import { Media } from "../Media";
+import { Media } from "../../Media";
 import JrEventModal from "./JrEventModal";
 import JrSlideshow from "./JrSlideshow";
 

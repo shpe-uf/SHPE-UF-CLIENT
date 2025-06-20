@@ -22,7 +22,7 @@ function JrEventModal(event, description, pic) {
         </Grid>
       }
     >
-      <Modal.Header>{event}</Modal.Header>
+      <Modal.Header>{event} <Button icon="close" color="red" onClick={() => setOpen(false)}></Button></Modal.Header>
       <Modal.Content image>
         <Grid>
           <Grid.Column width={5}>
@@ -35,13 +35,6 @@ function JrEventModal(event, description, pic) {
         </Grid>
       </Modal.Content>
       <Modal.Actions>
-        <Button
-          content="Close"
-          labelPosition="right"
-          icon="checkmark"
-          onClick={() => setOpen(false)}
-          positive
-        />
       </Modal.Actions>
     </Modal>
   );
