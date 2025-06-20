@@ -1,9 +1,15 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Container, Grid, Image } from "semantic-ui-react";
 
 import {about1, about2, about3} from "../../assets/images/about"
 
 function About() {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://www.instagram.com/embed.js";
+    script.async = true;
+    document.body.appendChild(script);
+  }, []);
   return (
     <div className="body">
       <div className="masthead masthead-about">
@@ -117,6 +123,18 @@ function About() {
           </Grid.Column>
         </Grid.Row>
       </Grid>
+
+      <div
+  className="instagram-embed"
+  dangerouslySetInnerHTML={{
+    __html: `
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/shpeuf/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+        <a href="https://www.instagram.com/shpeuf/?utm_source=ig_embed&amp;utm_campaign=loading" target="_blank">View this profile on Instagram</a>
+      </blockquote>
+    `,
+  }}
+/>
+
     </div>
   );
 }

@@ -3,18 +3,19 @@
     "label": "Who we are",
     "dropdownSections": [
       {
-        "label": "Our Group",
+        "label": "Our Familia",
         "links": [
           {   "label": "The Chapter", "path": "/about" },
-          {   "label": "Sponsors", "path": "/sponsors" },
-          {   "label": "Alumni", "path": "/alumni" }
+          {   "label": "Partners", "path": "/sponsors" },
+          {   "label": "Alumni", "path": "/sponsors" }
+
         ]
       },
       {
         "label": "Teams",
         "links": [
           {   "label": "E-Board", "path": "/eboard" },
-          {   "label": "Dev Team", "path": "/devteam" }
+          {   "label": "Dev Teams", "path": "/devteam" }
         ]
       }
     ]
@@ -25,32 +26,18 @@
       {
         "label": "Programs & Leadership Opportunities",
         "links": [
-          {   "label": "Director Positions", "path": "#" },
-          {   "label": "MentorSHPE", "path": "#" },
-          {   "label": "First Year Leadership Program", "path": "#" },
-          {   "label": "Design Teams", "path": "#" },
-          {   "label": "SHPE Jr. Programs", "path": "#" },
-          {   "label": "Goals for Tomorrow Scholarship", "path": "#" }
-        ]
-      },
-      {
-        "label": "Resources & Development",
-        "links": [
-          {   "label": "Professional & Corporate Affairs", "path": "#" },
-          {   "label": "Academics", "path": "#" },
-          {   "label": "Research", "path": "#" },
-          {   "label": "Graduate School", "path": "#" },
-          {   "label": "K-12", "path": "#" },
-          {   "label": "Transfer Students", "path": "#" }
+          {   "label": "What are Director Positions?", "path": "#" },
+          {   "label": "Underclassmen Opportunities", "path": "#" },
+          {   "label": "Technical Development Programs", "path": "#" },
+          {   "label": "Code 4 Change", "path": "#" },
+          {   "label": "BBQ with Industry", "path": "https://shpebbq.com/index.html", "target": "_blank" }
         ]
       },
       {
         "label": "Community Building",
         "links": [
-          {   "label": "Social Events", "path": "#" },
-          {   "label": "Hispanic Culture Promotion", "path": "#" },
-          {   "label": "SHPE Hangouts", "path": "#" },
-          {   "label": "Member Culture", "path": "#" }
+          {   "label": "Social Events", "path": "#" }, 
+          {   "label": "Community Outreach", "path": "#" }
         ]
       }
     ]
@@ -63,18 +50,10 @@
         "label": "Professional",
         "links": [
           {   "label": "Bootcamp", "path": "#" },
+          {   "label": "Internship ExSHPErience", "path": "https://drive.google.com/file/d/1FtXoh-yHqVvbUHihe0DBnvD-2qaVBsCM/view?usp=sharing" },
+          {   "label": "Career Database", "path": "https://drive.google.com/file/d/1esPYwC9Nvp39ZsF-gazUAnobZkkCm8Q5/view?usp=sharing", "target": "_blank" },
           {   "label": "Resume Drive", "path": "#" },
-          {   "label": "LinkedIn Network", "path": "#" },
-          {   "label": "BBQ with Industry", "path": "https://shpebbq.com/index.html", "target": "_blank" }
-        ]
-      },
-      {
-         
-        "label": "Academic",
-        "links": [
-          {   "label": "Tutors", "path": "#" },
-          {   "label": "Study Spaces", "path": "#" },
-          {   "label": "Major Guides", "path": "#" }
+          {   "label": "LinkedIn Network", "path": "https://docs.google.com/spreadsheets/d/108qAbkoIZc4NFVnEJQR9aTX-CtIKQGHBBLZffZ-oWZs/edit?usp=sharing" }  
         ]
       },
       {
@@ -82,9 +61,21 @@
         "label": "Graduate",
         "links": [
           {   "label": "Research Basics", "path": "#" },
-          {   "label": "Research 101", "path": "#" }
+          {   "label": "Graduate School Essentials", "path": "#" },
+          {   "label": "GradSHPE Instagram", "path": "https://www.instagram.com/gradshpeuf?igsh=MWNhMmx4a2NxcTBxZg==" },
+          {   "label": "GradSHPE Graduate & Research Directory", "path": "https://docs.google.com/forms/d/e/1FAIpQLScNEGajABkBT3tX95DajysfWB18ypd44j2YQzH5qpJRze_nRA/viewform" }
         ]
       },
+      {
+         
+        "label": "SHPEducation",
+        "links": [
+          {   "label": "Tutors", "path": "https://drive.google.com/file/d/1GDy9vPKWvs1ELviqZJ9NwKXAvsAWe4uv/view?usp=sharing" },
+          {   "label": "Study Spaces", "path": "#" },
+          {   "label": "Major Guides", "path": "https://drive.google.com/drive/folders/1DgpPLrVokrsF6XF5vTLc09PE6TbdOgF_?usp=sharing" }
+        ]
+      },
+      
       {
          
         "label": "SHPE Jr.",
@@ -102,10 +93,10 @@
          
         "label": "Membership",
         "links": [
+          {   "label": "How to Start", "path": "#" },
           {  "label": "SHPE National Membership", "path": "#" },
-          {   "label": "New Member Interest Form", "path": "/sponsors" },
-          {   "label": "New Member Website", "path": "#" },
-          {   "label": "How to Get Involved & Stay Up to Date", "path": "#" }
+          {   "label": "New Member Interest Form", "path": "/sponsors" }
+          
         ]
       },
       {

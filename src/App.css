@@ -1027,15 +1027,15 @@ div::-webkit-scrollbar-thumb {
   width: 90%;
   height: auto;
   min-height: 400px;
-  background: aliceblue;
+  background:aliceblue;
   margin: 3.5rem auto 1.5rem;
   padding: 2rem 1rem;
-  color: rgb(0, 77, 115);
+  color:  rgb(0, 77, 115);
   border-radius: 1rem;
   @media (max-width: 780px) {
     padding: 2rem 0;
   }
-}
+ }
 
 
  ul.nav {
