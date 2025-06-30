@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function Title({ title, adminPath }) {
   return (
-    <div style={{ paddingBottom: 16 }}>
+    <div>
       <div className="masthead masthead-application">
         <Container>
           <Grid>

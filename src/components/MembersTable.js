@@ -18,6 +18,8 @@ function MembersTable({ users, refetch }) {
   const [userInfo, setUserInfo] = useState({});
   const [errors, setErrors] = useState({});
 
+  console.log(users)
+
   const openModal = (name) => {
     if (name === "userInfo") {
       setUserInfoModal(true);
