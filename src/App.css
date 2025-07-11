@@ -30,7 +30,7 @@
 
 @font-face {
   font-family: "body-font";
-  src: url(assets/fonts/AvenirLTStd-Book.otf);
+  src: url(assets/fonts/Mada-VariableFont_wght.ttf);
 }
 
 @font-face {
@@ -51,9 +51,10 @@
   padding: 0px !important;
 }
 
-.ui.fluid[class*="left labeled"].icon.button, .ui.fluid[class*="right labeled"].icon.button {
-  padding-left: 2em!important;
-  padding-right: 0em!important;
+.ui.fluid[class*="left labeled"].icon.button,
+.ui.fluid[class*="right labeled"].icon.button {
+  padding-left: 2em !important;
+  padding-right: 0em !important;
 }
 
 .ui.fluid.button.EventButton {
@@ -145,7 +146,9 @@ h6 {
   font-size: 1.75 rem !important;
 }
 
-.ui.form input, select, textarea{
+.ui.form input,
+select,
+textarea {
   font-family: "body-font" !important;
 }
 
@@ -162,11 +165,6 @@ h6 {
 
 .ui.modal > .content {
   padding: 0px !important;
-}
-
-.logout {
-  color: rgb(255, 0, 0) !important;
-  font-weight: bold;
 }
 
 .ui.grid {
@@ -192,14 +190,205 @@ h6 {
 }
 
 .ui.inverted.menu {
+  margin-bottom: 0 !important;
+  display: flex !important;
   border-radius: 0px !important;
-  box-shadow: none;
+  border: none !important;
+  box-shadow: none !important;
   background-color: var(--primary) !important;
   height: 64px;
 }
 
+.ui.container {
+  line-height: none !important;
+}
+
+.menu {
+  display: flex;
+  align-self: center;
+}
+
+.ui.menu .ui.dropdown .menu > .item {
+  background: var(--primary) !important;
+  text-align: left !important;
+  color: white !important;
+  padding-bottom: 1.15rem !important;
+  border-radius: 0 !important;
+}
+
+.ui.menu .ui.dropdown .menu > .item:hover {
+  color: white !important;
+}
+
+.ui.menu .ui.dropdown .menu > .item > p {
+  display: inline-block !important;
+  position: relative !important;
+  padding-bottom: 2px !important;
+  line-height: 0;
+  transition: 0.2s;
+}
+
+.ui.menu .ui.dropdown .menu > .item > p::before {
+  content: "" !important;
+  position: absolute !important;
+  height: 2px !important;
+  bottom: -12px !important;
+  right: 0 !important;
+  background-color: white;
+  width: 0;
+  transition: width 0.2s ease-in-out !important;
+}
+
+.ui.menu .ui.dropdown .menu > .item:hover > p::before {
+  width: 100% !important;
+  height: 2px !important;
+  left: 0;
+  right: auto;
+}
+
+.ui.secondary.inverted.menu .link.item,
+.ui.secondary.inverted.menu a.item {
+  margin: 0;
+  color: #a0cedf !important;
+}
+
+.ui.secondary.inverted.menu .link.item,
+.ui.secondary.inverted.menu .item {
+  margin: 0;
+  color: #a0cedf !important;
+}
+
+.ui.secondary.inverted.menu .link.item,
+.ui.secondary.inverted.menu .item:hover {
+  background-color: rgb(0, 0, 0, 0) !important;
+  font-size: 2rem;
+}
+
+.ui.secondary.menu .active.item {
+  background-color: rgb(0, 0, 0, 0) !important;
+}
+
+.ui.secondary.inverted.menu .active.item {
+  background-color: rgb(0, 0, 0, 0) !important;
+}
+
+.ui.dropdown .menu {
+  background: var(--primary) !important;
+  position: absolute;
+  left: -8rem;
+  color: white;
+}
+
+.ui .container {
+  margin-right: 1rem !important;
+}
+
+.ui.menu .pointing.dropdown.item > .menu {
+  margin-top: 2rem;
+}
+
+.ui.pointing.dropdown > .menu:after {
+  background: var(--primary) !important;
+  left: 9.5rem;
+  font-size: 2rem;
+}
+
+.menu-item {
+  margin: 0 !important;
+  border: none !important;
+  cursor: pointer !important;
+  box-shadow: none !important;
+  position: relative !important;
+  height: 100%;
+}
+
+.nav-link-container {
+  padding-left: 0;
+}
+
+.nav-link {
+  list-style-type: none;
+  margin: none;
+  margin-bottom: 0.75rem;
+  padding: none;
+}
+
+.underline {
+  display: inline-block !important;
+  position: relative !important;
+  padding-bottom: 0.25rem !important;
+  transition: 0.2s;
+}
+
+.underline::before {
+  content: "" !important;
+  position: absolute !important;
+  height: 2px !important;
+  bottom: 0 !important;
+  right: 0 !important;
+  background-color: white !important;
+  width: 0;
+  transition: width 0.2s ease-in-out !important;
+}
+
+.underline:hover::before {
+  width: 100% !important;
+  left: 0;
+  right: auto;
+}
+
+.login-button {
+  background-color: #153e7c !important;
+  padding: 0.9rem !important;
+  width: 6rem !important;
+  border-radius: 2rem !important;
+  transition: 0.2s;
+}
+
+.login-button:hover {
+  background-color: #062d68 !important;
+}
+
+.login-button > span {
+  position: relative !important;
+  right: 0.75rem !important;
+}
+
+.ui.labeled.icon.button > .icon,
+.ui.labeled.icon.buttons > .button > .icon {
+  background-color: rgb(0, 0, 0, 0) !important;
+}
+
+.section-header {
+  color: var(--accent-1);
+}
+
+.nav-link > a {
+  color: white;
+  margin-bottom: 2rem;
+  transition: 0.25s;
+}
+
+.nav-link > a:hover {
+  color: rgb(201, 201, 201);
+}
+
+.nav-dropdown {
+  background: var(--primary) !important;
+  position: absolute;
+  width: 100%;
+  display: flex;
+  gap: 4rem;
+  padding: 3rem;
+  padding-top: 2rem;
+}
+
 .email {
   text-transform: lowercase !important;
+}
+
+.underline:hover {
+  color: white;
 }
 
 .brand-name {
@@ -211,13 +400,6 @@ h6 {
   background-color: var(--accent-1) !important;
   text-transform: uppercase !important;
   color: var(--white) !important;
-}
-
-.brand-logo {
-  padding: 15px !important;
-  align-items: center !important;
-  justify-content: center !important;
-  background-color: var(--accent-1) !important;
 }
 
 .overlay-home {
@@ -668,13 +850,13 @@ th {
   font-family: "body-font" !important;
 }
 
-.ui.card>.content>.header,
-.ui.cards>.card>.content>.header,
-.ui.card>.content>.meta,
-.ui.cards>.card>.content>.meta {
-  overflow: hidden            !important;
-  text-overflow: ellipsis     !important;
-  white-space: nowrap         !important;
+.ui.card > .content > .header,
+.ui.cards > .card > .content > .header,
+.ui.card > .content > .meta,
+.ui.cards > .card > .content > .meta {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
 }
 
 .card-points {
@@ -686,7 +868,6 @@ th {
   padding-top: 16.4px !important;
   padding-bottom: 16.4px !important;
 }
-
 
 .panel-admin {
   cursor: pointer;
@@ -774,7 +955,7 @@ div::-webkit-scrollbar-thumb {
   .JrEventButton {
     margin-top: 0.5rem !important;
     margin-bottom: 0.5rem !important;
-    min-width: 50vw ;
+    min-width: 50vw;
   }
 
   .ui.modal > .actions {
@@ -809,7 +990,7 @@ div::-webkit-scrollbar-thumb {
 }
 
 .loading {
-  padding: 12%
+  padding: 12%;
 }
 
 .confirmMsg {
@@ -838,7 +1019,7 @@ div::-webkit-scrollbar-thumb {
 }
 
 .checkmark {
-  position: absolute
+  position: absolute;
 }
 
 .DevTeamTabs {
@@ -885,7 +1066,7 @@ div::-webkit-scrollbar-thumb {
   margin: 0 auto 2rem;
   display: flex;
   justify-content: space-between;
-  border: 1px solid #39A2DB;
+  border: 1px solid #39a2db;
   border-radius: 2rem;
   padding-left: 0px;
   @media (max-width: 780px) {
@@ -902,13 +1083,13 @@ ul.nav li {
   justify-content: center;
   cursor: pointer;
   transition: all 0.7s;
-  border-left: ipx solid #39A2DB;
+  border-left: ipx solid #39a2db;
 }
 ul.nav li:first-child {
   border-bottom-left-radius: 2rem;
   border-top-left-radius: 2rem;
 }
- 
+
 ul.nav li:last-child {
   border-bottom-right-radius: 2rem;
   border-top-right-radius: 2rem;
@@ -917,7 +1098,7 @@ ul.nav li:hover {
   background: rgba(13, 104, 130, 0.15);
 }
 ul.nav li.active {
-  background:rgba(13, 104, 130, 0.75);
+  background: rgba(13, 104, 130, 0.75);
   color: white;
 }
 .JrTabContent {
@@ -976,6 +1157,112 @@ ul.nav li.active {
 
 .slideshowDot.active {
   background-color: var(--accent-1);
+}
+
+.brand-logo {
+  display: flex;
+  flex-shrink: 0;
+  width: 5rem;
+  height: 100%;
+  margin-left: 0.35rem !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: var(--accent-1) !important;
+  border-radius: 0 !important;
+  cursor: pointer !important;
+  transition: 0.2s;
+}
+
+.logo-link {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.brand-logo > img {
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  transition: 0.2s;
+}
+
+.brand-logo:hover > img {
+  width: 3.25rem;
+}
+
+.calendar-icon::after {
+  top: 2rem;
+  right: -0.25rem;
+  content: "";
+  position: absolute;
+  font-size: 0.85rem;
+  border-radius: 0.15rem;
+  transition: transform 0.25s;
+}
+
+.calendar-icon:hover::after {
+  color: white;
+  content: "Calendar";
+  position: absolute;
+  background-color: grey;
+  padding: 0.5rem;
+  font-size: 0.85rem;
+  border-radius: 0.15rem;
+  transform: translateY(0.75rem);
+}
+
+.envelope-icon::after {
+  top: 2rem;
+  color: white;
+  right: -0.25rem;
+  content: "";
+  position: absolute;
+  font-size: 0.85rem;
+  border-radius: 0.15rem;
+  transition: transform 0.25s;
+}
+
+.envelope-icon:hover::after {
+  content: "Contact";
+  position: absolute;
+  background-color: grey;
+  padding: 0.5rem;
+  font-size: 0.85rem;
+  border-radius: 0.15rem;
+  transform: translateY(0.75rem);
+  transition: transform 0.25s;
+}
+
+.logout {
+  display: inline-block !important;
+  position: relative !important;
+  padding-bottom: 3px !important;
+  line-height: 0;
+  color: rgb(255,0,0) !important;
+  font-weight: bold !important;
+  transition: 0.2s;
+}
+
+.logout::before {
+  content: "" !important;
+  position: absolute !important;
+  height: 4px !important;
+  bottom: -1px !important;
+  right: 0 !important;
+  background-color: rgb(255, 0, 0) !important;
+  width: 0 !important;
+  transition: width 0.2s ease-in-out !important;
+}
+
+.logout:hover::before {
+  width: 100% !important;
+  height: 2px !important;
+  left: 0 !important;
+  right: auto;
+}
+
+.divider {
+  margin: 0 !important;
 }
 
 .SJrHighEventList ul {
