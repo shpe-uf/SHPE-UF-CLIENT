@@ -109,8 +109,12 @@ h5 {
   margin-bottom: 8px;
 }
 
+
 h1 {
   font-size: 3rem !important;
+  
+  transform: translateY(-35px);
+
 }
 
 h2 {
@@ -251,56 +255,73 @@ h6 {
 
 .masthead-home {
   background: url(https://shpeuf.s3.amazonaws.com/public/home/home-bg.jpg) !important;
-  border-radius: 0px;
   background-position: 50% 155% !important;
-  background-attachment: fixed !important;
+  border-radius: 0px;
+  background-attachment: fixed!important;
   background-repeat: no-repeat !important;
-  background-size: cover !important;
+  background-size: cover !important; 
 }
 
 .masthead-team {
   background: url(https://shpeuf.s3.amazonaws.com/public/misc/team.jpg) !important;
-  border-radius: 0px;
   background-position: 50% 50% !important;
-  background-attachment: fixed !important;
+  border-radius: 0px;
+  background-attachment: fixed!important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
+  clip-path: polygon(0 0, 100% 0%, 100% 61.54%, 0 100%); 
 }
 
 .masthead-eboard {
   background: url(https://shpeuf.s3.amazonaws.com/public/eboard/eboardMini) !important;
-  border-radius: 0px;
   background-position: 50% 250% !important;
-  background-attachment: fixed !important;
+  border-radius: 0px;
+  background-attachment: fixed!important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
+  clip-path: polygon(0 0, 100% 0%, 100% 61.54%, 0 100%); 
 }
 
 .masthead-about {
-  background: url(https://shpeuf.s3.amazonaws.com/public/about/about.jpg) !important;
+  background: url(https://shpeuf.s3.us-east-1.amazonaws.com/public/about/aboutRedesign.jpeg) !important;
+  background-position: 50% 0% !important;
   border-radius: 0px;
-  background-position: 75% 75% !important;
-  background-attachment: fixed !important;
+  background-attachment: fixed!important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
+  clip-path: polygon(0 0, 100% 0%, 100% 84.54%, 0 100%); 
+}
+
+@media only screen and (min-width: 850px) {
+  .masthead-about {
+    background: url(https://shpeuf.s3.us-east-1.amazonaws.com/public/about/aboutRedesign.jpeg) !important;
+    background-position: 50% 0% !important;
+    border-radius: 0px;
+    background-attachment: fixed!important;
+    background-repeat: no-repeat !important;
+    background-size: 130% !important;
+    clip-path: polygon(0 0, 100% 0%, 100% 60.54%, 0 100%); 
+  }
 }
 
 .masthead-alumni {
   background: url(https://shpeuf.s3.amazonaws.com/public/misc/alumni.jpg) !important;
-  border-radius: 0px;
   background-position: 50% 50% !important;
-  background-attachment: fixed !important;
+  border-radius: 0px;
+  background-attachment: fixed!important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
+  clip-path: polygon(0 0, 100% 0%, 100% 61.54%, 0 100%); 
 }
 
 .masthead-sponsors {
   background: url(https://shpeuf.s3.amazonaws.com/public/misc/sponsors.jpg) !important;
-  border-radius: 0px;
   background-position: 50% 50% !important;
-  background-attachment: fixed !important;
+  border-radius: 0px;
+  background-attachment: fixed!important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
+  clip-path: polygon(0 0, 100% 0%, 100% 61.54%, 0 100%); 
 }
 
 .masthead-resources {
@@ -310,15 +331,17 @@ h6 {
   background-attachment: scroll !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
+  clip-path: polygon(0 0, 100% 0%, 100% 61.54%, 0 100%); 
 }
 
 .masthead-contactus {
   background: url(https://shpeuf.s3.amazonaws.com/public/misc/contact-us-1.JPG) !important;
-  border-radius: 0px;
   background-position: 50% 50% !important;
-  background-attachment: fixed !important;
+  border-radius: 0px;
+  background-attachment: fixed!important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
+  clip-path: polygon(0 0, 100% 0%, 100% 61.54%, 0 100%); 
 }
 
 .masthead-application {
@@ -335,7 +358,7 @@ h6 {
 
 .masthead-title {
   margin: 0px;
-  font-size: 3.5rem !important;
+  font-size: 4rem !important;
 }
 
 .background-grey {
@@ -1061,6 +1084,7 @@ ul.nav li.active {
     justify-content: center;
 }
 
+
 .homeSlideshow {
   position: relative;
   width: 100%;
@@ -1229,3 +1253,288 @@ ul.nav li.active {
   z-index: 0; 
 }
 
+/* Alumni Directory Revamp */
+
+@font-face {
+  font-family: 'Univers LT Std';
+  font-style: normal;
+  font-weight: 400;
+  src: url(assets/fonts/UniversLTStd.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Univers LT Std Bold';
+  font-style: normal;
+  font-weight: 700;
+  src: url(assets/fonts/UniversLTStd-Bold.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Univers LT Std Bold Condensed Oblique';
+  font-style: normal;
+  font-weight: 700;
+  src: url(assets/fonts/UniversLTStd-BoldCnObl.otf) format('opentype');
+}
+
+.alumni-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.alumni-container h3 {
+  font-family: 'Univers LT Std', sans-serif !important;
+  text-transform: none !important;
+  font-weight: 500 !important;
+}
+
+.alumni-card {
+  display: flex;
+  flex-direction: row;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin: 1rem;
+  width: calc(50% - 2rem);
+  max-width: 700px;
+}
+
+.alumni-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 1.5rem;
+}
+
+.alumni-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.alumni-name {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #333333;
+}
+
+.alumni-subtext {
+  font-family: 'Univers LT Std', sans-serif !important;
+  text-transform: none !important;
+  font-weight: 400 !important;
+
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+  color: #6e6e6e;
+  line-height: 1.4;
+}
+
+.alumni-location {
+  font-family: 'Univers LT Std', sans-serif !important;
+  text-transform: none !important;
+  font-weight: 400 !important;
+
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+  color: #6e6e6e;
+  font-size: 0.9rem;
+}
+
+.alumni-location .alumni-icon {
+  margin-right: 0.5rem;
+}
+
+.alumni-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.alumni-actions {
+  margin-top: auto;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.alumni-actions .alumni-icon {
+  filter: brightness(0) invert(1) !important;
+}
+
+.alumni-icon-button {
+  background-color: #0070C0;
+  padding: 0.5rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+}
+
+.alumni-icon-button:hover {
+  background-color: #153E7C;
+}
+
+.alumni-filter-section {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  background-color: #FD652F;
+  padding-right: 3rem;
+}
+
+.alumni-dropdown>.text {
+  display: none !important;
+}
+
+
+.alumni-filter-section > .dropdown .icon {
+  color: white; 
+}
+
+.ui.fluid.dropdown>.dropdown.icon { 
+  color: #153E7C !important;
+}
+
+.ui.selection.dropdown {
+  border: none !important;
+  display: flex;
+  background-color: #153E7C;
+}
+
+.ui.selection.dropdown:hover {
+  border: none !important;
+  background-color: #153E7C;
+}
+
+.ui.selection.active.dropdown {
+  border: none !important;
+  background-color: #153E7C;
+}
+
+.ui.selection.active.dropdown:hover {
+  border: none !important;
+  background-color: #153E7C;
+}
+
+
+.alumni-dropdown {
+  width: 5px !important;
+  max-width: 5px !important;
+  min-width: 5px !important;
+  font-size: 0.9rem !important;
+}
+
+.alumni-dropdown > .icon {
+  font-size: 0.9rem !important;
+}
+
+#root > div > div.body > div.alumni-filter-section > div.ui.active.visible.fluid.search.selection.dropdown.alumni-filter-input > div.visible.menu.transition {
+  max-height: 400px !important;
+}
+
+
+.ui.selection.active.dropdown .menu {
+  background-color: #F1EFEF !important;
+  width: 20rem !important;
+  max-width: 20rem !important;
+  min-width: 20rem !important;
+  height: auto !important;
+  max-height: none !important; 
+  left: auto;
+  right: 0;
+  user-select: none;
+}
+
+.ui.selection.dropdown .menu>.item {
+  background-color: #00669F !important;
+  color: white !important;
+  padding: 1.5rem !important; 
+  margin: 1rem !important;
+  text-align: center;
+  border-radius: 10px;
+  transition: 0.1s;
+}
+
+.ui.selection.dropdown .menu>.item:hover {
+  background-color: #153E7C !important;
+}
+
+.ui.selection.dropdown .menu > .item > .text {
+  font-family: 'Univers LT Std Bold', sans-serif !important;
+  text-transform: none !important;
+  font-size: 1.1rem !important;
+  text-transform: uppercase !important;
+}
+
+.alumni-filter-btn {
+  width: 40px;
+  height: 40px;
+  min-width: 40px !important;
+  margin-left: 8px;
+  background-color: #153E7C !important;
+  border-radius: 0 4px 4px 0 !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.alumni-filter-btn.filter .icon {
+  color: #f7941d !important;
+}
+
+.alumni-filter-btn.search .icon {
+  color: #fff !important;
+}
+
+.ui.dropdown .menu .selected.item, .ui.dropdown.selected {
+  background-color: #153E7C !important;
+}
+
+.alumni-filter-input {
+  flex: 1;
+
+  height: 40px !important;
+  max-height: 40px !important;
+  min-height: 40px !important;
+
+  padding: 0 44px 0 12px;
+
+  width: 50rem !important;
+  max-width: 500px !important;
+
+  font-size: 1rem;
+  color: #333;
+  background: #F1EFEF !important;
+  background-size: 16px;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+}
+
+.alumni-filter-input:hover {
+  background: #F1EFEF !important;
+}
+
+
+@media (max-width: 968px) {
+  .alumni-filter-section {
+    display: flex;
+    justify-content: center;
+  }
+
+  .alumni-container {
+    flex-direction: column;
+  }
+
+  .alumni-card {
+    width: 100%;
+  }
+
+  .alumni-filter-input {
+    width: 10rem !important;
+  }
+}
