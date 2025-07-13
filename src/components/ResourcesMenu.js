@@ -5,9 +5,9 @@ import '../App.css';
 import PhotosDisplay from './PhotosDisplay';
 
 const Freshman1011 =
-  "https://shpeuf.s3.amazonaws.com/public/resources/F1011.jpg";
+  "https://shpeuf.s3.amazonaws.com/public/resources/F1011_2025.jpg";
 const Freshman1012 =
-  "https://shpeuf.s3.amazonaws.com/public/resources/F1012.jpg";
+  "https://shpeuf.s3.amazonaws.com/public/resources/F1012_2025.jpg";
 const Playlist =
   "https://shpeuf.s3.amazonaws.com/public/resources/playlist.jpg";
 const Podcast = "https://shpeuf.s3.amazonaws.com/public/resources/SHPECast.jpg";
@@ -52,14 +52,14 @@ const F101Segment = () => (
             
             as="a" 
             size="medium" 
-            href="https://drive.google.com/file/d/1DnOL12oH4TSavsWHeANIKwDtNP6UphTw/view" 
+            href="https://drive.google.com/file/d/1x2KrjnprjMjlzD0MVfcM6xd167UkUIgS/view" 
             target="_blank"
             />
 
             <Divider/>
 
             <Button as='a' 
-            href='https://drive.google.com/file/d/1DnOL12oH4TSavsWHeANIKwDtNP6UphTw/view' 
+            href='https://drive.google.com/file/d/1x2KrjnprjMjlzD0MVfcM6xd167UkUIgS/view' 
             target="_blank"><Icon name='download'/>Download Here</Button>
 
         </Grid.Column>
@@ -69,7 +69,7 @@ const F101Segment = () => (
             <h6>Guide to Your First Semester</h6>
             <Image src={Freshman1012} id="centered-img"
             as="a" 
-            href='https://drive.google.com/file/d/1C9MfDgC4eeU2waOI6f8vD8W4z9VTXNOr/view'
+            href='https://drive.google.com/file/d/1fWr_UjuYc6inGoNI0SfKkS5C-Fv3e8Tm/view'
             target="_blank" 
             size="medium"
             centered
@@ -79,7 +79,7 @@ const F101Segment = () => (
 
             <Divider/>
 
-            <Button as='a' href='https://drive.google.com/file/d/1C9MfDgC4eeU2waOI6f8vD8W4z9VTXNOr/view' 
+            <Button as='a' href='https://drive.google.com/file/d/1fWr_UjuYc6inGoNI0SfKkS5C-Fv3e8Tm/view' 
             target="_blank"><Icon name='download'/>Download here</Button>
 
         </Grid.Column>
