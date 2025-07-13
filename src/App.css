@@ -73,8 +73,6 @@ main {
 }
 
 footer {
-  position: relative;
-  bottom: 0;
   width: 100%;
   padding: 16px 0px;
   background-color: var(--primary);
@@ -924,7 +922,6 @@ div::-webkit-scrollbar-thumb {
 
 @media (max-width: 991px) {
   main {
-    min-height: calc(100vh - 64px - 118px) !important;
   }
 
   .overlay-register,
@@ -965,7 +962,6 @@ div::-webkit-scrollbar-thumb {
 
 @media (min-width: 992px) {
   main {
-    min-height: calc(100vh - 64px - 64px) !important;
   }
 
   .overlay-register,
@@ -1370,6 +1366,880 @@ ul.nav li.active {
     display: flex;
     justify-content: center;
 }
+
+/* About Us Revamp */
+
+#root {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 100vh !important;
+}
+
+#root > div:nth-of-type(1) {
+  flex-grow: 1 !important;
+}
+
+* {
+  box-sizing: border-box !important;
+}
+
+@font-face {
+    font-family: 'Univers LT Std 47 Cn Lt';
+    src: url('./assets/fonts/UniversLTStd-BoldCn.otf') format('opentype');
+}
+.about-us-container {
+  width: 100%;
+}
+
+.about-us-container * {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  font-size: 100% !important;
+  vertical-align: baseline !important;
+  box-sizing: border-box !important;
+  font-family: 'Univers LT Std 47 Cn Lt', Arial, sans-serif !important;
+}
+
+
+.intro-header {
+    font-family: 'Univers LT Std 47 Cn Lt', Arial, sans-serif !important;
+    color: black !important;
+    text-transform: none !important;
+    font-style: italic !important;
+    font-size: 2.5rem !important; 
+    font-weight: 900 !important;
+    z-index: 1 !important;
+}
+
+@media only screen and (min-width: 1300px) {
+    .main {
+        position: relative !important;
+        left: -7rem !important;
+        width: 800px !important;
+        top: -2rem !important;
+        display: flex !important;
+        --s: 200px;
+        --m: 8px;
+        --f: calc(var(--s) * 1.732 + 4 * var(--m) - 1px); 
+    }
+
+    .hex-container {
+        font-size: 0 !important;
+    }
+
+
+    .hex-container::before {
+        content: "";
+        width: calc(var(--s) / 2 + var(--m)) !important;
+        float: left !important;
+        height: 150% !important; 
+        shape-outside: repeating-linear-gradient(#0000 0 calc(var(--f) - 3px), #000 0 var(--f)) !important;
+    }
+
+    .hex-container div {
+        width: var(--s) !important;
+        margin: var(--m) !important;
+        height: calc(var(--s) * 1.1547) !important;
+        display: inline-block !important;
+        font-size: initial !important;
+        background-size: cover !important;
+        background-position: center !important;
+        clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%) !important;
+        margin-bottom: calc(var(--m) - var(--s) * 0.2886) !important;
+    }
+
+    .intro-section {
+        display: flex !important;
+        overflow: hidden !important;
+        flex-direction: row !important;
+        height: 40rem !important; 
+        margin: 0 !important;
+        width: 100% !important;
+        background-color: #FFF !important; 
+        padding-top: 0rem !important;
+        padding-bottom: 5rem !important;
+        position: relative !important;
+        z-index: 2 !important;
+    }
+
+    .intro-section .gears {
+        position: absolute !important;
+        z-index: 0 !important;
+        overflow: hidden !important;
+        margin-left: auto !important;
+        left: 80rem !important;
+        top: 70rem !important;
+        width: 60% !important;      
+    }
+
+    #intro-gears { 
+        display: none !important;
+        position: absolute !important;
+        top: -5rem !important;
+        width: 150% !important;
+        transform: rotate(-25deg) !important;
+        height: auto !important;
+        opacity: 0.5 !important;
+        mix-blend-mode: multiply !important;
+        background-size: cover !important;
+        background-position: center !important;
+        object-fit: cover !important;
+        z-index: 7 !important;
+    }
+
+    .intro-section-header {
+        z-index: 1 !important;
+    }
+
+    .intro-text {
+        margin-top: 10% !important; 
+        padding: 1.5rem !important;
+    }
+
+    .intro-blurb {
+        padding-top: 50px !important;
+        font-size: 1.5rem !important; 
+        font-family: "Univers LT Std" !important;
+        z-index: 1 !important;
+    }
+
+    .mission-section {
+        margin: 0 !important;
+        margin-top: -5rem !important;
+        width: 100% !important;
+        clip-path: polygon(0 5%, 100% 0, 100% 100%, 0% 100%) !important;
+        background-color: #72A9BE !important;
+        padding-top: 5rem !important;
+        padding-bottom: 15rem !important;
+        position: relative !important;
+        z-index: 5 !important;
+    }
+
+    .mission-section .gears {
+        position: absolute !important;
+        top: -70rem !important;
+        right: -100rem !important;
+        z-index: 0 !important;
+        overflow: hidden !important;
+        margin-left: auto !important;
+        left: 20rem !important;
+    }
+
+    .mission-section .gears img {
+        width: 100% !important;
+        height: auto !important;
+        object-fit: cover !important;
+        z-index: 0 !important;
+        opacity: 0.5 !important;
+    }
+
+
+    .mission-header-container {
+        color: white !important;
+        position: relative !important;
+        margin-right: auto !important;
+        margin-top: 3rem !important;
+        left: -1rem !important;
+        background-image: url('./assets/images/mission-banner.svg') !important;
+        width: 20rem !important; 
+        background-size: 100% 100% !important;
+        background-repeat: no-repeat !important;
+        padding: 4rem !important;
+    }
+
+    .mission-header-container h1 {
+        position: relative !important;
+        left: 2rem !important;
+        font-size: 2rem !important;
+        width: 100% !important;
+        color: white !important;
+        transform: rotate(+4.1deg) !important;
+    }
+
+    .mission-wrapper {
+        position: relative !important;
+        display: flex !important;
+        flex-direction: row !important;
+        padding-left: 2rem !important;
+        align-items: flex-start !important;
+        margin-top: 5rem !important;
+    }
+
+
+    .mission-container {
+        position: relative !important;
+        margin-top: 3rem !important;
+        margin-left: auto !important;
+        left: 2rem !important;
+        background-image: url('./assets/images/Rectangle 120.svg') !important;
+        width: 40% !important;
+        font-size: 1.70rem !important;
+        background-size: cover !important; 
+        background-repeat: no-repeat !important;
+        padding: 5rem !important;
+    }
+
+    .mission-container p {
+        padding-top: 3rem !important;
+        padding-bottom: 5rem !important;
+    }
+
+    .mission-image-layer {
+        padding-left: 7rem !important;
+        position: relative !important;
+        left: 5rem !important;
+        width: fit-content !important;
+        height: fit-content !important;
+        z-index: 2 !important;
+    }
+
+    #img-5 {
+        position: relative !important;
+        z-index: 1 !important;
+        width: 18rem !important;
+        height: 18rem !important;
+        left: 2rem !important;
+    }
+
+    #img-4 {
+        position: absolute !important;
+        top: 46px !important;
+        left: 88px !important;
+        z-index: 2 !important;
+        width: 18rem !important;
+        height: 18rem !important;
+        padding-top: 1.15rem !important;
+    }
+
+    .about-container {
+        display: flex !important;
+        align-items: center !important;
+        position: relative !important;
+        margin-top: 3rem !important;
+        left: -1rem !important;
+        background-image: url('./assets/images/Rectangle 123.svg') !important;
+        width: 30% !important;
+        font-size: 150% !important; 
+        background-size: cover !important; 
+        background-repeat: no-repeat !important;
+        padding: 5rem !important;
+    }
+
+    .about-container .desc {
+        padding: 2rem !important;
+    }
+
+    .desc {
+        color: white !important;
+        position: relative !important; 
+        z-index: 2 !important; 
+        margin: 0 !important;
+    }
+
+    .header {
+        position: absolute !important;
+        top: -1.5rem !important;
+        left: 3rem !important;
+        width: 100% !important;
+        color: white !important;
+        transform: rotate(-4deg) !important;
+    }
+
+    .header-container {
+        color: white !important;
+        position: relative !important;
+        margin-left: auto !important;
+        margin-bottom: 4rem !important;
+        margin-top: 3rem !important;
+        width: 20rem !important;
+        background-image: url('./assets/images/Group 5.svg') !important;
+        background-size: cover !important;
+        background-repeat: no-repeat !important;
+        padding: 3rem !important;
+    }
+
+    .header-container h1 {
+        position: relative !important;
+        left: 2rem !important;
+        font-size: 2rem !important;
+        width: 100% !important;
+        color: white !important;
+        transform: rotate(-4.1deg) !important;
+    }
+
+    .about-section {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 4rem !important;
+    }
+
+    .image-container {
+        position: relative !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        margin-left: 25% !important;
+        margin-top: 5rem !important;
+        margin-bottom: 5rem !important;
+    }
+
+    .h-image {
+        position: relative !important;
+        left: -15rem !important;
+        height: 210px !important;
+        width: 315px !important;
+        margin: -1rem !important;
+    }
+
+    .history-section {
+        position: relative !important;
+        margin-top: -10rem !important;
+        z-index: 7 !important;
+        width: 100% !important;
+        clip-path: polygon(0 5%, 100% 0, 100% 95%, 0% 100%) !important;
+        background-image: url('./assets/images/Mask group.svg') !important;
+        background-size: cover !important;
+        background-color: #72A9BE !important;
+        padding-top: 5rem !important;
+        padding-bottom: 15rem !important;
+    }
+
+    #img-1 {
+        z-index: 3 !important;
+    }
+
+    #img-2 {
+        position: relative !important;
+        left: 0 !important;
+        z-index: 2 !important;
+    }
+
+    #img-3 {
+        z-index: 1 !important;
+    }
+}
+
+@media only screen and (min-width: 750px) and (max-width: 1300px) {
+    .main {
+        position: relative !important;
+        left: -6rem !important;
+        width: 400px !important;
+        top: -5rem !important;
+        display: flex !important;
+        --s: 250px;
+        --m: 4px;
+        --f: calc(var(--s) * 1.732 + 4 * var(--m) - 1px); 
+    }
+
+    .hex-container {
+        font-size: 0 !important;
+    }
+
+
+    .hex-container::before {
+        content: "";
+        width: calc(var(--s) / 2 + var(--m)) !important;
+        float: left !important;
+        height: 150% !important; 
+        shape-outside: repeating-linear-gradient(#0000 0 calc(var(--f) - 3px), #000 0 var(--f)) !important;
+    }
+
+    .hex-container div {
+        width: var(--s) !important;
+        margin: var(--m) !important;
+        height: calc(var(--s) * 1.1547) !important;
+        display: inline-block !important;
+        font-size: initial !important;
+        background-size: cover !important;
+        background-position: center !important;
+        clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%) !important;
+        margin-bottom: calc(var(--m) - var(--s) * 0.2886) !important;
+    }
+
+    .intro-section {
+        display: flex !important;
+        overflow: hidden !important;
+        flex-direction: row !important;
+        height: 40rem !important; 
+        margin: 0 !important;
+        width: 100% !important;
+        background-color: #FFF !important; 
+        padding-top: 0rem !important;
+        padding-bottom: 5rem !important;
+        position: relative !important;
+        z-index: 2 !important;
+    }
+
+    .intro-section .gears {
+        position: absolute !important;
+        z-index: 0 !important;
+        overflow: hidden !important;
+        margin-left: auto !important;
+        left: 80rem !important;
+        top: 70rem !important;
+        width: 60% !important;      
+    }
+
+    #intro-gears { 
+        display: none !important;
+        position: absolute !important;
+        top: 15rem !important;
+        width: 150% !important;
+        transform: rotate(-45deg) !important;
+        height: auto !important;
+        opacity: 0.5 !important;
+        mix-blend-mode: multiply !important;
+        background-size: cover !important;
+        background-position: center !important;
+        object-fit: cover !important;
+        z-index: 7 !important;
+    }
+
+    .intro-section-header {
+        z-index: 1 !important;
+    }
+
+    .intro-header {
+        font-style: italic !important;
+        font-size: 2.5rem !important; 
+        font-weight: 900 !important;
+        z-index: 1 !important;
+    }
+
+    .intro-text {
+        margin-top: 10% !important; 
+        padding: 1.5rem !important;
+    }
+
+    .intro-blurb {
+        padding-top: 50px !important;
+        font-size: 1.5rem !important; 
+        font-family: "Univers LT Std" !important;
+        z-index: 1 !important;
+    }
+
+    .mission-section {
+        margin: 0 !important;
+        margin-top: -5rem !important;
+        width: 100% !important;
+        clip-path: polygon(0 5%, 100% 0, 100% 100%, 0% 100%) !important;
+        background-color: #72A9BE !important;
+        padding-top: 5rem !important;
+        padding-bottom: 15rem !important;
+        position: relative !important;
+        z-index: 5 !important;
+    }
+
+    .mission-section .gears {
+        position: absolute !important;
+        top: -70rem !important;
+        right: -100rem !important;
+        z-index: 0 !important;
+        overflow: hidden !important;
+        margin-left: auto !important;
+        left: 20rem !important;
+    }
+
+    .mission-section .gears img {
+        width: 100% !important;
+        height: auto !important;
+        object-fit: cover !important;
+        z-index: 0 !important;
+        opacity: 0.5 !important;
+    }
+
+
+    .mission-header-container {
+        color: white !important;
+        position: relative !important;
+        margin-right: auto !important;
+        margin-top: 3rem !important;
+        left: -1rem !important;
+        background-image: url('./assets/images/mission-banner.svg') !important;
+        width: 20rem !important; 
+        background-size: 100% 100% !important;
+        background-repeat: no-repeat !important;
+        padding: 4rem !important;
+    }
+
+    .mission-header-container h1 {
+        position: relative !important;
+        left: 2rem !important;
+        font-size: 2rem !important;
+        width: 100% !important;
+        color: white !important;
+        transform: rotate(-4.1deg) !important;
+    }
+
+    .mission-wrapper {
+        position: relative !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        padding-left: 2rem !important;
+        align-items: flex-start !important;
+        margin-top: 5rem !important;
+    }
+
+    .mission-container {
+        position: relative !important;
+        margin-top: 3rem !important;
+        background-image: url('./assets/images/Rectangle 120.svg') !important;
+        width: 30% !important;
+        font-size: 1.70rem !important;
+        background-size: cover !important; 
+        background-repeat: no-repeat !important;
+        padding: 5rem !important;
+    }
+
+    .mission-container p {
+        padding-top: 2rem !important;
+        padding-bottom: 4rem !important;
+    }
+
+    .mission-image-layer {
+        position: relative !important;
+        width: fit-content !important;
+        height: fit-content !important;
+        z-index: 2 !important;
+    }
+
+    #img-5 {
+        position: relative !important;
+        z-index: 1 !important;
+        width: 18rem !important;
+        height: 18rem !important;
+        left: 2rem !important;
+    }
+
+    #img-4 {
+        position: absolute !important;
+        margin-top: 46px !important;
+        left: 88px !important;
+        z-index: 2 !important;
+        width: 18rem !important;
+        height: 18rem !important;
+        padding-top: 1.15rem !important;
+    }
+
+    .teal-rectangle {
+        width: 100% !important;
+        height: 100px !important;
+        background-color: #72A9BE !important; 
+        position: relative !important;
+        z-index: 1 !important;
+    }
+
+    .about-container {
+        position: relative !important;
+        margin-top: 3rem !important;
+        left: -1rem !important;
+        background-image: url('./assets/images/Rectangle 123.svg') !important;
+        width: 30% !important;
+        font-size: 130% !important; 
+        background-size: cover !important; 
+        background-repeat: no-repeat !important;
+        padding: 5rem !important;
+    }
+
+    .about-container .desc {
+        padding: 2rem !important;
+    }
+
+    .desc {
+        color: white !important;
+        position: relative !important; 
+        z-index: 2 !important; 
+        margin: 0 !important;
+    }
+
+    .header {
+        position: absolute !important;
+        margin-top: -1.5rem !important;
+        left: 3rem !important;
+        width: 100% !important;
+        color: white !important;
+        transform: rotate(-4deg) !important;
+    }
+
+    .header-container {
+        position: relative !important;
+        color: white !important;
+        margin-left: auto !important;
+        margin-bottom: 4rem !important;
+        font-size: 1.15rem !important;
+        width: 30% !important;
+        background-image: url('./assets/images/Group 5.svg') !important;
+        background-size: cover !important;
+        background-repeat: no-repeat !important;
+        padding: 3rem !important;
+    }
+
+    .header-container h1 {
+        position: relative !important;
+        left: 2rem !important;
+        font-size: 2rem !important;
+        width: 100% !important;
+        color: white !important;
+        transform: rotate(-4.1deg) !important;
+    }
+
+    .about-section {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 4rem !important;
+    }
+
+    .image-container {
+        position: relative !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        margin-left: 25% !important;
+        margin-top: 5rem !important;
+        margin-bottom: 5rem !important;
+    }
+
+    .h-image {
+        position: relative !important;
+        left: -15rem !important;
+        height: 210px !important;
+        width: 315px !important;
+        margin: -1rem !important;
+    }
+
+    .history-section {
+        position: relative !important;
+        margin-top: -10rem !important;
+        z-index: 7 !important;
+        width: 100% !important;
+        clip-path: polygon(0 5%, 100% 0, 100% 95%, 0% 100%) !important;
+        background-image: url('./assets/images/Mask group.svg') !important;
+        background-size: cover !important;
+        background-color: #72A9BE !important;
+        padding-top: 5rem !important;
+        padding-bottom: 5rem !important;
+    }
+
+    #img-1 {
+        z-index: 3 !important;
+    }
+
+    #img-2 {
+        position: relative !important;
+        left: 0 !important;
+        z-index: 2 !important;
+    }
+
+    #img-3 {
+        z-index: 1 !important;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .about-container {
+        position: relative !important;
+        left: -1rem !important;
+        width: 50% !important;
+        background-image: url('./assets/images/Rectangle 123.svg') !important;
+        background-size: cover !important; 
+        background-repeat: no-repeat !important;
+        padding: 5rem !important;
+        margin-bottom: 3rem !important;
+    }
+
+    .desc {
+        color: white !important;
+        font-size: 1.15rem !important;
+        position: relative !important; 
+        z-index: 2 !important; 
+        margin: 0 !important;
+    }
+
+    .header {
+        position: absolute !important;
+        left: 1rem !important;
+        top: -1.35rem !important;
+        color: white !important;
+        width: 100% !important;
+        font-size: 1.75rem !important;
+        transform: rotate(-4deg) !important;
+    }
+
+    .header-container {
+        position: relative !important;
+        margin-left: auto !important;
+        margin-bottom: 2rem !important;
+        width: 60% !important;
+        left: 2rem !important;
+        background-image: url('./assets/images/Group 5.svg') !important;
+        background-size: 100% 100% !important; 
+        background-repeat: no-repeat !important;
+        padding: 4rem !important;
+    }
+
+    .about-section {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .image-container {
+        position: relative !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        margin-left: 25% !important;
+        margin-bottom: 5rem !important;
+    }
+
+    .h-image {
+        position: relative !important;
+        left: -8rem !important;
+        height: 210px !important;
+        width: 315px !important;
+        margin: -1rem !important;
+    }
+
+    #img-1 {
+        z-index: 3 !important;
+    }
+
+    #img-2 {
+        position: relative !important;
+        left: 0 !important;
+        z-index: 2 !important;
+    }
+
+    #img-3 {
+        z-index: 1 !important;
+    }
+}
+
+.vision-container {
+    position: relative !important;
+    background-color: white !important;
+    margin-top: -15rem !important;
+    width: 100% !important;
+    clip-path: polygon(0 9%, 100% 0, 100% 100%, 0% 100%) !important;
+    background-image: url('./assets/images/vision-background.svg') !important;
+    background-size: 200% !important;
+    background-position: center !important;
+    padding-top: 5rem !important;
+    padding-bottom: 15rem !important;
+    z-index: 8 !important;
+    overflow: hidden !important;
+}
+
+
+.vision-header-container {
+    color: white !important;
+    position: relative !important;
+    margin-right: auto !important;
+    margin-top: 3rem !important;
+    left: -1rem !important;
+    background-image: url('./assets/images/vision-banner.svg') !important;
+    width: 20rem !important; 
+    background-size: 100% 100% !important;
+    background-repeat: no-repeat !important;
+    padding: 4rem !important;
+}
+
+.vision-header-container h1 {
+    position: relative !important;
+    left: 2rem !important;
+    font-size: 2rem !important;
+    width: 100% !important;
+    color: white !important;
+    transform: rotate(+4.1deg) !important;
+}
+
+.centering-vision {
+    display: flex !important;
+    justify-content: center !important;
+    flex-direction: row !important;
+}
+
+.vision-section-blurb {
+    position: relative !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-top: 3rem !important;
+    clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 90%) !important;
+    background-color: #D04E0F !important;
+    width: 40% !important;
+    height: auto !important;
+    font-size: 100% !important; 
+    background-size: cover !important; 
+    background-repeat: no-repeat !important;
+    padding: 7rem !important;
+    z-index: 2 !important;
+}
+
+.vision-section-blurb .desc {
+    padding-bottom: 1rem !important;
+    color: white !important;
+    font-size: 1.50rem !important;
+    z-index: 2 !important; 
+    margin: 0 !important;
+}
+
+.join-section {
+    position: relative !important;
+    margin-top: -22rem !important;
+    width: 100% !important;
+    clip-path: polygon(0 0, 100% 10%, 100% 100%, 0% 100%) !important;
+    background-size: cover !important;
+    background-color: #D04E0F !important;
+    padding-top: 5rem !important;
+    padding-bottom: 10rem !important;
+    z-index: 10 !important;
+}
+
+.join-header-container {
+    color: white !important;
+    position: relative !important;
+    margin-right: auto !important;
+    margin-top: 3rem !important;
+    left: -1rem !important;
+    background-image: url('./assets/images/join-banner.svg') !important;
+    width: 20rem !important;
+    background-size: 100% 100% !important; 
+    background-repeat: no-repeat !important;
+    padding: 4rem !important;
+}
+
+.join-header-container h1 {
+    position: relative !important;
+    left: 2rem !important;
+    font-size: 2rem !important;
+    width: 100% !important;
+    color: white !important;
+    transform: rotate(+4.1deg) !important;
+}
+
+.center-join {
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.join-section-blurb {
+    margin-top: 3rem !important;
+    background-image: url('./assets/images/join-blurb.svg') !important;
+    width: 50% !important;
+    font-size: 1.75rem !important;
+    background-size: cover !important; 
+    padding: 8rem !important;
+    z-index: 1 !important;
+}
+
+.join-section-blurb .desc {
+    color: white !important;
+    font-size: 1.75rem !important;
+    position: relative !important; 
+    z-index: 2 !important; 
+    margin: 0 !important;
 
 
 .homeSlideshow {
@@ -1824,4 +2694,5 @@ ul.nav li.active {
   .alumni-filter-input {
     width: 10rem !important;
   }
+
 }
