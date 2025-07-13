@@ -1,4 +1,7 @@
-import React from 'react';
+
+import React, {useEffect} from "react";
+import { Container, Grid, Image } from "semantic-ui-react";
+
 
 import polygonImage from '../../assets/images/Polygon-image.png';
 import introGears from '../../assets/images/intro-panel-gears.svg';
@@ -119,6 +122,7 @@ const About = () => {
           </div>
         </div>
       </div>
+
     </div>
   );
 };
