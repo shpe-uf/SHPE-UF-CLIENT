@@ -82,7 +82,7 @@ function MenuBar({ permission }) {
              </Menu.Item> */}
 
               {user ? (
-                <>
+                <>``
                   <Dropdown
                     item
                     pointing

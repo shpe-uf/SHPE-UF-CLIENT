@@ -374,11 +374,16 @@ textarea {
 .nav-dropdown {
   background: var(--primary) !important;
   position: absolute;
-  width: 100%;
+  width: fit-content;
+  left: 11rem;
   display: flex;
+  z-index: 9999;
   gap: 4rem;
-  padding: 3rem;
-  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 0.5rem;
+  border-radius: 0 0 0.5rem 0.5rem;
 }
 
 .email {
@@ -2234,13 +2239,13 @@ ul.nav li.active {
     z-index: 1 !important;
 }
 
-.join-section-blurb .desc {
+.join-section-blurb.desc {
     color: white !important;
     font-size: 1.75rem !important;
     position: relative !important; 
     z-index: 2 !important; 
     margin: 0 !important;
-
+}
 
 .homeSlideshow {
   position: relative;
