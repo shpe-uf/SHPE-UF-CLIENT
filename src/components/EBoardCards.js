@@ -31,17 +31,17 @@ const presidentDescription = (
   </span>
 );
 
-const graduateDescription = (
-  <span>
-    Manage events, workshops, and informational sessions to help members obtain
-    undergraduate research opportunities. Aid in the academic development of
-    members looking to pursue a graduate education. Bridge the gap between
-    undergraduate and graduate members by providing more opportunities for
-    interaction. Organize events that bolster graduate student involvement in
-    SHPE and in other organizations on campus. Use events as possible gateways
-    to recruit new graduate members.
-  </span>
-);
+// const graduateDescription = (
+//   <span>
+//     Manage events, workshops, and informational sessions to help members obtain
+//     undergraduate research opportunities. Aid in the academic development of
+//     members looking to pursue a graduate education. Bridge the gap between
+//     undergraduate and graduate members by providing more opportunities for
+//     interaction. Organize events that bolster graduate student involvement in
+//     SHPE and in other organizations on campus. Use events as possible gateways
+//     to recruit new graduate members.
+//   </span>
+// );
 
 const secretaryDescription = (
   <span>
@@ -147,7 +147,7 @@ function EBoardCards() {
           eboard.president.image
         )}
       />
-      <Card
+      {/* <Card
         image={eboard.graduate.image}
         header={eboard.graduate.name}
         meta="Graduate Coordinator"
@@ -157,7 +157,7 @@ function EBoardCards() {
           eboard.graduate.email,
           eboard.graduate.image
         )}
-      />
+      /> */}
       <Card
         image={eboard.secretary.image}
         header={eboard.secretary.name}

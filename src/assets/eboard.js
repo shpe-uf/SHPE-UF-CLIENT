@@ -1,14 +1,14 @@
 const eboard = {
     president: {
-        name: "Juan Valderrama",
+        name: "Sebastian Sobrino-Gonzalez",
         email: "president.shpeuf@gmail.com",
-        image: "https://shpeuf.s3.amazonaws.com/public/eboard/President"
+        image: "https://shpeuf.s3.amazonaws.com/public/eboard/President-2025.png"
     },
-    graduate: {
-        name: "Airam Gonzalez",
-        email: "graduate.shpeuf@gmail.com",
-        image: "https://shpeuf.s3.amazonaws.com/public/eboard/GraduateCoordinator"
-    },
+    // graduate: {
+    //     name: "Airam Gonzalez",
+    //     email: "graduate.shpeuf@gmail.com",
+    //     image: "https://shpeuf.s3.amazonaws.com/public/eboard/GraduateCoordinator"
+    // },
     secretary: {
         name: "Stephanie Ospina",
         email: "secretary.shpeuf@gmail.com",
