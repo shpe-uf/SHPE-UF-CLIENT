@@ -4,10 +4,10 @@ import { useForm } from "../../util/hooks";
 import gql from "graphql-tag";
 import { useMutation } from "@apollo/client";
 import { ToastContainer, toast } from "react-toastify";
+import BackgroundImage from "../../assets/images/contact-us-background.svg";
 
 function ContactUs() {
   const [errors, setErrors] = useState({});
-
   const { values, onChange, onSubmit } = useForm(contactRequestCallback, {
     firstName: "",
     lastName: "",
@@ -40,7 +40,7 @@ function ContactUs() {
   }
 
   return (
-    <div className="body">
+    <div className="contact-us-container">
       <div className="masthead masthead-contactus">
         <div className="overlay-blue">
           <Container>
@@ -49,7 +49,7 @@ function ContactUs() {
         </div>
       </div>
 
-      <Container>
+      <Container className="contact-us-table">
         <center>
           <h5>
             Please reach out to us with any questions, suggestions, or issues!
@@ -64,7 +64,7 @@ function ContactUs() {
               {Object.keys(errors).length > 0 && (
                 <div className="ui error message">
                   <ul className="list">
-                    {Object.values(errors).map((value) => (
+                    {Object.values(errors).map(value => (
                       <li key={value}>{value}</li>
                     ))}
                   </ul>
@@ -110,7 +110,9 @@ function ContactUs() {
                     <option value="Suggestion">Provide a suggestion</option>
                     <option value="Question">Ask a question</option>
                     <option value="Bug">Report a problem</option>
-                    <option value="Account Concern">Account concerns (activation/deletion/questions)</option>
+                    <option value="Account Concern">
+                      Account concerns (activation/deletion/questions)
+                    </option>
                   </Form.Field>
                 </Form.Group>
                 <Form.TextArea
