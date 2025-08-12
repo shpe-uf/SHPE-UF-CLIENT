@@ -25,9 +25,9 @@ const eboard = {
         image: "https://shpeuf.s3.amazonaws.com/public/eboard/VPMarketing-2025.png"
     },
     technology: {
-        name: "Isabella Roman Ramirez",
+        name: "Jorge Ramirez",
         email: "vptech.shpeuf@gmail.com",
-        image: "https://shpeuf.s3.amazonaws.com/public/eboard/VPTechnology"
+        image: "https://shpeuf.s3.amazonaws.com/public/eboard/VPTechnology-2025.png"
     },
     corporate: {
         name: "Alexandra Tabares",
