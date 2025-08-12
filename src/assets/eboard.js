@@ -35,9 +35,9 @@ const eboard = {
         image: "https://shpeuf.s3.amazonaws.com/public/eboard/VPCorporate-2025.png"
     },
     external: {
-        name: "Sebastian Sobrino-Gonzalez",
+        name: "Vivian Rincon",
         email: "vpexternal.shpeuf@gmail.com",
-        image: "https://shpeuf.s3.amazonaws.com/public/eboard/VPExternal"
+        image: "https://shpeuf.s3.amazonaws.com/public/eboard/VPExternal-2025.png"
     },
     internal: {
         name: "Vanessa Scarpetta",
