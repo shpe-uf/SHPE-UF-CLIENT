@@ -15,9 +15,9 @@ const eboard = {
         image: "https://shpeuf.s3.amazonaws.com/public/eboard/Secretary-2025.png"
     },
     treasurer: {
-        name: "Alexander Osterude",
+        name: "Carolina Abad",
         email: "treasurer.shpeuf@gmail.com",
-        image: "https://shpeuf.s3.amazonaws.com/public/eboard/Treasurer"
+        image: "https://shpeuf.s3.amazonaws.com/public/eboard/Treasurer-2025.png"
     },
     marketing: {
         name: "Damariz Gallegos",
