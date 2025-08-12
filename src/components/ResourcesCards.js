@@ -22,15 +22,15 @@ const EBoardOptions = [
         </a>,
         value: eboard.president.name,
     },
-    // {
-    //   key: eboard.graduate.name,
-    //   text: <a href={"mailto:" + eboard.graduate.email} className="link-email">
-    //             <Image src={eboard.graduate.image} avatar/>
-    //             <Icon name="mail" />
-    //             {eboard.graduate.name}
-    //         </a>,
-    //   value: eboard.graduate.name,
-    // },
+    {
+        key: eboard.research.name,
+        text: <a href={"mailto:" + eboard.research.email} className="link-email">
+            <Image src={eboard.research.image} avatar />
+            <Icon name="mail" />
+            {eboard.research.name}
+        </a>,
+        value: eboard.research.name,
+    },
     {
         key: eboard.secretary.name,
         text: <a href={"mailto:" + eboard.secretary.email} className="link-email">

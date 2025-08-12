@@ -4,11 +4,11 @@ const eboard = {
         email: "president.shpeuf@gmail.com",
         image: "https://shpeuf.s3.amazonaws.com/public/eboard/President-2025.png"
     },
-    // graduate: {
-    //     name: "Airam Gonzalez",
-    //     email: "graduate.shpeuf@gmail.com",
-    //     image: "https://shpeuf.s3.amazonaws.com/public/eboard/GraduateCoordinator"
-    // },
+    research: {
+        name: "Stephanie Manrique",
+        email: "vpresearch.shpeuf@gmail.com",
+        image: "https://shpeuf.s3.amazonaws.com/public/eboard/VPResearch-2025.png"
+    },
     secretary: {
         name: "Stephanie Ospina",
         email: "secretary.shpeuf@gmail.com",
