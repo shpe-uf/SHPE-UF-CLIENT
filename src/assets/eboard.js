@@ -30,9 +30,9 @@ const eboard = {
         image: "https://shpeuf.s3.amazonaws.com/public/eboard/VPTechnology-2025.png"
     },
     corporate: {
-        name: "Alexandra Tabares",
+        name: "Diego Rey",
         email: "vpcorporate.shpeuf@gmail.com",
-        image: "https://shpeuf.s3.amazonaws.com/public/eboard/VPCorporate"
+        image: "https://shpeuf.s3.amazonaws.com/public/eboard/VPCorporate-2025.png"
     },
     external: {
         name: "Sebastian Sobrino-Gonzalez",
