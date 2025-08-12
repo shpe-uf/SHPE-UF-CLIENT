@@ -10,9 +10,9 @@ const eboard = {
         image: "https://shpeuf.s3.amazonaws.com/public/eboard/VPResearch-2025.png"
     },
     secretary: {
-        name: "Stephanie Ospina",
+        name: "Andrea Avila",
         email: "secretary.shpeuf@gmail.com",
-        image: "https://shpeuf.s3.amazonaws.com/public/eboard/Secretary"
+        image: "https://shpeuf.s3.amazonaws.com/public/eboard/Secretary-2025.png"
     },
     treasurer: {
         name: "Alexander Osterude",
