@@ -40,9 +40,9 @@ const eboard = {
         image: "https://shpeuf.s3.amazonaws.com/public/eboard/VPExternal-2025.png"
     },
     internal: {
-        name: "Vanessa Scarpetta",
+        name: "Grace Ramirez",
         email: "vpinternal.shpeuf@gmail.com",
-        image: "https://shpeuf.s3.amazonaws.com/public/eboard/VPInternal"
+        image: "https://shpeuf.s3.amazonaws.com/public/eboard/VPInternal-2025.png"
     },
     eboard: "https://shpeuf.s3.amazonaws.com/public/eboard/eboard",
     mini: "https://shpeuf.s3.amazonaws.com/public/eboard/eboardMini"
