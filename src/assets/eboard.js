@@ -20,9 +20,9 @@ const eboard = {
         image: "https://shpeuf.s3.amazonaws.com/public/eboard/Treasurer-2025.png"
     },
     marketing: {
-        name: "Damariz Gallegos",
+        name: "Tatiana Escobar",
         email: "vpmarketing.shpeuf@gmail.com",
-        image: "https://shpeuf.s3.amazonaws.com/public/eboard/VPMarketing"
+        image: "https://shpeuf.s3.amazonaws.com/public/eboard/VPMarketing-2025.png"
     },
     technology: {
         name: "Isabella Roman Ramirez",
