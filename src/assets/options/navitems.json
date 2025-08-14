@@ -26,7 +26,7 @@
       {
         "label": "Programs & Leadership Opportunities",
         "links": [
-          {   "label": "What are Director Positions?", "path": "#" },
+          {   "label": "What are Director Positions?", "path": "/info" },
           {   "label": "Underclassmen Opportunities", "path": "#" },
           {   "label": "Technical Development Programs", "path": "#" },
           {   "label": "Code 4 Change", "path": "#" },
