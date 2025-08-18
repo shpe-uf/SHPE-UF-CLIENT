@@ -43,20 +43,43 @@ export default function PermissionsForm({userInfo, refetch}) {
     const onChange = (_, {name, checked}) => {
         //regex used to remove a permissions from the string formatted as "permission-permission-permission"
         //accounts for the three possible ways in which a permission is found, namely at the beginning, inside, or the end
-        // let re = new RegExp(`/(-${name}-)|(${name}-)|(-${name})/`)
-        let re = new RegExp(`(-${name}-)|(${name}-)|(-${name})|(${name})`, 'g')
+        let re1 = new RegExp(`(-${name}-)`, 'g')
+        let re2 = new RegExp(`(${name}-)|(-${name})|(${name})`, 'g')
         let tempPermissions = ''
 
         if (checked){
-            tempPermissions = permissions.concat( (permissions.length !== 0) ? `-${name}` : `${name}`)
+            if (name === PERMISSIONS.SUPER) {
+                tempPermissions = PERMISSIONS.SUPER;
+            } else {
+                tempPermissions = permissions.concat( (permissions.length !== 0) ? `-${name}` : `${name}`)
+            }
         } else {
-            tempPermissions = permissions.replaceAll(re, '')
+            if (name === PERMISSIONS.SUPER) {
+                tempPermissions = userInfo.permission.includes(PERMISSIONS.SUPER) ? '' : userInfo.permission;
+            } else {
+                tempPermissions = permissions.replaceAll(re1, '-')
+                tempPermissions = permissions.replaceAll(re2, '')
+            }
+        }
+
+        // In this scenario, if a user is already a super admin, but is demoted to any other permission,
+        // then they lose their super admin role in favor of the diminished role.
+        if (name !== PERMISSIONS.SUPER && tempPermissions.includes(PERMISSIONS.SUPER)) {
+            tempPermissions = name;
+        }
+
+        // In this scenario, if a user is simply a member and they are granted any other permission (an admin role), then they lose
+        // their member permission in favor of the higher admin role. The inverse is true if a user is demoted to member only.
+        if (name !== PERMISSIONS.MEMBER && tempPermissions.includes(PERMISSIONS.MEMBER)) {
+            tempPermissions = name;
+        } else if (name === PERMISSIONS.MEMBER) {
+            tempPermissions = PERMISSIONS.MEMBER;
         }
 
         // In this scenario, this is a regular use that has been granted a permission for the first time (that is not super).
         // We automatically make that user an admin, granted that the user already contains at least one permission
-        if (!tempPermissions.includes(PERMISSIONS.ADMIN) && tempPermissions.length > 0) {
-            tempPermissions = permission.concat(PERMISSIONS.ADMIN)
+        if (!tempPermissions.includes(PERMISSIONS.ADMIN) && tempPermissions.length > 0 && name !== PERMISSIONS.MEMBER) {
+            tempPermissions = PERMISSIONS.ADMIN.concat("-" + tempPermissions);
         }
 
         // In this scenario, the user has been stripped of all permissions, and only admin is left.
@@ -84,6 +107,7 @@ export default function PermissionsForm({userInfo, refetch}) {
             currentEmail: loggedInUser.email,
             permission: permissions
         }
+        setOriginalPermissions(permissions.split("-"));
         changePermissionMutation({variables: values})
     }
 
@@ -102,7 +126,8 @@ export default function PermissionsForm({userInfo, refetch}) {
                                 toggle
                                 disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)}
                                 name={PERMISSIONS.TASKS}
-                                defaultChecked={userInfo.permission.includes(PERMISSIONS.TASKS)}
+                                checked={permissions.includes(PERMISSIONS.TASKS)
+                                    && !permissions.includes(PERMISSIONS.SUPER)}
                                 onChange={onChange}
                                 label='Tasks'
                             />
@@ -110,7 +135,8 @@ export default function PermissionsForm({userInfo, refetch}) {
                                 toggle
                                 disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)}
                                 name={PERMISSIONS.REQUESTS}
-                                defaultChecked={userInfo.permission.includes(PERMISSIONS.REQUESTS)}
+                                checked={permissions.includes(PERMISSIONS.REQUESTS)
+                                    && !permissions.includes(PERMISSIONS.SUPER)}
                                 onChange={onChange}
                                 label='Requests'
                             />
@@ -120,7 +146,8 @@ export default function PermissionsForm({userInfo, refetch}) {
                                 toggle
                                 disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)}
                                 name={PERMISSIONS.EVENTS}
-                                defaultChecked={userInfo.permission.includes(PERMISSIONS.TASKS)}
+                                checked={permissions.includes(PERMISSIONS.EVENTS)
+                                    && !permissions.includes(PERMISSIONS.SUPER)}
                                 onChange={onChange}
                                 label='Events'
                             />
@@ -128,7 +155,7 @@ export default function PermissionsForm({userInfo, refetch}) {
                                 toggle
                                 disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)}
                                 name={PERMISSIONS.SUPER}
-                                defaultChecked={userInfo.permission.includes(PERMISSIONS.SUPER)}
+                                checked={permissions.includes(PERMISSIONS.SUPER)}
                                 onChange={onChange}
                                 label='Super Admin'
                             />
@@ -138,7 +165,8 @@ export default function PermissionsForm({userInfo, refetch}) {
                                 toggle
                                 disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)}
                                 name={PERMISSIONS.STATS}
-                                defaultChecked={userInfo.permission.includes(PERMISSIONS.STATS)}
+                                checked={permissions.includes(PERMISSIONS.STATS)
+                                    && !permissions.includes(PERMISSIONS.SUPER)}
                                 onChange={onChange}
                                 label='Statistics'
                             />
@@ -146,7 +174,8 @@ export default function PermissionsForm({userInfo, refetch}) {
                                 toggle
                                 disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)}
                                 name={PERMISSIONS.REIMB}
-                                defaultChecked={userInfo.permission.includes(PERMISSIONS.REIMB)}
+                                checked={permissions.includes(PERMISSIONS.REIMB)
+                                    && !permissions.includes(PERMISSIONS.SUPER)}
                                 onChange={onChange}
                                 label='Reimbursements'
                             />
@@ -155,16 +184,18 @@ export default function PermissionsForm({userInfo, refetch}) {
                             <Form.Radio
                                 toggle
                                 disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)}
-                                name={PERMISSIONS.MEMBERS}
-                                defaultChecked={userInfo.permission.includes(PERMISSIONS.MEMBERS)}
+                                name={PERMISSIONS.MEMBER}
+                                checked={permissions.includes(PERMISSIONS.MEMBER)
+                                    && !permissions.includes(PERMISSIONS.SUPER)}
                                 onChange={onChange}
-                                label='Members'
+                                label='Member'
                             />
                             <Form.Radio
                                 toggle
                                 disabled={!loggedInUser.permission.includes(PERMISSIONS.SUPER)}
                                 name={PERMISSIONS.CORP}
-                                defaultChecked={userInfo.permission.includes(PERMISSIONS.CORP)}
+                                checked={permissions.includes(PERMISSIONS.CORP)
+                                    && !permissions.includes(PERMISSIONS.SUPER)}
                                 onChange={onChange}
                                 label='Corporate Database'
                             />
