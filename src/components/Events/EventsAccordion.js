@@ -13,13 +13,28 @@ function EventsAccordion({ events }){
     springSem = events.filter(event => event.semester ==='Spring Semester')
     summerSem = events.filter(event => event.semester ==='Summer Semester')
   }
+  const getCurrentSemester = () => {
+    const now = new Date();
+    const month = now.getMonth() + 1; 
+    
+    if (month >= 8 && month <= 12) {
+      return 0; 
+    }
+
+    else if (month >= 1 && month <= 5) {
+      return 1; 
+    }
+
+    else {
+      return 2; 
+    }
+  };
 
   const panes = [
-  { menuItem: 'Fall Semester', render: () => <Tab.Pane><EventsTable events={fallSem} /></Tab.Pane> },
-  { menuItem: 'Spring Semester', render: () => <Tab.Pane><EventsTable events={springSem} /></Tab.Pane> },
-  { menuItem: 'Summer Semester', render: () => <Tab.Pane><EventsTable events={summerSem} /></Tab.Pane> },
+    { menuItem: 'Fall Semester', render: () => <Tab.Pane><EventsTable events={fallSem} /></Tab.Pane> },
+    { menuItem: 'Spring Semester', render: () => <Tab.Pane><EventsTable events={springSem} /></Tab.Pane> },
+    { menuItem: 'Summer Semester', render: () => <Tab.Pane><EventsTable events={summerSem} /></Tab.Pane> },
   ]
-
 
   return(
     <>
@@ -31,9 +46,8 @@ function EventsAccordion({ events }){
         </Header>
       </Segment>
     ) : (
-    <Tab panes={panes} />
+    <Tab panes={panes} defaultActiveIndex={getCurrentSemester()} />
   )
-
 }
 </>
 )
