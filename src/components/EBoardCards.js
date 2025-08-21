@@ -31,7 +31,7 @@ const presidentDescription = (
   </span>
 );
 
-const graduateDescription = (
+const researchDescription = (
   <span>
     Manage events, workshops, and informational sessions to help members obtain
     undergraduate research opportunities. Aid in the academic development of
@@ -148,14 +148,14 @@ function EBoardCards() {
         )}
       />
       <Card
-        image={eboard.graduate.image}
-        header={eboard.graduate.name}
-        meta="Graduate Coordinator"
+        image={eboard.research.image}
+        header={eboard.research.name}
+        meta="VP of Research"
         extra={cabinet(
-          "Graduate Cabinet",
-          graduateDescription,
-          eboard.graduate.email,
-          eboard.graduate.image
+          "Research Cabinet",
+          researchDescription,
+          eboard.research.email,
+          eboard.research.image
         )}
       />
       <Card
