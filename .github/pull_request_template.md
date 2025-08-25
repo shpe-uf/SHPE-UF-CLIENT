@@ -10,4 +10,4 @@ _Reference your Asana task here as shown below_
 
 ### Extra
 
-_please add me (@mxqrz) as a reviewer. thank you!
+_please add me (@oscardelapresa) as a reviewer. thank you!
