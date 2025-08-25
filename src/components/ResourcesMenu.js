@@ -395,6 +395,32 @@ const GradSegment = () => (
   </div>
 );
 
+const CorpSegment = () => (
+  <div>
+    <br />
+    <b>
+      Insert Corporate Resources text/Explanation here.
+    </b>
+    <Grid divided centered>
+        <Grid.Column width={5} textAlign='center'>
+            <h6>Bootcamp</h6>
+            <Image src={GradSHPEresearch} id='centered-img' as="a" size="medium" href="https://drive.google.com/file/d/19sO_QNUR64oGxbp3293Dy2ltChsAAUW-/view" target="_blank"/>
+            <Divider/> 
+            <Button as='a' href='https://drive.google.com/file/d/19sO_QNUR64oGxbp3293Dy2ltChsAAUW-/view' target="_blank"><Icon name='download'/>Download Here</Button>
+        </Grid.Column>
+        <Grid.Column width={5} textAlign='center'>
+            <h6>Internship ExSHPErience</h6>
+            <Image src={GradSHPEschool} id='centered-img' as="a" href='https://drive.google.com/file/d/1iytv-CCITpX3xkSKI6kfkI1P09mbpxKc/view?usp=sharing' target="_blank" size="medium"/>
+            <Divider/>
+            <Button as='a' href='https://drive.google.com/file/d/1iytv-CCITpX3xkSKI6kfkI1P09mbpxKc/view?usp=sharing' target="_blank"><Icon name='download'/>Download here</Button>
+            </Grid.Column>
+        {/* <Grid.Column width={5}>
+            <h6>Keep an eye out for more coming in the future.</h6>
+        </Grid.Column> */}
+    </Grid>
+  </div>
+);
+
 const ChapterByLawsSegment = () => (
   <div>
     <br />
@@ -426,6 +452,9 @@ const OpenRow = ({ rowName }) => {
   if (rowName == "GradSHPE 101") {
     return <GradSegment />;
   }
+  if (rowName == "Corp. Resources") {
+    return <CorpSegment />;
+  }
   if (rowName == "SHPE UF Bylaws") {
     return <ChapterByLawsSegment />;
   }
@@ -453,6 +482,14 @@ const panes = [
     render: () => (
       <Tab.Pane>
         <OpenRow rowName={"GradSHPE 101"} />
+      </Tab.Pane>
+    ),
+  },
+   {
+    menuItem: "Corp. Resources",
+    render: () => (
+      <Tab.Pane>
+        <OpenRow rowName={"Corp. Resources"} />
       </Tab.Pane>
     ),
   },
