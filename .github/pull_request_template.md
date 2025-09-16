@@ -4,10 +4,10 @@ _please explain what your PR does here. screenshots are especially helpful._
 
 ### Reference
 
-_Reference your Asana task here as shown below_
+_Reference your ClickUp task here as shown below_
 
-[Asana link](https://app.asana.com/0/1202843173947642/1203342704035634/f)
+[ClickUp link](https://app.clickup.com/t/86abnkc7n)
 
 ### Extra
 
-_please add me (@oscardelapresa) as a reviewer. thank you!
+_please add me (@osdas) as a reviewer. thank u_
