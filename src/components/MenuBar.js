@@ -58,7 +58,7 @@ function MenuBar({permission}) {
                 <>
                   <Dropdown pointing item className="email" text={user.email}>
                     <Dropdown.Menu>
-                      {permission.includes('admin') &&
+                      {(permission.includes('admin') || permission.includes("corporatedatabase")) &&
                       <Dropdown.Item as={Link} to="/admin">
                         Admin Panel
                       </Dropdown.Item>
