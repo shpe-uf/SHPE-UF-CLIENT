@@ -21,6 +21,11 @@ const GradSHPEresearch =
 const GradSHPEschool =
   "https://shpeuf.s3.amazonaws.com/public/resources/GradSHPEschool.png";
 
+const careerDB =
+  "https://shpeuf.s3.amazonaws.com/public/resources/CD.png";
+const internSHPE =
+  "https://shpeuf.s3.amazonaws.com/public/resources/internshpe.png";
+
 const GBMSlidesSegment = () => (
   <div>
     <br />
@@ -336,7 +341,7 @@ const LinksSegment = () => (
       >
         <b>Central SHPE UF Linktree</b>
       </List.Item>
-      <List.Item href="https://linktr.ee/shpeufconvention" target="_blank">
+      <List.Item href="https://linktr.ee/SHPEUFNationalConvention" target="_blank">
         <b>National Convention Linktree</b>
       </List.Item>
       <List.Item href="https://linktr.ee/shpeufbootcamp" target="_blank">
@@ -399,20 +404,22 @@ const CorpSegment = () => (
   <div>
     <br />
     <b>
-      Insert Corporate Resources text/Explanation here.
+      Landing that first internship or dream job can be a challenging and competitive process, so we've got you covered! 
+      Learn from our workshops and bootcamps on resume prep, delivering a powerful elevator pitch, acing your interviews, and mastering networking on platforms like LinkedIn. 
+      We'll cover all the essentials of professionalism to help you build your confidence and secure your next opportunity!
     </b>
     <Grid divided centered>
         <Grid.Column width={5} textAlign='center'>
-            <h6>Bootcamp</h6>
-            <Image src={GradSHPEresearch} id='centered-img' as="a" size="medium" href="https://drive.google.com/file/d/19sO_QNUR64oGxbp3293Dy2ltChsAAUW-/view" target="_blank"/>
+            <h6>Career Database</h6>
+            <Image src={careerDB} id='centered-img' as="a" size="medium" href="https://drive.google.com/file/d/1esPYwC9Nvp39ZsF-gazUAnobZkkCm8Q5/view?usp=sharing" target="_blank"/>
             <Divider/> 
-            <Button as='a' href='https://drive.google.com/file/d/19sO_QNUR64oGxbp3293Dy2ltChsAAUW-/view' target="_blank"><Icon name='download'/>Download Here</Button>
+            <Button as='a' href='https://drive.google.com/file/d/1esPYwC9Nvp39ZsF-gazUAnobZkkCm8Q5/view?usp=sharing' target="_blank"><Icon name='download'/>Download Here</Button>
         </Grid.Column>
         <Grid.Column width={5} textAlign='center'>
             <h6>Internship ExSHPErience</h6>
-            <Image src={GradSHPEschool} id='centered-img' as="a" href='https://drive.google.com/file/d/1iytv-CCITpX3xkSKI6kfkI1P09mbpxKc/view?usp=sharing' target="_blank" size="medium"/>
+            <Image src={internSHPE} id='centered-img' as="a" href='https://drive.google.com/file/d/1umQWHEPI6N9ZHsH1NOZ_RxS7haFywyZR/view?usp=sharing' target="_blank" size="medium"/>
             <Divider/>
-            <Button as='a' href='https://drive.google.com/file/d/1iytv-CCITpX3xkSKI6kfkI1P09mbpxKc/view?usp=sharing' target="_blank"><Icon name='download'/>Download here</Button>
+            <Button as='a' href='https://drive.google.com/file/d/1umQWHEPI6N9ZHsH1NOZ_RxS7haFywyZR/view?usp=sharing' target="_blank"><Icon name='download'/>Download here</Button>
             </Grid.Column>
         {/* <Grid.Column width={5}>
             <h6>Keep an eye out for more coming in the future.</h6>
