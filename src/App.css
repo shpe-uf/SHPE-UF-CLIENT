@@ -519,12 +519,21 @@ textarea {
 
 .masthead-contactus {
   background: url(https://shpeuf.s3.amazonaws.com/public/misc/contact-us-1.JPG) !important;
-  background-position: 50% 50% !important;
+  background-position: center center !important;
   border-radius: 0px;
-  background-attachment: fixed !important;
+  background-attachment: scroll !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
   clip-path: polygon(0 0, 100% 0%, 100% 61.54%, 0 100%);
+  min-height: 400px;
+}
+
+@media (max-width: 768px) {
+  .masthead-contactus {
+    background-size: cover !important;
+    background-position: center center !important;
+    min-height: 300px;
+  }
 }
 
 .masthead-application {
@@ -2715,11 +2724,48 @@ ul.nav li.active {
 
 .contact-us-container {
   width: 100%;
+  min-height: 100vh;
   background-image: url("./assets/images/contact-us-background.svg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: scroll;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .contact-us-container {
+    background-size: cover;
+    background-position: center center;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .contact-us-container {
+    background-size: cover;
+    background-position: center center;
+  }
+}
+
+@media (min-width: 1025px) {
+  .contact-us-container {
+    background-size: cover;
+    background-position: center center;
+  }
+}
+
+@media (-webkit-min-device-pixel-ratio: 1.25), (min-resolution: 120dpi) {
+  .contact-us-container {
+    background-size: cover;
+    background-position: center center;
+  }
+}
+
+@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+  .contact-us-container {
+    background-size: cover;
+    background-position: center center;
+  }
 }
 
 .contact-us-table {
