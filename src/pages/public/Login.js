@@ -20,7 +20,7 @@ function Login(props) {
   const navigate = useNavigate();
 
   const { onChange, onSubmit, values } = useForm(loginUserCallback, {
-    username: "",
+    usernameOrEmail: "",
     password: "",
     remember: "false",
   });
@@ -72,10 +72,10 @@ function Login(props) {
                       >
                         <Form.Input
                           type="text"
-                          label="Username"
-                          name="username"
-                          value={values.username}
-                          error={errors.username ? true : false}
+                          label="Username or Email"
+                          name="usernameOrEmail"
+                          value={values.usernameOrEmail}
+                          error={errors.usernameOrEmail ? true : false}
                           onChange={onChange}
                         />
                         <Form.Input
@@ -142,10 +142,10 @@ function Login(props) {
                       >
                         <Form.Input
                           type="text"
-                          label="Username"
-                          name="username"
-                          value={values.username}
-                          error={errors.username ? true : false}
+                          label="Username or Email"
+                          name="usernameOrEmail"
+                          value={values.usernameOrEmail}
+                          error={errors.usernameOrEmail ? true : false}
                           onChange={onChange}
                         />
                         <Form.Input
@@ -212,10 +212,10 @@ function Login(props) {
                       >
                         <Form.Input
                           type="text"
-                          label="Username"
-                          name="username"
-                          value={values.username}
-                          error={errors.username ? true : false}
+                          label="Username or Email"
+                          name="usernameOrEmail"
+                          value={values.usernameOrEmail}
+                          error={errors.usernameOrEmail ? true : false}
                           onChange={onChange}
                         />
                         <Form.Input
@@ -262,8 +262,8 @@ function Login(props) {
 }
 
 const LOGIN_USER = gql`
-  mutation login($username: String!, $password: String!, $remember: String!) {
-    login(username: $username, password: $password, remember: $remember) {
+  mutation login($usernameOrEmail: String!, $password: String!, $remember: String!) {
+    login(usernameOrEmail: $usernameOrEmail, password: $password, remember: $remember) {
       id
       email
       username
