@@ -71,65 +71,72 @@ function ContactUs() {
                 </div>
               )}
               <Form onSubmit={onSubmit}>
-                <Form.Group widths="equal">
-                  <Form.Input
-                    type="text"
-                    label="First Name"
-                    name="firstName"
-                    value={values.firstName}
-                    error={errors.firstName ? true : false}
-                    onChange={onChange}
-                  />
-                  <Form.Input
-                    type="text"
-                    label="Last Name"
-                    name="lastName"
-                    value={values.lastName}
-                    error={errors.lastName ? true : false}
-                    onChange={onChange}
-                  />
-                </Form.Group>
-                <Form.Group widths="equal">
-                  <Form.Input
-                    type="text"
-                    label="Email"
-                    name="email"
-                    value={values.email}
-                    error={errors.email ? true : false}
-                    onChange={onChange}
-                  />
-                  <Form.Field
-                    label="My main goal is to:"
-                    control="select"
-                    name="messageType"
-                    value={values.messageType}
-                    error={errors.messageType ? true : false}
-                    onChange={onChange}
-                  >
-                    <option value=""></option>
-                    <option value="Suggestion">Provide a suggestion</option>
-                    <option value="Question">Ask a question</option>
-                    <option value="Bug">Report a problem</option>
-                    <option value="Account Concern">
-                      Account concerns (activation/deletion/questions)
-                    </option>
-                  </Form.Field>
-                </Form.Group>
-                <Form.TextArea
-                  type="text"
-                  label="Message"
-                  name="message"
-                  value={values.message}
-                  error={errors.message ? true : false}
-                  onChange={onChange}
-                />
-                {values.message.length <= 500 && (
-                  <p>{values.message.length}/500</p>
-                )}
-                {values.message.length > 500 && (
-                  <p style={{ color: "red" }}>{values.message.length}/500</p>
-                )}
-                <Button type="submit" floated="left">
+                <Grid>
+                  <Grid.Row>
+                    <Grid.Column computer={8} tablet={8} mobile={16}>
+                      <Form.Field
+                        label="Topic"
+                        control="select"
+                        name="messageType"
+                        value={values.messageType}
+                        error={errors.messageType ? true : false}
+                        onChange={onChange}
+                      >
+                        <option value=""></option>
+                        <option value="Suggestion">Provide a suggestion</option>
+                        <option value="Question">Ask a question</option>
+                        <option value="Bug">Report a problem</option>
+                        <option value="Account Concern">
+                          Account concerns (activation/deletion/questions)
+                        </option>
+                      </Form.Field>
+                      <Form.Input
+                        type="text"
+                        label="First Name"
+                        name="firstName"
+                        value={values.firstName}
+                        error={errors.firstName ? true : false}
+                        onChange={onChange}
+                      />
+                      <Form.Input
+                        type="text"
+                        label="Last Name"
+                        name="lastName"
+                        value={values.lastName}
+                        error={errors.lastName ? true : false}
+                        onChange={onChange}
+                      />
+                      <Form.Input
+                        type="text"
+                        label="Email"
+                        name="email"
+                        value={values.email}
+                        error={errors.email ? true : false}
+                        onChange={onChange}
+                      />
+                    </Grid.Column>
+                    <Grid.Column computer={8} tablet={8} mobile={16}>
+                      <Form.TextArea
+                        type="text"
+                        label="Message"
+                        name="message"
+                        value={values.message}
+                        error={errors.message ? true : false}
+                        onChange={onChange}
+                        rows={12}
+                      />
+                      {values.message.length <= 500 && (
+                        <p>{values.message.length}/500</p>
+                      )}
+                      {values.message.length > 500 && (
+                        <p style={{ color: "red" }}>
+                          {values.message.length}/500
+                        </p>
+                      )}
+                    </Grid.Column>
+                  </Grid.Row>
+                </Grid>
+                <Button type="submit" style={{ marginTop: "1em" }}>
                   Submit
                 </Button>
               </Form>

@@ -519,13 +519,13 @@ textarea {
 
 .masthead-contactus {
   background: url(https://shpeuf.s3.amazonaws.com/public/misc/contact-us-1.JPG) !important;
-  background-position: center center !important;
+  background-position: center 20% !important;
   border-radius: 0px;
   background-attachment: scroll !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
   clip-path: polygon(0 0, 100% 0%, 100% 61.54%, 0 100%);
-  min-height: 400px;
+  min-height: 200px;
 }
 
 @media (max-width: 768px) {
@@ -2727,10 +2727,11 @@ ul.nav li.active {
   min-height: 100vh;
   background-image: url("./assets/images/contact-us-background.svg");
   background-size: cover;
-  background-position: center;
+  background-position: top;
   background-repeat: no-repeat;
   background-attachment: scroll;
   position: relative;
+  padding-bottom: 40px;
 }
 
 @media (max-width: 768px) {
@@ -2773,4 +2774,5 @@ ul.nav li.active {
   /* position: relative; */
   bottom: 20px;
   border-radius: 10px;
+  padding: 40px;
 }
