@@ -72,7 +72,7 @@ function Login(props) {
                       >
                         <Form.Input
                           type="text"
-                          label="Username"
+                          label="Username or Email"
                           name="username"
                           value={values.username}
                           error={errors.username ? true : false}
