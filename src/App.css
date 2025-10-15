@@ -792,24 +792,6 @@ div::-webkit-scrollbar-thumb {
 .confirmMsg {
   text-align: center;
 }
-
-.corp-button {
-  margin-top: 4px !important;
-  margin-bottom: 4px !important;
-  padding-left: 0em !important;
-  padding-right: 0em !important;
-}
-
-.corp-logo {
-  /* width: 100%;
-  height: 20rem;
-  object-fit: contain; */
-  width: 100% !important;
-  /* height: 20vw; */
-  height: 15rem !important;
-  object-fit: cover;
-}
-
 .card-image {
   height: 15rem;
 }
