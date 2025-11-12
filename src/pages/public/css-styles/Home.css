@@ -1,0 +1,53 @@
+.overlay-home {
+  background-color: var(--primary-overlay);
+  width: 100%;
+  padding: 10rem 0rem;
+}
+
+.masthead-home {
+  background: url(https://shpeuf.s3.amazonaws.com/public/home/home-bg.jpg) !important;
+  border-radius: 0px;
+  background-position: 50% 155% !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+.masthead-quote {
+  padding: 64px 0px;
+  background-color: var(--accent-2);
+}
+
+.fa-quote {
+  color: var(--white);
+  font-size: 3rem !important;
+  padding: 0px 16px;
+}
+
+.text-home {
+  padding: 4rem 4rem !important;
+  color: var(--white) !important;
+}
+
+.image-home {
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+}
+
+.who {
+  background-color: var(--accent-1-light-3);
+}
+
+.mission {
+  background-color: var(--accent-1-light-2);
+}
+
+.vision {
+  background-color: var(--accent-1-light-1);
+}
+
+.join-button {
+  margin-top: 2rem !important;
+  background: var(--accent-1-dark-2) !important;
+}
