@@ -1,35 +1,29 @@
 import React from "react";
-import {
-  Button,
-  Container,
-  Divider,
-  Grid,
-  Image,
-} from "semantic-ui-react";
+import { Button, Container, Divider, Grid, Image } from "semantic-ui-react";
 import { Media } from "../../Media";
-import {home1, home2, home3} from "../../assets/images/home"
+import { home1, home2, home3 } from "../../assets/images/home";
+import "./css-styles/Home.css";
 
 function Home() {
   return (
     <div>
-        <div className="masthead masthead-home">
-          <div className="overlay-home">
-            <Container>
-              <h2 className="masthead-title text-white">
-                Society of Hispanic Professional Engineers
-              </h2>
-              <h2 className="masthead-title">University of Florida</h2>
-              <a
-                href="https://www.shpeconnect.org"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button className="join-button">Join SHPE National</Button>
-              </a>
-            </Container>
-          </div>
+      <div className="masthead masthead-home">
+        <div className="overlay-home">
+          <Container>
+            <h2 className="masthead-title text-white">
+              Society of Hispanic Professional Engineers
+            </h2>
+            <h2 className="masthead-title">University of Florida</h2>
+            <a
+              href="https://www.shpeconnect.org"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button className="join-button">Join SHPE National</Button>
+            </a>
+          </Container>
         </div>
-      
+      </div>
 
       <div className="masthead masthead-quote">
         <Container>
