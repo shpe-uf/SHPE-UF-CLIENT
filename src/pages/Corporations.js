@@ -20,6 +20,8 @@ import gql from "graphql-tag";
 import { FETCH_CORPORATIONS_QUERY } from "../util/graphql";
 import CorporationFilter from "../components/CorporationFilter";
 
+import "./css/Corporations.css";
+
 function Corporations(props) {
   const [viewCorporationModal, setViewCorporationModal] = useState(false);
   const [filterModal, setFilterModal] = useState(false);
