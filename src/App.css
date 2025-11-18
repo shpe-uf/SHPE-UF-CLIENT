@@ -1498,7 +1498,7 @@ ul.nav li.active {
     }
 
     .intro-text {
-        margin-top: 10% !important; 
+        margin-top: 6rem !important; 
         padding: 1.5rem !important;
     }
 
@@ -1516,7 +1516,7 @@ ul.nav li.active {
         clip-path: polygon(0 5%, 100% 0, 100% 100%, 0% 100%) !important;
         background-color: #72A9BE !important;
         padding-top: 5rem !important;
-        padding-bottom: 15rem !important;
+        padding-bottom: 20rem !important;
         position: relative !important;
         z-index: 5 !important;
     }
@@ -1545,18 +1545,20 @@ ul.nav li.active {
         position: relative !important;
         margin-right: auto !important;
         margin-top: 3rem !important;
-        left: -1rem !important;
+        left: -4rem !important;
         background-image: url('./assets/images/mission-banner.svg') !important;
-        width: 20rem !important; 
+        max-width: 46rem !important; 
         background-size: 100% 100% !important;
         background-repeat: no-repeat !important;
         padding: 4rem !important;
     }
 
     .mission-header-container h1 {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
         position: relative !important;
-        left: 2rem !important;
-        font-size: 2rem !important;
+        font-size: 3rem !important;
         width: 100% !important;
         color: white !important;
         transform: rotate(+4.1deg) !important;
@@ -1571,14 +1573,13 @@ ul.nav li.active {
         margin-top: 5rem !important;
     }
 
-
     .mission-container {
         position: relative !important;
-        margin-top: 3rem !important;
+        margin-top: 8.06rem !important;
         margin-left: auto !important;
         left: 2rem !important;
         background-image: url('./assets/images/Rectangle 120.svg') !important;
-        width: 40% !important;
+        width: auto !important;
         font-size: 1.70rem !important;
         background-size: cover !important; 
         background-repeat: no-repeat !important;
@@ -1586,14 +1587,16 @@ ul.nav li.active {
     }
 
     .mission-container p {
-        padding-top: 3rem !important;
-        padding-bottom: 5rem !important;
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+        padding-left: 5rem !important;
+        padding-right: 5rem !important;
     }
 
     .mission-image-layer {
         padding-left: 7rem !important;
         position: relative !important;
-        left: 5rem !important;
+        left: auto !important;
         width: fit-content !important;
         height: fit-content !important;
         z-index: 2 !important;
@@ -1602,8 +1605,8 @@ ul.nav li.active {
     #img-5 {
         position: relative !important;
         z-index: 1 !important;
-        width: 18rem !important;
-        height: 18rem !important;
+        width: 25rem !important;
+        height: 25.5rem !important;
         left: 2rem !important;
     }
 
@@ -1612,8 +1615,8 @@ ul.nav li.active {
         top: 46px !important;
         left: 88px !important;
         z-index: 2 !important;
-        width: 18rem !important;
-        height: 18rem !important;
+        width: 25rem !important;
+        height: 25.5rem !important;
         padding-top: 1.15rem !important;
     }
 
@@ -1624,11 +1627,13 @@ ul.nav li.active {
         margin-top: 3rem !important;
         left: -1rem !important;
         background-image: url('./assets/images/Rectangle 123.svg') !important;
-        width: 30% !important;
+        max-width: 55.62rem !important;
+        max-height: 46.75rem !important;
         font-size: 150% !important; 
         background-size: cover !important; 
         background-repeat: no-repeat !important;
         padding: 5rem !important;
+        background-color: transparent !important;
     }
 
     .about-container .desc {
@@ -1655,19 +1660,21 @@ ul.nav li.active {
         color: white !important;
         position: relative !important;
         margin-left: auto !important;
-        margin-bottom: 4rem !important;
         margin-top: 3rem !important;
-        width: 20rem !important;
+        max-width: 46rem !important;
+        right: -5rem !important;
         background-image: url('./assets/images/Group 5.svg') !important;
-        background-size: cover !important;
+        background-size: 100% 100% !important;
         background-repeat: no-repeat !important;
         padding: 3rem !important;
     }
 
     .header-container h1 {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
         position: relative !important;
-        left: 2rem !important;
-        font-size: 2rem !important;
+        font-size: 3rem !important;
         width: 100% !important;
         color: white !important;
         transform: rotate(-4.1deg) !important;
@@ -1676,7 +1683,7 @@ ul.nav li.active {
     .about-section {
         display: flex !important;
         flex-direction: row !important;
-        gap: 4rem !important;
+        gap: 2rem !important;
     }
 
     .image-container {
@@ -1687,6 +1694,7 @@ ul.nav li.active {
         margin-left: 25% !important;
         margin-top: 5rem !important;
         margin-bottom: 5rem !important;
+        margin-right: 3.12rem !important;
     }
 
     .h-image {
@@ -2122,6 +2130,10 @@ ul.nav li.active {
 }
 
 .vision-container {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-direction: column;
     position: relative !important;
     background-color: white !important;
     margin-top: -15rem !important;
@@ -2134,26 +2146,33 @@ ul.nav li.active {
     padding-bottom: 15rem !important;
     z-index: 8 !important;
     overflow: hidden !important;
+    margin-bottom: 16rem !important;
 }
 
-
 .vision-header-container {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
     color: white !important;
     position: relative !important;
     margin-right: auto !important;
-    margin-top: 3rem !important;
-    left: -1rem !important;
+    margin-top: 7.25rem !important;
+    left: -2rem !important;
     background-image: url('./assets/images/vision-banner.svg') !important;
-    width: 20rem !important; 
+    width: 46rem !important;
+    height: 11rem !important;
     background-size: 100% 100% !important;
     background-repeat: no-repeat !important;
     padding: 4rem !important;
+    margin-bottom: 3rem !important;
 }
 
 .vision-header-container h1 {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
     position: relative !important;
-    left: 2rem !important;
-    font-size: 2rem !important;
+    font-size: 3rem !important;
     width: 100% !important;
     color: white !important;
     transform: rotate(+4.1deg) !important;
@@ -2170,27 +2189,32 @@ ul.nav li.active {
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    margin-top: 3rem !important;
+    margin-top: 3rem auto !important;
     clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 90%) !important;
     background-color: #D04E0F !important;
-    width: 40% !important;
-    height: auto !important;
+    width: 65.62rem !important;       
+    height: 33.21rem !important;
     font-size: 100% !important; 
     background-size: cover !important; 
     background-repeat: no-repeat !important;
-    padding: 7rem !important;
+    padding: 5rem !important;
     z-index: 2 !important;
 }
 
 .vision-section-blurb .desc {
     padding-bottom: 1rem !important;
     color: white !important;
-    font-size: 1.50rem !important;
+    font-size: 1.8rem !important;
     z-index: 2 !important; 
     margin: 0 !important;
 }
 
 .join-section {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: column;
+    gap: 7rem !important;
     position: relative !important;
     margin-top: -22rem !important;
     width: 100% !important;
@@ -2207,18 +2231,20 @@ ul.nav li.active {
     position: relative !important;
     margin-right: auto !important;
     margin-top: 3rem !important;
-    left: -1rem !important;
+    left: -3rem !important;
     background-image: url('./assets/images/join-banner.svg') !important;
-    width: 20rem !important;
+    min-width: 46rem !important;
     background-size: 100% 100% !important; 
     background-repeat: no-repeat !important;
     padding: 4rem !important;
 }
 
 .join-header-container h1 {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
     position: relative !important;
-    left: 2rem !important;
-    font-size: 2rem !important;
+    font-size: 3rem !important;
     width: 100% !important;
     color: white !important;
     transform: rotate(+4.1deg) !important;
@@ -2232,16 +2258,19 @@ ul.nav li.active {
 .join-section-blurb {
     margin-top: 3rem !important;
     background-image: url('./assets/images/join-blurb.svg') !important;
-    width: 50% !important;
+    max-width: 77.93rem !important;
     font-size: 1.75rem !important;
     background-size: cover !important; 
-    padding: 8rem !important;
+    padding-left: 14.81rem !important;
+    padding-right: 14.81rem !important;
+    padding-top: 5.75rem !important;
+    padding-bottom: 5.75rem !important;
     z-index: 1 !important;
 }
 
 .join-section-blurb.desc {
     color: white !important;
-    font-size: 1.75rem !important;
+    font-size: 2.25rem !important;
     position: relative !important; 
     z-index: 2 !important; 
     margin: 0 !important;
