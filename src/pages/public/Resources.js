@@ -3,6 +3,7 @@ import { Container, Grid, Card, Divider } from "semantic-ui-react";
 import { Media } from "../../Media"
 import ResourcesCards from "../../components/ResourcesCards"
 import ResourcesMenu from "../../components/ResourcesMenu";
+import "./styles/Resources.css";
 
 function Resources() {
 

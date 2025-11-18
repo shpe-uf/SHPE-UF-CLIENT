@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Container, Divider, Grid, Image } from "semantic-ui-react";
 import { Media } from "../../Media";
 import { home1, home2, home3 } from "../../assets/images/home";
-import "./css-styles/Home.css";
+import "./styles/Home.css";
 
 function Home() {
   return (

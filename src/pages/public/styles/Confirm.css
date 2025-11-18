@@ -1,0 +1,17 @@
+.overlay-confirm {
+  background-color: var(--primary-overlay);
+  width: 100%;
+  padding: 150px 0px;
+}
+
+@media (max-width: 991px) {
+  .overlay-confirm {
+    min-height: calc(100vh - 62.41px - 118px) !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .overlay-confirm {
+    min-height: calc(100vh - 64px - 64px) !important;
+  }
+}

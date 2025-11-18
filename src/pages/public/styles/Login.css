@@ -1,0 +1,26 @@
+.login {
+  background: url(https://shpeuf.s3.amazonaws.com/public/misc/login.jpg) !important;
+  border-radius: 0px;
+  background-position: 15% 50% !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+.overlay-login {
+  background-color: var(--primary-overlay);
+  width: 100%;
+  padding: 32px 0px;
+}
+
+@media (max-width: 991px) {
+  .overlay-login {
+    min-height: calc(100vh - 62.41px - 118px) !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .overlay-login {
+    min-height: calc(100vh - 64px - 64px) !important;
+  }
+}
