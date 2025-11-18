@@ -35,8 +35,7 @@ const GBMSlidesSegment = () => (
     </b>
     <Grid divided centered>
       <Grid.Column width={10}>
-        <GBMSlidesAccordion semesterYear="Fall 2023" />
-        <GBMSlidesAccordion semesterYear="Spring 2024" />
+        <GBMSlidesAccordion/>
       </Grid.Column>
     </Grid>
   </div>

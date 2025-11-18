@@ -47,6 +47,16 @@ export const FETCH_PARTNERS_QUERY = gql`
   }
 `;
 
+export const FETCH_GBMSLIDES_QUERY = gql`
+  {
+    getGbmSlides {
+      title
+      link
+      thumbnail
+    }
+  }
+`;
+
 export const FETCH_EVENTS_QUERY = gql`
   {
     getEventsReversed {
