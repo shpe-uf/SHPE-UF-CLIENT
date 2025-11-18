@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Grid, Image } from "semantic-ui-react";
 
 import {about1, about2, about3} from "../../assets/images/about"
+import "./styles/About.css";
 
 function About() {
   return (

@@ -226,87 +226,16 @@ textarea {
   margin-bottom: 24px;
 }
 
-.overlay-register,
-.overlay-login,
 .overlay-reset {
   background-color: var(--primary-overlay);
   width: 100%;
   padding: 32px 0px;
 }
 
-.overlay-confirm {
-  background-color: var(--primary-overlay);
-  width: 100%;
-  padding: 150px 0px;
-}
-
 .masthead {
   background-color: var(--grey);
   width: 100%;
   text-align: center;
-}
-
-.masthead-team {
-  background: url(https://shpeuf.s3.amazonaws.com/public/misc/team.jpg) !important;
-  border-radius: 0px;
-  background-position: 50% 50% !important;
-  background-attachment: fixed !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-}
-
-.masthead-eboard {
-  background: url(https://shpeuf.s3.amazonaws.com/public/eboard/Group_Photo.JPG) !important;
-  border-radius: 0px;
-  background-position: 50% 90% !important;
-  background-attachment: fixed !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-}
-
-.masthead-about {
-  background: url(https://shpeuf.s3.amazonaws.com/public/about/about.jpg) !important;
-  border-radius: 0px;
-  background-position: 75% 75% !important;
-  background-attachment: fixed !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-}
-
-.masthead-alumni {
-  background: url(https://shpeuf.s3.amazonaws.com/public/misc/alumni.jpg) !important;
-  border-radius: 0px;
-  background-position: 50% 50% !important;
-  background-attachment: fixed !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-}
-
-.masthead-sponsors {
-  background: url(https://shpeuf.s3.amazonaws.com/public/misc/sponsors.jpg) !important;
-  border-radius: 0px;
-  background-position: 50% 50% !important;
-  background-attachment: fixed !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-}
-
-.masthead-resources {
-  background: url(https://shpeuf.s3.amazonaws.com/public/misc/resource.png) !important;
-  border-radius: 0px;
-  background-position: 50% 35% !important;
-  background-attachment: scroll !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-}
-
-.masthead-contactus {
-  background: url(https://shpeuf.s3.amazonaws.com/public/misc/contact-us-1.JPG) !important;
-  border-radius: 0px;
-  background-position: 50% 50% !important;
-  background-attachment: fixed !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
 }
 
 .masthead-application {
@@ -357,33 +286,6 @@ textarea {
   font-size: 1.5rem !important;
 }
 
-.register {
-  background: url(https://shpeuf.s3.amazonaws.com/public/misc/register.jpg) !important;
-  border-radius: 0px;
-  background-position: 50% 50% !important;
-  background-attachment: fixed !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-}
-
-.register-alumni {
-  background: url(https://shpeuf.s3.amazonaws.com/public/misc/register-alumni.jpg) !important;
-  border-radius: 0px;
-  background-position: 50% 50% !important;
-  background-attachment: fixed !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-}
-
-.login {
-  background: url(https://shpeuf.s3.amazonaws.com/public/misc/login.jpg) !important;
-  border-radius: 0px;
-  background-position: 15% 50% !important;
-  background-attachment: fixed !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-}
-
 .reset {
   background: url(https://shpeuf.s3.amazonaws.com/public/misc/reset.jpg) !important;
   border-radius: 0px;
@@ -398,37 +300,6 @@ textarea {
   padding: 16px 16px 0px 16px !important;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-}
-
-.sponsor {
-  border-style: solid !important;
-  border-width: 3px !important;
-  border-radius: 0px;
-}
-
-.bronze {
-  border-color: rgb(163, 105, 47) !important;
-}
-
-.silver {
-  border-color: rgb(215, 215, 215) !important;
-}
-
-.gold {
-  border-color: rgb(255, 215, 0) !important;
-}
-
-.platinum {
-  background: url(https://shpeuf.s3.amazonaws.com/public/sponsors/platinum-min.png);
-}
-
-.chevron {
-  border-image-source: linear-gradient(
-    0deg,
-    rgb(227, 13, 25),
-    rgb(25, 143, 204)
-  ) !important;
-  border-image-slice: 1 !important;
 }
 
 .link-email,
@@ -671,29 +542,13 @@ div::-webkit-scrollbar-thumb {
     min-height: calc(100vh - 64px - 118px) !important;
   }
 
-  .overlay-register,
-  .overlay-login,
-  .overlay-reset,
-  .overlay-confirm {
+  .overlay-reset{
     min-height: calc(100vh - 62.41px - 118px) !important;
   }
 
-  .overlay-register,
-  .overlay-login,
-  .overlay-reset,
-  .overlay-confirm {
-    min-height: calc(100vh - 62.41px - 118px) !important;
-  }
   .masthead-title {
     margin: 0px;
     font-size: 2.5rem !important;
-  }
-  .masthead-eboard {
-    background-position: 50% 20% !important;
-  }
-  .masthead-resources {
-    background-size: 260% auto !important;
-    background-position: center 28% !important;
   }
 
   .JrEventButton {
@@ -712,17 +567,7 @@ div::-webkit-scrollbar-thumb {
     min-height: calc(100vh - 64px - 64px) !important;
   }
 
-  .overlay-register,
-  .overlay-login,
-  .overlay-reset,
-  .overlay-confirm {
-    min-height: calc(100vh - 64px - 64px) !important;
-  }
-
-  .overlay-register,
-  .overlay-login,
-  .overlay-reset,
-  .overlay-confirm {
+  .overlay-reset {
     min-height: calc(100vh - 64px - 64px) !important;
   }
 }
@@ -739,23 +584,6 @@ div::-webkit-scrollbar-thumb {
 
 .confirmMsg {
   text-align: center;
-}
-
-.corp-button {
-  margin-top: 4px !important;
-  margin-bottom: 4px !important;
-  padding-left: 0em !important;
-  padding-right: 0em !important;
-}
-
-.corp-logo {
-  /* width: 100%;
-  height: 20rem;
-  object-fit: contain; */
-  width: 100% !important;
-  /* height: 20vw; */
-  height: 15rem !important;
-  object-fit: cover;
 }
 
 .card-image {

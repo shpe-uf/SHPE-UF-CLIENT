@@ -1,0 +1,8 @@
+.masthead-about {
+  background: url(https://shpeuf.s3.amazonaws.com/public/about/about.jpg) !important;
+  border-radius: 0px;
+  background-position: 75% 75% !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}

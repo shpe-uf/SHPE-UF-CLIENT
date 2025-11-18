@@ -3,6 +3,7 @@ import { Container, Card } from "semantic-ui-react";
 import { Media } from "../../Media";
 import DevTeamCards from "../../components/DevTeam/WebsiteTeamCards";
 import DevTeamTabs from "../../components/DevTeam/DevTeamTabs";
+import "./styles/DevTeam.css";
 
 function DevTeam() {
   return (

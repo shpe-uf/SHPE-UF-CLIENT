@@ -1,0 +1,20 @@
+.register {
+  background: url(https://shpeuf.s3.amazonaws.com/public/misc/register.jpg) !important;
+  border-radius: 0px;
+  background-position: 50% 50% !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+@media (max-width: 991px) {
+  .overlay-register {
+    min-height: calc(100vh - 62.41px - 118px) !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .overlay-register {
+    min-height: calc(100vh - 64px - 64px) !important;
+  }
+}

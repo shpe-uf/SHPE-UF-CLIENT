@@ -13,6 +13,7 @@ import gql from "graphql-tag";
 import { AuthContext } from "../../context/auth";
 import { useForm } from "../../util/hooks";
 import { NavLink, useNavigate } from "react-router-dom";
+import "./styles/Login.css";
 
 function Login(props) {
   const context = useContext(AuthContext);
