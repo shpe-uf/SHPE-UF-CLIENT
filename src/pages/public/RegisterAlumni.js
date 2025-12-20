@@ -16,6 +16,7 @@ import { useForm } from "../../util/hooks";
 import majorOptions from "../../assets/options/major.json";
 import countryOptions from "../../assets/options/country.json";
 import stateOptions from "../../assets/options/state.json";
+import "./styles/RegisterAlumni.css";
 
 function RegisterAlumni(props) {
   const [errors, setErrors] = useState({});

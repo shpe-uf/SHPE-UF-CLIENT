@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Grid, Button } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import "./styles/Alumni.css";
 
 function Alumni() {
   return (

@@ -5,6 +5,7 @@ import { FETCH_PARTNERS_QUERY } from '../../util/graphql'
 
 import { Container, Grid, Image, ImageGroup, Modal, Button, Icon, CardContent, CardHeader } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import "./styles/Sponsors.css";
 
 // import sponsors from "../../assets/images/sponsors"
 
