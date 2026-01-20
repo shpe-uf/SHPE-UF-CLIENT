@@ -39,6 +39,7 @@ function Sponsors() {
               return (
                 <React.Fragment key={tier}>
                   <h2 style={{
+                    ...(tier === "Platinum" && { color: "#74d3daff" }),
                     ...(tier === "Gold" && { color: "#d4af37" }),
                     ...(tier === "Silver" && { color: "silver" }),
                     ...(tier === "Bronze" && { color: "#CE8946" })
@@ -46,6 +47,7 @@ function Sponsors() {
                     {tier} Partners</h2>
                   <Grid.Row style={{
                     gap: "30px", width: "80% !important",
+                    ...(tier === "Platinum" && { filter: "drop-shadow(1px 14px 20px #93f1f8ff)" }),
                     ...(tier === "Gold" && { filter: "drop-shadow(1px 14px 20px #d4af37)" }),
                     ...(tier === "Silver" && { filter: "drop-shadow(1px 14px 20px silver)" }),
                     ...(tier === "Bronze" && { filter: "drop-shadow(1px 14px 20px #CE8946)" })
