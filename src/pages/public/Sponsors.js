@@ -18,7 +18,7 @@ function Sponsors() {
     return accumulator
   }, {})
 
-  const tierOrder = ["Platinum", "Gold", "Silver", "Bronze"]
+  const tierOrder = ["Diamond", "Gold", "Silver", "Bronze"]
 
   return (
     <div className="body">
