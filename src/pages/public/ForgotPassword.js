@@ -6,6 +6,7 @@ import { useMutation } from "@apollo/client";
 
 import { useForm } from "../../util/hooks";
 import { NavLink } from "react-router-dom";
+import "./styles/ForgotPassword.css";
 
 function ForgotPassword(props){
 

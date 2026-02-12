@@ -226,12 +226,6 @@ textarea {
   margin-bottom: 24px;
 }
 
-.overlay-reset {
-  background-color: var(--primary-overlay);
-  width: 100%;
-  padding: 32px 0px;
-}
-
 .masthead {
   background-color: var(--grey);
   width: 100%;
@@ -284,15 +278,6 @@ textarea {
 
 .header {
   font-size: 1.5rem !important;
-}
-
-.reset {
-  background: url(https://shpeuf.s3.amazonaws.com/public/misc/reset.jpg) !important;
-  border-radius: 0px;
-  background-position: 15% 50% !important;
-  background-attachment: fixed !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
 }
 
 .title-bg-accent-1 {
@@ -510,12 +495,6 @@ div::-webkit-scrollbar-thumb {
   font-family: "body-font";
 }
 
-.resetLink {
-  display: inline-block;
-  margin-top: 12px;
-  margin-left: 10px;
-}
-
 .loading {
   padding: 12%;
 }
@@ -542,10 +521,6 @@ div::-webkit-scrollbar-thumb {
     min-height: calc(100vh - 64px - 118px) !important;
   }
 
-  .overlay-reset{
-    min-height: calc(100vh - 62.41px - 118px) !important;
-  }
-
   .masthead-title {
     margin: 0px;
     font-size: 2.5rem !important;
@@ -567,15 +542,6 @@ div::-webkit-scrollbar-thumb {
     min-height: calc(100vh - 64px - 64px) !important;
   }
 
-  .overlay-reset {
-    min-height: calc(100vh - 64px - 64px) !important;
-  }
-}
-
-.resetLink {
-  display: inline-block;
-  margin-top: 12px;
-  margin-left: 10px;
 }
 
 .loading {
