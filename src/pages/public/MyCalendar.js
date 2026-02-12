@@ -4,6 +4,7 @@ import {Button, Modal} from 'semantic-ui-react';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import ReactHTMLParser from 'html-react-parser'; 
+import './styles/MyCalendar.css';
  
 const localizer = momentLocalizer(moment);
 
@@ -68,7 +69,7 @@ function MyCalendar() {
     }, []);
 
     return (
-        <div style={{padding: '1% 10%' }}>
+        <div className="calendar-padding">
             <Calendar
                 localizer={localizer}
                 events={events}
@@ -87,11 +88,11 @@ function MyCalendar() {
             <Modal.Content>
             <Modal.Content>
     <Modal.Description>
-        <div style={{padding: '1% 10%' }}>
+        <div className="calendar-padding">
             <strong>Description: </strong>
             {currEvent.desc}
         </div>
-        <div style={{padding: '1% 10%' }}>
+        <div className="calendar-padding">
         <div>
         <strong>Start Time:</strong>{' '}
         {moment(currEvent.start).format('MMMM Do YYYY, h:mm a')}
