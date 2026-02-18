@@ -1,6 +1,7 @@
 import React from "react";
 import { Card } from "semantic-ui-react";
 import CabinetModal from "../components/CabinetModal";
+import placeholder from "../assets/images/placeholder.png";
 
 /*
 
@@ -16,7 +17,7 @@ import externalPositions from "../assets/options/external.json";
 import internalPositions from "../assets/options/internal.json";
 */
 
-import eboard from "../assets/eboard";
+// import eboard from "../assets/eboard";
 
 function cabinet(cabinet, description, email, pic) {
   return CabinetModal(cabinet, description, email, pic);
@@ -133,7 +134,80 @@ const internalDescription = (
   </span>
 );
 
-function EBoardCards() {
+const EBOARD_LAYOUT = [
+  {
+    position: "President",
+    meta: "President",
+    cabinet: "President",
+    description: presidentDescription,
+    email: "president.shpeuf@gmail.com",
+  },
+  {
+    position: "VP of Research",
+    meta: "VP of Research",
+    cabinet: "Research Cabinet",
+    description: researchDescription,
+    email: "vpresearch.shpeuf@gmail.com",
+  },
+  {
+    position: "Secretary",
+    meta: "Secretary",
+    cabinet: "Secretary Cabinet",
+    description: secretaryDescription,
+    email: "secretary.shpeuf@gmail.com",
+  },
+  {
+    position: "Treasurer",
+    meta: "Treasurer",
+    cabinet: "Treasury Cabinet",
+    description: treasurerDescription,
+    email: "treasurer.shpeuf@gmail.com",
+  },
+  {
+    position: "VP of Marketing",
+    meta: "VP of Marketing",
+    cabinet: "Marketing Cabinet",
+    description: marketingDescription,
+    email: "vpmarketing.shpeuf@gmail.com",
+  },
+  {
+    position: "VP of Technology",
+    meta: "VP of Technology",
+    cabinet: "Tech Cabinet",
+    description: techDescription,
+    email: "vptech.shpeuf@gmail.com",
+  },
+  {
+    position: "VP of Corporate Affairs",
+    meta: "VP of Corporate Affairs",
+    cabinet: "Corporate Cabinet",
+    description: corporateDescription,
+    email: "vpcorporate.shpeuf@gmail.com",
+  },
+  {
+    position: "VP of External Affairs",
+    meta: "VP of External Affairs",
+    cabinet: "External Cabinet",
+    description: externalDescription,
+    email: "vpexternal.shpeuf@gmail.com",
+  },
+  {
+    position: "VP of Internal Affairs",
+    meta: "VP of Internal Affairs",
+    cabinet: "Internal Cabinet",
+    description: internalDescription,
+    email: "vpinternal.shpeuf@gmail.com",
+  },
+];
+
+const renderCardImage = (src, alt) => (
+  <div className="eboard-card-image">
+    <img src={src} alt={alt} />
+  </div>
+);
+
+function EBoardCards({ members = [] }) {
+  /*
   return (
     <>
       <Card
@@ -237,6 +311,35 @@ function EBoardCards() {
       />
     </>
   );
+  */
+  const membersByPosition = React.useMemo(() => {
+    const map = {};
+    members.forEach((member) => {
+      if (!member || member.active === false || !member.position) return;
+      const normalized = member.position.trim();
+      if (!map[normalized]) {
+        map[normalized] = member;
+      }
+    });
+    return map;
+  }, [members]);
+
+  const cards = EBOARD_LAYOUT.map((entry) => {
+    const member = membersByPosition[entry.position];
+    if (!member) return null;
+    const image = member.picture || placeholder;
+    return (
+      <Card
+        key={entry.position}
+        image={renderCardImage(image, member.name)}
+        header={member.name}
+        meta={entry.meta}
+        extra={cabinet(entry.cabinet, entry.description, entry.email, image)}
+      />
+    );
+  }).filter(Boolean);
+
+  return <>{cards}</>;
 }
 
 export default EBoardCards;

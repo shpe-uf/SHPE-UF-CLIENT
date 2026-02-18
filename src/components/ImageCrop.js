@@ -3,12 +3,12 @@ import { Button } from 'semantic-ui-react';
 import Cropper from 'react-cropper';
 import 'cropperjs/dist/cropper.css';
 
-function ImageCrop(props) {
+function ImageCrop({ setPhotoFile, values, type, disabled }) {
   const [cropPhoto, setCropPhoto] = useState(null);
-  const [croppedUrl, setCroppedUrl] = useState(null);
   const cropperRef = useRef(null);
 
   const photoSelectedHandler = useCallback((event) => {
+    if (disabled) return;
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       const reader = new FileReader();
@@ -17,7 +17,7 @@ function ImageCrop(props) {
       };
       reader.readAsDataURL(file);
     }
-  }, []);
+  }, [disabled]);
 
   const cropImage = () => {
     const cropper = cropperRef.current?.cropper;
@@ -26,7 +26,6 @@ function ImageCrop(props) {
       const canvas = cropper.getCroppedCanvas({ width: 500, height: 500 });
       if (canvas) {
         const url = canvas.toDataURL('image/jpeg', 0.5);
-        setCroppedUrl(url);
         return url;
       }
     }
@@ -36,31 +35,25 @@ function ImageCrop(props) {
   const setImage = () => {
     const croppedUrl = cropImage();
     if (croppedUrl) {
-      if (props.type === 'corporation') {
-        props.values.logo = croppedUrl;
-        props.setPhotoFile(croppedUrl);
-      } else if (props.type === 'profile') {
-        props.values.photo = croppedUrl;
-        props.setPhotoFile(croppedUrl);
-      } else if (props.type === 'reimbursementR') {
-        props.values.receiptPhoto = croppedUrl;
-        props.setPhotoFile(croppedUrl);
-      } else if (props.type === 'reimbursementF') {
-        props.values.eventFlyer = croppedUrl;
-        props.setPhotoFile(croppedUrl);
-      } else if (props.type === 'partner') {
-        props.values.photo = croppedUrl;
-        props.setPhotoFile(croppedUrl);
-      }
+      if (type === 'corporation') values.logo = croppedUrl;
+      else if (type === 'profile' || type === 'partner') values.photo = croppedUrl;
+      else if (type === 'reimbursementR') values.receiptPhoto = croppedUrl;
+      else if (type === 'reimbursementF') values.eventFlyer = croppedUrl;
+      else values.picture = croppedUrl;
+
+      setPhotoFile(croppedUrl);
       setCropPhoto(null); // Clear crop photo to hide the cropper
     }
   };
 
-  // Reset crop photo and cropped URL when props change
+  const clearImage = () => {
+    setCropPhoto(null);
+  };
+
+  // Reset crop photo when component type changes
   useEffect(() => {
     setCropPhoto(null);
-    setCroppedUrl(null);
-  }, [props.values.logo, props.type]);
+  }, [type]);
 
   return (
     <>
@@ -68,6 +61,7 @@ function ImageCrop(props) {
         type="file"
         accept="image/*"
         onChange={photoSelectedHandler}
+        disabled={disabled}
       />
       {cropPhoto && (
         <>
@@ -79,18 +73,15 @@ function ImageCrop(props) {
             guides={false}
             ref={cropperRef}
           />
-          <Button
-            type="button"
-            onClick={setImage}
-          >
-            Select
-          </Button>
+          <div style={{ marginTop: 8 }}>
+            <Button type="button" onClick={setImage}>
+              Select
+            </Button>
+            <Button type="button" onClick={clearImage} style={{ marginLeft: 8 }}>
+              Remove
+            </Button>
+          </div>
         </>
-      )}
-      {croppedUrl && (
-        <div>
-          <img src={croppedUrl} alt="Cropped" style={{ width: '100%' }} />
-        </div>
       )}
     </>
   );

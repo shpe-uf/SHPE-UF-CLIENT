@@ -80,6 +80,33 @@ export const FETCH_EVENTS_QUERY = gql`
   }
 `;
 
+export const FETCH_EBOARD_QUERY = gql`
+  {
+    getEboard {
+      id
+      position
+      name
+      picture
+      active
+      createdAt
+    }
+  }
+`;
+
+export const FETCH_DEVTEAM_QUERY = gql`
+  {
+    getDevTeam {
+      id
+      name
+      position
+      team
+      picture
+      active
+      createdAt
+    }
+  }
+`;
+
 export const FETCH_ALUMNIS_QUERY = gql`
   {
     getAlumnis {
@@ -267,6 +294,99 @@ export const FETCH_RECEIPTS_QUERY = gql`
       datePickedUp
       dateClosed
       deleted
+    }
+  }
+`;
+
+export const CREATE_EBOARD_MEMBER = gql`
+  mutation CreateEboardMember($position: String!, $name: String!, $picture: String!) {
+    createEboardMember(
+      createEboardInput: { position: $position, name: $name, picture: $picture }
+    ) {
+      id
+      position
+      name
+      picture
+      active
+      createdAt
+    }
+  }
+`;
+
+export const CREATE_DEVTEAM_MEMBER = gql`
+  mutation CreateDevTeamMember(
+    $name: String!
+    $position: String!
+    $team: String!
+    $picture: String!
+  ) {
+    createDevTeamMember(
+      createDevTeamInput: { name: $name, position: $position, team: $team, picture: $picture }
+    ) {
+      id
+      name
+      position
+      team
+      picture
+      active
+      createdAt
+    }
+  }
+`;
+
+export const UPDATE_EBOARD_MEMBER = gql`
+  mutation UpdateEboardMember(
+    $id: ID!
+    $position: String!
+    $name: String!
+    $picture: String!
+    $active: Boolean!
+  ) {
+    updateEboardMember(
+      updateEboardInput: {
+        id: $id
+        position: $position
+        name: $name
+        picture: $picture
+        active: $active
+      }
+    ) {
+      id
+      position
+      name
+      picture
+      active
+      createdAt
+    }
+  }
+`;
+
+export const UPDATE_DEVTEAM_MEMBER = gql`
+  mutation UpdateDevTeamMember(
+    $id: ID!
+    $name: String!
+    $position: String!
+    $team: String!
+    $picture: String!
+    $active: Boolean!
+  ) {
+    updateDevTeamMember(
+      updateDevTeamInput: {
+        id: $id
+        name: $name
+        position: $position
+        team: $team
+        picture: $picture
+        active: $active
+      }
+    ) {
+      id
+      name
+      position
+      team
+      picture
+      active
+      createdAt
     }
   }
 `;

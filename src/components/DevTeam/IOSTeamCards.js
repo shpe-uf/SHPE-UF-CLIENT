@@ -1,6 +1,8 @@
 import React from "react";
-import { Card, CardHeader } from "semantic-ui-react";
+import { Card } from "semantic-ui-react";
+import placeholder from "../../assets/images/placeholder.png";
 
+/*
 const team = {
   daniel: "https://shpeuf.s3.amazonaws.com/public/team/iOS_Team/Daniel_parra.jpg",
   ashley: "https://shpeuf.s3.amazonaws.com/public/team/iOS_Team/dev.png",
@@ -10,21 +12,42 @@ const team = {
   simar: "https://shpeuf.s3.amazonaws.com/public/team/iOS_Team/simar_khetpal.jpg",
   matthew: "https://shpeuf.s3.amazonaws.com/public/team/iOS_Team/matthew_segura.jpg",
   david_vera: "https://shpeuf.s3.amazonaws.com/public/team/iOS_Team/dev.png",
-
-
-}
+};
 
 function DevTeamCards() {
   return (
     <>
-        <Card fluid image={team.daniel} header="Daniel Parra" meta="Swift Lead" />
-        <Card fluid image={team.ashley} header="Ashley Guerra" meta="Project Manager" />    
-        <Card fluid image={team.david_denis} header="David Denis" meta="iOS Developer" />     
-        <Card fluid image={team.mazin} header="Mazin Saleh" meta="iOS Developer" />   
-        <Card fluid image={team.vivian} header="Vivian Rincon" meta="iOS Developer" />   
-        <Card fluid image={team.simar} header="Simar Kheptal" meta="iOS Developer" />   
-        <Card fluid image={team.matthew} header="Matthew Segura" meta="iOS Developer" />   
-        <Card fluid image={team.david_vera} header="David Vera" meta="iOS Developer" /> 
+      <Card fluid image={team.daniel} header="Daniel Parra" meta="Swift Lead" />
+      <Card fluid image={team.ashley} header="Ashley Guerra" meta="Project Manager" />
+      <Card fluid image={team.david_denis} header="David Denis" meta="iOS Developer" />
+      <Card fluid image={team.mazin} header="Mazin Saleh" meta="iOS Developer" />
+      <Card fluid image={team.vivian} header="Vivian Rincon" meta="iOS Developer" />
+      <Card fluid image={team.simar} header="Simar Kheptal" meta="iOS Developer" />
+      <Card fluid image={team.matthew} header="Matthew Segura" meta="iOS Developer" />
+      <Card fluid image={team.david_vera} header="David Vera" meta="iOS Developer" />
+    </>
+  );
+}
+*/
+
+const renderSquareImage = (src, alt) => (
+  <div className="devteam-card-image">
+    <img src={src} alt={alt} />
+  </div>
+);
+
+function DevTeamCards({ members = [] }) {
+  return (
+    <>
+      {members.map((member) => (
+        <Card
+          fluid
+          key={member.id || member.name}
+          image={renderSquareImage(member.picture || placeholder, member.name)}
+          header={member.name}
+          meta={member.position}
+        />
+      ))}
     </>
   );
 }

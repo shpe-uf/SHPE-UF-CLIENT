@@ -6,9 +6,18 @@ import { useForm } from "../util/hooks";
 
 import Title from "../components/Title";
 import ResourcesTable from "../components/ResourcesTable";
+import TeamsView from "../components/TeamsView";
 
-import { FETCH_RESOURCES_QUERY } from "../util/graphql";
-import { FETCH_GBMSLIDES_QUERY } from "../util/graphql";
+import {
+  FETCH_RESOURCES_QUERY,
+  FETCH_GBMSLIDES_QUERY,
+  FETCH_EBOARD_QUERY,
+  FETCH_DEVTEAM_QUERY,
+  CREATE_EBOARD_MEMBER,
+  CREATE_DEVTEAM_MEMBER,
+  UPDATE_EBOARD_MEMBER,
+  UPDATE_DEVTEAM_MEMBER,
+} from "../util/graphql";
 import { compressPdfToBlob, blobToDataUrl } from "../util/PdfCompress";
 
 function AdminResources() {
@@ -16,6 +25,9 @@ function AdminResources() {
   const [createResourceModal, setCreateResourceModal] = useState(false);
   const [createGbmSlideModal, setCreateGbmSlideModal] = useState(false);
   const [isCompressing, setIsCompressing] = useState(false);
+  const [showTeamsView, setShowTeamsView] = useState(false);
+
+  const toggleTeamsView = () => setShowTeamsView((prev) => !prev);
 
   const fileToDataUrl = (file) =>
     new Promise((resolve, reject) => {
@@ -48,6 +60,48 @@ function AdminResources() {
 
   const { data: gbmData } = useQuery(FETCH_GBMSLIDES_QUERY, {});
   if (gbmData) gbmslides = gbmData.getGbmSlides;
+
+  const {
+    data: eboardData,
+    loading: eboardLoading,
+    error: eboardError,
+    refetch: refetchEboard,
+  } = useQuery(FETCH_EBOARD_QUERY);
+  const {
+    data: devTeamData,
+    loading: devTeamLoading,
+    error: devTeamError,
+    refetch: refetchDevTeam,
+  } = useQuery(FETCH_DEVTEAM_QUERY);
+
+  React.useEffect(() => {
+    if (eboardError) {
+      console.error("Eboard query error", eboardError);
+    }
+  }, [eboardError]);
+
+  React.useEffect(() => {
+    if (devTeamError) {
+      console.error("DevTeam query error", devTeamError);
+    }
+  }, [devTeamError]);
+
+  const eboardMembers = React.useMemo(
+    () => (eboardData?.getEboard ? eboardData.getEboard : []),
+    [eboardData]
+  );
+  const devTeamMembers = React.useMemo(
+    () => (devTeamData?.getDevTeam ? devTeamData.getDevTeam : []),
+    [devTeamData]
+  );
+
+  React.useEffect(() => {
+    console.log("Eboard members fetched", eboardMembers);
+  }, [eboardMembers]);
+
+  React.useEffect(() => {
+    console.log("Dev team members fetched", devTeamMembers);
+  }, [devTeamMembers]);
 
   // Merge rows so the table shows both resources and gbm slides
   const rows = React.useMemo(
@@ -156,6 +210,96 @@ function AdminResources() {
     }
   );
 
+  const [createEboardMember] = useMutation(CREATE_EBOARD_MEMBER, {
+    onCompleted: () => {
+      refetchEboard();
+    },
+    onError: (err) => {
+      console.error("E-Board mutation error:", err);
+      setErrors(extractApolloErrors(err));
+      throw err;
+    },
+  });
+
+  const [createDevTeamMember] = useMutation(CREATE_DEVTEAM_MEMBER, {
+    onCompleted: () => {
+      refetchDevTeam();
+    },
+    onError: (err) => {
+      console.error("Dev Team mutation error:", err);
+      setErrors(extractApolloErrors(err));
+      throw err;
+    },
+  });
+
+  const [updateEboardMember] = useMutation(UPDATE_EBOARD_MEMBER, {
+    onCompleted: () => {
+      refetchEboard();
+    },
+    onError: (err) => {
+      console.error("E-Board update error:", err);
+      setErrors(extractApolloErrors(err));
+      throw err;
+    },
+  });
+
+  const [updateDevTeamMember] = useMutation(UPDATE_DEVTEAM_MEMBER, {
+    onCompleted: () => {
+      refetchDevTeam();
+    },
+    onError: (err) => {
+      console.error("Dev Team update error:", err);
+      setErrors(extractApolloErrors(err));
+      throw err;
+    },
+  });
+
+  const handleAddMember = (payload) => {
+    if (!payload) return Promise.resolve();
+    if (payload.type === "eboard") {
+      return createEboardMember({
+        variables: {
+          position: payload.position,
+          name: payload.fullName,
+          picture: payload.picture,
+        },
+      });
+    }
+    return createDevTeamMember({
+      variables: {
+        name: payload.fullName,
+        position: payload.position,
+        team: payload.team,
+        picture: payload.picture,
+      },
+    });
+  };
+
+  const handleEditMember = (payload) => {
+    if (!payload) return Promise.resolve();
+    if (payload.type === "eboard") {
+      return updateEboardMember({
+        variables: {
+          id: payload.id,
+          position: payload.position,
+          name: payload.fullName,
+          picture: payload.picture,
+          active: payload.active,
+        },
+      });
+    }
+    return updateDevTeamMember({
+      variables: {
+        id: payload.id,
+        name: payload.fullName,
+        position: payload.position,
+        team: payload.team,
+        picture: payload.picture,
+        active: payload.active,
+      },
+    });
+  };
+
   function createResourceCallback() {
     createResource();
   }
@@ -191,9 +335,16 @@ function AdminResources() {
       <Title title="Resources" adminPath={window.location.pathname} />
       <Container className="body">
         <Grid>
-          <Grid.Row columns="2">
+          <Grid.Row columns="1">
             <Grid.Column>{/* spacer */}</Grid.Column>
             <Grid.Column>
+              <Button
+                content={showTeamsView ? "View Resources" : "View Teams"}
+                icon="eye"
+                labelPosition="left"
+                onClick={toggleTeamsView}
+                floated="right"
+              />
               <Button
                 content="Create Resource"
                 icon="pencil"
@@ -212,7 +363,17 @@ function AdminResources() {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column>
-              <ResourcesTable resources={rows} />
+              {showTeamsView ? (
+                <TeamsView
+                  eboardMembers={eboardMembers}
+                  devTeamMembers={devTeamMembers}
+                  loading={eboardLoading || devTeamLoading}
+                  onAddMember={handleAddMember}
+                  onEditMember={handleEditMember}
+                />
+              ) : (
+                <ResourcesTable resources={rows} />
+              )}
             </Grid.Column>
           </Grid.Row>
         </Grid>
@@ -330,7 +491,7 @@ function AdminResources() {
                           });
 
                           const approxBase64Bytes = Math.ceil((compressedBlob.size * 4) / 3);
-                          const maxBytes = 8 * 1024 * 1024; 
+                          const maxBytes = 8 * 1024 * 1024;
                           if (approxBase64Bytes > maxBytes) {
                             setErrors({
                               link: "PDF still too large after compression (~>8MB). Try a smaller file.",

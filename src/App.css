@@ -1061,3 +1061,38 @@ ul.nav li.active {
     justify-content: center;
 }
 
+.eboard-card-image {
+  position: relative;
+  width: 100%;
+  padding-top: 135%;
+  overflow: hidden;
+  background: #f7f7f7;
+}
+
+.eboard-card-image img {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100%;
+  width: auto;
+  min-width: 100%;
+  object-fit: cover;
+}
+
+.devteam-card-image {
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+  overflow: hidden;
+  background: #f7f7f7;
+}
+
+.devteam-card-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}

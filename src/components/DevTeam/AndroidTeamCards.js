@@ -1,6 +1,8 @@
 import React from "react";
-import { Card, CardHeader } from "semantic-ui-react";
+import { Card } from "semantic-ui-react";
+import placeholder from "../../assets/images/placeholder.png";
 
+/*
 const team = {
   anthony: "https://shpeuf.s3.amazonaws.com/public/team/Kotlin_Team/anthony_zurita.jpg",
   andrei: "https://shpeuf.s3.amazonaws.com/public/team/Kotlin_Team/andrei_ursu.jpg",
@@ -10,19 +12,42 @@ const team = {
   josue: "https://shpeuf.s3.amazonaws.com/public/team/dev.png",
   francoise: "https://shpeuf.s3.amazonaws.com/public/team/dev.png",
   sebastian: "https://shpeuf.s3.amazonaws.com/public/team/dev.png"
-}
+};
 
 function DevTeamCards() {
   return (
     <>
-        <Card fluid image={team.anthony} header="Anthony Zurita" meta="Kotlin Lead" />
-        <Card fluid image={team.andrei} header="Andrei Ursu" meta="Project Manager" />      
-        <Card fluid image={team.jake} header="Jake West" meta="Kotlin Developer" />  
-        <Card fluid image={team.adrian} header="Adrian Pelaez" meta="Kotlin Developer" /> 
-        <Card fluid image={team.braulio} header="Braulio Quintana" meta="Kotlin Developer" /> 
-        <Card fluid image={team.josue} header="Josue Vicente" meta="Kotlin Developer" /> 
-        <Card fluid image={team.francoise} header="Francoise Hayek" meta="Kotlin Developer" /> 
-        <Card fluid image={team.sebastian} header="Sebastian Villamizar" meta="Kotlin Developer" /> 
+      <Card fluid image={team.anthony} header="Anthony Zurita" meta="Kotlin Lead" />
+      <Card fluid image={team.andrei} header="Andrei Ursu" meta="Project Manager" />
+      <Card fluid image={team.jake} header="Jake West" meta="Kotlin Developer" />
+      <Card fluid image={team.adrian} header="Adrian Pelaez" meta="Kotlin Developer" />
+      <Card fluid image={team.braulio} header="Braulio Quintana" meta="Kotlin Developer" />
+      <Card fluid image={team.josue} header="Josue Vicente" meta="Kotlin Developer" />
+      <Card fluid image={team.francoise} header="Francoise Hayek" meta="Kotlin Developer" />
+      <Card fluid image={team.sebastian} header="Sebastian Villamizar" meta="Kotlin Developer" />
+    </>
+  );
+}
+*/
+
+const renderSquareImage = (src, alt) => (
+  <div className="devteam-card-image">
+    <img src={src} alt={alt} />
+  </div>
+);
+
+function DevTeamCards({ members = [] }) {
+  return (
+    <>
+      {members.map((member) => (
+        <Card
+          fluid
+          key={member.id || member.name}
+          image={renderSquareImage(member.picture || placeholder, member.name)}
+          header={member.name}
+          meta={member.position}
+        />
+      ))}
     </>
   );
 }
