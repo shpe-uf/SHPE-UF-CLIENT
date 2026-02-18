@@ -67,6 +67,7 @@ function ResourcesTable({ resources }) {
                           setDeleteResourceModal(true);
                         }}
                         color="red"
+                        disabled={resource.kind === "gbm"}
                       >
                         <Icon name="x" />
                       </Button>
