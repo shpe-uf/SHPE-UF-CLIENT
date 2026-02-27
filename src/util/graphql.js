@@ -260,3 +260,10 @@ export const FETCH_RECEIPTS_QUERY = gql`
     }
   }
 `;
+
+export const FETCH_TOP_USERS_QUERY = gql`
+  query getTopUsers($semester: String!, $year: Int!) 
+  {
+    getTopUsers(semester: $semester, year: $year)
+  }
+`;
