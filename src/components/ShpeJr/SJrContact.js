@@ -48,8 +48,8 @@ const SJrContact = () =>{
           <Grid.Column>
             <Card.Group centered itemsPerRow={1.1}>
               <Card
-                image={"https://shpeuf.s3.amazonaws.com/public/eboard/VPExternal"}
-                header="Sebastian Sobrino"
+                image={"https://shpeuf.s3.us-east-1.amazonaws.com/public/eboard/VPExternal-2025.png"}
+                header="Vivian Rincon"
                 meta="VP of External Affairs"
                 extra={contact("vpexternal.shpeuf@gmail.com")}    
               />
@@ -65,8 +65,8 @@ const SJrContact = () =>{
           <Grid.Column>
             <Card.Group centered itemsPerRow={1.1}>
               <Card
-                image={"https://shpeuf.s3.amazonaws.com/public/shpejr/shpeJrChair.jpg"}
-                header="Maria Isabel Herreros"
+                image={"https://shpeuf.s3.us-east-1.amazonaws.com/public/shpejr/shpeJrChair_2025.jpeg"}
+                header="Juan Yarala"
                 meta="SHPE JR Chair"
                 extra={contact("shpejrchair.shpeuf@gmail.com")}   
               />
@@ -87,8 +87,8 @@ const SJrContact = () =>{
           <Grid.Column>
             <Card.Group centered itemsPerRow={1.1}>
               <Card
-                image={"https://shpeuf.s3.amazonaws.com/public/eboard/VPExternal"}
-                header="Sebastian Sobrino"
+                image={"https://shpeuf.s3.us-east-1.amazonaws.com/public/eboard/VPExternal-2025.png"}
+                header="Vivian Rincon"
                 meta="VP of External Affairs"
                 extra={contact("vpexternal.shpeuf@gmail.com")}    
               />
@@ -104,8 +104,8 @@ const SJrContact = () =>{
           <Grid.Column>
             <Card.Group centered itemsPerRow={1.1}>
               <Card
-                image={"https://shpeuf.s3.amazonaws.com/public/shpejr/shpeJrChair.jpg"}
-                header="Maria Isabel Herreros"
+                image={"https://shpeuf.s3.us-east-1.amazonaws.com/public/shpejr/shpeJrChair_2025.jpeg"}
+                header="Juan Yarala"
                 meta="SHPE JR Chair"
                 extra={contact("shpejrchair.shpeuf@gmail.com")}   
               />
