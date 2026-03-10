@@ -9,7 +9,7 @@ const Freshman1011 =
 const Freshman1012 =
   "https://shpeuf.s3.amazonaws.com/public/resources/F1012_2025.jpg";
 const Playlist =
-  "https://shpeuf.s3.amazonaws.com/public/resources/playlist.jpg";
+  "https://shpeuf.s3.us-east-1.amazonaws.com/public/resources/SHPlaylist.png";
 const Podcast = "https://shpeuf.s3.amazonaws.com/public/resources/SHPECast.jpg";
 const Spotify = "https://shpeuf.s3.amazonaws.com/public/resources/spotify.jpg";
 const Stitcher =
@@ -35,8 +35,8 @@ const GBMSlidesSegment = () => (
     </b>
     <Grid divided centered>
       <Grid.Column width={10}>
-        <GBMSlidesAccordion semesterYear="Fall 2023" />
-        <GBMSlidesAccordion semesterYear="Spring 2024" />
+        <GBMSlidesAccordion semesterYear="Fall 2025" />
+        <GBMSlidesAccordion semesterYear="Spring 2026" />
       </Grid.Column>
     </Grid>
   </div>
@@ -103,19 +103,19 @@ const MediaSegment = () => (
     </Header>
     <Grid divided stackable>
       <Grid.Column width={5}>
-        <h4>SHPlaylist Vol2: Volvimos</h4>
+        <h4> THE SHPlaylist</h4>
         <Image
           src={Playlist}
           as="a"
           size="medium"
-          href="https://open.spotify.com/playlist/0n5zoBgHE6CEnaZKAa6oSK"
+          href="https://open.spotify.com/playlist/5LjBy5fbxKRmUfFAx16wsk?si=ylahvo97R1K7phdLhNXOtw"
           target="_blank"
         />
         <br />
         <b>Enjoy the official SHPE UF curated playlist</b>
         <a
           class="extra"
-          href="https://open.spotify.com/playlist/0n5zoBgHE6CEnaZKAa6oSK"
+          href="https://open.spotify.com/playlist/5LjBy5fbxKRmUfFAx16wsk?si=ylahvo97R1K7phdLhNXOtw"
           target="_blank"
         >
           <b> here!</b>
@@ -157,6 +157,24 @@ const MediaSegment = () => (
       <Grid.Column width={5}>
         <h4>Episodes</h4>
         <List divided relaxed>
+        <List.Item
+            href="https://open.spotify.com/episode/7cL6CedBIliekDkqqU20OW?si=AHyEh_GwSLGdgchgSoX2sg"
+            target="_blank"
+          >
+            <List.Icon name="spotify" color="black" />
+            <List.Content>
+              <b># 6- The Freshman Experience: Embracing Your First Year</b>
+            </List.Content>
+          </List.Item>
+        <List.Item
+            href="https://open.spotify.com/episode/0H1EBPEzE4rx1L6ee8Y5oL?si=paebmBGaTo6E_ovBNkUKrg"
+            target="_blank"
+          >
+            <List.Icon name="spotify" color="black" />
+            <List.Content>
+              <b># 5- Interview Experience: Tips, Tricks, & Terrors</b>
+            </List.Content>
+          </List.Item>
           <List.Item
             href="https://open.spotify.com/episode/7HLm0AsslxrRNGU2PEfh2u?si=707f1ebe40994a8b"
             target="_blank"
@@ -332,7 +350,7 @@ const MediaSegment = () => (
 const LinksSegment = () => (
   <div>
     <br />
-    <b>Checkout some of our additional resources with these links!</b>
+    <b>Check out some of our additional resources with these links!</b>
     <Divider />
     <List animated>
       <List.Item
@@ -348,7 +366,7 @@ const LinksSegment = () => (
         <b>Professional Development & Resources</b>
       </List.Item>
       <List.Item
-        href="https://drive.google.com/drive/folders/1AP0N79ZLef9ilpCrp_hZR6uxHCGJoUvX"
+        href="https://drive.google.com/drive/folders/1aKXTC4mBIDnBR4NfBy9HbCmHCJ3AFjEh?usp=sharing"
         target="_blank"
       >
         <b>Academic SHPEducation Resources</b>

@@ -126,12 +126,6 @@ function ResourcesCards() {
                 extra={<a class="extra" href="https://forms.gle/umEMS2BWJb5stXM78" target="_blank">Fill out the form here!</a>}
             />
             <Card
-                image={<Image src={GBM} as="a" href="https://recruitmentshpeuf.wixsite.com/shpeuf-recruitment" target="_blank" />}
-                header={<Grid><Grid.Column textAlign="center">{<a className="ui header" href="https://recruitmentshpeuf.wixsite.com/shpeuf-recruitment" target="_blank">New Member Website</a>}</Grid.Column></Grid>}
-                description="Find many additional resources and information if you are interested in becoming a member."
-                extra={<a class="extra" href="https://recruitmentshpeuf.wixsite.com/shpeuf-recruitment" target="_blank">Click here to access the site!</a>}
-            />
-            <Card
                 image={<Image src={National} as="a" href="https://shpe.org/membership/become-a-member/" target="_blank" />}
                 header={<Grid><Grid.Column textAlign="center">{<a className="ui header" href="https://shpe.org/membership/become-a-member/" target="_blank">National Membership</a>}</Grid.Column></Grid>}
                 description="While it is not required for all members, there are many benefits to having SHPE National Membership."
@@ -142,12 +136,6 @@ function ResourcesCards() {
                 header={<Grid><Grid.Column textAlign="center">{<a className="ui header" href="https://chat.whatsapp.com/KyuEjmCLT7c1VRSkexoQkO" target="_blank">SHPE UF Announcements Chat</a>}</Grid.Column></Grid>}
                 description="Join the SHPE UF WhatsApp chat to stay up to date with all SHPE UF news and events."
                 extra={<a class="extra" href="https://chat.whatsapp.com/KyuEjmCLT7c1VRSkexoQkO" target="_blank">Click here to access the site!</a>}
-            />
-            <Card
-                image={<Image src={InfoSlides} as="a" href="https://28d1f378-e21f-4379-a063-11326d549c54.filesusr.com/ugd/4f1a8d_68ff9284c7dd40658aa324292ece1ac9.pdf" target="_blank" />}
-                header={<Grid><Grid.Column textAlign="center">{<a className="ui header" href="https://28d1f378-e21f-4379-a063-11326d549c54.filesusr.com/ugd/4f1a8d_68ff9284c7dd40658aa324292ece1ac9.pdf" target="_blank">SHPE UF Info Slides</a>}</Grid.Column></Grid>}
-                description="Check out our SHPE UF: Info Slides to learn more about the programs, events, and opportunities SHPE UF has to offer!"
-                extra={<a class="extra" href="https://28d1f378-e21f-4379-a063-11326d549c54.filesusr.com/ugd/4f1a8d_68ff9284c7dd40658aa324292ece1ac9.pdf" target="_blank">Click here to download the slides!</a>}
             />
             {resources.map((resource) => (
                 <Card
