@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Grid, Image, Card, GridColumn } from "semantic-ui-react";
+import { Container, Grid, Image, Card } from "semantic-ui-react";
 import { Media } from "../../Media";
 import EBoardCards from "../../components/EBoardCards";
 
@@ -46,8 +46,8 @@ function Leadership() {
                 egestas. Iaculis massa nisl malesuada lacinia integer nunc posuere. 
                 Ut hendrerit semper vel class aptent taciti sociosqu. Ad litora 
                 torquent per conubia nostra inceptos himenaeos.
-                <br></br>
-                <br></br>
+                <br />
+                <br />
                 Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque 
                 faucibus ex sapien vitae pellentesque sem placerat. In id cursus 
                 mi pretium tellus duis convallis. Tempus leo eu aenean sed diam 
