@@ -51,6 +51,7 @@ import { jwtDecode } from "jwt-decode";
 import gql from "graphql-tag";
 import { useQuery } from "@apollo/client";
 import AdminResources from "./pages/AdminResources";
+import Leadership from "./pages/public/Leadership";
 
 function App() {
   var decodedToken = [];
@@ -101,6 +102,7 @@ function App() {
             <Route exact path="/contactus" element={<ContactUs/>} />
             <Route exact path="/calendar" element={<MyCalendar/>} />
             <Route exact path="/resources" element={<Resources/>}/>
+            <Route exact path="/leadership" element={<Leadership/>}/>
             <Route exact path="/corporations"
               element={
                 <UserRoute>
