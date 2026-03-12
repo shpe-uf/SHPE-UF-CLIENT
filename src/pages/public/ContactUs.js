@@ -4,6 +4,7 @@ import { useForm } from "../../util/hooks";
 import gql from "graphql-tag";
 import { useMutation } from "@apollo/client";
 import { ToastContainer, toast } from "react-toastify";
+import "./styles/ContactUs.css";
 
 function ContactUs() {
   const [errors, setErrors] = useState({});

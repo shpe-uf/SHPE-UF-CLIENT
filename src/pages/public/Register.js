@@ -22,6 +22,7 @@ import graduatingOptions from "../../assets/options/graduating.json";
 import countryOptions from "../../assets/options/country.json";
 import ethnicityOptions from "../../assets/options/ethnicity.json";
 import sexOptions from "../../assets/options/sex.json";
+import "./styles/Register.css";
 
 function Register(props) {
   const [errors, setErrors] = useState({});

@@ -1,0 +1,39 @@
+.masthead-sponsors {
+  background: url(https://shpeuf.s3.amazonaws.com/public/misc/sponsors.jpg) !important;
+  border-radius: 0px;
+  background-position: 50% 50% !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+.sponsor {
+  border-style: solid !important;
+  border-width: 3px !important;
+  border-radius: 0px;
+}
+
+.bronze {
+  border-color: rgb(163, 105, 47) !important;
+}
+
+.silver {
+  border-color: rgb(215, 215, 215) !important;
+}
+
+.gold {
+  border-color: rgb(255, 215, 0) !important;
+}
+
+.platinum {
+  background: url(https://shpeuf.s3.amazonaws.com/public/sponsors/platinum-min.png);
+}
+
+.chevron {
+  border-image-source: linear-gradient(
+    0deg,
+    rgb(227, 13, 25),
+    rgb(25, 143, 204)
+  ) !important;
+  border-image-slice: 1 !important;
+}

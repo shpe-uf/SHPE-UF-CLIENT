@@ -1,0 +1,15 @@
+.masthead-resources {
+  background: url(https://shpeuf.s3.amazonaws.com/public/misc/resource.png) !important;
+  border-radius: 0px;
+  background-position: 50% 35% !important;
+  background-attachment: scroll !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+@media (max-width: 991px) {
+  .masthead-resources {
+    background-size: 260% auto !important;
+    background-position: center 28% !important;
+  }
+}

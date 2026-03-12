@@ -4,6 +4,7 @@ import { useMutation } from "@apollo/client";
 import { Segment, Dimmer, Loader, Container, Grid } from "semantic-ui-react";
 import { Media } from "../../Media";
 import { useParams } from 'react-router-dom';
+import "./styles/Confirm.css";
 
 function Confirm(){
   const [confirming, setConfirming] = useState(false);

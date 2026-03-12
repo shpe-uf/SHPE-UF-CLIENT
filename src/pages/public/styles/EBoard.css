@@ -1,0 +1,14 @@
+.masthead-eboard {
+  background: url(https://shpeuf.s3.amazonaws.com/public/eboard/Group_Photo.JPG) !important;
+  border-radius: 0px;
+  background-position: 50% 90% !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+@media (max-width: 991px) {
+  .masthead-eboard {
+    background-position: 50% 20% !important;
+  }
+}

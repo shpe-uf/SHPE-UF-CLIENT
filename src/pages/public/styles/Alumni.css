@@ -1,0 +1,8 @@
+.masthead-alumni {
+  background: url(https://shpeuf.s3.amazonaws.com/public/misc/alumni.jpg) !important;
+  border-radius: 0px;
+  background-position: 50% 50% !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}

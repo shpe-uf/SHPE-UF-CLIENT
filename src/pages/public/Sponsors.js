@@ -5,6 +5,7 @@ import { FETCH_PARTNERS_QUERY } from '../../util/graphql'
 
 import { Container, Grid, Image, ImageGroup, Modal, Button, Icon, CardContent, CardHeader } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import "./styles/Sponsors.css";
 
 // import sponsors from "../../assets/images/sponsors"
 
@@ -17,7 +18,7 @@ function Sponsors() {
     return accumulator
   }, {})
 
-  const tierOrder = ["Platinum", "Gold", "Silver", "Bronze"]
+  const tierOrder = ["Diamond", "Gold", "Silver", "Bronze"]
 
   return (
     <div className="body">
@@ -38,6 +39,7 @@ function Sponsors() {
               return (
                 <React.Fragment key={tier}>
                   <h2 style={{
+                    ...(tier === "Diamond" && { color: "#74d3daff" }),
                     ...(tier === "Gold" && { color: "#d4af37" }),
                     ...(tier === "Silver" && { color: "silver" }),
                     ...(tier === "Bronze" && { color: "#CE8946" })
@@ -45,6 +47,7 @@ function Sponsors() {
                     {tier} Partners</h2>
                   <Grid.Row style={{
                     gap: "30px", width: "80% !important",
+                    ...(tier === "Diamond" && { filter: "drop-shadow(1px 14px 20px #93f1f8ff)" }),
                     ...(tier === "Gold" && { filter: "drop-shadow(1px 14px 20px #d4af37)" }),
                     ...(tier === "Silver" && { filter: "drop-shadow(1px 14px 20px silver)" }),
                     ...(tier === "Bronze" && { filter: "drop-shadow(1px 14px 20px #CE8946)" })

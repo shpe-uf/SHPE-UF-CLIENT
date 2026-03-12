@@ -13,6 +13,7 @@ import gql from "graphql-tag";
 import { AuthContext } from "../../context/auth";
 import { useForm } from "../../util/hooks";
 import { NavLink, useNavigate } from "react-router-dom";
+import "./styles/Login.css";
 
 function Login(props) {
   const context = useContext(AuthContext);
@@ -142,7 +143,7 @@ function Login(props) {
                       >
                         <Form.Input
                           type="text"
-                          label="Username"
+                          label="Username or Email"
                           name="username"
                           value={values.username}
                           error={errors.username ? true : false}
@@ -212,7 +213,7 @@ function Login(props) {
                       >
                         <Form.Input
                           type="text"
-                          label="Username"
+                          label="Username or Email"
                           name="username"
                           value={values.username}
                           error={errors.username ? true : false}

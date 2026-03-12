@@ -51,9 +51,10 @@
   padding: 0px !important;
 }
 
-.ui.fluid[class*="left labeled"].icon.button, .ui.fluid[class*="right labeled"].icon.button {
-  padding-left: 2em!important;
-  padding-right: 0em!important;
+.ui.fluid[class*="left labeled"].icon.button,
+.ui.fluid[class*="right labeled"].icon.button {
+  padding-left: 2em !important;
+  padding-right: 0em !important;
 }
 
 .ui.fluid.button.EventButton {
@@ -141,7 +142,9 @@ h6 {
   font-size: 1.75 rem !important;
 }
 
-.ui.form input, select, textarea{
+.ui.form input,
+select,
+textarea {
   font-family: "body-font" !important;
 }
 
@@ -216,31 +219,11 @@ h6 {
   background-color: var(--accent-1) !important;
 }
 
-.overlay-home {
-  background-color: var(--primary-overlay);
-  width: 100%;
-  padding: 10rem 0rem;
-}
-
 .overlay-blue {
   background-color: var(--primary-overlay);
   width: 100%;
   padding: 7rem 0rem;
   margin-bottom: 24px;
-}
-
-.overlay-register,
-.overlay-login,
-.overlay-reset {
-  background-color: var(--primary-overlay);
-  width: 100%;
-  padding: 32px 0px;
-}
-
-.overlay-confirm {
-  background-color: var(--primary-overlay);
-  width: 100%;
-  padding: 150px 0px;
 }
 
 .masthead {
@@ -249,88 +232,11 @@ h6 {
   text-align: center;
 }
 
-.masthead-home {
-  background: url(https://shpeuf.s3.amazonaws.com/public/home/home-bg.jpg) !important;
-  border-radius: 0px;
-  background-position: 50% 155% !important;
-  background-attachment: fixed !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-}
-
-.masthead-team {
-  background: url(https://shpeuf.s3.amazonaws.com/public/misc/team.jpg) !important;
-  border-radius: 0px;
-  background-position: 50% 50% !important;
-  background-attachment: fixed !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-}
-
-.masthead-eboard {
-  background: url(https://shpeuf.s3.amazonaws.com/public/eboard/Group_Photo.JPG) !important;
-  border-radius: 0px;
-  background-position: 50% 90% !important;
-  background-attachment: fixed !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-}
-
-.masthead-about {
-  background: url(https://shpeuf.s3.amazonaws.com/public/about/about.jpg) !important;
-  border-radius: 0px;
-  background-position: 75% 75% !important;
-  background-attachment: fixed !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-}
-
-.masthead-alumni {
-  background: url(https://shpeuf.s3.amazonaws.com/public/misc/alumni.jpg) !important;
-  border-radius: 0px;
-  background-position: 50% 50% !important;
-  background-attachment: fixed !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-}
-
-.masthead-sponsors {
-  background: url(https://shpeuf.s3.amazonaws.com/public/misc/sponsors.jpg) !important;
-  border-radius: 0px;
-  background-position: 50% 50% !important;
-  background-attachment: fixed !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-}
-
-.masthead-resources {
-  background: url(https://shpeuf.s3.amazonaws.com/public/misc/resource.png) !important;
-  border-radius: 0px;
-  background-position: 50% 35% !important;
-  background-attachment: scroll !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-}
-
-.masthead-contactus {
-  background: url(https://shpeuf.s3.amazonaws.com/public/misc/contact-us-1.JPG) !important;
-  border-radius: 0px;
-  background-position: 50% 50% !important;
-  background-attachment: fixed !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-}
-
 .masthead-application {
   padding: 64px 0px 4px 0px;
   text-align: left;
   background-color: #1395b9;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='250' viewBox='0 0 1080 900'%3E%3Cg fill-opacity='0.08'%3E%3Cpolygon fill='%23444' points='90 150 0 300 180 300'/%3E%3Cpolygon points='90 150 180 0 0 0'/%3E%3Cpolygon fill='%23AAA' points='270 150 360 0 180 0'/%3E%3Cpolygon fill='%23DDD' points='450 150 360 300 540 300'/%3E%3Cpolygon fill='%23999' points='450 150 540 0 360 0'/%3E%3Cpolygon points='630 150 540 300 720 300'/%3E%3Cpolygon fill='%23DDD' points='630 150 720 0 540 0'/%3E%3Cpolygon fill='%23444' points='810 150 720 300 900 300'/%3E%3Cpolygon fill='%23FFF' points='810 150 900 0 720 0'/%3E%3Cpolygon fill='%23DDD' points='990 150 900 300 1080 300'/%3E%3Cpolygon fill='%23444' points='990 150 1080 0 900 0'/%3E%3Cpolygon fill='%23DDD' points='90 450 0 600 180 600'/%3E%3Cpolygon points='90 450 180 300 0 300'/%3E%3Cpolygon fill='%23666' points='270 450 180 600 360 600'/%3E%3Cpolygon fill='%23AAA' points='270 450 360 300 180 300'/%3E%3Cpolygon fill='%23DDD' points='450 450 360 600 540 600'/%3E%3Cpolygon fill='%23999' points='450 450 540 300 360 300'/%3E%3Cpolygon fill='%23999' points='630 450 540 600 720 600'/%3E%3Cpolygon fill='%23FFF' points='630 450 720 300 540 300'/%3E%3Cpolygon points='810 450 720 600 900 600'/%3E%3Cpolygon fill='%23DDD' points='810 450 900 300 720 300'/%3E%3Cpolygon fill='%23AAA' points='990 450 900 600 1080 600'/%3E%3Cpolygon fill='%23444' points='990 450 1080 300 900 300'/%3E%3Cpolygon fill='%23222' points='90 750 0 900 180 900'/%3E%3Cpolygon points='270 750 180 900 360 900'/%3E%3Cpolygon fill='%23DDD' points='270 750 360 600 180 600'/%3E%3Cpolygon points='450 750 540 600 360 600'/%3E%3Cpolygon points='630 750 540 900 720 900'/%3E%3Cpolygon fill='%23444' points='630 750 720 600 540 600'/%3E%3Cpolygon fill='%23AAA' points='810 750 720 900 900 900'/%3E%3Cpolygon fill='%23666' points='810 750 900 600 720 600'/%3E%3Cpolygon fill='%23999' points='990 750 900 900 1080 900'/%3E%3Cpolygon fill='%23999' points='180 0 90 150 270 150'/%3E%3Cpolygon fill='%23444' points='360 0 270 150 450 150'/%3E%3Cpolygon fill='%23FFF' points='540 0 450 150 630 150'/%3E%3Cpolygon points='900 0 810 150 990 150'/%3E%3Cpolygon fill='%23222' points='0 300 -90 450 90 450'/%3E%3Cpolygon fill='%23FFF' points='0 300 90 150 -90 150'/%3E%3Cpolygon fill='%23FFF' points='180 300 90 450 270 450'/%3E%3Cpolygon fill='%23666' points='180 300 270 150 90 150'/%3E%3Cpolygon fill='%23222' points='360 300 270 450 450 450'/%3E%3Cpolygon fill='%23FFF' points='360 300 450 150 270 150'/%3E%3Cpolygon fill='%23444' points='540 300 450 450 630 450'/%3E%3Cpolygon fill='%23222' points='540 300 630 150 450 150'/%3E%3Cpolygon fill='%23AAA' points='720 300 630 450 810 450'/%3E%3Cpolygon fill='%23666' points='720 300 810 150 630 150'/%3E%3Cpolygon fill='%23FFF' points='900 300 810 450 990 450'/%3E%3Cpolygon fill='%23999' points='900 300 990 150 810 150'/%3E%3Cpolygon points='0 600 -90 750 90 750'/%3E%3Cpolygon fill='%23666' points='0 600 90 450 -90 450'/%3E%3Cpolygon fill='%23AAA' points='180 600 90 750 270 750'/%3E%3Cpolygon fill='%23444' points='180 600 270 450 90 450'/%3E%3Cpolygon fill='%23444' points='360 600 270 750 450 750'/%3E%3Cpolygon fill='%23999' points='360 600 450 450 270 450'/%3E%3Cpolygon fill='%23666' points='540 600 630 450 450 450'/%3E%3Cpolygon fill='%23222' points='720 600 630 750 810 750'/%3E%3Cpolygon fill='%23FFF' points='900 600 810 750 990 750'/%3E%3Cpolygon fill='%23222' points='900 600 990 450 810 450'/%3E%3Cpolygon fill='%23DDD' points='0 900 90 750 -90 750'/%3E%3Cpolygon fill='%23444' points='180 900 270 750 90 750'/%3E%3Cpolygon fill='%23FFF' points='360 900 450 750 270 750'/%3E%3Cpolygon fill='%23AAA' points='540 900 630 750 450 750'/%3E%3Cpolygon fill='%23FFF' points='720 900 810 750 630 750'/%3E%3Cpolygon fill='%23222' points='900 900 990 750 810 750'/%3E%3Cpolygon fill='%23222' points='1080 300 990 450 1170 450'/%3E%3Cpolygon fill='%23FFF' points='1080 300 1170 150 990 150'/%3E%3Cpolygon points='1080 600 990 750 1170 750'/%3E%3Cpolygon fill='%23666' points='1080 600 1170 450 990 450'/%3E%3Cpolygon fill='%23DDD' points='1080 900 1170 750 990 750'/%3E%3C/g%3E%3C/svg%3E");
-}
-
-.masthead-quote {
-  padding: 64px 0px;
-  background-color: var(--accent-2);
 }
 
 .masthead-title {
@@ -347,43 +253,14 @@ h6 {
   border-color: black;
 }
 
-.fa-quote {
-  color: var(--white);
-  font-size: 3rem !important;
-  padding: 0px 16px;
-}
-
-.text-home {
-  padding: 4rem 4rem !important;
-  color: var(--white) !important;
-}
-
 .text-admin {
   font-size: 1.15rem !important;
-}
-
-.image-home {
-  min-width: 100%;
-  min-height: 100%;
-  object-fit: cover;
 }
 
 .image-profile {
   border: 1px;
   border-style: solid;
   border-color: var(--grey);
-}
-
-.who {
-  background-color: var(--accent-1-light-3);
-}
-
-.mission {
-  background-color: var(--accent-1-light-2);
-}
-
-.vision {
-  background-color: var(--accent-1-light-1);
 }
 
 .no-padding {
@@ -403,78 +280,11 @@ h6 {
   font-size: 1.5rem !important;
 }
 
-.register {
-  background: url(https://shpeuf.s3.amazonaws.com/public/misc/register.jpg) !important;
-  border-radius: 0px;
-  background-position: 50% 50% !important;
-  background-attachment: fixed !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-}
-
-.register-alumni {
-  background: url(https://shpeuf.s3.amazonaws.com/public/misc/register-alumni.jpg) !important;
-  border-radius: 0px;
-  background-position: 50% 50% !important;
-  background-attachment: fixed !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-}
-
-.login {
-  background: url(https://shpeuf.s3.amazonaws.com/public/misc/login.jpg) !important;
-  border-radius: 0px;
-  background-position: 15% 50% !important;
-  background-attachment: fixed !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-}
-
-.reset {
-  background: url(https://shpeuf.s3.amazonaws.com/public/misc/reset.jpg) !important;
-  border-radius: 0px;
-  background-position: 15% 50% !important;
-  background-attachment: fixed !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
-}
-
 .title-bg-accent-1 {
   background-color: var(--accent-1) !important;
   padding: 16px 16px 0px 16px !important;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-}
-
-.sponsor {
-  border-style: solid !important;
-  border-width: 3px !important;
-  border-radius: 0px;
-}
-
-.bronze {
-  border-color: rgb(163, 105, 47) !important;
-}
-
-.silver {
-  border-color: rgb(215, 215, 215) !important;
-}
-
-.gold {
-  border-color: rgb(255, 215, 0) !important;
-}
-
-.platinum {
-  background: url(https://shpeuf.s3.amazonaws.com/public/sponsors/platinum-min.png);
-}
-
-.chevron {
-  border-image-source: linear-gradient(
-    0deg,
-    rgb(227, 13, 25),
-    rgb(25, 143, 204)
-  ) !important;
-  border-image-slice: 1 !important;
 }
 
 .link-email,
@@ -544,11 +354,6 @@ h6 {
 .ui.button.secondary:focus {
   background: var(--accent-1);
   color: var(--white);
-}
-
-.join-button {
-  margin-top: 2rem !important;
-  background: var(--accent-1-dark-2) !important;
 }
 
 .mobile-responsive {
@@ -645,13 +450,13 @@ th {
   font-family: "body-font" !important;
 }
 
-.ui.card>.content>.header,
-.ui.cards>.card>.content>.header,
-.ui.card>.content>.meta,
-.ui.cards>.card>.content>.meta {
-  overflow: hidden            !important;
-  text-overflow: ellipsis     !important;
-  white-space: nowrap         !important;
+.ui.card > .content > .header,
+.ui.cards > .card > .content > .header,
+.ui.card > .content > .meta,
+.ui.cards > .card > .content > .meta {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
 }
 
 .card-points {
@@ -663,7 +468,6 @@ th {
   padding-top: 16.4px !important;
   padding-bottom: 16.4px !important;
 }
-
 
 .panel-admin {
   cursor: pointer;
@@ -689,12 +493,6 @@ div::-webkit-scrollbar-thumb {
 
 .ui.message .header {
   font-family: "body-font";
-}
-
-.resetLink {
-  display: inline-block;
-  margin-top: 12px;
-  margin-left: 10px;
 }
 
 .loading {
@@ -723,35 +521,15 @@ div::-webkit-scrollbar-thumb {
     min-height: calc(100vh - 64px - 118px) !important;
   }
 
-  .overlay-register,
-  .overlay-login,
-  .overlay-reset,
-  .overlay-confirm {
-    min-height: calc(100vh - 62.41px - 118px) !important;
-  }
-
-  .overlay-register,
-  .overlay-login,
-  .overlay-reset,
-  .overlay-confirm {
-    min-height: calc(100vh - 62.41px - 118px) !important;
-  }
   .masthead-title {
     margin: 0px;
     font-size: 2.5rem !important;
-  }
-  .masthead-eboard {
-    background-position: 50% 20% !important;
-  }
-  .masthead-resources {
-    background-size: 260% auto !important;
-    background-position: center 28% !important;
   }
 
   .JrEventButton {
     margin-top: 0.5rem !important;
     margin-bottom: 0.5rem !important;
-    min-width: 50vw ;
+    min-width: 50vw;
   }
 
   .ui.modal > .actions {
@@ -764,50 +542,14 @@ div::-webkit-scrollbar-thumb {
     min-height: calc(100vh - 64px - 64px) !important;
   }
 
-  .overlay-register,
-  .overlay-login,
-  .overlay-reset,
-  .overlay-confirm {
-    min-height: calc(100vh - 64px - 64px) !important;
-  }
-
-  .overlay-register,
-  .overlay-login,
-  .overlay-reset,
-  .overlay-confirm {
-    min-height: calc(100vh - 64px - 64px) !important;
-  }
-}
-
-.resetLink {
-  display: inline-block;
-  margin-top: 12px;
-  margin-left: 10px;
 }
 
 .loading {
-  padding: 12%
+  padding: 12%;
 }
 
 .confirmMsg {
   text-align: center;
-}
-
-.corp-button {
-  margin-top: 4px !important;
-  margin-bottom: 4px !important;
-  padding-left: 0em !important;
-  padding-right: 0em !important;
-}
-
-.corp-logo {
-  /* width: 100%;
-  height: 20rem;
-  object-fit: contain; */
-  width: 100% !important;
-  /* height: 20vw; */
-  height: 15rem !important;
-  object-fit: cover;
 }
 
 .card-image {
@@ -815,54 +557,53 @@ div::-webkit-scrollbar-thumb {
 }
 
 .checkmark {
-  position: absolute
+  position: absolute;
 }
 
 .DevTeamTabs {
   width: 100%;
   height: auto;
   min-height: 400px;
-  background:aliceblue;
+  background: aliceblue;
   margin: 3.5rem auto 1.5rem;
   padding: 2rem 1rem;
-  color:  rgb(0, 77, 115);
+  color: rgb(0, 77, 115);
   border-radius: 1rem;
   @media (max-width: 780px) {
     padding: 2rem 0;
   }
- }
+}
 
- .DevTeamTabContent {
+.DevTeamTabContent {
   font-size: 2rem;
   text-align: center;
 }
 
- #IOSTeam {
-  color:"green";
+#IOSTeam {
+  color: "green";
   text-transform: none !important;
- }
+}
 
 .JrTabs {
   width: 90%;
   height: auto;
   min-height: 400px;
-  background:aliceblue;
+  background: aliceblue;
   margin: 3.5rem auto 1.5rem;
   padding: 2rem 1rem;
-  color:  rgb(0, 77, 115);
+  color: rgb(0, 77, 115);
   border-radius: 1rem;
   @media (max-width: 780px) {
     padding: 2rem 0;
   }
- }
+}
 
-
- ul.nav {
+ul.nav {
   width: 69%;
   margin: 0 auto 2rem;
   display: flex;
   justify-content: space-between;
-  border: 1px solid #39A2DB;
+  border: 1px solid #39a2db;
   border-radius: 2rem;
   padding-left: 0px;
   @media (max-width: 780px) {
@@ -879,13 +620,13 @@ ul.nav li {
   justify-content: center;
   cursor: pointer;
   transition: all 0.7s;
-  border-left: ipx solid #39A2DB;
+  border-left: ipx solid #39a2db;
 }
 ul.nav li:first-child {
   border-bottom-left-radius: 2rem;
   border-top-left-radius: 2rem;
 }
- 
+
 ul.nav li:last-child {
   border-bottom-right-radius: 2rem;
   border-top-right-radius: 2rem;
@@ -894,7 +635,7 @@ ul.nav li:hover {
   background: rgba(13, 104, 130, 0.15);
 }
 ul.nav li.active {
-  background:rgba(13, 104, 130, 0.75);
+  background: rgba(13, 104, 130, 0.75);
   color: white;
 }
 .JrTabContent {
@@ -956,10 +697,10 @@ ul.nav li.active {
 }
 
 .SJrHighEventList ul {
-  list-style-type: disc; 
-  padding: 0; 
-  margin: 0; 
-  margin-left: 1em
+  list-style-type: disc;
+  padding: 0;
+  margin: 0;
+  margin-left: 1em;
 }
 
 .App {
@@ -1057,7 +798,6 @@ ul.nav li.active {
 }
 
 #centered-img {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
-
