@@ -130,9 +130,9 @@ function MenuBar({permission}) {
                     {/*<Dropdown.Item as={Link} to="/alumni">
                       Alumni
                     </Dropdown.Item>*/}
-                    <Menu.Item as={Link} to="/leadership">
+                    <Dropdown.Item as={Link} to="/leadership">
                       Leadership 
-                    </Menu.Item>
+                    </Dropdown.Item>
                     <Dropdown.Item as={Link} to="/devteam">
                       Dev Team
                     </Dropdown.Item>
