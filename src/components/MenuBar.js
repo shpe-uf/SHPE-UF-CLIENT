@@ -30,8 +30,8 @@ function MenuBar({permission}) {
             <Menu.Item as={Link} to="/alumni">
               Alumni
             </Menu.Item>
-            <Menu.Item as={Link} to="/eboard">
-              E-Board
+            <Menu.Item as={Link} to="/leadership">
+              Leadership 
             </Menu.Item>
             <Menu.Item as={Link} to="/devteam">
               Dev Team
@@ -51,9 +51,7 @@ function MenuBar({permission}) {
             <Menu.Item as={Link} to="/contactus">
               Contact Us
             </Menu.Item>
-            <Menu.Item as={Link} to="/leadership">
-              Leadership 
-            </Menu.Item>
+            
             
 
             <Menu.Menu position="left">
@@ -132,9 +130,9 @@ function MenuBar({permission}) {
                     {/*<Dropdown.Item as={Link} to="/alumni">
                       Alumni
                     </Dropdown.Item>*/}
-                    <Dropdown.Item as={Link} to="/eboard">
-                      E-Board
-                    </Dropdown.Item>
+                    <Menu.Item as={Link} to="/leadership">
+                      Leadership 
+                    </Menu.Item>
                     <Dropdown.Item as={Link} to="/devteam">
                       Dev Team
                     </Dropdown.Item>
@@ -152,9 +150,6 @@ function MenuBar({permission}) {
                     </Dropdown.Item>
                     <Dropdown.Item as={Link} to="/resources">
                       Resources
-                    </Dropdown.Item>
-                    <Dropdown.Item as={Link} to="/leadership">
-                      Leadership
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
