@@ -15,18 +15,15 @@ const team = {
   emanuele: "https://shpeuf.s3.amazonaws.com/public/team/Emanuele.png",
   jackie: "https://shpeuf.s3.us-east-1.amazonaws.com/public/team/jackie.jpeg",
   daniel: "https://shpeuf.s3.amazonaws.com/public/team/daniel.jpg",
-  marvin: "https://shpeuf.s3.us-east-1.amazonaws.com/public/team/marvin.png",
-  oscar: "https://shpeuf.s3.amazonaws.com/public/team/oscar.jpg",
-  //Using Oscar's placeholder image for Isa for the time being.
-  hector: "https://shpeuf.s3.amazonaws.com/public/team/hector.jpg",
+  marvin: "https://shpeuf.s3.us-east-1.amazonaws.com/public/team/marvin.JPG",
+  oscar: "https://shpeuf.s3.us-east-1.amazonaws.com/public/team/oscar.JPG",
+  natalie: "https://shpeuf.s3.us-east-1.amazonaws.com/public/team/natalie.JPG",
+  omar: "https://shpeuf.s3.us-east-1.amazonaws.com/public/team/Omar.jpeg",
+  hector: "https://shpeuf.s3.us-east-1.amazonaws.com/public/team/hector.JPG",
   rachel: "https://shpeuf.s3.amazonaws.com/public/team/rachel.jpg",
-  isamarin:
-    "https://shpeuf.s3.us-east-1.amazonaws.com/public/team/isabellaMarin",
+  isabel: "https://shpeuf.s3.us-east-1.amazonaws.com/public/team/isabel.JPG",
   monica: "https://shpeuf.s3.us-east-1.amazonaws.com/public/team/monica.png",
-  steffano:
-    "https://shpeuf.s3.us-east-1.amazonaws.com/public/team/steffano.png",
-  leonardo: "https://shpeuf.s3.amazonaws.com/public/team/Leonardo.png",
-  heiryn: "https://shpeuf.s3.us-east-1.amazonaws.com/public/team/heiryn.png",
+  heiryn: "https://shpeuf.s3.us-east-1.amazonaws.com/public/team/heiryn.JPG",
 };
 
 function DevTeamCards() {
@@ -34,35 +31,60 @@ function DevTeamCards() {
     <>
       <Card
         fluid
-        image={team.daniel}
-        header="Daniel Permane"
-        meta="Scrum Master"
-        className="team-card-image"
-      />
-      <Card
-        fluid
         image={team.hector}
         header="Hector Borjas"
-        meta="Junior Project Manager"
+        meta="Technology Project Management Lead"
+        className="team-card-image"
       />
       <Card
         fluid
         image={team.oscar}
         header="Oscar Delapresa"
-        meta="Senior Developer"
-      />
-      <Card
-        fluid
-        image={team.isabella}
-        header="Isabella Roman"
-        meta="Senior Developer"
+        meta="Scrum Master"
         className="team-card-image"
       />
       <Card
         fluid
         image={team.marvin}
         header="Marvin Howell Aguirre"
+        meta="Project Manager"
+        className="team-card-image"
+      />
+      <Card
+        fluid
+        image={team.heiryn}
+        header="Heiryn Hernandez Rojas"
+        meta="Junior Project Manager"
+        className="team-card-image"
+      />
+      <Card
+        fluid
+        image={team.isabella}
+        header="Isabella Roman Ramirez"
         meta="Senior Developer"
+        className="team-card-image"
+      />
+      <Card
+        fluid
+        image={team.daniel}
+        header="Daniel Permane"
+        meta="Senior Develoeper"
+        className="team-card-image"
+      />
+
+      <Card
+        fluid
+        image={team.isabel}
+        header="Maria Isabel Hernandez"
+        meta="Senior Developer"
+        className="team-card-image"
+      />
+      <Card
+        fluid
+        image={team.omar}
+        header="Omar Elsayed"
+        meta="Senior Develoeper"
+        className="team-card-image"
       />
 
       <Card
@@ -71,11 +93,13 @@ function DevTeamCards() {
         header="Monica Coira"
         meta="Junior Developer"
       />
+
       <Card
         fluid
-        image={team.heiryn}
-        header="Heiryn Hernandez Rojas"
+        image={team.natalie}
+        header="Natalie Ortiz"
         meta="Junior Developer"
+        className="team-card-image"
       />
     </>
   );
