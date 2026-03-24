@@ -1,0 +1,12 @@
+/* Target the 'div' wrapper created by the image prop */
+.team-card-image .image {
+  aspect-ratio: 1 / 1;
+}
+
+/* Target the actual <img> tag */
+.team-card-image .image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center;
+}
