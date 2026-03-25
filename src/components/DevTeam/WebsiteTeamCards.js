@@ -24,6 +24,8 @@ const team = {
   isabel: "https://shpeuf.s3.us-east-1.amazonaws.com/public/team/isabel.JPG",
   monica: "https://shpeuf.s3.us-east-1.amazonaws.com/public/team/monica.png",
   heiryn: "https://shpeuf.s3.us-east-1.amazonaws.com/public/team/heiryn.JPG",
+  tiffany:
+    "https://shpeuf.s3.us-east-1.amazonaws.com/public/team/Kotlin_Team/Tiffany.jpeg",
 };
 
 function DevTeamCards() {
@@ -68,7 +70,7 @@ function DevTeamCards() {
         fluid
         image={team.daniel}
         header="Daniel Permane"
-        meta="Senior Develoeper"
+        meta="Senior Developer"
         className="team-card-image"
       />
 
@@ -83,7 +85,7 @@ function DevTeamCards() {
         fluid
         image={team.omar}
         header="Omar Elsayed"
-        meta="Senior Develoeper"
+        meta="Senior Developer"
         className="team-card-image"
       />
 
@@ -98,6 +100,13 @@ function DevTeamCards() {
         fluid
         image={team.natalie}
         header="Natalie Ortiz"
+        meta="Junior Developer"
+        className="team-card-image"
+      />
+      <Card
+        fluid
+        image={team.tiffany}
+        header="Tiffany Huang"
         meta="Junior Developer"
         className="team-card-image"
       />
