@@ -15,8 +15,23 @@
     "points": "1"
   },
   {
-    "key": "Workshop",
-    "value": "Workshop",
+    "key": "Educational Workshop",
+    "value": "Educational Workshop",
+    "points": "1"
+  },
+  {
+    "key": "Professional Workshop",
+    "value": "Professional Workshop",
+    "points": "1"
+  },
+  {
+    "key": "Corporate Info Session",
+    "value": "Corporate Info Session",
+    "points": "2"
+  },
+  {
+    "key": "Program Attendance",
+    "value": "Program Attendance",
     "points": "1"
   },
   {
@@ -25,23 +40,13 @@
     "points": "1"
   },
   {
-    "key": "Social",
-    "value": "Social",
+    "key": "Social Event",
+    "value": "Social Event",
     "points": "1"
-  },
-  {
-    "key": "Corporate Event",
-    "value": "Corporate Event",
-    "points": "2"
   },
   {
     "key": "Fundraising",
     "value": "Fundraising",
-    "points": "3"
-  },
-  {
-    "key": "Tabling",
-    "value": "Tabling",
     "points": "3"
   },
   {
