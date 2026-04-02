@@ -5,7 +5,7 @@ import DevTeam from "./css/DevTeam.css";
 const team = {
   david_denis: "https://shpeuf.s3.us-east-1.amazonaws.com/public/team/iOS_Team/david_denis_2026.JPG",
   mazin: "https://shpeuf.s3.us-east-1.amazonaws.com/public/team/iOS_Team/mazin_saleh.JPG",
-  matthew: "https://shpeuf.s3.amazonaws.com/public/team/iOS_Team/matthew_segura.jpg",
+  matthew: "https://shpeuf.s3.us-east-1.amazonaws.com/public/team/iOS_Team/matthew.png",
   carlos: "https://shpeuf.s3.us-east-1.amazonaws.com/public/team/iOS_Team/carlos_ch%C3%A1vez.jpg",
   placeholder: "https://shpeuf.s3.amazonaws.com/public/team/iOS_Team/dev.png",
 };
