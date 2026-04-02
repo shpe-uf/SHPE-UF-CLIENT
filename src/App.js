@@ -98,6 +98,7 @@ function App() {
             <Route exact path="/devteam" element={<DevTeam/>} />
             <Route exact path="/shpejr" element={<ShpeJr/>} />
             <Route exact path="/sponsors" element={<Sponsors/>} />
+            <Route exact path="/mentorshpe" element={<MentorSHPE/>} />
             <Route exact path="/contactus" element={<ContactUs/>} />
             <Route exact path="/calendar" element={<MyCalendar/>} />
             <Route exact path="/resources" element={<Resources/>}/>

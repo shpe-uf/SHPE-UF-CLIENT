@@ -1,0 +1,13 @@
+const img1 = "https://shpeuf.s3.us-east-1.amazonaws.com/public/homepage_revamp/head.png";
+const img2 = "https://shpeuf.s3.us-east-1.amazonaws.com/public/homepage_revamp/Polygon+11.png";
+const img3 = "https://shpeuf.s3.us-east-1.amazonaws.com/public/homepage_revamp/Polygon+12.png";
+const img4 = "https://shpeuf.s3.us-east-1.amazonaws.com/public/homepage_revamp/Polygon+4.png";
+const img5 = "https://shpeuf.s3.us-east-1.amazonaws.com/public/homepage_revamp/Polygon+14.png";
+const img6 = "https://shpeuf.s3.us-east-1.amazonaws.com/public/homepage_revamp/Polygon+13.png";
+const img7 = "https://shpeuf.s3.us-east-1.amazonaws.com/public/homepage_revamp/Polygon16.png";
+const img8 = "https://shpeuf.s3.us-east-1.amazonaws.com/public/homepage_revamp/Polygon+9.png";
+const img9 = "https://shpeuf.s3.us-east-1.amazonaws.com/public/homepage_revamp/Polygon+10.png";
+const img10 = "https://shpeuf.s3.us-east-1.amazonaws.com/public/homepage_revamp/c11.png";
+const img11 = "https://shpeuf.s3.us-east-1.amazonaws.com/public/homepage_revamp/c12.png";
+const img12 = "https://shpeuf.s3.us-east-1.amazonaws.com/public/homepage_revamp/c13.png";
+export {img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12};

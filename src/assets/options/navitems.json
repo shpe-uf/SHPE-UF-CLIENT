@@ -145,7 +145,7 @@
          
         "label": "Program Applications",
         "links": [
-          {   "label": "MentorSHPE", "path": "#" },
+          {   "label": "MentorSHPE", "path": "/mentorshpe" },
           {   "label": "First Year Leadership Program", "path": "#" }
         ]
       }
