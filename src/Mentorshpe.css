@@ -1,0 +1,617 @@
+.body {
+  background: #ffffff;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+
+.body img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+.banner {
+  position: relative;
+  height: clamp(260px, 35vw, 600px); 
+  overflow: visible;
+}
+
+.banner .image1,
+.banner .image1 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.banner .image2 {
+  position: absolute !important;
+  bottom: -12%;         
+  left: 70%;
+  transform: translateX(-50%);
+  width: clamp(160px, 22vw, 400px);  
+  height: clamp(160px, 22vw, 400px);
+  z-index: 3;
+}
+
+.banner .image2 img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain;
+  display: block;
+}
+
+.bannerText {
+  position: absolute !important;
+  top: 15%;
+  left: 5%;
+  max-width: 55%;
+  z-index: 2;
+}
+
+.banner .bannerTitle {
+  font-family: "Mada", sans-serif !important;
+  font-weight: 900 !important;
+  font-size: clamp(20px, 4vw, 48px) !important;
+  color: #ffffff !important;
+  line-height: 1.1 !important;
+}
+
+.banner .bannerSubtitle {
+  font-family: "Mada", sans-serif !important;
+  font-size: clamp(13px, 2vw, 24px) !important;
+  font-weight: 700;
+  color: #ffffff !important;
+  margin-top: 0.5rem !important;
+  line-height: 1.2 !important;
+}
+
+
+.mentorSection {
+  display: grid;
+  grid-template-columns: 1.4fr 0.6fr;
+  gap: 60px;
+  padding: 80px 8%;
+  background: #ffffff;
+  align-items: start;
+}
+
+.mentorLeft {
+  display: flex;
+  align-items: flex-start;
+  padding-left: 10%;
+  overflow: visible;
+}
+
+.mentorParagraph {
+  font-family: "Mada", sans-serif;
+  font-size: clamp(14px, 1.4vw, 20px) !important; 
+  font-weight: 1000;
+  color: #0b3a69;
+  line-height: 1.8;
+  margin: 0;
+  width: calc(100% + 40px);
+  margin-left: 20px;
+}
+
+.mentorRight {
+  display: flex;
+  justify-content: flex-end;
+  overflow: visible;
+}
+
+.mentorImgStack {
+  position: relative;
+  width: 520px;
+  height: 800px;
+  overflow: visible;
+}
+
+.mentorImgTop {
+  position: absolute !important;
+  top: -15%;
+  right: 0;
+  width: 380px;   
+  z-index: 1;
+}
+
+.mentorImgBottom {
+  position: absolute !important;
+  top: 22%;
+  left: 0;
+  width: 420px;  
+  z-index: 2;
+}
+
+.mentorImgTop img,
+.mentorImgBottom img {
+  width: 100% !important;
+  height: auto !important;
+  object-fit: cover;
+  display: block;
+}
+
+
+
+.banner2 {
+  position: relative;
+  margin-top: clamp(-60px, -8vw, -10px); 
+  z-index: 0;
+  overflow: hidden;
+}
+
+.banner2Bg {
+  width: 100% !important;
+  height: auto !important;      
+  object-fit: fill !important;
+  display: block !important;
+}
+
+.banner2Dots {
+  position: absolute !important;
+  top: 5.4%;
+  left: 0;
+  width: 25% !important;
+  height: auto !important;
+  opacity: 0.6;
+  z-index: 1;
+}
+
+.banner2People {
+  position: absolute !important;
+  top: 30%;
+  transform: translateY(-50%);
+  left: 10%;
+  width: 40%;
+  z-index: 2;
+}
+
+.banner2People img {
+  width: 100% !important;
+  height: auto !important;
+  display: block;
+}
+
+.banner2Text {
+  position: absolute;
+  top: 25%;
+  transform: translateY(-50%);
+  left: 65%;
+  font-family: "Mada", sans-serif;
+  font-size: clamp(13px, 1.6vw, 26px) !important;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.6;
+  width: 25%;
+  margin: 0;
+  z-index: 2;
+}
+
+.banner2Polygon {
+  position: absolute !important;
+  bottom: 0;
+  left: 0;
+  width: 100% !important;
+  height: auto !important;
+  z-index: 1;
+  display: block;
+}
+
+.banner2QuoteBlock {
+  position: absolute;
+  bottom: 37%;
+  left: 10%;
+  z-index: 3;
+  max-width: 50%;
+}
+
+.banner2Quote {
+  font-family: "Mada", sans-serif;
+  font-size: clamp(20px, 3.5vw, 50px) !important;
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.2;
+  margin: 0 0 8px 0;
+}
+
+.banner2Quoter {
+  font-family: "Mada", sans-serif;
+  font-size: clamp(16px, 2vw, 32px) !important;
+  font-weight: 900;
+  color: #e8500a;
+  margin: 0;
+  padding-left: 20%;
+}
+
+.imageNextToQuote {
+  position: absolute !important;
+  bottom: 32%;
+  left: 63%;
+  width: 25% !important;
+  height: auto !important;
+  z-index: 3;
+}
+
+.anotherImage {
+  position: absolute !important;
+  bottom: 10%;
+  left: 10%;
+  width: 25% !important;
+  height: auto !important;
+  z-index: 3;
+}
+
+.finalParagraph {
+  position: absolute;
+  bottom: 15%;
+  left: 70%;
+  transform: translateX(-50%);
+  font-family: "Mada", sans-serif;
+  font-size: clamp(16px, 1.8vw, 28px) !important;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.6;
+  width: 50%;
+  margin: 0;
+  z-index: 3;
+}
+
+
+@media (max-width: 1200px) {
+  .banner {
+    height: clamp(260px, 35vw, 500px);
+  }
+}
+
+@media (max-width: 1000px) {
+  .mentorSection {
+    grid-template-columns: 1fr;
+  }
+
+  .mentorRight {
+    justify-content: center;
+  }
+
+  .mentorImgStack {
+    width: 100%;
+    max-width: 520px;
+    height: clamp(480px, 55vw, 700px);
+    margin: 0 auto;
+  }
+
+  .mentorImgTop {
+    width: 65%;
+    top: 0;
+    right: 0;
+  }
+
+  .mentorImgBottom {
+    width: 75%;
+    top: clamp(180px, 22vw, 260px);
+    left: 0;
+  }
+
+  .banner2People {
+    width: 35%;
+  }
+
+  .banner2Text {
+    left: 50%;
+    font-size: clamp(11px, 1.8vw, 18px) !important;
+    width: 48%;
+  }
+}
+
+@media (max-width: 768px) {
+  .banner {
+    height: clamp(220px, 40vw, 380px);
+  }
+
+  .bannerText {
+    top: 10%;
+  }
+
+  .mentorParagraph {
+    font-size: clamp(13px, 2vw, 16px) !important;
+  }
+
+  .banner2People {
+    width: 40%;
+    left: 3%;
+  }
+
+  .banner2Text {
+    left: 46%;
+    width: 50%;
+    font-size: clamp(10px, 2vw, 16px) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner {
+    height: clamp(180px, 45vw, 280px);
+  }
+
+  .banner .image2 {
+    width: clamp(140px, 35vw, 260px);
+    height: clamp(140px, 35vw, 260px);
+    left: 50%;
+    bottom: -15%;
+  }
+
+  .mentorImgStack {
+    height: clamp(440px, 80vw, 620px);
+  }
+
+  .mentorImgBottom {
+    top: clamp(200px, 30vw, 280px);
+  }
+
+  .banner2 {
+    margin-top: 0;
+  }
+
+  .banner2People {
+    width: 50%;
+    left: 2%;
+  }
+
+  .banner2Text {
+    left: 48%;
+    width: 48%;
+    font-size: clamp(9px, 2.5vw, 14px) !important;
+  }
+}
+
+.mentorCarouselSection {
+  width: 100%;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  position: relative;
+}
+
+.mentorCarouselFrame {
+  width: 700px;
+  max-width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mentorCarouselImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.mentorCarouselSection {
+  width: 100%;
+  margin: 80px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.mentorCarouselStack {
+  position: relative;
+  width: 760px;
+  height: 460px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mentorCarouselCenter {
+  position: absolute;
+  width: 360px;
+  height: 420px;
+  object-fit: cover;
+  z-index: 3;
+}
+
+.mentorCarouselSide {
+  position: absolute;
+  width: 180px;
+  height: 330px;
+  object-fit: cover;
+  z-index: 2;
+  opacity: 1;
+}
+
+.leftSide {
+  left: 40px;
+}
+
+.rightSide {
+  right: 40px;
+}
+
+.carouselArrow {
+  width: 65px;
+  height: 65px;
+  border: none;
+  border-radius: 50%;
+  background: #ff6600;
+  color: white;
+  font-size: 42px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carouselArrow:hover {
+  opacity: 0.85;
+}
+
+.mentorQuotes {
+  background-color: #005b84;
+  width: 100%;  
+  height: 410px;
+  padding: 28px;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.topText {
+  font-size: 4.5rem !important;
+  line-height: 1.05;
+  color: #ff6600;
+  font-weight: 800;
+  margin: 0 0 28px 0;
+  max-width: 420px;
+}
+
+.bottomText {
+  font-size: 1.1rem !important;
+  line-height: 1.5;
+  color: white;
+  font-weight: 700;
+  margin: 0;
+  max-width: 420px;
+}
+
+.top,
+.bottom {
+  position: static;
+}
+
+.centerText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  color: white;
+  font-size: 3rem!important;
+  font-weight: 600;
+}
+
+.ctaSection {
+  width: 100%;
+  padding: 80px 20px;
+  background-color: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.ctaText {
+  font-size: 3rem;
+  color: #ff5a00;
+  font-weight: 800;
+  text-align: center;
+  margin: 0;
+}
+
+.ctaButton {
+  background-color: #ff5a00;
+  color: white;
+  font-size: 2rem;
+  font-weight: 700;
+
+  padding: 20px 60px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.ctaButton:hover {
+  background-color: #e64a00;
+  transform: scale(1.05);
+}
+
+.infoCardLinkWrapper {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+}
+
+.infoCard {
+  width: 380px;
+  background: white;
+  border: 1px solid #e5e5e5;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%; 
+}
+
+.infoCardImage {
+  width: 100%;
+  height: 260px;
+  object-fit: contain;
+  display: block;
+  background-color: #f7f7f7;
+}
+
+.infoCardBody {
+  padding: 28px 24px 20px 24px;
+  border-top: 1px solid #eeeeee;
+
+  flex-grow: 1; 
+}
+
+.infoCardFooter {
+  padding: 14px 24px;
+  border-top: 1px solid #eeeeee;
+
+  margin-top: auto; 
+}
+
+.infoCardTitle {
+  margin: 0 0 18px 0;
+  font-size: 2rem;
+  line-height: 1.15;
+  font-weight: 700;
+  color: #1f2a44;
+  text-align: center;
+}
+
+.infoCardDescription {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: #5f6673;
+  text-align: left;
+}
+
+.cardsSection {
+  width: 100%;
+  background-color: #0b5c7a;
+
+  display: flex;
+  justify-content: center;
+  align-items: stretch; 
+  gap: 40px;
+
+  padding: 60px 40px;
+  box-sizing: border-box;
+}
+
+.banner2Button {
+  position: absolute;
+  top: 38%;
+  left: 71%;
+  z-index: 4;
+
+  background-color: #ff5a00 !important;
+  color: white;
+}

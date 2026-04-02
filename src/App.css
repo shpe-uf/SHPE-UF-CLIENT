@@ -2732,98 +2732,103 @@ ul.nav li.active {
 }
 
 
-/* make sure the overlay image can size/position */
-.banner {
+/* NEW SECTION LAYOUT */
+.mentorSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 60px 8%;
+  background: #fff;
+}
+
+.mentorLeft {
+  flex: 1;
+  max-width: 560px;
+}
+
+.mentorParagraph {
+  font-family: "Mada", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #0b3a69; /* match the deep blue */
+  line-height: 1.5;
+}
+
+/* RIGHT SIDE STACK */
+.mentorRight {
+  flex: 1;
   position: relative;
-  height: 500px;
-  overflow: hidden;
+  min-height: 520px; /* gives room for overlap */
+  display: flex;
+  justify-content: flex-end;
 }
 
-/* background image */
-.banner .image1,
-.banner .image1 img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* overlay image wrapper */
-.banner .image2 {
+/* top image */
+.mentorImgTop {
   position: absolute !important;
-  bottom: 5%;
-  left: 70%;
-  transform: translateX(-50%);
-  width: 400px;   /* change this */
-  height: 400px;  /* change this */
-  z-index: 3;
-}
-
-/* IMPORTANT: size the actual <img> too */
-.banner .image2 img {
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: contain; /* or cover */
-  display: block;
-}
-
-
-.bannerText {
-  position: absolute !important;
-  top: 15%;           /* Keep text in upper portion */
-  left: 5%;
-  right: 5%;
-  max-width: 700px;
+  top: 0;
+  right: 0;
+  width: 430px;
   z-index: 2;
 }
 
-.banner .bannerTitle {
-  font-family: "Mada", sans-serif !important;
-  font-weight: 900 !important;
-  font-size: clamp(24px, 5vw, 48px) !important;
-  margin: 0 !important;
-  color: #fff !important;
-  line-height: 1.1 !important;
+/* bottom image (overlapping + tilted) */
+.mentorImgBottom {
+  position: absolute !important;
+  top: 210px;
+  right: 70px;
+  width: 520px;
+  transform: rotate(-4deg);
+  z-index: 1;
 }
 
-.banner .bannerSubtitle {
-  font-family: "Mada", sans-serif !important;
-  font-size: clamp(14px, 2.5vw, 24px) !important;
-  font-weight: 700;
-  color: #fff !important;
-  margin-top: 0.5rem !important;
-  line-height: 1.2 !important;
+/* make sure semantic-ui img fits */
+.mentorImgTop img,
+.mentorImgBottom img {
+  width: 100% !important;
+  height: auto !important;
+  display: block;
+  object-fit: cover;
 }
 
-/* Responsive adjustments to keep text above diagonal */
-@media (max-width: 1200px) {
-  .banner {
-    height: 400px;
+/* responsive */
+@media (max-width: 900px) {
+  .mentorSection {
+    flex-direction: column;
   }
-  .bannerText {
-    top: 12%;
-  }
-}
 
-@media (max-width: 768px) {
-  .banner {
-    height: 300px;
+  .mentorRight {
+    min-height: 620px;
+    justify-content: center;
   }
-  .bannerText {
-    top: 10%;
-    left: 4%;
-  }
-}
 
-@media (max-width: 480px) {
-  .banner {
-    height: 250px;
+  .mentorImgTop {
+    right: 0;
+    left: 0;
+    margin: auto;
   }
-  .bannerText {
-    top: 8%;
-    left: 3%;
+
+  .mentorImgBottom {
+    right: 0;
+    left: 0;
+    margin: auto;
+    top: 240px;
+    width: 90%;
   }
 }
 
+.banner2 {
+  position: relative;
+  margin-top: -350px;
+  z-index: 0;
+}
+
+.image4 {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+}
 
 
