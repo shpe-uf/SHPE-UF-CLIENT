@@ -3,73 +3,68 @@ import { Accordion, Icon, Grid, Image, Divider } from "semantic-ui-react";
 
 // The slides data structure
 const slides = {
-  "Spring 2024": [
+  "Spring 2026": [
     {
       image:
-        "https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Spring+2024+GBM+1.png",
-      pdf: "https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Spring+2024+GBM+1.pdf",
+        "https://shpeuf.s3.us-east-1.amazonaws.com/public/resources/GBMSlides/covers/Spring+2026+GBM+1.png",
+      pdf: "https://shpeuf.s3.us-east-1.amazonaws.com/public/resources/GBMSlides/Spring+2026+GBM+1.pdf",
     },
     {
       image:
-        "https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Spring+2024+GBM+2.png",
-      pdf: "https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Spring+2024+GBM+2.pdf",
+        "https://shpeuf.s3.us-east-1.amazonaws.com/public/resources/GBMSlides/covers/Spring+2026+GBM+2.png",
+      pdf: "https://shpeuf.s3.us-east-1.amazonaws.com/public/resources/GBMSlides/Spring+2026+GBM+2.pdf",
     },
     {
       image:
-        "https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Spring+2024+GBM+3.png",
-      pdf: "https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Spring+2024+GBM+3.pdf",
+        "https://shpeuf.s3.us-east-1.amazonaws.com/public/resources/GBMSlides/covers/Spring+2026+GBM+3.png",
+      pdf: "https://shpeuf.s3.us-east-1.amazonaws.com/public/resources/GBMSlides/Spring+2026+GBM+3.pdf",
     },
     {
       image:
-        "https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Spring+2024+GBM+4.png",
-      pdf: "https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Spring+2024+GBM+4.pdf",
-    },
-    {
-      image:
-        "https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Spring+2024+GBM+5.png",
-      pdf: "https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Spring+2024+GBM+5.pdf",
-    },
-    {
-      image:
-        "https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Spring+2024+GBM+6.png",
-      pdf: "https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Spring+2024+GBM+6.pdf",
-    },
-    {
-      image:
-        "https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Spring+2024+GBM+7.png",
-      pdf: "https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Spring+2024+GBM+7.pdf",
+        "https://shpeuf.s3.us-east-1.amazonaws.com/public/resources/GBMSlides/covers/Spring+2026+GBM+4.png",
+      pdf: "https://shpeuf.s3.us-east-1.amazonaws.com/public/resources/GBMSlides/Spring+2026+GBM+4.pdf",
     },
   ],
-  "Fall 2023": [
+  "Fall 2025": [
     {
       image:
-        "https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Fall+2023+GBM+1+Image.png",
-      pdf: "https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Fall+2023+GBM+1.pdf",
+        "https://shpeuf.s3.us-east-1.amazonaws.com/public/resources/GBMSlides/covers/Fall+2025+GBM+1.png",
+      pdf: "https://shpeuf.s3.us-east-1.amazonaws.com/public/resources/GBMSlides/Fall+2025+GBM+1.pdf",
     },
     {
       image:
-        "https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Fall+2023+GBM+2+Image.png",
-      pdf: "https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Fall+2023+GBM+2.pdf",
+        "https://shpeuf.s3.us-east-1.amazonaws.com/public/resources/GBMSlides/covers/Fall+2025+GBM+2+.png",
+      pdf: "https://shpeuf.s3.us-east-1.amazonaws.com/public/resources/GBMSlides/Fall+2025+GBM+2.pdf",
     },
     {
       image:
-        "https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Fall+2023+GBM+3+Image.png",
-      pdf: "https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Fall+2023+GBM+3.pdf",
+        "https://shpeuf.s3.us-east-1.amazonaws.com/public/resources/GBMSlides/covers/Fall+2025+GBM+3.png",
+      pdf: "https://shpeuf.s3.us-east-1.amazonaws.com/public/resources/GBMSlides/Fall+2025+GBM+3.pdf",
     },
     {
       image:
-        "https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Fall+2023+GBM+4+Image.png",
-      pdf: "https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Fall+2023+GBM+4.pdf",
+        "https://shpeuf.s3.us-east-1.amazonaws.com/public/resources/GBMSlides/covers/Fall+2025+GBM+4.png",
+      pdf: "https://shpeuf.s3.us-east-1.amazonaws.com/public/resources/GBMSlides/Fall+2025+GBM+4.pdf",
     },
     {
       image:
-        "https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Fall+2023+GBM+5+Image.png",
-      pdf: "https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Fall+2023+GBM+5.pdf",
+        "https://shpeuf.s3.us-east-1.amazonaws.com/public/resources/GBMSlides/covers/Fall+2025+GBM+5.png",
+      pdf: "https://shpeuf.s3.us-east-1.amazonaws.com/public/resources/GBMSlides/Fall+2025+GBM+5.pdf",
     },
     {
       image:
-        "https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Fall+2023+GBM+6+Image.png",
-      pdf: "https://shpeuf.s3.amazonaws.com/public/resources/GBMSlides/Fall+2023+GBM+6.pdf",
+        "https://shpeuf.s3.us-east-1.amazonaws.com/public/resources/GBMSlides/covers/Fall+2025+GBM+6.png",
+      pdf: "https://shpeuf.s3.us-east-1.amazonaws.com/public/resources/GBMSlides/Fall+2025+GBM+6.pdf",
+    },
+    {
+      image: 
+        "https://shpeuf.s3.us-east-1.amazonaws.com/public/resources/GBMSlides/covers/Fall+2025+GBM+7.png",
+      pdf: "https://shpeuf.s3.us-east-1.amazonaws.com/public/resources/GBMSlides/Fall+2025+GBM+7.pdf",
+    },
+    {
+      image:
+        "https://shpeuf.s3.us-east-1.amazonaws.com/public/resources/GBMSlides/covers/Fall+2025+GBM+8.png",
+      pdf: "https://shpeuf.s3.us-east-1.amazonaws.com/public/resources/GBMSlides/Fall+2025+GBM+8.pdf",
     },
   ],
 };
