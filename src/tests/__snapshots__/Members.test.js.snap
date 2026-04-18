@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Members - Snapshot Tests matches snapshot in loading state 1`] = `
+<DocumentFragment>
+  <div>
+    Title
+  </div>
+  <div
+    class="ui container body"
+  >
+    <div>
+      FilterSelection
+    </div>
+    <div
+      class="ui grid"
+    >
+      <div
+        class="row"
+      >
+        <div
+          class="column"
+        >
+          <div
+            style="margin-top: 300px;"
+          >
+            <div
+              class="ui active text loader"
+            >
+              Loading users, please wait...
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Members - Snapshot Tests matches snapshot when data is loaded 1`] = `
+<DocumentFragment>
+  <div>
+    Title
+  </div>
+  <div
+    class="ui container body"
+  >
+    <div>
+      FilterSelection
+    </div>
+    <div
+      class="ui grid"
+    >
+      <div
+        class="row"
+      >
+        <div
+          class="column"
+        >
+          <div
+            data-testid="members-table"
+          >
+            MembersTable (2 users)
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
