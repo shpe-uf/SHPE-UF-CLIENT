@@ -6,3 +6,16 @@
     background-repeat: no-repeat !important;
     background-size: cover !important;
 }
+
+.body .ui.cards > .card > .image {
+    background: #f4f4f4;
+    overflow: hidden;
+}
+
+.body .ui.cards > .card > .image img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center;
+}

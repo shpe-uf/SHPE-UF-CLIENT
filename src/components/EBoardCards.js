@@ -33,60 +33,42 @@ const presidentDescription = (
 
 const researchDescription = (
   <span>
-    Manage events, workshops, and informational sessions to help members obtain
-    undergraduate research opportunities. Aid in the academic development of
-    members looking to pursue a graduate education. Bridge the gap between
-    undergraduate and graduate members by providing more opportunities for
-    interaction. Organize events that bolster graduate student involvement in
-    SHPE and in other organizations on campus. Use events as possible gateways
-    to recruit new graduate members.
+    Leads SHPE UF’s efforts to expand research accessibility, professional development, and innovation opportunities for members. 
+    Oversee programs such as the Engineering Research Symposium, Designathon, lab tours, and research-focused initiatives 
+    that connect students with faculty and research opportunities.
+    Aid member development of technical skills, exploring research pathways, and building a strong foundation for academic and professional 
+    success as well as support academic development of members looking to pursue a graduate education. 
+
   </span>
 );
 
 const secretaryDescription = (
   <span>
-    Serve as a point of contact between UF and the organization regarding
-    guidelines, rules and logistics for events/programs. Manage our Alumni
-    LinkedIn network to keep our graduates on the loop and expand our networking
-    resources. Alumni Panel, Social events, Internships/Research opportunities
-    Update Facebook feed every Monday with the Weekly Updates. Oversee directors
-    for each sub-cabinet (opportunities newsletter, yearbook,alumni relations,
-    and cabinet liaison) to ensure everything is done on time. Secretary
-    Qualities: detail-oriented, time management, organization and diligence
+    Serves as the point of contact between the University of Florida and the SHPE UF Chapter 
+    regarding university policies and programming logistics for chapter events. Manages our Alumni 
+    Instagram and LinkedIn to keep graduates updated, strengthen alumni engagement, and expand networking resources for current members. 
+    Oversees the SHPEducation, Yearbook, Alumni Relations, and Cabinet Liaison mini-cabinets to support our chapter’s goals. 
+    Maintains the Chapter Management Tool and master calendar to keep event information and chapter data organized and up to date. 
+
   </span>
 );
 
 const treasurerDescription = (
   <span>
-    Create and monitor budgets for each cabinet Manage all reimbursements,
-    including National Convention reimbursements Student Government Coordinate
-    budget request process each semester Submit SAR forms and teach others how
-    to do so Order food for all General Body Meetings Serve as point of contact
-    for any financial matters regarding SHPE
+    Serve as the primary point of contact for any financial matters or concerns regarding SHPE. Maintain organizational financial strength, transparency, and sustainability by developing cabinet budgets and securing funding with the College of Engineering. Oversee all expense reimbursements, including National Convention travel, and coordinate essential logistics like GBM catering and professional padfolio distribution. Advance member equity and technical growth by sourcing scholarship opportunities and executing FinanceSHPE, SHPE TANK, and SHPE Capital programs.
   </span>
 );
 
 const marketingDescription = (
   <span>
-    Serve as a point of communication between cabinet, other cabinets, new
-    members and other orgs Manage and delegate responsibilities in each
-    mini-cabinet (social media, recruitment, podcast, photography, video,
-    marketing event, graphic design, apparel) Able to speak at a variety of
-    events regarding SHPE at UF and its operations. This means you must have an
-    understanding of everything SHPE and each cabinet has to offer as well as be
-    up to date on all events Marketing Mindset: People, Publicity, Profit IN
-    THAT ORDER Face of SHPE Part Two: But Now the Stakes are Lower
+    Serve as the second face of SHPE UF and create a lasting impression on new and current members. Manage and delegate responsibilities in each mini-cabinet (social media, content, video, photography, recruitment, graphic design, and apparel) to uphold our professional, yet fun, brand. Maintain a knowledge of all-things-SHPE to have the ability to speak about the organization at any outreach events. Oversee creative initiatives to market the organization across various platforms like Instagram and LinkedIn, as well as initiatives to market our various events and programs.
+
   </span>
 );
 
 const techDescription = (
   <span>
-    Spearhead implementation days for prospective projects, including room
-    reservations, tool inventory, and meeting tasks XTreme Engineering SHPE’s
-    Hackathon Design Team Project Lead SHPE + SHPE JR Website Coding Interview
-    Prep Collaborate with organizations on campus for tech projects Plan project
-    details for the upcoming academic year Tech workshop series throughout Fall
-    and Spring semesters
+    Lead SHPE UF's technological initiatives by overseeing the design and development processes across all technical teams, including Software Engineering, Design, Mobile Apps, and UI/UX. Serve as the strategic bridge between development teams and the Executive Board to guide the trajectory of our website and applications while integrating feedback for new features. Oversee the planning and execution of flagship tech events such as the Code for Change Hackathon, Technical Workshops (SHPEWorks), and the Technology Leadership Development Program (TLDP). Innovate new technological solutions that further support the chapter, and collaborate with external organizations to expand our reach and empower a wider audience.
   </span>
 );
 
@@ -105,31 +87,15 @@ const corporateDescription = (
 
 const externalDescription = (
   <span>
-    Manage and guide 20+ directors for the following events and programs: SHPE
-    Jr. (Middle and High School), MentorSHPE Jr., ShadowSHPE, TeXternal,
-    PartnerSHPE, GFT (Spring only). Meet with each program/event directors
-    separately to track progress, provide feedback, and provide guidance
-    wherever necessary. Hold monthly SHPE Jr. meetings with all representatives,
-    and monthly External Cabinet meetings with all directors. Attend all
-    events/workshops for each of these respective events/programs. Work with the
-    treasurer to receive a semesterly budget, and distribute amongst each
-    program based on program/event needs. Selecting Directors (additional):
-    Select SHPE Jr. Chair prior to the start of the school year. Plan and
-    execute GFT application and interview processes. Select PartnerSHPE
-    Ambassadors early in the school year. Act as a liaison and representative
-    with: SHPE Jr. National and Regional Officers. New high schools and middle
-    schools.
+    Lead SHPE UF's outreach initiatives by fostering partnerships with K–12 schools, community organizations, and educational institutions to expand SHPE's impact beyond campus. Oversee the External Cabinet in planning and executing community service projects, SHPE Jr. programming, 
+    and outreach events that inspire the next generation of STEM leaders. Support the growth of SHPE Jr. and PartnerSHPE chapters, strengthen relationships with schools and community partners, and guide the execution of flagship initiatives such as the SHPE Jr. Conference, Goals for Tomorrow (GFT), New Chapter Development, and Community Outreach while developing future leaders within the organization.
   </span>
 );
 
 const internalDescription = (
   <span>
-    Plan, budget, market, and execute all internal events for SHPE UF students
-    by communicating with the treasurer and marketing VP Socials, bonding days,
-    banquets, and trips Manage FYLP and MentorSHPE programs Oversee directors
-    for each program/event to assure events are timely budgeted, planned, and
-    marketed Stadiums, Esports, WISDI, Events, FYLP, MentorSHPE Important
-    qualities: punctuality, organization, communication
+    Spearheads the internal programming that drives member engagement and long-term retention across our chapter. Oversees six (6) dynamic programs including MentorSHPE, First Year Leadership Program (FYLP), SHPEtinas, SeniorSHPE, Athletics, and Events, while executing initiatives that connect members to mentorship, leadership development, and community. Strengthens chapter culture and cultivates a lasting SHPE familia from a member's first semester to graduation.
+
   </span>
 );
 
