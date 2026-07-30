@@ -5,9 +5,9 @@ import '../App.css';
 import PhotosDisplay from './PhotosDisplay';
 
 const Freshman1011 =
-  "https://shpeuf.s3.amazonaws.com/public/resources/F1011_2025.jpg";
+  "https://shpeuf.s3.amazonaws.com/public/resources/F1011_2026.png";
 const Freshman1012 =
-  "https://shpeuf.s3.amazonaws.com/public/resources/F1012_2025.jpg";
+  "https://shpeuf.s3.amazonaws.com/public/resources/F1012_2026.png";
 const Playlist =
   "https://shpeuf.s3.us-east-1.amazonaws.com/public/resources/SHPlaylist.png";
 const Podcast = "https://shpeuf.s3.amazonaws.com/public/resources/SHPECast.jpg";
@@ -26,6 +26,16 @@ const careerDB =
 const internSHPE =
   "https://shpeuf.s3.amazonaws.com/public/resources/internshpe.png";
 
+const f101ImageStyle = {
+  width: '100%',
+  maxWidth: '360px',
+  maxHeight: '260px',
+  height: 'auto',
+  objectFit: 'contain',
+  display: 'block',
+  margin: '0 auto 1rem',
+};
+
 const GBMSlidesSegment = () => (
   <div>
     <br />
@@ -43,55 +53,90 @@ const GBMSlidesSegment = () => (
 );
 
 const F101Segment = () => (
-    <div>
-    <br/>
-    <b>We know entering college can be a both exciting and overwhelming experience, so we got you covered!
-        SHPE UF has put together this Freshman 101 Document Series with everything you should know as an incoming Gator. 
-        Learn from our members advice and what they wish they knew as first years!</b>
+  <div>
+    <br />
+    <div style={{ maxWidth: '780px', margin: '0 auto 1rem', lineHeight: '1.5' }}>
+      <b>
+        We know entering college can be both exciting and overwhelming, so we
+        have you covered. SHPE UF has put together this Freshman 101 Document
+        Series with everything you should know as an incoming Gator. Learn from
+        our members' advice and what they wish they knew as first-years.
+      </b>
+    </div>
 
-    <Grid divided centered>
-        <Grid.Column width={5} textAlign='center'>
-            <h6>Getting Ready For UF</h6>
+    <Grid divided stackable centered>
+      <Grid.Column mobile={16} tablet={8} computer={5} textAlign="center">
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '0.75rem',
+          }}
+        >
+          <h6>Getting Ready For UF</h6>
 
-            <Image src={Freshman1011} id="centered-img"
-            
-            as="a" 
-            size="medium" 
-            href="https://drive.google.com/file/d/1x2KrjnprjMjlzD0MVfcM6xd167UkUIgS/view" 
+          <a
+            href="https://drive.google.com/file/d/1IhebPFKdC0kvLkJHlUcVKz0K-cP0EuFU/view"
             target="_blank"
+            rel="noreferrer"
+            style={{ display: 'block', width: '100%', maxWidth: '240px', margin: '0 auto' }}
+          >
+            <img
+              src={Freshman1011}
+              alt="Getting Ready For UF"
+              style={f101ImageStyle}
             />
+          </a>
 
-            <Divider/>
+          <Button
+            as="a"
+            href="https://drive.google.com/file/d/1IhebPFKdC0kvLkJHlUcVKz0K-cP0EuFU/view"
+            target="_blank"
+            style={{ marginTop: '0.5rem' }}
+          >
+            <Icon name="download" />Download Here
+          </Button>
+        </div>
+      </Grid.Column>
 
-            <Button as='a' 
-            href='https://drive.google.com/file/d/1x2KrjnprjMjlzD0MVfcM6xd167UkUIgS/view' 
-            target="_blank"><Icon name='download'/>Download Here</Button>
-
-        </Grid.Column>
-
-        <Grid.Column width={5} textAlign='center'>
-    
-            <h6>Guide to Your First Semester</h6>
-            <Image src={Freshman1012} id="centered-img"
-            as="a" 
-            href='https://drive.google.com/file/d/1fWr_UjuYc6inGoNI0SfKkS5C-Fv3e8Tm/view'
-            target="_blank" 
-            size="medium"
-            centered
+      <Grid.Column mobile={16} tablet={8} computer={5} textAlign="center">
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: '0.75rem',
+          }}
+        >
+          <h6>Guide to Your First Semester</h6>
+          <a
+            href="https://drive.google.com/file/d/1T8zUsEiQ2k2YhK5e4QzNA5e-plZKXRg-/view"
+            target="_blank"
+            rel="noreferrer"
+            style={{ display: 'block', width: '100%', maxWidth: '240px', margin: '0 auto' }}
+          >
+            <img
+              src={Freshman1012}
+              alt="Guide to Your First Semester"
+              style={f101ImageStyle}
             />
+          </a>
 
-            
+          <Button
+            as="a"
+            href="https://drive.google.com/file/d/1T8zUsEiQ2k2YhK5e4QzNA5e-plZKXRg-/view"
+            target="_blank"
+            style={{ marginTop: '0.5rem' }}
+          >
+            <Icon name="download" />Download here
+          </Button>
+        </div>
+      </Grid.Column>
 
-            <Divider/>
-
-            <Button as='a' href='https://drive.google.com/file/d/1fWr_UjuYc6inGoNI0SfKkS5C-Fv3e8Tm/view' 
-            target="_blank"><Icon name='download'/>Download here</Button>
-
-        </Grid.Column>
-
-        <Grid.Column width={5}>
-            <h6>Keep an eye out for more coming in the future.</h6>
-        </Grid.Column>
+      <Grid.Column mobile={16} tablet={16} computer={16} textAlign="center">
+        <h6>Keep an eye out for more coming in the future.</h6>
+      </Grid.Column>
     </Grid>
   </div>
 );
