@@ -798,6 +798,6 @@ ul.nav li.active {
 }
 
 #centered-img {
-  display: flex;
-  justify-content: center;
+  display: block;
+  margin: 0 auto;
 }
