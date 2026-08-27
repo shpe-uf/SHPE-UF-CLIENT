@@ -5,6 +5,7 @@ import { useQuery } from "@apollo/client";
 import Title from "../components/Title";
 import MembersTable from "../components/MembersTable";
 import FilterSelection from "../components/FilterSelection";
+import TopUsersButton from "../components/TopUsersButton";
 
 import { FETCH_USERS_QUERY } from "../util/graphql";
 
@@ -88,6 +89,7 @@ function Members() {
       <Container className="body">
       <FilterSelection getUsers={getUsers} />
         <Grid>
+          <TopUsersButton />
           <Grid.Row>
             <Grid.Column>
               {loading | !data ? (
