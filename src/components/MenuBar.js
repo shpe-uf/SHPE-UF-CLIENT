@@ -1,11 +1,5 @@
 import React, { useContext } from "react";
-import {
-  Menu,
-  Container,
-  Dropdown,
-  Button,
-  Icon
-} from "semantic-ui-react";
+import { Menu, Container, Dropdown, Button, Icon } from "semantic-ui-react";
 import { Media } from "../Media";
 import { Link } from "react-router-dom";
 
@@ -13,7 +7,7 @@ import { AuthContext } from "../context/auth";
 
 const logo = "https://shpeuf.s3.amazonaws.com/public/misc/logo.png";
 
-function MenuBar({permission}) {
+function MenuBar({ permission }) {
   const { user, logout } = useContext(AuthContext);
 
   return (
@@ -31,7 +25,7 @@ function MenuBar({permission}) {
               Alumni
             </Menu.Item>
             <Menu.Item as={Link} to="/leadership">
-              Leadership 
+              Leadership
             </Menu.Item>
             <Menu.Item as={Link} to="/devteam">
               Dev Team
@@ -41,29 +35,28 @@ function MenuBar({permission}) {
             </Menu.Item>
             <Menu.Item as={Link} to="/shpejr">
               SHPE Jr
-             </Menu.Item>  
+            </Menu.Item>
             <Menu.Item as={Link} to="/calendar">
               Calendar
             </Menu.Item>
             <Menu.Item as={Link} to="/resources">
               Resources
-            </Menu.Item>            
+            </Menu.Item>
             <Menu.Item as={Link} to="/contactus">
               Contact Us
             </Menu.Item>
-            
-            
 
             <Menu.Menu position="left">
               {user ? (
                 <>
                   <Dropdown pointing item className="email" text={user.email}>
                     <Dropdown.Menu>
-                      {(permission.includes('admin') || permission.includes("corporatedatabase")) &&
-                      <Dropdown.Item as={Link} to="/admin">
-                        Admin Panel
-                      </Dropdown.Item>
-                      }
+                      {(permission.includes("admin") ||
+                        permission.includes("corporatedatabase")) && (
+                        <Dropdown.Item as={Link} to="/admin">
+                          Admin Panel
+                        </Dropdown.Item>
+                      )}
                       <Dropdown.Item as={Link} to="/profile">
                         My Profile
                       </Dropdown.Item>
@@ -114,61 +107,51 @@ function MenuBar({permission}) {
       <Media lessThan="computer">
         <Menu inverted>
           <Container>
-                <Dropdown
-                  pointing
-                  item
-                  text="Menu"
-                  className="brand-logo"
-                >
-                  <Dropdown.Menu>
-                    <Dropdown.Item className="brand-logo" as={Link} to="/">
-                      Home
-                    </Dropdown.Item>
-                    <Dropdown.Item as={Link} to="/about">
-                      About Us
-                    </Dropdown.Item>
-                    {/*<Dropdown.Item as={Link} to="/alumni">
+            <Dropdown pointing item text="Menu" className="brand-logo">
+              <Dropdown.Menu>
+                <Dropdown.Item className="brand-logo" as={Link} to="/">
+                  Home
+                </Dropdown.Item>
+                <Dropdown.Item as={Link} to="/about">
+                  About Us
+                </Dropdown.Item>
+                {/*<Dropdown.Item as={Link} to="/alumni">
                       Alumni
                     </Dropdown.Item>*/}
-                    <Dropdown.Item as={Link} to="/leadership">
-                      Leadership 
-                    </Dropdown.Item>
-                    <Dropdown.Item as={Link} to="/devteam">
-                      Dev Team
-                    </Dropdown.Item>
-                    <Dropdown.Item as={Link} to="/sponsors">
-                      Partners
-                    </Dropdown.Item>
-                    <Dropdown.Item as={Link} to="/shpejr">
-                      SHPE Jr
-                    </Dropdown.Item> 
-                    <Dropdown.Item as={Link} to="/calendar">
-                      Calendar
-                    </Dropdown.Item>
-                    <Dropdown.Item as={Link} to="/contactus">
-                      Contact Us
-                    </Dropdown.Item>
-                    <Dropdown.Item as={Link} to="/resources">
-                      Resources
-                    </Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
+                <Dropdown.Item as={Link} to="/leadership">
+                  Leadership
+                </Dropdown.Item>
+                <Dropdown.Item as={Link} to="/devteam">
+                  Dev Team
+                </Dropdown.Item>
+                <Dropdown.Item as={Link} to="/sponsors">
+                  Partners
+                </Dropdown.Item>
+                <Dropdown.Item as={Link} to="/shpejr">
+                  SHPE Jr
+                </Dropdown.Item>
+                <Dropdown.Item as={Link} to="/calendar">
+                  Calendar
+                </Dropdown.Item>
+                <Dropdown.Item as={Link} to="/contactus">
+                  Contact Us
+                </Dropdown.Item>
+                <Dropdown.Item as={Link} to="/resources">
+                  Resources
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
 
             <Menu.Menu position="right">
               {user ? (
                 <>
-                  <Dropdown
-                    pointing
-                    item
-                    className="email"
-                    text={user.email}
-                  >
+                  <Dropdown pointing item className="email" text={user.email}>
                     <Dropdown.Menu>
-                      {permission.includes('admin') &&
-                      <Dropdown.Item as={Link} to="/admin">
-                        Admin Panel
-                      </Dropdown.Item>
-                      }
+                      {permission.includes("admin") && (
+                        <Dropdown.Item as={Link} to="/admin">
+                          Admin Panel
+                        </Dropdown.Item>
+                      )}
                       <Dropdown.Item as={Link} to="/profile">
                         My Profile
                       </Dropdown.Item>

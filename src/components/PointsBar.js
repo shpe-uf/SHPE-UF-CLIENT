@@ -1,6 +1,6 @@
 import React from "react";
-import { Grid,  Segment } from "semantic-ui-react";
-import { Media } from "../Media"
+import { Grid, Segment } from "semantic-ui-react";
+import { Media } from "../Media";
 
 function PointsBar({ user }) {
   return (
@@ -32,7 +32,7 @@ function PointsBar({ user }) {
                 </Segment>
                 <Segment vertical>
                   <p className="points-number">
-                     {user ? user.springPoints : "0"}
+                    {user ? user.springPoints : "0"}
                   </p>
                 </Segment>
                 <Segment vertical>
@@ -54,7 +54,7 @@ function PointsBar({ user }) {
                 </Segment>
                 <Segment vertical>
                   <p className="points-header">
-                   Top  {user ? user.summerPercentile : "0"} percent
+                    Top {user ? user.summerPercentile : "0"} percent
                   </p>
                 </Segment>
               </div>
@@ -110,7 +110,7 @@ function PointsBar({ user }) {
                 </Segment>
                 <Segment vertical>
                   <p className="points-number">
-                     {user ? user.summerPoints : "0"} 
+                    {user ? user.summerPoints : "0"}
                   </p>
                 </Segment>
                 <Segment vertical>

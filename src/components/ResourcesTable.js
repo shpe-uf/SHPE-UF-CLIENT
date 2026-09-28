@@ -23,7 +23,9 @@ function ResourcesTable({ resources }) {
       <Dimmer active={resources ? false : true} inverted>
         <Loader />
       </Dimmer>
-      {resources === undefined || resources === null || resources.length === 0 ? (
+      {resources === undefined ||
+      resources === null ||
+      resources.length === 0 ? (
         <Segment placeholder>
           <Header icon>
             <i className="fas fa-inbox"></i>
@@ -96,11 +98,15 @@ function ResourcesTable({ resources }) {
                 <h3>Description</h3>
                 <p>{selectedResource.description}</p>
                 <h3>Link</h3>
-                <a href={selectedResource.link} target="_blank">{selectedResource.link}</a>
+                <a href={selectedResource.link} target="_blank">
+                  {selectedResource.link}
+                </a>
                 <h3>Image</h3>
-                <a href={selectedResource.image} target="_blank">{selectedResource.image}</a>
-                <br/>
-                <br/>
+                <a href={selectedResource.image} target="_blank">
+                  {selectedResource.image}
+                </a>
+                <br />
+                <br />
                 <Button
                   type="reset"
                   color="grey"

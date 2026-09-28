@@ -27,7 +27,7 @@ import ImageCrop from "../components/ImageCrop";
 function CorporateDatabase() {
   const [errors, setErrors] = useState({});
   const [addCorporationModal, setAddCorporationModal] = useState(false);
-  const [addPartnerModal, setAddPartnerModal] = useState(false)
+  const [addPartnerModal, setAddPartnerModal] = useState(false);
 
   var [logoFile, setLogoFile] = useState("");
   var [pLogoFile, pSetLogoFile] = useState("");
@@ -56,34 +56,36 @@ function CorporateDatabase() {
     "shpeSponsor",
     "industryPartnership",
     "fallBBQ",
-    "springBBQ", 
+    "springBBQ",
     "nationalConvention",
     "recruitmentDay",
-    "signUpLink"
+    "signUpLink",
   ];
 
   const validateFields = () => {
     const validationErrors = {};
 
-    for (let i = 0; i < requiredFields.length; i++){
+    for (let i = 0; i < requiredFields.length; i++) {
       const field = requiredFields[i];
       if (field === "majors" || field === "industries") {
         if (!values[field] || values[field].length === 0) {
-          validationErrors[field] = "Invalid input: All fields must be filled out.";
+          validationErrors[field] =
+            "Invalid input: All fields must be filled out.";
         }
       } else {
         if (field === "signUpLink" && values.recruitmentDay === "false") {
           continue;
         }
         if (!values[field] || values[field].trim() === "") {
-          validationErrors[field] = "Invalid input: All fields must be filled out.";
+          validationErrors[field] =
+            "Invalid input: All fields must be filled out.";
         }
       }
     }
 
     setErrors(validationErrors);
 
-    if (Object.keys(validationErrors).length > 0){
+    if (Object.keys(validationErrors).length > 0) {
       return;
     }
 
@@ -141,7 +143,11 @@ function CorporateDatabase() {
     }
   }
 
-  const { onChange: pOnChange, onSubmit: pOnSubmit, values: pValues } = useForm(createPartner, {
+  const {
+    onChange: pOnChange,
+    onSubmit: pOnSubmit,
+    values: pValues,
+  } = useForm(createPartner, {
     name: "",
     tier: "",
     photo: "",
@@ -178,8 +184,7 @@ function CorporateDatabase() {
     setAddCorporationModal(true);
   };
 
-  const openPartnerModal = () => setAddPartnerModal(true)
-
+  const openPartnerModal = () => setAddPartnerModal(true);
 
   const closeModal = () => {
     values.name = "";
@@ -203,7 +208,7 @@ function CorporateDatabase() {
     values.springBBQ = "false";
     values.nationalConvention = "false";
     values.recruitmentDay = "false";
-    values.signUpLink = ""
+    values.signUpLink = "";
     setErrors(false);
     setAddCorporationModal(false);
   };
@@ -215,7 +220,6 @@ function CorporateDatabase() {
     setErrors(false);
     setAddPartnerModal(false);
   };
-
 
   const corpHeaders = [
     { label: "ID", key: "id" },
@@ -485,18 +489,18 @@ function CorporateDatabase() {
                   <label>Hosting Recruitment Day?</label>
                 </div>
               </Form.Field>
-              {
-                values.recruitmentDay === "true" ?
-                  <Form.Group widths="equal">
-                    <Form.Input
-                      type="text"
-                      label="Sign Up Link"
-                      name="signUpLink"
-                      value={values.signUpLink}
-                      error={errors.signUpLink ? true : false}
-                      onChange={onChange}
-                    /> </Form.Group> : null
-              }
+              {values.recruitmentDay === "true" ? (
+                <Form.Group widths="equal">
+                  <Form.Input
+                    type="text"
+                    label="Sign Up Link"
+                    name="signUpLink"
+                    value={values.signUpLink}
+                    error={errors.signUpLink ? true : false}
+                    onChange={onChange}
+                  />{" "}
+                </Form.Group>
+              ) : null}
               <Button type="reset" color="red" onClick={() => closeModal()}>
                 Cancel
               </Button>
@@ -575,16 +579,15 @@ function CorporateDatabase() {
                 <Form.Dropdown
                   label="Tier"
                   fluid
-                  selection options={partnerTiers}
+                  selection
+                  options={partnerTiers}
                   onChange={(param, data) => {
                     pValues.tier = data.value;
                   }}
                   error={errors.tier ? true : false}
                 ></Form.Dropdown>
               </Form.Group>
-              <Button type="submit">
-                Add Partner
-              </Button>
+              <Button type="submit">Add Partner</Button>
             </Form>
           </Segment>
         </Segment.Group>
@@ -592,7 +595,6 @@ function CorporateDatabase() {
     </Modal>
   );
   //#endregion
-
 
   return (
     <>
@@ -699,19 +701,10 @@ const CREATE_CORPORATION = gql`
   }
 `;
 
-
 const CREATE_PARTNER = gql`
-  mutation createPartner(
-    $name: String!
-    $photo: String!
-    $tier: String!
-  ) {
+  mutation createPartner($name: String!, $photo: String!, $tier: String!) {
     createPartner(
-      createPartnerInput: {
-        name: $name
-        photo: $photo
-        tier: $tier
-      }
+      createPartnerInput: { name: $name, photo: $photo, tier: $tier }
     ) {
       name
       photo

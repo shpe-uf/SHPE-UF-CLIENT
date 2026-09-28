@@ -1,21 +1,21 @@
 .masthead-leadership {
-    background: url(https://shpeuf.s3.us-east-1.amazonaws.com/public/eboard/Group+Photo.JPG) !important;
-    border-radius: 0px;
-    background-position: 75% 75% !important;
-    background-attachment: fixed !important;
-    background-repeat: no-repeat !important;
-    background-size: cover !important;
+  background: url(https://shpeuf.s3.us-east-1.amazonaws.com/public/eboard/Group+Photo.JPG) !important;
+  border-radius: 0px;
+  background-position: 75% 75% !important;
+  background-attachment: fixed !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
 }
 
 .body .ui.cards > .card > .image {
-    background: #f4f4f4;
-    overflow: hidden;
+  background: #f4f4f4;
+  overflow: hidden;
 }
 
 .body .ui.cards > .card > .image img {
-    display: block;
-    width: 100%;
-    aspect-ratio: 4 / 5;
-    object-fit: cover;
-    object-position: center;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center;
 }

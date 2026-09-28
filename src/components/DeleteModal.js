@@ -6,7 +6,7 @@ import {
   FETCH_TASKS_QUERY,
   FETCH_CORPORATIONS_QUERY,
   FETCH_EVENTS_QUERY,
-  FETCH_RESOURCES_QUERY
+  FETCH_RESOURCES_QUERY,
 } from "../util/graphql";
 
 function DeleteModal(props) {
@@ -119,7 +119,7 @@ const DELETE_RESOURCE = gql`
       description
       image
       createdAt
-      podcast 
+      podcast
     }
   }
 `;

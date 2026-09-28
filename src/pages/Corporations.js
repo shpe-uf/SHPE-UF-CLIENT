@@ -38,7 +38,7 @@ function Corporations(props) {
       springBBQ: false,
       nationalConvention: false,
       recruitmentDay: false,
-    })
+    }),
   );
 
   //Corporation information modals
@@ -118,7 +118,7 @@ function Corporations(props) {
             query: FETCH_USER_QUERY,
             variables: { userId: id },
           }) || { getUser: { bookmarks: [] } }; // Fallback to empty bookmarks array if data is null
-  
+
           cache.writeQuery({
             query: FETCH_USER_QUERY,
             variables: { userId: id },
@@ -135,7 +135,7 @@ function Corporations(props) {
       },
     });
   };
-  
+
   const removeBookmark = (corpName, username) => {
     deleteBookmark({
       variables: {
@@ -148,14 +148,16 @@ function Corporations(props) {
             query: FETCH_USER_QUERY,
             variables: { userId: id },
           }) || { getUser: { bookmarks: [] } }; // Fallback to empty bookmarks array if data is null
-  
+
           cache.writeQuery({
             query: FETCH_USER_QUERY,
             variables: { userId: id },
             data: {
               getUser: {
                 ...getUser,
-                bookmarks: getUser.bookmarks.filter((bookmark) => bookmark !== corpName),
+                bookmarks: getUser.bookmarks.filter(
+                  (bookmark) => bookmark !== corpName,
+                ),
               },
             },
           });
@@ -165,7 +167,6 @@ function Corporations(props) {
       },
     });
   };
-  
 
   var corporationPane = {
     menuItem: { content: "Corporations", icon: "building outline" },
@@ -360,7 +361,7 @@ function Corporations(props) {
                       });
                       user.bookmarks.splice(
                         user.bookmarks.indexOf(corporationInfo.name),
-                        1
+                        1,
                       );
                     }}
                     floated="right"
@@ -408,7 +409,7 @@ class Filter {
     this.fallBBQ = filter.fallBBQ;
     this.springBBQ = filter.springBBQ;
     this.nationalConvention = filter.nationalConvention;
-    this.recruitmentDay = filter.recruitmentDay
+    this.recruitmentDay = filter.recruitmentDay;
   }
 }
 

@@ -541,7 +541,6 @@ div::-webkit-scrollbar-thumb {
   main {
     min-height: calc(100vh - 64px - 64px) !important;
   }
-
 }
 
 .loading {

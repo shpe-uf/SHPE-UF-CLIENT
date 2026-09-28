@@ -57,7 +57,7 @@ const slides = {
       pdf: "https://shpeuf.s3.us-east-1.amazonaws.com/public/resources/GBMSlides/Fall+2025+GBM+6.pdf",
     },
     {
-      image: 
+      image:
         "https://shpeuf.s3.us-east-1.amazonaws.com/public/resources/GBMSlides/covers/Fall+2025+GBM+7.png",
       pdf: "https://shpeuf.s3.us-east-1.amazonaws.com/public/resources/GBMSlides/Fall+2025+GBM+7.pdf",
     },

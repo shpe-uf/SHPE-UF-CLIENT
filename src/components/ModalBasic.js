@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Header, Icon, Modal } from "semantic-ui-react";
 
-const ModalBasic = props => (
+const ModalBasic = (props) => (
   <Modal open={props.open} basic size="small">
     <Header icon="mail" content="Confirm Email" />
     <Modal.Content>

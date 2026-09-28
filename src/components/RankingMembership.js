@@ -1,11 +1,18 @@
 import React from "react";
-import { Dimmer, Loader, Table, Segment, Header, PaginationItem } from "semantic-ui-react";
+import {
+  Dimmer,
+  Loader,
+  Table,
+  Segment,
+  Header,
+  PaginationItem,
+} from "semantic-ui-react";
 
 function MembershipTable({ users, points }) {
-    const sortedUsers = [...users].sort((a, b) => {
-        return b[points + "Points"] - a[points + "Points"]; 
-      });  
-    return (
+  const sortedUsers = [...users].sort((a, b) => {
+    return b[points + "Points"] - a[points + "Points"];
+  });
+  return (
     <>
       <Dimmer active={users ? false : true} inverted>
         <Loader />
@@ -19,11 +26,11 @@ function MembershipTable({ users, points }) {
         </Segment>
       ) : (
         <div className="table-responsive">
-            <h1>{points} Points</h1>
+          <h1>{points} Points</h1>
           <Table striped selectable unstackable>
             <Table.Header>
               <Table.Row>
-              <Table.HeaderCell>Rank</Table.HeaderCell>
+                <Table.HeaderCell>Rank</Table.HeaderCell>
                 <Table.HeaderCell>Name</Table.HeaderCell>
                 <Table.HeaderCell>Year</Table.HeaderCell>
                 <Table.HeaderCell>Email</Table.HeaderCell>
@@ -33,22 +40,25 @@ function MembershipTable({ users, points }) {
             <Table.Body>
               {users &&
                 sortedUsers.map((user, index) => (
-                <>
-                    {user[points+"Points"] > 0 &&
-                        <Table.Row key={index}>
-                            <Table.Cell>{index + 1}</Table.Cell>
-                            <Table.Cell> {user.firstName + " " + user.lastName}</Table.Cell>
-                            <Table.Cell>{user.year}</Table.Cell>
-                            <Table.Cell>{user.email}</Table.Cell>
-                            <Table.Cell>{user[points+"Points"]}</Table.Cell>
-                        </Table.Row>
-                    }
-                </>        
+                  <>
+                    {user[points + "Points"] > 0 && (
+                      <Table.Row key={index}>
+                        <Table.Cell>{index + 1}</Table.Cell>
+                        <Table.Cell>
+                          {" "}
+                          {user.firstName + " " + user.lastName}
+                        </Table.Cell>
+                        <Table.Cell>{user.year}</Table.Cell>
+                        <Table.Cell>{user.email}</Table.Cell>
+                        <Table.Cell>{user[points + "Points"]}</Table.Cell>
+                      </Table.Row>
+                    )}
+                  </>
                 ))}
             </Table.Body>
           </Table>
         </div>
-      )}    
+      )}
     </>
   );
 }

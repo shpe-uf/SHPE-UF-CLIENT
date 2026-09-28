@@ -21,7 +21,7 @@ function TaskCard({ user, refetch }) {
     for (const [_, value] of allTasks.entries()) {
       const task = value;
       const taskName = bookmarkedTaskNames.find(
-        (element) => element === task.name
+        (element) => element === task.name,
       );
       if (!taskName) {
         tasks.push(task);

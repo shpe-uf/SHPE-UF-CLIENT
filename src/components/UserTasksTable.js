@@ -5,8 +5,7 @@ function UserTasksTable({ user }) {
   return (
     <Grid.Row>
       <h1>Tasks</h1>
-      {user === undefined ||
-      user.tasks.length === 0 ? (
+      {user === undefined || user.tasks.length === 0 ? (
         <div style={{ paddingBottom: 16 }}>
           <Segment placeholder>
             <Header icon>
@@ -27,10 +26,12 @@ function UserTasksTable({ user }) {
             </Table.Header>
             <Table.Body>
               {user &&
-                user.tasks.map(task => (
+                user.tasks.map((task) => (
                   <Table.Row key={task.name}>
                     <Table.Cell>{task.name}</Table.Cell>
-                    <Table.Cell>{new Date(task.startDate).toLocaleDateString()}</Table.Cell>
+                    <Table.Cell>
+                      {new Date(task.startDate).toLocaleDateString()}
+                    </Table.Cell>
                     <Table.Cell textAlign="center">{task.points}</Table.Cell>
                   </Table.Row>
                 ))}

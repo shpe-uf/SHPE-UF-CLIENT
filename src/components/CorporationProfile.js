@@ -9,7 +9,7 @@ import {
   Icon,
   Label,
 } from "semantic-ui-react";
-import { Media } from "../Media"
+import { Media } from "../Media";
 
 function CorporationProfile({ corporation }) {
   return (
@@ -67,7 +67,6 @@ function CorporationProfile({ corporation }) {
                 content="News"
                 floated="right"
               />
-              
             </Media>
             <h4>Additional Information</h4>
             <List>
@@ -169,21 +168,18 @@ function CorporationProfile({ corporation }) {
                   <Label key={index}>{industry}</Label>
                 ))}
             </Label.Group>
-            {
-                corporation.recruitmentDay === true ?
-                <Label.Group>
-                  <h4>Recruitment Day Sign Up</h4>
-                  <Button
-                    href={corporation.signUpLink}
-                    icon="calendar alternate"
-                    labelPosition="right"
-                    content="Sign Up"
-                    floated="left"
-                  />
-                </Label.Group>
-                
-                : null
-              }    
+            {corporation.recruitmentDay === true ? (
+              <Label.Group>
+                <h4>Recruitment Day Sign Up</h4>
+                <Button
+                  href={corporation.signUpLink}
+                  icon="calendar alternate"
+                  labelPosition="right"
+                  content="Sign Up"
+                  floated="left"
+                />
+              </Label.Group>
+            ) : null}
           </Grid.Column>
         </Grid.Row>
       </Grid>

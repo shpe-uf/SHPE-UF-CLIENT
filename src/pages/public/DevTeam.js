@@ -21,7 +21,6 @@ function DevTeam() {
           <DevTeamTabs />
         </div>
       </Container>
-
     </div>
   );
 }

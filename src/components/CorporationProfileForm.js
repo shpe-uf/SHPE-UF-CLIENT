@@ -44,7 +44,7 @@ function CorporationProfileForm({ corporation, closeModal, refetch }) {
       nationalConvention: corporation.nationalConvention.toString(),
       recruitmentDay: corporation.recruitmentDay.toString(),
       signUpLink: corporation.signUpLink,
-    }
+    },
   );
 
   // Reset form states when the modal is opened
@@ -360,18 +360,24 @@ function CorporationProfileForm({ corporation, closeModal, refetch }) {
           error={errors.signUpLink ? true : false}
           onChange={onChange}
         />
-        <div style={{ display: "flex", justifyContent: "space-between", marginTop: 16 }}>
-        <Button
-          type="reset"
-          color="red"
-          onClick={() => closeModal("editCorporation")}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            marginTop: 16,
+          }}
         >
-          Cancel
-        </Button>
-        <Button type="submit" primary>
-          Submit
-        </Button>
-      </div>
+          <Button
+            type="reset"
+            color="red"
+            onClick={() => closeModal("editCorporation")}
+          >
+            Cancel
+          </Button>
+          <Button type="submit" primary>
+            Submit
+          </Button>
+        </div>
       </Form>
     </>
   );

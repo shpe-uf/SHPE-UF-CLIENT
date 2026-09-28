@@ -1,37 +1,39 @@
-import React, { useState } from 'react';
-import { Modal, Grid, Button, Dropdown, Divider } from 'semantic-ui-react';
-import { useQuery, useMutation } from '@apollo/client';
-import { FETCH_USERS_QUERY, FETCH_EVENTS_QUERY, FETCH_TASKS_QUERY } from '../util/graphql';
-import gql from 'graphql-tag';
+import React, { useState } from "react";
+import { Modal, Grid, Button, Dropdown, Divider } from "semantic-ui-react";
+import { useQuery, useMutation } from "@apollo/client";
+import {
+  FETCH_USERS_QUERY,
+  FETCH_EVENTS_QUERY,
+  FETCH_TASKS_QUERY,
+} from "../util/graphql";
+import gql from "graphql-tag";
 
 function ManualInputModal(props) {
   const [errors, setErrors] = useState({});
   const [userArray, setUser] = useState([]);
 
   let users = null;
-  let {data} = useQuery(FETCH_USERS_QUERY);
-  if(data) {
+  let { data } = useQuery(FETCH_USERS_QUERY);
+  if (data) {
     users = data.getUsers;
   }
 
-  if(users) {
-    users = users.map(user => {
-      return (
-        {
-          key: user.username,
-          value: user.username,
-          text: user.firstName + ' ' + user.lastName,
-        }
-      )
-    })
+  if (users) {
+    users = users.map((user) => {
+      return {
+        key: user.username,
+        value: user.username,
+        text: user.firstName + " " + user.lastName,
+      };
+    });
   }
 
   const [manualInput] = useMutation(MANUAL_INPUT_MUTATION, {
     update(cache, { data: { manualInput } }) {
-      const {getEvents} = cache.readQuery({ query: FETCH_EVENTS_QUERY });
+      const { getEvents } = cache.readQuery({ query: FETCH_EVENTS_QUERY });
       cache.writeQuery({
         query: FETCH_EVENTS_QUERY,
-        data: {getEvents, manualInput}
+        data: { getEvents, manualInput },
       });
       setErrors(false);
       props.setModalOpen(false);
@@ -39,18 +41,18 @@ function ManualInputModal(props) {
 
     onError(err) {
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
-    }
+    },
   });
 
   const [manualTaskInput] = useMutation(MANUAL_TASK_INPUT_MUTATION, {
-    update(cache, { data : { manualTaskInput } }) {
-      const {getTasks} = cache.readQuery({ query: FETCH_TASKS_QUERY });
+    update(cache, { data: { manualTaskInput } }) {
+      const { getTasks } = cache.readQuery({ query: FETCH_TASKS_QUERY });
       getTasks.forEach((task, pos) => {
-        if(task.name === manualTaskInput.name) getTasks[pos] = manualTaskInput
-      })
+        if (task.name === manualTaskInput.name) getTasks[pos] = manualTaskInput;
+      });
       cache.writeQuery({
         query: FETCH_TASKS_QUERY,
-        data: { getTasks: getTasks},
+        data: { getTasks: getTasks },
       });
       setErrors(false);
       props.setModalOpen(false);
@@ -58,16 +60,22 @@ function ManualInputModal(props) {
 
     onError(err) {
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
-    }
+    },
   });
 
   const onSubmit = () => {
-    userArray.forEach(user => {
-      props.type === 'event' && manualInput({variables: {username: user, eventName: props.addObject}})
-      props.type === 'task' && manualTaskInput({variables: {username: user, taskName: props.addObject}})
-    })
-  } 
-  
+    userArray.forEach((user) => {
+      props.type === "event" &&
+        manualInput({
+          variables: { username: user, eventName: props.addObject },
+        });
+      props.type === "task" &&
+        manualTaskInput({
+          variables: { username: user, taskName: props.addObject },
+        });
+    });
+  };
+
   return (
     <Modal
       open={props.open}
@@ -92,30 +100,26 @@ function ManualInputModal(props) {
                 </div>
               )}
               <Dropdown
-                placeholder='Select User'
+                placeholder="Select User"
                 options={users}
                 fluid
                 search
                 selection
-                multiple 
-                onChange={(_,data) => setUser(data.value)}
+                multiple
+                onChange={(_, data) => setUser(data.value)}
               />
-              <Divider hidden/>
+              <Divider hidden />
               <Button
                 type="reset"
                 color="grey"
                 onClick={() => {
-                  setErrors(false)
-                  props.setModalOpen(false)
+                  setErrors(false);
+                  props.setModalOpen(false);
                 }}
               >
                 Cancel
               </Button>
-              <Button
-                type="submit"
-                floated="right"
-                onClick={onSubmit}
-                >
+              <Button type="submit" floated="right" onClick={onSubmit}>
                 Submit
               </Button>
             </Grid.Column>
@@ -123,7 +127,7 @@ function ManualInputModal(props) {
         </Grid>
       </Modal.Content>
     </Modal>
-  )
+  );
 }
 
 const MANUAL_INPUT_MUTATION = gql`

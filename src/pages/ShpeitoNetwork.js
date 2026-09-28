@@ -33,7 +33,7 @@ function ShpeitoNetwork(props) {
       country: [],
       classes: [],
       internships: [],
-    })
+    }),
   );
 
   if (data && data.getUsers) {
@@ -61,7 +61,7 @@ function ShpeitoNetwork(props) {
           ? true
           : filter.internships
               .map((n) =>
-                allInternships.toLowerCase().includes(n.toLowerCase())
+                allInternships.toLowerCase().includes(n.toLowerCase()),
               )
               .includes(true)) &&
         (filter.classes.length === 0
@@ -73,7 +73,7 @@ function ShpeitoNetwork(props) {
           ? true
           : filter.name
               .map((n) =>
-                user.firstName.toLowerCase().includes(n.toLowerCase())
+                user.firstName.toLowerCase().includes(n.toLowerCase()),
               )
               .includes(true) ||
             filter.name

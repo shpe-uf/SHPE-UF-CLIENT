@@ -16,47 +16,37 @@ function RequestsTable({ requests }) {
   const [disableButton, setDisableButton] = useState(false);
 
   const [rejectRequest] = useMutation(REJECT_REQUEST_MUTATION, {
-    update(
-      _,
-      {
-        data: { rejectRequest: requestData }
-      }
-    ) {
+    update(_, { data: { rejectRequest: requestData } }) {
       requests.forEach((request, index) => {
         var result = requestData.filter(
-          updatedRequests =>
+          (updatedRequests) =>
             updatedRequests.name === request.name &&
             updatedRequests.username === request.username &&
-            updatedRequests.type === request.type
+            updatedRequests.type === request.type,
         );
         if (result.length === 0) {
           requests.splice(index, 1);
         }
       });
       setDisableButton(false);
-    }
+    },
   });
 
   const [approveRequest] = useMutation(APPROVE_REQUEST_MUTATION, {
-    update(
-      _,
-      {
-        data: { approveRequest: requestData }
-      }
-    ) {
+    update(_, { data: { approveRequest: requestData } }) {
       requests.forEach((request, index) => {
         var result = requestData.filter(
-          updatedRequests =>
+          (updatedRequests) =>
             updatedRequests.name === request.name &&
             updatedRequests.username === request.username &&
-            updatedRequests.type === request.type
+            updatedRequests.type === request.type,
         );
         if (result.length === 0) {
           requests.splice(index, 1);
         }
       });
       setDisableButton(false);
-    }
+    },
   });
 
   const disableButtonFunction = () => {
@@ -117,8 +107,8 @@ function RequestsTable({ requests }) {
                             variables: {
                               username: request.username,
                               name: request.name,
-                              type: request.type
-                            }
+                              type: request.type,
+                            },
                           });
                         }}
                       >
@@ -136,8 +126,8 @@ function RequestsTable({ requests }) {
                             variables: {
                               username: request.username,
                               name: request.name,
-                              type: request.type
-                            }
+                              type: request.type,
+                            },
                           });
                         }}
                       >
@@ -157,7 +147,11 @@ function RequestsTable({ requests }) {
 const REJECT_REQUEST_MUTATION = gql`
   mutation rejectRequest($username: String!, $name: String!, $type: String!) {
     rejectRequest(
-      approveRejectRequestInput: { username: $username, name: $name , type: $type }
+      approveRejectRequestInput: {
+        username: $username
+        name: $name
+        type: $type
+      }
     ) {
       name
       type
@@ -173,7 +167,11 @@ const REJECT_REQUEST_MUTATION = gql`
 const APPROVE_REQUEST_MUTATION = gql`
   mutation approveRequest($username: String!, $name: String!, $type: String!) {
     approveRequest(
-      approveRejectRequestInput: { username: $username, name: $name, type: $type }
+      approveRejectRequestInput: {
+        username: $username
+        name: $name
+        type: $type
+      }
     ) {
       name
       type

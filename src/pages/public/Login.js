@@ -1,11 +1,5 @@
 import React, { useContext, useState } from "react";
-import {
-  Form,
-  Button,
-  Container,
-  Segment,
-  Grid,
-} from "semantic-ui-react";
+import { Form, Button, Container, Segment, Grid } from "semantic-ui-react";
 import { Media } from "../../Media";
 import { useMutation } from "@apollo/client";
 import gql from "graphql-tag";
@@ -100,17 +94,25 @@ function Login(props) {
                         </Form.Field>
                         <span>
                           <Button type="submit">Login</Button>
-                          <p style={{display : 'inline-block', float : 'right', marginTop: 12}}>
-                            Forgot Password? <NavLink to="/forgot">Click Here</NavLink>
+                          <p
+                            style={{
+                              display: "inline-block",
+                              float: "right",
+                              marginTop: 12,
+                            }}
+                          >
+                            Forgot Password?{" "}
+                            <NavLink to="/forgot">Click Here</NavLink>
                           </p>
                         </span>
                       </Form>
                     </Segment>
                   </Segment.Group>
                   <Segment textAlign="center">
-                      <p>
-                        New to SHPE UF? <NavLink to="/register">Register here!</NavLink>
-                      </p>
+                    <p>
+                      New to SHPE UF?{" "}
+                      <NavLink to="/register">Register here!</NavLink>
+                    </p>
                   </Segment>
                 </Grid.Column>
               </Grid.Row>
@@ -170,8 +172,15 @@ function Login(props) {
                         </Form.Field>
                         <span>
                           <Button type="submit">Login</Button>
-                          <p style={{display : 'inline-block', float : 'right', marginTop: 12}}>
-                            Forgot Password? <NavLink to="/forgot">Click Here</NavLink>
+                          <p
+                            style={{
+                              display: "inline-block",
+                              float: "right",
+                              marginTop: 12,
+                            }}
+                          >
+                            Forgot Password?{" "}
+                            <NavLink to="/forgot">Click Here</NavLink>
                           </p>
                         </span>
                       </Form>
@@ -179,7 +188,8 @@ function Login(props) {
                   </Segment.Group>
                   <Segment textAlign="center">
                     <p>
-                      New to SHPE UF? <NavLink to="/register">Register here!</NavLink>
+                      New to SHPE UF?{" "}
+                      <NavLink to="/register">Register here!</NavLink>
                     </p>
                   </Segment>
                 </Grid.Column>
@@ -240,7 +250,13 @@ function Login(props) {
                         </Form.Field>
                         <span>
                           <Button type="submit">Login</Button>
-                          <p style={{display : 'inline-block', float : 'right', marginTop: 12}}>
+                          <p
+                            style={{
+                              display: "inline-block",
+                              float: "right",
+                              marginTop: 12,
+                            }}
+                          >
                             <NavLink to="/forgot">Forgot Password?</NavLink>
                           </p>
                         </span>
@@ -249,7 +265,8 @@ function Login(props) {
                   </Segment.Group>
                   <Segment textAlign="center">
                     <p>
-                      New to SHPE UF? <NavLink to="/register">Register here!</NavLink>
+                      New to SHPE UF?{" "}
+                      <NavLink to="/register">Register here!</NavLink>
                     </p>
                   </Segment>
                 </Grid.Column>

@@ -60,7 +60,7 @@ function Points() {
   let data = userQuery.data;
   let loadingUser = userQuery.loading;
   let refetch = userQuery.refetch;
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     if (data && data.getUser) {

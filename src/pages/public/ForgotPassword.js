@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Form, Button, Container, Segment, Grid, Message } from "semantic-ui-react";
+import {
+  Form,
+  Button,
+  Container,
+  Segment,
+  Grid,
+  Message,
+} from "semantic-ui-react";
 import { Media } from "../../Media";
 import gql from "graphql-tag";
 import { useMutation } from "@apollo/client";
@@ -8,18 +15,16 @@ import { useForm } from "../../util/hooks";
 import { NavLink } from "react-router-dom";
 import "./styles/ForgotPassword.css";
 
-function ForgotPassword(props){
-
+function ForgotPassword(props) {
   const [errors, setErrors] = useState({});
   const [sent, setSent] = useState(false);
 
   const { onChange, onSubmit, values } = useForm(resetCallback, {
-    email: ""
+    email: "",
   });
 
-
   const [resetUser] = useMutation(FORGOT_PASSWORD, {
-    onCompleted(){
+    onCompleted() {
       setErrors({});
       setSent(true);
     },
@@ -28,14 +33,12 @@ function ForgotPassword(props){
       setSent(false);
     },
 
-    variables: values
+    variables: values,
   });
 
   function resetCallback() {
     resetUser();
   }
-
-
 
   return (
     <div className="reset">
@@ -53,21 +56,14 @@ function ForgotPassword(props){
                       {Object.keys(errors).length > 0 && (
                         <div className="ui error message">
                           <ul className="list">
-                            {Object.values(errors).map(value => (
+                            {Object.values(errors).map((value) => (
                               <li key={value}>{value}</li>
                             ))}
                           </ul>
                         </div>
                       )}
-                      { sent && (
-                        <Message info>
-                          Please check your email
-                        </Message>
-                      )}
-                      <Form
-                        onSubmit={onSubmit}
-                        noValidate
-                      >
+                      {sent && <Message info>Please check your email</Message>}
+                      <Form onSubmit={onSubmit} noValidate>
                         <Form.Input
                           type="text"
                           label="Email"
@@ -102,21 +98,18 @@ function ForgotPassword(props){
                       {Object.keys(errors).length > 0 && (
                         <div className="ui error message">
                           <ul className="list">
-                            {Object.values(errors).map(value => (
+                            {Object.values(errors).map((value) => (
                               <li key={value}>{value}</li>
                             ))}
                           </ul>
                         </div>
                       )}
-                      { sent && (
+                      {sent && (
                         <Message info>
                           Please check your email to complete the registration
                         </Message>
                       )}
-                      <Form
-                        onSubmit={onSubmit}
-                        noValidate
-                      >
+                      <Form onSubmit={onSubmit} noValidate>
                         <Form.Input
                           type="text"
                           label="Email"
@@ -151,21 +144,18 @@ function ForgotPassword(props){
                       {Object.keys(errors).length > 0 && (
                         <div className="ui error message">
                           <ul className="list">
-                            {Object.values(errors).map(value => (
+                            {Object.values(errors).map((value) => (
                               <li key={value}>{value}</li>
                             ))}
                           </ul>
                         </div>
                       )}
-                      { sent && (
+                      {sent && (
                         <Message info>
                           Please check your email to complete the registration
                         </Message>
                       )}
-                      <Form
-                        onSubmit={onSubmit}
-                        noValidate
-                      >
+                      <Form onSubmit={onSubmit} noValidate>
                         <Form.Input
                           type="text"
                           label="Email"

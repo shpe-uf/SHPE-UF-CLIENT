@@ -19,7 +19,7 @@ import { CSVLink } from "react-csv";
 import { FETCH_EVENTS_QUERY } from "../../util/graphql";
 import ManualInputModal from "../ManualInputModal";
 import DeleteModal from "../DeleteModal";
-import { QRCodeSVG } from 'qrcode.react';
+import { QRCodeSVG } from "qrcode.react";
 
 function EventsTable({ events }) {
   const [manualInputModal, setManualInputModal] = useState(false);
@@ -32,7 +32,7 @@ function EventsTable({ events }) {
 
   const [removeUserFromEvent] = useMutation(REMOVE_USER_MUTATION, {
     update(cache, { data: { removeUserFromEvent } }) {
-      setEventAttendance((prevEventAttendance)=> {
+      setEventAttendance((prevEventAttendance) => {
         const updatedUsers = removeUserFromEvent.users;
         return {
           ...prevEventAttendance,
@@ -61,7 +61,7 @@ function EventsTable({ events }) {
         name: user.firstName + " " + user.lastName,
         username: user.username,
         email: user.email,
-      })
+      }),
     );
     return list;
   }
@@ -194,19 +194,25 @@ function EventsTable({ events }) {
       >
         <Modal.Header>
           <h2>Event Information</h2>
-          <Button icon="close" color="grey" onClick={() => setEventInfoModal(false)} />
+          <Button
+            icon="close"
+            color="grey"
+            onClick={() => setEventInfoModal(false)}
+          />
         </Modal.Header>
         <Modal.Content>
           <Grid>
             <Grid.Row>
-              <Grid.Column><b>Code:</b> {eventAttendance.code}</Grid.Column>
+              <Grid.Column>
+                <b>Code:</b> {eventAttendance.code}
+              </Grid.Column>
             </Grid.Row>
             <Grid.Row>
               <Grid.Column>
                 <b>QR Code:</b>
-                <br/>
-                <br/>
-                <QRCodeSVG value={`[SHPEUF]:${eventAttendance.code}`}/>
+                <br />
+                <br />
+                <QRCodeSVG value={`[SHPEUF]:${eventAttendance.code}`} />
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>
@@ -269,11 +275,7 @@ function EventsTable({ events }) {
                   data={populateCSV(eventAttendance.users)}
                   filename={eventAttendance.name + ".csv"}
                 >
-                  <Button
-                    color="green"
-                  >
-                    Download as CSV
-                  </Button>
+                  <Button color="green">Download as CSV</Button>
                 </CSVLink>
               </Grid.Column>
             </Grid.Row>
@@ -285,7 +287,7 @@ function EventsTable({ events }) {
         close={() => setDeleteEventModal(false)}
         deleteItem={selectedEvent.name}
         deleteId={selectedEvent.id}
-        type='event'
+        type="event"
       />
     </>
   );

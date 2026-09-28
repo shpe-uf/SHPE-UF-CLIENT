@@ -31,7 +31,7 @@ function ShpeRentals() {
     FETCH_INVENTORY_QUERY,
     {
       notifyOnNetworkStatusChange: true,
-    }
+    },
   );
   let items = [];
 

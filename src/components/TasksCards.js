@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Dimmer,
-  Loader,
-  Segment,
-  Header,
-  Grid,
-  Card,
-} from "semantic-ui-react";
+import { Dimmer, Loader, Segment, Header, Grid, Card } from "semantic-ui-react";
 import { Media } from "../Media";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -28,9 +21,7 @@ function TasksCards({ user, refetch }) {
       {" "}
       <Dimmer active={tasks ? false : true} inverted>
         {" "}
-        <Loader active>
-          Loading unbookmarked tasks, please wait...
-        </Loader>
+        <Loader active>Loading unbookmarked tasks, please wait...</Loader>
       </Dimmer>
       {!tasks || tasks.length === 0 ? (
         <Segment placeholder="placeholder">

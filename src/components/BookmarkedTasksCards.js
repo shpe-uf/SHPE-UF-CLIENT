@@ -1,19 +1,12 @@
 import React, { useContext } from "react";
-import {
-  Dimmer,
-  Loader,
-  Segment,
-  Header,
-  Grid,
-  Card
-} from "semantic-ui-react";
+import { Dimmer, Loader, Segment, Header, Grid, Card } from "semantic-ui-react";
 import { useQuery } from "@apollo/client";
 import "react-toastify/dist/ReactToastify.css";
 
 import { AuthContext } from "../context/auth";
 import BookmarkedTaskCard from "../components/BookmarkedTaskCard";
 import { FETCH_TASKS_QUERY } from "../util/graphql";
-import { Media } from "../Media"
+import { Media } from "../Media";
 
 function BookmarkedTasksCards({ user, refetch }) {
   const { loading, data } = useQuery(FETCH_TASKS_QUERY);
@@ -37,9 +30,7 @@ function BookmarkedTasksCards({ user, refetch }) {
       {" "}
       <Dimmer active={bookmarkedTasks ? false : true} inverted>
         {" "}
-        <Loader active>
-          Loading bookmarked tasks, please wait...
-        </Loader>
+        <Loader active>Loading bookmarked tasks, please wait...</Loader>
       </Dimmer>
       {!bookmarkedTasks || bookmarkedTasks.length === 0 ? (
         <Segment placeholder>

@@ -14,10 +14,9 @@ import { useForm } from "../util/hooks";
 
 import Title from "../components/Title";
 import EventsAccordion from "../components/Events/EventsAccordion";
-import { QRCodeSVG } from 'qrcode.react';
+import { QRCodeSVG } from "qrcode.react";
 
 import { FETCH_EVENTS_QUERY } from "../util/graphql";
-
 
 import categoryOptions from "../assets/options/category.json";
 import expirationOptions from "../assets/options/expiration.json";
@@ -57,21 +56,24 @@ function Events() {
 
   const [createEventModal, setCreateEventModal] = useState(false);
   const [confirmEventModal, setConfirmEventModal] = useState(false);
-  const [priorEventInfo, setPriorEventInfo] = useState({})
+  const [priorEventInfo, setPriorEventInfo] = useState({});
 
-  const { values, onChange, onSubmit, setValues } = useForm(createEventCallback, {
-    name: "",
-    code: "",
-    category: "",
-    expiration: "",
-    points: "",
-    request: "false",
-  });
-  
+  const { values, onChange, onSubmit, setValues } = useForm(
+    createEventCallback,
+    {
+      name: "",
+      code: "",
+      category: "",
+      expiration: "",
+      points: "",
+      request: "false",
+    },
+  );
+
   const [createEvent, { loading }] = useMutation(CREATE_EVENT_MUTATION, {
     update(_, { data: { createEvent: eventsData } }) {
-      setPriorEventInfo({...values})
-      setConfirmEventModal(true)
+      setPriorEventInfo({ ...values });
+      setConfirmEventModal(true);
       values.name = "";
       values.code = "";
       values.category = "";
@@ -83,7 +85,7 @@ function Events() {
         events.push(eventsData[i]);
       }
       setErrors(false);
-      setCreateEventModal(false)
+      setCreateEventModal(false);
     },
 
     onError(err) {
@@ -103,17 +105,17 @@ function Events() {
   }
 
   const options = [
-    { key: '1', value: '1', text: '1' },
-    { key: '2', value: '2', text: '2' },
-    { key: '3', value: '3', text: '3' },
-    { key: '4', value: '4', text: '4' },
-    { key: '5', value: '5', text: '5' },
-    { key: '6', value: '6', text: '6' },
-    { key: '7', value: '7', text: '7' },
-    { key: '8', value: '8', text: '8' },
-    { key: '9', value: '9', text: '9' },
-    { key: '10', value: '10', text: '10' }
-  ]
+    { key: "1", value: "1", text: "1" },
+    { key: "2", value: "2", text: "2" },
+    { key: "3", value: "3", text: "3" },
+    { key: "4", value: "4", text: "4" },
+    { key: "5", value: "5", text: "5" },
+    { key: "6", value: "6", text: "6" },
+    { key: "7", value: "7", text: "7" },
+    { key: "8", value: "8", text: "8" },
+    { key: "9", value: "9", text: "9" },
+    { key: "10", value: "10", text: "10" },
+  ];
   return (
     <>
       <Title title="Events" adminPath={window.location.pathname} />
@@ -141,7 +143,7 @@ function Events() {
         </Grid>
       </Container>
 
-      { /* Confirmation Modal */ }
+      {/* Confirmation Modal */}
 
       <Modal
         open={confirmEventModal}
@@ -152,7 +154,11 @@ function Events() {
       >
         <Modal.Header>
           <h2>Event Created</h2>
-          <Button icon="close" color="grey" onClick={() => closeModal('confirmEvent')} />
+          <Button
+            icon="close"
+            color="grey"
+            onClick={() => closeModal("confirmEvent")}
+          />
         </Modal.Header>
         <Modal.Content>
           <Grid>
@@ -160,20 +166,23 @@ function Events() {
               <Grid.Column>
                 <p>Your event was successfully created.</p>
                 <b>Name:</b> {priorEventInfo.name}
-                <br/>
+                <br />
                 <b>Category:</b> {priorEventInfo.category}
-                <br/>
+                <br />
                 <b>Points:</b> {priorEventInfo.points}
-                <br/>
+                <br />
                 <b>Code:</b> {priorEventInfo.code}
               </Grid.Column>
             </Grid.Row>
             <Grid.Row>
               <Grid.Column>
                 <b>QR Code:</b>
-                <br/>
-                <br/>
-                <QRCodeSVG value={`[SHPEUF]:${priorEventInfo.code}`} size={200}/>
+                <br />
+                <br />
+                <QRCodeSVG
+                  value={`[SHPEUF]:${priorEventInfo.code}`}
+                  size={200}
+                />
               </Grid.Column>
             </Grid.Row>
           </Grid>
@@ -188,10 +197,14 @@ function Events() {
       >
         <Modal.Header>
           <h2>Create Event</h2>
-          <Button icon="close" color="grey" onClick={() => closeModal('createEvent')}/>
+          <Button
+            icon="close"
+            color="grey"
+            onClick={() => closeModal("createEvent")}
+          />
         </Modal.Header>
         <Modal.Content>
-         <Grid>
+          <Grid>
             <Grid.Row>
               <Grid.Column>
                 {Object.keys(errors).length > 0 && (
@@ -235,46 +248,48 @@ function Events() {
                       setValues({
                         ...values,
                         category: value,
-                        points: getPoints(value)
-                      })
+                        points: getPoints(value),
+                      });
                     }}
                   >
-                    {categoryOptions.map((category) =>
+                    {categoryOptions.map((category) => (
                       <option value={category.value} key={category.key}>
                         {category.value}
                       </option>
-                    )}
+                    ))}
                   </Form.Field>
-                  {values.category === "Volunteering" &&
-                  <>
-                  <Form.Select
-                    label="Length of the Event (Hours)"
-                    options={options}
-                    name="Length"
-                    value={values.hours}
-                    onChange={(e) => {setValues({
-                      ...values,
-                      hours: e.target.innerText
-                    })}}
-                  />
+                  {values.category === "Volunteering" && (
+                    <>
+                      <Form.Select
+                        label="Length of the Event (Hours)"
+                        options={options}
+                        name="Length"
+                        value={values.hours}
+                        onChange={(e) => {
+                          setValues({
+                            ...values,
+                            hours: e.target.innerText,
+                          });
+                        }}
+                      />
+                      <Form.Input
+                        type="text"
+                        label="Hour-to-Shpoint Ratio"
+                        name="ratio"
+                        value={values.ratio}
+                        error={errors.ratio ? true : false}
+                        onChange={onChange}
+                      />
+                    </>
+                  )}
                   <Form.Input
-                      type="text"
-                      label="Hour-to-Shpoint Ratio"
-                      name="ratio"
-                      value={values.ratio}
-                      error={errors.ratio ? true : false}
-                      onChange={onChange}
+                    type="text"
+                    label="Points"
+                    name="points"
+                    value={values.points}
+                    error={errors.points ? true : false}
+                    onChange={onChange}
                   />
-                  </>      
-                   }
-                  <Form.Input
-                      type="text"
-                      label="Points"
-                      name="points"
-                      value = {values.points}
-                      error={errors.points ? true : false}
-                      onChange={onChange}
-                    />
                   <Form.Field
                     control="select"
                     label="Expires in"
@@ -300,9 +315,7 @@ function Events() {
                       <label>Request?</label>
                     </div>
                   </Form.Field>
-                  <Button type="submit">
-                    Create
-                  </Button>
+                  <Button type="submit">Create</Button>
                 </Form>
               </Grid.Column>
             </Grid.Row>

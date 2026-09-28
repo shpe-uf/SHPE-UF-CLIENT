@@ -89,10 +89,10 @@ function RentalModal(props) {
     props.item.level === 1
       ? 8
       : props.item.level === 2
-      ? 15
-      : props.item.level === 3
-      ? 25
-      : -1;
+        ? 15
+        : props.item.level === 3
+          ? 25
+          : -1;
 
   const ITEM_LIMIT = 3;
   //error checking for number of items
@@ -246,7 +246,9 @@ function RentalModal(props) {
             ) : null}
             <Grid columns={2}>
               <Grid.Column textAlign="center">
-                <Button color="red" onClick={() => props.cancelRental()}>Cancel</Button>
+                <Button color="red" onClick={() => props.cancelRental()}>
+                  Cancel
+                </Button>
               </Grid.Column>
               <Grid.Column textAlign="center">
                 {rentalState < 2 ? (
