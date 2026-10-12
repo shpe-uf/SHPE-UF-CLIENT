@@ -1,0 +1,270 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReceiptTable matches snapshot and renders no rows when there are no receipts 1`] = `
+<div>
+  <div
+    class="table-responsive"
+  >
+    <div
+      class="ui grid"
+    >
+      <div
+        class="row"
+      >
+        <div
+          class="column"
+        >
+          <table
+            class="ui selectable unstackable table"
+          >
+            <thead
+              class=""
+            >
+              <tr
+                class="center aligned"
+              >
+                <th
+                  class=""
+                >
+                  User
+                </th>
+                <th
+                  class=""
+                >
+                  Item
+                </th>
+                <th
+                  class=""
+                >
+                  #
+                </th>
+                <th
+                  class=""
+                >
+                  CheckOut Date
+                </th>
+                <th
+                  class=""
+                >
+                  PickUp Date
+                </th>
+                <th
+                  class=""
+                >
+                  Return Date
+                </th>
+                <th
+                  class=""
+                >
+                  Picked Up
+                </th>
+                <th
+                  class=""
+                >
+                  Delete
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              class=""
+            />
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ReceiptTable matches snapshot when populated with receipts 1`] = `
+<div>
+  <div
+    class="table-responsive"
+  >
+    <div
+      class="ui grid"
+    >
+      <div
+        class="row"
+      >
+        <div
+          class="column"
+        >
+          <table
+            class="ui selectable unstackable table"
+          >
+            <thead
+              class=""
+            >
+              <tr
+                class="center aligned"
+              >
+                <th
+                  class=""
+                >
+                  User
+                </th>
+                <th
+                  class=""
+                >
+                  Item
+                </th>
+                <th
+                  class=""
+                >
+                  #
+                </th>
+                <th
+                  class=""
+                >
+                  CheckOut Date
+                </th>
+                <th
+                  class=""
+                >
+                  PickUp Date
+                </th>
+                <th
+                  class=""
+                >
+                  Return Date
+                </th>
+                <th
+                  class=""
+                >
+                  Picked Up
+                </th>
+                <th
+                  class=""
+                >
+                  Delete
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              class=""
+            >
+              <tr
+                class="center aligned"
+              >
+                <td
+                  class=""
+                >
+                  vvaldez
+                </td>
+                <td
+                  class=""
+                >
+                  Soldering Iron
+                </td>
+                <td
+                  class=""
+                >
+                  1
+                </td>
+                <td
+                  class=""
+                >
+                  1/10/2026
+                </td>
+                <td
+                  class=""
+                >
+                  N/A
+                </td>
+                <td
+                  class=""
+                >
+                  N/A
+                </td>
+                <td
+                  class=""
+                >
+                  <button
+                    class="ui icon button"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="check icon"
+                    />
+                  </button>
+                </td>
+                <td
+                  class=""
+                >
+                  <button
+                    class="ui red icon button"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="cancel icon"
+                    />
+                  </button>
+                </td>
+              </tr>
+              <tr
+                class="center aligned"
+              >
+                <td
+                  class=""
+                >
+                  achen
+                </td>
+                <td
+                  class=""
+                >
+                  Multimeter
+                </td>
+                <td
+                  class=""
+                >
+                  2
+                </td>
+                <td
+                  class=""
+                >
+                  1/12/2026
+                </td>
+                <td
+                  class=""
+                >
+                  N/A
+                </td>
+                <td
+                  class=""
+                >
+                  N/A
+                </td>
+                <td
+                  class=""
+                >
+                  <button
+                    class="ui icon button"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="check icon"
+                    />
+                  </button>
+                </td>
+                <td
+                  class=""
+                >
+                  <button
+                    class="ui red icon button"
+                  >
+                    <i
+                      aria-hidden="true"
+                      class="cancel icon"
+                    />
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
