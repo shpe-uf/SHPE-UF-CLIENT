@@ -1,0 +1,163 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ResourcesTable matches snapshot and shows the empty-state placeholder when there are no resources 1`] = `
+<div>
+  <div
+    class="ui inverted dimmer"
+  >
+    <div
+      class="content"
+    >
+      <div
+        class="ui loader"
+      />
+    </div>
+  </div>
+  <div
+    class="ui placeholder segment"
+  >
+    <div
+      class="ui icon header"
+    >
+      <i
+        class="fas fa-inbox"
+      />
+      <p>
+        It seems like there are no resources at this moment.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ResourcesTable matches snapshot when populated with resources 1`] = `
+<div>
+  <div
+    class="ui inverted dimmer"
+  >
+    <div
+      class="content"
+    >
+      <div
+        class="ui loader"
+      />
+    </div>
+  </div>
+  <div
+    class="table-responsive"
+  >
+    <table
+      class="ui selectable striped unstackable table"
+    >
+      <thead
+        class=""
+      >
+        <tr
+          class=""
+        >
+          <th
+            class=""
+          >
+            Title
+          </th>
+          <th
+            class=""
+          >
+            Created
+          </th>
+          <th
+            class="center aligned"
+          >
+            Info
+          </th>
+          <th
+            class="center aligned"
+          >
+            Delete
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class=""
+      >
+        <tr
+          class=""
+        >
+          <td
+            class=""
+          >
+            Resume Workshop Slides
+          </td>
+          <td
+            class=""
+          >
+            2026-01-10
+          </td>
+          <td
+            class="center aligned"
+          >
+            <button
+              class="ui blue icon button"
+            >
+              <i
+                aria-hidden="true"
+                class="info icon"
+              />
+            </button>
+          </td>
+          <td
+            class="center aligned"
+          >
+            <button
+              class="ui red icon button"
+            >
+              <i
+                aria-hidden="true"
+                class="x icon"
+              />
+            </button>
+          </td>
+        </tr>
+        <tr
+          class=""
+        >
+          <td
+            class=""
+          >
+            Interview Prep Guide
+          </td>
+          <td
+            class=""
+          >
+            2026-02-02
+          </td>
+          <td
+            class="center aligned"
+          >
+            <button
+              class="ui blue icon button"
+            >
+              <i
+                aria-hidden="true"
+                class="info icon"
+              />
+            </button>
+          </td>
+          <td
+            class="center aligned"
+          >
+            <button
+              class="ui red icon button"
+            >
+              <i
+                aria-hidden="true"
+                class="x icon"
+              />
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
