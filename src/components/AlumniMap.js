@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Divider, Icon } from "semantic-ui-react";
-import Map, { MapRef, Marker, Popup } from "react-map-gl";
+import Map, { Marker, Popup } from "react-map-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 function AlumniMap({ alumnis }) {
