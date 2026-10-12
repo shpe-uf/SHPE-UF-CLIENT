@@ -1,0 +1,211 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserEventsTable matches snapshot and shows the empty-state placeholder when the user has no events 1`] = `
+<div>
+  <div
+    class="row"
+  >
+    <h1>
+      Events
+    </h1>
+    <div
+      style="padding-bottom: 16px;"
+    >
+      <div
+        class="ui placeholder segment"
+      >
+        <div
+          class="ui icon header"
+        >
+          <i
+            class="far fa-frown"
+          />
+          <p>
+            No events on record.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`UserEventsTable matches snapshot when populated with events across categories 1`] = `
+<div>
+  <div
+    class="row"
+  >
+    <h1>
+      General Body Meeting
+    </h1>
+    <div
+      class="table-responsive"
+    >
+      <table
+        class="ui selectable striped unstackable table"
+      >
+        <thead
+          class=""
+        >
+          <tr
+            class=""
+          >
+            <th
+              class=""
+            >
+              Event
+            </th>
+            <th
+              class=""
+            >
+              Date
+            </th>
+            <th
+              class="center aligned"
+            >
+              Points
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class=""
+        >
+          <tr
+            class=""
+          >
+            <td
+              class=""
+            >
+              Fall GBM 1
+            </td>
+            <td
+              class=""
+            >
+              01/15/2026
+            </td>
+            <td
+              class="center aligned"
+            >
+              1
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <h1>
+      Workshop
+    </h1>
+    <div
+      class="table-responsive"
+    >
+      <table
+        class="ui selectable striped unstackable table"
+      >
+        <thead
+          class=""
+        >
+          <tr
+            class=""
+          >
+            <th
+              class=""
+            >
+              Event
+            </th>
+            <th
+              class=""
+            >
+              Date
+            </th>
+            <th
+              class="center aligned"
+            >
+              Points
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class=""
+        >
+          <tr
+            class=""
+          >
+            <td
+              class=""
+            >
+              Resume Workshop
+            </td>
+            <td
+              class=""
+            >
+              01/20/2026
+            </td>
+            <td
+              class="center aligned"
+            >
+              2
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <h1>
+      Cabinet Meeting
+    </h1>
+    <div
+      class="table-responsive"
+    >
+      <table
+        class="ui selectable striped unstackable table"
+      >
+        <thead
+          class=""
+        >
+          <tr
+            class=""
+          >
+            <th
+              class=""
+            >
+              Event
+            </th>
+            <th
+              class=""
+            >
+              Date
+            </th>
+            <th
+              class="center aligned"
+            >
+              Points
+            </th>
+          </tr>
+        </thead>
+        <tbody
+          class=""
+        >
+          <tr
+            class=""
+          >
+            <td
+              class=""
+            >
+              Cabinet Sync
+            </td>
+            <td
+              class=""
+            >
+              01/25/2026
+            </td>
+            <td
+              class="center aligned"
+            >
+              1
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+`;
