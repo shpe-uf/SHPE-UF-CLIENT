@@ -26,7 +26,7 @@ function RentalAdmin() {
                   <Tab.Pane>
                     <ReceiptTable
                       receipts={receipts.filter(
-                        (e) => !e.datePickedUp && !e.deleted
+                        (e) => !e.datePickedUp && !e.deleted,
                       )}
                       type="checked"
                     />
@@ -39,7 +39,7 @@ function RentalAdmin() {
                   <Tab.Pane>
                     <ReceiptTable
                       receipts={receipts.filter(
-                        (e) => e.datePickedUp && !e.dateClosed && !e.deleted
+                        (e) => e.datePickedUp && !e.dateClosed && !e.deleted,
                       )}
                       type="picked"
                     />
@@ -52,7 +52,7 @@ function RentalAdmin() {
                   <Tab.Pane>
                     <ReceiptTable
                       receipts={receipts.filter(
-                        (e) => e.dateClosed && !e.deleted
+                        (e) => e.dateClosed && !e.deleted,
                       )}
                       type="returned"
                     />

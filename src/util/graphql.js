@@ -196,7 +196,7 @@ export const FETCH_RESOURCES_QUERY = gql`
       image
       createdAt
       podcast
-  }
+    }
   }
 `;
 

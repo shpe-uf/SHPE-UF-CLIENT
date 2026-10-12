@@ -1,8 +1,22 @@
-import React, {Component} from 'react'
-import { Header, Menu, Segment, Image, Grid, Icon, Button, Divider, Message, Embed, List, Tab, Container } from 'semantic-ui-react';
-import GBMSlidesAccordion from './GBMSlidesAccordion';
-import '../App.css'; 
-import PhotosDisplay from './PhotosDisplay';
+import React, { Component } from "react";
+import {
+  Header,
+  Menu,
+  Segment,
+  Image,
+  Grid,
+  Icon,
+  Button,
+  Divider,
+  Message,
+  Embed,
+  List,
+  Tab,
+  Container,
+} from "semantic-ui-react";
+import GBMSlidesAccordion from "./GBMSlidesAccordion";
+import "../App.css";
+import PhotosDisplay from "./PhotosDisplay";
 
 const Freshman1011 =
   "https://shpeuf.s3.amazonaws.com/public/resources/F1011_2026.png";
@@ -21,19 +35,18 @@ const GradSHPEresearch =
 const GradSHPEschool =
   "https://shpeuf.s3.amazonaws.com/public/resources/GradSHPEschool.png";
 
-const careerDB =
-  "https://shpeuf.s3.amazonaws.com/public/resources/CD.png";
+const careerDB = "https://shpeuf.s3.amazonaws.com/public/resources/CD.png";
 const internSHPE =
   "https://shpeuf.s3.amazonaws.com/public/resources/internshpe.png";
 
 const f101ImageStyle = {
-  width: '100%',
-  maxWidth: '360px',
-  maxHeight: '260px',
-  height: 'auto',
-  objectFit: 'contain',
-  display: 'block',
-  margin: '0 auto 1rem',
+  width: "100%",
+  maxWidth: "360px",
+  maxHeight: "260px",
+  height: "auto",
+  objectFit: "contain",
+  display: "block",
+  margin: "0 auto 1rem",
 };
 
 const GBMSlidesSegment = () => (
@@ -55,7 +68,9 @@ const GBMSlidesSegment = () => (
 const F101Segment = () => (
   <div>
     <br />
-    <div style={{ maxWidth: '780px', margin: '0 auto 1rem', lineHeight: '1.5' }}>
+    <div
+      style={{ maxWidth: "780px", margin: "0 auto 1rem", lineHeight: "1.5" }}
+    >
       <b>
         We know entering college can be both exciting and overwhelming, so we
         have you covered. SHPE UF has put together this Freshman 101 Document
@@ -68,10 +83,10 @@ const F101Segment = () => (
       <Grid.Column mobile={16} tablet={8} computer={5} textAlign="center">
         <div
           style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '0.75rem',
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "0.75rem",
           }}
         >
           <h6>Getting Ready For UF</h6>
@@ -80,7 +95,12 @@ const F101Segment = () => (
             href="https://drive.google.com/file/d/1IhebPFKdC0kvLkJHlUcVKz0K-cP0EuFU/view"
             target="_blank"
             rel="noreferrer"
-            style={{ display: 'block', width: '100%', maxWidth: '240px', margin: '0 auto' }}
+            style={{
+              display: "block",
+              width: "100%",
+              maxWidth: "240px",
+              margin: "0 auto",
+            }}
           >
             <img
               src={Freshman1011}
@@ -93,9 +113,10 @@ const F101Segment = () => (
             as="a"
             href="https://drive.google.com/file/d/1IhebPFKdC0kvLkJHlUcVKz0K-cP0EuFU/view"
             target="_blank"
-            style={{ marginTop: '0.5rem' }}
+            style={{ marginTop: "0.5rem" }}
           >
-            <Icon name="download" />Download Here
+            <Icon name="download" />
+            Download Here
           </Button>
         </div>
       </Grid.Column>
@@ -103,10 +124,10 @@ const F101Segment = () => (
       <Grid.Column mobile={16} tablet={8} computer={5} textAlign="center">
         <div
           style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: '0.75rem',
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "0.75rem",
           }}
         >
           <h6>Guide to Your First Semester</h6>
@@ -114,7 +135,12 @@ const F101Segment = () => (
             href="https://drive.google.com/file/d/1T8zUsEiQ2k2YhK5e4QzNA5e-plZKXRg-/view"
             target="_blank"
             rel="noreferrer"
-            style={{ display: 'block', width: '100%', maxWidth: '240px', margin: '0 auto' }}
+            style={{
+              display: "block",
+              width: "100%",
+              maxWidth: "240px",
+              margin: "0 auto",
+            }}
           >
             <img
               src={Freshman1012}
@@ -127,9 +153,10 @@ const F101Segment = () => (
             as="a"
             href="https://drive.google.com/file/d/1T8zUsEiQ2k2YhK5e4QzNA5e-plZKXRg-/view"
             target="_blank"
-            style={{ marginTop: '0.5rem' }}
+            style={{ marginTop: "0.5rem" }}
           >
-            <Icon name="download" />Download here
+            <Icon name="download" />
+            Download here
           </Button>
         </div>
       </Grid.Column>
@@ -202,7 +229,7 @@ const MediaSegment = () => (
       <Grid.Column width={5}>
         <h4>Episodes</h4>
         <List divided relaxed>
-        <List.Item
+          <List.Item
             href="https://open.spotify.com/episode/7cL6CedBIliekDkqqU20OW?si=AHyEh_GwSLGdgchgSoX2sg"
             target="_blank"
           >
@@ -211,7 +238,7 @@ const MediaSegment = () => (
               <b># 6- The Freshman Experience: Embracing Your First Year</b>
             </List.Content>
           </List.Item>
-        <List.Item
+          <List.Item
             href="https://open.spotify.com/episode/0H1EBPEzE4rx1L6ee8Y5oL?si=paebmBGaTo6E_ovBNkUKrg"
             target="_blank"
           >
@@ -404,7 +431,10 @@ const LinksSegment = () => (
       >
         <b>Central SHPE UF Linktree</b>
       </List.Item>
-      <List.Item href="https://linktr.ee/SHPEUFNationalConvention" target="_blank">
+      <List.Item
+        href="https://linktr.ee/SHPEUFNationalConvention"
+        target="_blank"
+      >
         <b>National Convention Linktree</b>
       </List.Item>
       <List.Item href="https://linktr.ee/shpeufbootcamp" target="_blank">
@@ -444,19 +474,47 @@ const GradSegment = () => (
       to getting involved and succeeding as a researcher or graduate student!
     </b>
     <Grid divided centered>
-        <Grid.Column width={5} textAlign='center'>
-            <h6>Research Essentials</h6>
-            <Image src={GradSHPEresearch} id='centered-img' as="a" size="medium" href="https://drive.google.com/file/d/19sO_QNUR64oGxbp3293Dy2ltChsAAUW-/view" target="_blank"/>
-            <Divider/> 
-            <Button as='a' href='https://drive.google.com/file/d/19sO_QNUR64oGxbp3293Dy2ltChsAAUW-/view' target="_blank"><Icon name='download'/>Download Here</Button>
-        </Grid.Column>
-        <Grid.Column width={5} textAlign='center'>
-            <h6>Gradschool Essentials</h6>
-            <Image src={GradSHPEschool} id='centered-img' as="a" href='https://drive.google.com/file/d/1iytv-CCITpX3xkSKI6kfkI1P09mbpxKc/view?usp=sharing' target="_blank" size="medium"/>
-            <Divider/>
-            <Button as='a' href='https://drive.google.com/file/d/1iytv-CCITpX3xkSKI6kfkI1P09mbpxKc/view?usp=sharing' target="_blank"><Icon name='download'/>Download here</Button>
-            </Grid.Column>
-        {/* <Grid.Column width={5}>
+      <Grid.Column width={5} textAlign="center">
+        <h6>Research Essentials</h6>
+        <Image
+          src={GradSHPEresearch}
+          id="centered-img"
+          as="a"
+          size="medium"
+          href="https://drive.google.com/file/d/19sO_QNUR64oGxbp3293Dy2ltChsAAUW-/view"
+          target="_blank"
+        />
+        <Divider />
+        <Button
+          as="a"
+          href="https://drive.google.com/file/d/19sO_QNUR64oGxbp3293Dy2ltChsAAUW-/view"
+          target="_blank"
+        >
+          <Icon name="download" />
+          Download Here
+        </Button>
+      </Grid.Column>
+      <Grid.Column width={5} textAlign="center">
+        <h6>Gradschool Essentials</h6>
+        <Image
+          src={GradSHPEschool}
+          id="centered-img"
+          as="a"
+          href="https://drive.google.com/file/d/1iytv-CCITpX3xkSKI6kfkI1P09mbpxKc/view?usp=sharing"
+          target="_blank"
+          size="medium"
+        />
+        <Divider />
+        <Button
+          as="a"
+          href="https://drive.google.com/file/d/1iytv-CCITpX3xkSKI6kfkI1P09mbpxKc/view?usp=sharing"
+          target="_blank"
+        >
+          <Icon name="download" />
+          Download here
+        </Button>
+      </Grid.Column>
+      {/* <Grid.Column width={5}>
             <h6>Keep an eye out for more coming in the future.</h6>
         </Grid.Column> */}
     </Grid>
@@ -467,24 +525,55 @@ const CorpSegment = () => (
   <div>
     <br />
     <b>
-      Landing that first internship or dream job can be a challenging and competitive process, so we've got you covered! 
-      Learn from our workshops and bootcamps on resume prep, delivering a powerful elevator pitch, acing your interviews, and mastering networking on platforms like LinkedIn. 
-      We'll cover all the essentials of professionalism to help you build your confidence and secure your next opportunity!
+      Landing that first internship or dream job can be a challenging and
+      competitive process, so we've got you covered! Learn from our workshops
+      and bootcamps on resume prep, delivering a powerful elevator pitch, acing
+      your interviews, and mastering networking on platforms like LinkedIn.
+      We'll cover all the essentials of professionalism to help you build your
+      confidence and secure your next opportunity!
     </b>
     <Grid divided centered>
-        <Grid.Column width={5} textAlign='center'>
-            <h6>Career Database</h6>
-            <Image src={careerDB} id='centered-img' as="a" size="medium" href="https://drive.google.com/file/d/1esPYwC9Nvp39ZsF-gazUAnobZkkCm8Q5/view?usp=sharing" target="_blank"/>
-            <Divider/> 
-            <Button as='a' href='https://drive.google.com/file/d/1esPYwC9Nvp39ZsF-gazUAnobZkkCm8Q5/view?usp=sharing' target="_blank"><Icon name='download'/>Download Here</Button>
-        </Grid.Column>
-        <Grid.Column width={5} textAlign='center'>
-            <h6>Internship ExSHPErience</h6>
-            <Image src={internSHPE} id='centered-img' as="a" href='https://drive.google.com/file/d/1umQWHEPI6N9ZHsH1NOZ_RxS7haFywyZR/view?usp=sharing' target="_blank" size="medium"/>
-            <Divider/>
-            <Button as='a' href='https://drive.google.com/file/d/1umQWHEPI6N9ZHsH1NOZ_RxS7haFywyZR/view?usp=sharing' target="_blank"><Icon name='download'/>Download here</Button>
-            </Grid.Column>
-        {/* <Grid.Column width={5}>
+      <Grid.Column width={5} textAlign="center">
+        <h6>Career Database</h6>
+        <Image
+          src={careerDB}
+          id="centered-img"
+          as="a"
+          size="medium"
+          href="https://drive.google.com/file/d/1esPYwC9Nvp39ZsF-gazUAnobZkkCm8Q5/view?usp=sharing"
+          target="_blank"
+        />
+        <Divider />
+        <Button
+          as="a"
+          href="https://drive.google.com/file/d/1esPYwC9Nvp39ZsF-gazUAnobZkkCm8Q5/view?usp=sharing"
+          target="_blank"
+        >
+          <Icon name="download" />
+          Download Here
+        </Button>
+      </Grid.Column>
+      <Grid.Column width={5} textAlign="center">
+        <h6>Internship ExSHPErience</h6>
+        <Image
+          src={internSHPE}
+          id="centered-img"
+          as="a"
+          href="https://drive.google.com/file/d/1umQWHEPI6N9ZHsH1NOZ_RxS7haFywyZR/view?usp=sharing"
+          target="_blank"
+          size="medium"
+        />
+        <Divider />
+        <Button
+          as="a"
+          href="https://drive.google.com/file/d/1umQWHEPI6N9ZHsH1NOZ_RxS7haFywyZR/view?usp=sharing"
+          target="_blank"
+        >
+          <Icon name="download" />
+          Download here
+        </Button>
+      </Grid.Column>
+      {/* <Grid.Column width={5}>
             <h6>Keep an eye out for more coming in the future.</h6>
         </Grid.Column> */}
     </Grid>
@@ -555,7 +644,7 @@ const panes = [
       </Tab.Pane>
     ),
   },
-   {
+  {
     menuItem: "Corp. Resources",
     render: () => (
       <Tab.Pane>

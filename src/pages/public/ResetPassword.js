@@ -3,12 +3,11 @@ import { Form, Button, Container, Segment, Grid } from "semantic-ui-react";
 import { Media } from "../../Media";
 import gql from "graphql-tag";
 import { useMutation } from "@apollo/client";
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from "react-router-dom";
 
 import { useForm } from "../../util/hooks";
 
-function ResetPassword(props){
-
+function ResetPassword(props) {
   const [errors, setErrors] = useState({});
 
   const navigate = useNavigate();
@@ -17,18 +16,17 @@ function ResetPassword(props){
   const { onChange, onSubmit, values } = useForm(callback, {
     password: "",
     confirmPassword: "",
-    token: value.token
+    token: value.token,
   });
-
 
   const [reset] = useMutation(RESET_PASSWORD, {
     onError(err) {
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
     },
-    onCompleted(){
+    onCompleted() {
       navigate("/login");
     },
-    variables: values
+    variables: values,
   });
 
   function callback() {
@@ -51,16 +49,13 @@ function ResetPassword(props){
                       {Object.keys(errors).length > 0 && (
                         <div className="ui error message">
                           <ul className="list">
-                            {Object.values(errors).map(value => (
+                            {Object.values(errors).map((value) => (
                               <li key={value}>{value}</li>
                             ))}
                           </ul>
                         </div>
                       )}
-                      <Form
-                        onSubmit={onSubmit}
-                        noValidate
-                      >
+                      <Form onSubmit={onSubmit} noValidate>
                         <Form.Input
                           type="password"
                           label="Password"
@@ -102,16 +97,13 @@ function ResetPassword(props){
                       {Object.keys(errors).length > 0 && (
                         <div className="ui error message">
                           <ul className="list">
-                            {Object.values(errors).map(value => (
+                            {Object.values(errors).map((value) => (
                               <li key={value}>{value}</li>
                             ))}
                           </ul>
                         </div>
                       )}
-                      <Form
-                        onSubmit={onSubmit}
-                        noValidate
-                      >
+                      <Form onSubmit={onSubmit} noValidate>
                         <Form.Input
                           type="password"
                           label="Password"
@@ -153,16 +145,13 @@ function ResetPassword(props){
                       {Object.keys(errors).length > 0 && (
                         <div className="ui error message">
                           <ul className="list">
-                            {Object.values(errors).map(value => (
+                            {Object.values(errors).map((value) => (
                               <li key={value}>{value}</li>
                             ))}
                           </ul>
                         </div>
                       )}
-                      <Form
-                        onSubmit={onSubmit}
-                        noValidate
-                      >
+                      <Form onSubmit={onSubmit} noValidate>
                         <Form.Input
                           type="password"
                           label="Password"
@@ -197,9 +186,14 @@ function ResetPassword(props){
 }
 
 const RESET_PASSWORD = gql`
-  mutation resetPassword($password: String!, $confirmPassword: String!, $token: String!) {
-    resetPassword(password: $password,
-      confirmPassword: $confirmPassword,
+  mutation resetPassword(
+    $password: String!
+    $confirmPassword: String!
+    $token: String!
+  ) {
+    resetPassword(
+      password: $password
+      confirmPassword: $confirmPassword
       token: $token
     ) {
       token

@@ -31,7 +31,7 @@ function Archives() {
   }
   const usersFiltered = usersUnfiltered
     ? usersUnfiltered.map(
-        ({ photo, createdAt, events, __typename, ...item }) => item
+        ({ photo, createdAt, events, __typename, ...item }) => item,
       )
     : [];
   const users = usersFiltered.map((user) => {
@@ -49,7 +49,7 @@ function Archives() {
   const alumni = alumniUnfiltered
     ? alumniUnfiltered.map(
         ({ undergrad, grad, location, coordinates, __typename, ...item }) =>
-          item
+          item,
       )
     : [];
 
@@ -90,7 +90,7 @@ function Archives() {
 
   const [deleteSHPEModal, setDeleteSHPEModal] = useState(false);
   const [deleteDoneModal, setDeleteDoneModal] = useState(false);
-  const [pointType, setPointType] = useState("fall")
+  const [pointType, setPointType] = useState("fall");
 
   const openModal = (name) => {
     if (name === "deleteSHPE") {
@@ -130,7 +130,7 @@ function Archives() {
           </Grid.Row>
           <Grid.Row>
             <Grid.Column>
-              <MembershipTable users={users}/>
+              <MembershipTable users={users} />
             </Grid.Column>
           </Grid.Row>
         </Grid>
@@ -145,13 +145,25 @@ function Archives() {
         <Grid>
           <Grid.Row>
             <Grid.Column>
-            <Button color="red" floated="left" onClick={() => setPointType("fall")}>
+              <Button
+                color="red"
+                floated="left"
+                onClick={() => setPointType("fall")}
+              >
                 Fall Points
               </Button>
-              <Button color="green" floated="left" onClick={() => setPointType("spring")}>
+              <Button
+                color="green"
+                floated="left"
+                onClick={() => setPointType("spring")}
+              >
                 Spring Points
               </Button>
-              <Button color="yellow" floated="left" onClick={() => setPointType("summer")}>
+              <Button
+                color="yellow"
+                floated="left"
+                onClick={() => setPointType("summer")}
+              >
                 Summer Points
               </Button>
             </Grid.Column>

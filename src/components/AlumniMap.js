@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Divider, Icon } from "semantic-ui-react";
-import Map, { MapRef, Marker, Popup } from "react-map-gl";
-import 'mapbox-gl/dist/mapbox-gl.css';
+import Map, { Marker, Popup } from "react-map-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
 
 function AlumniMap({ alumnis }) {
   const [alumniOpen, setAlumniOpen] = useState({});
@@ -15,7 +15,10 @@ function AlumniMap({ alumnis }) {
       setAlumniOpen({});
     } else {
       setAlumniOpen(alumni);
-      mapRef.current?.flyTo({center: [alumni.coordinates.longitude, alumni.coordinates.latitude], duration: 1250});
+      mapRef.current?.flyTo({
+        center: [alumni.coordinates.longitude, alumni.coordinates.latitude],
+        duration: 1250,
+      });
     }
   }
 
@@ -31,7 +34,7 @@ function AlumniMap({ alumnis }) {
       initialViewState={{
         longitude: center[0],
         latitude: center[1],
-        zoom: zoom
+        zoom: zoom,
       }}
       attributionControl={false}
     >
@@ -41,12 +44,12 @@ function AlumniMap({ alumnis }) {
             <Marker
               longitude={Number(alumni.coordinates.longitude)}
               latitude={Number(alumni.coordinates.latitude)}
-              anchor='bottom'
-              onClick={(e) =>  {e.originalEvent.stopPropagation();
-                handleAlumniPopup(alumni)
+              anchor="bottom"
+              onClick={(e) => {
+                e.originalEvent.stopPropagation();
+                handleAlumniPopup(alumni);
               }}
-            >
-            </Marker>
+            ></Marker>
             {alumniOpen.email === alumni.email && (
               <Popup
                 anchor="top"

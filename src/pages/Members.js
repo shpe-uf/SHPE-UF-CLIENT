@@ -29,7 +29,7 @@ function Members() {
       country: [],
       classes: [],
       internships: [],
-    })
+    }),
   );
 
   if (!loading && data) {
@@ -53,7 +53,7 @@ function Members() {
           ? true
           : filter.internships
               .map((n) =>
-                allInternships.toLowerCase().includes(n.toLowerCase())
+                allInternships.toLowerCase().includes(n.toLowerCase()),
               )
               .includes(true)) &&
         (filter.classes.length === 0
@@ -65,7 +65,7 @@ function Members() {
           ? true
           : filter.name
               .map((n) =>
-                user.firstName.toLowerCase().includes(n.toLowerCase())
+                user.firstName.toLowerCase().includes(n.toLowerCase()),
               )
               .includes(true) ||
             filter.name
@@ -86,7 +86,7 @@ function Members() {
     <>
       <Title title="Members" adminPath={window.location.pathname} />
       <Container className="body">
-      <FilterSelection getUsers={getUsers} />
+        <FilterSelection getUsers={getUsers} />
         <Grid>
           <Grid.Row>
             <Grid.Column>

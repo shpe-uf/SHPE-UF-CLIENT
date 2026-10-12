@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { Grid, Button, Form, Modal, Container, Input, Checkbox } from "semantic-ui-react";
+import {
+  Grid,
+  Button,
+  Form,
+  Modal,
+  Container,
+  Input,
+  Checkbox,
+} from "semantic-ui-react";
 import gql from "graphql-tag";
 import { useQuery, useMutation } from "@apollo/client";
 import { useForm } from "../util/hooks";
@@ -83,9 +91,7 @@ function AdminResources() {
       <Container className="body">
         <Grid>
           <Grid.Row columns="2">
-            <Grid.Column>
-              {/*Place holder for now*/ }
-            </Grid.Column>
+            <Grid.Column>{/*Place holder for now*/}</Grid.Column>
             <Grid.Column>
               <Button
                 content="Create Resource"

@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Grid, Image } from "semantic-ui-react";
 
-import {about1, about2, about3} from "../../assets/images/about"
+import { about1, about2, about3 } from "../../assets/images/about";
 import "./styles/About.css";
 
 function About() {
@@ -74,25 +74,29 @@ function About() {
                 In previous years, SHPE UF has experienced exponential growth by
                 employing strategic ways to improve previous recruitment and
                 retention initiatives through execution of events such as the
-                Goals for Tomorrow scholarship and soccer tournament, numerous socials,
-                SHPE Hackathon, and many more.
+                Goals for Tomorrow scholarship and soccer tournament, numerous
+                socials, SHPE Hackathon, and many more.
               </p>
               <p>
-                SHPE UF hosted the most successful BBQ with Industry yet, with over 20 companies
-                and over 200 students attending the event. The chapter also held a ShadowSHPE day
-                to bring together its 3 SHPE Jr. chapters across the state to experience what it
-                is to be a Gator Engineer. Additionally, the chapter is in offers mentorship programs
-                with companies such as Boeing and Honeywell.
+                SHPE UF hosted the most successful BBQ with Industry yet, with
+                over 20 companies and over 200 students attending the event. The
+                chapter also held a ShadowSHPE day to bring together its 3 SHPE
+                Jr. chapters across the state to experience what it is to be a
+                Gator Engineer. Additionally, the chapter is in offers
+                mentorship programs with companies such as Boeing and Honeywell.
               </p>
               <p>
-                The dedication and commitment shown by past and present members led to an increase
-                in active participation of the chapter at a local, regional, and national level.
-                This drive to further involvement in the society led to a strong presence from the
-                chapter at National Conference and other events. With over 280 members attending,
-                The University of Florida had the largest number of members present at this year's conference.
-                The determination of the chapter's leaders has also led to incredible involvement and retention
-                of first-year students in the society and has made the chapter grow to an astonishing 480 members
-                in the 2019-2020 year.
+                The dedication and commitment shown by past and present members
+                led to an increase in active participation of the chapter at a
+                local, regional, and national level. This drive to further
+                involvement in the society led to a strong presence from the
+                chapter at National Conference and other events. With over 280
+                members attending, The University of Florida had the largest
+                number of members present at this year's conference. The
+                determination of the chapter's leaders has also led to
+                incredible involvement and retention of first-year students in
+                the society and has made the chapter grow to an astonishing 480
+                members in the 2019-2020 year.
               </p>
               <p>
                 As a family, we take pride in the passion that is evident among

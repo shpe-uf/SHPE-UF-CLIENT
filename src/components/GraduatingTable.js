@@ -6,10 +6,10 @@ function GraduatingTable({ users }) {
 
   if (users) {
     graduatingUsers = users.filter(
-      (user) => user.graduating !== "Not Graduating"
+      (user) => user.graduating !== "Not Graduating",
     );
   }
-  
+
   return (
     <>
       <Dimmer active={graduatingUsers ? false : true} inverted>

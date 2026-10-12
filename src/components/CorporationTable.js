@@ -8,13 +8,12 @@ import {
   Segment,
   Header,
   Modal,
-  Grid
-}from "semantic-ui-react";
+  Grid,
+} from "semantic-ui-react";
 
 import CorporationProfile from "../components/CorporationProfile";
 import CorporationProfileForm from "../components/CorporationProfileForm";
 import DeleteModal from "./DeleteModal";
-
 
 function CorporationTable({ corporations, refetch }) {
   /**
@@ -30,73 +29,73 @@ function CorporationTable({ corporations, refetch }) {
 
   //#region MODALS
 
-    //Corporation information modals
-    const openModal = name => {
-      switch(name) {
-        case "viewCorporation":
-          setViewCorporationModal(true);
-          break;
-        case "editCorporation":
-          setEditCorporationModal(true);
-          break;
-        default:
-          break;
-      }
-    };
-  
-    const closeModal = name => {
-      switch(name) {
-        case "viewCorporation":
-          setViewCorporationModal(false);
-          break;
-        case "editCorporation":
-          setEditCorporationModal(false);
-          break;
-        default:
-          break;
-      }
+  //Corporation information modals
+  const openModal = (name) => {
+    switch (name) {
+      case "viewCorporation":
+        setViewCorporationModal(true);
+        break;
+      case "editCorporation":
+        setEditCorporationModal(true);
+        break;
+      default:
+        break;
     }
+  };
 
-    const viewModal = (
-      <Modal
+  const closeModal = (name) => {
+    switch (name) {
+      case "viewCorporation":
+        setViewCorporationModal(false);
+        break;
+      case "editCorporation":
+        setEditCorporationModal(false);
+        break;
+      default:
+        break;
+    }
+  };
+
+  const viewModal = (
+    <Modal
       open={viewCorporationModal}
       size="large"
       closeOnEscape={true}
       closeOnDimmerClick={false}
     >
-    <Modal.Header>
-      <h2>Company Profile</h2>
-    </Modal.Header>
-    <Modal.Content>
-      <Grid>
-        <Grid.Row>
-          <Grid.Column>
-            <CorporationProfile corporation={selectedCorporation}/>
-            <Button 
-              color="red"
-              floated="left"
-              content="Close"
-              onClick={()=> closeModal("viewCorporation")}
-            />
-            <Button 
-              floated="right"
-              content="Edit Company"
-              icon="edit"
-              onClick={()=>{
-                closeModal("viewCorporation");
-                setSelectedCorporation(selectedCorporation);
-                openModal("editCorporation");
-              }}
-            />
+      <Modal.Header>
+        <h2>Company Profile</h2>
+      </Modal.Header>
+      <Modal.Content>
+        <Grid>
+          <Grid.Row>
+            <Grid.Column>
+              <CorporationProfile corporation={selectedCorporation} />
+              <Button
+                color="red"
+                floated="left"
+                content="Close"
+                onClick={() => closeModal("viewCorporation")}
+              />
+              <Button
+                floated="right"
+                content="Edit Company"
+                icon="edit"
+                onClick={() => {
+                  closeModal("viewCorporation");
+                  setSelectedCorporation(selectedCorporation);
+                  openModal("editCorporation");
+                }}
+              />
             </Grid.Column>
           </Grid.Row>
         </Grid>
-    </Modal.Content>
+      </Modal.Content>
     </Modal>
-    );
+  );
 
-    const editModal = (
-      <Modal
+  const editModal = (
+    <Modal
       open={editCorporationModal}
       size="small"
       closeOnEscape={true}
@@ -106,43 +105,43 @@ function CorporationTable({ corporations, refetch }) {
         <h2>Edit Corporation</h2>
       </Modal.Header>
       <Modal.Content>
-      <Grid>
+        <Grid>
           <Grid.Row>
             <Grid.Column>
-            <CorporationProfileForm
-              corporation = {selectedCorporation}
-              refetch = {refetch}
-              closeModal = {closeModal}
-            />
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+              <CorporationProfileForm
+                corporation={selectedCorporation}
+                refetch={refetch}
+                closeModal={closeModal}
+              />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
       </Modal.Content>
     </Modal>
-    );
+  );
 
   //#endregion
 
-    // function removeCorporation(corporation) {  
-    //   deleteCorporation({
-    //     variables: {id: corporation.id}
-    //   });
-    //   // window.location.reload();
-    // }
+  // function removeCorporation(corporation) {
+  //   deleteCorporation({
+  //     variables: {id: corporation.id}
+  //   });
+  //   // window.location.reload();
+  // }
 
-    // function editCorporationUpdate(state) {
-    //   setEditCorporationModal(state);
-    // }
+  // function editCorporationUpdate(state) {
+  //   setEditCorporationModal(state);
+  // }
 
   return (
     <>
       <Dimmer active={corporations ? false : true} inverted>
-        <Loader/>
+        <Loader />
       </Dimmer>
       {corporations === undefined || corporations.length === 0 ? (
         <Segment placeholder>
           <Header icon>
-            <i className="fa fa-inbox"/>
+            <i className="fa fa-inbox" />
             <p>There are currently no corporations available</p>
           </Header>
         </Segment>
@@ -152,13 +151,25 @@ function CorporationTable({ corporations, refetch }) {
             <Table.Header>
               <Table.Row>
                 <Table.HeaderCell>Name</Table.HeaderCell>
-                <Table.HeaderCell textAlign="center">SHPE UF Sponsor</Table.HeaderCell>
-                <Table.HeaderCell textAlign="center">Industry Partner</Table.HeaderCell>
+                <Table.HeaderCell textAlign="center">
+                  SHPE UF Sponsor
+                </Table.HeaderCell>
+                <Table.HeaderCell textAlign="center">
+                  Industry Partner
+                </Table.HeaderCell>
                 <Table.HeaderCell textAlign="center">Fall BBQ</Table.HeaderCell>
-                <Table.HeaderCell textAlign="center">Spring BBQ</Table.HeaderCell>
-                <Table.HeaderCell textAlign="center">National Convention</Table.HeaderCell>
-                <Table.HeaderCell textAlign="center">Recruitment Days</Table.HeaderCell>
-                <Table.HeaderCell textAlign="center">View/Edit</Table.HeaderCell>
+                <Table.HeaderCell textAlign="center">
+                  Spring BBQ
+                </Table.HeaderCell>
+                <Table.HeaderCell textAlign="center">
+                  National Convention
+                </Table.HeaderCell>
+                <Table.HeaderCell textAlign="center">
+                  Recruitment Days
+                </Table.HeaderCell>
+                <Table.HeaderCell textAlign="center">
+                  View/Edit
+                </Table.HeaderCell>
                 <Table.HeaderCell textAlign="center">Delete</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
@@ -211,8 +222,8 @@ function CorporationTable({ corporations, refetch }) {
                     </Table.Cell>
                     <Table.Cell textAlign="center">
                       <Button
-                        icon = "info"
-                        onClick={()=> {
+                        icon="info"
+                        onClick={() => {
                           setSelectedCorporation(corporation);
                           openModal("viewCorporation");
                         }}
@@ -227,7 +238,7 @@ function CorporationTable({ corporations, refetch }) {
                           setDeleteCorporationModal(true);
                         }}
                       >
-                        <Icon name="x"/>
+                        <Icon name="x" />
                       </Button>
                     </Table.Cell>
                   </Table.Row>
@@ -243,10 +254,10 @@ function CorporationTable({ corporations, refetch }) {
         close={() => setDeleteCorporationModal(false)}
         deleteItem={selectedCorporation.name}
         deleteId={selectedCorporation.id}
-        type='corporation'
+        type="corporation"
       />
     </>
-  )
+  );
 }
 
 export default CorporationTable;

@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Table } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import { csv } from "d3-request";
-import url from "./team.csv";  // Change it to the used csv file name
+import url from "./team.csv"; // Change it to the used csv file name
 
 function fetchCSVData(url, callback) {
   csv(url, (data) => {
     const SHPEMAP = new Map();
     data.forEach((team) => {
-      const points = team[" Points"].trim(); 
+      const points = team[" Points"].trim();
       const teamName = team.Team;
       if (!SHPEMAP.has(points)) {
         SHPEMAP.set(points, [teamName]);
@@ -30,7 +30,7 @@ const CSV = () => {
   useEffect(() => {
     fetchCSVData(url, (error, entries) => {
       if (!error) {
-        console.log("Entries:", entries); 
+        console.log("Entries:", entries);
         setData(entries);
       }
     });
@@ -59,7 +59,9 @@ const Ranking = () => {
 
       const flattenedPointsSets = pointsSets.map((arr) => arr.flat());
 
-      const hidePodium = flattenedPointsSets.some((pointsSet) => new Set(pointsSet).size > 3);
+      const hidePodium = flattenedPointsSets.some(
+        (pointsSet) => new Set(pointsSet).size > 3,
+      );
 
       setHidePodium(hidePodium);
     }

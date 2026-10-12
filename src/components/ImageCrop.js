@@ -1,7 +1,7 @@
-import React, { useState, useRef, useCallback, useEffect } from 'react';
-import { Button } from 'semantic-ui-react';
-import Cropper from 'react-cropper';
-import 'cropperjs/dist/cropper.css';
+import React, { useState, useRef, useCallback, useEffect } from "react";
+import { Button } from "semantic-ui-react";
+import Cropper from "react-cropper";
+import "cropperjs/dist/cropper.css";
 
 function ImageCrop(props) {
   const [cropPhoto, setCropPhoto] = useState(null);
@@ -25,7 +25,7 @@ function ImageCrop(props) {
     if (cropper) {
       const canvas = cropper.getCroppedCanvas({ width: 500, height: 500 });
       if (canvas) {
-        const url = canvas.toDataURL('image/jpeg', 0.5);
+        const url = canvas.toDataURL("image/jpeg", 0.5);
         setCroppedUrl(url);
         return url;
       }
@@ -36,19 +36,19 @@ function ImageCrop(props) {
   const setImage = () => {
     const croppedUrl = cropImage();
     if (croppedUrl) {
-      if (props.type === 'corporation') {
+      if (props.type === "corporation") {
         props.values.logo = croppedUrl;
         props.setPhotoFile(croppedUrl);
-      } else if (props.type === 'profile') {
+      } else if (props.type === "profile") {
         props.values.photo = croppedUrl;
         props.setPhotoFile(croppedUrl);
-      } else if (props.type === 'reimbursementR') {
+      } else if (props.type === "reimbursementR") {
         props.values.receiptPhoto = croppedUrl;
         props.setPhotoFile(croppedUrl);
-      } else if (props.type === 'reimbursementF') {
+      } else if (props.type === "reimbursementF") {
         props.values.eventFlyer = croppedUrl;
         props.setPhotoFile(croppedUrl);
-      } else if (props.type === 'partner') {
+      } else if (props.type === "partner") {
         props.values.photo = croppedUrl;
         props.setPhotoFile(croppedUrl);
       }
@@ -64,32 +64,25 @@ function ImageCrop(props) {
 
   return (
     <>
-      <input
-        type="file"
-        accept="image/*"
-        onChange={photoSelectedHandler}
-      />
+      <input type="file" accept="image/*" onChange={photoSelectedHandler} />
       {cropPhoto && (
         <>
           <Cropper
             src={cropPhoto}
-            style={{ height: 400, width: '100%' }}
+            style={{ height: 400, width: "100%" }}
             initialAspectRatio={1}
             aspectRatio={1}
             guides={false}
             ref={cropperRef}
           />
-          <Button
-            type="button"
-            onClick={setImage}
-          >
+          <Button type="button" onClick={setImage}>
             Select
           </Button>
         </>
       )}
       {croppedUrl && (
         <div>
-          <img src={croppedUrl} alt="Cropped" style={{ width: '100%' }} />
+          <img src={croppedUrl} alt="Cropped" style={{ width: "100%" }} />
         </div>
       )}
     </>

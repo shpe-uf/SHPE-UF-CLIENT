@@ -33,42 +33,68 @@ const presidentDescription = (
 
 const researchDescription = (
   <span>
-    Leads SHPE UF’s efforts to expand research accessibility, professional development, and innovation opportunities for members. 
-    Oversee programs such as the Engineering Research Symposium, Designathon, lab tours, and research-focused initiatives 
-    that connect students with faculty and research opportunities.
-    Aid member development of technical skills, exploring research pathways, and building a strong foundation for academic and professional 
-    success as well as support academic development of members looking to pursue a graduate education. 
-
+    Leads SHPE UF’s efforts to expand research accessibility, professional
+    development, and innovation opportunities for members. Oversee programs such
+    as the Engineering Research Symposium, Designathon, lab tours, and
+    research-focused initiatives that connect students with faculty and research
+    opportunities. Aid member development of technical skills, exploring
+    research pathways, and building a strong foundation for academic and
+    professional success as well as support academic development of members
+    looking to pursue a graduate education.
   </span>
 );
 
 const secretaryDescription = (
   <span>
-    Serves as the point of contact between the University of Florida and the SHPE UF Chapter 
-    regarding university policies and programming logistics for chapter events. Manages our Alumni 
-    Instagram and LinkedIn to keep graduates updated, strengthen alumni engagement, and expand networking resources for current members. 
-    Oversees the SHPEducation, Yearbook, Alumni Relations, and Cabinet Liaison mini-cabinets to support our chapter’s goals. 
-    Maintains the Chapter Management Tool and master calendar to keep event information and chapter data organized and up to date. 
-
+    Serves as the point of contact between the University of Florida and the
+    SHPE UF Chapter regarding university policies and programming logistics for
+    chapter events. Manages our Alumni Instagram and LinkedIn to keep graduates
+    updated, strengthen alumni engagement, and expand networking resources for
+    current members. Oversees the SHPEducation, Yearbook, Alumni Relations, and
+    Cabinet Liaison mini-cabinets to support our chapter’s goals. Maintains the
+    Chapter Management Tool and master calendar to keep event information and
+    chapter data organized and up to date.
   </span>
 );
 
 const treasurerDescription = (
   <span>
-    Serve as the primary point of contact for any financial matters or concerns regarding SHPE. Maintain organizational financial strength, transparency, and sustainability by developing cabinet budgets and securing funding with the College of Engineering. Oversee all expense reimbursements, including National Convention travel, and coordinate essential logistics like GBM catering and professional padfolio distribution. Advance member equity and technical growth by sourcing scholarship opportunities and executing FinanceSHPE, SHPE TANK, and SHPE Capital programs.
+    Serve as the primary point of contact for any financial matters or concerns
+    regarding SHPE. Maintain organizational financial strength, transparency,
+    and sustainability by developing cabinet budgets and securing funding with
+    the College of Engineering. Oversee all expense reimbursements, including
+    National Convention travel, and coordinate essential logistics like GBM
+    catering and professional padfolio distribution. Advance member equity and
+    technical growth by sourcing scholarship opportunities and executing
+    FinanceSHPE, SHPE TANK, and SHPE Capital programs.
   </span>
 );
 
 const marketingDescription = (
   <span>
-    Serve as the second face of SHPE UF and create a lasting impression on new and current members. Manage and delegate responsibilities in each mini-cabinet (social media, content, video, photography, recruitment, graphic design, and apparel) to uphold our professional, yet fun, brand. Maintain a knowledge of all-things-SHPE to have the ability to speak about the organization at any outreach events. Oversee creative initiatives to market the organization across various platforms like Instagram and LinkedIn, as well as initiatives to market our various events and programs.
-
+    Serve as the second face of SHPE UF and create a lasting impression on new
+    and current members. Manage and delegate responsibilities in each
+    mini-cabinet (social media, content, video, photography, recruitment,
+    graphic design, and apparel) to uphold our professional, yet fun, brand.
+    Maintain a knowledge of all-things-SHPE to have the ability to speak about
+    the organization at any outreach events. Oversee creative initiatives to
+    market the organization across various platforms like Instagram and
+    LinkedIn, as well as initiatives to market our various events and programs.
   </span>
 );
 
 const techDescription = (
   <span>
-    Lead SHPE UF's technological initiatives by overseeing the design and development processes across all technical teams, including Software Engineering, Design, Mobile Apps, and UI/UX. Serve as the strategic bridge between development teams and the Executive Board to guide the trajectory of our website and applications while integrating feedback for new features. Oversee the planning and execution of flagship tech events such as the Code for Change Hackathon, Technical Workshops (SHPEWorks), and the Technology Leadership Development Program (TLDP). Innovate new technological solutions that further support the chapter, and collaborate with external organizations to expand our reach and empower a wider audience.
+    Lead SHPE UF's technological initiatives by overseeing the design and
+    development processes across all technical teams, including Software
+    Engineering, Design, Mobile Apps, and UI/UX. Serve as the strategic bridge
+    between development teams and the Executive Board to guide the trajectory of
+    our website and applications while integrating feedback for new features.
+    Oversee the planning and execution of flagship tech events such as the Code
+    for Change Hackathon, Technical Workshops (SHPEWorks), and the Technology
+    Leadership Development Program (TLDP). Innovate new technological solutions
+    that further support the chapter, and collaborate with external
+    organizations to expand our reach and empower a wider audience.
   </span>
 );
 
@@ -87,15 +113,28 @@ const corporateDescription = (
 
 const externalDescription = (
   <span>
-    Lead SHPE UF's outreach initiatives by fostering partnerships with K–12 schools, community organizations, and educational institutions to expand SHPE's impact beyond campus. Oversee the External Cabinet in planning and executing community service projects, SHPE Jr. programming, 
-    and outreach events that inspire the next generation of STEM leaders. Support the growth of SHPE Jr. and PartnerSHPE chapters, strengthen relationships with schools and community partners, and guide the execution of flagship initiatives such as the SHPE Jr. Conference, Goals for Tomorrow (GFT), New Chapter Development, and Community Outreach while developing future leaders within the organization.
+    Lead SHPE UF's outreach initiatives by fostering partnerships with K–12
+    schools, community organizations, and educational institutions to expand
+    SHPE's impact beyond campus. Oversee the External Cabinet in planning and
+    executing community service projects, SHPE Jr. programming, and outreach
+    events that inspire the next generation of STEM leaders. Support the growth
+    of SHPE Jr. and PartnerSHPE chapters, strengthen relationships with schools
+    and community partners, and guide the execution of flagship initiatives such
+    as the SHPE Jr. Conference, Goals for Tomorrow (GFT), New Chapter
+    Development, and Community Outreach while developing future leaders within
+    the organization.
   </span>
 );
 
 const internalDescription = (
   <span>
-    Spearheads the internal programming that drives member engagement and long-term retention across our chapter. Oversees six (6) dynamic programs including MentorSHPE, First Year Leadership Program (FYLP), SHPEtinas, SeniorSHPE, Athletics, and Events, while executing initiatives that connect members to mentorship, leadership development, and community. Strengthens chapter culture and cultivates a lasting SHPE familia from a member's first semester to graduation.
-
+    Spearheads the internal programming that drives member engagement and
+    long-term retention across our chapter. Oversees six (6) dynamic programs
+    including MentorSHPE, First Year Leadership Program (FYLP), SHPEtinas,
+    SeniorSHPE, Athletics, and Events, while executing initiatives that connect
+    members to mentorship, leadership development, and community. Strengthens
+    chapter culture and cultivates a lasting SHPE familia from a member's first
+    semester to graduation.
   </span>
 );
 
@@ -110,7 +149,7 @@ function EBoardCards() {
           "President",
           presidentDescription,
           eboard.president.email,
-          eboard.president.image
+          eboard.president.image,
         )}
       />
       <Card
@@ -121,7 +160,7 @@ function EBoardCards() {
           "Research Cabinet",
           researchDescription,
           eboard.research.email,
-          eboard.research.image
+          eboard.research.image,
         )}
       />
       <Card
@@ -132,7 +171,7 @@ function EBoardCards() {
           "Secretary Cabinet",
           secretaryDescription,
           eboard.secretary.email,
-          eboard.secretary.image
+          eboard.secretary.image,
         )}
       />
       <Card
@@ -143,7 +182,7 @@ function EBoardCards() {
           "Treasury Cabinet",
           treasurerDescription,
           eboard.treasurer.email,
-          eboard.treasurer.image
+          eboard.treasurer.image,
         )}
       />
       <Card
@@ -154,7 +193,7 @@ function EBoardCards() {
           "Marketing Cabinet",
           marketingDescription,
           eboard.marketing.email,
-          eboard.marketing.image
+          eboard.marketing.image,
         )}
       />
       <Card
@@ -165,7 +204,7 @@ function EBoardCards() {
           "Tech Cabinet",
           techDescription,
           eboard.technology.email,
-          eboard.technology.image
+          eboard.technology.image,
         )}
       />
       <Card
@@ -176,7 +215,7 @@ function EBoardCards() {
           "Corporate Cabinet",
           corporateDescription,
           eboard.corporate.email,
-          eboard.corporate.image
+          eboard.corporate.image,
         )}
       />
       <Card
@@ -187,7 +226,7 @@ function EBoardCards() {
           "External Cabinet",
           externalDescription,
           eboard.external.email,
-          eboard.external.image
+          eboard.external.image,
         )}
       />
       <Card
@@ -198,7 +237,7 @@ function EBoardCards() {
           "Internal Cabinet",
           internalDescription,
           eboard.internal.email,
-          eboard.internal.image
+          eboard.internal.image,
         )}
       />
     </>

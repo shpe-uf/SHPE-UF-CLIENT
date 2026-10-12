@@ -5,7 +5,7 @@ import {
   Container,
   Segment,
   Message,
-  Grid
+  Grid,
 } from "semantic-ui-react";
 import { Media } from "../../Media";
 import { useMutation } from "@apollo/client";
@@ -38,16 +38,11 @@ function RegisterAlumni(props) {
     locationCity: "",
     locationState: "",
     locationCountry: "",
-    linkedin: ""
+    linkedin: "",
   });
-  
+
   const [addAlumni, { loading }] = useMutation(REGISTER_ALUMNI, {
-    update(
-      _,
-      {
-        data: { registerAlumni }
-      }
-    ) {
+    update(_, { data: { registerAlumni } }) {
       setAlumniName(registerAlumni.firstName);
       setErrors({});
       setShowRegistration(false);
@@ -56,7 +51,7 @@ function RegisterAlumni(props) {
       setErrors(err.graphQLErrors[0].extensions.exception.errors);
     },
 
-    variables: values
+    variables: values,
   });
 
   function registerAlumni() {
@@ -84,7 +79,7 @@ function RegisterAlumni(props) {
                 {Object.keys(errors).length > 0 && (
                   <div className="ui error message">
                     <ul className="list">
-                      {Object.values(errors).map(value => (
+                      {Object.values(errors).map((value) => (
                         <li key={value}>{value}</li>
                       ))}
                     </ul>
@@ -140,7 +135,7 @@ function RegisterAlumni(props) {
                         error={errors.undergradMajor ? true : false}
                         onChange={onChange}
                       >
-                        {majorOptions.map(major => (
+                        {majorOptions.map((major) => (
                           <option value={major.value} key={major.key}>
                             {major.value}
                           </option>
@@ -175,7 +170,7 @@ function RegisterAlumni(props) {
                         error={errors.gradMajor ? true : false}
                         onChange={onChange}
                       >
-                        {majorOptions.map(major => (
+                        {majorOptions.map((major) => (
                           <option value={major.value} key={major.key}>
                             {major.value}
                           </option>
@@ -210,7 +205,7 @@ function RegisterAlumni(props) {
                       error={errors.locationCountry ? true : false}
                       onChange={onChange}
                     >
-                      {countryOptions.map(country => (
+                      {countryOptions.map((country) => (
                         <option value={country.value} key={country.key}>
                           {country.value}
                         </option>
@@ -237,7 +232,7 @@ function RegisterAlumni(props) {
                         error={errors.locationState ? true : false}
                         onChange={onChange}
                       >
-                        {stateOptions.map(state => (
+                        {stateOptions.map((state) => (
                           <option value={state.value} key={state.key}>
                             {state.value}
                           </option>

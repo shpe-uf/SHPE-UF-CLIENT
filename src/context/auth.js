@@ -3,15 +3,15 @@ import { jwtDecode } from "jwt-decode";
 import { NavLink, useNavigate } from "react-router-dom";
 
 const initialState = {
-  user: null
-}
+  user: null,
+};
 
 if (localStorage.getItem("jwtToken")) {
   const decodedToken = jwtDecode(localStorage.getItem("jwtToken"));
 
-  localStorage.setItem('permission', decodedToken.permission);
+  localStorage.setItem("permission", decodedToken.permission);
 
-  if (decodedToken.exp*1000 < Date.now()) {
+  if (decodedToken.exp * 1000 < Date.now()) {
     localStorage.removeItem("jwtToken");
     // localStorage.removeItem('permission');
   } else {
@@ -21,8 +21,8 @@ if (localStorage.getItem("jwtToken")) {
 
 const AuthContext = createContext({
   user: null,
-  login: userData => {},
-  logout: () => {}
+  login: (userData) => {},
+  logout: () => {},
 });
 
 function authReducer(state, action) {
@@ -30,12 +30,12 @@ function authReducer(state, action) {
     case "LOGIN":
       return {
         ...state,
-        user: action.payload
+        user: action.payload,
       };
     case "LOGOUT":
       return {
         ...state,
-        user: null
+        user: null,
       };
     default:
       return state;
@@ -45,23 +45,23 @@ function authReducer(state, action) {
 function AuthProvider(props) {
   const [state, dispatch] = useReducer(authReducer, initialState);
   const navigate = useNavigate();
-  
+
   function login(userData) {
     localStorage.setItem("jwtToken", userData.token);
     localStorage.setItem("permission", userData.permission);
     dispatch({
       type: "LOGIN",
-      payload: userData
+      payload: userData,
     });
   }
 
   function logout() {
     localStorage.removeItem("jwtToken");
-    localStorage.removeItem('permission');
+    localStorage.removeItem("permission");
     dispatch({
-      type: "LOGOUT"
+      type: "LOGOUT",
     });
-    navigate("/login")
+    navigate("/login");
     window.location.reload();
   }
 
@@ -73,4 +73,4 @@ function AuthProvider(props) {
   );
 }
 
-export { AuthContext, AuthProvider }
+export { AuthContext, AuthProvider };

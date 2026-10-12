@@ -6,20 +6,20 @@ import {
   Icon,
   Button,
   Modal,
-  Grid
+  Grid,
 } from "semantic-ui-react";
 
 function AlumniTable({ alumnis }) {
   const [alumniProfileModal, setAlumniProfileModal] = useState(false);
   const [alumniProfile, setAlumniProfile] = useState({});
 
-  const openModal = name => {
+  const openModal = (name) => {
     if (name === "alumniProfile") {
       setAlumniProfileModal(true);
     }
   };
 
-  const closeModal = name => {
+  const closeModal = (name) => {
     if (name === "alumniProfile") {
       setAlumniProfile({});
       setAlumniProfileModal(false);
@@ -133,7 +133,7 @@ function AlumniTable({ alumnis }) {
                         </Table.Cell>
                       </Table.Row>
                       {alumniProfile.employer !== "" &&
-                        (alumniProfile.position !== "" && (
+                        alumniProfile.position !== "" && (
                           <>
                             <Table.Row>
                               <Table.Cell>
@@ -160,7 +160,7 @@ function AlumniTable({ alumnis }) {
                               </Table.Cell>
                             </Table.Row>
                           </>
-                        ))}
+                        )}
                       <Table.Row>
                         <Table.Cell>
                           <b>Undergraduate Education</b>
@@ -256,7 +256,13 @@ function AlumniTable({ alumnis }) {
                         </Table.Cell>
                         <Table.Cell>
                           {alumniProfile.email ? (
-                            <a href={alumniProfile.linkedin} target="_blank" rel="noopener noreferrer">Link</a>
+                            <a
+                              href={alumniProfile.linkedin}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              Link
+                            </a>
                           ) : (
                             <p>Loading</p>
                           )}

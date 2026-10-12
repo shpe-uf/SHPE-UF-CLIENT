@@ -10,7 +10,7 @@ import {
   Icon,
 } from "semantic-ui-react";
 import { useMutation } from "@apollo/client";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 import gql from "graphql-tag";
 
@@ -82,8 +82,10 @@ function Register(props) {
       </style>
       <div className="overlay-register">
         <Container>
-
-          <Modal id="outerModal" basic open={openModal}
+          <Modal
+            id="outerModal"
+            basic
+            open={openModal}
             style={{
               display: "flex",
               alignItems: "center",
@@ -91,14 +93,16 @@ function Register(props) {
               flexDirection: "column",
             }}
           >
-            <Header icon
+            <Header
+              icon
               style={{
                 display: "flex",
                 gap: "2rem",
                 alignItems: "center",
               }}
             >
-              <Icon name="mail outline"
+              <Icon
+                name="mail outline"
                 style={{
                   marginTop: "auto",
                 }}

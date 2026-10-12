@@ -411,7 +411,7 @@ function Profile() {
                         let newInternships = miscInfo.internships;
                         newInternships.splice(
                           miscInfo.internships.indexOf(info),
-                          1
+                          1,
                         );
                         setMiscInfo({
                           ...miscInfo,
@@ -445,7 +445,7 @@ function Profile() {
                         let newSocialMedia = miscInfo.socialMedia;
                         newSocialMedia.splice(
                           miscInfo.socialMedia.indexOf(info),
-                          1
+                          1,
                         );
                         setMiscInfo({
                           ...miscInfo,

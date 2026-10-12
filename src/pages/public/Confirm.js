@@ -3,12 +3,12 @@ import gql from "graphql-tag";
 import { useMutation } from "@apollo/client";
 import { Segment, Dimmer, Loader, Container, Grid } from "semantic-ui-react";
 import { Media } from "../../Media";
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 import "./styles/Confirm.css";
 
-function Confirm(){
+function Confirm() {
   const [confirming, setConfirming] = useState(false);
-  
+
   const value = useParams();
 
   const [confirmMutation] = useMutation(CONFIRM_USER);
@@ -18,20 +18,21 @@ function Confirm(){
       variables: value,
       onCompleted: () => {
         setConfirming(false);
-      }
-    })
+      },
+    });
   }, [confirmMutation, value]);
 
   useEffect(() => {
     confirm();
   }, [confirm]);
 
-  return(
-
+  return (
     <div className="login">
       <div className="overlay-confirm">
         <Dimmer active={confirming} inverted>
-          <Loader size='massive' disabled={!confirming}>Loading</Loader>
+          <Loader size="massive" disabled={!confirming}>
+            Loading
+          </Loader>
         </Dimmer>
         {!confirming && (
           <>
@@ -43,11 +44,11 @@ function Confirm(){
                       <Segment.Group>
                         <Segment className="title-bg-accent-1">
                           <div className="loading">
-                              <div>
-                                <h1 className="text-white confirmMsg">
-                                  Thank you for confirming your account!
-                                </h1>
-                              </div>
+                            <div>
+                              <h1 className="text-white confirmMsg">
+                                Thank you for confirming your account!
+                              </h1>
+                            </div>
                           </div>
                         </Segment>
                       </Segment.Group>
@@ -64,11 +65,11 @@ function Confirm(){
                       <Segment.Group>
                         <Segment className="title-bg-accent-1">
                           <div className="loading">
-                              <div>
-                                <h3 className="text-white confirmMsg">
-                                  Thank you for confirming your account!
-                                </h3>
-                              </div>
+                            <div>
+                              <h3 className="text-white confirmMsg">
+                                Thank you for confirming your account!
+                              </h3>
+                            </div>
                           </div>
                         </Segment>
                       </Segment.Group>
@@ -85,11 +86,11 @@ function Confirm(){
                       <Segment.Group>
                         <Segment className="title-bg-accent-1">
                           <div className="loading">
-                              <div>
-                                <h3 className="text-white confirmMsg">
-                                  Thank you for confirming your account!
-                                </h3>
-                              </div>
+                            <div>
+                              <h3 className="text-white confirmMsg">
+                                Thank you for confirming your account!
+                              </h3>
+                            </div>
                           </div>
                         </Segment>
                       </Segment.Group>
@@ -103,7 +104,6 @@ function Confirm(){
       </div>
     </div>
   );
-
 }
 
 const CONFIRM_USER = gql`
@@ -115,6 +115,6 @@ const CONFIRM_USER = gql`
       createdAt
     }
   }
-`
+`;
 
-export default Confirm
+export default Confirm;

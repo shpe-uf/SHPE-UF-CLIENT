@@ -57,7 +57,9 @@ function Statistic({ statData }) {
                         <Table.Row key={stat._id}>
                           <Table.Cell>{stat._id}</Table.Cell>
                           <Table.Cell>{stat.value}</Table.Cell>
-                          <Table.Cell>{((stat.value / totalUsers)*100).toFixed(2) + "%"}</Table.Cell>
+                          <Table.Cell>
+                            {((stat.value / totalUsers) * 100).toFixed(2) + "%"}
+                          </Table.Cell>
                         </Table.Row>
                       ))}
                   </Table.Body>

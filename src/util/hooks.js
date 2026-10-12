@@ -15,13 +15,11 @@ export const useForm = (callback, initialState = {}) => {
       console.error("Error during submission:", err);
     }
   };
-  
 
-  
   return {
     onChange,
     onSubmit,
     setValues,
-    values
-  }
+    values,
+  };
 };

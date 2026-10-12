@@ -1,11 +1,5 @@
 import React from "react";
-import {
-    Button,
-    Modal,
-    Image,
-    Header,
-    Grid,
-} from "semantic-ui-react";
+import { Button, Modal, Image, Header, Grid } from "semantic-ui-react";
 
 function JrEventModal(event, description, pic) {
   const [open, setOpen] = React.useState(false);
@@ -16,13 +10,20 @@ function JrEventModal(event, description, pic) {
       open={open}
       trigger={
         <Grid verticalAlign="middle" columns={2} centered>
-            <Button fluid className="EventButton">
-              {event}
-            </Button>
+          <Button fluid className="EventButton">
+            {event}
+          </Button>
         </Grid>
       }
     >
-      <Modal.Header>{event} <Button icon="close" color="red" onClick={() => setOpen(false)}></Button></Modal.Header>
+      <Modal.Header>
+        {event}{" "}
+        <Button
+          icon="close"
+          color="red"
+          onClick={() => setOpen(false)}
+        ></Button>
+      </Modal.Header>
       <Modal.Content image>
         <Grid>
           <Grid.Column width={5}>
@@ -34,8 +35,7 @@ function JrEventModal(event, description, pic) {
           </Grid.Column>
         </Grid>
       </Modal.Content>
-      <Modal.Actions>
-      </Modal.Actions>
+      <Modal.Actions></Modal.Actions>
     </Modal>
   );
 }

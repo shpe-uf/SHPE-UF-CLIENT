@@ -1,24 +1,34 @@
 import React from "react";
 
-import { useQuery } from '@apollo/client'
-import { FETCH_PARTNERS_QUERY } from '../../util/graphql'
+import { useQuery } from "@apollo/client";
+import { FETCH_PARTNERS_QUERY } from "../../util/graphql";
 
-import { Container, Grid, Image, ImageGroup, Modal, Button, Icon, CardContent, CardHeader } from "semantic-ui-react";
+import {
+  Container,
+  Grid,
+  Image,
+  ImageGroup,
+  Modal,
+  Button,
+  Icon,
+  CardContent,
+  CardHeader,
+} from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import "./styles/Sponsors.css";
 
 // import sponsors from "../../assets/images/sponsors"
 
 function Sponsors() {
-  const { data } = useQuery(FETCH_PARTNERS_QUERY)
-  const partners = data?.getPartners || []
+  const { data } = useQuery(FETCH_PARTNERS_QUERY);
+  const partners = data?.getPartners || [];
 
   const partnersByTier = partners.reduce((accumulator, partner) => {
-    (accumulator[partner.tier] ||= []).push(partner)
-    return accumulator
-  }, {})
+    (accumulator[partner.tier] ||= []).push(partner);
+    return accumulator;
+  }, {});
 
-  const tierOrder = ["Diamond", "Gold", "Silver", "Bronze"]
+  const tierOrder = ["Diamond", "Gold", "Silver", "Bronze"];
 
   return (
     <div className="body">
@@ -34,46 +44,58 @@ function Sponsors() {
 
       <Container>
         <Grid style={{ width: "105%" }}>
-          {
-            tierOrder.filter((tier) => partnersByTier[tier]).map((tier) => {
+          {tierOrder
+            .filter((tier) => partnersByTier[tier])
+            .map((tier) => {
               return (
                 <React.Fragment key={tier}>
-                  <h2 style={{
-                    ...(tier === "Diamond" && { color: "#74d3daff" }),
-                    ...(tier === "Gold" && { color: "#d4af37" }),
-                    ...(tier === "Silver" && { color: "silver" }),
-                    ...(tier === "Bronze" && { color: "#CE8946" })
-                  }} >
-                    {tier} Partners</h2>
-                  <Grid.Row style={{
-                    gap: "30px", width: "80% !important",
-                    ...(tier === "Diamond" && { filter: "drop-shadow(1px 14px 20px #93f1f8ff)" }),
-                    ...(tier === "Gold" && { filter: "drop-shadow(1px 14px 20px #d4af37)" }),
-                    ...(tier === "Silver" && { filter: "drop-shadow(1px 14px 20px silver)" }),
-                    ...(tier === "Bronze" && { filter: "drop-shadow(1px 14px 20px #CE8946)" })
-                  }}
+                  <h2
+                    style={{
+                      ...(tier === "Diamond" && { color: "#74d3daff" }),
+                      ...(tier === "Gold" && { color: "#d4af37" }),
+                      ...(tier === "Silver" && { color: "silver" }),
+                      ...(tier === "Bronze" && { color: "#CE8946" }),
+                    }}
+                  >
+                    {tier} Partners
+                  </h2>
+                  <Grid.Row
+                    style={{
+                      gap: "30px",
+                      width: "80% !important",
+                      ...(tier === "Diamond" && {
+                        filter: "drop-shadow(1px 14px 20px #93f1f8ff)",
+                      }),
+                      ...(tier === "Gold" && {
+                        filter: "drop-shadow(1px 14px 20px #d4af37)",
+                      }),
+                      ...(tier === "Silver" && {
+                        filter: "drop-shadow(1px 14px 20px silver)",
+                      }),
+                      ...(tier === "Bronze" && {
+                        filter: "drop-shadow(1px 14px 20px #CE8946)",
+                      }),
+                    }}
                   >
                     <ImageGroup size="small">
-                      {
-                        partnersByTier[tier].map((partner) => (
-                          <Image key={partner.name} src={partner.photo} />
-                        ))
-                      }
+                      {partnersByTier[tier].map((partner) => (
+                        <Image key={partner.name} src={partner.photo} />
+                      ))}
                     </ImageGroup>
                   </Grid.Row>
                 </React.Fragment>
-              )
-            })
-          }
+              );
+            })}
         </Grid>
         <br />
         <br />
         <div align="center">
           <h4 className="accent-2-text"> Interested in becoming a partner?</h4>
-          <Button as={Link} to="mailto:vpcorporate.shpeuf@gmail.com">Contact us</Button>
+          <Button as={Link} to="mailto:vpcorporate.shpeuf@gmail.com">
+            Contact us
+          </Button>
         </div>
       </Container>
-
 
       {/*
 
@@ -142,7 +164,6 @@ function Sponsors() {
         </div>
       </Container>
     */}
-
     </div>
   );
 }
