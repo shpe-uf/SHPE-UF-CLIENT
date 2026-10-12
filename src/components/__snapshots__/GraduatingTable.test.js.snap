@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GraduatingTable matches snapshot and shows the empty-state placeholder when nobody is graduating 1`] = `
+<div>
+  <div
+    class="ui inverted dimmer"
+  >
+    <div
+      class="content"
+    >
+      <div
+        class="ui loader"
+      />
+    </div>
+  </div>
+  <div
+    class="ui placeholder segment"
+  >
+    <div
+      class="ui icon header"
+    >
+      <i
+        class="fas fa-inbox"
+      />
+      <p>
+        It seems like there are no users graduating at this moment.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`GraduatingTable matches snapshot when populated with a mix of graduating and non-graduating users 1`] = `
+<div>
+  <div
+    class="ui inverted dimmer"
+  >
+    <div
+      class="content"
+    >
+      <div
+        class="ui loader"
+      />
+    </div>
+  </div>
+  <div
+    class="table-responsive"
+  >
+    <table
+      class="ui selectable striped unstackable table"
+    >
+      <thead
+        class=""
+      >
+        <tr
+          class=""
+        >
+          <th
+            class=""
+          >
+            Name
+          </th>
+          <th
+            class=""
+          >
+            Graduating
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class=""
+      >
+        <tr
+          class=""
+        >
+          <td
+            class=""
+          >
+            One
+            , 
+            A
+          </td>
+          <td
+            class=""
+          >
+            Fall 2026
+          </td>
+        </tr>
+        <tr
+          class=""
+        >
+          <td
+            class=""
+          >
+            Three
+            , 
+            C
+          </td>
+          <td
+            class=""
+          >
+            Spring 2027
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
