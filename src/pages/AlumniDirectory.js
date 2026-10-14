@@ -23,6 +23,13 @@ function AlumniDirectory() {
           <Grid.Row>
             <Grid.Column>
               <AlumniMap alumnis={alumnis} />
+              <p style={{ fontSize: "0.85em", marginTop: "0.5em" }}>
+                Locations powered by <a href="https://www.geoapify.com/">Geoapify</a>
+                {" · "}
+                <a href="https://www.openstreetmap.org/copyright">
+                  © OpenStreetMap contributors
+                </a>
+              </p>
               <AlumniTable alumnis={alumnis} />
             </Grid.Column>
           </Grid.Row>

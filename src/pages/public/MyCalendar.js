@@ -39,11 +39,17 @@ function MyCalendar() {
     }
 
     function setEvents(dataItems){
-        console.log(allEvents);
-        var allEvents = [];
+        var allEvents = []; // Moved this up so your console.log works correctly
+        console.log("Raw Google API Items:", dataItems);
+        
         let allday = false;
+        
         for(var i =0; i < dataItems.length; i++){
+            // NEW LINE: Skip cancelled/deleted events that are missing start times
+            if (!dataItems[i].start) continue; 
+
             allday = dataItems[i].start.date ? true : false;
+            
             allEvents.push({
                 id: dataItems[i].id,
                 title: dataItems[i].summary,
@@ -60,8 +66,8 @@ function MyCalendar() {
                 color: "ff0000",
             });
         }
-        console.log('All Events:', allEvents);
-        getEvents(allEvents);
+        console.log('All Parsed Events:', allEvents);
+        getEvents(allEvents); // Note: getEvents is acting as your setState function here
     }
 
     useEffect(() => {
