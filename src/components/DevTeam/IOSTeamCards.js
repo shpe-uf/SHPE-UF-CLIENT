@@ -3,12 +3,12 @@ import { Card, CardHeader } from "semantic-ui-react";
 
 const team = {
   // alex: "",
-  kaylee: "s3://shpeuf/public/team/iOS_Team/kaylee_driscoll.JPG",
-  alexandro: "s3://shpeuf/public/team/iOS_Team/alexandro_bonet.JPG",
-  ana: "s3://shpeuf/public/team/iOS_Team/ana_quintero.JPG",
-  jatin: "s3://shpeuf/public/team/iOS_Team/jatin_verma.JPG",
-  edib: "s3://shpeuf/public/team/iOS_Team/edib_music.jpeg",
-  placeholder: "s3://shpeuf/public/team/iOS_Team/dev.png"
+  kaylee: "https://shpeuf.s3.us-east-1.amazonaws.com/public/team/iOS_Team/kaylee_driscoll.JPG",
+  alexandro: "https://shpeuf.s3.us-east-1.amazonaws.com/public/team/iOS_Team/alexandro_bonet.JPG",
+  ana: "https://shpeuf.s3.us-east-1.amazonaws.com/public/team/iOS_Team/ana_quintero.JPG",
+  jatin: "https://shpeuf.s3.us-east-1.amazonaws.com/public/team/iOS_Team/jatin_verma.JPG",
+  edib: "https://shpeuf.s3.us-east-1.amazonaws.com/public/team/iOS_Team/edib_music.jpeg",
+  placeholder: "https://shpeuf.s3.us-east-1.amazonaws.com/public/team/iOS_Team/dev.png"
 }
 
 function DevTeamCards() {
