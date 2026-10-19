@@ -1,0 +1,227 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RequestsTable matches snapshot and shows the empty-state placeholder when there are no requests 1`] = `
+<div>
+  <div
+    class="ui inverted dimmer"
+  >
+    <div
+      class="content"
+    >
+      <div
+        class="ui loader"
+      />
+    </div>
+  </div>
+  <div
+    class="ui placeholder segment"
+  >
+    <div
+      class="ui icon header"
+    >
+      <i
+        class="fas fa-inbox"
+      />
+      <p>
+        It seems like there are no requests at this moment.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`RequestsTable matches snapshot when populated with requests 1`] = `
+<div>
+  <div
+    class="ui inverted dimmer"
+  >
+    <div
+      class="content"
+    >
+      <div
+        class="ui loader"
+      />
+    </div>
+  </div>
+  <div
+    class="table-responsive"
+  >
+    <table
+      class="ui selectable striped unstackable table"
+    >
+      <thead
+        class=""
+      >
+        <tr
+          class=""
+        >
+          <th
+            class=""
+          >
+            Name
+          </th>
+          <th
+            class=""
+          >
+            Username
+          </th>
+          <th
+            class=""
+          >
+            Event
+          </th>
+          <th
+            class=""
+          >
+            Type
+          </th>
+          <th
+            class=""
+          >
+            Date
+          </th>
+          <th
+            class="center aligned"
+          >
+            Points
+          </th>
+          <th
+            class="center aligned"
+          >
+            Approve
+          </th>
+          <th
+            class="center aligned"
+          >
+            Reject
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class=""
+      >
+        <tr
+          class=""
+        >
+          <td
+            class=""
+          >
+            Valdez
+            , 
+            Veronica
+          </td>
+          <td
+            class=""
+          >
+            vvaldez
+          </td>
+          <td
+            class=""
+          >
+            Resume Workshop
+          </td>
+          <td
+            class=""
+          >
+            event
+          </td>
+          <td
+            class=""
+          >
+            01/15/2026 @ 10:30 AM
+          </td>
+          <td
+            class="center aligned"
+          >
+            5
+          </td>
+          <td
+            class="center aligned"
+          >
+            <button
+              class="ui green icon button"
+            >
+              <i
+                aria-hidden="true"
+                class="check icon"
+              />
+            </button>
+          </td>
+          <td
+            class="center aligned"
+          >
+            <button
+              class="ui red icon button"
+            >
+              <i
+                aria-hidden="true"
+                class="x icon"
+              />
+            </button>
+          </td>
+        </tr>
+        <tr
+          class=""
+        >
+          <td
+            class=""
+          >
+            Chen
+            , 
+            Alex
+          </td>
+          <td
+            class=""
+          >
+            achen
+          </td>
+          <td
+            class=""
+          >
+            Design Sprint
+          </td>
+          <td
+            class=""
+          >
+            task
+          </td>
+          <td
+            class=""
+          >
+            01/15/2026 @ 10:30 AM
+          </td>
+          <td
+            class="center aligned"
+          >
+            10
+          </td>
+          <td
+            class="center aligned"
+          >
+            <button
+              class="ui green icon button"
+            >
+              <i
+                aria-hidden="true"
+                class="check icon"
+              />
+            </button>
+          </td>
+          <td
+            class="center aligned"
+          >
+            <button
+              class="ui red icon button"
+            >
+              <i
+                aria-hidden="true"
+                class="x icon"
+              />
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
