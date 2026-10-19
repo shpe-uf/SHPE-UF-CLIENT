@@ -1,0 +1,279 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AlumniTable matches snapshot and shows a loader, not rows, when alumnis is undefined 1`] = `
+<div>
+  <div
+    class="table-responsive"
+  >
+    <div
+      class="ui active transition visible inverted dimmer"
+      style="display: flex;"
+    >
+      <div
+        class="content"
+      >
+        <div
+          class="ui loader"
+        />
+      </div>
+    </div>
+    <table
+      class="ui selectable striped unstackable table"
+    >
+      <thead
+        class=""
+      >
+        <tr
+          class=""
+        >
+          <th
+            class=""
+          >
+            Name
+          </th>
+          <th
+            class=""
+          >
+            Undergrad. Major
+          </th>
+          <th
+            class=""
+          >
+            Grad. Major
+          </th>
+          <th
+            class=""
+          >
+            Employer
+          </th>
+          <th
+            class=""
+          >
+            Position
+          </th>
+          <th
+            class=""
+          >
+            Location
+          </th>
+          <th
+            class="center aligned"
+          >
+            LinkedIn
+          </th>
+          <th
+            class="center aligned"
+          >
+            Profile
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class=""
+      />
+    </table>
+  </div>
+</div>
+`;
+
+exports[`AlumniTable matches snapshot when populated with alumnis 1`] = `
+<div>
+  <div
+    class="table-responsive"
+  >
+    <div
+      class="ui inverted dimmer"
+    >
+      <div
+        class="content"
+      >
+        <div
+          class="ui loader"
+        />
+      </div>
+    </div>
+    <table
+      class="ui selectable striped unstackable table"
+    >
+      <thead
+        class=""
+      >
+        <tr
+          class=""
+        >
+          <th
+            class=""
+          >
+            Name
+          </th>
+          <th
+            class=""
+          >
+            Undergrad. Major
+          </th>
+          <th
+            class=""
+          >
+            Grad. Major
+          </th>
+          <th
+            class=""
+          >
+            Employer
+          </th>
+          <th
+            class=""
+          >
+            Position
+          </th>
+          <th
+            class=""
+          >
+            Location
+          </th>
+          <th
+            class="center aligned"
+          >
+            LinkedIn
+          </th>
+          <th
+            class="center aligned"
+          >
+            Profile
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class=""
+      >
+        <tr
+          class=""
+        >
+          <td
+            class=""
+          >
+            Lopez
+            , 
+            Maria
+          </td>
+          <td
+            class=""
+          >
+            Computer Science
+          </td>
+          <td
+            class=""
+          />
+          <td
+            class=""
+          >
+            Acme Corp
+          </td>
+          <td
+            class=""
+          >
+            Engineer
+          </td>
+          <td
+            class=""
+          >
+            Gainesville
+            , 
+            FL
+          </td>
+          <td
+            class="center aligned"
+          >
+            <a
+              class="ui icon button"
+              href="https://linkedin.com/in/test-alumni-fixture-1"
+              role="button"
+              target="_blank"
+            >
+              <i
+                aria-hidden="true"
+                class="linkedin square icon"
+              />
+            </a>
+          </td>
+          <td
+            class="center aligned"
+          >
+            <button
+              class="ui icon button"
+            >
+              <i
+                aria-hidden="true"
+                class="info icon"
+              />
+            </button>
+          </td>
+        </tr>
+        <tr
+          class=""
+        >
+          <td
+            class=""
+          >
+            Park
+            , 
+            James
+          </td>
+          <td
+            class=""
+          >
+            Mechanical Engineering
+          </td>
+          <td
+            class=""
+          />
+          <td
+            class=""
+          >
+            Beta Inc
+          </td>
+          <td
+            class=""
+          >
+            Analyst
+          </td>
+          <td
+            class=""
+          >
+            Orlando
+            , 
+            FL
+          </td>
+          <td
+            class="center aligned"
+          >
+            <a
+              class="ui icon button"
+              href="https://linkedin.com/in/test-alumni-fixture-2"
+              role="button"
+              target="_blank"
+            >
+              <i
+                aria-hidden="true"
+                class="linkedin square icon"
+              />
+            </a>
+          </td>
+          <td
+            class="center aligned"
+          >
+            <button
+              class="ui icon button"
+            >
+              <i
+                aria-hidden="true"
+                class="info icon"
+              />
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;

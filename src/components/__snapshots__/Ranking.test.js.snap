@@ -1,0 +1,124 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Ranking matches snapshot and renders an empty table body when the CSV yields no rows 1`] = `
+<div>
+  <div
+    style="margin-top: 60px;"
+  >
+    <h2>
+      Teams 4-10:
+    </h2>
+    <table
+      class="ui selectable striped unstackable table"
+    >
+      <thead
+        class=""
+      >
+        <tr
+          class=""
+        >
+          <th
+            class=""
+          >
+            #
+          </th>
+          <th
+            class=""
+          >
+            Team Name
+          </th>
+          <th
+            class=""
+          >
+            Points
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class=""
+      />
+    </table>
+  </div>
+</div>
+`;
+
+exports[`Ranking matches snapshot and renders ranks 4-10 when no top-3 ties exist 1`] = `
+<div>
+  <div
+    style="margin-top: 60px;"
+  >
+    <h2>
+      Teams 4-10:
+    </h2>
+    <table
+      class="ui selectable striped unstackable table"
+    >
+      <thead
+        class=""
+      >
+        <tr
+          class=""
+        >
+          <th
+            class=""
+          >
+            #
+          </th>
+          <th
+            class=""
+          >
+            Team Name
+          </th>
+          <th
+            class=""
+          >
+            Points
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class=""
+      >
+        <tr
+          class=""
+        >
+          <td
+            class=""
+          >
+            4
+          </td>
+          <td
+            class=""
+          >
+            Team D
+          </td>
+          <td
+            class=""
+          >
+            20
+          </td>
+        </tr>
+        <tr
+          class=""
+        >
+          <td
+            class=""
+          >
+            5
+          </td>
+          <td
+            class=""
+          >
+            Team E
+          </td>
+          <td
+            class=""
+          >
+            10
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;

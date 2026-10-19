@@ -1,0 +1,252 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TasksTable matches snapshot and shows the empty-state placeholder when there are no tasks 1`] = `
+<div>
+  <div
+    class="ui inverted dimmer"
+  >
+    <div
+      class="content"
+    >
+      <div
+        class="ui loader"
+      />
+    </div>
+  </div>
+  <div
+    class="ui placeholder segment"
+  >
+    <div
+      class="ui icon header"
+    >
+      <i
+        class="fas fa-inbox"
+      />
+      <p>
+        It seems like there are no tasks at this moment.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`TasksTable matches snapshot when populated with tasks 1`] = `
+<div>
+  <div
+    class="ui inverted dimmer"
+  >
+    <div
+      class="content"
+    >
+      <div
+        class="ui loader"
+      />
+    </div>
+  </div>
+  <div
+    class="table-responsive"
+  >
+    <table
+      class="ui selectable striped unstackable table"
+    >
+      <thead
+        class=""
+      >
+        <tr
+          class=""
+        >
+          <th
+            class=""
+          >
+            Name
+          </th>
+          <th
+            class=""
+          >
+            Start Date
+          </th>
+          <th
+            class=""
+          >
+            End Date
+          </th>
+          <th
+            class=""
+          >
+            Semester
+          </th>
+          <th
+            class="center aligned"
+          >
+            Attendance
+          </th>
+          <th
+            class="center aligned"
+          >
+            Points
+          </th>
+          <th
+            class="center aligned"
+          >
+            Add User
+          </th>
+          <th
+            class="center aligned"
+          >
+            Info
+          </th>
+          <th
+            class="center aligned"
+          >
+            Delete
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class=""
+      >
+        <tr
+          class=""
+        >
+          <td
+            class=""
+          >
+            Attend GBM
+          </td>
+          <td
+            class=""
+          >
+            2026-01-15
+          </td>
+          <td
+            class=""
+          >
+            2026-01-15
+          </td>
+          <td
+            class=""
+          >
+            Spring 2026
+          </td>
+          <td
+            class="center aligned"
+          >
+            12
+          </td>
+          <td
+            class="center aligned"
+          >
+            5
+          </td>
+          <td
+            class="center aligned"
+          >
+            <button
+              class="ui icon button"
+            >
+              <i
+                aria-hidden="true"
+                class="i cursor icon"
+              />
+            </button>
+          </td>
+          <td
+            class="center aligned"
+          >
+            <button
+              class="ui icon button"
+            >
+              <i
+                aria-hidden="true"
+                class="info icon"
+              />
+            </button>
+          </td>
+          <td
+            class="center aligned"
+          >
+            <button
+              class="ui red icon button"
+            >
+              <i
+                aria-hidden="true"
+                class="x icon"
+              />
+            </button>
+          </td>
+        </tr>
+        <tr
+          class=""
+        >
+          <td
+            class=""
+          >
+            Volunteer at Outreach
+          </td>
+          <td
+            class=""
+          >
+            2026-02-01
+          </td>
+          <td
+            class=""
+          >
+            2026-02-01
+          </td>
+          <td
+            class=""
+          >
+            Spring 2026
+          </td>
+          <td
+            class="center aligned"
+          >
+            4
+          </td>
+          <td
+            class="center aligned"
+          >
+            10
+          </td>
+          <td
+            class="center aligned"
+          >
+            <button
+              class="ui icon button"
+            >
+              <i
+                aria-hidden="true"
+                class="i cursor icon"
+              />
+            </button>
+          </td>
+          <td
+            class="center aligned"
+          >
+            <button
+              class="ui icon button"
+            >
+              <i
+                aria-hidden="true"
+                class="info icon"
+              />
+            </button>
+          </td>
+          <td
+            class="center aligned"
+          >
+            <button
+              class="ui red icon button"
+            >
+              <i
+                aria-hidden="true"
+                class="x icon"
+              />
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
