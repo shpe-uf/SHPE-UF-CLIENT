@@ -1,0 +1,283 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EventsTable matches snapshot and shows the empty-state placeholder when there are no events 1`] = `
+<div>
+  <div
+    class="ui inverted dimmer"
+  >
+    <div
+      class="content"
+    >
+      <div
+        class="ui loader"
+      />
+    </div>
+  </div>
+  <div
+    class="ui placeholder segment"
+  >
+    <div
+      class="ui icon header"
+    >
+      <i
+        class="fas fa-inbox"
+      />
+      <p>
+        It seems like there are no events at this moment.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`EventsTable matches snapshot when populated with events 1`] = `
+<div>
+  <div
+    class="ui inverted dimmer"
+  >
+    <div
+      class="content"
+    >
+      <div
+        class="ui loader"
+      />
+    </div>
+  </div>
+  <div
+    class="table-responsive"
+  >
+    <div
+      class="ui grid"
+    >
+      <div
+        class="row"
+      >
+        <table
+          class="ui selectable striped unstackable table"
+        >
+          <thead
+            class=""
+          >
+            <tr
+              class=""
+            >
+              <th
+                class=""
+              >
+                Name
+              </th>
+              <th
+                class=""
+              >
+                Category
+              </th>
+              <th
+                class=""
+              >
+                Expiration
+              </th>
+              <th
+                class="center aligned"
+              >
+                Request
+              </th>
+              <th
+                class="center aligned"
+              >
+                Attendance
+              </th>
+              <th
+                class="center aligned"
+              >
+                Points
+              </th>
+              <th
+                class="center aligned"
+              >
+                Manual Input
+              </th>
+              <th
+                class="center aligned"
+              >
+                Info
+              </th>
+              <th
+                class="center aligned"
+              >
+                Delete
+              </th>
+            </tr>
+          </thead>
+          <tbody
+            class=""
+          >
+            <tr
+              class=""
+            >
+              <td
+                class=""
+              >
+                GBM 1
+              </td>
+              <td
+                class=""
+              >
+                General Body Meeting
+              </td>
+              <td
+                class=""
+              >
+                03/01/2026 @ 10:30 AM
+              </td>
+              <td
+                class="center aligned"
+              >
+                <i
+                  aria-hidden="true"
+                  class="check icon request-true"
+                />
+              </td>
+              <td
+                class="center aligned"
+              >
+                40
+              </td>
+              <td
+                class="center aligned"
+              >
+                1
+              </td>
+              <td
+                class="center aligned"
+              >
+                <button
+                  class="ui icon button"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="i cursor icon"
+                  />
+                </button>
+              </td>
+              <td
+                class="center aligned"
+              >
+                <button
+                  class="ui icon button"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="info icon"
+                  />
+                </button>
+              </td>
+              <td
+                class="center aligned"
+              >
+                <button
+                  class="ui red icon button"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="x icon"
+                  />
+                </button>
+              </td>
+            </tr>
+            <tr
+              class=""
+            >
+              <td
+                class=""
+              >
+                Resume Workshop
+              </td>
+              <td
+                class=""
+              >
+                Workshop
+              </td>
+              <td
+                class=""
+              >
+                03/01/2026 @ 10:30 AM
+              </td>
+              <td
+                class="center aligned"
+              >
+                <i
+                  aria-hidden="true"
+                  class="x icon request-false"
+                />
+              </td>
+              <td
+                class="center aligned"
+              >
+                15
+              </td>
+              <td
+                class="center aligned"
+              >
+                2
+              </td>
+              <td
+                class="center aligned"
+              >
+                <button
+                  class="ui icon button"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="i cursor icon"
+                  />
+                </button>
+              </td>
+              <td
+                class="center aligned"
+              >
+                <button
+                  class="ui icon button"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="info icon"
+                  />
+                </button>
+              </td>
+              <td
+                class="center aligned"
+              >
+                <button
+                  class="ui red icon button"
+                >
+                  <i
+                    aria-hidden="true"
+                    class="x icon"
+                  />
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div
+        class="row"
+      >
+        <a
+          download="events.csv"
+          href="data:text/csv;charset=utf-8,﻿\\"id\\",\\"name\\",\\"category\\",\\"expiration\\",\\"request\\",\\"attendance\\",\\"points\\"
+\\"1\\",\\"GBM 1\\",\\"General Body Meeting\\",\\"2026-03-01T10:30:00.000Z\\",\\"true\\",\\"40\\",\\"1\\"
+\\"2\\",\\"Resume Workshop\\",\\"Workshop\\",\\"2026-03-01T10:30:00.000Z\\",\\"false\\",\\"15\\",\\"2\\""
+          target="_self"
+        >
+          <button
+            class="ui green right floated button"
+          >
+            Export to CSV
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;
