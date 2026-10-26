@@ -638,6 +638,24 @@ ul.nav li.active {
   background: rgba(13, 104, 130, 0.75);
   color: white;
 }
+
+.DevTeamTabs .dev-team-tab-list li {
+  flex: 1;
+  min-width: 0;
+  width: auto;
+}
+
+@media (max-width: 780px) {
+  .DevTeamTabs .dev-team-tab-list {
+    width: 100%;
+  }
+
+  .DevTeamTabs .dev-team-tab-list li {
+    padding: 0.75rem 0.25rem;
+    font-size: 0.85rem;
+  }
+}
+
 .JrTabContent {
   font-size: 2rem;
   text-align: center;

@@ -4,16 +4,18 @@ import DevTeamTabContent from "./DevTeamTabContent";
 import WebsiteTeam from "./WebsiteTeam";
 import IOSTeam from "./iOSTeam";
 import AndroidTeam from "./AndroidTeam";
+import UIUXTeam from "./UIUXTeam";
 
 const DevTeamTabs = () => {
   const [activeTab, setActiveTab] = useState("tab2");
   return (
     
     <div className="DevTeamTabs">
-      <ul className="nav">
+      <ul className="nav dev-team-tab-list">
         <DevTeamTabNavItem title="iOS Team" id="tab1" activeTab={activeTab} setActiveTab={setActiveTab}/>
         <DevTeamTabNavItem title="Website Team" id="tab2" activeTab={activeTab} setActiveTab={setActiveTab}/>
         <DevTeamTabNavItem title="Android Team" id="tab3" activeTab={activeTab} setActiveTab={setActiveTab}/>
+        <DevTeamTabNavItem title="UI/UX Team" id="tab4" activeTab={activeTab} setActiveTab={setActiveTab}/>
       </ul>
       <div className="outlet">
         <DevTeamTabContent id="tab1" activeTab={activeTab}>
@@ -26,6 +28,10 @@ const DevTeamTabs = () => {
 
         <DevTeamTabContent id="tab3" activeTab={activeTab}>
           <AndroidTeam/>
+        </DevTeamTabContent>
+
+        <DevTeamTabContent id="tab4" activeTab={activeTab}>
+          <UIUXTeam/>
         </DevTeamTabContent>
 
       </div>
