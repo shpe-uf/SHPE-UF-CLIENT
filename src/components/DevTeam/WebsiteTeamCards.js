@@ -10,6 +10,7 @@ const team = {
   veronica: "https://shpeuf.s3.amazonaws.com/public/team/veronica_valdez.JPG",
   isabel: "https://shpeuf.s3.amazonaws.com/public/team/maria_isabel_hernandez.JPG",
   tiffany: "https://shpeuf.s3.amazonaws.com/public/team/tiffany_huang.JPG",
+  javian: "https://shpeuf.s3.amazonaws.com/public/team/javian_sandino.JPG",
   mikelangelo: "https://shpeuf.s3.amazonaws.com/public/team/mikelangelo_mutti.JPG",
   placeholder: "https://shpeuf.s3.amazonaws.com/public/team/dev.png",
 };
@@ -68,7 +69,7 @@ function DevTeamCards() {
       />
       <Card
         fluid
-        image={team.placeholder}
+        image={team.javian}
         header="Javian Sandino"
         meta="Junior Developer"
         className="team-card-image"
