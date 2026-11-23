@@ -10,6 +10,8 @@ const team = {
   gabriel: "https://shpeuf.s3.amazonaws.com/public/team/Kotlin_Team/gabriel_munoz.JPG",
   alejandro: "https://shpeuf.s3.amazonaws.com/public/team/Kotlin_Team/alejandro_jimenez.JPG",
   guillermo: "https://shpeuf.s3.amazonaws.com/public/team/Kotlin_Team/guillermo_novillo.JPG",
+  ivette: "https://shpeuf.s3.amazonaws.com/public/team/Kotlin_Team/ivette_saldana.JPG",
+  andres: "https://shpeuf.s3.amazonaws.com/public/team/Kotlin_Team/andres_arvelo.JPG",
   placeholder: "https://shpeuf.s3.amazonaws.com/public/team/iOS_Team/dev.png",
 };
 
@@ -67,7 +69,7 @@ function DevTeamCards() {
       />
       <Card
         fluid
-        image={team.placeholder}
+        image={team.ivette}
         header="Ivette Saldana"
         meta="Junior Developer"
         className="team-card-image"
@@ -102,7 +104,7 @@ function DevTeamCards() {
       />
       <Card
         fluid
-        image={team.placeholder}
+        image={team.andres}
         header="Andres Arvelo"
         meta="Junior Developer"
         className="team-card-image"
