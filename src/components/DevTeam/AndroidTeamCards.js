@@ -3,14 +3,17 @@ import { Card, CardHeader } from "semantic-ui-react";
 import DevTeam from "./css/DevTeam.css";
 
 const team = {
-  jake: "https://shpeuf.s3.amazonaws.com/public/team/Kotlin_Team/Jake_west.jpg",
-  julio:
-    "https://shpeuf.s3.us-east-1.amazonaws.com/public/team/Kotlin_Team/Julio.JPG",
-  adrian:
-    "https://shpeuf.s3.amazonaws.com/public/team/Kotlin_Team/Adrian_pelaez.jpg",
-  josue: "https://shpeuf.s3.amazonaws.com/public/team/dev.png",
-  alex: "https://shpeuf.s3.us-east-1.amazonaws.com/public/team/Kotlin_Team/Alex+Ospina.png",
-  ben: "https://shpeuf.s3.us-east-1.amazonaws.com/public/team/Kotlin_Team/Ben.JPG",
+  adrian: "https://shpeuf.s3.amazonaws.com/public/team/Kotlin_Team/adrian_pelaez.JPG",
+  ben: "https://shpeuf.s3.amazonaws.com/public/team/Kotlin_Team/ben_shung.JPG",
+  alex: "https://shpeuf.s3.amazonaws.com/public/team/Kotlin_Team/alex_ospina.png",
+  nico: "https://shpeuf.s3.amazonaws.com/public/team/Kotlin_Team/nico_liway.JPG",
+  gabriel: "https://shpeuf.s3.amazonaws.com/public/team/Kotlin_Team/gabriel_munoz.JPG",
+  alejandro: "https://shpeuf.s3.amazonaws.com/public/team/Kotlin_Team/alejandro_jimenez.JPG",
+  guillermo: "https://shpeuf.s3.amazonaws.com/public/team/Kotlin_Team/guillermo_novillo.JPG",
+  ivette: "https://shpeuf.s3.amazonaws.com/public/team/Kotlin_Team/ivette_saldana.JPG",
+  andres: "https://shpeuf.s3.amazonaws.com/public/team/Kotlin_Team/andres_arvelo.JPG",
+  elijah: "https://shpeuf.s3.amazonaws.com/public/team/Kotlin_Team/elijah_baez.JPG",
+  isabel: "https://shpeuf.s3.amazonaws.com/public/team/Kotlin_Team/isabel_tejeda.JPG",
   placeholder: "https://shpeuf.s3.amazonaws.com/public/team/iOS_Team/dev.png",
 };
 
@@ -22,12 +25,6 @@ function DevTeamCards() {
         image={team.adrian}
         header="Adrian Pelaez"
         meta="Kotlin Lead"
-      />
-      <Card
-        fluid
-        image={team.julio}
-        header="Julio Leonardi"
-        meta="Project Manager"
         className="team-card-image"
       />
       <Card
@@ -44,24 +41,37 @@ function DevTeamCards() {
         meta="Senior Developer"
         className="team-card-image"
       />
-
       <Card
         fluid
-        image={team.placeholder}
-        header="Luisa Almeida Quintella"
-        meta="Senior Developer"
-        className="team-card-image"
-      />
-      <Card
-        fluid
-        image={team.placeholder}
-        header="Gabriel Munoz"
+        image={team.nico}
+        header="Nico Liway"
         meta="Junior Developer"
         className="team-card-image"
       />
       <Card
         fluid
-        image={team.placeholder}
+        image={team.gabriel}
+        header="Gabriel Muñoz"
+        meta="Junior Developer"
+        className="team-card-image"
+      />
+      <Card
+        fluid
+        image={team.alejandro}
+        header="Alejandro Jimenez"
+        meta="Junior Developer"
+        className="team-card-image"
+      />
+      <Card
+        fluid
+        image={team.guillermo}
+        header="Guillermo Novillo"
+        meta="Junior Developer"
+        className="team-card-image"
+      />
+      <Card
+        fluid
+        image={team.ivette}
         header="Ivette Saldana"
         meta="Junior Developer"
         className="team-card-image"
@@ -75,22 +85,29 @@ function DevTeamCards() {
       />
       <Card
         fluid
-        image={team.placeholder}
-        header="Guillermo Novillo"
+        image={team.elijah}
+        header="Elijah Baez"
+        meta="Junior Developer"
+        className="team-card-image"
+      />
+      <Card
+        fluid
+        image={team.isabel}
+        header="Isabel Tejeda"
         meta="Junior Developer"
         className="team-card-image"
       />
       <Card
         fluid
         image={team.placeholder}
-        header="Nicolas Liway"
+        header="Marco Schlageter"
         meta="Junior Developer"
         className="team-card-image"
       />
       <Card
         fluid
-        image={team.placeholder}
-        header="Derek Rosales"
+        image={team.andres}
+        header="Andres Arvelo"
         meta="Junior Developer"
         className="team-card-image"
       />
